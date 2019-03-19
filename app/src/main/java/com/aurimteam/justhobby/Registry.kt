@@ -1,17 +1,12 @@
 package com.aurimteam.justhobby
 
-import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 
-class MainActivity : AppCompatActivity() {
+class Registry : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_registry)
     }
-    fun clickEnter(view: View){
-    }
-
 }
