@@ -12,6 +12,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
     }
     fun clickEnter(view: View){
+        var intent: Intent = Intent(this, Registry::class.java)
+        startActivity(intent)
     }
-
 }

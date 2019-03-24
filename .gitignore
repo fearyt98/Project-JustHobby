@@ -14,3 +14,4 @@
 *.jar
 gradle/wrapper/gradle-wrapper.properties
 gradle.properties
+.idea/dictionaries/Tim.xml
