@@ -1,9 +1,11 @@
-package com.aurimteam.justhobby
+package com.aurimteam.justhobby.MainActivity
 
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import com.aurimteam.justhobby.R
+import com.aurimteam.justhobby.RegistryActivity.Registry
 
 class MainActivity : AppCompatActivity() {
 
@@ -12,7 +14,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
     }
     fun clickEnter(view: View){
-        var intent: Intent = Intent(this, Registry::class.java)
+        //this в intent указывает на текущую активити
+        var intent = Intent(this, Registry::class.java)
         startActivity(intent)
     }
 }

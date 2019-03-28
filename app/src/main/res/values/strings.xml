@@ -1,8 +1,17 @@
 <resources>
     <string name="app_name">JustHobby</string>
     <string name="pass">Пароль</string>
+    <string name="forget">Забыли?</string>
+    <string name="repeat_pass">Подтвердите пароль</string>
     <string name="login">Логин</string>
+    <string name="or">Или</string>
     <string name="email">E-mail</string>
     <string name="enter">Войти</string>
     <string name="search">Поиск</string>
+    <string name="cancel">Отмена</string>
+    <string name="registration">Зарегестрироваться</string>
+
+    <string name="about_recover">
+        Укажите email, к которому привязан\n аккаунт. Мы пришлем на него\n письмо с инструкцией\n восстановления.
+    </string>
 </resources>

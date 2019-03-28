@@ -1,11 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/colorPrimary"
-        tools:context=".Registry">
+        android:orientation="vertical"
+        tools:context=".RegistryActivity.Registry">
+    <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_launcher_background"
+            android:layout_weight="5"
+            android:layout_gravity="center"/>
 
-</android.support.constraint.ConstraintLayout>
+    <TextView style="@style/textViewBaseScreenProperty"
+              android:paddingLeft="5dp"
+              android:layout_weight="0.1"
+              android:text="@string/email"/>
+    <EditText
+            android:id="@+id/login"
+            style="@style/EditTextStyle"
+            android:inputType="text"/>
+
+    <TextView android:layout_marginTop="5dp"
+              android:paddingLeft="5dp"
+              android:layout_weight="0.1"
+              style="@style/textViewBaseScreenProperty"
+              android:text="@string/pass"/>
+    <EditText
+            android:id="@+id/passwordReg"
+            style="@style/EditTextStyle"
+            android:inputType="textPassword"/>
+
+    <TextView android:layout_marginTop="5dp"
+              android:paddingLeft="5dp"
+              android:layout_weight="0.1"
+              style="@style/textViewBaseScreenProperty"
+              android:text="@string/repeat_pass"/>
+    <EditText
+            android:id="@+id/repeatPasswordReg"
+            style="@style/EditTextStyle"
+            android:layout_marginBottom="10dp"
+            android:inputType="textPassword"/>
+
+    <Button android:id="@+id/registryButtonReg"
+            android:text="@string/registration"
+            android:textColor="@color/colorPrimary"
+            android:background="@drawable/eclipse_stroke_login_screen"
+            android:textAlignment="center"
+            android:layout_width="match_parent"
+            android:layout_marginTop="20dp"
+            android:layout_height="42dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_weight="0.3"/>
+
+    <TextView style="@style/textViewBaseScreenProperty"
+              android:layout_weight="5"
+              android:textAlignment="center"
+              android:paddingBottom="20dp"
+              android:gravity="bottom"
+              android:text="@string/cancel"/>
+</LinearLayout>

@@ -20,4 +20,12 @@
         <item name="android:background">@drawable/login_pass_form</item>
         <item name="android:layout_gravity">center</item>
     </style>
+
+    <style name="textViewBaseScreenProperty">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginRight">15dp</item>
+        <item name="android:layout_marginLeft">15dp</item>
+        <item name="android:textColor">@color/whiteText</item>
+    </style>
 </resources>

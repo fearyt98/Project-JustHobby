@@ -13,32 +13,35 @@
                 android:layout_weight="5"
                 android:layout_gravity="center"/>
 
-    <TextView android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:layout_marginRight="15dp"
-              android:layout_marginLeft="15dp"
+    <TextView style="@style/textViewBaseScreenProperty"
               android:paddingLeft="5dp"
-              android:text="E-mail"
-              android:textColor="@color/greenLightText"/>
+              android:layout_weight="0.1"
+              android:text="@string/email"/>
     <EditText
-            android:id="@+id/login"
+            android:id="@+id/loginMain"
             style="@style/EditTextStyle"
             android:inputType="text"/>
-    <TextView android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:layout_marginRight="15dp"
-              android:layout_marginLeft="15dp"
-              android:layout_marginTop="5dp"
+
+    <TextView android:layout_marginTop="5dp"
               android:paddingLeft="5dp"
-              android:text="Пароль"
-              android:textColor="@color/greenLightText"/>
+              android:layout_weight="0.1"
+              style="@style/textViewBaseScreenProperty"
+              android:text="@string/pass"/>
     <EditText
-            android:id="@+id/password"
+            android:id="@+id/passwordMain"
             style="@style/EditTextStyle"
             android:inputType="textPassword"/>
 
-    <Button android:id="@+id/EnterButton"
-            android:text="Войти"
+    <TextView style="@style/textViewBaseScreenProperty"
+              android:layout_marginTop="10dp"
+              android:layout_marginBottom="10dp"
+              android:layout_weight="0.1"
+              android:onClick="forgetBtnClick"
+              android:gravity="end"
+              android:text="@string/forget"/>
+
+    <Button android:id="@+id/EnterButtonMain"
+            android:text="@string/enter"
             android:textColor="@color/colorPrimary"
             android:background="@drawable/eclipse_stroke_login_screen"
             android:textAlignment="center"
@@ -47,12 +50,11 @@
             android:layout_height="42dp"
             android:layout_marginRight="15dp"
             android:layout_marginLeft="15dp"
-            android:layout_marginTop="20dp"
             android:layout_weight="0.5"/>
 
     <TextView android:layout_width="match_parent"
               android:layout_height="wrap_content"
-              android:text="или"
+              android:text="@string/or"
               android:textColor="@color/whiteMidOfMiddle"
               android:textAlignment="center"
               android:layout_marginTop="15dp"
@@ -63,20 +65,20 @@
             android:layout_gravity="center"
             android:rowCount="1"
             android:columnCount="3"
-            android:layout_weight="2">
+            android:layout_weight="1.5">
         <Button
-                android:id="@+id/vkEnter"
+                android:id="@+id/vkEnterMain"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:background="@drawable/circle_button_login_screen"
                 android:layout_marginEnd="10dp"/>
         <Button
-                android:id="@+id/googleEnter"
+                android:id="@+id/googleEnterMain"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:background="@drawable/circle_button_login_screen"/>
         <Button
-                android:id="@+id/facebookEnter"
+                android:id="@+id/facebookEnterMain"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:background="@drawable/circle_button_login_screen"
@@ -86,7 +88,9 @@
     <TextView android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:layout_gravity="center_vertical"
-              android:text="Зарегестрироваться"
+              android:gravity="center_vertical"
+              android:onClick="regBtnClick"
+              android:text="@string/registration"
               android:textColor="@color/whiteText"
               android:textAlignment="center"
               android:layout_weight="2"/>
