@@ -15,8 +15,9 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginTop">5dp</item>
-        <item name="android:paddingBottom">14dp</item>
-        <item name="android:paddingTop">14dp</item>
+        <item name="android:paddingBottom">12dp</item>
+        <item name="android:paddingLeft">20dp</item>
+        <item name="android:paddingTop">12dp</item>
         <item name="android:background">@drawable/login_pass_form</item>
         <item name="android:layout_gravity">center</item>
     </style>

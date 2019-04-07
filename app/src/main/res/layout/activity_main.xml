@@ -2,41 +2,45 @@
 <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_height="match_parent"
         android:background="@color/colorPrimary"
         android:theme="@style/Theme.AppCompat.Light"
         android:orientation="vertical">
     <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_launcher_background"
-                android:layout_weight="5"
-                android:layout_gravity="center"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/logo"
+            android:layout_weight="5"
+            android:layout_gravity="center"/>
 
     <TextView style="@style/textViewBaseScreenProperty"
-              android:paddingLeft="5dp"
+              android:paddingLeft="15dp"
               android:layout_weight="0.1"
               android:text="@string/email"/>
     <EditText
             android:id="@+id/loginMain"
+            android:layout_weight="0.3"
+            android:elevation="1dp"
             style="@style/EditTextStyle"
             android:inputType="text"/>
 
     <TextView android:layout_marginTop="5dp"
-              android:paddingLeft="5dp"
+              android:paddingLeft="15dp"
               android:layout_weight="0.1"
               style="@style/textViewBaseScreenProperty"
               android:text="@string/pass"/>
     <EditText
             android:id="@+id/passwordMain"
             style="@style/EditTextStyle"
+            android:layout_weight="0.3"
+            android:elevation="1dp"
             android:inputType="textPassword"/>
 
     <TextView style="@style/textViewBaseScreenProperty"
+              android:id="@+id/forgetMain"
               android:layout_marginTop="10dp"
               android:layout_marginBottom="10dp"
               android:layout_weight="0.1"
-              android:onClick="forgetBtnClick"
               android:gravity="end"
               android:text="@string/forget"/>
 
@@ -45,12 +49,12 @@
             android:textColor="@color/colorPrimary"
             android:background="@drawable/eclipse_stroke_login_screen"
             android:textAlignment="center"
-            android:onClick="clickEnter"
             android:layout_width="match_parent"
-            android:layout_height="42dp"
+            android:layout_height="wrap_content"
+            android:elevation="1dp"
             android:layout_marginRight="15dp"
             android:layout_marginLeft="15dp"
-            android:layout_weight="0.5"/>
+            android:layout_weight="0.3"/>
 
     <TextView android:layout_width="match_parent"
               android:layout_height="wrap_content"
@@ -58,30 +62,33 @@
               android:textColor="@color/whiteMidOfMiddle"
               android:textAlignment="center"
               android:layout_marginTop="15dp"
-              android:layout_weight="1"/>
+              android:layout_weight="0.8"/>
     <GridLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:rowCount="1"
             android:columnCount="3"
-            android:layout_weight="1.5">
+            android:layout_weight="1">
         <Button
                 android:id="@+id/vkEnterMain"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                android:background="@drawable/circle_button_login_screen"
+                android:elevation="1dp"
+                android:background="@drawable/vk"
                 android:layout_marginEnd="10dp"/>
         <Button
                 android:id="@+id/googleEnterMain"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                android:background="@drawable/circle_button_login_screen"/>
+                android:elevation="1dp"
+                android:background="@drawable/google"/>
         <Button
                 android:id="@+id/facebookEnterMain"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                android:background="@drawable/circle_button_login_screen"
+                android:elevation="1dp"
+                android:background="@drawable/facebook"
                 android:layout_marginStart="10dp"/>
     </GridLayout>
 
@@ -93,5 +100,6 @@
               android:text="@string/registration"
               android:textColor="@color/whiteText"
               android:textAlignment="center"
+              android:elevation="1dp"
               android:layout_weight="2"/>
 </LinearLayout>
