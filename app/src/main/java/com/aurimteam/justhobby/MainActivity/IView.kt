@@ -6,4 +6,5 @@ interface IView {
     fun getUserDataGoogle()
     fun getUserDataFB()
     fun forgetChangeActivity()
+    fun registryChangeActivity()
 }

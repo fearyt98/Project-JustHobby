@@ -96,7 +96,7 @@
               android:layout_height="wrap_content"
               android:layout_gravity="center_vertical"
               android:gravity="center_vertical"
-              android:onClick="regBtnClick"
+              android:id="@+id/registry"
               android:text="@string/registration"
               android:textColor="@color/whiteText"
               android:textAlignment="center"
