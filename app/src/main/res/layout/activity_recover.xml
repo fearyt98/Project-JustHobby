@@ -28,7 +28,7 @@
 
     <TextView style="@style/textViewBaseScreenProperty"
               android:paddingLeft="5dp"
-              android:layout_weight="0.1"
+              android:layout_weight="0.2"
               android:text="@string/email"/>
     <EditText
             android:id="@+id/login"
@@ -46,7 +46,7 @@
             android:layout_height="42dp"
             android:layout_marginRight="15dp"
             android:layout_marginLeft="15dp"
-            android:layout_weight="0.6"/>
+            android:layout_weight="0.5"/>
 
     <TextView style="@style/textViewBaseScreenProperty"
               android:elevation="1dp"
