@@ -28,7 +28,7 @@
               android:paddingLeft="15dp"
               android:layout_weight="0.1"
               style="@style/textViewBaseScreenProperty"
-              android:text="@string/pass"/>
+              android:text="@string/password"/>
     <EditText
             android:id="@+id/passwordMain"
             style="@style/EditTextStyle"

@@ -48,15 +48,15 @@ class MainActivity : AppCompatActivity(), IView {
     }
 
     override fun getUserDataFB() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun getUserDataVK() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun getUserDataGoogle() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
     override fun forgetChangeActivity(){
         val intent = Intent(this, RecoverActivity::class.java)

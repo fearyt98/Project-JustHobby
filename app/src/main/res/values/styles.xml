@@ -30,4 +30,36 @@
         <item name="android:textColor">@color/whiteText</item>
     </style>
 
+    <!-- Heading 6 -->
+    <style name="H6">
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:lineSpacingExtra">1sp</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+    <!-- Body 1 -->
+    <style name="Body1">
+        <item name="android:textSize">16sp</item>
+        <item name="android:lineSpacingExtra">5sp</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+    <style name="Body1.Bold">
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="Body1.Medium">
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+    <!-- Body 2 -->
+    <style name="Body2">
+        <item name="android:textSize">14sp</item>
+        <item name="android:lineSpacingExtra">8sp</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+    <!-- Caption 1 -->
+    <style name="Caption1">
+        <item name="android:textSize">12sp</item>
+        <item name="android:lineSpacingExtra">2sp</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+
 </resources>

@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">Just Hobby</string>
-    <string name="pass">Пароль</string>
+    <string name="password">Пароль</string>
     <string name="forget">Забыли?</string>
-    <string name="repeat_pass">Подтвердите пароль</string>
+    <string name="confirm_password">Подтвердите пароль</string>
     <string name="login">Логин</string>
     <string name="or">или</string>
     <string name="email">E-mail</string>
@@ -10,11 +10,9 @@
     <string name="search">Поиск</string>
     <string name="cancel">Отмена</string>
     <string name="registration">Зарегистрироваться</string>
-    <string name="recovery_word">Восстановить</string>
-    <string name="recovery_info">Восстановление пароля</string>
-
-
-    <string name="about_recover">
-        Укажите E-mail, к которому привязан\n аккаунт. Мы пришлем на него\n письмо с инструкцией\n восстановления.
+    <string name="recovery">Восстановить</string>
+    <string name="recovery_heading">Восстановление пароля</string>
+    <string name="about_recovery">
+        Укажите E-mail, к которому привязан аккаунт. Мы пришлем на него письмо с инструкцией восстановления.
     </string>
 </resources>

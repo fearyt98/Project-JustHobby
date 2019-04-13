@@ -27,7 +27,7 @@
               android:paddingLeft="5dp"
               android:layout_weight="0.1"
               style="@style/textViewBaseScreenProperty"
-              android:text="@string/pass"/>
+              android:text="@string/password"/>
     <EditText
             android:id="@+id/passwordReg"
             style="@style/EditTextStyle"
@@ -38,7 +38,7 @@
               android:paddingLeft="5dp"
               android:layout_weight="0.1"
               style="@style/textViewBaseScreenProperty"
-              android:text="@string/repeat_pass"/>
+              android:text="@string/confirm_password"/>
     <EditText
             android:id="@+id/repeatPasswordReg"
             style="@style/EditTextStyle"
