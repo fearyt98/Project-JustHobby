@@ -14,19 +14,22 @@
     top -2.5
     -->
     <style name="EditText">
-        <item name="android:textColor">@drawable/color_start_edittext</item>
+        <item name="android:textColor">@drawable/edittext_start_color</item>
         <item name="android:textColorHint">@color/whiteTopUnder</item>
         <item name="android:textAppearance">@style/Body2.Medium</item>
         <item name="android:layout_marginRight">13.5dp</item>
         <item name="android:layout_marginLeft">13.5dp</item>
-        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_width">328dp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:paddingTop">14.5dp</item>
         <item name="android:paddingBottom">19.5dp</item>
         <item name="android:paddingLeft">18.5dp</item>
         <item name="android:paddingRight">18.5dp</item>
-        <item name="android:background">@drawable/bg_start_edittext</item>
+        <item name="android:background">@drawable/edittext_start_bg</item>
         <item name="android:layout_gravity">center</item>
+        <item name="android:textCursorDrawable">@null</item>
+        <item name="android:maxLength">255</item>
+        <item name="android:imeOptions">actionGo</item>
     </style>
     <!--
     Button white
@@ -40,7 +43,7 @@
         <item name="android:textAppearance">@style/Body1.Bold</item>
         <item name="android:layout_marginRight">13.5dp</item>
         <item name="android:layout_marginLeft">13.5dp</item>
-        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_width">328dp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:paddingTop">12.5dp</item>
         <item name="android:paddingBottom">17.5dp</item>
@@ -48,7 +51,7 @@
         <item name="android:paddingRight">18.5dp</item>
         <item name="android:minHeight">0dp</item>
         <item name="android:minWidth">0dp</item>
-        <item name="android:background">@drawable/bg_start_btn</item>
+        <item name="android:background">@drawable/btn_start_bg</item>
         <item name="android:layout_gravity">center</item>
     </style>
     <!-- Label -->
@@ -57,7 +60,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:gravity">left|center_vertical</item>
         <item name="android:textAppearance">@style/Caption1</item>
-        <item name="android:textColor">@color/whiteTopUnder</item>
+        <item name="android:textColor">@color/whiteTop</item>
     </style>
     <!-- Btn bottom first screens -->
     <style name="BtnBottomFirstScreens">

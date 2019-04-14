@@ -3,15 +3,13 @@
     <string name="password">Пароль</string>
     <string name="forget">Забыли?</string>
     <string name="confirm_password">Подтвердите пароль</string>
-    <string name="login">Логин</string>
     <string name="or">или</string>
     <string name="email">E-mail</string>
-    <string name="enter">Войти</string>
-    <string name="search">Поиск</string>
+    <string name="sign_in">Войти</string>
     <string name="cancel">Отмена</string>
-    <string name="registration">Зарегистрироваться</string>
-    <string name="recovery">Восстановить</string>
-    <string name="recovery_heading">Восстановление пароля</string>
+    <string name="sign_up">Зарегистрироваться</string>
+    <string name="restore">Восстановить</string>
+    <string name="password_recovery">Восстановление пароля</string>
     <string name="about_recovery">
         Укажите E-mail, к которому привязан аккаунт. Мы пришлем на него письмо с инструкцией восстановления.
     </string>

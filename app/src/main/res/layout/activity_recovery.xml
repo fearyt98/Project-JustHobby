@@ -11,6 +11,7 @@
         tools:context=".RecoveryActivity.RecoveryActivity"
 >
     <RelativeLayout
+            android:id="@+id/recovery"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:clickable="true"
@@ -42,7 +43,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textAppearance="@style/H2"
-                    android:text="@string/recovery_heading"
+                    android:text="@string/password_recovery"
                     android:gravity="center_horizontal|center_vertical"
             />
             <TextView
@@ -81,15 +82,16 @@
                         style="@style/EditText"
                         android:autofillHints="email"
                         android:layout_below="@id/recoveryLabelEmail"
-                        android:inputType="text"
+                        android:inputType="textEmailAddress"
                 />
             </RelativeLayout>
             <Button
                     android:id="@+id/recoveryButton"
                     style="@style/ButtonWhite"
                     android:layout_below="@id/recoveryInput"
+                    android:layout_centerHorizontal="true"
                     android:layout_marginTop="14dp"
-                    android:text="@string/recovery"
+                    android:text="@string/restore"
             />
         </RelativeLayout>
         <LinearLayout

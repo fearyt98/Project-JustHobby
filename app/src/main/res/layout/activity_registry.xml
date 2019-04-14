@@ -11,6 +11,7 @@
         tools:context=".RegistryActivity.RegistryActivity"
 >
     <RelativeLayout
+            android:id="@+id/registry"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:clickable="true"
@@ -53,61 +54,100 @@
                         style="@style/EditText"
                         android:autofillHints="email"
                         android:layout_below="@id/registryLabelEmail"
-                        android:inputType="text"
+                        android:inputType="textEmailAddress"
                 />
             </RelativeLayout>
             <RelativeLayout
                     android:id="@+id/registryInput2"
                     android:layout_centerHorizontal="true"
                     android:layout_below="@id/registryInput1"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="0.5dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
             >
                 <TextView
                         android:id="@+id/registryLabelPassword"
                         style="@style/Label"
-                        android:layout_alignStart="@id/registryPassword"
+                        android:layout_alignStart="@id/registryInputAndBtn1"
                         android:paddingLeft="18.5dp"
                         android:text="@string/password"
                 />
-                <EditText
-                        android:id="@+id/registryPassword"
-                        style="@style/EditText"
-                        android:autofillHints="email"
+                <RelativeLayout
+                        android:id="@+id/registryInputAndBtn1"
+                        android:layout_centerHorizontal="true"
                         android:layout_below="@id/registryLabelPassword"
-                        android:inputType="textPassword"
-                />
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                >
+                    <EditText
+                            android:id="@+id/registryPassword"
+                            style="@style/EditText"
+                            android:autofillHints="email"
+                            android:inputType="textPassword"
+                    />
+                    <ImageButton
+                            android:id="@+id/registryPasswordVisible"
+                            android:layout_alignEnd="@id/registryPassword"
+                            android:layout_centerVertical="true"
+                            android:paddingBottom="5dp"
+                            android:paddingRight="18.5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_visibility_white_24dp"
+                            android:background="@android:color/transparent"
+                            android:text="Button"
+                    />
+                </RelativeLayout>
             </RelativeLayout>
             <RelativeLayout
                     android:id="@+id/registryInput3"
                     android:layout_centerHorizontal="true"
                     android:layout_below="@id/registryInput2"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="0.5dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
             >
                 <TextView
                         android:id="@+id/registryLabelConfirmPassword"
                         style="@style/Label"
-                        android:layout_alignStart="@id/registryConfirmPassword"
+                        android:layout_alignStart="@id/registryInputAndBtn2"
                         android:paddingLeft="18.5dp"
                         android:text="@string/confirm_password"
                 />
-                <EditText
-                        android:id="@+id/registryConfirmPassword"
-                        style="@style/EditText"
-                        android:autofillHints="email"
+                <RelativeLayout
+                        android:id="@+id/registryInputAndBtn2"
+                        android:layout_centerHorizontal="true"
                         android:layout_below="@id/registryLabelConfirmPassword"
-                        android:inputType="textPassword"
-                />
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                >
+                    <EditText
+                            android:id="@+id/registryConfirmPassword"
+                            style="@style/EditText"
+                            android:autofillHints="email"
+                            android:inputType="textPassword"
+                    />
+                    <ImageButton
+                            android:id="@+id/registryConfirmPasswordVisible"
+                            android:layout_alignEnd="@id/registryConfirmPassword"
+                            android:layout_centerVertical="true"
+                            android:paddingBottom="5dp"
+                            android:paddingRight="18.5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_visibility_white_24dp"
+                            android:background="@android:color/transparent"
+                            android:text="Button"
+                    />
+                </RelativeLayout>
             </RelativeLayout>
             <Button
                     android:id="@+id/recoveryButton"
                     style="@style/ButtonWhite"
                     android:layout_below="@id/registryInput3"
-                    android:layout_marginTop="24dp"
-                    android:text="@string/recovery"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="14dp"
+                    android:text="@string/sign_up"
             />
         </RelativeLayout>
         <LinearLayout

@@ -9,8 +9,9 @@
         android:fillViewport="true"
 >
     <RelativeLayout
+            android:id="@+id/main"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:layout_height="wrap_content"
             android:clickable="true"
             android:focusable="true"
             android:focusableInTouchMode="true"
@@ -44,54 +45,77 @@
                         android:id="@+id/mainLabelEmail"
                         style="@style/Label"
                         android:layout_alignStart="@id/mainLogin"
-                        android:paddingLeft="18.5dp"
+                        android:paddingStart="18.5dp"
                         android:text="@string/email"
-                />
+                        tools:ignore="RtlSymmetry"/>
                 <EditText
                         android:id="@+id/mainLogin"
                         style="@style/EditText"
                         android:autofillHints="email"
                         android:layout_below="@id/mainLabelEmail"
-                        android:inputType="text"
+                        android:inputType="textEmailAddress"
                 />
             </RelativeLayout>
             <RelativeLayout
                     android:id="@+id/mainInput2"
                     android:layout_centerHorizontal="true"
                     android:layout_below="@id/mainInput1"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="0.5dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
             >
                 <TextView
                         android:id="@+id/mainLabelPassword"
                         style="@style/Label"
-                        android:layout_alignStart="@id/mainPassword"
-                        android:paddingLeft="18.5dp"
+                        android:layout_alignStart="@id/mainInputAndBtn"
+                        android:paddingStart="18.5dp"
                         android:text="@string/password"
-                />
-                <EditText
-                        android:id="@+id/mainPassword"
-                        style="@style/EditText"
-                        android:autofillHints="email"
+                        tools:ignore="RtlSymmetry"/>
+                <RelativeLayout
+                        android:id="@+id/mainInputAndBtn"
+                        android:layout_centerHorizontal="true"
                         android:layout_below="@id/mainLabelPassword"
-                        android:inputType="textPassword"
-                />
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                >
+                    <EditText
+                            android:id="@+id/mainPassword"
+                            style="@style/EditText"
+                            android:autofillHints="email"
+                            android:inputType="textPassword"
+                    />
+                    <ImageButton
+                            android:id="@+id/mainPasswordVisible"
+                            android:layout_alignEnd="@id/mainPassword"
+                            android:layout_centerVertical="true"
+                            android:paddingBottom="5dp"
+                            android:paddingRight="18.5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_visibility_white_24dp"
+                            android:background="@android:color/transparent"
+                            android:text="Button"
+                    />
+                </RelativeLayout>
             </RelativeLayout>
             <TextView style="@style/Caption1"
                       android:id="@+id/mainForget"
                       android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
-                      android:layout_marginTop="8dp"
-                      android:layout_marginBottom="8dp"
+                      android:layout_marginTop="0.5dp"
+                      android:layout_marginBottom="5.5dp"
+                      android:paddingEnd="2.5dp"
                       android:layout_below="@id/mainInput2"
                       android:layout_alignEnd="@id/mainEnterButton"
-                      android:text="@string/forget"/>
+                      android:textColor="@color/whiteTopUnder"
+                      android:text="@string/forget"
+            />
             <Button
                     android:id="@+id/mainEnterButton"
+                    android:layout_centerHorizontal="true"
                     style="@style/ButtonWhite"
                     android:layout_below="@id/mainForget"
-                    android:text="@string/enter"
+                    android:text="@string/sign_in"
             />
         </RelativeLayout>
         <TextView
@@ -100,6 +124,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textAppearance="@style/Caption1.Medium"
                 android:text="@string/or"
                 android:textColor="@color/whiteMidOfMiddle"
                 android:textAlignment="center"
@@ -120,34 +145,32 @@
                     android:id="@+id/mainVkEnter"
                     android:layout_width="64dp"
                     android:layout_height="64dp"
-                    android:elevation="1dp"
-                    android:background="@drawable/vk"
-                    android:layout_marginEnd="16dp"/>
+                    android:background="@drawable/btn_circle_start_vk_def"
+                    android:layout_marginEnd="16dp"
+            />
             <Button
                     android:id="@+id/mainGoogleEnter"
                     android:layout_width="64dp"
                     android:layout_height="64dp"
-                    android:elevation="1dp"
-                    android:background="@drawable/google"/>
+                    android:background="@drawable/btn_circle_start_google_def"/>
             <Button
                     android:id="@+id/mainFacebookEnter"
                     android:layout_width="64dp"
                     android:layout_height="64dp"
-                    android:elevation="1dp"
-                    android:background="@drawable/facebook"
+                    android:background="@drawable/btn_circle_start_fb_def"
                     android:layout_marginStart="16dp"/>
         </GridLayout>
         <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:layout_below="@+id/mainSocial"
-                android:layout_marginTop="24px"
+                android:layout_marginTop="24dp"
                 android:orientation="vertical"
                 android:gravity="center_horizontal|bottom">
             <TextView
                     android:id="@+id/mainRegistry"
                     style="@style/BtnBottomFirstScreens"
-                    android:text="@string/registration"
+                    android:text="@string/sign_up"
                     android:shadowColor="#66000000"
                     android:shadowRadius="4"
                     android:shadowDy="2"
