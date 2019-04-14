@@ -1,68 +1,128 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<ScrollView
         xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
         android:background="@color/colorPrimary"
-        android:orientation="vertical"
-        tools:context=".RegistryActivity.Registry">
-    <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/logo"
-            android:layout_weight="5"
-            android:layout_gravity="center"/>
-
-    <TextView style="@style/textViewBaseScreenProperty"
-              android:paddingLeft="5dp"
-              android:layout_weight="0.1"
-              android:text="@string/email"/>
-    <EditText
-            android:id="@+id/login"
-            style="@style/EditTextStyle"
-            android:inputType="text"/>
-
-    <TextView android:layout_marginTop="5dp"
-              android:paddingLeft="5dp"
-              android:layout_weight="0.1"
-              style="@style/textViewBaseScreenProperty"
-              android:text="@string/password"/>
-    <EditText
-            android:id="@+id/passwordReg"
-            style="@style/EditTextStyle"
-            android:layout_weight="0.1"
-            android:inputType="textPassword"/>
-
-    <TextView android:layout_marginTop="5dp"
-              android:paddingLeft="5dp"
-              android:layout_weight="0.1"
-              style="@style/textViewBaseScreenProperty"
-              android:text="@string/confirm_password"/>
-    <EditText
-            android:id="@+id/repeatPasswordReg"
-            style="@style/EditTextStyle"
-            android:layout_marginBottom="10dp"
-            android:layout_weight="0.1"
-            android:inputType="textPassword"/>
-
-    <Button android:id="@+id/registryButtonReg"
-            android:text="@string/registration"
-            android:textColor="@color/colorPrimary"
-            android:background="@drawable/eclipse_stroke_login_screen"
-            android:textAlignment="center"
-            android:layout_width="match_parent"
-            android:layout_marginTop="20dp"
-            android:layout_height="42dp"
-            android:layout_marginRight="15dp"
-            android:onClick="regBtnClick"
-            android:layout_marginLeft="15dp"
-            android:layout_weight="0.5"/>
-
-    <TextView style="@style/textViewBaseScreenProperty"
-              android:layout_weight="4.5"
-              android:textAlignment="center"
-              android:paddingBottom="20dp"
-              android:gravity="bottom"
-              android:text="@string/cancel"/>
-</LinearLayout>
+        android:fitsSystemWindows="true"
+        android:fillViewport="true"
+        tools:context=".RegistryActivity.RegistryActivity"
+>
+    <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:clickable="true"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+    >
+        <ImageView
+                tools:ignore="ContentDescription"
+                android:id="@+id/registryLogo"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="44dp"
+                android:layout_marginBottom="40dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/logo"/>
+        <RelativeLayout
+                android:id="@+id/registryForm"
+                android:layout_below="@id/registryLogo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+        >
+            <RelativeLayout
+                    android:id="@+id/registryInput1"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+            >
+                <TextView
+                        android:id="@+id/registryLabelEmail"
+                        style="@style/Label"
+                        android:layout_alignStart="@id/registryLogin"
+                        android:paddingLeft="18.5dp"
+                        android:text="@string/email"
+                />
+                <EditText
+                        android:id="@+id/registryLogin"
+                        style="@style/EditText"
+                        android:autofillHints="email"
+                        android:layout_below="@id/registryLabelEmail"
+                        android:inputType="text"
+                />
+            </RelativeLayout>
+            <RelativeLayout
+                    android:id="@+id/registryInput2"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@id/registryInput1"
+                    android:layout_marginTop="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+            >
+                <TextView
+                        android:id="@+id/registryLabelPassword"
+                        style="@style/Label"
+                        android:layout_alignStart="@id/registryPassword"
+                        android:paddingLeft="18.5dp"
+                        android:text="@string/password"
+                />
+                <EditText
+                        android:id="@+id/registryPassword"
+                        style="@style/EditText"
+                        android:autofillHints="email"
+                        android:layout_below="@id/registryLabelPassword"
+                        android:inputType="textPassword"
+                />
+            </RelativeLayout>
+            <RelativeLayout
+                    android:id="@+id/registryInput3"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@id/registryInput2"
+                    android:layout_marginTop="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+            >
+                <TextView
+                        android:id="@+id/registryLabelConfirmPassword"
+                        style="@style/Label"
+                        android:layout_alignStart="@id/registryConfirmPassword"
+                        android:paddingLeft="18.5dp"
+                        android:text="@string/confirm_password"
+                />
+                <EditText
+                        android:id="@+id/registryConfirmPassword"
+                        style="@style/EditText"
+                        android:autofillHints="email"
+                        android:layout_below="@id/registryLabelConfirmPassword"
+                        android:inputType="textPassword"
+                />
+            </RelativeLayout>
+            <Button
+                    android:id="@+id/recoveryButton"
+                    style="@style/ButtonWhite"
+                    android:layout_below="@id/registryInput3"
+                    android:layout_marginTop="24dp"
+                    android:text="@string/recovery"
+            />
+        </RelativeLayout>
+        <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_below="@+id/registryForm"
+                android:layout_marginTop="14px"
+                android:orientation="vertical"
+                android:gravity="center_horizontal|bottom">
+            <TextView
+                    android:id="@+id/registryCancel"
+                    style="@style/BtnBottomFirstScreens"
+                    android:text="@string/cancel"
+                    android:alpha="0.5"
+            />
+        </LinearLayout>
+    </RelativeLayout>
+</ScrollView>

@@ -3,14 +3,10 @@ package com.aurimteam.justhobby.MainActivity
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.widget.Button
-import android.widget.EditText
-import android.widget.ImageButton
 import android.widget.TextView
 import com.aurimteam.justhobby.R
-import com.aurimteam.justhobby.RecoverActivity.RecoverActivity
-import com.aurimteam.justhobby.RegistryActivity.Registry
+import com.aurimteam.justhobby.RecoveryActivity.RecoveryActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), IView {
@@ -27,12 +23,12 @@ class MainActivity : AppCompatActivity(), IView {
 
         mainPresenter = MainPresenter(this, MainModel())
 
-        val buttonEnter = findViewById<Button>(R.id.EnterButtonMain)
-        val buttonVK = findViewById<Button>(R.id.vkEnterMain)
-        val buttonGoogle = findViewById<Button>(R.id.googleEnterMain)
-        val buttonFB = findViewById<Button>(R.id.facebookEnterMain)
-        val forget = findViewById<TextView>(R.id.forgetMain)
-        val registry = findViewById<TextView>(R.id.registry)
+        val buttonEnter = findViewById<Button>(R.id.mainEnterButton)
+        val buttonVK = findViewById<Button>(R.id.mainVkEnter)
+        val buttonGoogle = findViewById<Button>(R.id.mainGoogleEnter)
+        val buttonFB = findViewById<Button>(R.id.mainFacebookEnter)
+        val forget = findViewById<TextView>(R.id.mainForget)
+        val registry = findViewById<TextView>(R.id.mainRegistry)
 
         buttonEnter.setOnClickListener { getUserData() }
         buttonVK.setOnClickListener { getUserDataVK() }
@@ -42,8 +38,8 @@ class MainActivity : AppCompatActivity(), IView {
         registry.setOnClickListener { registryChangeActivity() }
     }
     override fun getUserData(){
-        mainPresenter.gettingUserData(loginMain.text.toString(), passwordMain.text.toString())
-        val intent = Intent(this,Registry::class.java)
+        mainPresenter.gettingUserData(mainLogin.text.toString(), mainPassword.text.toString())
+        val intent = Intent(this, RecoveryActivity::class.java)
         startActivity(intent)
     }
 
@@ -59,11 +55,11 @@ class MainActivity : AppCompatActivity(), IView {
         //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
     override fun forgetChangeActivity(){
-        val intent = Intent(this, RecoverActivity::class.java)
+        val intent = Intent(this, RecoveryActivity::class.java)
         startActivity(intent)
     }
     override fun registryChangeActivity(){
-        val intent = Intent(this, Registry::class.java)
+        val intent = Intent(this, RecoveryActivity::class.java)
         startActivity(intent)
     }
 }

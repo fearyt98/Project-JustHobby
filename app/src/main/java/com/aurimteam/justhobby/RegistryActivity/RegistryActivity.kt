@@ -5,16 +5,16 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import com.aurimteam.justhobby.R
-import com.aurimteam.justhobby.RecoverActivity.RecoverActivity
+import com.aurimteam.justhobby.RecoveryActivity.RecoveryActivity
 
-class Registry : AppCompatActivity() {
+class RegistryActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registry)
     }
     fun regBtnClick(view: View){
-        var intent = Intent(this, RecoverActivity::class.java)
+        var intent = Intent(this, RecoveryActivity::class.java)
         startActivity(intent)
     }
 }

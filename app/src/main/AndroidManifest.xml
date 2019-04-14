@@ -20,12 +20,12 @@
             </intent-filter>
         </activity>
         <activity
-                android:name=".RegistryActivity.Registry"
+                android:name=".RegistryActivity.RegistryActivity"
                 android:screenOrientation="portrait"
         >
         </activity>
         <activity
-                android:name=".RecoverActivity.RecoverActivity"
+                android:name=".RecoveryActivity.RecoveryActivity"
                 android:screenOrientation="portrait"
         >
         </activity>
