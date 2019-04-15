@@ -21,10 +21,10 @@ class RegistryActivity : AppCompatActivity() {
         setContentView(R.layout.activity_registry)
 
         val registryView = findViewById<RelativeLayout>(R.id.registry)
-        registryView.setOnFocusChangeListener { view: View, b: Boolean ->
-            if (b) {
+        registryView.setOnFocusChangeListener { view: View, hasFocus: Boolean ->
+            if (hasFocus) {
                 val inputMethodManager = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
-                inputMethodManager?.hideSoftInputFromWindow(view.windowToken, 0)
+                inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
             }
         }
 
@@ -62,11 +62,16 @@ class RegistryActivity : AppCompatActivity() {
 
     private fun changeButtonVisible(password: EditText, btn: ImageButton) {
         val color = if (password.isFocused) "green" else "white"
-        if(password.transformationMethod != PasswordTransformationMethod.getInstance()) {
-            val resId = resources.getIdentifier("ic_visibility_off_" + color + "_24dp", "drawable", applicationContext.packageName)
+        if (password.transformationMethod != PasswordTransformationMethod.getInstance()) {
+            val resId = resources.getIdentifier(
+                "ic_visibility_off_" + color + "_24dp",
+                "drawable",
+                applicationContext.packageName
+            )
             btn.setImageResource(resId)
         } else {
-            val resId = resources.getIdentifier("ic_visibility_" + color + "_24dp", "drawable", applicationContext.packageName)
+            val resId =
+                resources.getIdentifier("ic_visibility_" + color + "_24dp", "drawable", applicationContext.packageName)
             btn.setImageResource(resId)
         }
     }
@@ -74,13 +79,18 @@ class RegistryActivity : AppCompatActivity() {
     private fun changeVisiblePassword(password: EditText, btn: ImageButton) {
         val color = if (password.isFocused) "green" else "white"
         if (password.transformationMethod == PasswordTransformationMethod.getInstance()) {
-            val resId = resources.getIdentifier("ic_visibility_off_" + color + "_24dp", "drawable", applicationContext.packageName)
+            val resId = resources.getIdentifier(
+                "ic_visibility_off_" + color + "_24dp",
+                "drawable",
+                applicationContext.packageName
+            )
             btn.setImageResource(resId)
             val oldPosCursor = password.selectionStart
             password.transformationMethod = HideReturnsTransformationMethod.getInstance()
             password.setSelection(oldPosCursor)
         } else {
-            val resId = resources.getIdentifier("ic_visibility_" + color + "_24dp", "drawable", applicationContext.packageName)
+            val resId =
+                resources.getIdentifier("ic_visibility_" + color + "_24dp", "drawable", applicationContext.packageName)
             btn.setImageResource(resId)
             val oldPosCursor = password.selectionStart
             password.transformationMethod = PasswordTransformationMethod.getInstance()
@@ -88,7 +98,7 @@ class RegistryActivity : AppCompatActivity() {
         }
     }
 
-    fun regBtnClick(view: View){
+    fun regBtnClick(view: View) {
         var intent = Intent(this, RecoveryActivity::class.java)
         startActivity(intent)
     }

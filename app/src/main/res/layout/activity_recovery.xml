@@ -1,112 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:background="@color/colorPrimary"
-        android:fitsSystemWindows="true"
-        android:fillViewport="true"
-        tools:context=".RecoveryActivity.RecoveryActivity"
->
-    <RelativeLayout
-            android:id="@+id/recovery"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:clickable="true"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-    >
-        <ImageView
-                tools:ignore="ContentDescription"
-                android:id="@+id/recoveryLogo"
-                android:layout_centerHorizontal="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginTop="44dp"
-                android:layout_marginBottom="40dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/logo"/>
-        <RelativeLayout
-                android:id="@+id/recoveryForm"
-                android:layout_below="@id/recoveryLogo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-        >
-            <TextView
-                    android:id="@+id/recoveryHeader"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginRight="16dp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="@style/H2"
-                    android:text="@string/password_recovery"
-                    android:gravity="center_horizontal|center_vertical"
-            />
-            <TextView
-                    android:id="@+id/recoveryInfo"
-                    android:layout_centerHorizontal="true"
-                    android:layout_below="@id/recoveryHeader"
-                    android:layout_marginTop="8dp"
-                    android:layout_width="249dp"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="@style/Body2"
-                    android:text="@string/about_recovery"
-                    android:gravity="center_horizontal|center_vertical"
-            />
-            <RelativeLayout
-                    android:id="@+id/recoveryInput"
-                    android:layout_centerHorizontal="true"
-                    android:layout_below="@id/recoveryInfo"
-                    android:layout_marginTop="8dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-            >
-                <TextView
-                        android:id="@+id/recoveryLabelEmail"
-                        android:layout_alignStart="@id/recoveryLogin"
-                        android:paddingLeft="18.5dp"
-                        android:layout_width="wrap_content"
-                        android:maxWidth="350dp"
+            android:background="@color/colorPrimary"
+            android:fitsSystemWindows="true"
+            android:fillViewport="true"
+            tools:context=".RecoveryActivity.RecoveryActivity">
+    <RelativeLayout android:id="@+id/recovery"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true">
+        <ImageView tools:ignore="ContentDescription"
+                   android:id="@+id/recoveryLogo"
+                   android:layout_centerHorizontal="true"
+                   android:layout_alignParentTop="true"
+                   android:layout_marginTop="44dp"
+                   android:layout_marginBottom="40dp"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:src="@drawable/logo" />
+        <RelativeLayout android:id="@+id/recoveryForm"
+                        android:layout_below="@id/recoveryLogo"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textAppearance="@style/Caption1"
-                        android:textColor="#E6FFFFFF"
-                        android:text="@string/email"
-                        android:gravity="left|center_vertical"
-                />
-                <EditText
-                        android:id="@+id/recoveryLogin"
-                        style="@style/EditText"
-                        android:autofillHints="email"
-                        android:layout_below="@id/recoveryLabelEmail"
-                        android:inputType="textEmailAddress"
-                />
+                        android:orientation="horizontal">
+            <TextView android:id="@+id/recoveryHeader"
+                      android:layout_centerHorizontal="true"
+                      android:layout_marginRight="16dp"
+                      android:layout_marginLeft="16dp"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:textAppearance="@style/H2"
+                      android:text="@string/password_recovery"
+                      android:gravity="center_horizontal|center_vertical" />
+            <TextView android:id="@+id/recoveryInfo"
+                      android:layout_centerHorizontal="true"
+                      android:layout_below="@id/recoveryHeader"
+                      android:layout_marginTop="8dp"
+                      android:layout_width="249dp"
+                      android:layout_height="wrap_content"
+                      android:textAppearance="@style/Body2"
+                      android:text="@string/about_recovery"
+                      android:gravity="center_horizontal|center_vertical" />
+            <RelativeLayout android:id="@+id/recoveryInput"
+                            android:layout_centerHorizontal="true"
+                            android:layout_below="@id/recoveryInfo"
+                            android:layout_marginTop="8dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+                <TextView android:id="@+id/recoveryLabelEmail"
+                          android:layout_alignStart="@id/recoveryLogin"
+                          android:paddingStart="18.5dp"
+                          android:layout_width="wrap_content"
+                          android:maxWidth="350dp"
+                          android:layout_height="wrap_content"
+                          android:textAppearance="@style/Caption1"
+                          android:textColor="#E6FFFFFF"
+                          android:text="@string/email"
+                          android:gravity="left|center_vertical" />
+                <EditText android:id="@+id/recoveryLogin"
+                          style="@style/EditText"
+                          android:autofillHints="email"
+                          android:layout_below="@id/recoveryLabelEmail"
+                          android:inputType="textEmailAddress" />
             </RelativeLayout>
-            <Button
-                    android:id="@+id/recoveryButton"
+            <Button android:id="@+id/recoveryButton"
                     style="@style/ButtonWhite"
                     android:layout_below="@id/recoveryInput"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="14dp"
-                    android:text="@string/restore"
-            />
+                    android:text="@string/restore" />
         </RelativeLayout>
-        <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_below="@+id/recoveryForm"
-                android:layout_marginTop="24px"
-                android:orientation="vertical"
-                android:gravity="center_horizontal|bottom">
-            <TextView
-                    android:id="@+id/recoveryCancel"
-                    style="@style/BtnBottomFirstScreens"
-                    android:text="@string/cancel"
-                    android:alpha="0.5"
-            />
+        <LinearLayout android:layout_width="fill_parent"
+                      android:layout_height="fill_parent"
+                      android:layout_below="@+id/recoveryForm"
+                      android:layout_marginTop="24px"
+                      android:orientation="vertical"
+                      android:gravity="center_horizontal|bottom">
+            <TextView android:id="@+id/recoveryCancel"
+                      style="@style/BtnBottomFirstScreens"
+                      android:text="@string/cancel"
+                      android:alpha="0.5" />
         </LinearLayout>
     </RelativeLayout>
 </ScrollView>

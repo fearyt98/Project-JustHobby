@@ -28,10 +28,10 @@ class MainActivity : AppCompatActivity(), IView {
         mainPresenter = MainPresenter(this, MainModel())
 
         val mainView = findViewById<RelativeLayout>(R.id.main)
-        mainView.setOnFocusChangeListener { view: View, b: Boolean ->
-            if (b) {
+        mainView.setOnFocusChangeListener { view: View, hasFocus: Boolean ->
+            if (hasFocus) {
                 val inputMethodManager = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
-                inputMethodManager?.hideSoftInputFromWindow(view.windowToken, 0)
+                inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
             }
         }
 
@@ -65,11 +65,16 @@ class MainActivity : AppCompatActivity(), IView {
 
     private fun changeButtonVisible(password: EditText, btn: ImageButton) {
         val color = if (password.isFocused) "green" else "white"
-        if(password.transformationMethod != PasswordTransformationMethod.getInstance()) {
-            val resId = resources.getIdentifier("ic_visibility_off_" + color + "_24dp", "drawable", applicationContext.packageName)
+        if (password.transformationMethod != PasswordTransformationMethod.getInstance()) {
+            val resId = resources.getIdentifier(
+                "ic_visibility_off_" + color + "_24dp",
+                "drawable",
+                applicationContext.packageName
+            )
             btn.setImageResource(resId)
         } else {
-            val resId = resources.getIdentifier("ic_visibility_" + color + "_24dp", "drawable", applicationContext.packageName)
+            val resId =
+                resources.getIdentifier("ic_visibility_" + color + "_24dp", "drawable", applicationContext.packageName)
             btn.setImageResource(resId)
         }
     }
@@ -77,13 +82,18 @@ class MainActivity : AppCompatActivity(), IView {
     private fun changeVisiblePassword(password: EditText, btn: ImageButton) {
         val color = if (password.isFocused) "green" else "white"
         if (password.transformationMethod == PasswordTransformationMethod.getInstance()) {
-            val resId = resources.getIdentifier("ic_visibility_off_" + color + "_24dp", "drawable", applicationContext.packageName)
+            val resId = resources.getIdentifier(
+                "ic_visibility_off_" + color + "_24dp",
+                "drawable",
+                applicationContext.packageName
+            )
             btn.setImageResource(resId)
             val oldPosCursor = password.selectionStart
             password.transformationMethod = HideReturnsTransformationMethod.getInstance()
             password.setSelection(oldPosCursor)
         } else {
-            val resId = resources.getIdentifier("ic_visibility_" + color + "_24dp", "drawable", applicationContext.packageName)
+            val resId =
+                resources.getIdentifier("ic_visibility_" + color + "_24dp", "drawable", applicationContext.packageName)
             btn.setImageResource(resId)
             val oldPosCursor = password.selectionStart
             password.transformationMethod = PasswordTransformationMethod.getInstance()
@@ -91,7 +101,7 @@ class MainActivity : AppCompatActivity(), IView {
         }
     }
 
-    override fun getUserData(){
+    override fun getUserData() {
         mainPresenter.gettingUserData(mainLogin.text.toString(), mainPassword.text.toString())
         val intent = Intent(this, RecoveryActivity::class.java)
         startActivity(intent)
@@ -108,11 +118,13 @@ class MainActivity : AppCompatActivity(), IView {
     override fun getUserDataGoogle() {
         //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
-    override fun forgetChangeActivity(){
+
+    override fun forgetChangeActivity() {
         val intent = Intent(this, RecoveryActivity::class.java)
         startActivity(intent)
     }
-    override fun registryChangeActivity(){
+
+    override fun registryChangeActivity() {
         val intent = Intent(this, RegistryActivity::class.java)
         startActivity(intent)
     }

@@ -16,10 +16,10 @@ class RecoveryActivity : AppCompatActivity() {
         setContentView(R.layout.activity_recovery)
 
         val recoveryView = findViewById<RelativeLayout>(R.id.recovery)
-        recoveryView.setOnFocusChangeListener { view: View, b: Boolean ->
-            if (b) {
+        recoveryView.setOnFocusChangeListener { view: View, hasFocus: Boolean ->
+            if (hasFocus) {
                 val inputMethodManager = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
-                inputMethodManager?.hideSoftInputFromWindow(view.windowToken, 0)
+                inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
             }
         }
 
