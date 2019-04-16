@@ -11,7 +11,7 @@ class MainPresenter(private var view: IView?, private val model: IModel?) : Main
         view!!.validEnter()
     }
     override fun onResultFail() {
-        //ODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
     }
     fun gettingUserData(loginMain: String, password: String){
         model?.checkUserData(this)

@@ -108,15 +108,15 @@ class MainActivity : AppCompatActivity(), IView {
     }
 
     override fun getUserDataFB() {
-        //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
     }
 
     override fun getUserDataVK() {
-        //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
     }
 
     override fun getUserDataGoogle() {
-        //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
     }
 
     override fun forgetChangeActivity() {
@@ -130,7 +130,7 @@ class MainActivity : AppCompatActivity(), IView {
     }
 
     override fun validEnter() {
-        val intent = Intent(this,Registry::class.java)
+        val intent = Intent(this, RegistryActivity::class.java)
         startActivity(intent)
     }
 
