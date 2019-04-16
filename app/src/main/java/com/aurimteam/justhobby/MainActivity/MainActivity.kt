@@ -48,7 +48,7 @@ class MainActivity : AppCompatActivity(), IView {
             changeVisiblePassword(password, btn)
         }
 
-        val buttonEnter = findViewById<Button>(R.id.mainEnterButton)
+            /*val buttonEnter = findViewById<Button>(R.id.mainEnterButton)
         val buttonVK = findViewById<Button>(R.id.mainVkEnter)
         val buttonGoogle = findViewById<Button>(R.id.mainGoogleEnter)
         val buttonFB = findViewById<Button>(R.id.mainFacebookEnter)
@@ -60,7 +60,7 @@ class MainActivity : AppCompatActivity(), IView {
         buttonGoogle.setOnClickListener { getUserDataGoogle() }
         buttonFB.setOnClickListener { getUserDataFB() }
         forget.setOnClickListener { forgetChangeActivity() }
-        registry.setOnClickListener { registryChangeActivity() }
+        registry.setOnClickListener { registryChangeActivity() }*/
     }
 
     private fun changeButtonVisible(password: EditText, btn: ImageButton) {
