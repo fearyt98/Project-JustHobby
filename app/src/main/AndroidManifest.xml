@@ -9,19 +9,25 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".RecoverActivity.RecoverActivity">
-        </activity>
-        <activity android:name=".RegistryActivity.Registry">
-        </activity>
-        <activity android:name=".FeaturesActivities.Intro">
-        </activity>
-        <activity android:name=".MainActivity.MainActivity">
+        <activity
+                android:name=".MainActivity.MainActivity"
+                android:screenOrientation="portrait"
+        >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-
+        <activity
+                android:name=".RegistryActivity.RegistryActivity"
+                android:screenOrientation="portrait"
+        >
+        </activity>
+        <activity
+                android:name=".RecoveryActivity.RecoveryActivity"
+                android:screenOrientation="portrait"
+        >
+        </activity>
     </application>
 
 </manifest>

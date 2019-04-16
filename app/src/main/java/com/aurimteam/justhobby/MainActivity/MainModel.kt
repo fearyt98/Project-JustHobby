@@ -8,6 +8,5 @@ class MainModel: IModel{
     }
 
     override fun checkUserData(onFinishedListener: OnFinishedListener) {
-
     }
 }

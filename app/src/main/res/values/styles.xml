@@ -6,24 +6,44 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
-
-    <style name="EditTextStyle">
-        <item name="android:textColor">@drawable/change_color_focus</item>
+    <!--
+    Edit text
+    bottom -7.5
+    left -2.5
+    right -2.5
+    top -2.5
+    -->
+    <style name="EditText">
+        <item name="android:textColor">@drawable/edittext_start_color</item>
         <item name="android:textColorHint">@color/whiteTopUnder</item>
-        <item name="android:layout_marginRight">15dp</item>
-        <item name="android:layout_marginLeft">15dp</item>
-        <item name="android:layout_width">match_parent</item>
+        <item name="android:textAppearance">@style/Body2.Medium</item>
+        <item name="android:layout_marginRight">13.5dp</item>
+        <item name="android:layout_marginLeft">13.5dp</item>
+        <item name="android:layout_width">328dp</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginTop">5dp</item>
-        <item name="android:paddingBottom">12dp</item>
-        <item name="android:paddingLeft">20dp</item>
-        <item name="android:paddingTop">12dp</item>
-        <item name="android:background">@drawable/change_back_edittext</item>
+        <item name="android:paddingTop">14.5dp</item>
+        <item name="android:paddingBottom">19.5dp</item>
+        <item name="android:paddingLeft">18.5dp</item>
+        <item name="android:paddingRight">18.5dp</item>
+        <item name="android:background">@drawable/edittext_start_bg</item>
         <item name="android:layout_gravity">center</item>
+        <item name="android:textCursorDrawable">@null</item>
+        <item name="android:maxLength">255</item>
+        <item name="android:imeOptions">actionGo</item>
     </style>
-
-    <style name="textViewBaseScreenProperty">
-        <item name="android:layout_width">match_parent</item>
+    <!--
+    Button white
+    bottom -7.5
+    left -2.5
+    right -2.5
+    top -2.5
+    -->
+    <style name="ButtonWhite">
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textAppearance">@style/Body1.Bold</item>
+        <item name="android:layout_marginRight">13.5dp</item>
+        <item name="android:layout_marginLeft">13.5dp</item>
+        <item name="android:layout_width">328dp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:lineSpacingMultiplier">1.5</item>
         <item name="android:layout_marginRight">15dp</item>
@@ -39,5 +59,67 @@
         <item name="android:layout_marginLeft">15dp</item>
         <item name="android:textColor">@color/whiteText</item>
     </style>
-
+    <style name="H2.Medium">
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+    <style name="H2.Medium.UpperCase">
+        <item name="android:textAllCaps">true</item>
+    </style>
+    <!-- Body 1 -->
+    <style name="Body1">
+        <item name="android:textSize">16sp</item>
+        <item name="android:lineSpacingExtra">4sp</item>
+        <item name="android:textColor">@color/whiteText</item>
+    </style>
+    <style name="Body1.Bold">
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="Body1.Bold.UpperCase">
+        <item name="android:textAllCaps">true</item>
+    </style>
+    <style name="Body1.Medium">
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+    <!-- Body 2 -->
+    <style name="Body2">
+        <item name="android:textSize">14sp</item>
+        <item name="android:lineSpacingExtra">5sp</item>
+        <item name="android:textColor">@color/whiteText</item>
+    </style>
+    <style name="Body2.Medium">
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+    <style name="Body2.Medium.UpperCase">
+        <item name="android:textAllCaps">true</item>
+    </style>
+    <!-- Caption 1 -->
+    <style name="Caption1">
+        <item name="android:textSize">12sp</item>
+        <item name="android:lineSpacingExtra">2sp</item>
+        <item name="android:textColor">@color/whiteText</item>
+    </style>
+    <style name="Caption1.Medium">
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+    <!-- Caption 2 -->
+    <style name="Caption2">
+        <item name="android:textSize">11sp</item>
+        <item name="android:lineSpacingExtra">0sp</item>
+        <item name="android:textColor">@color/whiteText</item>
+    </style>
+    <style name="Caption2.Medium">
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+    <style name="Caption2.Bold">
+        <item name="android:textStyle">bold</item>
+    </style>
+    <!-- Caption 3 -->
+    <style name="Caption3">
+        <item name="android:textSize">10sp</item>
+        <item name="android:lineSpacingExtra">1sp</item>
+        <item name="android:textColor">@color/whiteText</item>
+    </style>
+    <style name="Caption3.Bold">
+        <item name="android:textStyle">bold</item>
+    </style>
 </resources>
