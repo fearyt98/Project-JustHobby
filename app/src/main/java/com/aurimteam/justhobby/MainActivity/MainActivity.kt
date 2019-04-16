@@ -68,13 +68,12 @@ class MainActivity : AppCompatActivity(), IView {
         if (password.transformationMethod != PasswordTransformationMethod.getInstance()) {
             val resId = resources.getIdentifier(
                 "ic_visibility_off_" + color + "_24dp",
-                "drawable",
-                applicationContext.packageName
-            )
+                "drawable", applicationContext.packageName)
             btn.setImageResource(resId)
         } else {
-            val resId =
-                resources.getIdentifier("ic_visibility_" + color + "_24dp", "drawable", applicationContext.packageName)
+            val resId = resources.getIdentifier(
+                "ic_visibility_" + color + "_24dp",
+                "drawable", applicationContext.packageName)
             btn.setImageResource(resId)
         }
     }
@@ -84,17 +83,18 @@ class MainActivity : AppCompatActivity(), IView {
         if (password.transformationMethod == PasswordTransformationMethod.getInstance()) {
             val resId = resources.getIdentifier(
                 "ic_visibility_off_" + color + "_24dp",
-                "drawable",
-                applicationContext.packageName
-            )
+                "drawable", applicationContext.packageName)
             btn.setImageResource(resId)
+
             val oldPosCursor = password.selectionStart
             password.transformationMethod = HideReturnsTransformationMethod.getInstance()
             password.setSelection(oldPosCursor)
         } else {
-            val resId =
-                resources.getIdentifier("ic_visibility_" + color + "_24dp", "drawable", applicationContext.packageName)
+            val resId = resources.getIdentifier(
+                "ic_visibility_" + color + "_24dp",
+                "drawable", applicationContext.packageName)
             btn.setImageResource(resId)
+
             val oldPosCursor = password.selectionStart
             password.transformationMethod = PasswordTransformationMethod.getInstance()
             password.setSelection(oldPosCursor)
