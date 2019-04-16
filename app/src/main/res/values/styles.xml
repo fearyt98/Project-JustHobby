@@ -5,13 +5,7 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
-    <!--
-    Edit text
-    bottom -7.5
-    left -2.5
-    right -2.5
-    top -2.5
-    -->
+    <!-- Edit text | bottom -7.5 | left -2.5 | right -2.5 | top -2.5 -->
     <style name="EditText">
         <item name="android:textColor">@drawable/edittext_start_color</item>
         <item name="android:textColorHint">@color/whiteTopUnder</item>
@@ -30,13 +24,7 @@
         <item name="android:maxLength">255</item>
         <item name="android:imeOptions">actionGo</item>
     </style>
-    <!--
-    Button white
-    bottom -7.5
-    left -2.5
-    right -2.5
-    top -2.5
-    -->
+    <!-- Button white | bottom -7.5 | left -2.5 | right -2.5 | top -2.5 -->
     <style name="ButtonWhite">
         <item name="android:textColor">@color/colorPrimary</item>
         <item name="android:textAppearance">@style/Body1.Bold</item>
