@@ -6,7 +6,7 @@ import com.aurimteam.justhobby.R
 import android.app.Activity
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import android.widget.RelativeLayout
+import android.widget.LinearLayout
 import android.widget.TextView
 
 
@@ -15,7 +15,7 @@ class RecoveryActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_recovery)
 
-        val recoveryView = findViewById<RelativeLayout>(R.id.recovery)
+        val recoveryView = findViewById<LinearLayout>(R.id.recovery)
         recoveryView.setOnFocusChangeListener { view: View, hasFocus: Boolean ->
             if (hasFocus) {
                 val inputMethodManager = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager

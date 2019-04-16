@@ -1,57 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Shadow: bottom -7.5 | left -2.5 | right -2.5 | top -2.5 -->
+    <!-- Full Padding: bottom 0 + 7.5 = 7.5 | left 13.5 + 2.5 = 15 | right 13.5 + 2.5 = 15 | top 0 + 2.5 = 2.5 -->
+    <item>
+        <shape>
+            <padding android:left="13.5dp"
+                     android:right="13.5dp"/>
+        </shape>
+    </item>
     <!-- Drop Shadow Stack -->
     <item>
         <shape>
-            <padding
-                    android:bottom="1.5dp"
-                    android:left="0.5dp"
-                    android:right="0.5dp"
-                    android:top="0.5dp"/>
+            <padding android:bottom="1.5dp"
+                     android:left="0.5dp"
+                     android:right="0.5dp"
+                     android:top="0.5dp"/>
             <solid android:color="#0011a25a"/>
             <corners android:radius="5dp"/>
         </shape>
     </item>
     <item>
         <shape>
-            <padding
-                    android:bottom="1.5dp"
-                    android:left="0.5dp"
-                    android:right="0.5dp"
-                    android:top="0.5dp"/>
+            <padding android:bottom="1.5dp"
+                     android:left="0.5dp"
+                     android:right="0.5dp"
+                     android:top="0.5dp"/>
             <solid android:color="#1011a25a"/>
             <corners android:radius="5dp"/>
         </shape>
     </item>
     <item>
         <shape>
-            <padding
-                    android:bottom="1.5dp"
-                    android:left="0.5dp"
-                    android:right="0.5dp"
-                    android:top="0.5dp"/>
+            <padding android:bottom="1.5dp"
+                     android:left="0.5dp"
+                     android:right="0.5dp"
+                     android:top="0.5dp"/>
             <solid android:color="#2011a25a"/>
             <corners android:radius="5dp"/>
         </shape>
     </item>
     <item>
         <shape>
-            <padding
-                    android:bottom="1.5dp"
-                    android:left="0.5dp"
-                    android:right="0.5dp"
-                    android:top="0.5dp"/>
+            <padding android:bottom="1.5dp"
+                     android:left="0.5dp"
+                     android:right="0.5dp"
+                     android:top="0.5dp"/>
             <solid android:color="#3011a25a"/>
             <corners android:radius="6dp"/>
         </shape>
     </item>
     <item>
         <shape>
-            <padding
-                    android:bottom="1.5dp"
-                    android:left="0.5dp"
-                    android:right="0.5dp"
-                    android:top="0.5dp"/>
+            <padding android:bottom="1.5dp"
+                     android:left="0.5dp"
+                     android:right="0.5dp"
+                     android:top="0.5dp"/>
             <solid android:color="#5011a25a"/>
             <corners android:radius="6dp"/>
         </shape>
@@ -59,6 +62,7 @@
     <!-- Background -->
     <item>
         <shape>
+            <size android:width="328dp"/>
             <solid android:color="@color/colorPrimaryLight"/>
             <corners android:radius="5dp"/>
         </shape>

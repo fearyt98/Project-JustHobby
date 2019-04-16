@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity(), IView {
 
         mainPresenter = MainPresenter(this, MainModel())
 
-        val mainView = findViewById<RelativeLayout>(R.id.main)
+        val mainView = findViewById<LinearLayout>(R.id.main)
         mainView.setOnFocusChangeListener { view: View, hasFocus: Boolean ->
             if (hasFocus) {
                 val inputMethodManager = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
@@ -36,31 +36,27 @@ class MainActivity : AppCompatActivity(), IView {
         }
 
         val password = findViewById<EditText>(R.id.mainPassword)
-        password.setOnFocusChangeListener { _: View, _: Boolean ->
-            val password = findViewById<EditText>(R.id.mainPassword)
-            val btn = findViewById<ImageButton>(R.id.mainPasswordVisible)
-            changeButtonVisible(password, btn)
-        }
         val buttonChangeVisiblePassword = findViewById<ImageButton>(R.id.mainPasswordVisible)
+        password.setOnFocusChangeListener { _: View, _: Boolean ->
+            changeButtonVisible(password, buttonChangeVisiblePassword)
+        }
         buttonChangeVisiblePassword.setOnClickListener {
-            val password = findViewById<EditText>(R.id.mainPassword)
-            val btn = findViewById<ImageButton>(R.id.mainPasswordVisible)
-            changeVisiblePassword(password, btn)
+            changeVisiblePassword(password, buttonChangeVisiblePassword)
         }
 
-            /*val buttonEnter = findViewById<Button>(R.id.mainEnterButton)
+        /*val buttonEnter = findViewById<Button>(R.id.mainEnterButton)
         val buttonVK = findViewById<Button>(R.id.mainVkEnter)
         val buttonGoogle = findViewById<Button>(R.id.mainGoogleEnter)
-        val buttonFB = findViewById<Button>(R.id.mainFacebookEnter)
+        val buttonFB = findViewById<Button>(R.id.mainFacebookEnter)*/
         val forget = findViewById<TextView>(R.id.mainForget)
         val registry = findViewById<TextView>(R.id.mainRegistry)
 
-        buttonEnter.setOnClickListener { getUserData() }
+        /*buttonEnter.setOnClickListener { getUserData() }
         buttonVK.setOnClickListener { getUserDataVK() }
         buttonGoogle.setOnClickListener { getUserDataGoogle() }
-        buttonFB.setOnClickListener { getUserDataFB() }
+        buttonFB.setOnClickListener { getUserDataFB() }*/
         forget.setOnClickListener { forgetChangeActivity() }
-        registry.setOnClickListener { registryChangeActivity() }*/
+        registry.setOnClickListener { registryChangeActivity() }
     }
 
     private fun changeButtonVisible(password: EditText, btn: ImageButton) {
@@ -68,12 +64,14 @@ class MainActivity : AppCompatActivity(), IView {
         if (password.transformationMethod != PasswordTransformationMethod.getInstance()) {
             val resId = resources.getIdentifier(
                 "ic_visibility_off_" + color + "_24dp",
-                "drawable", applicationContext.packageName)
+                "drawable", applicationContext.packageName
+            )
             btn.setImageResource(resId)
         } else {
             val resId = resources.getIdentifier(
                 "ic_visibility_" + color + "_24dp",
-                "drawable", applicationContext.packageName)
+                "drawable", applicationContext.packageName
+            )
             btn.setImageResource(resId)
         }
     }
@@ -83,7 +81,8 @@ class MainActivity : AppCompatActivity(), IView {
         if (password.transformationMethod == PasswordTransformationMethod.getInstance()) {
             val resId = resources.getIdentifier(
                 "ic_visibility_off_" + color + "_24dp",
-                "drawable", applicationContext.packageName)
+                "drawable", applicationContext.packageName
+            )
             btn.setImageResource(resId)
 
             val oldPosCursor = password.selectionStart
@@ -92,7 +91,8 @@ class MainActivity : AppCompatActivity(), IView {
         } else {
             val resId = resources.getIdentifier(
                 "ic_visibility_" + color + "_24dp",
-                "drawable", applicationContext.packageName)
+                "drawable", applicationContext.packageName
+            )
             btn.setImageResource(resId)
 
             val oldPosCursor = password.selectionStart

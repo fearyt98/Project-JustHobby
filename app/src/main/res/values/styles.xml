@@ -10,14 +10,12 @@
         <item name="android:textColor">@drawable/edittext_start_color</item>
         <item name="android:textColorHint">@color/whiteTopUnder</item>
         <item name="android:textAppearance">@style/Body2.Medium</item>
-        <item name="android:layout_marginRight">13.5dp</item>
-        <item name="android:layout_marginLeft">13.5dp</item>
-        <item name="android:layout_width">328dp</item>
+        <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:paddingTop">14.5dp</item>
-        <item name="android:paddingBottom">19.5dp</item>
-        <item name="android:paddingLeft">18.5dp</item>
-        <item name="android:paddingRight">18.5dp</item>
+        <item name="android:paddingTop">14.5dp</item><!-- 12 (padding in edittext) + 2.5 (full padding in background) -->
+        <item name="android:paddingBottom">19.5dp</item><!-- 12 + 7.5 -->
+        <item name="android:paddingLeft">31dp</item><!-- 16 + 15 -->
+        <item name="android:paddingRight">31dp</item><!-- 16 + 15 -->
         <item name="android:background">@drawable/edittext_start_bg</item>
         <item name="android:layout_gravity">center</item>
         <item name="android:textCursorDrawable">@null</item>
@@ -28,22 +26,51 @@
     <style name="ButtonWhite">
         <item name="android:textColor">@color/colorPrimary</item>
         <item name="android:textAppearance">@style/Body1.Bold</item>
-        <item name="android:layout_marginRight">13.5dp</item>
-        <item name="android:layout_marginLeft">13.5dp</item>
-        <item name="android:layout_width">328dp</item>
+        <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:lineSpacingMultiplier">1.5</item>
-        <!-- <item name="android:layout_marginRight">15dp</item>
-        <item name="android:layout_marginLeft">15dp</item>
-        <item name="android:textColor">@color/whiteText</item>-->
+        <item name="android:paddingTop">14.5dp</item><!-- 12 (padding in btn) + 2.5 (full padding in background) -->
+        <item name="android:paddingBottom">19.5dp</item><!-- 12 + 7.5 -->
+        <item name="android:paddingLeft">31dp</item><!-- 16 + 15 -->
+        <item name="android:paddingRight">31dp</item><!-- 16 + 15 -->
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:background">@drawable/btn_start_bg</item>
+        <item name="android:layout_gravity">center</item>
     </style>
-
-    <style name="textViewHeader">
+    <!-- Label -->
+    <style name="Label">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">left|center_vertical</item>
+        <item name="android:textAppearance">@style/Caption1</item>
+        <item name="android:textColor">@color/whiteTopUnder</item>
+        <item name="android:paddingStart">33.5dp</item>
+        <item name="android:layout_marginBottom">-2.5dp</item>
+    </style>
+    <!-- Btn bottom first screens -->
+    <style name="BtnBottomFirstScreens">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingTop">24dp</item>
+        <item name="android:paddingBottom">24dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:lineSpacingMultiplier">1.7</item>
+        <item name="android:textColor">@color/whiteText</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+    <!--<style name="textViewHeader">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">20sp</item>
         <item name="android:layout_marginRight">15dp</item>
         <item name="android:layout_marginLeft">15dp</item>
+        <item name="android:textColor">@color/whiteText</item>
+    </style>-->
+    <!-- Heading 2 -->
+    <style name="H2">
+        <item name="android:textSize">20sp</item>
+        <item name="android:lineSpacingMultiplier">1.2</item>
         <item name="android:textColor">@color/whiteText</item>
     </style>
     <style name="H2.Medium">
@@ -55,7 +82,7 @@
     <!-- Body 1 -->
     <style name="Body1">
         <item name="android:textSize">16sp</item>
-        <item name="android:lineSpacingExtra">4sp</item>
+        <item name="android:lineSpacingMultiplier">1.5</item>
         <item name="android:textColor">@color/whiteText</item>
     </style>
     <style name="Body1.Bold">
@@ -70,7 +97,7 @@
     <!-- Body 2 -->
     <style name="Body2">
         <item name="android:textSize">14sp</item>
-        <item name="android:lineSpacingExtra">5sp</item>
+        <item name="android:lineSpacingMultiplier">1.7</item>
         <item name="android:textColor">@color/whiteText</item>
     </style>
     <style name="Body2.Medium">
@@ -82,7 +109,7 @@
     <!-- Caption 1 -->
     <style name="Caption1">
         <item name="android:textSize">12sp</item>
-        <item name="android:lineSpacingExtra">2sp</item>
+        <item name="android:lineSpacingMultiplier">1.16</item>
         <item name="android:textColor">@color/whiteText</item>
     </style>
     <style name="Caption1.Medium">
@@ -91,7 +118,6 @@
     <!-- Caption 2 -->
     <style name="Caption2">
         <item name="android:textSize">11sp</item>
-        <item name="android:lineSpacingExtra">0sp</item>
         <item name="android:textColor">@color/whiteText</item>
     </style>
     <style name="Caption2.Medium">
@@ -103,7 +129,7 @@
     <!-- Caption 3 -->
     <style name="Caption3">
         <item name="android:textSize">10sp</item>
-        <item name="android:lineSpacingExtra">1sp</item>
+        <item name="android:lineSpacingMultiplier">1.2</item>
         <item name="android:textColor">@color/whiteText</item>
     </style>
     <style name="Caption3.Bold">

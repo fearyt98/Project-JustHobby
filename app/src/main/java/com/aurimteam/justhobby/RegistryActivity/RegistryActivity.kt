@@ -8,10 +8,7 @@ import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import android.widget.EditText
-import android.widget.ImageButton
-import android.widget.RelativeLayout
-import android.widget.TextView
+import android.widget.*
 import com.aurimteam.justhobby.R
 import com.aurimteam.justhobby.RecoveryActivity.RecoveryActivity
 
@@ -20,7 +17,7 @@ class RegistryActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registry)
 
-        val registryView = findViewById<RelativeLayout>(R.id.registry)
+        val registryView = findViewById<LinearLayout>(R.id.registry)
         registryView.setOnFocusChangeListener { view: View, hasFocus: Boolean ->
             if (hasFocus) {
                 val inputMethodManager = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
@@ -29,29 +26,21 @@ class RegistryActivity : AppCompatActivity() {
         }
 
         val password = findViewById<EditText>(R.id.registryPassword)
-        password.setOnFocusChangeListener { _: View, _: Boolean ->
-            val password = findViewById<EditText>(R.id.registryPassword)
-            val btn = findViewById<ImageButton>(R.id.registryPasswordVisible)
-            changeButtonVisible(password, btn)
-        }
         val buttonChangeVisiblePassword = findViewById<ImageButton>(R.id.registryPasswordVisible)
+        password.setOnFocusChangeListener { _: View, _: Boolean ->
+            changeButtonVisible(password, buttonChangeVisiblePassword)
+        }
         buttonChangeVisiblePassword.setOnClickListener {
-            val password = findViewById<EditText>(R.id.registryPassword)
-            val btn = findViewById<ImageButton>(R.id.registryPasswordVisible)
-            changeVisiblePassword(password, btn)
+            changeVisiblePassword(password, buttonChangeVisiblePassword)
         }
 
         val confirmPassword = findViewById<EditText>(R.id.registryConfirmPassword)
-        confirmPassword.setOnFocusChangeListener { _: View, _: Boolean ->
-            val password = findViewById<EditText>(R.id.registryConfirmPassword)
-            val btn = findViewById<ImageButton>(R.id.registryConfirmPasswordVisible)
-            changeButtonVisible(password, btn)
-        }
         val buttonChangeVisibleConfirmPassword = findViewById<ImageButton>(R.id.registryConfirmPasswordVisible)
+        confirmPassword.setOnFocusChangeListener { _: View, _: Boolean ->
+            changeButtonVisible(confirmPassword, buttonChangeVisibleConfirmPassword)
+        }
         buttonChangeVisibleConfirmPassword.setOnClickListener {
-            val password = findViewById<EditText>(R.id.registryConfirmPassword)
-            val btn = findViewById<ImageButton>(R.id.registryConfirmPasswordVisible)
-            changeVisiblePassword(password, btn)
+            changeVisiblePassword(confirmPassword, buttonChangeVisibleConfirmPassword)
         }
 
         val cancel = findViewById<TextView>(R.id.registryCancel)
