@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary"
+        android:orientation="vertical">
+
+    <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:gravity="bottom"
+                  android:layout_weight="5"
+                  android:orientation="vertical">
+        <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/mobile"
+                android:layout_gravity="center"/>
+
+        <TextView style="@style/textViewHeader"
+                  android:paddingTop="12dp"
+                  android:paddingBottom="10dp"
+                  android:textAlignment="center"
+                  android:text="@string/notifications"/>
+
+        <TextView style="@style/textViewBaseScreenProperty"
+                  android:textAlignment="center"
+                  android:text="@string/about_notification"/>
+    </LinearLayout>
+    <TextView style="@style/textViewBaseScreenProperty"
+              android:elevation="1dp"
+              android:layout_weight="3.5"
+              android:textAlignment="center"
+              android:paddingBottom="20dp"
+              android:gravity="bottom"
+              android:text="@string/skip"/>
+</LinearLayout>

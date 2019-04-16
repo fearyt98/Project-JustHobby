@@ -8,10 +8,10 @@ class MainPresenter(private var view: IView?, private val model: IModel?) : Main
     Таким образом выполняется связь между Presenter и View */
 
     override fun onResultSuccess() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        view!!.validEnter()
     }
     override fun onResultFail() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
     }
     fun gettingUserData(loginMain: String, password: String){
         model?.checkUserData(this)
@@ -25,5 +25,8 @@ class MainPresenter(private var view: IView?, private val model: IModel?) : Main
     }
     fun gettingUserDataGoogle(){
 
+    }
+    fun onDestroy() {
+        view = null
     }
 }

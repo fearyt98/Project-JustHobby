@@ -8,6 +8,6 @@ class MainModel: IModel{
     }
 
     override fun checkUserData(onFinishedListener: OnFinishedListener) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
     }
 }

@@ -3,10 +3,7 @@ package com.aurimteam.justhobby.MainActivity
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.widget.Button
-import android.widget.EditText
-import android.widget.ImageButton
 import android.widget.TextView
 import com.aurimteam.justhobby.R
 import com.aurimteam.justhobby.RecoverActivity.RecoverActivity
@@ -43,20 +40,20 @@ class MainActivity : AppCompatActivity(), IView {
     }
     override fun getUserData(){
         mainPresenter.gettingUserData(loginMain.text.toString(), passwordMain.text.toString())
-        val intent = Intent(this,Registry::class.java)
-        startActivity(intent)
+        //val intent = Intent(this, Intro::class.java)
+        //startActivity(intent)
     }
 
     override fun getUserDataFB() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
     }
 
     override fun getUserDataVK() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
     }
 
     override fun getUserDataGoogle() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
     }
     override fun forgetChangeActivity(){
         val intent = Intent(this, RecoverActivity::class.java)
@@ -65,5 +62,19 @@ class MainActivity : AppCompatActivity(), IView {
     override fun registryChangeActivity(){
         val intent = Intent(this, Registry::class.java)
         startActivity(intent)
+    }
+
+    override fun validEnter() {
+        val intent = Intent(this,Registry::class.java)
+        startActivity(intent)
+    }
+
+    override fun setDataError() {
+        // Show error on UI strError: String
+    }
+
+    override fun onDestroy() {
+        mainPresenter.onDestroy()
+        super.onDestroy()
     }
 }

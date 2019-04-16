@@ -12,9 +12,22 @@
     <string name="registration">Зарегистрироваться</string>
     <string name="recovery_word">Восстановить</string>
     <string name="recovery_info">Восстановление пароля</string>
+    <string name="skip">Пропустить</string>
+    <string name="notifications">Уведомления</string>
+    <string name="smart_search">Гибкий поиск</string>
+    <string name="many_courses">Множество курсов</string>
 
 
     <string name="about_recover">
         Укажите E-mail, к которому привязан\n аккаунт. Мы пришлем на него\n письмо с инструкцией\n восстановления.
+    </string>
+    <string name="about_notification">
+        Получайте уведедомления об\n изменении расписания, адреса,\n преподователя и др., а также\n напоминания о предстоящем\n занятии в группе
+    </string>
+    <string name="about_search">
+        Имеется сортировка по\n местоположению, рейтингу и цене.\n Есть поиск курсов по ключевым\n словам или категориям. Вы можете\n выбрать дни для занятий\n удобные для вас
+    </string>
+    <string name="about_courses">
+        Огромный каталог отражает все\n сферы дополнительного\n образования: наука, искусство,\n спорт, техническое творчество,\n иностранные языки и т.д.
     </string>
 </resources>

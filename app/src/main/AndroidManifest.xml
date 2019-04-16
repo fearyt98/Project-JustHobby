@@ -11,17 +11,17 @@
             android:theme="@style/AppTheme">
         <activity android:name=".RecoverActivity.RecoverActivity">
         </activity>
-        <activity
-                android:name=".RegistryActivity.Registry"
-                android:theme="@style/AppTheme">
+        <activity android:name=".RegistryActivity.Registry">
+        </activity>
+        <activity android:name=".FeaturesActivities.Intro">
         </activity>
         <activity android:name=".MainActivity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
-
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
     </application>
 
 </manifest>
