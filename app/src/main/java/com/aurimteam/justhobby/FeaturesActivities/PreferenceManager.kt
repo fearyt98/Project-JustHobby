@@ -5,9 +5,7 @@ import android.content.SharedPreferences;
 import android.R.id.edit
 import android.content.Context.MODE_PRIVATE
 
-
 class PreferenceManager(context: Context) {
-
     private val PREF_NAME: String = "IntroScreen"
     //ключ для первого запуска
     private val IS_FIRST_LAUNCH = "IsFirstLaunch"
@@ -27,6 +25,6 @@ class PreferenceManager(context: Context) {
     // возвращает установленное значение,
     // если значение не задано, то возвращается по умолчанию
     fun isFirstLaunch(): Boolean {
-        return sharedPreference.getBoolean(IS_FIRST_LAUNCH, true);
+        return sharedPreference.getBoolean(IS_FIRST_LAUNCH, true)
     }
 }

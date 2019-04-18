@@ -11,10 +11,10 @@
     <string name="restore">Восстановить</string>
     <string name="password_recovery">Восстановление пароля</string>
     <string name="skip">Пропустить</string>
+    <string name="complete">Завершить</string>
     <string name="notifications">Уведомления</string>
     <string name="smart_search">Гибкий поиск</string>
     <string name="many_courses">Множество курсов</string>
-
 
     <string name="about_recovery">
         Укажите E-mail, к которому привязан аккаунт. Мы пришлем на него\n письмо с инструкцией\n восстановления.

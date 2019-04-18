@@ -110,6 +110,7 @@ class MainActivity : AppCompatActivity(), IView {
         mainPresenter.gettingUserData(mainLogin.text.toString(), mainPassword.text.toString())
         val intent = Intent(this, IntroActivity::class.java)
         startActivity(intent)
+        finish()
     }
 
     override fun getUserDataFB() {
