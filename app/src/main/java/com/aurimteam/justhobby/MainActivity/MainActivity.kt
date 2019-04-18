@@ -13,6 +13,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
 import android.widget.*
+import com.aurimteam.justhobby.FeaturesActivities.IntroActivity
 
 class MainActivity : AppCompatActivity(), IView {
     /*
@@ -26,6 +27,23 @@ class MainActivity : AppCompatActivity(), IView {
         setContentView(R.layout.activity_main)
 
         mainPresenter = MainPresenter(this, MainModel())
+
+        val buttonEnter = findViewById<Button>(R.id.mainEnterButton)
+        /*val buttonVK = findViewById<Button>(R.id.mainVkEnter)
+        val buttonGoogle = findViewById<Button>(R.id.mainGoogleEnter)
+        val buttonFB = findViewById<Button>(R.id.mainFacebookEnter)*/
+        val forget = findViewById<TextView>(R.id.mainForget)
+        val registry = findViewById<TextView>(R.id.mainRegistry)
+
+        buttonEnter.setOnClickListener { getUserData() }
+        /*buttonVK.setOnClickListener { getUserDataVK() }
+        buttonGoogle.setOnClickListener { getUserDataGoogle() }
+        buttonFB.setOnClickListener { getUserDataFB() }*/
+        forget.setOnClickListener { forgetChangeActivity() }
+        registry.setOnClickListener { registryChangeActivity() }
+    }
+    override fun onResume(){
+        super.onResume()
 
         val mainView = findViewById<LinearLayout>(R.id.main)
         mainView.setOnFocusChangeListener { view: View, hasFocus: Boolean ->
@@ -43,21 +61,8 @@ class MainActivity : AppCompatActivity(), IView {
         buttonChangeVisiblePassword.setOnClickListener {
             changeVisiblePassword(password, buttonChangeVisiblePassword)
         }
-
-        /*val buttonEnter = findViewById<Button>(R.id.mainEnterButton)
-        val buttonVK = findViewById<Button>(R.id.mainVkEnter)
-        val buttonGoogle = findViewById<Button>(R.id.mainGoogleEnter)
-        val buttonFB = findViewById<Button>(R.id.mainFacebookEnter)*/
-        val forget = findViewById<TextView>(R.id.mainForget)
-        val registry = findViewById<TextView>(R.id.mainRegistry)
-
-        /*buttonEnter.setOnClickListener { getUserData() }
-        buttonVK.setOnClickListener { getUserDataVK() }
-        buttonGoogle.setOnClickListener { getUserDataGoogle() }
-        buttonFB.setOnClickListener { getUserDataFB() }*/
-        forget.setOnClickListener { forgetChangeActivity() }
-        registry.setOnClickListener { registryChangeActivity() }
     }
+
 
     private fun changeButtonVisible(password: EditText, btn: ImageButton) {
         val color = if (password.isFocused) "green" else "white"
@@ -103,7 +108,7 @@ class MainActivity : AppCompatActivity(), IView {
 
     override fun getUserData() {
         mainPresenter.gettingUserData(mainLogin.text.toString(), mainPassword.text.toString())
-        val intent = Intent(this, RecoveryActivity::class.java)
+        val intent = Intent(this, IntroActivity::class.java)
         startActivity(intent)
     }
 
