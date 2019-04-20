@@ -14,6 +14,7 @@ import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
 import android.widget.*
 import com.aurimteam.justhobby.FeaturesActivities.IntroActivity
+import com.aurimteam.justhobby.HomeMainActivity.HomeMainActivity
 
 class MainActivity : AppCompatActivity(), IView {
     /*
@@ -126,7 +127,7 @@ class MainActivity : AppCompatActivity(), IView {
     }
 
     override fun forgetChangeActivity() {
-        val intent = Intent(this, RecoveryActivity::class.java)
+        val intent = Intent(this, HomeMainActivity::class.java)
         startActivity(intent)
     }
 

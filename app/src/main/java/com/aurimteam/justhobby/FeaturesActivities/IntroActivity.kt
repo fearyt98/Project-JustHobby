@@ -45,9 +45,7 @@ class IntroActivity : AppCompatActivity() {
                     toggleVisibilityView(introComplete, false)
                 }
             }
-
             override fun onPageScrolled(p0: Int, p1: Float, p2: Int) {}
-
             override fun onPageScrollStateChanged(p0: Int) {}
         })
     }
