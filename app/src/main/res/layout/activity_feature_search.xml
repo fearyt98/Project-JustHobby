@@ -13,7 +13,7 @@
                   android:paddingBottom="60dp">
         <ImageView android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
-                   android:src="@drawable/ic_intro_search"
+                   android:src="@drawable/big_ic_intro_search"
                    android:layout_gravity="center"/>
         <TextView style="@style/H2.Medium"
                   android:paddingTop="12dp"
