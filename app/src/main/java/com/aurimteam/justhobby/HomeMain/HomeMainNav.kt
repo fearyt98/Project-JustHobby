@@ -1,4 +1,4 @@
-package com.aurimteam.justhobby.HomeMainActivity
+package com.aurimteam.justhobby.HomeMain
 
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
@@ -9,7 +9,7 @@ import java.util.*
 import java.text.SimpleDateFormat
 
 
-class HomeMainActivity : AppCompatActivity(), IView {
+class HomeMainNav : AppCompatActivity(){
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
@@ -37,8 +37,6 @@ class HomeMainActivity : AppCompatActivity(), IView {
 
     override fun onResume() {
         super.onResume()
-        val df = SimpleDateFormat("d MMMM, EEEE")
-        val currentDateTimeString = df.format(Date())
-        homeCalendarText.text = currentDateTimeString
+
     }
 }

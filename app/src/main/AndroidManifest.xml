@@ -7,7 +7,7 @@
                  android:roundIcon="@mipmap/ic_launcher_round"
                  android:supportsRtl="true"
                  android:theme="@style/AppTheme">
-        <activity android:name=".HomeMainActivity.HomeMainActivity"
+        <activity android:name=".HomeMain.HomeMainNav"
                   android:label="@string/title_activity_home_main"></activity>
         <activity android:name=".MainActivity.MainActivity"
                   android:screenOrientation="portrait">
@@ -22,5 +22,6 @@
                   android:screenOrientation="portrait"></activity>
         <activity android:name=".FeaturesActivities.IntroActivity"
                   android:screenOrientation="portrait"></activity>
+        <activity android:name=".HomeMain.HomeMainTimeLineActivity.HomeMainTimeLineActivity"/>
     </application>
 </manifest>

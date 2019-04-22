@@ -7,14 +7,13 @@ import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import com.aurimteam.justhobby.R
-import com.aurimteam.justhobby.RecoveryActivity.RecoveryActivity
 import com.aurimteam.justhobby.RegistryActivity.RegistryActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
 import android.widget.*
-import com.aurimteam.justhobby.FeaturesActivities.IntroActivity
-import com.aurimteam.justhobby.HomeMainActivity.HomeMainActivity
+import com.aurimteam.justhobby.HomeMain.HomeMainNav
+import com.aurimteam.justhobby.HomeMain.HomeMainTimeLineActivity.HomeMainTimeLineActivity
 
 class MainActivity : AppCompatActivity(), IView {
     /*
@@ -109,7 +108,7 @@ class MainActivity : AppCompatActivity(), IView {
 
     override fun getUserData() {
         mainPresenter.gettingUserData(mainLogin.text.toString(), mainPassword.text.toString())
-        val intent = Intent(this, IntroActivity::class.java)
+        val intent = Intent(this, HomeMainTimeLineActivity::class.java)
         startActivity(intent)
         finish()
     }
@@ -127,7 +126,7 @@ class MainActivity : AppCompatActivity(), IView {
     }
 
     override fun forgetChangeActivity() {
-        val intent = Intent(this, HomeMainActivity::class.java)
+        val intent = Intent(this, HomeMainNav::class.java)
         startActivity(intent)
     }
 

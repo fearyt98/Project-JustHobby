@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_height="wrap_content"
+              android:layout_width="match_parent"
+              android:orientation="horizontal"
+              android:layout_marginTop="5dp"
+              android:layout_marginBottom="5dp"
+              android:layout_marginLeft="15dp"
+              android:layout_marginRight="15dp">
+    <FrameLayout android:layout_width="10dp"
+                 android:layout_height="match_parent"
+                 android:paddingTop="25dp">
+        <View android:layout_width="2dp"
+              android:layout_height="match_parent"
+              android:layout_marginTop="11dp"
+              android:id="@+id/itemLine"
+              android:layout_gravity="center"
+              android:background="@color/colorAccent"/>
+        <View android:layout_width="10dp"
+              android:layout_height="10dp"
+              android:padding="10dp"
+              android:id="@+id/timeline_circle"
+              android:background="@drawable/timeline_circle"/>
+    </FrameLayout>
+    <GridLayout android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:rowCount="2"
+                android:columnCount="1"
+                android:layout_marginLeft="15dp">
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:id="@+id/timeline_time"
+                  android:textColor="@color/whiteText"
+                  android:background="@drawable/timeline_time_stroke"
+                  android:paddingTop="1dp"
+                  android:paddingRight="4dp"
+                  android:paddingLeft="4dp"
+                  android:text="19:33"/>
+        <LinearLayout android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:orientation="vertical"
+                      android:background="@drawable/timeline_item_stroke"
+                      android:paddingRight="10dp">
+            <TextView android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:id="@+id/timeline_title"
+                      android:paddingTop="5dp"
+                      android:paddingLeft="5dp"
+                      android:text="Восточные танцы (Начинающие)"
+                      android:textColor="@color/whiteText"/>
+            <TextView android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:id="@+id/timeline_tutor"
+                      android:paddingLeft="5dp"
+                      android:text="Ирина Валекжанина"
+                      android:textColor="@color/whiteText"/>
+            <LinearLayout android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:orientation="horizontal"
+                          android:paddingLeft="5dp"
+                          android:paddingBottom="5dp">
+                <ImageView android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:background="@drawable/ic_geo"/>
+                <TextView android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:id="@+id/timeline_organization"
+                          android:text="Drive - Школа Танцев (пр. Ленина 157)"
+                          android:textColor="@color/whiteText"/>
+            </LinearLayout>
+        </LinearLayout>
+    </GridLayout>
+</LinearLayout>
