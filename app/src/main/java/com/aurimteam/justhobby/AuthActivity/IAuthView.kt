@@ -1,6 +1,6 @@
-package com.aurimteam.justhobby.MainActivity
+package com.aurimteam.justhobby.AuthActivity
 
-interface IView {
+interface IAuthView {
     //fun setData()
     fun validEnter()
     fun setDataError()

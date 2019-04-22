@@ -1,9 +1,9 @@
-package com.aurimteam.justhobby.HomeMain.HomeMainTimeLineActivity
+package com.aurimteam.justhobby.Main.HomeActivity
 
 import com.aurimteam.justhobby.Response.TimeLineEventResponse
 
-class HomeMainTimeLinePresenter(private var view: IHomeMainView?, private val model: IHomeMainModel?) :
-    HomeMainTimeLineModel.OnFinishedListener {
+class HomeMainTimeLinePresenter(private var view: IHomeView?, private val model: IHomeModel?) :
+    HomeModel.OnFinishedListener {
 
     override fun onResultFail() {
     }

@@ -5,5 +5,6 @@ class TimeLineEventResponse (
     val time: String,
     val title: String,
     val tutor: String,
-    val organization: String
+    val organization: String,
+    val address: String
 )

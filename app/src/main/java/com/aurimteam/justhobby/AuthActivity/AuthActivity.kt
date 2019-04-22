@@ -1,4 +1,4 @@
-package com.aurimteam.justhobby.MainActivity
+package com.aurimteam.justhobby.AuthActivity
 
 import android.app.Activity
 import android.content.Intent
@@ -8,25 +8,25 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import com.aurimteam.justhobby.R
 import com.aurimteam.justhobby.RegistryActivity.RegistryActivity
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_auth.*
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
 import android.widget.*
-import com.aurimteam.justhobby.HomeMain.HomeMainNav
-import com.aurimteam.justhobby.HomeMain.HomeMainTimeLineActivity.HomeMainTimeLineActivity
+import com.aurimteam.justhobby.Main.MainNav
+import com.aurimteam.justhobby.Main.HomeActivity.HomeActivity
 
-class MainActivity : AppCompatActivity(), IView {
+class AuthActivity : AppCompatActivity(), IAuthView {
     /*
     Активити обращается только к методам презентера, передаем ему введенную информацию
     или выводит полученную от презентера
      */
-    private lateinit var mainPresenter: MainPresenter
+    private lateinit var authPresenter: AuthPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_auth)
 
-        mainPresenter = MainPresenter(this, MainModel())
+        authPresenter = AuthPresenter(this, AuthModel())
 
         val buttonEnter = findViewById<Button>(R.id.mainEnterButton)
         /*val buttonVK = findViewById<Button>(R.id.mainVkEnter)
@@ -107,8 +107,8 @@ class MainActivity : AppCompatActivity(), IView {
     }
 
     override fun getUserData() {
-        mainPresenter.gettingUserData(mainLogin.text.toString(), mainPassword.text.toString())
-        val intent = Intent(this, HomeMainTimeLineActivity::class.java)
+        authPresenter.gettingUserData(mainLogin.text.toString(), mainPassword.text.toString())
+        val intent = Intent(this, HomeActivity::class.java)
         startActivity(intent)
         finish()
     }
@@ -126,7 +126,7 @@ class MainActivity : AppCompatActivity(), IView {
     }
 
     override fun forgetChangeActivity() {
-        val intent = Intent(this, HomeMainNav::class.java)
+        val intent = Intent(this, MainNav::class.java)
         startActivity(intent)
     }
 
@@ -145,7 +145,7 @@ class MainActivity : AppCompatActivity(), IView {
     }
 
     override fun onDestroy() {
-        mainPresenter.onDestroy()
+        authPresenter.onDestroy()
         super.onDestroy()
     }
 }

@@ -9,7 +9,7 @@ import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.aurimteam.justhobby.R
-import kotlinx.android.synthetic.main.activity_intro_main.*
+import kotlinx.android.synthetic.main.activity_features.*
 
 class IntroActivity : AppCompatActivity() {
     private lateinit var viewPager: ViewPager
@@ -19,7 +19,7 @@ class IntroActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_intro_main)
+        setContentView(R.layout.activity_features)
 
         preferenceManager = PreferenceManager(this)
         if (!preferenceManager.isFirstLaunch())
@@ -52,10 +52,8 @@ class IntroActivity : AppCompatActivity() {
 
     private fun toggleVisibilityView(view: View, is_visible: Boolean) {
         if(is_visible) {
-            view.visibility = View.VISIBLE
             view.layoutParams.height = LinearLayout.LayoutParams.WRAP_CONTENT
         } else {
-            view.visibility = View.INVISIBLE
             view.layoutParams.height = 0
         }
     }

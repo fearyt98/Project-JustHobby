@@ -1,6 +1,6 @@
-package com.aurimteam.justhobby.MainActivity
+package com.aurimteam.justhobby.AuthActivity
 
-class MainPresenter(private var view: IView?, private val model: IModel?) : MainModel.OnFinishedListener
+class AuthPresenter(private var view: IAuthView?, private val model: IAuthModel?) : AuthModel.OnFinishedListener
 {
     /*
     Present работает только с интерфейсом View (и методами интерфейса)

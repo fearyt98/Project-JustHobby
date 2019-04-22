@@ -34,4 +34,8 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="hide_show_password">Скрыть/Показать пароль</string>
+    <string name="courses">Курсы</string>
+    <string name="calendar">Календарь</string>
+    <string name="bookmarks">Закладки</string>
 </resources>

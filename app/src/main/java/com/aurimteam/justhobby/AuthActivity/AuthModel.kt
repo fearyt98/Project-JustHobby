@@ -1,6 +1,6 @@
-package com.aurimteam.justhobby.MainActivity
+package com.aurimteam.justhobby.AuthActivity
 
-class MainModel: IModel{
+class AuthModel: IAuthModel{
 
     interface OnFinishedListener {
         fun onResultSuccess()  //arrUpdates: List<DataItem>

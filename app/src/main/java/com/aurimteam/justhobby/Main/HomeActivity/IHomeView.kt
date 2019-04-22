@@ -1,7 +1,7 @@
-package com.aurimteam.justhobby.HomeMain.HomeMainTimeLineActivity
+package com.aurimteam.justhobby.Main.HomeActivity
 
 import com.aurimteam.justhobby.Response.TimeLineEventResponse
 
-interface IHomeMainView {
+interface IHomeView {
     fun showTimeLineEvents(eventsTimeLine: List<TimeLineEventResponse>)
 }

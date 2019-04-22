@@ -1,18 +1,18 @@
-package com.aurimteam.justhobby.HomeMain.HomeMainTimeLineActivity
+package com.aurimteam.justhobby.Main.HomeActivity
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import com.aurimteam.justhobby.R
 import com.aurimteam.justhobby.Response.TimeLineEventResponse
-import kotlinx.android.synthetic.main.activity_home_main_general.*
+import kotlinx.android.synthetic.main.activity_home.*
 import java.text.SimpleDateFormat
 import java.util.*
 
-class HomeMainTimeLineActivity : AppCompatActivity(), IHomeMainView {
+class HomeActivity : AppCompatActivity(), IHomeView {
 
-    private val presenter = HomeMainTimeLinePresenter(this, HomeMainTimeLineModel())
-    private val adapter = HomeMainTimeLineAdapter()
+    private val presenter = HomeMainTimeLinePresenter(this, HomeModel())
+    private val adapter = HomeAdapter()
 
     override fun showTimeLineEvents(eventsTimeLine: List<TimeLineEventResponse>) {
         adapter.onDataChange(eventsTimeLine)
@@ -20,7 +20,7 @@ class HomeMainTimeLineActivity : AppCompatActivity(), IHomeMainView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_home_main_general)
+        setContentView(R.layout.activity_home)
 
         eventsRecyclerView.layoutManager = LinearLayoutManager(this)
         eventsRecyclerView.adapter = adapter
@@ -30,9 +30,13 @@ class HomeMainTimeLineActivity : AppCompatActivity(), IHomeMainView {
         super.onStart()
         presenter.getEventsTimeLine()
 
-        val df = SimpleDateFormat("d MMMM, EEEE")
-        val currentDateTimeString = df.format(Date())
-        homeCalendarText.text = currentDateTimeString
+        val dataFormatDay = SimpleDateFormat("d MMMM, EEEE")
+        val currentDayString = dataFormatDay.format(Date())
+        homeCalendarText.text = currentDayString
+
+        val dataFormatTime = SimpleDateFormat("HH:mm")
+        val currentTimeString = dataFormatTime.format(Date())
+        homeCurrentTime.text = currentTimeString
     }
 
     override fun onDestroy() {

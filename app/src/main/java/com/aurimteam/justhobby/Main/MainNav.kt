@@ -1,15 +1,13 @@
-package com.aurimteam.justhobby.HomeMain
+package com.aurimteam.justhobby.Main
 
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v7.app.AppCompatActivity
 import com.aurimteam.justhobby.R
-import kotlinx.android.synthetic.main.activity_home_main.*
-import java.util.*
-import java.text.SimpleDateFormat
+import kotlinx.android.synthetic.main.activity_main.*
 
 
-class HomeMainNav : AppCompatActivity(){
+class MainNav : AppCompatActivity(){
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
@@ -31,7 +29,7 @@ class HomeMainNav : AppCompatActivity(){
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_home_main)
+        setContentView(R.layout.activity_main)
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
     }
 
