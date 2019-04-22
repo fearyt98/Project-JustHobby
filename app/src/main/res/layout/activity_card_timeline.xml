@@ -88,11 +88,12 @@
                            android:layout_gravity="center_vertical"
                            tools:ignore="ContentDescription"/>
                 <TextView style="@style/Caption1.Medium"
-                          android:layout_width="wrap_content"
+                          android:layout_width="0dp"
                           android:layout_height="wrap_content"
                           android:paddingStart="8dp"
                           android:id="@+id/cardTimelineOrganization"
                           android:text="Drive - Школа Танцев в Томскевввввввв"
+                          android:layout_weight="1"
                           android:maxLines="1"
                           android:ellipsize="end"
                           android:singleLine="true"
@@ -102,9 +103,6 @@
                           android:layout_height="wrap_content"
                           android:id="@+id/cardTimelineAddress"
                           android:text=" (пр. Ленина, 157)"
-                          android:maxLines="1"
-                          android:ellipsize="end"
-                          android:singleLine="true"
                           android:textColor="@color/whiteText"/>
             </LinearLayout>
         </LinearLayout>
