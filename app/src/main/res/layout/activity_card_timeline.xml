@@ -31,12 +31,10 @@
               android:background="@drawable/card_timeline_circle"/>
     </LinearLayout>
     <android.support.constraint.ConstraintLayout android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:rowCount="2"
-                    android:columnCount="1"
-                    android:layout_marginStart="5dp"
-                    android:paddingTop="8dp"
-                    android:paddingBottom="8dp">
+                                                 android:layout_height="wrap_content"
+                                                 android:layout_marginStart="5dp"
+                                                 android:paddingTop="8dp"
+                                                 android:paddingBottom="0dp">
         <LinearLayout android:id="@+id/cardTimelineItem"
                       android:layout_width="match_parent"
                       android:layout_height="wrap_content"

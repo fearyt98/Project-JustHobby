@@ -22,7 +22,6 @@
                   android:text="@string/skip"
                   android:alpha="0.5"/>
         <TextView android:id="@+id/introComplete"
-                  android:visibility="invisible"
                   android:layout_height="0dp"
                   style="@style/BtnBottomFirstScreens"
                   android:paddingTop="32dp"

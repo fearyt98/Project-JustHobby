@@ -8,15 +8,6 @@
                      android:left="1.8dp"
                      android:right="1.8dp"
                      android:top="1.8dp"/>
-            <solid android:color="#000000"/>
-            <corners android:radius="4dp"
-                     android:topLeftRadius="0dp"/>
-        </shape>
-        <shape>
-            <padding android:bottom="1.8dp"
-                     android:left="1.8dp"
-                     android:right="1.8dp"
-                     android:top="1.8dp"/>
             <solid android:color="#00d4d4d4"/>
             <corners android:radius="4dp"
                      android:topLeftRadius="0dp"/>

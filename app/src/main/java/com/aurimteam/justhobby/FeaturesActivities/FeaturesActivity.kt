@@ -11,10 +11,10 @@ import android.widget.TextView
 import com.aurimteam.justhobby.R
 import kotlinx.android.synthetic.main.activity_features_viewpager.*
 
-class IntroActivity : AppCompatActivity() {
+class FeaturesActivity : AppCompatActivity() {
     private lateinit var viewPager: ViewPager
     private lateinit var dotsLayout: LinearLayout
-    private lateinit var introAdapter: IntroAdapter
+    private lateinit var introAdapter: FeaturesAdapter
     private lateinit var preferenceManager: PreferenceManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -64,7 +64,7 @@ class IntroActivity : AppCompatActivity() {
     }
 
     private fun setupViewPager() {
-        introAdapter = IntroAdapter(this)
+        introAdapter = FeaturesAdapter(this)
         viewPager.adapter = introAdapter
     }
 

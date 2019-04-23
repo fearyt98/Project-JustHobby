@@ -20,7 +20,7 @@
                   android:screenOrientation="portrait"></activity>
         <activity android:name=".RecoveryActivity.RecoveryActivity"
                   android:screenOrientation="portrait"></activity>
-        <activity android:name=".FeaturesActivities.IntroActivity"
+        <activity android:name=".FeaturesActivities.FeaturesActivity"
                   android:screenOrientation="portrait"></activity>
         <activity android:name=".Main.HomeActivity.HomeFragment"/>
     </application>
