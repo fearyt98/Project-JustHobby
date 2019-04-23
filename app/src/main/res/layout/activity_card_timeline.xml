@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
               xmlns:tools="http://schemas.android.com/tools"
               android:layout_height="wrap_content"
               android:layout_width="match_parent"
               android:orientation="horizontal"
               android:paddingStart="16dp"
-              android:paddingEnd="16dp">
+              android:paddingEnd="7dp">
     <LinearLayout android:layout_width="10dp"
                   android:layout_height="match_parent"
                   android:orientation="vertical"
@@ -29,30 +30,25 @@
               android:layout_weight="0.72"
               android:background="@drawable/card_timeline_circle"/>
     </LinearLayout>
-    <GridLayout android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:rowCount="2"
-                android:columnCount="1"
-                android:layout_marginStart="15dp"
-                android:paddingTop="8dp"
-                android:paddingBottom="8dp">
-        <TextView style="@style/Caption1.Medium"
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:id="@+id/cardTimelineTime"
-                  android:textColor="@color/whiteText"
-                  android:background="@drawable/card_timeline_time_stroke"
-                  android:paddingTop="2dp"
-                  android:paddingBottom="2dp"
-                  android:paddingRight="9dp"
-                  android:paddingLeft="9dp"
-                  android:text="19:33"/>
-        <LinearLayout android:layout_width="match_parent"
+    <android.support.constraint.ConstraintLayout android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:rowCount="2"
+                    android:columnCount="1"
+                    android:layout_marginStart="5dp"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp">
+        <LinearLayout android:id="@+id/cardTimelineItem"
+                      android:layout_width="match_parent"
                       android:layout_height="wrap_content"
                       android:orientation="vertical"
                       android:background="@drawable/card_timeline_item_stroke"
-                      android:paddingEnd="8dp"
-                      tools:ignore="RtlSymmetry">
+                      android:paddingBottom="2dp"
+                      android:paddingRight="17dp"
+                      android:paddingLeft="9dp"
+                      android:paddingTop="9dp"
+                      android:translationY="-9dp"
+                      tools:ignore="RtlSymmetry"
+                      app:layout_constraintTop_toBottomOf="@+id/cardTimelineTime">
             <TextView style="@style/Body2.Medium"
                       android:layout_width="match_parent"
                       android:layout_height="wrap_content"
@@ -81,7 +77,7 @@
                           android:orientation="horizontal"
                           android:paddingTop="8dp"
                           android:paddingStart="8dp"
-                          android:paddingBottom="13dp">
+                          android:paddingBottom="22dp">
                 <ImageView android:layout_width="16dp"
                            android:layout_height="16dp"
                            android:background="@drawable/ic_place_white_24dp"
@@ -106,5 +102,16 @@
                           android:textColor="@color/whiteText"/>
             </LinearLayout>
         </LinearLayout>
-    </GridLayout>
+        <TextView style="@style/Caption1.Medium"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:id="@+id/cardTimelineTime"
+                  android:textColor="@color/whiteText"
+                  android:background="@drawable/card_timeline_time_stroke"
+                  android:paddingTop="11dp"
+                  android:paddingBottom="2dp"
+                  android:paddingRight="17dp"
+                  android:paddingLeft="17dp"
+                  android:text="19:33"/>
+    </android.support.constraint.ConstraintLayout>
 </LinearLayout>
