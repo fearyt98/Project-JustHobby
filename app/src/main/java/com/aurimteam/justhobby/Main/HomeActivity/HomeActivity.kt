@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import com.aurimteam.justhobby.R
 import com.aurimteam.justhobby.Response.TimeLineEventResponse
-import kotlinx.android.synthetic.main.activity_home.*
+import kotlinx.android.synthetic.main.activity_home_timeline.*
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -20,7 +20,7 @@ class HomeActivity : AppCompatActivity(), IHomeView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_home)
+        setContentView(R.layout.activity_home_timeline)
 
         eventsRecyclerView.layoutManager = LinearLayoutManager(this)
         eventsRecyclerView.adapter = adapter

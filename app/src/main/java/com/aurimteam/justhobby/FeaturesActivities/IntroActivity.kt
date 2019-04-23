@@ -9,7 +9,7 @@ import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.aurimteam.justhobby.R
-import kotlinx.android.synthetic.main.activity_features.*
+import kotlinx.android.synthetic.main.activity_features_viewpager.*
 
 class IntroActivity : AppCompatActivity() {
     private lateinit var viewPager: ViewPager
@@ -19,7 +19,7 @@ class IntroActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_features)
+        setContentView(R.layout.activity_features_viewpager)
 
         preferenceManager = PreferenceManager(this)
         if (!preferenceManager.isFirstLaunch())
