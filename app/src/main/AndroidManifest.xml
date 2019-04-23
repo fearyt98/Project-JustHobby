@@ -22,6 +22,6 @@
                   android:screenOrientation="portrait"></activity>
         <activity android:name=".FeaturesActivities.IntroActivity"
                   android:screenOrientation="portrait"></activity>
-        <activity android:name=".Main.HomeActivity.HomeActivity"/>
+        <activity android:name=".Main.HomeActivity.HomeFragment"/>
     </application>
 </manifest>

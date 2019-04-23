@@ -13,7 +13,7 @@ import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
 import android.widget.*
 import com.aurimteam.justhobby.Main.MainNav
-import com.aurimteam.justhobby.Main.HomeActivity.HomeActivity
+import com.aurimteam.justhobby.Main.HomeActivity.HomeFragment
 
 class AuthActivity : AppCompatActivity(), IAuthView {
     /*
@@ -108,7 +108,7 @@ class AuthActivity : AppCompatActivity(), IAuthView {
 
     override fun getUserData() {
         authPresenter.gettingUserData(mainLogin.text.toString(), mainPassword.text.toString())
-        val intent = Intent(this, HomeActivity::class.java)
+        val intent = Intent(this, HomeFragment::class.java)
         startActivity(intent)
         finish()
     }

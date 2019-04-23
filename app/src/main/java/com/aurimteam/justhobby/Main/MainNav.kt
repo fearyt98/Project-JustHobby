@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity
 import com.aurimteam.justhobby.R
 import kotlinx.android.synthetic.main.activity_main_nav.*
 import android.support.v4.app.Fragment
+import com.aurimteam.justhobby.Main.HomeActivity.HomeFragment
 
 class MainNav : AppCompatActivity() {
 
