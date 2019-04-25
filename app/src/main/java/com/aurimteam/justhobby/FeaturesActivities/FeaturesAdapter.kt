@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.aurimteam.justhobby.R
 
-class IntroAdapter(context: Context) : PagerAdapter() {
+class FeaturesAdapter(context: Context) : PagerAdapter() {
 
     private val context: Context = context
     private lateinit var layoutInflater: LayoutInflater

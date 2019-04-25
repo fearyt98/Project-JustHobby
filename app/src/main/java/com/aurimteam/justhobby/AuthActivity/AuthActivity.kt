@@ -13,7 +13,7 @@ import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
 import android.widget.*
 import com.aurimteam.justhobby.Main.MainNav
-import com.aurimteam.justhobby.Main.HomeActivity.HomeFragment
+import com.aurimteam.justhobby.RecoveryActivity.RecoveryActivity
 
 class AuthActivity : AppCompatActivity(), IAuthView {
     /*
@@ -123,7 +123,7 @@ class AuthActivity : AppCompatActivity(), IAuthView {
     }
 
     override fun forgetChangeActivity() {
-        val intent = Intent(this, MainNav::class.java)
+        val intent = Intent(this, RecoveryActivity::class.java)
         startActivity(intent)
     }
 

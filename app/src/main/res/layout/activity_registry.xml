@@ -87,7 +87,7 @@
                                  android:contentDescription="@string/hide_show_password"/>
                 </FrameLayout>
             </LinearLayout>
-            <Button android:id="@+id/recoveryEnterButton"
+            <Button android:id="@+id/registryEnterButton"
                     style="@style/ButtonWhite"
                     android:layout_marginTop="16dp"
                     android:text="@string/sign_up"/>

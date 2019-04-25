@@ -9,6 +9,7 @@ import android.text.method.PasswordTransformationMethod
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
+import com.aurimteam.justhobby.FeaturesActivities.FeaturesActivity
 import com.aurimteam.justhobby.R
 import com.aurimteam.justhobby.RecoveryActivity.RecoveryActivity
 
@@ -46,6 +47,12 @@ class RegistryActivity : AppCompatActivity() {
         val cancel = findViewById<TextView>(R.id.registryCancel)
         cancel.setOnClickListener {
             finish()
+        }
+
+        val registry = findViewById<TextView>(R.id.registryEnterButton)
+        registry.setOnClickListener {
+            val intent = Intent(this, FeaturesActivity::class.java)
+            startActivity(intent)
         }
     }
 
