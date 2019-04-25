@@ -77,13 +77,14 @@
                       android:layout_marginStart="15dp"
                       android:paddingTop="2dp"
                       android:paddingBottom="26dp"
+                      android:paddingLeft="8dp"
                       android:layout_gravity="top">
-            <TextView style="@style/Body2.Medium"
+            <TextView style="@style/Caption1.Medium"
                       android:id="@+id/homeCurrentTime"
                       android:textColor="@color/grafitText"
                       android:layout_width="match_parent"
                       android:layout_height="wrap_content"
-                      android:text="18.10"/>
+                      android:text="18:10"/>
         </LinearLayout>
     </LinearLayout>
     <android.support.v7.widget.RecyclerView android:id="@+id/eventsRecyclerView"

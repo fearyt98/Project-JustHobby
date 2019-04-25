@@ -57,7 +57,7 @@
             </LinearLayout>
             <Button android:id="@+id/recoveryEnterButton"
                     style="@style/ButtonWhite"
-                    android:layout_marginTop="6dp"
+                    android:layout_marginTop="16dp"
                     android:text="@string/restore"/>
         </LinearLayout>
         <LinearLayout android:layout_width="match_parent"

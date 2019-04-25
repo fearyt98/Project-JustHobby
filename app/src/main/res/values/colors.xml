@@ -40,4 +40,9 @@
     <color name="whiteMiddle">#80FFFFFF</color>
     <color name="whiteMidOfMiddle">#4DFFFFFF</color>
     <color name="whiteBottom">#33FFFFFF</color>
+
+    <!-- Category color -->
+    <color name="sport">#2F80ED</color>
+    <color name="dance">#BB6BD9</color>
+    <color name="languages">#A01C93</color>
 </resources>

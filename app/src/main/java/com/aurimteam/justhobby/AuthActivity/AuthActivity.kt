@@ -108,9 +108,6 @@ class AuthActivity : AppCompatActivity(), IAuthView {
 
     override fun getUserData() {
         authPresenter.gettingUserData(mainLogin.text.toString(), mainPassword.text.toString())
-        val intent = Intent(this, HomeFragment::class.java)
-        startActivity(intent)
-        finish()
     }
 
     override fun getUserDataFB() {

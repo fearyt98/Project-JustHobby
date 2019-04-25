@@ -1,16 +1,16 @@
 package com.aurimteam.justhobby.Main.HomeActivity
 
-import com.aurimteam.justhobby.Response.TimeLineEventResponse
+import com.aurimteam.justhobby.Response.TimeLineEventResponses
 
 class HomeModel : IHomeModel {
     interface OnFinishedListener {
-        fun onResultSuccess(eventsTimeLine: List<TimeLineEventResponse>)  //arrUpdates: List<DataItem>
+        fun onResultSuccess(eventsTimeLine: List<TimeLineEventResponses>)  //arrUpdates: List<DataItem>
         fun onResultFail() //strError: String
     }
 
     override fun getEventsTimeLine(onFinishedListener: OnFinishedListener) {
-        val events: List<TimeLineEventResponse> = listOf(
-            TimeLineEventResponse(
+        val events: List<TimeLineEventResponses> = listOf(
+            TimeLineEventResponses(
                 0,
                 "01:20",
                 "Брейк-данс (Начинающие)",
@@ -18,7 +18,7 @@ class HomeModel : IHomeModel {
                 "Drive - школа танцев",
                 " (ул. Вершинина, 25)"
             ),
-            TimeLineEventResponse(
+            TimeLineEventResponses(
                 1,
                 "20:30",
                 "Стрип-пластика",
@@ -26,7 +26,7 @@ class HomeModel : IHomeModel {
                 "Стип - школа эротических танцев",
                 " (ул. Лыткина, 18)"
             ),
-            TimeLineEventResponse(
+            TimeLineEventResponses(
                 0,
                 "01:20",
                 "Брейк-данс (Начинающие)",
@@ -34,7 +34,7 @@ class HomeModel : IHomeModel {
                 "Drive - школа танцев",
                 " (ул. Вершинина, 25)"
             ),
-            TimeLineEventResponse(
+            TimeLineEventResponses(
                 1,
                 "20:30",
                 "Стрип-пластика",
@@ -42,7 +42,7 @@ class HomeModel : IHomeModel {
                 "Стип - школа эротических танцев",
                 " (ул. Лыткина, 18)"
             ),
-            TimeLineEventResponse(
+            TimeLineEventResponses(
                 0,
                 "01:20",
                 "Брейк-данс (Начинающие)",
@@ -50,7 +50,7 @@ class HomeModel : IHomeModel {
                 "Drive - школа танцев",
                 " (ул. Вершинина, 25)"
             ),
-            TimeLineEventResponse(
+            TimeLineEventResponses(
                 1,
                 "20:30",
                 "Стрип-пластика",

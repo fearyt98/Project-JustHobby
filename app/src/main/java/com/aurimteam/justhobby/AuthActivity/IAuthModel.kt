@@ -1,5 +1,5 @@
 package com.aurimteam.justhobby.AuthActivity
 
 interface IAuthModel {
-    fun checkUserData(onFinishedListener: AuthModel.OnFinishedListener)
+    fun checkUserData(loginMain: String, password: String, onFinishedListener: AuthModel.OnFinishedListener)
 }

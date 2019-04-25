@@ -62,7 +62,7 @@
     <style name="H2">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">20sp</item>
+        <item name="android:textSize">21sp</item>
         <item name="android:lineSpacingMultiplier">1.2</item>
         <item name="android:textColor">@color/whiteText</item>
     </style>
@@ -76,7 +76,7 @@
     <style name="Body1">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">17sp</item>
         <item name="android:lineSpacingMultiplier">1.5</item>
         <item name="android:textColor">@color/whiteText</item>
     </style>
@@ -93,7 +93,7 @@
     <style name="Body2">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">14sp</item>
+        <item name="android:textSize">15sp</item>
         <item name="android:lineSpacingMultiplier">1.7</item>
         <item name="android:textColor">@color/whiteText</item>
     </style>
@@ -107,7 +107,7 @@
     <style name="Caption1">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">12sp</item>
+        <item name="android:textSize">13sp</item>
         <item name="android:lineSpacingMultiplier">1.16</item>
         <item name="android:textColor">@color/whiteText</item>
     </style>
@@ -118,7 +118,7 @@
     <style name="Caption2">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">11sp</item>
+        <item name="android:textSize">12sp</item>
         <item name="android:textColor">@color/whiteText</item>
     </style>
     <style name="Caption2.Medium">
@@ -131,7 +131,7 @@
     <style name="Caption3">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">10sp</item>
+        <item name="android:textSize">11sp</item>
         <item name="android:lineSpacingMultiplier">1.2</item>
         <item name="android:textColor">@color/whiteText</item>
     </style>

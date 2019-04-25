@@ -12,7 +12,8 @@ class TimeLineHolder(view: View) : RecyclerView.ViewHolder(view) {
         title: String,
         tutor: String,
         organization: String,
-        address: String
+        address: String,
+        category: String
     ) {
         itemView.cardTimelineLineLast.visibility = if (last) View.INVISIBLE else View.VISIBLE
         itemView.cardTimelineTime.text = time
