@@ -12,36 +12,30 @@ import kotlinx.android.synthetic.main.activity_home_timeline.*
 import java.text.SimpleDateFormat
 import java.util.*
 
+class HomeTimeLineFragment : Fragment(), IHomeView {
 
-
-class HomeFragment : Fragment(), IHomeView {
-
-    private val presenter = HomeMainTimeLinePresenter(this, HomeModel())
-    private var adapter = HomeAdapter()
+    private val presenter = HomeMainTimeLinePresenter(this, HomeTimeLineModel())
+    private var adapter = HomeTimeLineAdapter()
 
     override fun showTimeLineEvents(eventsTimeLine: List<TimeLineEventResponses>) {
         adapter.onDataChange(eventsTimeLine)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view: View = inflater.inflate(R.layout.activity_home_timeline, container, false)
-        return view
+        return inflater.inflate(R.layout.activity_home_timeline, container, false)
     }
 
     override fun onStart() {
         super.onStart()
+        presenter.getEventsTimeLine()
         eventsRecyclerView.layoutManager = LinearLayoutManager(context)
         eventsRecyclerView.adapter = adapter
+    }
 
-        presenter.getEventsTimeLine()
-
-        val dataFormatDay = SimpleDateFormat("d MMMM, EEEE")
-        val currentDayString = dataFormatDay.format(Date())
-        homeCalendarText.text = currentDayString
-
-        val dataFormatTime = SimpleDateFormat("HH:mm")
-        val currentTimeString = dataFormatTime.format(Date())
-        homeCurrentTime.text = currentTimeString
+    override fun onResume() {
+        super.onResume()
+        homeCalendarText.text = SimpleDateFormat("d MMMM, EEEE").format(Date())
+        homeCurrentTime.text = SimpleDateFormat("HH:mm").format(Date())
     }
 
     override fun onDestroy() {

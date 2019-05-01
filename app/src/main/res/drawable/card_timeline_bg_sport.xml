@@ -9,8 +9,7 @@
                      android:right="1.8dp"
                      android:top="1.8dp"/>
             <solid android:color="#00d4d4d4"/>
-            <corners android:radius="4dp"
-                     android:topLeftRadius="0dp"/>
+            <corners android:radius="6dp"/>
         </shape>
     </item>
     <item>
@@ -20,8 +19,7 @@
                      android:right="1.8dp"
                      android:top="1.8dp"/>
             <solid android:color="#10d4d4d4"/>
-            <corners android:radius="4dp"
-                     android:topLeftRadius="0dp"/>
+            <corners android:radius="6dp"/>
         </shape>
     </item>
     <item>
@@ -31,8 +29,7 @@
                      android:right="1.8dp"
                      android:top="1.8dp"/>
             <solid android:color="#20d4d4d4"/>
-            <corners android:radius="4dp"
-                     android:topLeftRadius="0dp"/>
+            <corners android:radius="6dp"/>
         </shape>
     </item>
     <item>
@@ -42,8 +39,7 @@
                      android:right="1.8dp"
                      android:top="1.8dp"/>
             <solid android:color="#30d4d4d4"/>
-            <corners android:radius="4dp"
-                     android:topLeftRadius="0dp"/>
+            <corners android:radius="6dp"/>
         </shape>
     </item>
     <item>
@@ -53,16 +49,14 @@
                      android:right="1.8dp"
                      android:top="1.8dp"/>
             <solid android:color="#50d4d4d4"/>
-            <corners android:radius="4dp"
-                     android:topLeftRadius="0dp"/>
+            <corners android:radius="6dp"/>
         </shape>
     </item>
     <!-- Background -->
     <item>
         <shape>
-            <solid android:color="@color/colorPrimary"/>
-            <corners android:radius="4dp"
-                     android:topLeftRadius="0dp"/>
+            <solid android:color="@color/sport"/>
+            <corners android:radius="6dp"/>
         </shape>
     </item>
 </layer-list>

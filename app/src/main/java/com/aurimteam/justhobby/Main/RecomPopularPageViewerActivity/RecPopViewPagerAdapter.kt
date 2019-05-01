@@ -1,0 +1,30 @@
+package com.aurimteam.justhobby.Main.RecomPopularPageViewerActivity
+
+import android.support.v4.app.Fragment
+import android.support.v4.app.FragmentManager
+import android.support.v4.app.FragmentPagerAdapter
+import com.aurimteam.justhobby.Main.RecomPopularPageViewerActivity.NearUserPlaces.NearUserPlacesFragment
+import com.aurimteam.justhobby.Main.RecomPopularPageViewerActivity.PopularPlaces.PopularPlacesFragment
+
+class RecPopViewPagerAdapter(fragmentManager: FragmentManager) : FragmentPagerAdapter(fragmentManager) {
+    private val COUNT_FRAGMENTS = 2
+    override fun getItem(position: Int): Fragment? {
+        var fragment: Fragment? = null
+        when (position) {
+            0 -> fragment =
+                PopularPlacesFragment()
+            1 -> fragment =
+                NearUserPlacesFragment()
+        }
+        return fragment
+    }
+
+    override fun getCount(): Int = COUNT_FRAGMENTS
+    override fun getPageTitle(position: Int): CharSequence? {
+        when (position) {
+            0 -> return "РЯДОМ С ВАМИ"
+            1 -> return "ПОПУЛЯРНОЕ"
+        }
+        return null
+    }
+}

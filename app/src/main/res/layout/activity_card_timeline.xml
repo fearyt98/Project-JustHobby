@@ -24,13 +24,12 @@
               android:layout_weight="1"
               android:background="@drawable/card_timeline_circle"/>
     </LinearLayout>
-    <GridLayout android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:rowCount="2"
-                android:columnCount="1"
-                android:layout_marginStart="15dp"
-                android:paddingTop="0dp"
-                android:paddingBottom="16dp">
+    <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:orientation="vertical"
+                  android:layout_marginStart="6dp"
+                  android:paddingTop="0dp"
+                  android:paddingBottom="7dp">
         <LinearLayout android:layout_width="match_parent"
                       android:layout_height="wrap_content"
                       android:orientation="horizontal">
@@ -42,7 +41,7 @@
                       android:paddingTop="2dp"
                       android:paddingBottom="2dp"
                       android:paddingRight="8dp"
-                      android:paddingLeft="8dp"
+                      android:paddingLeft="17dp"
                       android:text="19:33"/>
             <TextView style="@style/Caption3"
                       android:layout_width="wrap_content"
@@ -55,15 +54,16 @@
                       android:paddingRight="8dp"
                       android:text="До занятия 1 час"/>
         </LinearLayout>
-        <LinearLayout android:layout_width="match_parent"
+        <LinearLayout android:id="@+id/cardTimelineBg"
+                      android:layout_width="match_parent"
                       android:layout_height="wrap_content"
                       android:orientation="vertical"
-                      android:background="@drawable/card_timeline_item_stroke"
+                      android:background="@color/colorPrimary"
                       android:paddingBottom="2dp"
                       android:paddingRight="17dp"
                       android:paddingLeft="9dp"
+                      android:layout_marginTop="-9dp"
                       android:paddingTop="9dp"
-                      android:translationY="-9dp"
                       tools:ignore="RtlSymmetry"
                       app:layout_constraintTop_toBottomOf="@+id/cardTimelineTime">
             <TextView style="@style/Body2.Medium"
@@ -119,16 +119,5 @@
                           android:textColor="@color/whiteText"/>
             </LinearLayout>
         </LinearLayout>
-        <TextView style="@style/Caption1.Medium"
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:id="@+id/cardTimelineTime"
-                  android:textColor="@color/whiteText"
-                  android:background="@drawable/card_timeline_time_stroke"
-                  android:paddingTop="11dp"
-                  android:paddingBottom="2dp"
-                  android:paddingRight="17dp"
-                  android:paddingLeft="17dp"
-                  android:text="19:33"/>
-    </android.support.constraint.ConstraintLayout>
+    </LinearLayout>
 </LinearLayout>

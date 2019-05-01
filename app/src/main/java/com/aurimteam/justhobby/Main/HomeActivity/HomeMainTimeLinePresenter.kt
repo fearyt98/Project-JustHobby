@@ -3,7 +3,7 @@ package com.aurimteam.justhobby.Main.HomeActivity
 import com.aurimteam.justhobby.Response.TimeLineEventResponses
 
 class HomeMainTimeLinePresenter(private var view: IHomeView?, private val model: IHomeModel?) :
-    HomeModel.OnFinishedListener {
+    HomeTimeLineModel.OnFinishedListener {
 
     override fun onResultFail() {
     }

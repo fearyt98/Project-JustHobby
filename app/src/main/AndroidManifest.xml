@@ -8,8 +8,11 @@
                  android:roundIcon="@mipmap/ic_launcher_round"
                  android:supportsRtl="true"
                  android:theme="@style/AppTheme">
+        <activity android:name=".Main.RecomPopularPageViewerActivity.NearUserPlaces.NearUserPlacesFragment"></activity>
+        <activity android:name=".Main.RecomPopularPageViewerActivity.PopularPlaces.PopularPlacesFragment"/>
+        <activity android:name=".Main.RecomPopularPageViewerActivity.MainRecPopActivity"/>
         <activity android:name=".Main.MainNav"
-                  android:label="@string/title_activity_home_main"></activity>
+                  android:label="@string/title_activity_home_main"/>
         <activity android:name=".AuthActivity.AuthActivity"
                   android:screenOrientation="portrait">
             <intent-filter>
@@ -18,11 +21,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".RegistryActivity.RegistryActivity"
-                  android:screenOrientation="portrait"></activity>
+                  android:screenOrientation="portrait"/>
         <activity android:name=".RecoveryActivity.RecoveryActivity"
-                  android:screenOrientation="portrait"></activity>
+                  android:screenOrientation="portrait"/>
         <activity android:name=".FeaturesActivities.FeaturesActivity"
-                  android:screenOrientation="portrait"></activity>
-        <activity android:name=".Main.HomeActivity.HomeFragment"/>
+                  android:screenOrientation="portrait"/>
+        <activity android:name=".Main.HomeActivity.HomeTimeLineFragment"/>
     </application>
 </manifest>

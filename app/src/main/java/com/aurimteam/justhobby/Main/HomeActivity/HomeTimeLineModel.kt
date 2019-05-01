@@ -2,7 +2,7 @@ package com.aurimteam.justhobby.Main.HomeActivity
 
 import com.aurimteam.justhobby.Response.TimeLineEventResponses
 
-class HomeModel : IHomeModel {
+class HomeTimeLineModel : IHomeModel {
     interface OnFinishedListener {
         fun onResultSuccess(eventsTimeLine: List<TimeLineEventResponses>)  //arrUpdates: List<DataItem>
         fun onResultFail() //strError: String
@@ -16,7 +16,8 @@ class HomeModel : IHomeModel {
                 "Брейк-данс (Начинающие)",
                 "Александра Максимова",
                 "Drive - школа танцев",
-                " (ул. Вершинина, 25)"
+                " (ул. Вершинина, 25)",
+                "sport"
             ),
             TimeLineEventResponses(
                 1,
@@ -24,7 +25,8 @@ class HomeModel : IHomeModel {
                 "Стрип-пластика",
                 "Евгения Иванова",
                 "Стип - школа эротических танцев",
-                " (ул. Лыткина, 18)"
+                " (ул. Лыткина, 18)",
+                "dance"
             ),
             TimeLineEventResponses(
                 0,
@@ -32,7 +34,8 @@ class HomeModel : IHomeModel {
                 "Брейк-данс (Начинающие)",
                 "Александра Максимова",
                 "Drive - школа танцев",
-                " (ул. Вершинина, 25)"
+                " (ул. Вершинина, 25)",
+                "languages"
             ),
             TimeLineEventResponses(
                 1,
@@ -40,7 +43,8 @@ class HomeModel : IHomeModel {
                 "Стрип-пластика",
                 "Евгения Иванова",
                 "Стип - школа эротических танцев",
-                " (ул. Лыткина, 18)"
+                " (ул. Лыткина, 18)",
+                "languages"
             ),
             TimeLineEventResponses(
                 0,
@@ -48,7 +52,8 @@ class HomeModel : IHomeModel {
                 "Брейк-данс (Начинающие)",
                 "Александра Максимова",
                 "Drive - школа танцев",
-                " (ул. Вершинина, 25)"
+                " (ул. Вершинина, 25)",
+                "dance"
             ),
             TimeLineEventResponses(
                 1,
@@ -56,7 +61,8 @@ class HomeModel : IHomeModel {
                 "Стрип-пластика",
                 "Евгения Иванова",
                 "Стип - школа эротических танцев",
-                " (ул. Лыткина, 18)"
+                " (ул. Лыткина, 18)",
+                "dance"
             )
         )
         /*App.retrofit

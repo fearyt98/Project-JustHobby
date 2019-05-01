@@ -6,14 +6,14 @@ import android.support.v7.app.AppCompatActivity
 import com.aurimteam.justhobby.R
 import kotlinx.android.synthetic.main.activity_main_nav.*
 import android.support.v4.app.Fragment
-import com.aurimteam.justhobby.Main.HomeActivity.HomeFragment
+import com.aurimteam.justhobby.Main.HomeActivity.HomeTimeLineFragment
 
 class MainNav : AppCompatActivity() {
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
             R.id.navigation_home -> {
-                loadFragment(HomeFragment())
+                loadFragment(HomeTimeLineFragment())
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_search -> {
@@ -37,7 +37,7 @@ class MainNav : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        loadFragment(HomeFragment())
+        loadFragment(HomeTimeLineFragment())
     }
 
     private fun loadFragment(fragment: Fragment?): Boolean {

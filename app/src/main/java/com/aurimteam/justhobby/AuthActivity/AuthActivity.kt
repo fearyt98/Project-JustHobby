@@ -13,6 +13,7 @@ import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
 import android.widget.*
 import com.aurimteam.justhobby.Main.MainNav
+import com.aurimteam.justhobby.Main.RecomPopularPageViewerActivity.MainRecPopActivity
 import com.aurimteam.justhobby.RecoveryActivity.RecoveryActivity
 
 class AuthActivity : AppCompatActivity(), IAuthView {
@@ -29,15 +30,15 @@ class AuthActivity : AppCompatActivity(), IAuthView {
         authPresenter = AuthPresenter(this, AuthModel())
 
         val buttonEnter = findViewById<Button>(R.id.mainEnterButton)
-        /*val buttonVK = findViewById<Button>(R.id.mainVkEnter)
-        val buttonGoogle = findViewById<Button>(R.id.mainGoogleEnter)
+        val buttonVK = findViewById<Button>(R.id.mainVkEnter)
+        /*val buttonGoogle = findViewById<Button>(R.id.mainGoogleEnter)
         val buttonFB = findViewById<Button>(R.id.mainFacebookEnter)*/
         val forget = findViewById<TextView>(R.id.mainForget)
         val registry = findViewById<TextView>(R.id.mainRegistry)
 
         buttonEnter.setOnClickListener { getUserData() }
-        /*buttonVK.setOnClickListener { getUserDataVK() }
-        buttonGoogle.setOnClickListener { getUserDataGoogle() }
+        buttonVK.setOnClickListener { getUserDataVK() }
+        /*buttonGoogle.setOnClickListener { getUserDataGoogle() }
         buttonFB.setOnClickListener { getUserDataFB() }*/
         forget.setOnClickListener { forgetChangeActivity() }
         registry.setOnClickListener { registryChangeActivity() }
@@ -115,7 +116,8 @@ class AuthActivity : AppCompatActivity(), IAuthView {
     }
 
     override fun getUserDataVK() {
-
+        val intent = Intent(this, MainRecPopActivity::class.java)
+        startActivity(intent)
     }
 
     override fun getUserDataGoogle() {
