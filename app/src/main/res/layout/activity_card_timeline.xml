@@ -24,54 +24,28 @@
               android:layout_weight="1"
               android:background="@drawable/card_timeline_circle"/>
     </LinearLayout>
-    <LinearLayout android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:orientation="vertical"
-                  android:layout_marginStart="6dp"
-                  android:paddingTop="0dp"
-                  android:paddingBottom="7dp">
-        <LinearLayout android:layout_width="match_parent"
-                      android:layout_height="wrap_content"
-                      android:orientation="horizontal">
-            <TextView style="@style/Caption1.Medium"
-                      android:layout_width="wrap_content"
-                      android:layout_height="wrap_content"
-                      android:id="@+id/cardTimelineTime"
-                      android:textColor="@color/grafitText"
-                      android:paddingTop="2dp"
-                      android:paddingBottom="2dp"
-                      android:paddingRight="8dp"
-                      android:paddingLeft="17dp"
-                      android:text="19:33"/>
-            <TextView style="@style/Caption3"
-                      android:layout_width="wrap_content"
-                      android:layout_height="wrap_content"
-                      android:id="@+id/cardTimelineCountdown"
-                      android:textColor="@color/grayDarkMiddle"
-                      android:layout_gravity="center"
-                      android:paddingTop="2dp"
-                      android:paddingBottom="2dp"
-                      android:paddingRight="8dp"
-                      android:text="До занятия 1 час"/>
-        </LinearLayout>
+    <android.support.constraint.ConstraintLayout android:layout_width="match_parent"
+                                                 android:layout_height="wrap_content"
+                                                 android:orientation="vertical"
+                                                 android:layout_marginStart="6dp"
+                                                 android:paddingTop="0dp"
+                                                 android:paddingBottom="7dp">
         <LinearLayout android:id="@+id/cardTimelineBg"
                       android:layout_width="match_parent"
                       android:layout_height="wrap_content"
                       android:orientation="vertical"
-                      android:background="@color/colorPrimary"
-                      android:paddingBottom="2dp"
+                      android:background="@drawable/card_timeline_bg_dance"
+                      android:paddingBottom="9dp"
                       android:paddingRight="17dp"
-                      android:paddingLeft="9dp"
-                      android:layout_marginTop="-9dp"
-                      android:paddingTop="9dp"
+                      android:paddingLeft="17dp"
+                      android:paddingTop="13dp"
+                      android:translationY="-9dp"
                       tools:ignore="RtlSymmetry"
-                      app:layout_constraintTop_toBottomOf="@+id/cardTimelineTime">
+                      app:layout_constraintTop_toBottomOf="@id/cardTimelineTimeFull">
             <TextView style="@style/Body2.Medium"
                       android:layout_width="match_parent"
                       android:layout_height="wrap_content"
                       android:id="@+id/cardTimelineTitle"
-                      android:paddingTop="4dp"
-                      android:paddingLeft="8dp"
                       android:text="Восточные танцы (Начинающие)"
                       android:textColor="@color/whiteText"
                       android:maxLines="1"
@@ -83,7 +57,6 @@
                       android:layout_height="wrap_content"
                       android:id="@+id/cardTimelineTeacher"
                       android:paddingTop="3dp"
-                      android:paddingStart="8dp"
                       android:text="Ирина Валекжанина"
                       android:maxLines="1"
                       android:ellipsize="end"
@@ -93,11 +66,10 @@
                           android:layout_height="wrap_content"
                           android:orientation="horizontal"
                           android:paddingTop="8dp"
-                          android:paddingStart="8dp"
-                          android:paddingBottom="22dp">
+                          android:paddingBottom="9dp">
                 <ImageView android:layout_width="16dp"
                            android:layout_height="16dp"
-                           android:background="@drawable/ic_place_white_24dp"
+                           android:background="@drawable/ic_place_24dp"
                            android:layout_gravity="center_vertical"
                            tools:ignore="ContentDescription"/>
                 <TextView style="@style/Caption1.Medium"
@@ -119,5 +91,32 @@
                           android:textColor="@color/whiteText"/>
             </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
+        <LinearLayout android:id="@+id/cardTimelineTimeFull"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:orientation="horizontal"
+                      app:layout_constraintTop_toTopOf="parent"
+                      app:layout_constraintStart_toStartOf="parent">
+            <TextView style="@style/Caption1.Medium"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:id="@+id/cardTimelineTime"
+                      android:textColor="@color/grafitText"
+                      android:paddingTop="2dp"
+                      android:paddingBottom="2dp"
+                      android:paddingRight="8dp"
+                      android:paddingLeft="17dp"
+                      android:text="19:33"/>
+            <TextView style="@style/Caption3"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:id="@+id/cardTimelineCountdown"
+                      android:textColor="@color/grayDarkMiddle"
+                      android:layout_gravity="center"
+                      android:paddingTop="2dp"
+                      android:paddingBottom="2dp"
+                      android:paddingRight="8dp"
+                      android:text="До занятия 1 час"/>
+        </LinearLayout>
+    </android.support.constraint.ConstraintLayout>
 </LinearLayout>

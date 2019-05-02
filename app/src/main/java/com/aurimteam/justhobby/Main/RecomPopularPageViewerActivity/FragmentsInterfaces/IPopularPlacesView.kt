@@ -1,7 +1,7 @@
 package com.aurimteam.justhobby.Main.RecomPopularPageViewerActivity.FragmentsInterfaces
 
-import com.aurimteam.justhobby.Response.PopularPlacesResponse
+import com.aurimteam.justhobby.Response.CourseResponse
 
-interface IPopularPlacesView {
-    fun showPopularPlaces(places: List<PopularPlacesResponse>)
+interface IPopularCoursesView {
+    fun showPopularCourses(places: List<CourseResponse>)
 }

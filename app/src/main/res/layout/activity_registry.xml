@@ -56,7 +56,7 @@
                                  android:paddingTop="2.5dp"
                                  android:paddingBottom="7.5dp"
                                  android:paddingEnd="32dp"
-                                 app:srcCompat="@drawable/ic_visibility_white_24dp"
+                                 app:srcCompat="@drawable/ic_visibility_24dp"
                                  android:background="@android:color/transparent"
                                  tools:ignore="RtlSymmetry"
                                  android:contentDescription="@string/hide_show_password"/>
@@ -81,7 +81,7 @@
                                  android:paddingTop="2.5dp"
                                  android:paddingBottom="7.5dp"
                                  android:paddingEnd="32dp"
-                                 app:srcCompat="@drawable/ic_visibility_white_24dp"
+                                 app:srcCompat="@drawable/ic_visibility_24dp"
                                  android:background="@android:color/transparent"
                                  tools:ignore="RtlSymmetry"
                                  android:contentDescription="@string/hide_show_password"/>

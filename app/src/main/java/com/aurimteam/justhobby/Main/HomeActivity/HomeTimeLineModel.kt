@@ -1,16 +1,16 @@
 package com.aurimteam.justhobby.Main.HomeActivity
 
-import com.aurimteam.justhobby.Response.TimeLineEventResponses
+import com.aurimteam.justhobby.Response.TimelineResponses
 
 class HomeTimeLineModel : IHomeModel {
     interface OnFinishedListener {
-        fun onResultSuccess(eventsTimeLine: List<TimeLineEventResponses>)  //arrUpdates: List<DataItem>
+        fun onResultSuccess(eventsTimeLine: List<TimelineResponses>)  //arrUpdates: List<DataItem>
         fun onResultFail() //strError: String
     }
 
     override fun getEventsTimeLine(onFinishedListener: OnFinishedListener) {
-        val events: List<TimeLineEventResponses> = listOf(
-            TimeLineEventResponses(
+        val events: List<TimelineResponses> = listOf(
+            TimelineResponses(
                 0,
                 "01:20",
                 "Брейк-данс (Начинающие)",
@@ -19,7 +19,7 @@ class HomeTimeLineModel : IHomeModel {
                 " (ул. Вершинина, 25)",
                 "sport"
             ),
-            TimeLineEventResponses(
+            TimelineResponses(
                 1,
                 "20:30",
                 "Стрип-пластика",
@@ -28,7 +28,7 @@ class HomeTimeLineModel : IHomeModel {
                 " (ул. Лыткина, 18)",
                 "dance"
             ),
-            TimeLineEventResponses(
+            TimelineResponses(
                 0,
                 "01:20",
                 "Брейк-данс (Начинающие)",
@@ -37,7 +37,7 @@ class HomeTimeLineModel : IHomeModel {
                 " (ул. Вершинина, 25)",
                 "languages"
             ),
-            TimeLineEventResponses(
+            TimelineResponses(
                 1,
                 "20:30",
                 "Стрип-пластика",
@@ -46,7 +46,7 @@ class HomeTimeLineModel : IHomeModel {
                 " (ул. Лыткина, 18)",
                 "languages"
             ),
-            TimeLineEventResponses(
+            TimelineResponses(
                 0,
                 "01:20",
                 "Брейк-данс (Начинающие)",
@@ -55,7 +55,7 @@ class HomeTimeLineModel : IHomeModel {
                 " (ул. Вершинина, 25)",
                 "dance"
             ),
-            TimeLineEventResponses(
+            TimelineResponses(
                 1,
                 "20:30",
                 "Стрип-пластика",

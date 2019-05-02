@@ -1,16 +1,16 @@
-package com.aurimteam.justhobby.Main.RecomPopularPageViewerActivity.PopularPlaces
+package com.aurimteam.justhobby.Main.RecomPopularPageViewerActivity.PopularCourses
 
-import com.aurimteam.justhobby.Main.RecomPopularPageViewerActivity.FragmentsInterfaces.IPopularPlacesModel
-import com.aurimteam.justhobby.Response.PopularPlacesResponse
+import com.aurimteam.justhobby.Main.RecomPopularPageViewerActivity.FragmentsInterfaces.IPopularCoursesModel
+import com.aurimteam.justhobby.Response.CourseResponse
 
-class PopularPlacesModel : IPopularPlacesModel {
+class PopularCoursesModel : IPopularCoursesModel {
     interface OnFinishedListener {
-        fun onResultSuccess(places: List<PopularPlacesResponse>)  //arrUpdates: List<DataItem>
+        fun onResultSuccess(places: List<CourseResponse>)  //arrUpdates: List<DataItem>
         fun onResultFail() //strError: String
     }
 
-    override fun getPopularPlacesData(onFinishedListener: OnFinishedListener) {
-        val places: List<PopularPlacesResponse> = listOf()
+    override fun getPopularCoursesData(onFinishedListener: OnFinishedListener) {
+        val places: List<CourseResponse> = listOf()
         /*App.retrofit
             .create(Api::class.java)
             .getAllEvents()

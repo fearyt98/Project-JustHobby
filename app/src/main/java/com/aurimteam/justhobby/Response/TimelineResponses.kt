@@ -1,6 +1,6 @@
 package com.aurimteam.justhobby.Response
 
-class TimeLineEventResponses(
+class TimelineResponses(
     val id: Int,
     val time: String,
     val title: String,

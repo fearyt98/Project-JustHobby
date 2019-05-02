@@ -9,7 +9,7 @@
                  android:supportsRtl="true"
                  android:theme="@style/AppTheme">
         <activity android:name=".Main.RecomPopularPageViewerActivity.NearUserPlaces.NearUserPlacesFragment"></activity>
-        <activity android:name=".Main.RecomPopularPageViewerActivity.PopularPlaces.PopularPlacesFragment"/>
+        <activity android:name=".Main.RecomPopularPageViewerActivity.PopularCourses.PopularCoursesFragment"/>
         <activity android:name=".Main.RecomPopularPageViewerActivity.MainRecPopActivity"/>
         <activity android:name=".Main.MainNav"
                   android:label="@string/title_activity_home_main"/>

@@ -7,7 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.aurimteam.justhobby.R
-import com.aurimteam.justhobby.Response.TimeLineEventResponses
+import com.aurimteam.justhobby.Response.TimelineResponses
 import kotlinx.android.synthetic.main.activity_home_timeline.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -17,7 +17,7 @@ class HomeTimeLineFragment : Fragment(), IHomeView {
     private val presenter = HomeMainTimeLinePresenter(this, HomeTimeLineModel())
     private var adapter = HomeTimeLineAdapter()
 
-    override fun showTimeLineEvents(eventsTimeLine: List<TimeLineEventResponses>) {
+    override fun showTimeLineEvents(eventsTimeLine: List<TimelineResponses>) {
         adapter.onDataChange(eventsTimeLine)
     }
 

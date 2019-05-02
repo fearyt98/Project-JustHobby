@@ -4,7 +4,7 @@ import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 import com.aurimteam.justhobby.Main.RecomPopularPageViewerActivity.NearUserPlaces.NearUserPlacesFragment
-import com.aurimteam.justhobby.Main.RecomPopularPageViewerActivity.PopularPlaces.PopularPlacesFragment
+import com.aurimteam.justhobby.Main.RecomPopularPageViewerActivity.PopularCourses.PopularCoursesFragment
 
 class RecPopViewPagerAdapter(fragmentManager: FragmentManager) : FragmentPagerAdapter(fragmentManager) {
     private val COUNT_FRAGMENTS = 2
@@ -12,7 +12,7 @@ class RecPopViewPagerAdapter(fragmentManager: FragmentManager) : FragmentPagerAd
         var fragment: Fragment? = null
         when (position) {
             0 -> fragment =
-                PopularPlacesFragment()
+                PopularCoursesFragment()
             1 -> fragment =
                 NearUserPlacesFragment()
         }

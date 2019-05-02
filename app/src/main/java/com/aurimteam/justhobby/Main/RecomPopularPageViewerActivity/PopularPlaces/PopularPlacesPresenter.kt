@@ -1,22 +1,22 @@
-package com.aurimteam.justhobby.Main.RecomPopularPageViewerActivity.PopularPlaces
+package com.aurimteam.justhobby.Main.RecomPopularPageViewerActivity.PopularCourses
 
-import com.aurimteam.justhobby.Main.RecomPopularPageViewerActivity.FragmentsInterfaces.IPopularPlacesModel
-import com.aurimteam.justhobby.Main.RecomPopularPageViewerActivity.FragmentsInterfaces.IPopularPlacesView
-import com.aurimteam.justhobby.Response.PopularPlacesResponse
+import com.aurimteam.justhobby.Main.RecomPopularPageViewerActivity.FragmentsInterfaces.IPopularCoursesModel
+import com.aurimteam.justhobby.Main.RecomPopularPageViewerActivity.FragmentsInterfaces.IPopularCoursesView
+import com.aurimteam.justhobby.Response.CourseResponse
 
-class PopularPlacesPresenter(private var view: IPopularPlacesView?, private val model: IPopularPlacesModel?) :
-    PopularPlacesModel.OnFinishedListener {
+class PopularCoursesPresenter(private var view: IPopularCoursesView?, private val model: IPopularCoursesModel?) :
+    PopularCoursesModel.OnFinishedListener {
 
-    override fun onResultSuccess(places: List<PopularPlacesResponse>) {
-        view?.showPopularPlaces(places)
+    override fun onResultSuccess(courses: List<CourseResponse>) {
+        view?.showPopularCourses(courses)
     }
 
     override fun onResultFail() {
 
     }
 
-    fun getPopularPlaces() {
-        model?.getPopularPlacesData(this)
+    fun getPopularCourses() {
+        model?.getPopularCoursesData(this)
     }
 
     fun onDestroy() {

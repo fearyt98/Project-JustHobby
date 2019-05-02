@@ -2,8 +2,11 @@ package com.aurimteam.justhobby.AuthActivity
 
 import android.app.Activity
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.PorterDuff
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v4.content.ContextCompat
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import com.aurimteam.justhobby.R
@@ -43,7 +46,8 @@ class AuthActivity : AppCompatActivity(), IAuthView {
         forget.setOnClickListener { forgetChangeActivity() }
         registry.setOnClickListener { registryChangeActivity() }
     }
-    override fun onResume(){
+
+    override fun onResume() {
         super.onResume()
 
         val mainView = findViewById<LinearLayout>(R.id.main)
@@ -63,48 +67,38 @@ class AuthActivity : AppCompatActivity(), IAuthView {
             changeVisiblePassword(password, buttonChangeVisiblePassword)
         }
     }
-
-
+    // CLEAR SCREEN ADD
+    // DST DST_ATOP DST_OUT DST_IN DST_OVER
+    // DARKEN LIGHTEN MULTIPLY
+    private val mode = PorterDuff.Mode.SRC
     private fun changeButtonVisible(password: EditText, btn: ImageButton) {
-        val color = if (password.isFocused) "green" else "white"
-        if (password.transformationMethod != PasswordTransformationMethod.getInstance()) {
-            val resId = resources.getIdentifier(
-                "ic_visibility_off_" + color + "_24dp",
-                "drawable", applicationContext.packageName
-            )
-            btn.setImageResource(resId)
+        if (password.isFocused) {
+            btn.setColorFilter(ContextCompat.getColor(this, R.color.colorPrimary))
         } else {
-            val resId = resources.getIdentifier(
-                "ic_visibility_" + color + "_24dp",
-                "drawable", applicationContext.packageName
-            )
-            btn.setImageResource(resId)
+            btn.clearColorFilter()
+        }
+        if (password.transformationMethod == PasswordTransformationMethod.getInstance()) {
+            btn.setImageResource(R.drawable.ic_visibility_off_24dp)
+        } else {
+            btn.setImageResource(R.drawable.ic_visibility_24dp)
         }
     }
 
     private fun changeVisiblePassword(password: EditText, btn: ImageButton) {
-        val color = if (password.isFocused) "green" else "white"
-        if (password.transformationMethod == PasswordTransformationMethod.getInstance()) {
-            val resId = resources.getIdentifier(
-                "ic_visibility_off_" + color + "_24dp",
-                "drawable", applicationContext.packageName
-            )
-            btn.setImageResource(resId)
-
-            val oldPosCursor = password.selectionStart
-            password.transformationMethod = HideReturnsTransformationMethod.getInstance()
-            password.setSelection(oldPosCursor)
+        if (password.isFocused) {
+            btn.setColorFilter(ContextCompat.getColor(this, R.color.colorPrimary))
         } else {
-            val resId = resources.getIdentifier(
-                "ic_visibility_" + color + "_24dp",
-                "drawable", applicationContext.packageName
-            )
-            btn.setImageResource(resId)
-
-            val oldPosCursor = password.selectionStart
-            password.transformationMethod = PasswordTransformationMethod.getInstance()
-            password.setSelection(oldPosCursor)
+            btn.clearColorFilter()
         }
+        val oldPosCursor = password.selectionStart
+        if (password.transformationMethod == PasswordTransformationMethod.getInstance()) {
+            btn.setImageResource(R.drawable.ic_visibility_off_24dp)
+            password.transformationMethod = HideReturnsTransformationMethod.getInstance()
+        } else {
+            btn.setImageResource(R.drawable.ic_visibility_24dp)
+            password.transformationMethod = PasswordTransformationMethod.getInstance()
+        }
+        password.setSelection(oldPosCursor)
     }
 
     override fun getUserData() {
@@ -116,7 +110,7 @@ class AuthActivity : AppCompatActivity(), IAuthView {
     }
 
     override fun getUserDataVK() {
-        val intent = Intent(this, MainRecPopActivity::class.java)
+        val intent = Intent(this, MainNav::class.java)
         startActivity(intent)
     }
 

@@ -10,7 +10,7 @@
                                                  android:orientation="vertical">
         <ImageButton android:layout_width="40dp"
                      android:layout_height="40dp"
-                     android:background="@drawable/ic_bookmark_green_24dp"
+                     android:background="@drawable/ic_bookmark_24dp"
                      app:layout_constraintRight_toRightOf="@+id/searchBar"
                      app:layout_constraintBottom_toBottomOf="@id/searchBar"
                      app:layout_constraintTop_toTopOf="@id/searchBar"/>

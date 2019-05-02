@@ -1,11 +1,11 @@
-package com.aurimteam.justhobby.Main.RecomPopularPageViewerActivity.PopularPlaces
+package com.aurimteam.justhobby.Main.RecomPopularPageViewerActivity.PopularCourses
 
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import com.aurimteam.justhobby.Response.IdentifierResponse
 import java.sql.Timestamp
 
-class PopularPlacesHolder(view: View) : RecyclerView.ViewHolder(view) {
+class PopularCoursesHolder(view: View) : RecyclerView.ViewHolder(view) {
     fun bind(
         id: Long,
         title: String,

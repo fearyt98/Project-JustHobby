@@ -4,11 +4,11 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.aurimteam.justhobby.R
-import com.aurimteam.justhobby.Response.TimeLineEventResponses
+import com.aurimteam.justhobby.Response.TimelineResponses
 
 class HomeTimeLineAdapter : RecyclerView.Adapter<TimeLineHolder>() {
 
-    private val timeLineEvents: MutableList<TimeLineEventResponses> = mutableListOf()
+    private val timeLineEvents: MutableList<TimelineResponses> = mutableListOf()
 
     override fun getItemCount(): Int = timeLineEvents.size
     override fun onBindViewHolder(holder: TimeLineHolder, position: Int) {
@@ -29,7 +29,7 @@ class HomeTimeLineAdapter : RecyclerView.Adapter<TimeLineHolder>() {
             LayoutInflater.from(parent.context).inflate(R.layout.activity_card_timeline, parent, false)
         )
 
-    fun onDataChange(events: List<TimeLineEventResponses>) {
+    fun onDataChange(events: List<TimelineResponses>) {
         this.timeLineEvents.clear()
         this.timeLineEvents.addAll(events)
         notifyDataSetChanged()

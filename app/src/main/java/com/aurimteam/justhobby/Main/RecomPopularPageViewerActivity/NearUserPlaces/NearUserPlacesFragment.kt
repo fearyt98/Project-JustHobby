@@ -27,7 +27,7 @@ class NearUserPlacesFragment : Fragment(), INearPlacesView {
         super.onStart()
         //presenter.getEventsTimeLine()
         nearPlacesRecyclerView.layoutManager = LinearLayoutManager(context)
-        //popularPlacesRecyclerView.adapter = adapter
+        //PopularCoursesRecyclerView.adapter = adapter
     }
 
     override fun onDestroy() {
