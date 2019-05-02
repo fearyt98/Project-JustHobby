@@ -14,17 +14,15 @@ class RecPopViewPagerAdapter(fragmentManager: FragmentManager) : FragmentPagerAd
             0 -> fragment =
                 PopularCoursesFragment()
             1 -> fragment =
-                NearUserPlacesFragment()
+                PopularCoursesFragment()
         }
         return fragment
     }
 
     override fun getCount(): Int = COUNT_FRAGMENTS
     override fun getPageTitle(position: Int): CharSequence? {
-        when (position) {
-            0 -> return "РЯДОМ С ВАМИ"
-            1 -> return "ПОПУЛЯРНОЕ"
-        }
-        return null
+        if (position == 0)
+            return "ПОПУЛЯРНОЕ"
+        else return "РЯДОМ"
     }
 }

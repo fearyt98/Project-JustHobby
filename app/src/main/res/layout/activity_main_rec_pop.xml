@@ -27,11 +27,15 @@
                   app:layout_constraintBottom_toBottomOf="parent"/>
     </android.support.constraint.ConstraintLayout>
     <android.support.v4.view.ViewPager android:layout_width="match_parent"
-                                       android:layout_height="20dp"
+                                       android:layout_height="wrap_content"
+                                       android:overScrollMode="never"
                                        android:id="@+id/recPopViewPager"
                                        android:background="@color/whiteTop">
         <android.support.v4.view.PagerTabStrip android:layout_width="match_parent"
-                                               android:layout_height="20dp"
+                                               android:layout_height="40dp"
+                                               android:overScrollMode="never"
+                                               android:background="@color/colorPrimary"
+                                               style="@style/tabsPageViewer"
                                                android:id="@+id/recPopTabs"/>
     </android.support.v4.view.ViewPager>
 </LinearLayout>

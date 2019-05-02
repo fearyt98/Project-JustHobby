@@ -4,11 +4,12 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.aurimteam.justhobby.R
+import com.aurimteam.justhobby.Response.CourseResponse
 
 class PopularCoursesAdapter : RecyclerView.Adapter<PopularCoursesHolder>() {
-    private val placesList: MutableList<PopularCoursesHolder> = mutableListOf()
+    private val coursesList: MutableList<CourseResponse> = mutableListOf()
 
-    override fun getItemCount(): Int = placesList.size
+    override fun getItemCount(): Int = coursesList.size
     override fun onCreateViewHolder(parent: ViewGroup, p1: Int): PopularCoursesHolder =
         PopularCoursesHolder(
             LayoutInflater.from(parent.context).inflate(
@@ -19,11 +20,19 @@ class PopularCoursesAdapter : RecyclerView.Adapter<PopularCoursesHolder>() {
         )
 
     override fun onBindViewHolder(holder: PopularCoursesHolder, position: Int) {
-        //holder.bind()
+        holder.bind(
+            coursesList[position].id,
+            coursesList[position].title,
+            coursesList[position].description,
+            coursesList[position].address,
+            coursesList[position].company,
+            coursesList[position].category
+        )
     }
-    /*fun onDataChange(places: List<PopularCoursesResponse>) {
-        this.placesList.clear()
-        this.placesList.addAll(places)
+
+    fun onDataChange(courses: List<CourseResponse>) {
+        this.coursesList.clear()
+        this.coursesList.addAll(courses)
         notifyDataSetChanged()
-    }*/
+    }
 }

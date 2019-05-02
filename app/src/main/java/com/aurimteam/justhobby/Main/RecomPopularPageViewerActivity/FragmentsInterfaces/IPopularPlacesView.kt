@@ -3,5 +3,5 @@ package com.aurimteam.justhobby.Main.RecomPopularPageViewerActivity.FragmentsInt
 import com.aurimteam.justhobby.Response.CourseResponse
 
 interface IPopularCoursesView {
-    fun showPopularCourses(places: List<CourseResponse>)
+    fun showPopularCourses(courses: List<CourseResponse>)
 }

@@ -20,8 +20,8 @@ class PopularCoursesFragment : Fragment(), IPopularCoursesView {
         return inflater.inflate(R.layout.activity_popular_places_fragment, container, false)
     }
 
-    override fun showPopularCourses(places: List<CourseResponse>) {
-        //adapter.onDataChange()
+    override fun showPopularCourses(courses: List<CourseResponse>) {
+        adapter.onDataChange(courses)
     }
 
     override fun onStart() {

@@ -6,7 +6,6 @@ import com.aurimteam.justhobby.R
 import kotlinx.android.synthetic.main.activity_card_timeline.view.*
 
 
-
 class TimeLineHolder(view: View) : RecyclerView.ViewHolder(view) {
     fun bind(
         id: Int,
@@ -24,18 +23,17 @@ class TimeLineHolder(view: View) : RecyclerView.ViewHolder(view) {
         itemView.cardTimelineTeacher.text = tutor
         itemView.cardTimelineOrganization.text = organization
         itemView.cardTimelineAddress.text = address
-        val pL = itemView.cardTimelineBg.paddingLeft
-        val pT = itemView.cardTimelineBg.paddingTop
-        val pR = itemView.cardTimelineBg.paddingRight
-        val pB = itemView.cardTimelineBg.paddingBottom
+        val padding: List<Int> = listOf(
+            itemView.cardTimelineBg.paddingLeft, itemView.cardTimelineBg.paddingTop,
+            itemView.cardTimelineBg.paddingRight, itemView.cardTimelineBg.paddingBottom
+        )
         when (category) {
             "dance" -> itemView.cardTimelineBg.setBackgroundResource(R.drawable.card_timeline_bg_dance)
             "languages" -> itemView.cardTimelineBg.setBackgroundResource(R.drawable.card_timeline_bg_languages)
             "sport" -> itemView.cardTimelineBg.setBackgroundResource(R.drawable.card_timeline_bg_sport)
             else -> itemView.cardTimelineBg.setBackgroundResource(R.drawable.card_timeline_bg_sport)
         }
-        itemView.cardTimelineBg.setPadding(pL, pT, pR, pB)
-        //itemView.cardTimelineBg.setPadding(17, 13, 17, 9);
+        itemView.cardTimelineBg.setPadding(padding[0], padding[1], padding[2], padding[3])
         //val dataFormatTime = SimpleDateFormat("HH:mm")
         //val currentTimeString = dataFormatTime.format(Date())
         //val ttime = dataFormatTime.format(time)

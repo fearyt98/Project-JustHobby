@@ -121,7 +121,7 @@ class AuthActivity : AppCompatActivity(), IAuthView {
     }
 
     override fun registryChangeActivity() {
-        val intent = Intent(this, RegistryActivity::class.java)
+        val intent = Intent(this, MainRecPopActivity::class.java)
         startActivity(intent)
     }
 
