@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:id="@+id/recommendation"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/colorPrimary"
+              android:orientation="vertical"
+              android:clickable="true"
+              android:focusable="true"
+              android:focusableInTouchMode="true">
+    <FrameLayout android:layout_width="match_parent"
+                 android:layout_height="wrap_content">
+        <EditText android:id="@+id/searchBar"
+                  style="@style/EditTextSearch"
+                  android:paddingRight="64dp"
+                  android:inputType="text"
+                  android:hint="@string/search"
+                  tools:ignore="RtlSymmetry"/>
+        <ImageButton android:id="@+id/registryConfirmPasswordVisible"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_gravity="end|center_vertical"
+                     android:paddingTop="7.5dp"
+                     android:paddingEnd="32dp"
+                     app:srcCompat="@drawable/ic_search_24dp"
+                     android:tint="@color/grayDark"
+                     android:background="@android:color/transparent"
+                     tools:ignore="RtlSymmetry"
+                     android:contentDescription="@string/search"/>
+    </FrameLayout>
+    <android.support.v4.view.ViewPager android:layout_width="match_parent"
+                                       android:layout_height="wrap_content"
+                                       android:overScrollMode="never"
+                                       android:id="@+id/recPopViewPager"
+                                       android:background="@color/grayLightTop">
+        <android.support.design.widget.TabLayout android:layout_width="match_parent"
+                                                 android:layout_height="52dp"
+                                                 android:overScrollMode="never"
+                                                 android:background="@color/colorPrimary"
+                                                 style="@style/TabsPageViewer"
+                                                 android:id="@+id/recPopTabs"/>
+    </android.support.v4.view.ViewPager>
+</LinearLayout>

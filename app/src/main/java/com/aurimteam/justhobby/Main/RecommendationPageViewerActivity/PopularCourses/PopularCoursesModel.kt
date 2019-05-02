@@ -1,6 +1,6 @@
-package com.aurimteam.justhobby.Main.RecomPopularPageViewerActivity.PopularCourses
+package com.aurimteam.justhobby.Main.RecommendationPageViewerActivity.PopularCourses
 
-import com.aurimteam.justhobby.Main.RecomPopularPageViewerActivity.FragmentsInterfaces.IPopularCoursesModel
+import com.aurimteam.justhobby.Main.RecommendationPageViewerActivity.FragmentsInterfaces.IPopularCoursesModel
 import com.aurimteam.justhobby.Response.CourseResponse
 import com.aurimteam.justhobby.Response.IdentifierResponse
 import java.sql.Timestamp

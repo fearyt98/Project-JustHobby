@@ -11,7 +11,7 @@
         <item name="android:textColor">@drawable/edittext_start_color</item>
         <item name="android:textColorHint">@color/whiteTopUnder</item>
         <item name="android:textAppearance">@style/Body2.Medium</item>
-        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:paddingTop">15.5dp
         </item><!-- 13 (padding in edittext) + 2.5 (full padding in background) -->
@@ -24,11 +24,29 @@
         <item name="android:maxLength">255</item>
         <item name="android:imeOptions">actionGo</item>
     </style>
+    <!-- Edit text search | bottom -7.5 | left -2.5 | right -2.5 | top -2.5 -->
+    <style name="EditTextSearch">
+        <item name="android:textColor">@drawable/edittext_start_color</item>
+        <item name="android:textColorHint">@color/whiteTopUnder</item>
+        <item name="android:textAppearance">@style/Body1</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingTop">27dp
+        </item><!-- 12 (padding in edittext) + 15 (full padding in background) -->
+        <item name="android:paddingBottom">20dp</item><!-- 12 + 8 -->
+        <item name="android:paddingLeft">31dp</item><!-- 16 + 15 -->
+        <item name="android:paddingRight">31dp</item><!-- 16 + 15 -->
+        <item name="android:background">@drawable/edittext_search_bg</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textCursorDrawable">@null</item>
+        <item name="android:maxLength">255</item>
+        <item name="android:imeOptions">actionGo</item>
+    </style>
     <!-- Button white | bottom -7.5 | left -2.5 | right -2.5 | top -2.5 -->
     <style name="ButtonWhite">
         <item name="android:textColor">@color/colorPrimary</item>
         <item name="android:textAppearance">@style/Body1.Bold</item>
-        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:paddingTop">14.5dp</item><!-- 12 (padding in btn) + 2.5 (full padding in background) -->
         <item name="android:paddingBottom">19.5dp</item><!-- 12 + 7.5 -->
@@ -39,8 +57,25 @@
         <item name="android:background">@drawable/btn_start_bg</item>
         <item name="android:layout_gravity">center</item>
     </style>
-    <style name="tabsPageViewer">
-        <item name="android:textColor">@color/whiteText</item>
+    <!-- Tab -->
+    <style name="TabsPageViewer"
+           parent="Widget.Design.TabLayout">
+        <item name="android:layout_height">52dp</item>
+        <item name="tabIndicatorColor">@color/whiteTop</item>
+        <item name="tabIndicatorHeight">4dp</item>
+        <item name="tabRippleColor">@android:color/transparent</item>
+        <item name="android:textColor">@color/whiteTop</item>
+        <item name="tabTextAppearance">@style/TabTextAppearance</item>
+        <item name="tabSelectedTextColor">@color/whiteTop</item>
+    </style>
+    <!-- Tab text -->
+    <style name="TabTextAppearance"
+           parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">15sp</item>
+        <item name="android:lineSpacingMultiplier">1.7</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">@color/whiteMiddle</item>
     </style>
     <!-- Label -->
     <style name="Label">
@@ -69,6 +104,8 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">21sp</item>
         <item name="android:lineSpacingMultiplier">1.2</item>
+        <item name="android:paddingTop">2dp</item>
+        <item name="android:paddingBottom">2dp</item>
         <item name="android:textColor">@color/whiteText</item>
     </style>
     <style name="H2.Medium">
@@ -83,6 +120,8 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">17sp</item>
         <item name="android:lineSpacingMultiplier">1.5</item>
+        <item name="android:paddingTop">4dp</item>
+        <item name="android:paddingBottom">4dp</item>
         <item name="android:textColor">@color/whiteText</item>
     </style>
     <style name="Body1.Bold">
@@ -100,6 +139,8 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">15sp</item>
         <item name="android:lineSpacingMultiplier">1.7</item>
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:paddingBottom">5dp</item>
         <item name="android:textColor">@color/whiteText</item>
     </style>
     <style name="Body2.Medium">
@@ -114,6 +155,8 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">13sp</item>
         <item name="android:lineSpacingMultiplier">1.16</item>
+        <item name="android:paddingTop">2dp</item>
+        <item name="android:paddingBottom">2dp</item>
         <item name="android:textColor">@color/whiteText</item>
     </style>
     <style name="Caption1.Medium">
@@ -124,6 +167,8 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">12sp</item>
+        <item name="android:paddingTop">0.5dp</item>
+        <item name="android:paddingBottom">0.5dp</item>
         <item name="android:textColor">@color/whiteText</item>
     </style>
     <style name="Caption2.Medium">
@@ -138,6 +183,8 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">11sp</item>
         <item name="android:lineSpacingMultiplier">1.2</item>
+        <item name="android:paddingTop">1dp</item>
+        <item name="android:paddingBottom">1dp</item>
         <item name="android:textColor">@color/whiteText</item>
     </style>
     <style name="Caption3.Bold">

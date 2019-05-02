@@ -8,7 +8,7 @@
                  android:roundIcon="@mipmap/ic_launcher_round"
                  android:supportsRtl="true"
                  android:theme="@style/AppTheme">
-        <activity android:name=".Main.RecomPopularPageViewerActivity.MainRecPopActivity"/>
+        <activity android:name=".Main.RecommendationPageViewerActivity.MainRecommendationActivity"/>
         <activity android:name=".Main.MainNav"
                   android:label="@string/title_activity_home_main"/>
         <activity android:name=".AuthActivity.AuthActivity"

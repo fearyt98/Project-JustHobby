@@ -2,8 +2,6 @@ package com.aurimteam.justhobby.AuthActivity
 
 import android.app.Activity
 import android.content.Intent
-import android.graphics.Color
-import android.graphics.PorterDuff
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
@@ -16,7 +14,7 @@ import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
 import android.widget.*
 import com.aurimteam.justhobby.Main.MainNav
-import com.aurimteam.justhobby.Main.RecomPopularPageViewerActivity.MainRecPopActivity
+import com.aurimteam.justhobby.Main.RecommendationPageViewerActivity.MainRecommendationActivity
 import com.aurimteam.justhobby.RecoveryActivity.RecoveryActivity
 
 class AuthActivity : AppCompatActivity(), IAuthView {
@@ -32,12 +30,12 @@ class AuthActivity : AppCompatActivity(), IAuthView {
 
         authPresenter = AuthPresenter(this, AuthModel())
 
-        val buttonEnter = findViewById<Button>(R.id.mainEnterButton)
-        val buttonVK = findViewById<Button>(R.id.mainVkEnter)
-        /*val buttonGoogle = findViewById<Button>(R.id.mainGoogleEnter)
-        val buttonFB = findViewById<Button>(R.id.mainFacebookEnter)*/
-        val forget = findViewById<TextView>(R.id.mainForget)
-        val registry = findViewById<TextView>(R.id.mainRegistry)
+        val buttonEnter = findViewById<Button>(R.id.authEnterButton)
+        val buttonVK = findViewById<Button>(R.id.authVkEnter)
+        /*val buttonGoogle = findViewById<Button>(R.id.authGoogleEnter)
+        val buttonFB = findViewById<Button>(R.id.authFacebookEnter)*/
+        val forget = findViewById<TextView>(R.id.authForget)
+        val registry = findViewById<TextView>(R.id.authRegistry)
 
         buttonEnter.setOnClickListener { getUserData() }
         buttonVK.setOnClickListener { getUserDataVK() }
@@ -50,16 +48,16 @@ class AuthActivity : AppCompatActivity(), IAuthView {
     override fun onResume() {
         super.onResume()
 
-        val mainView = findViewById<LinearLayout>(R.id.main)
-        mainView.setOnFocusChangeListener { view: View, hasFocus: Boolean ->
+        val authView = findViewById<LinearLayout>(R.id.auth)
+        authView.setOnFocusChangeListener { view: View, hasFocus: Boolean ->
             if (hasFocus) {
                 val inputMethodManager = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
                 inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
             }
         }
 
-        val password = findViewById<EditText>(R.id.mainPassword)
-        val buttonChangeVisiblePassword = findViewById<ImageButton>(R.id.mainPasswordVisible)
+        val password = findViewById<EditText>(R.id.authPassword)
+        val buttonChangeVisiblePassword = findViewById<ImageButton>(R.id.authPasswordVisible)
         password.setOnFocusChangeListener { _: View, _: Boolean ->
             changeButtonVisible(password, buttonChangeVisiblePassword)
         }
@@ -99,7 +97,7 @@ class AuthActivity : AppCompatActivity(), IAuthView {
     }
 
     override fun getUserData() {
-        authPresenter.gettingUserData(mainLogin.text.toString(), mainPassword.text.toString())
+        authPresenter.gettingUserData(authLogin.text.toString(), authPassword.text.toString())
     }
 
     override fun getUserDataFB() {
@@ -121,7 +119,7 @@ class AuthActivity : AppCompatActivity(), IAuthView {
     }
 
     override fun registryChangeActivity() {
-        val intent = Intent(this, MainRecPopActivity::class.java)
+        val intent = Intent(this, MainRecommendationActivity::class.java)
         startActivity(intent)
     }
 

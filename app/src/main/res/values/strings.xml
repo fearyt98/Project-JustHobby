@@ -38,4 +38,5 @@
     <string name="courses">Курсы</string>
     <string name="calendar">Календарь</string>
     <string name="bookmarks">Закладки</string>
+    <string name="search">Поиск</string>
 </resources>

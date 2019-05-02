@@ -26,7 +26,7 @@
                       android:layout_height="wrap_content"
                       android:orientation="vertical"
                       android:gravity="center">
-            <LinearLayout android:layout_width="wrap_content"
+            <LinearLayout android:layout_width="match_parent"
                           android:layout_height="wrap_content"
                           android:orientation="vertical">
                 <TextView style="@style/Label"
@@ -37,18 +37,19 @@
                           android:inputType="textEmailAddress"
                           tools:ignore="LabelFor,UnusedAttribute"/>
             </LinearLayout>
-            <LinearLayout android:layout_width="wrap_content"
+            <LinearLayout android:layout_width="match_parent"
                           android:layout_height="wrap_content"
                           android:orientation="vertical">
                 <TextView style="@style/Label"
                           android:text="@string/password"/>
-                <FrameLayout android:layout_width="wrap_content"
+                <FrameLayout android:layout_width="match_parent"
                              android:layout_height="wrap_content">
                     <EditText android:id="@+id/registryPassword"
                               style="@style/EditText"
+                              android:paddingRight="64dp"
                               android:autofillHints="email"
                               android:inputType="textPassword"
-                              tools:ignore="LabelFor,UnusedAttribute"/>
+                              tools:ignore="LabelFor,RtlSymmetry,UnusedAttribute"/>
                     <ImageButton android:id="@+id/registryPasswordVisible"
                                  android:layout_width="wrap_content"
                                  android:layout_height="wrap_content"
@@ -62,18 +63,19 @@
                                  android:contentDescription="@string/hide_show_password"/>
                 </FrameLayout>
             </LinearLayout>
-            <LinearLayout android:layout_width="wrap_content"
+            <LinearLayout android:layout_width="match_parent"
                           android:layout_height="wrap_content"
                           android:orientation="vertical">
                 <TextView style="@style/Label"
                           android:text="@string/confirm_password"/>
-                <FrameLayout android:layout_width="wrap_content"
+                <FrameLayout android:layout_width="match_parent"
                              android:layout_height="wrap_content">
                     <EditText android:id="@+id/registryConfirmPassword"
                               style="@style/EditText"
+                              android:paddingRight="64dp"
                               android:autofillHints="email"
                               android:inputType="textPassword"
-                              tools:ignore="LabelFor,UnusedAttribute"/>
+                              tools:ignore="LabelFor,RtlSymmetry,UnusedAttribute"/>
                     <ImageButton android:id="@+id/registryConfirmPasswordVisible"
                                  android:layout_width="wrap_content"
                                  android:layout_height="wrap_content"

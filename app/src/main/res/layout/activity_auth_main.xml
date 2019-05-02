@@ -7,7 +7,7 @@
             android:background="@color/colorPrimary"
             android:fitsSystemWindows="true"
             android:fillViewport="true">
-    <LinearLayout android:id="@+id/main"
+    <LinearLayout android:id="@+id/auth"
                   android:layout_width="match_parent"
                   android:layout_height="wrap_content"
                   android:gravity="center"
@@ -26,30 +26,31 @@
                       android:layout_height="wrap_content"
                       android:orientation="vertical"
                       android:gravity="center">
-            <LinearLayout android:layout_width="wrap_content"
+            <LinearLayout android:layout_width="match_parent"
                           android:layout_height="wrap_content"
                           android:orientation="vertical">
                 <TextView style="@style/Label"
                           android:text="@string/email"/>
-                <EditText android:id="@+id/mainLogin"
+                <EditText android:id="@+id/authLogin"
                           style="@style/EditText"
                           android:autofillHints="email"
                           android:inputType="textEmailAddress"
                           tools:ignore="LabelFor,UnusedAttribute"/>
             </LinearLayout>
-            <LinearLayout android:layout_width="wrap_content"
+            <LinearLayout android:layout_width="match_parent"
                           android:layout_height="wrap_content"
                           android:orientation="vertical">
                 <TextView style="@style/Label"
                           android:text="@string/password"/>
-                <FrameLayout android:layout_width="wrap_content"
+                <FrameLayout android:layout_width="match_parent"
                              android:layout_height="wrap_content">
-                    <EditText android:id="@+id/mainPassword"
+                    <EditText android:id="@+id/authPassword"
                               style="@style/EditText"
+                              android:paddingRight="64dp"
                               android:autofillHints="email"
                               android:inputType="textPassword"
-                              tools:ignore="LabelFor,UnusedAttribute"/>
-                    <ImageButton android:id="@+id/mainPasswordVisible"
+                              tools:ignore="LabelFor,RtlSymmetry,UnusedAttribute"/>
+                    <ImageButton android:id="@+id/authPasswordVisible"
                                  android:layout_width="wrap_content"
                                  android:layout_height="wrap_content"
                                  android:layout_gravity="end|center_vertical"
@@ -62,11 +63,11 @@
                                  android:contentDescription="@string/hide_show_password"/>
                 </FrameLayout>
             </LinearLayout>
-            <LinearLayout android:layout_width="wrap_content"
+            <LinearLayout android:layout_width="match_parent"
                           android:layout_height="wrap_content"
                           android:orientation="vertical">
                 <TextView style="@style/Caption1"
-                          android:id="@+id/mainForget"
+                          android:id="@+id/authForget"
                           android:layout_width="wrap_content"
                           android:layout_height="wrap_content"
                           android:paddingTop="0.5dp"
@@ -76,7 +77,7 @@
                           android:text="@string/forget"
                           android:layout_gravity="end"
                           tools:ignore="RtlSymmetry"/>
-                <Button android:id="@+id/mainEnterButton"
+                <Button android:id="@+id/authEnterButton"
                         style="@style/ButtonWhite"
                         android:text="@string/sign_in"/>
             </LinearLayout>
@@ -94,16 +95,16 @@
                     android:layout_gravity="center"
                     android:rowCount="1"
                     android:columnCount="3">
-            <Button android:id="@+id/mainVkEnter"
+            <Button android:id="@+id/authVkEnter"
                     android:layout_width="64dp"
                     android:layout_height="64dp"
                     android:background="@drawable/btn_circle_start_vk_def"
                     android:layout_marginEnd="16dp"/>
-            <Button android:id="@+id/mainGoogleEnter"
+            <Button android:id="@+id/authGoogleEnter"
                     android:layout_width="64dp"
                     android:layout_height="64dp"
                     android:background="@drawable/btn_circle_start_google_def"/>
-            <Button android:id="@+id/mainFacebookEnter"
+            <Button android:id="@+id/authFacebookEnter"
                     android:layout_width="64dp"
                     android:layout_height="64dp"
                     android:background="@drawable/btn_circle_start_fb_def"
@@ -114,7 +115,7 @@
                       android:layout_marginTop="8dp"
                       android:orientation="vertical"
                       android:gravity="center_horizontal|bottom">
-            <TextView android:id="@+id/mainRegistry"
+            <TextView android:id="@+id/authRegistry"
                       style="@style/BtnBottomFirstScreens"
                       android:text="@string/sign_up"
                       android:shadowColor="#66000000"

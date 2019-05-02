@@ -1,12 +1,11 @@
-package com.aurimteam.justhobby.Main.RecomPopularPageViewerActivity
+package com.aurimteam.justhobby.Main.RecommendationPageViewerActivity
 
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
-import com.aurimteam.justhobby.Main.RecomPopularPageViewerActivity.NearUserPlaces.NearUserPlacesFragment
-import com.aurimteam.justhobby.Main.RecomPopularPageViewerActivity.PopularCourses.PopularCoursesFragment
+import com.aurimteam.justhobby.Main.RecommendationPageViewerActivity.PopularCourses.PopularCoursesFragment
 
-class RecPopViewPagerAdapter(fragmentManager: FragmentManager) : FragmentPagerAdapter(fragmentManager) {
+class RecommendationViewPagerAdapter(fragmentManager: FragmentManager) : FragmentPagerAdapter(fragmentManager) {
     private val COUNT_FRAGMENTS = 2
     override fun getItem(position: Int): Fragment? {
         var fragment: Fragment? = null

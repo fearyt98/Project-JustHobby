@@ -1,7 +1,7 @@
-package com.aurimteam.justhobby.Main.RecomPopularPageViewerActivity.PopularCourses
+package com.aurimteam.justhobby.Main.RecommendationPageViewerActivity.PopularCourses
 
-import com.aurimteam.justhobby.Main.RecomPopularPageViewerActivity.FragmentsInterfaces.IPopularCoursesModel
-import com.aurimteam.justhobby.Main.RecomPopularPageViewerActivity.FragmentsInterfaces.IPopularCoursesView
+import com.aurimteam.justhobby.Main.RecommendationPageViewerActivity.FragmentsInterfaces.IPopularCoursesModel
+import com.aurimteam.justhobby.Main.RecommendationPageViewerActivity.FragmentsInterfaces.IPopularCoursesView
 import com.aurimteam.justhobby.Response.CourseResponse
 
 class PopularCoursesPresenter(private var view: IPopularCoursesView?, private val model: IPopularCoursesModel?) :

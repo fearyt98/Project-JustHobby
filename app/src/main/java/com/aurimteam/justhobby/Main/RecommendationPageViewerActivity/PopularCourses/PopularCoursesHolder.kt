@@ -1,10 +1,9 @@
-package com.aurimteam.justhobby.Main.RecomPopularPageViewerActivity.PopularCourses
+package com.aurimteam.justhobby.Main.RecommendationPageViewerActivity.PopularCourses
 
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import com.aurimteam.justhobby.Response.IdentifierResponse
 import kotlinx.android.synthetic.main.activity_card_course.view.*
-import java.sql.Timestamp
 
 class PopularCoursesHolder(view: View) : RecyclerView.ViewHolder(view) {
     fun bind(
