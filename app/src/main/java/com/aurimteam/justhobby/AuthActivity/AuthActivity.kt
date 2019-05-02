@@ -67,10 +67,7 @@ class AuthActivity : AppCompatActivity(), IAuthView {
             changeVisiblePassword(password, buttonChangeVisiblePassword)
         }
     }
-    // CLEAR SCREEN ADD
-    // DST DST_ATOP DST_OUT DST_IN DST_OVER
-    // DARKEN LIGHTEN MULTIPLY
-    private val mode = PorterDuff.Mode.SRC
+
     private fun changeButtonVisible(password: EditText, btn: ImageButton) {
         if (password.isFocused) {
             btn.setColorFilter(ContextCompat.getColor(this, R.color.colorPrimary))
