@@ -1,4 +1,4 @@
-package com.aurimteam.justhobby.Main.RecomPopularPageViewerActivity.PopularCourses
+package com.aurimteam.justhobby.Main.RecommendationPageViewerActivity.PopularCourses
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater

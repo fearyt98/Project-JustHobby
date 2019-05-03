@@ -1,4 +1,4 @@
-package com.aurimteam.justhobby.Main.RecomPopularPageViewerActivity.FragmentsInterfaces
+package com.aurimteam.justhobby.Main.RecommendationPageViewerActivity.FragmentsInterfaces
 
 import com.aurimteam.justhobby.Response.CourseResponse
 

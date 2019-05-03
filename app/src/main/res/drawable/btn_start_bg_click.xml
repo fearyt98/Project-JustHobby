@@ -62,7 +62,6 @@
     <!-- Background -->
     <item>
         <shape>
-            <size android:width="328dp"/>
             <solid android:color="@color/whiteTop"/>
             <corners android:radius="5dp"/>
         </shape>

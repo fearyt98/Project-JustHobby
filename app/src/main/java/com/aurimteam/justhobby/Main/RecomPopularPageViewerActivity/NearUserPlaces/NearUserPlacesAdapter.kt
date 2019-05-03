@@ -1,2 +1,0 @@
-package com.aurimteam.justhobby.Main.RecomPopularPageViewerActivity.NearUserPlaces
-

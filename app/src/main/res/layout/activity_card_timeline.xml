@@ -16,13 +16,13 @@
               android:layout_marginTop="8dp"
               android:layout_marginBottom="8dp"
               android:layout_gravity="center_horizontal"
-              android:background="@drawable/card_timeline_circle"/>
+              android:background="@drawable/circle"/>
         <View android:layout_width="2dp"
               android:layout_height="0dp"
               android:id="@+id/cardTimelineLineLast"
               android:layout_gravity="center_horizontal"
               android:layout_weight="1"
-              android:background="@drawable/card_timeline_circle"/>
+              android:background="@drawable/circle"/>
     </LinearLayout>
     <android.support.constraint.ConstraintLayout android:layout_width="match_parent"
                                                  android:layout_height="wrap_content"
