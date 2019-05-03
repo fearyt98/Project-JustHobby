@@ -1,5 +1,7 @@
 package com.aurimteam.justhobby.Main.RecommendationPageViewerActivity.FragmentsInterfaces
 
+import com.aurimteam.justhobby.Response.CourseResponse
+
 interface INearCoursesView {
-    fun showNearUserPlaces()
+    fun showNearUserCourses(courses: List<CourseResponse>)
 }

@@ -27,8 +27,8 @@ class PopularCoursesFragment : Fragment(), IPopularCoursesView {
     override fun onStart() {
         super.onStart()
         presenter.getPopularCourses()
-        PopularCoursesRecyclerView.layoutManager = LinearLayoutManager(context)
-        PopularCoursesRecyclerView.adapter = adapter
+        CoursesRecyclerView.layoutManager = LinearLayoutManager(context)
+        CoursesRecyclerView.adapter = adapter
     }
 
     override fun onDestroy() {

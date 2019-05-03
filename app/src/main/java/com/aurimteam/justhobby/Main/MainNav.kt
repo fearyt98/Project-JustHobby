@@ -7,6 +7,10 @@ import com.aurimteam.justhobby.R
 import kotlinx.android.synthetic.main.activity_main_nav.*
 import android.support.v4.app.Fragment
 import com.aurimteam.justhobby.Main.HomeActivity.HomeTimeLineFragment
+import com.aurimteam.justhobby.Main.RecommendationPageViewerActivity.MainRecommendationActivity
+import android.content.Intent
+import com.aurimteam.justhobby.Main.RecommendationPageViewerActivity.PopularCourses.PopularCoursesFragment
+
 
 class MainNav : AppCompatActivity() {
 
@@ -17,6 +21,7 @@ class MainNav : AppCompatActivity() {
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_search -> {
+loadFragment(PopularCoursesFragment())
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_notifications -> {

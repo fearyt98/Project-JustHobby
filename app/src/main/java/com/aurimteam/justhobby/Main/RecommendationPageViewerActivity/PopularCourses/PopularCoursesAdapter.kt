@@ -1,22 +1,22 @@
 package com.aurimteam.justhobby.Main.RecommendationPageViewerActivity.PopularCourses
 
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import com.aurimteam.justhobby.R
 import com.aurimteam.justhobby.Response.CourseResponse
+import kotlinx.android.synthetic.main.activity_card_course.view.*
 
 class PopularCoursesAdapter : RecyclerView.Adapter<PopularCoursesHolder>() {
+
     private val coursesList: MutableList<CourseResponse> = mutableListOf()
 
     override fun getItemCount(): Int = coursesList.size
     override fun onCreateViewHolder(parent: ViewGroup, p1: Int): PopularCoursesHolder =
         PopularCoursesHolder(
-            LayoutInflater.from(parent.context).inflate(
-                R.layout.activity_card_course,
-                parent,
-                false
-            )
+            LayoutInflater.from(parent.context).inflate(R.layout.activity_card_course, parent, false)
         )
 
     override fun onBindViewHolder(holder: PopularCoursesHolder, position: Int) {
@@ -28,11 +28,26 @@ class PopularCoursesAdapter : RecyclerView.Adapter<PopularCoursesHolder>() {
             coursesList[position].company,
             coursesList[position].category
         )
+        holder.itemView.cardCourse.setOnClickListener { detailInfoCourse() }
+        holder.itemView.btnBookmarkCourse.setOnClickListener { addBookmark() }
+        holder.itemView.btnGeoCourse.setOnClickListener { searchCourseOnMap() }
     }
 
     fun onDataChange(courses: List<CourseResponse>) {
-        this.coursesList.clear()
-        this.coursesList.addAll(courses)
+        coursesList.clear()
+        coursesList.addAll(courses)
         notifyDataSetChanged()
+    }
+
+    private fun detailInfoCourse() {
+        Log.d("detailInfoCourse","granted")
+    }
+
+    private fun addBookmark() {
+        Log.d("addBookmark","granted")
+    }
+
+    private fun searchCourseOnMap() {
+        Log.d("searchCourseOnMap","granted")
     }
 }

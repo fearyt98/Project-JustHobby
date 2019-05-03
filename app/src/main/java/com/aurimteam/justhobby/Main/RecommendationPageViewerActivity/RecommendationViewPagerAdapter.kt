@@ -3,6 +3,7 @@ package com.aurimteam.justhobby.Main.RecommendationPageViewerActivity
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
+import com.aurimteam.justhobby.Main.RecommendationPageViewerActivity.NearUserCourses.NearUserCoursesFragment
 import com.aurimteam.justhobby.Main.RecommendationPageViewerActivity.PopularCourses.PopularCoursesFragment
 
 class RecommendationViewPagerAdapter(fragmentManager: FragmentManager) : FragmentPagerAdapter(fragmentManager) {
@@ -11,7 +12,7 @@ class RecommendationViewPagerAdapter(fragmentManager: FragmentManager) : Fragmen
         var fragment: Fragment? = null
         when (position) {
             0 -> fragment =
-                PopularCoursesFragment()
+                NearUserCoursesFragment()
             1 -> fragment =
                 PopularCoursesFragment()
         }
@@ -21,7 +22,7 @@ class RecommendationViewPagerAdapter(fragmentManager: FragmentManager) : Fragmen
     override fun getCount(): Int = COUNT_FRAGMENTS
     override fun getPageTitle(position: Int): CharSequence? {
         if (position == 0)
-            return "ПОПУЛЯРНОЕ"
-        else return "РЯДОМ"
+            return "РЯДОМ С ВАМИ"
+        else return "ПОПУЛЯРНОЕ"
     }
 }
