@@ -14,7 +14,7 @@ import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
 import android.widget.*
 import com.aurimteam.justhobby.Main.MainNav
-import com.aurimteam.justhobby.Main.RecommendationPageViewerActivity.MainRecommendationActivity
+import com.aurimteam.justhobby.Main.RecommendationPageViewerActivity.MainRecommendationFragment
 import com.aurimteam.justhobby.RecoveryActivity.RecoveryActivity
 
 class AuthActivity : AppCompatActivity(), IAuthView {
@@ -119,7 +119,7 @@ class AuthActivity : AppCompatActivity(), IAuthView {
     }
 
     override fun registryChangeActivity() {
-        val intent = Intent(this, MainRecommendationActivity::class.java)
+        val intent = Intent(this, RegistryActivity::class.java)
         startActivity(intent)
     }
 

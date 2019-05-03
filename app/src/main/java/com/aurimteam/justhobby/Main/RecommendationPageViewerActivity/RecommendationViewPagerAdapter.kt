@@ -21,8 +21,6 @@ class RecommendationViewPagerAdapter(fragmentManager: FragmentManager) : Fragmen
 
     override fun getCount(): Int = COUNT_FRAGMENTS
     override fun getPageTitle(position: Int): CharSequence? {
-        if (position == 0)
-            return "РЯДОМ С ВАМИ"
-        else return "ПОПУЛЯРНОЕ"
+        return if (position == 0) "РЯДОМ С ВАМИ" else "ПОПУЛЯРНОЕ"
     }
 }
