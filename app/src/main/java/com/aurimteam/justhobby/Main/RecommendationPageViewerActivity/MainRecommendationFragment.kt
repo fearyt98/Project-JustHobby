@@ -17,7 +17,7 @@ import android.support.v4.view.ViewPager
 
 class MainRecommendationFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater!!.inflate(R.layout.activity_main_recommendation, container, false)
+        val view = inflater.inflate(R.layout.activity_main_recommendation, container, false)
         val recommendationViewPager = view.findViewById<ViewPager>(R.id.recPopViewPager)
         val viewPagerAdapter = RecommendationViewPagerAdapter(childFragmentManager)
         recommendationViewPager.adapter = viewPagerAdapter
