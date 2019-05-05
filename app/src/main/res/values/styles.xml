@@ -31,7 +31,7 @@
         <item name="android:textAppearance">@style/Body1</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:paddingTop">27dp
+        <item name="android:paddingTop">25dp
         </item><!-- 12 (padding in edittext) + 15 (full padding in background) -->
         <item name="android:paddingBottom">20dp</item><!-- 12 + 8 -->
         <item name="android:paddingLeft">31dp</item><!-- 16 + 15 -->

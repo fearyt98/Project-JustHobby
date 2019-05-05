@@ -4,10 +4,9 @@
              android:layout_height="wrap_content"
              android:layout_width="match_parent"
              android:id="@+id/cardCourse"
-             android:paddingLeft="7dp"
-             android:paddingRight="7dp"
-             android:paddingTop="1dp"
-             android:paddingBottom="1dp">
+             android:paddingLeft="2dp"
+             android:paddingRight="2dp"
+             android:paddingTop="1dp">
     <TableRow android:background="@drawable/card_course_bg">
         <LinearLayout android:layout_width="48dp"
                       android:layout_height="match_parent"

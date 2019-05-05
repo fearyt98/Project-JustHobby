@@ -15,6 +15,20 @@
     <string name="notifications">Уведомления</string>
     <string name="smart_search">Гибкий поиск</string>
     <string name="many_courses">Множество курсов</string>
+    <string name="settings">Настройки</string>
+    <string name="user_account_settings">Учетная запись</string>
+    <string name="feedback_settings">Обратная связь</string>
+    <string name="about_app_settings">О приложении</string>
+    <string name="exit_account_settings">Выйти из учетной записи</string>
+    <string name="title_activity_home_main">HomeMainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="hide_show_password">Скрыть/Показать пароль</string>
+    <string name="courses">Курсы</string>
+    <string name="calendar">Календарь</string>
+    <string name="bookmarks">Закладки</string>
+    <string name="search">Поиск</string>
     <string name="about_recovery">
         Укажите E-mail, к которому привязан аккаунт. Мы пришлем на него\n письмо с инструкцией\n восстановления.
     </string>
@@ -30,13 +44,4 @@
         Огромный каталог отражает все\n сферы дополнительного\n образования: наука, искусство,\n спорт, техническое
         творчество,\n иностранные языки и т.д.
     </string>
-    <string name="title_activity_home_main">HomeMainActivity</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
-    <string name="hide_show_password">Скрыть/Показать пароль</string>
-    <string name="courses">Курсы</string>
-    <string name="calendar">Календарь</string>
-    <string name="bookmarks">Закладки</string>
-    <string name="search">Поиск</string>
 </resources>

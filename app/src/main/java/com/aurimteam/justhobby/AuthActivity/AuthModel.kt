@@ -2,7 +2,7 @@ package com.aurimteam.justhobby.AuthActivity
 
 import com.aurimteam.justhobby.Api.Api
 import com.aurimteam.justhobby.App
-import com.aurimteam.justhobby.Body.AuthBody
+import com.aurimteam.justhobby.Response.AuthBody
 import com.aurimteam.justhobby.Response.AuthResponse
 import org.json.JSONObject
 import retrofit2.Call

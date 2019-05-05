@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:background="@color/whiteTop">
+    <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="60dp"
+                  android:background="@color/colorPrimary">
+        <TextView android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_gravity="center"
+                  android:gravity="center"
+                  android:text="@string/settings"
+                  android:textColor="@color/whiteTop"
+                  style="@style/H2.Medium"/>
+    </LinearLayout>
+    <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:orientation="vertical"
+                  android:paddingLeft="15dp"
+                  android:paddingTop="15dp">
+        <LinearLayout android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:orientation="horizontal"
+                      android:id="@+id/notificationItemSettings">
+            <ImageView android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:tint="@color/gray"
+                       app:srcCompat="@drawable/ic_notifications_24dp"
+                       android:background="@android:color/transparent"/>
+            <TextView android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_gravity="center"
+                      android:paddingStart="10dp"
+                      android:textColor="@color/grafitText"
+                      android:text="@string/notifications"/>
+        </LinearLayout>
+        <LinearLayout android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:orientation="horizontal"
+                      android:id="@+id/accountItemSettings"
+                      android:paddingTop="15dp">
+            <ImageView android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:tint="@color/gray"
+                       app:srcCompat="@drawable/ic_account_24dp"
+                       android:background="@android:color/transparent"/>
+            <TextView android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:paddingStart="10dp"
+                      android:textColor="@color/grafitText"
+                      android:text="@string/user_account_settings"/>
+        </LinearLayout>
+        <LinearLayout android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:orientation="horizontal"
+                      android:paddingTop="15dp"
+                      android:id="@+id/feedbackItemSettings">
+            <ImageView android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:tint="@color/gray"
+                       app:srcCompat="@drawable/ic_chat_24dp"
+                       android:background="@android:color/transparent"/>
+            <TextView android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:paddingStart="10dp"
+                      android:textColor="@color/grafitText"
+                      android:text="@string/feedback_settings"/>
+        </LinearLayout>
+        <LinearLayout android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:orientation="horizontal"
+                      android:paddingTop="15dp"
+                      android:id="@+id/aboutItemSettings">
+            <ImageView android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:tint="@color/gray"
+                       app:srcCompat="@drawable/ic_info_24dp"
+                       android:background="@android:color/transparent"/>
+            <TextView android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:paddingStart="10dp"
+                      android:textColor="@color/grafitText"
+                      android:text="@string/about_app_settings"/>
+        </LinearLayout>
+        <LinearLayout android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:orientation="horizontal"
+                      android:paddingTop="15dp"
+                      android:id="@+id/leaveItemSettings">
+            <TextView android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:textColor="@color/redText"
+                      android:text="@string/exit_account_settings"/>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

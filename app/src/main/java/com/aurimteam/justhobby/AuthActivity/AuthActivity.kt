@@ -14,7 +14,6 @@ import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
 import android.widget.*
 import com.aurimteam.justhobby.Main.MainNav
-import com.aurimteam.justhobby.Main.RecommendationPageViewerActivity.MainRecommendationFragment
 import com.aurimteam.justhobby.RecoveryActivity.RecoveryActivity
 
 class AuthActivity : AppCompatActivity(), IAuthView {
