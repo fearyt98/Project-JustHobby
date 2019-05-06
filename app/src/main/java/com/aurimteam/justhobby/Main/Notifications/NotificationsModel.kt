@@ -113,7 +113,7 @@ class NotificationsModel : INotificationsModel {
                 13,
                 "май",
                 1557117152,
-                true
+                false
             ),
             NotificationResponse(
                 "Восточные танцы",
@@ -121,7 +121,7 @@ class NotificationsModel : INotificationsModel {
                 14,
                 "май",
                 1557117152,
-                true
+                false
             ),
             NotificationResponse(
                 "Восточные танцы",
@@ -129,7 +129,7 @@ class NotificationsModel : INotificationsModel {
                 15,
                 "май",
                 1557117152,
-                true
+                false
             ),
             NotificationResponse(
                 "Восточные танцы",
@@ -137,7 +137,7 @@ class NotificationsModel : INotificationsModel {
                 16,
                 "май",
                 1557117152,
-                true
+                false
             )
         )
         /*App.retrofit
