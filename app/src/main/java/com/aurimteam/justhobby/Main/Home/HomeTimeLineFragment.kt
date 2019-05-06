@@ -10,13 +10,13 @@ import android.widget.ImageButton
 import com.aurimteam.justhobby.Main.Home.UserBookmarksMain.UserBookmarksFragment
 import com.aurimteam.justhobby.R
 import com.aurimteam.justhobby.Response.TimelineResponses
-import kotlinx.android.synthetic.main.activity_home_timeline.*
+import kotlinx.android.synthetic.main.fragment_main_home_timeline.*
 import java.text.SimpleDateFormat
 import java.util.*
 
 class HomeTimeLineFragment : Fragment(), IHomeView {
 
-    private val presenter = HomeMainTimeLinePresenter(this, HomeTimeLineModel())
+    private val presenter = HomeTimeLinePresenter(this, HomeTimeLineModel())
     private var adapter = HomeTimeLineAdapter()
 
     override fun showTimeLineEvents(eventsTimeLine: List<TimelineResponses>) {
@@ -24,7 +24,7 @@ class HomeTimeLineFragment : Fragment(), IHomeView {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.activity_home_timeline, container, false)
+        val view = inflater.inflate(R.layout.fragment_main_home_timeline, container, false)
         view.findViewById<ImageButton>(R.id.homeBookmarks).setOnClickListener { openUserBookmarks() }
         return view
     }
@@ -32,8 +32,8 @@ class HomeTimeLineFragment : Fragment(), IHomeView {
     override fun onStart() {
         super.onStart()
         presenter.getEventsTimeLine()
-        eventsRecyclerView.layoutManager = LinearLayoutManager(context)
-        eventsRecyclerView.adapter = adapter
+        homeEventsRecyclerView.layoutManager = LinearLayoutManager(context)
+        homeEventsRecyclerView.adapter = adapter
     }
 
     override fun onResume() {
@@ -51,7 +51,7 @@ class HomeTimeLineFragment : Fragment(), IHomeView {
         fragmentManager!!
             .beginTransaction()
             .addToBackStack(null)
-            .replace(R.id.fragment_container, UserBookmarksFragment())
+            .replace(R.id.mainNavContainerFragment, UserBookmarksFragment())
             .commit()
     }
 }

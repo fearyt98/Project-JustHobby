@@ -2,21 +2,21 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
                                              xmlns:app="http://schemas.android.com/apk/res-auto"
                                              xmlns:tools="http://schemas.android.com/tools"
-                                             android:id="@+id/container_home_main"
+                                             android:id="@+id/mainNav"
                                              android:layout_width="match_parent"
                                              android:layout_height="match_parent"
                                              tools:context=".Main.MainNav">
     <FrameLayout
-            android:id="@+id/fragment_container"
+            android:id="@+id/mainNavContainerFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginBottom="48dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/navigation"/>
+            app:layout_constraintBottom_toTopOf="@id/mainNavNavigation"/>
 
-    <android.support.design.widget.BottomNavigationView android:id="@+id/navigation"
+    <android.support.design.widget.BottomNavigationView android:id="@+id/mainNavNavigation"
                                                         android:layout_width="0dp"
                                                         android:layout_height="wrap_content"
                                                         android:layout_marginEnd="0dp"

@@ -45,9 +45,8 @@
                 <FrameLayout android:layout_width="match_parent"
                              android:layout_height="wrap_content">
                     <EditText android:id="@+id/registryPassword"
-                              android:paddingEnd="56dp"
+                              android:paddingEnd="64dp"
                               style="@style/EditText"
-                              android:paddingRight="64dp"
                               android:autofillHints="email"
                               android:inputType="textPassword"
                               tools:ignore="LabelFor,RtlSymmetry,UnusedAttribute"/>
@@ -72,9 +71,8 @@
                 <FrameLayout android:layout_width="match_parent"
                              android:layout_height="wrap_content">
                     <EditText android:id="@+id/registryConfirmPassword"
-                              android:paddingEnd="56dp"
+                              android:paddingEnd="64dp"
                               style="@style/EditText"
-                              android:paddingRight="64dp"
                               android:autofillHints="email"
                               android:inputType="textPassword"
                               tools:ignore="LabelFor,RtlSymmetry,UnusedAttribute"/>

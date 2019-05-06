@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.aurimteam.justhobby.R
 import com.aurimteam.justhobby.Response.CourseResponse
-import kotlinx.android.synthetic.main.activity_card_course.view.*
+import kotlinx.android.synthetic.main.fragment_card_course.view.*
 
 class UserBookmarksAdapter : RecyclerView.Adapter<UserBookmarksHolder>() {
 
@@ -23,13 +23,13 @@ class UserBookmarksAdapter : RecyclerView.Adapter<UserBookmarksHolder>() {
             userBookmarksList[position].category
         )
         holder.itemView.cardCourse.setOnClickListener { detailInfoCourse() }
-        holder.itemView.btnBookmarkCourse.setOnClickListener { deleteBookmark() }
-        holder.itemView.btnBookmarkCourse.setColorFilter(R.color.red)
-        holder.itemView.btnGeoCourse.setOnClickListener { searchCourseOnMap() }
+        holder.itemView.cardCourseBtnBookmark.setOnClickListener { deleteBookmark() }
+        holder.itemView.cardCourseBtnBookmark.setColorFilter(R.color.red)
+        holder.itemView.cardCourseBtnGeo.setOnClickListener { searchCourseOnMap() }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, p1: Int): UserBookmarksHolder = UserBookmarksHolder(
-        LayoutInflater.from(parent.context).inflate(R.layout.activity_card_course, parent, false)
+        LayoutInflater.from(parent.context).inflate(R.layout.fragment_card_course, parent, false)
     )
     fun onDataChange(bookmarks: List<CourseResponse>) {
         userBookmarksList.clear()

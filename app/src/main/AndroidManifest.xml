@@ -10,8 +10,8 @@
                  android:theme="@style/AppTheme">
         <activity android:name=".Main.Notifications.NotificationsFragment"></activity>
         <activity android:name=".Main.Home.UserBookmarksMain.UserBookmarksFragment"/>
-        <activity android:name=".Main.Settings.MainSettingsFragment"/>
-        <activity android:name=".Main.RecommendationPageViewer.MainRecommendationFragment"/>
+        <activity android:name=".Main.Settings.SettingsFragment"/>
+        <activity android:name=".Main.RecommendationPageViewer.RecommendationFragment"/>
         <activity android:name=".Main.MainNav"
                   android:label="@string/title_activity_home_main"/>
         <activity android:name=".AuthActivity.AuthActivity"

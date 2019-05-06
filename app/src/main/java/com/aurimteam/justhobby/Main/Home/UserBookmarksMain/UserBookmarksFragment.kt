@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import com.aurimteam.justhobby.R
 import com.aurimteam.justhobby.Response.CourseResponse
-import kotlinx.android.synthetic.main.activity_user_bookmarks_fragment.*
+import kotlinx.android.synthetic.main.fragment_user_bookmarks.*
 
 class UserBookmarksFragment : Fragment(), IUserBookmarksView {
 
@@ -22,16 +22,16 @@ class UserBookmarksFragment : Fragment(), IUserBookmarksView {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.activity_user_bookmarks_fragment, container, false)
-        view.findViewById<ImageButton>(R.id.btnBackTimeLineFragment).setOnClickListener { backToTimeLineFragment() }
+        val view = inflater.inflate(R.layout.fragment_user_bookmarks, container, false)
+        view.findViewById<ImageButton>(R.id.bookmarksBtnBackTimeLine).setOnClickListener { backToTimeLineFragment() }
         return view
     }
 
     override fun onStart() {
         super.onStart()
         presenter.getUserBookmarks()
-        userBookmarksRecyclerView.layoutManager = LinearLayoutManager(context)
-        userBookmarksRecyclerView.adapter = adapter
+        bookmarksRecyclerView.layoutManager = LinearLayoutManager(context)
+        bookmarksRecyclerView.adapter = adapter
     }
 
     override fun onDestroy() {

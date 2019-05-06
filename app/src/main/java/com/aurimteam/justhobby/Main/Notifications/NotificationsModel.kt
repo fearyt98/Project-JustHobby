@@ -12,132 +12,132 @@ class NotificationsModel : INotificationsModel {
     override fun getNotificationsData(onFinishedListener: OnFinishedListener) {
         val notifications: List<NotificationResponse> = listOf(
             NotificationResponse(
-                "privat",
-                "gfhfghfgfghfg",
+                "Восточные танцы",
+                "Текст уведомления. Он будет здесь. Вот так. А ты что хотел? :)",
                 1,
-                "jan",
-                Timestamp(100),
+                "май",
+                1557117152,
                 false
             ),
             NotificationResponse(
-                "privat",
-                "gfhfghfgfghfg",
+                "Восточные танцы",
+                "Текст уведомления. Он будет здесь. Вот так. А ты что хотел? :)",
                 2,
-                "jan",
-                Timestamp(100),
+                "май",
+                1557117152,
                 false
             ),
             NotificationResponse(
-                "privat",
-                "gfhfghfgfghfg",
+                "Восточные танцы",
+                "Текст уведомления. Он будет здесь. Вот так. А ты что хотел? :)",
                 3,
-                "jan",
-                Timestamp(100),
+                "май",
+                1557117152,
                 false
             ),
             NotificationResponse(
-                "privat",
-                "gfhfghfgfghfg",
+                "Восточные танцы",
+                "Текст уведомления. Он будет здесь. Вот так. А ты что хотел? :)",
                 4,
-                "jan",
-                Timestamp(100),
+                "май",
+                1557117152,
                 false
             ),
             NotificationResponse(
-                "privat",
-                "gfhfghfgfghfg",
+                "Восточные танцы",
+                "Текст уведомления. Он будет здесь. Вот так. А ты что хотел? :)",
                 5,
-                "jan",
-                Timestamp(100),
+                "май",
+                1557117152,
                 false
             ),
             NotificationResponse(
-                "privat",
-                "gfhfghfgfghfg",
+                "Восточные танцы",
+                "Текст уведомления. Он будет здесь. Вот так. А ты что хотел? :)",
                 6,
-                "jan",
-                Timestamp(100),
+                "май",
+                1557117152,
                 false
             ),
             NotificationResponse(
-                "privat",
-                "gfhfghfgfghfg",
+                "Восточные танцы",
+                "Текст уведомления. Он будет здесь. Вот так. А ты что хотел? :)",
                 7,
-                "jan",
-                Timestamp(100),
+                "май",
+                1557117152,
                 false
             ),
             NotificationResponse(
-                "privat",
-                "gfhfghfgfghfg",
+                "Восточные танцы",
+                "Текст уведомления. Он будет здесь. Вот так. А ты что хотел? :)",
                 8,
-                "jan",
-                Timestamp(100),
+                "май",
+                1557117152,
                 true
             ),
             NotificationResponse(
-                "privat",
-                "gfhfghfgfghfg",
+                "Восточные танцы",
+                "Текст уведомления. Он будет здесь. Вот так. А ты что хотел? :)",
                 9,
-                "jan",
-                Timestamp(100),
+                "май",
+                1557117152,
                 true
             ),
             NotificationResponse(
-                "privat",
-                "gfhfghfgfghfg",
+                "Восточные танцы",
+                "Текст уведомления. Он будет здесь. Вот так. А ты что хотел? :)",
                 10,
-                "jan",
-                Timestamp(100),
+                "май",
+                1557117152,
                 false
             ),
             NotificationResponse(
-                "privat",
-                "gfhfghfgfghfg",
+                "Восточные танцы",
+                "Текст уведомления. Он будет здесь. Вот так. А ты что хотел? :)",
                 11,
-                "jan",
-                Timestamp(100),
+                "май",
+                1557117152,
                 false
             ),
             NotificationResponse(
-                "privat",
-                "gfhfghfgfghfg",
+                "Восточные танцы",
+                "Текст уведомления. Он будет здесь. Вот так. А ты что хотел? :)",
                 12,
-                "jan",
-                Timestamp(100),
+                "май",
+                1557117152,
                 false
             ),
             NotificationResponse(
-                "privat",
-                "gfhfghfgfghfg",
+                "Восточные танцы",
+                "Текст уведомления. Он будет здесь. Вот так. А ты что хотел? :)",
                 13,
-                "jan",
-                Timestamp(100),
-                false
+                "май",
+                1557117152,
+                true
             ),
             NotificationResponse(
-                "privat",
-                "gfhfghfgfghfg",
+                "Восточные танцы",
+                "Текст уведомления. Он будет здесь. Вот так. А ты что хотел? :)",
                 14,
-                "jan",
-                Timestamp(100),
-                false
+                "май",
+                1557117152,
+                true
             ),
             NotificationResponse(
-                "privat",
-                "gfhfghfgfghfg",
+                "Восточные танцы",
+                "Текст уведомления. Он будет здесь. Вот так. А ты что хотел? :)",
                 15,
-                "jan",
-                Timestamp(100),
-                false
+                "май",
+                1557117152,
+                true
             ),
             NotificationResponse(
-                "privat",
-                "gfhfghfgfghfg",
+                "Восточные танцы",
+                "Текст уведомления. Он будет здесь. Вот так. А ты что хотел? :)",
                 16,
-                "jan",
-                Timestamp(100),
-                false
+                "май",
+                1557117152,
+                true
             )
         )
         /*App.retrofit

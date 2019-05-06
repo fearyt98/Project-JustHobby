@@ -13,6 +13,7 @@ class NotificationsOldAdapter : RecyclerView.Adapter<NotificationsHolder>() {
     override fun getItemCount(): Int = notifications.size
     override fun onBindViewHolder(holder: NotificationsHolder, position: Int) {
         holder.bind(
+            position == 0,
             notifications[position].title,
             notifications[position].description,
             notifications[position].day,
@@ -24,7 +25,7 @@ class NotificationsOldAdapter : RecyclerView.Adapter<NotificationsHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, p1: Int): NotificationsHolder =
         NotificationsHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.activity_card_notification, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.fragment_card_notification, parent, false)
         )
 
     fun onDataChange(notifications: List<NotificationResponse>) {

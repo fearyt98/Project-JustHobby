@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+    <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:orientation="vertical">
+        <FrameLayout android:layout_width="match_parent"
+                     android:layout_height="56dp"
+                     android:background="@color/colorPrimary"
+                     android:orientation="horizontal">
+            <TextView android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_gravity="center"
+                      android:gravity="center"
+                      android:text="@string/notifications"
+                      android:textColor="@color/whiteTop"
+                      style="@style/H2.Medium.UpperCase"/>
+            <ImageButton android:layout_width="wrap_content"
+                         android:layout_height="match_parent"
+                         android:layout_gravity="end"
+                         android:paddingEnd="20dp"
+                         android:id="@+id/notificationsBtnClear"
+                         android:tint="@color/whiteTop"
+                         app:srcCompat="@drawable/ic_delete_24dp"
+                         android:background="@android:color/transparent"
+                         android:contentDescription="@string/clear_notifications"
+                         tools:ignore="RtlSymmetry"/>
+        </FrameLayout>
+        <LinearLayout android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:orientation="vertical">
+            <TextView android:id="@+id/notificationsNewHeading"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_gravity="center"
+                      android:gravity="center"
+                      android:layout_marginTop="16dp"
+                      android:layout_marginBottom="16dp"
+                      android:paddingTop="3dp"
+                      android:paddingBottom="3dp"
+                      android:paddingStart="15dp"
+                      android:paddingEnd="15dp"
+                      android:textColor="@color/whiteText"
+                      android:text="@string/new_notification"
+                      android:background="@drawable/notification_activity_word"
+                      style="@style/Body2.Medium.UpperCase"/>
+            <android.support.v4.widget.NestedScrollView android:layout_width="match_parent"
+                                                        android:layout_height="match_parent">
+            <android.support.v7.widget.RecyclerView android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:id="@+id/notificationsNew"
+                                                    tools:listitem="@layout/fragment_card_notification"
+                                                    tools:itemCount="2"/>
+            </android.support.v4.widget.NestedScrollView>
+        </LinearLayout>
+        <LinearLayout android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:orientation="vertical">
+            <TextView android:id="@+id/notificationsOldHeading"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_gravity="center"
+                      android:gravity="center"
+                      android:layout_marginTop="16dp"
+                      android:layout_marginBottom="16dp"
+                      android:paddingTop="3dp"
+                      android:paddingBottom="3dp"
+                      android:paddingStart="15dp"
+                      android:paddingEnd="15dp"
+                      android:textColor="@color/whiteText"
+                      android:text="@string/old_notification"
+                      android:background="@drawable/notification_activity_word"
+                      style="@style/Body2.Medium.UpperCase"/>
+            <android.support.v4.widget.NestedScrollView android:layout_width="match_parent"
+                                                        android:layout_height="match_parent">
+                <android.support.v7.widget.RecyclerView android:layout_width="match_parent"
+                                                        android:layout_height="wrap_content"
+                                                        android:id="@+id/notificationsOld"
+                                                        tools:listitem="@layout/fragment_card_notification"/>
+            </android.support.v4.widget.NestedScrollView>
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

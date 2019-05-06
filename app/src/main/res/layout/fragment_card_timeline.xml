@@ -51,7 +51,7 @@
                       android:maxLines="1"
                       android:ellipsize="end"
                       android:singleLine="true"
-                      tools:ignore="RtlHardcoded"/>
+                      tools:ignore="HardcodedText,RtlHardcoded"/>
             <TextView style="@style/Caption1.Medium"
                       android:layout_width="match_parent"
                       android:layout_height="wrap_content"
@@ -61,7 +61,8 @@
                       android:maxLines="1"
                       android:ellipsize="end"
                       android:singleLine="true"
-                      android:textColor="@color/whiteText"/>
+                      android:textColor="@color/whiteText"
+                      tools:ignore="HardcodedText"/>
             <LinearLayout android:layout_width="match_parent"
                           android:layout_height="wrap_content"
                           android:orientation="horizontal"
@@ -82,13 +83,15 @@
                           android:maxLines="1"
                           android:ellipsize="end"
                           android:singleLine="true"
-                          android:textColor="@color/whiteText"/>
+                          android:textColor="@color/whiteText"
+                          tools:ignore="HardcodedText"/>
                 <TextView style="@style/Caption1.Medium"
                           android:layout_width="wrap_content"
                           android:layout_height="wrap_content"
                           android:id="@+id/cardTimelineAddress"
                           android:text=" (пр. Ленина, 157)"
-                          android:textColor="@color/whiteText"/>
+                          android:textColor="@color/whiteText"
+                          tools:ignore="HardcodedText"/>
             </LinearLayout>
         </LinearLayout>
         <LinearLayout android:id="@+id/cardTimelineTimeFull"
@@ -104,9 +107,10 @@
                       android:textColor="@color/grafitText"
                       android:paddingTop="2dp"
                       android:paddingBottom="2dp"
-                      android:paddingRight="8dp"
-                      android:paddingLeft="17dp"
-                      android:text="19:33"/>
+                      android:paddingEnd="8dp"
+                      android:paddingStart="17dp"
+                      android:text="19:33"
+                      tools:ignore="HardcodedText"/>
             <TextView style="@style/Caption3"
                       android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
@@ -115,8 +119,9 @@
                       android:layout_gravity="center"
                       android:paddingTop="2dp"
                       android:paddingBottom="2dp"
-                      android:paddingRight="8dp"
-                      android:text="До занятия 1 час"/>
+                      android:paddingEnd="8dp"
+                      android:text="До занятия 1 час"
+                      tools:ignore="HardcodedText,RtlSymmetry"/>
         </LinearLayout>
     </android.support.constraint.ConstraintLayout>
 </LinearLayout>

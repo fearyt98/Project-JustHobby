@@ -7,6 +7,6 @@ class NotificationResponse(
     val description: String,
     val day: Int,
     val month: String,
-    val time: Timestamp,
+    val time: Long,
     var new: Boolean
 )

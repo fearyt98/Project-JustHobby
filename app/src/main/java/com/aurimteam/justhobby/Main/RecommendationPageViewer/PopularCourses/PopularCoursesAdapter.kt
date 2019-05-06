@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.aurimteam.justhobby.R
 import com.aurimteam.justhobby.Response.CourseResponse
-import kotlinx.android.synthetic.main.activity_card_course.view.*
+import kotlinx.android.synthetic.main.fragment_card_course.view.*
 
 class PopularCoursesAdapter : RecyclerView.Adapter<PopularCoursesHolder>() {
 
@@ -15,7 +15,7 @@ class PopularCoursesAdapter : RecyclerView.Adapter<PopularCoursesHolder>() {
     override fun getItemCount(): Int = coursesList.size
     override fun onCreateViewHolder(parent: ViewGroup, p1: Int): PopularCoursesHolder =
         PopularCoursesHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.activity_card_course, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.fragment_card_course, parent, false)
         )
 
     override fun onBindViewHolder(holder: PopularCoursesHolder, position: Int) {
@@ -28,8 +28,8 @@ class PopularCoursesAdapter : RecyclerView.Adapter<PopularCoursesHolder>() {
             coursesList[position].category
         )
         holder.itemView.cardCourse.setOnClickListener { detailInfoCourse() }
-        holder.itemView.btnBookmarkCourse.setOnClickListener { addBookmark() }
-        holder.itemView.btnGeoCourse.setOnClickListener { searchCourseOnMap() }
+        holder.itemView.cardCourseBtnBookmark.setOnClickListener { addBookmark() }
+        holder.itemView.cardCourseBtnGeo.setOnClickListener { searchCourseOnMap() }
     }
 
     fun onDataChange(courses: List<CourseResponse>) {

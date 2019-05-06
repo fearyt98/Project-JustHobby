@@ -3,7 +3,7 @@ package com.aurimteam.justhobby.Main.Home
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import com.aurimteam.justhobby.R
-import kotlinx.android.synthetic.main.activity_card_timeline.view.*
+import kotlinx.android.synthetic.main.fragment_card_timeline.view.*
 
 
 class TimeLineHolder(view: View) : RecyclerView.ViewHolder(view) {

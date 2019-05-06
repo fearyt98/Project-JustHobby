@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import com.aurimteam.justhobby.Main.RecommendationPageViewer.FragmentsInterfaces.INearCoursesView
 import com.aurimteam.justhobby.R
 import com.aurimteam.justhobby.Response.CourseResponse
-import kotlinx.android.synthetic.main.activity_near_user_courses_fragment.*
+import kotlinx.android.synthetic.main.fragment_near_user_courses.*
 
 class NearUserCoursesFragment : Fragment(), INearCoursesView {
 
@@ -17,7 +17,7 @@ class NearUserCoursesFragment : Fragment(), INearCoursesView {
     private var adapter = NearUserCoursesAdapter()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.activity_near_user_courses_fragment, container, false)
+        return inflater.inflate(R.layout.fragment_near_user_courses, container, false)
     }
 
     override fun showNearUserCourses(courses: List<CourseResponse>) {
@@ -27,8 +27,8 @@ class NearUserCoursesFragment : Fragment(), INearCoursesView {
     override fun onStart() {
         super.onStart()
         presenter.getNearCourses()
-        nearPlacesRecyclerView.layoutManager = LinearLayoutManager(context)
-        nearPlacesRecyclerView.adapter = adapter
+        nearCoursesRecyclerView.layoutManager = LinearLayoutManager(context)
+        nearCoursesRecyclerView.adapter = adapter
     }
 
     override fun onDestroy() {

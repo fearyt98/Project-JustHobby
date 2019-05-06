@@ -11,14 +11,13 @@
               android:focusableInTouchMode="true">
     <FrameLayout android:layout_width="match_parent"
                  android:layout_height="wrap_content">
-        <EditText android:id="@+id/searchBar"
+        <EditText android:id="@+id/recommendationSearch"
                   style="@style/EditTextSearch"
-                  android:paddingRight="64dp"
+                  android:paddingEnd="64dp"
                   android:inputType="text"
                   android:hint="@string/search"
-                  tools:ignore="RtlSymmetry"/>
-        <ImageButton android:id="@+id/registryConfirmPasswordVisible"
-                     android:layout_width="wrap_content"
+                  tools:ignore="Autofill,RtlSymmetry"/>
+        <ImageButton android:layout_width="wrap_content"
                      android:layout_height="wrap_content"
                      android:layout_gravity="end|center_vertical"
                      android:paddingTop="10dp"
@@ -32,13 +31,13 @@
     <android.support.v4.view.ViewPager android:layout_width="match_parent"
                                        android:layout_height="wrap_content"
                                        android:overScrollMode="never"
-                                       android:id="@+id/recPopViewPager"
+                                       android:id="@+id/recommendationViewPager"
                                        android:background="@color/grayLightTop">
         <android.support.design.widget.TabLayout android:layout_width="match_parent"
                                                  android:layout_height="52dp"
                                                  android:overScrollMode="never"
                                                  android:background="@color/colorPrimary"
                                                  style="@style/TabsPageViewer"
-                                                 android:id="@+id/recPopTabs"/>
+                                                 android:id="@+id/recommendationTabs"/>
     </android.support.v4.view.ViewPager>
 </LinearLayout>

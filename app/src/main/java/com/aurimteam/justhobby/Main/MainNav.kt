@@ -8,8 +8,8 @@ import kotlinx.android.synthetic.main.activity_main_nav.*
 import android.support.v4.app.Fragment
 import com.aurimteam.justhobby.Main.Home.HomeTimeLineFragment
 import com.aurimteam.justhobby.Main.Notifications.NotificationsFragment
-import com.aurimteam.justhobby.Main.RecommendationPageViewer.MainRecommendationFragment
-import com.aurimteam.justhobby.Main.Settings.MainSettingsFragment
+import com.aurimteam.justhobby.Main.RecommendationPageViewer.RecommendationFragment
+import com.aurimteam.justhobby.Main.Settings.SettingsFragment
 
 
 class MainNav : AppCompatActivity() {
@@ -21,7 +21,7 @@ class MainNav : AppCompatActivity() {
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_search -> {
-                loadFragment(MainRecommendationFragment())
+                loadFragment(RecommendationFragment())
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_notifications -> {
@@ -29,7 +29,7 @@ class MainNav : AppCompatActivity() {
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_menu -> {
-                loadFragment(MainSettingsFragment())
+                loadFragment(SettingsFragment())
                 return@OnNavigationItemSelectedListener true
             }
         }
@@ -39,7 +39,7 @@ class MainNav : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_nav)
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+        mainNavNavigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
     }
 
     override fun onResume() {
@@ -52,7 +52,7 @@ class MainNav : AppCompatActivity() {
         if (fragment != null) {
             supportFragmentManager
                 .beginTransaction()
-                .replace(R.id.fragment_container, fragment)
+                .replace(R.id.mainNavContainerFragment, fragment)
                 .commit()
             return true
         }

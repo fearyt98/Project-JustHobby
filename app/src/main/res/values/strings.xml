@@ -29,6 +29,13 @@
     <string name="calendar">Календарь</string>
     <string name="bookmarks">Закладки</string>
     <string name="search">Поиск</string>
+    <string name="rating">Рейтинг</string>
+    <string name="add_in_bookmarks">Добавить в закладки</string>
+    <string name="show_on_map">Показать на карте</string>
+    <string name="new_notification">Новые</string>
+    <string name="old_notification">Просмотренные</string>
+    <string name="clear_notifications">Очистить уведомления</string>
+    <string name="back">Назад</string>
     <string name="about_recovery">
         Укажите E-mail, к которому привязан аккаунт. Мы пришлем на него\n письмо с инструкцией\n восстановления.
     </string>

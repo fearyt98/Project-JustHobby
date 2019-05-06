@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import com.aurimteam.justhobby.Main.RecommendationPageViewer.FragmentsInterfaces.IPopularCoursesView
 import com.aurimteam.justhobby.R
 import com.aurimteam.justhobby.Response.CourseResponse
-import kotlinx.android.synthetic.main.activity_popular_courses_fragment.*
+import kotlinx.android.synthetic.main.fragment_popular_courses.*
 
 class PopularCoursesFragment : Fragment(), IPopularCoursesView {
 
@@ -17,7 +17,7 @@ class PopularCoursesFragment : Fragment(), IPopularCoursesView {
     private var adapter = PopularCoursesAdapter()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.activity_popular_courses_fragment, container, false)
+        return inflater.inflate(R.layout.fragment_popular_courses, container, false)
     }
 
     override fun showPopularCourses(courses: List<CourseResponse>) {
@@ -27,8 +27,8 @@ class PopularCoursesFragment : Fragment(), IPopularCoursesView {
     override fun onStart() {
         super.onStart()
         presenter.getPopularCourses()
-        CoursesRecyclerView.layoutManager = LinearLayoutManager(context)
-        CoursesRecyclerView.adapter = adapter
+        popularCoursesRecyclerView.layoutManager = LinearLayoutManager(context)
+        popularCoursesRecyclerView.adapter = adapter
     }
 
     override fun onDestroy() {

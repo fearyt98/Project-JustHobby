@@ -9,7 +9,7 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import com.aurimteam.justhobby.R
 import com.aurimteam.justhobby.RegistryActivity.RegistryActivity
-import kotlinx.android.synthetic.main.activity_auth_main.*
+import kotlinx.android.synthetic.main.activity_auth.*
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
 import android.widget.*
@@ -25,7 +25,7 @@ class AuthActivity : AppCompatActivity(), IAuthView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_auth_main)
+        setContentView(R.layout.activity_auth)
 
         authPresenter = AuthPresenter(this, AuthModel())
 

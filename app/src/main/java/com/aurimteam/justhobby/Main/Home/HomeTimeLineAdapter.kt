@@ -26,7 +26,7 @@ class HomeTimeLineAdapter : RecyclerView.Adapter<TimeLineHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, p1: Int): TimeLineHolder =
         TimeLineHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.activity_card_timeline, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.fragment_card_timeline, parent, false)
         )
 
     fun onDataChange(events: List<TimelineResponses>) {

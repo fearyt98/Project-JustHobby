@@ -46,7 +46,7 @@
                              android:layout_height="wrap_content">
                     <EditText android:id="@+id/authPassword"
                               style="@style/EditText"
-                              android:paddingRight="64dp"
+                              android:paddingEnd="64dp"
                               android:autofillHints="email"
                               android:inputType="textPassword"
                               tools:ignore="LabelFor,RtlSymmetry,UnusedAttribute"/>

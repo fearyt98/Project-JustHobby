@@ -9,15 +9,14 @@ import android.widget.LinearLayout
 import com.aurimteam.justhobby.Main.Home.HomeTimeLineFragment
 import com.aurimteam.justhobby.R
 
-class MainSettingsFragment : Fragment() {
+class SettingsFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.activity_main_settings_fragment, container, false)
-        view.findViewById<LinearLayout>(R.id.notificationItemSettings).setOnClickListener { notificationItemClick() }
-        view.findViewById<LinearLayout>(R.id.accountItemSettings).setOnClickListener { accountItemClick() }
-        view.findViewById<LinearLayout>(R.id.feedbackItemSettings).setOnClickListener { feedbackItemClick() }
-        view.findViewById<LinearLayout>(R.id.aboutItemSettings).setOnClickListener { aboutItemClick() }
-        view.findViewById<LinearLayout>(R.id.leaveItemSettings).setOnClickListener { leaveItemClick() }
+        val view = inflater.inflate(R.layout.fragment_main_settings, container, false)
+        view.findViewById<LinearLayout>(R.id.settingsNotification).setOnClickListener { notificationItemClick() }
+        view.findViewById<LinearLayout>(R.id.settingsAccount).setOnClickListener { accountItemClick() }
+        view.findViewById<LinearLayout>(R.id.settingsAbout).setOnClickListener { aboutItemClick() }
+        view.findViewById<LinearLayout>(R.id.settingsLogout).setOnClickListener { leaveItemClick() }
         return view
     }
 
@@ -25,7 +24,7 @@ class MainSettingsFragment : Fragment() {
         fragmentManager!!
             .beginTransaction()
             .addToBackStack(null)
-            .replace(R.id.fragment_container, HomeTimeLineFragment())
+            .replace(R.id.mainNavContainerFragment, HomeTimeLineFragment())
             .commit()
 
     }
@@ -34,7 +33,7 @@ class MainSettingsFragment : Fragment() {
         fragmentManager!!
             .beginTransaction()
             .addToBackStack(null)
-            .replace(R.id.fragment_container, HomeTimeLineFragment())
+            .replace(R.id.mainNavContainerFragment, HomeTimeLineFragment())
             .commit()
     }
 
@@ -42,7 +41,7 @@ class MainSettingsFragment : Fragment() {
         fragmentManager!!
             .beginTransaction()
             .addToBackStack(null)
-            .replace(R.id.fragment_container, HomeTimeLineFragment())
+            .replace(R.id.mainNavContainerFragment, HomeTimeLineFragment())
             .commit()
 
     }
@@ -51,7 +50,7 @@ class MainSettingsFragment : Fragment() {
         fragmentManager!!
             .beginTransaction()
             .addToBackStack(null)
-            .replace(R.id.fragment_container, HomeTimeLineFragment())
+            .replace(R.id.mainNavContainerFragment, HomeTimeLineFragment())
             .commit()
 
     }
