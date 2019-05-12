@@ -9,11 +9,16 @@
     <string name="cancel">Отмена</string>
     <string name="sign_up">Зарегистрироваться</string>
     <string name="restore">Восстановить</string>
+    <string name="go_to_search">Перейти к поиску</string>
     <string name="password_recovery">Восстановление пароля</string>
     <string name="skip">Пропустить</string>
     <string name="begin">Начать</string>
     <string name="notifications">Уведомления</string>
+    <string name="no_user_timetable">Нет расписания</string>
+    <string name="no_user_bookmarks">Нет закладок</string>
+    <string name="no_user_courses">Нет курсов</string>
     <string name="smart_search">Гибкий поиск</string>
+    <string name="my_courses">Мои курсы</string>
     <string name="many_courses">Множество курсов</string>
     <string name="settings">Настройки</string>
     <string name="user_account_settings">Учетная запись</string>
@@ -50,5 +55,26 @@
     <string name="about_courses">
         Огромный каталог отражает все\n сферы дополнительного\n образования: наука, искусство,\n спорт, техническое
         творчество,\n иностранные языки и т.д.
+    </string>
+    <string name="about_company">
+        Восточные танцы – возможность отойти от ежедневной суеты и погрузиться в приятный мир чувственных движений и
+        мелодий.\n
+        Это целая самобытная культура, которую можно долго постигать, шаг за шагом раскрывая загадку, спрятанную внутри
+        каждой женщины.\n
+        Занятия на столько захватывают внимание каждой участницы что на мысли о быте и работе просто не остается времени
+        во время тренировок.
+    </string>
+    <string name="about_no_timetable">
+        Нажмите на на карточке группы\n в курсе, чтобы добавить его к себе.\n
+        Таким образом он добавиться в\n Ваше расписание, а также Вам\n будут приходить уведомления\n и напоминания о
+        нем.
+    </string>
+    <string name="about_no_bookmarks">
+        Нажмите на, чтобы добавить\n курс в закладки. Таким образом вы\n можете легко найти его позже.
+    </string>
+    <string name="about_no_courses">
+        Нажмите на карточке группы\n в курсе, чтобы добавить его к себе.\n
+        Таким образом он добавиться в\n Ваше расписание, а также Вам\n будут приходить уведомления\n
+        и напоминания о нем.
     </string>
 </resources>

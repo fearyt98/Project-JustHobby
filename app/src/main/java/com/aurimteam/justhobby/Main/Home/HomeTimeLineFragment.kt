@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
+import com.aurimteam.justhobby.CoursesInfo.CourseMainInfoActivity.CourseInfoFragment
 import com.aurimteam.justhobby.Main.Home.UserBookmarksMain.UserBookmarksFragment
 import com.aurimteam.justhobby.R
 import com.aurimteam.justhobby.Response.TimelineResponses
@@ -51,7 +52,7 @@ class HomeTimeLineFragment : Fragment(), IHomeView {
         fragmentManager!!
             .beginTransaction()
             .addToBackStack(null)
-            .replace(R.id.mainNavContainerFragment, UserBookmarksFragment())
+            .replace(R.id.mainNavContainerFragment, CourseInfoFragment())
             .commit()
     }
 }
