@@ -15,7 +15,7 @@
                      android:left="0.6dp"
                      android:right="0.6dp"
                      android:top="0.6dp"/>
-            <solid android:color="#0d0e8449"/>
+            <solid android:color="#0dbfbfbf"/>
             <corners android:bottomLeftRadius="8.0dp"
                      android:bottomRightRadius="8.0dp"
                      android:topLeftRadius="8.0dp"
@@ -28,7 +28,7 @@
                      android:left="0.6dp"
                      android:right="0.6dp"
                      android:top="0.6dp"/>
-            <solid android:color="#1d0e8449"/>
+            <solid android:color="#1dbfbfbf"/>
             <corners android:bottomLeftRadius="7.4dp"
                      android:bottomRightRadius="7.4dp"
                      android:topLeftRadius="7.4dp"
@@ -41,7 +41,7 @@
                      android:left="0.6dp"
                      android:right="0.6dp"
                      android:top="0.6dp"/>
-            <solid android:color="#2d0e8449"/>
+            <solid android:color="#2dbfbfbf"/>
             <corners android:bottomLeftRadius="6.8dp"
                      android:bottomRightRadius="6.8dp"
                      android:topLeftRadius="6.8dp"
@@ -54,7 +54,7 @@
                      android:left="0.6dp"
                      android:right="0.6dp"
                      android:top="0.6dp"/>
-            <solid android:color="#3d0e8449"/>
+            <solid android:color="#3dbfbfbf"/>
             <corners android:bottomLeftRadius="6.2dp"
                      android:bottomRightRadius="6.2dp"
                      android:topLeftRadius="6.2dp"
@@ -67,7 +67,7 @@
                      android:left="0.6dp"
                      android:right="0.6dp"
                      android:top="0.6dp"/>
-            <solid android:color="#4d0e8449"/>
+            <solid android:color="#4dbfbfbf"/>
             <corners android:bottomLeftRadius="5.6dp"
                      android:bottomRightRadius="5.6dp"
                      android:topLeftRadius="5.6dp"
@@ -77,7 +77,7 @@
     <!-- Background -->
     <item>
         <shape>
-            <solid android:color="@color/whiteTop"/>
+            <solid android:color="@color/colorPrimary"/>
             <corners android:radius="5dp"/>
         </shape>
     </item>

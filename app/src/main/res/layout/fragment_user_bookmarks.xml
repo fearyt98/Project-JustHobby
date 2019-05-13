@@ -26,7 +26,7 @@
                   android:gravity="center"
                   android:text="@string/bookmarks"
                   android:textColor="@color/whiteTop"
-                  style="@style/H2.Medium.UpperCase"/>
+                  style="@style/Body1.Medium.UpperCase"/>
     </FrameLayout>
     <android.support.v7.widget.RecyclerView android:layout_width="match_parent"
                                             android:layout_height="wrap_content"

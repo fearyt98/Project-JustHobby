@@ -57,6 +57,21 @@
         <item name="android:background">@drawable/btn_start_bg</item>
         <item name="android:layout_gravity">center</item>
     </style>
+    <!-- Button green | bottom -7.5 | left -2.5 | right -2.5 | top -2.5 -->
+    <style name="ButtonGreen">
+        <item name="android:textColor">@color/whiteTop</item>
+        <item name="android:textAppearance">@style/Body1.Bold</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingTop">14.5dp</item><!-- 12 (padding in btn) + 2.5 (full padding in background) -->
+        <item name="android:paddingBottom">19.5dp</item><!-- 12 + 7.5 -->
+        <item name="android:paddingLeft">31dp</item><!-- 16 + 15 -->
+        <item name="android:paddingRight">31dp</item><!-- 16 + 15 -->
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:background">@drawable/btn_green_bg</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
     <!-- Tab -->
     <style name="TabsPageViewer"
            parent="Widget.Design.TabLayout">
@@ -133,12 +148,15 @@
     <style name="Body1.Medium">
         <item name="android:fontFamily">sans-serif-medium</item>
     </style>
+    <style name="Body1.Medium.UpperCase">
+        <item name="android:textAllCaps">true</item>
+    </style>
     <!-- Body 2 -->
     <style name="Body2">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">15sp</item>
-        <item name="android:lineSpacingMultiplier">1.7</item>
+        <item name="android:lineSpacingMultiplier">1.4</item>
         <item name="android:paddingTop">5dp</item>
         <item name="android:paddingBottom">5dp</item>
         <item name="android:textColor">@color/whiteText</item>
@@ -161,6 +179,9 @@
     </style>
     <style name="Caption1.Medium">
         <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+    <style name="Caption1.Medium.UpperCase">
+        <item name="android:textAllCaps">true</item>
     </style>
     <!-- Caption 2 -->
     <style name="Caption2">
