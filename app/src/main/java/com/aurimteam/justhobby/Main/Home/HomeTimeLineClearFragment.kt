@@ -13,7 +13,7 @@ import java.util.*
 class HomeTimeLineClearFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_home_timeline_clear, container, false)
+        val view = inflater.inflate(R.layout.fragment_main_home_timeline_clear, container, false)
         //view.findViewById<ImageButton>(R.id.homeBookmarks).setOnClickListener { openUserBookmarks() }
         return view
     }

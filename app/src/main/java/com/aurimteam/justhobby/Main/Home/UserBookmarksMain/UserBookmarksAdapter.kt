@@ -38,7 +38,7 @@ class UserBookmarksAdapter : RecyclerView.Adapter<UserBookmarksHolder>() {
     }
 
     private fun detailInfoCourse() {
-        Log.d("detailInfoCourse", "granted")
+
     }
 
     private fun deleteBookmark() {

@@ -20,18 +20,15 @@ class MainNav : AppCompatActivity() {
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
             R.id.navigation_home -> {
-                //loadFragment(HomeTimeLineFragment())
-                loadFragment(UserBookmarksClearFragment())
+                loadFragment(HomeTimeLineFragment())
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_search -> {
-                //loadFragment(RecommendationFragment())
-                loadFragment(UserCoursesClearFragment())
+                loadFragment(RecommendationFragment())
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_notifications -> {
-                //loadFragment(NotificationsFragment())
-                loadFragment(HomeTimeLineClearFragment())
+                loadFragment(NotificationsFragment())
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_menu -> {

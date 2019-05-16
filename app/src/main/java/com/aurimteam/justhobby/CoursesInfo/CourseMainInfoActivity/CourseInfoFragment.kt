@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import com.aurimteam.justhobby.R
 import com.aurimteam.justhobby.Response.GroupResponse
 import kotlinx.android.synthetic.main.fragment_course_main.*
@@ -17,6 +18,7 @@ class CourseInfoFragment : Fragment(), ICourseInfoView {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_course_main, container, false)
+        view.findViewById<ImageButton>(R.id.backArrowCourseInfo).setOnClickListener { backToRecommendedFragment() }
         return view
     }
 
@@ -27,13 +29,17 @@ class CourseInfoFragment : Fragment(), ICourseInfoView {
     override fun onStart() {
         super.onStart()
         presenter.getCourseGroups()
-        groupsRecyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, true)
+        groupsRecyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         groupsRecyclerView.adapter = adapter
+        groupsRecyclerView.smoothScrollToPosition(0)
     }
 
     override fun onDestroy() {
         super.onDestroy()
         presenter.onDestroy()
+    }
+    private fun backToRecommendedFragment() {
+        fragmentManager?.popBackStack()
     }
 
 }

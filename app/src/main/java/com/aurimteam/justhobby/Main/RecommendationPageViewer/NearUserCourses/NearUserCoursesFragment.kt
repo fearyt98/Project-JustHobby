@@ -6,6 +6,8 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TableRow
+import com.aurimteam.justhobby.CoursesInfo.CourseMainInfoActivity.CourseInfoFragment
 import com.aurimteam.justhobby.Main.RecommendationPageViewer.FragmentsInterfaces.INearCoursesView
 import com.aurimteam.justhobby.R
 import com.aurimteam.justhobby.Response.CourseResponse
@@ -17,7 +19,8 @@ class NearUserCoursesFragment : Fragment(), INearCoursesView {
     private var adapter = NearUserCoursesAdapter()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_near_user_courses, container, false)
+        val view = inflater.inflate(R.layout.fragment_near_user_courses, container, false)
+        return view
     }
 
     override fun showNearUserCourses(courses: List<CourseResponse>) {
@@ -35,4 +38,6 @@ class NearUserCoursesFragment : Fragment(), INearCoursesView {
         super.onDestroy()
         presenter.onDestroy()
     }
+
+
 }

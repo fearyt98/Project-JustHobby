@@ -8,7 +8,8 @@
                  android:roundIcon="@mipmap/ic_launcher_round"
                  android:supportsRtl="true"
                  android:theme="@style/AppTheme">
-        <activity android:name=".Main.Home.UserCourses.UserCoursesClearFragment"></activity>
+        <activity android:name=".CoursesInfo.CourseGroupsActivity.CourseGroupsFragment"></activity>
+        <activity android:name=".Main.Home.UserCourses.UserCoursesClearFragment"/>
         <activity android:name=".Main.Home.UserBookmarksMain.UserBookmarksClearFragment"/>
         <activity android:name=".Main.Home.HomeTimeLineClearFragment"/>
         <activity android:name=".Main.Home.UserWithoutTimetableFragment"/>
