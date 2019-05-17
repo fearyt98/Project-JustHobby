@@ -6,6 +6,6 @@
            tools:override="true">16sp
     </dimen>
     <dimen name="design_bottom_navigation_height"
-           tools:override="true">55dp
+           tools:override="true">56dp
     </dimen>
 </resources>

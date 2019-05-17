@@ -41,6 +41,16 @@
     <string name="old_notification">Просмотренные</string>
     <string name="clear_notifications">Очистить уведомления</string>
     <string name="back">Назад</string>
+    <string name="add_in_my_courses">Добавить в мои курсы</string>
+    <string name="remove_from_my_courses">Удалить из мои курсов</string>
+    <string name="reception">Прием</string>
+    <string name="short_monday">ПН</string>
+    <string name="short_tuesday">ВТ</string>
+    <string name="short_wednesday">СР</string>
+    <string name="short_thursday">ЧТ</string>
+    <string name="short_friday">ПТ</string>
+    <string name="short_saturday">СБ</string>
+    <string name="short_sunday">ВС</string>
     <string name="about_recovery">
         Укажите E-mail, к которому привязан аккаунт. Мы пришлем на него\n письмо с инструкцией\n восстановления.
     </string>
@@ -77,4 +87,6 @@
         Таким образом он добавиться в\n Ваше расписание, а также Вам\n будут приходить уведомления\n
         и напоминания о нем.
     </string>
+    <string name="groups">Группы</string>
+    <string name="show_all">Показать все</string>
 </resources>

@@ -1,155 +1,155 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
-    <!-- Shadow: bottom 0 | left 0 | right 0 | top -8 -->
+    <!-- Shadow: bottom -8 | left 0 | right 0 | top 0 -->
     <!-- Drop Shadow Stack -->
     <item>
         <shape>
-            <padding android:bottom="0.0dp"
+            <padding android:bottom="0.5dp"
                      android:left="0.0dp"
                      android:right="0.0dp"
-                     android:top="0.5dp"/>
+                     android:top="0.0dp"/>
             <solid android:color="#00000000"/>
         </shape>
     </item>
     <item>
         <shape>
-            <padding android:bottom="0.0dp"
+            <padding android:bottom="0.5dp"
                      android:left="0.0dp"
                      android:right="0.0dp"
-                     android:top="0.5dp"/>
+                     android:top="0.0dp"/>
             <solid android:color="#01000000"/>
         </shape>
     </item>
     <item>
         <shape>
-            <padding android:bottom="0.0dp"
+            <padding android:bottom="0.5dp"
                      android:left="0.0dp"
                      android:right="0.0dp"
-                     android:top="0.5dp"/>
+                     android:top="0.0dp"/>
             <solid android:color="#01000000"/>
         </shape>
     </item>
     <item>
         <shape>
-            <padding android:bottom="0.0dp"
+            <padding android:bottom="0.5dp"
                      android:left="0.0dp"
                      android:right="0.0dp"
-                     android:top="0.5dp"/>
+                     android:top="0.0dp"/>
             <solid android:color="#01000000"/>
         </shape>
     </item>
     <item>
         <shape>
-            <padding android:bottom="0.0dp"
+            <padding android:bottom="0.5dp"
                      android:left="0.0dp"
                      android:right="0.0dp"
-                     android:top="0.5dp"/>
+                     android:top="0.0dp"/>
             <solid android:color="#01000000"/>
         </shape>
     </item>
     <item>
         <shape>
-            <padding android:bottom="0.0dp"
+            <padding android:bottom="0.5dp"
                      android:left="0.0dp"
                      android:right="0.0dp"
-                     android:top="0.5dp"/>
+                     android:top="0.0dp"/>
             <solid android:color="#01000000"/>
         </shape>
     </item>
     <item>
         <shape>
-            <padding android:bottom="0.0dp"
+            <padding android:bottom="0.5dp"
                      android:left="0.0dp"
                      android:right="0.0dp"
-                     android:top="0.5dp"/>
+                     android:top="0.0dp"/>
             <solid android:color="#02000000"/>
         </shape>
     </item>
     <item>
         <shape>
-            <padding android:bottom="0.0dp"
+            <padding android:bottom="0.5dp"
                      android:left="0.0dp"
                      android:right="0.0dp"
-                     android:top="0.5dp"/>
+                     android:top="0.0dp"/>
             <solid android:color="#02000000"/>
         </shape>
     </item>
     <item>
         <shape>
-            <padding android:bottom="0.0dp"
+            <padding android:bottom="0.5dp"
                      android:left="0.0dp"
                      android:right="0.0dp"
-                     android:top="0.5dp"/>
+                     android:top="0.0dp"/>
             <solid android:color="#02000000"/>
         </shape>
     </item>
     <item>
         <shape>
-            <padding android:bottom="0.0dp"
+            <padding android:bottom="0.5dp"
                      android:left="0.0dp"
                      android:right="0.0dp"
-                     android:top="0.5dp"/>
+                     android:top="0.0dp"/>
             <solid android:color="#02000000"/>
         </shape>
     </item>
     <item>
         <shape>
-            <padding android:bottom="0.0dp"
+            <padding android:bottom="0.5dp"
                      android:left="0.0dp"
                      android:right="0.0dp"
-                     android:top="0.5dp"/>
+                     android:top="0.0dp"/>
             <solid android:color="#02000000"/>
         </shape>
     </item>
     <item>
         <shape>
-            <padding android:bottom="0.0dp"
+            <padding android:bottom="0.5dp"
                      android:left="0.0dp"
                      android:right="0.0dp"
-                     android:top="0.5dp"/>
+                     android:top="0.0dp"/>
             <solid android:color="#02000000"/>
         </shape>
     </item>
     <item>
         <shape>
-            <padding android:bottom="0.0dp"
+            <padding android:bottom="0.5dp"
                      android:left="0.0dp"
                      android:right="0.0dp"
-                     android:top="0.5dp"/>
+                     android:top="0.0dp"/>
             <solid android:color="#03000000"/>
         </shape>
     </item>
     <item>
         <shape>
-            <padding android:bottom="0.0dp"
+            <padding android:bottom="0.5dp"
                      android:left="0.0dp"
                      android:right="0.0dp"
-                     android:top="0.5dp"/>
+                     android:top="0.0dp"/>
             <solid android:color="#03000000"/>
         </shape>
     </item>
     <item>
         <shape>
-            <padding android:bottom="0.0dp"
+            <padding android:bottom="0.5dp"
                      android:left="0.0dp"
                      android:right="0.0dp"
-                     android:top="0.5dp"/>
+                     android:top="0.0dp"/>
             <solid android:color="#03000000"/>
         </shape>
     </item>
     <item>
         <shape>
-            <padding android:bottom="0.0dp"
+            <padding android:bottom="0.5dp"
                      android:left="0.0dp"
                      android:right="0.0dp"
-                     android:top="0.5dp"/>
+                     android:top="0.0dp"/>
             <solid android:color="#03000000"/>
         </shape>
     </item>
     <!-- Background -->
     <item>
         <shape>
-            <solid android:color="@color/whiteTop"/>
+            <solid android:color="@color/colorPrimary"/>
         </shape>
     </item>
 </layer-list>

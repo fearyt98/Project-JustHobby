@@ -75,7 +75,7 @@
                   android:textColor="@color/grafitText"
                   android:text="@string/about_no_timetable"/>
         <Button style="@style/ButtonGreen"
-                android:id="@+id/timelineClearBtn"
+                android:id="@+id/homeClearBtn"
                 android:text="@string/go_to_search"/>
     </LinearLayout>
 </LinearLayout>

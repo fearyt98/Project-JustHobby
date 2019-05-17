@@ -82,6 +82,7 @@
         <item name="android:textColor">@color/whiteTop</item>
         <item name="tabTextAppearance">@style/TabTextAppearance</item>
         <item name="tabSelectedTextColor">@color/whiteTop</item>
+        <item name="tabPaddingBottom">9dp</item>
     </style>
     <!-- Tab text -->
     <style name="TabTextAppearance"

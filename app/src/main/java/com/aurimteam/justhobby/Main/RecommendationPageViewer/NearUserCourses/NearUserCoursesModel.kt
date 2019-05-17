@@ -34,6 +34,83 @@ class NearUserCoursesModel : INearCoursesModel {
                 IdentifierResponse("Жиг", 101),
                 Timestamp(100),
                 Timestamp(200)
+            ),
+            CourseResponse(
+                "dance",
+                0,
+                "Восточный Шаолинь",
+                "Drive - школа зажигательных танцев",
+                "пр. Ленина 26, д. 13",
+                IdentifierResponse("sport", 100),
+                IdentifierResponse("Жиг", 101),
+                Timestamp(100),
+                Timestamp(200)
+            ),
+            CourseResponse(
+                "dance",
+                0,
+                "Восточный Шаолинь",
+                "Drive - школа зажигательных танцев",
+                "пр. Ленина 26, д. 13",
+                IdentifierResponse("sport", 100),
+                IdentifierResponse("Жиг", 101),
+                Timestamp(100),
+                Timestamp(200)
+            ),
+            CourseResponse(
+                "dance",
+                0,
+                "Восточный Шаолинь",
+                "Drive - школа зажигательных танцев",
+                "пр. Ленина 26, д. 13",
+                IdentifierResponse("sport", 100),
+                IdentifierResponse("Жиг", 101),
+                Timestamp(100),
+                Timestamp(200)
+            ),
+            CourseResponse(
+                "dance",
+                0,
+                "Восточный Шаолинь",
+                "Drive - школа зажигательных танцев",
+                "пр. Ленина 26, д. 13",
+                IdentifierResponse("sport", 100),
+                IdentifierResponse("Жиг", 101),
+                Timestamp(100),
+                Timestamp(200)
+            ),
+            CourseResponse(
+                "dance",
+                0,
+                "Восточный Шаолинь",
+                "Drive - школа зажигательных танцев",
+                "пр. Ленина 26, д. 13",
+                IdentifierResponse("sport", 100),
+                IdentifierResponse("Жиг", 101),
+                Timestamp(100),
+                Timestamp(200)
+            ),
+            CourseResponse(
+                "dance",
+                0,
+                "Восточный Шаолинь",
+                "Drive - школа зажигательных танцев",
+                "пр. Ленина 26, д. 13",
+                IdentifierResponse("sport", 100),
+                IdentifierResponse("Жиг", 101),
+                Timestamp(100),
+                Timestamp(200)
+            ),
+            CourseResponse(
+                "dance",
+                0,
+                "Восточный Шаолинь",
+                "Drive - школа зажигательных танцев",
+                "пр. Ленина 26, д. 13",
+                IdentifierResponse("sport", 100),
+                IdentifierResponse("Жиг", 101),
+                Timestamp(100),
+                Timestamp(200)
             )
         )
         onFinishedListener.onResultSuccess(courses)

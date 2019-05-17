@@ -4,10 +4,14 @@ import android.support.v7.widget.RecyclerView
 import android.view.View
 import com.aurimteam.justhobby.Response.IdentifierResponse
 import kotlinx.android.synthetic.main.fragment_card_course.view.*
+import android.widget.TableLayout
+
 
 class NearUserCoursesHolder(view: View) : RecyclerView.ViewHolder(view) {
     fun bind(
         id: Long,
+        first: Boolean,
+        last: Boolean,
         title: String,
         description: String,
         address: String,

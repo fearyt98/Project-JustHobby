@@ -19,6 +19,8 @@ class NearUserCoursesAdapter : RecyclerView.Adapter<NearUserCoursesHolder>() {
     override fun onBindViewHolder(holder: NearUserCoursesHolder, position: Int) {
         holder.bind(
             coursesList[position].id,
+            position == 0,
+            position == this.itemCount - 1,
             coursesList[position].title,
             coursesList[position].description,
             coursesList[position].address,

@@ -19,12 +19,14 @@
     <color name="ratingFive">#6EDE03</color>
 
     <color name="greenText">#15CB71</color>
+    <color name="greenDarkText">#109855</color>
     <color name="greenLightText">#A1E9C5</color>
     <color name="whiteText">#FFFFFF</color>
     <color name="grafitText">#333333</color>
     <color name="orangeText">#FFA414</color>
     <color name="redText">#F40000</color>
 
+    <color name="greenWhiteBottom">#44D58D</color>
     <color name="greenDark">#109855</color>
     <color name="grayDark">#737373</color>
     <color name="grayDarkMiddle">#8A8A8A</color>
@@ -43,7 +45,16 @@
     <color name="whiteBottom">#33FFFFFF</color>
 
     <!-- Category color -->
-    <color name="sport">#2F80ED</color>
-    <color name="dance">#BB6BD9</color>
-    <color name="languages">#A01C93</color>
+    <color name="languages">#BB6BD9</color>
+    <color name="sports">#2F80ED</color>
+    <color name="musics">#07C7B0</color>
+    <color name="it">#D06969</color>
+    <color name="dances">#FFA414</color>
+    <color name="art_design">#FA5457</color>
+    <color name="craft">#00805D</color>
+    <color name="designing">#FC8E60</color>
+    <color name="literature">#FF4DC2</color>
+    <color name="intellectual">#F64072</color>
+    <color name="fashion_style">#AB4E91</color>
+    <color name="entertainment_arts">#75B4C0</color>
 </resources>

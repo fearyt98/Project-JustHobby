@@ -5,17 +5,18 @@
              android:layout_height="wrap_content"
              android:layout_width="match_parent"
              android:id="@+id/cardCourse"
-             android:paddingLeft="7dp"
-             android:paddingRight="7dp"
-             android:paddingTop="1dp"
-             android:paddingBottom="1dp">
+             android:paddingLeft="3dp"
+             android:paddingRight="3dp"
+             android:layout_marginBottom="-6dp">
+    <View android:id="@+id/cardCoursePaddingTop" android:layout_width="match_parent"
+          android:layout_height="0dp"/>
     <TableRow android:background="@drawable/card_course_bg"
               tools:ignore="UselessParent">
         <FrameLayout android:layout_width="48dp"
-                      android:layout_height="match_parent"
-                      android:id="@+id/cardCourseRatingBg"
-                      android:orientation="vertical"
-                      android:background="@drawable/card_rating_five">
+                     android:layout_height="match_parent"
+                     android:id="@+id/cardCourseRatingBg"
+                     android:orientation="vertical"
+                     android:background="@drawable/card_rating_five">
             <TextView android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
                       android:layout_gravity="center"
@@ -51,7 +52,8 @@
                       android:textColor="@color/grayDarkMiddle"
                       android:layout_width="wrap_content"
                       android:id="@+id/cardCourseDescription"
-                      android:paddingBottom="8.5dp"
+                      android:layout_marginTop="-6dp"
+                      android:paddingBottom="5dp"
                       android:text="Drive - Школа танцев в Томске"
                       tools:ignore="HardcodedText"/>
             <LinearLayout android:layout_width="wrap_content"
@@ -100,7 +102,7 @@
                           android:orientation="horizontal">
                 <ImageView android:layout_width="12dp"
                            android:layout_height="12dp"
-                           android:id="@+id/cardCourseAccess"
+                           android:id="@+id/cardCourseStatus"
                            android:layout_gravity="center_vertical"
                            android:tint="@color/gray"
                            app:srcCompat="@drawable/ic_success"
@@ -219,4 +221,6 @@
                          android:contentDescription="@string/show_on_map"/>
         </LinearLayout>
     </TableRow>
+    <View android:id="@+id/cardCoursePaddingBottom" android:layout_width="match_parent"
+          android:layout_height="0dp"/>
 </TableLayout>
