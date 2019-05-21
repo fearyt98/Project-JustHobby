@@ -34,7 +34,6 @@
                           android:paddingBottom="3dp"
                           android:layout_marginEnd="8dp">
                 <TextView android:text="@string/short_monday"
-                          tools:ignore="HardcodedText"
                           style="@style/dayWeekDefault"/>
                 <TextView android:id="@+id/mondayStartTime"
                           android:text="19:30"
