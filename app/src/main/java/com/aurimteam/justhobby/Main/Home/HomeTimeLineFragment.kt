@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import com.aurimteam.justhobby.Main.Home.UserBookmarksMain.UserBookmarksFragment
+import com.aurimteam.justhobby.Main.Home.UserCourses.UserCoursesFragment
 import com.aurimteam.justhobby.R
 import com.aurimteam.justhobby.Response.TimelineResponses
 import kotlinx.android.synthetic.main.fragment_main_home_timeline.*
@@ -26,6 +27,7 @@ class HomeTimeLineFragment : Fragment(), IHomeView {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_main_home_timeline, container, false)
         view.findViewById<ImageButton>(R.id.homeBookmarks).setOnClickListener { openUserBookmarks() }
+        view.findViewById<ImageButton>(R.id.homeCourses).setOnClickListener { openUserCourses() }
         return view
     }
 
@@ -52,6 +54,14 @@ class HomeTimeLineFragment : Fragment(), IHomeView {
             .beginTransaction()
             .addToBackStack(null)
             .replace(R.id.mainNavContainerFragment, UserBookmarksFragment())
+            .commit()
+    }
+
+    private fun openUserCourses() {
+        fragmentManager!!
+            .beginTransaction()
+            .addToBackStack(null)
+            .replace(R.id.mainNavContainerFragment, UserCoursesFragment())
             .commit()
     }
 }

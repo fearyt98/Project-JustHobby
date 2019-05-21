@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="45dp"
+              android:layout_height="wrap_content"
+              android:orientation="vertical"
+              android:background="@drawable/card_group_day_style_default"
+              android:paddingTop="3dp"
+              android:paddingBottom="3dp"
+              android:layout_marginEnd="8dp">
+    <TextView android:text="@string/short_monday"
+              android:id="@+id/cardDayTitle"
+              tools:ignore="HardcodedText"
+              style="@style/dayWeekDefault"/>
+    <TextView android:text="19:30"
+              android:id="@+id/cardDayStartTime"
+              tools:ignore="HardcodedText"
+              style="@style/timeDayWeekDefault"/>
+    <TextView android:text="20:30"
+              android:id="@+id/cardDayEndTime"
+              tools:ignore="HardcodedText"
+              style="@style/timeDayWeekDefault"/>
+</LinearLayout>

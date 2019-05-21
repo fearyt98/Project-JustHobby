@@ -31,7 +31,6 @@ class CourseInfoFragment : Fragment(), ICourseInfoView {
         presenter.getCourseGroups()
         groupsRecyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         groupsRecyclerView.adapter = adapter
-        groupsRecyclerView.smoothScrollToPosition(0)
     }
 
     override fun onDestroy() {

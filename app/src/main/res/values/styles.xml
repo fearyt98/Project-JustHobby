@@ -93,6 +93,58 @@
         <item name="android:textAllCaps">true</item>
         <item name="android:textColor">@color/whiteMiddle</item>
     </style>
+    <!-- Days and Time in group card and user courses -->
+    <style name="dayWeekNow">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_marginStart">8dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/whiteText</item>
+        <item name="android:background">@drawable/card_group_day_bg</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:paddingTop">0.5dp</item>
+        <item name="android:paddingBottom">0.5dp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+    <style name="timeDayWeekNow">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_marginStart">8dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_marginTop">-1dp</item>
+        <item name="android:textColor">@color/whiteText</item>
+        <item name="android:textSize">11sp</item>
+        <item name="android:lineSpacingMultiplier">1.2</item>
+        <item name="android:paddingTop">1dp</item>
+        <item name="android:paddingBottom">1dp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="dayWeekDefault">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/grafitText</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:paddingTop">0.5dp</item>
+        <item name="android:paddingBottom">0.5dp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+    <style name="timeDayWeekDefault">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_marginTop">-1dp</item>
+        <item name="android:textColor">@color/greenDarkText</item>
+        <item name="android:textSize">11sp</item>
+        <item name="android:lineSpacingMultiplier">1.2</item>
+        <item name="android:paddingTop">1dp</item>
+        <item name="android:paddingBottom">1dp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
     <!-- Label -->
     <style name="Label">
         <item name="android:layout_width">wrap_content</item>

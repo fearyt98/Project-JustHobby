@@ -51,6 +51,9 @@
     <string name="short_friday">ПТ</string>
     <string name="short_saturday">СБ</string>
     <string name="short_sunday">ВС</string>
+    <string name="groups">Группы</string>
+    <string name="show_all">Показать все</string>
+    <string name="test_company_title">Drive - Школа танцев в Томске</string>
     <string name="about_recovery">
         Укажите E-mail, к которому привязан аккаунт. Мы пришлем на него\n письмо с инструкцией\n восстановления.
     </string>
@@ -87,6 +90,4 @@
         Таким образом он добавиться в\n Ваше расписание, а также Вам\n будут приходить уведомления\n
         и напоминания о нем.
     </string>
-    <string name="groups">Группы</string>
-    <string name="show_all">Показать все</string>
 </resources>

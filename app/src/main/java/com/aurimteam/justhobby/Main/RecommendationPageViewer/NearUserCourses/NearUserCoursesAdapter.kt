@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import com.aurimteam.justhobby.CompanyInfo.CompanyInfoMainActivity.CompanyInfoFragment
 import com.aurimteam.justhobby.CoursesInfo.CourseMainInfoActivity.CourseInfoFragment
 import com.aurimteam.justhobby.R
 import com.aurimteam.justhobby.Response.CourseResponse
@@ -17,6 +18,7 @@ class NearUserCoursesAdapter : RecyclerView.Adapter<NearUserCoursesHolder>() {
 
     override fun getItemCount(): Int = coursesList.size
     override fun onBindViewHolder(holder: NearUserCoursesHolder, position: Int) {
+        val manager = (holder.itemView.context as FragmentActivity).supportFragmentManager
         holder.bind(
             coursesList[position].id,
             position == 0,
@@ -27,9 +29,11 @@ class NearUserCoursesAdapter : RecyclerView.Adapter<NearUserCoursesHolder>() {
             coursesList[position].company,
             coursesList[position].category
         )
-        val manager = (holder.itemView.context as FragmentActivity).supportFragmentManager
         holder.itemView.cardCourse.setOnClickListener {
             detailInfoCourse(manager)
+        }
+        holder.itemView.cardCourseDescription.setOnClickListener {
+            detailCompanyInfo(manager)
         }
         holder.itemView.cardCourseBtnBookmark.setOnClickListener { addBookmark() }
         holder.itemView.cardCourseBtnGeo.setOnClickListener { searchCourseOnMap() }
@@ -47,10 +51,16 @@ class NearUserCoursesAdapter : RecyclerView.Adapter<NearUserCoursesHolder>() {
     }
 
     private fun detailInfoCourse(fm: FragmentManager) {
-        fm!!
-            .beginTransaction()
+        fm.beginTransaction()
             .addToBackStack(null)
             .replace(R.id.mainNavContainerFragment, CourseInfoFragment())
+            .commit()
+    }
+
+    private fun detailCompanyInfo(fm: FragmentManager) {
+        fm.beginTransaction()
+            .addToBackStack(null)
+            .replace(R.id.mainNavContainerFragment, CompanyInfoFragment())
             .commit()
     }
 
