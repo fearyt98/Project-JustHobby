@@ -145,6 +145,21 @@
         <item name="android:paddingBottom">1dp</item>
         <item name="android:textStyle">bold</item>
     </style>
+    <!-- Rating Bar -->
+    <style name="RatingBar">
+        <item name="colorControlNormal">@color/orangeText</item>
+        <item name="colorControlActivated">@color/orangeText</item>
+    </style>
+    <style name="RatingBarCourseReviews" parent="android:Widget.Holo.Light.RatingBar.Small">
+        <item name="android:color">@color/grafit</item>
+        <item name="colorControlNormal">@color/grafit</item>
+        <item name="colorControlActivated">@color/grafit</item>
+    </style>
+    <style name="RatingBarCourseReview" parent="android:Widget.Holo.Light.RatingBar.Small">
+        <item name="android:color">@color/grafit</item>
+        <item name="colorControlNormal">@color/grafit</item>
+        <item name="colorControlActivated">@color/grafit</item>
+    </style>
     <!-- Label -->
     <style name="Label">
         <item name="android:layout_width">wrap_content</item>

@@ -93,6 +93,7 @@
         <GridLayout android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:visibility="gone"
                     android:rowCount="1"
                     android:columnCount="3">
             <Button android:id="@+id/authVkEnter"

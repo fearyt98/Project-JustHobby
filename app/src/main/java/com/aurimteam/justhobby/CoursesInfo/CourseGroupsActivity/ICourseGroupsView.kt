@@ -1,5 +1,7 @@
 package com.aurimteam.justhobby.CoursesInfo.CourseGroupsActivity
 
-interface ICourseGroupsView{
+import com.aurimteam.justhobby.Response.GroupResponse
 
+interface ICourseGroupsView{
+    fun showCourseAllGroupse(courseAllGroups: List<GroupResponse>)
 }

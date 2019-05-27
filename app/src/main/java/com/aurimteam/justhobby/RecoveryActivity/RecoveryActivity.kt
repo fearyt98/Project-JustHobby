@@ -10,7 +10,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 
 
-class RecoveryActivity : AppCompatActivity() {
+class RecoveryActivity : AppCompatActivity(), IRecoveryView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_recovery)

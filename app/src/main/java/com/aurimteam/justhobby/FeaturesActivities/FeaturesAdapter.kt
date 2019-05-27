@@ -19,9 +19,7 @@ class FeaturesAdapter(context: Context) : PagerAdapter() {
     )
 
     //получение числа активити
-    override fun getCount(): Int {
-        return layouts.size
-    }
+    override fun getCount(): Int = layouts.size
 
     //назначение View объектом
     override fun isViewFromObject(view: View, p1: Any): Boolean {

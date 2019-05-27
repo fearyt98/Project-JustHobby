@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:tools="http://schemas.android.com/tools"
               xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:orientation="vertical"
-              tools:context=".CoursesInfo.CourseGroupsActivity.CourseGroupsFragment">
+              android:orientation="vertical">
     <android.support.constraint.ConstraintLayout android:layout_width="match_parent"
                                                  android:layout_height="72dp"
                                                  android:paddingTop="4dp"
@@ -14,7 +13,7 @@
         <ImageButton android:layout_width="wrap_content"
                      android:layout_height="match_parent"
                      android:layout_gravity="center_vertical"
-                     android:id="@+id/backArrowCourseGroups"
+                     android:id="@+id/backArrowCourseReview"
                      android:paddingStart="20dp"
                      android:paddingEnd="20dp"
                      android:tint="@color/whiteTop"
@@ -30,7 +29,7 @@
                   android:gravity="center"
                   android:text="Восточные танцы"
                   android:textColor="@color/whiteTop"
-                  app:layout_constraintLeft_toRightOf="@id/backArrowCourseGroups"
+                  app:layout_constraintLeft_toRightOf="@id/backArrowCourseReview"
                   app:layout_constraintTop_toTopOf="parent"
                   style="@style/Body1.Medium"/>
         <TextView android:layout_width="wrap_content"
@@ -39,12 +38,29 @@
                   android:gravity="center"
                   android:text="@string/test_company_title"
                   android:textColor="@color/whiteTop"
-                  app:layout_constraintLeft_toRightOf="@id/backArrowCourseGroups"
+                  app:layout_constraintLeft_toRightOf="@id/backArrowCourseReview"
                   app:layout_constraintBottom_toBottomOf="parent"
                   style="@style/Body2"/>
     </android.support.constraint.ConstraintLayout>
-    <android.support.v7.widget.RecyclerView android:layout_width="match_parent"
-                                            android:layout_height="wrap_content"
-                                            android:id="@+id/courseAllGroupsRecyclerView"
-                                            tools:listitem="@layout/fragment_card_group"/>
+    <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:layout_marginTop="-8.5dp"
+                  android:layout_gravity="center"
+                  android:gravity="center"
+                  android:orientation="vertical">
+        <ImageView android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   app:srcCompat="@drawable/big_ic_star"
+                   android:layout_gravity="center"
+                   tools:ignore="ContentDescription"/>
+        <TextView style="@style/H2.Medium"
+                  android:paddingTop="16dp"
+                  android:paddingBottom="8dp"
+                  android:textAlignment="center"
+                  android:textColor="@color/grafitText"
+                  android:text="@string/no_any_course_reviews"/>
+        <Button style="@style/ButtonGreen"
+                android:id="@+id/courseReviewsClearBtn"
+                android:text="@string/no_course_reviews"/>
+    </LinearLayout>
 </LinearLayout>

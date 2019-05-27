@@ -1,5 +1,7 @@
 package com.aurimteam.justhobby.CoursesInfo.CourseGroupsActivity
 
+import com.aurimteam.justhobby.Response.GroupResponse
+
 class CourseGroupsPresenter(private var view: ICourseGroupsView?, private val model: ICourseGroupsModel?) :
     CourseGroupsModel.onFinishedListener {
 
@@ -7,7 +9,15 @@ class CourseGroupsPresenter(private var view: ICourseGroupsView?, private val mo
 
     }
 
-    override fun onResultSucces() {
+    override fun onResultSuccess(courseAllGroups: List<GroupResponse>) {
+        view?.showCourseAllGroupse(courseAllGroups)
+    }
 
+    fun getCourseAllGroups() {
+        model?.getCourseAllGroupsData(this)
+    }
+
+    fun onDestroy() {
+        view = null
     }
 }

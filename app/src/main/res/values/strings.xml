@@ -53,6 +53,13 @@
     <string name="short_sunday">ВС</string>
     <string name="groups">Группы</string>
     <string name="show_all">Показать все</string>
+    <string name="new_review">Новый отзыв</string>
+    <string name="new_review_hint">Расскажите, как вам курс</string>
+    <string name="new_review_limit">Минимум 20 символов</string>
+    <string name="leave_your_review">Оставьте свой отзыв</string>
+    <string name="no_any_course_reviews">Нет отзывов</string>
+    <string name="no_course_reviews">Оставьте первый отзыв</string>
+    <string name="no_notifications">Нет уведомлений</string>
     <string name="test_company_title">Drive - Школа танцев в Томске</string>
     <string name="about_recovery">
         Укажите E-mail, к которому привязан аккаунт. Мы пришлем на него\n письмо с инструкцией\n восстановления.
@@ -90,4 +97,6 @@
         Таким образом он добавиться в\n Ваше расписание, а также Вам\n будут приходить уведомления\n
         и напоминания о нем.
     </string>
+    <string name="about_no_notifications">Добавьте курс к себе и получайте\n
+        уведомления о изменении его\n расписания, а также напоминания о\n предстоящих занятиях или их\n отмене.</string>
 </resources>

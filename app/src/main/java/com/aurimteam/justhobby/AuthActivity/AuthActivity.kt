@@ -13,6 +13,7 @@ import kotlinx.android.synthetic.main.activity_auth.*
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
 import android.widget.*
+import com.aurimteam.justhobby.CoursesInfo.CourseReviewNewActivity.CourseReviewNewFragment
 import com.aurimteam.justhobby.Main.MainNav
 import com.aurimteam.justhobby.RecoveryActivity.RecoveryActivity
 
