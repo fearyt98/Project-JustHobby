@@ -16,19 +16,19 @@ import android.widget.*
 import com.aurimteam.justhobby.CoursesInfo.CourseReviewNewActivity.CourseReviewNewFragment
 import com.aurimteam.justhobby.Main.MainNav
 import com.aurimteam.justhobby.RecoveryActivity.RecoveryActivity
+import com.aurimteam.justhobby.RegistryActivity.RegistryStartActivity.RegistryStartActivity
 
 class AuthActivity : AppCompatActivity(), IAuthView {
     /*
     Активити обращается только к методам презентера, передаем ему введенную информацию
     или выводит полученную от презентера
      */
-    private lateinit var authPresenter: AuthPresenter
+    private val authPresenter = AuthPresenter(this, AuthModel())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_auth)
 
-        authPresenter = AuthPresenter(this, AuthModel())
 
         val buttonEnter = findViewById<Button>(R.id.authEnterButton)
         val buttonVK = findViewById<Button>(R.id.authVkEnter)
@@ -114,12 +114,12 @@ class AuthActivity : AppCompatActivity(), IAuthView {
     }
 
     override fun forgetChangeActivity() {
-        val intent = Intent(this, RecoveryActivity::class.java)
+        val intent = Intent(this, RegistryStartActivity::class.java)
         startActivity(intent)
     }
 
     override fun registryChangeActivity() {
-        val intent = Intent(this, RegistryActivity::class.java)
+        val intent = Intent(this, MainNav::class.java)
         startActivity(intent)
     }
 

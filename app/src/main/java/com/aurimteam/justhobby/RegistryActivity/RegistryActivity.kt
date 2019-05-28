@@ -14,7 +14,7 @@ import com.aurimteam.justhobby.FeaturesActivities.FeaturesActivity
 import com.aurimteam.justhobby.R
 import com.aurimteam.justhobby.RecoveryActivity.RecoveryActivity
 
-class RegistryActivity : AppCompatActivity() {
+class RegistryActivity : AppCompatActivity(), IRegistryView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registry)
@@ -45,8 +45,7 @@ class RegistryActivity : AppCompatActivity() {
             changeVisiblePassword(confirmPassword, buttonChangeVisibleConfirmPassword)
         }
 
-        val cancel = findViewById<TextView>(R.id.registryCancel)
-        cancel.setOnClickListener {
+        findViewById<TextView>(R.id.registryCancel).setOnClickListener {
             finish()
         }
 
@@ -59,11 +58,8 @@ class RegistryActivity : AppCompatActivity() {
 
 
     private fun changeButtonVisible(password: EditText, btn: ImageButton) {
-        if (password.isFocused) {
-            btn.setColorFilter(ContextCompat.getColor(this, R.color.colorPrimary))
-        } else {
-            btn.clearColorFilter()
-        }
+        if (password.isFocused) btn.setColorFilter(ContextCompat.getColor(this, R.color.colorPrimary))
+        else btn.clearColorFilter()
         if (password.transformationMethod == PasswordTransformationMethod.getInstance()) {
             btn.setImageResource(R.drawable.ic_visibility_off_24dp)
         } else {
@@ -72,11 +68,8 @@ class RegistryActivity : AppCompatActivity() {
     }
 
     private fun changeVisiblePassword(password: EditText, btn: ImageButton) {
-        if (password.isFocused) {
-            btn.setColorFilter(ContextCompat.getColor(this, R.color.colorPrimary))
-        } else {
-            btn.clearColorFilter()
-        }
+        if (password.isFocused) btn.setColorFilter(ContextCompat.getColor(this, R.color.colorPrimary))
+        else btn.clearColorFilter()
         val oldPosCursor = password.selectionStart
         if (password.transformationMethod == PasswordTransformationMethod.getInstance()) {
             btn.setImageResource(R.drawable.ic_visibility_off_24dp)

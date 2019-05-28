@@ -43,7 +43,7 @@ class HomeTimeLineFragment : Fragment(), IHomeView {
     override fun onResume() {
         super.onResume()
         homeCalendarText.text = SimpleDateFormat("d MMMM, EEEE").format(Date())
-        homeCurrentTime.text = SimpleDateFormat("HH:mm").format(Date())
+        //homeCurrentTime.text = SimpleDateFormat("HH:mm").format(Date())
     }
 
     override fun onDestroy() {

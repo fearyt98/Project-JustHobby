@@ -80,13 +80,14 @@
                       android:paddingStart="8dp"
                       android:layout_gravity="top"
                       tools:ignore="RtlSymmetry">
-            <TextView style="@style/Caption1.Medium"
-                      android:id="@+id/homeCurrentTime"
-                      android:textColor="@color/grafitText"
-                      android:layout_width="match_parent"
-                      android:layout_height="wrap_content"
-                      android:text="18:10"
-                      tools:ignore="HardcodedText"/>
+            <TextClock style="@style/Caption1.Medium"
+                       android:id="@+id/homeCurrentTime"
+                       android:textColor="@color/grafitText"
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:format24Hour="hh:mm"
+                       android:text="18:10"
+                       tools:ignore="HardcodedText"/>
         </LinearLayout>
     </LinearLayout>
     <android.support.v7.widget.RecyclerView android:id="@+id/homeEventsRecyclerView"
