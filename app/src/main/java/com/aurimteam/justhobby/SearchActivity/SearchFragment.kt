@@ -7,9 +7,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import android.widget.ImageButton
 import com.aurimteam.justhobby.R
 import com.aurimteam.justhobby.SearchActivity.SearchResultsActivity.SearchResultFragment
 import kotlinx.android.synthetic.main.fragment_recommendation_search.*
+import com.aurimteam.justhobby.SearchActivity.SearchFiltersFragment.SearchFiltersFragment
+
 
 class SearchFragment : Fragment(), ISearchView {
 
@@ -18,6 +21,7 @@ class SearchFragment : Fragment(), ISearchView {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_recommendation_search, container, false)
+        view.findViewById<ImageButton>(R.id.searchFilters).setOnClickListener { openFilters() }
         return view
     }
 
@@ -41,5 +45,9 @@ class SearchFragment : Fragment(), ISearchView {
     override fun onDestroy() {
         super.onDestroy()
         presenter.onDestroy()
+    }
+
+    private fun openFilters(){
+        SearchFiltersFragment().show(fragmentManager,"Filters")
     }
 }

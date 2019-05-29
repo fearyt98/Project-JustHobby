@@ -85,7 +85,7 @@
                        android:textColor="@color/grafitText"
                        android:layout_width="match_parent"
                        android:layout_height="wrap_content"
-                       android:format24Hour="hh:mm"
+                       android:format24Hour="HH:mm"
                        android:text="18:10"
                        tools:ignore="HardcodedText"/>
         </LinearLayout>
