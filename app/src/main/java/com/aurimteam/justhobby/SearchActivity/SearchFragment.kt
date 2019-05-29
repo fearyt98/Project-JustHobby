@@ -16,27 +16,30 @@ import com.aurimteam.justhobby.SearchActivity.SearchResultsActivity.SearchResult
 import com.aurimteam.justhobby.SearchActivity.SearchSubcategoriesFragment.SearchSubcategoriesFragment
 import kotlinx.android.synthetic.main.fragment_search.*
 import android.view.inputmethod.InputMethodManager
+import com.aurimteam.justhobby.Response.CategoryResponse
 import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent
 
 
 class SearchFragment : Fragment(), ISearchView {
 
-    private val presenter = SearchPresenter(this, SearchModel())
+    private var presenter: SearchPresenter? = null
     private val adapter = SearchAdapter()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_search, container, false)
         view.findViewById<ImageButton>(R.id.searchFilters).setOnClickListener { openSubcategories() }
+
+        presenter = SearchPresenter(this, SearchModel(), container?.context)
         return view
     }
 
-    override fun setCategories(categories: List<String>) {
+    override fun setCategories(categories: List<CategoryResponse>) {
         adapter.onDataChange(categories)
     }
 
     override fun onStart() {
         super.onStart()
-        presenter.getCategories()
+        presenter?.getCategories()
         searchCategories.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         searchCategories.adapter = adapter
@@ -50,7 +53,7 @@ class SearchFragment : Fragment(), ISearchView {
 
     override fun onDestroy() {
         super.onDestroy()
-        presenter.onDestroy()
+        presenter?.onDestroy()
     }
 
     private fun openSubcategories(){

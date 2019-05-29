@@ -28,10 +28,18 @@ class TimeLineHolder(view: View) : RecyclerView.ViewHolder(view) {
             itemView.cardTimelineBg.paddingRight, itemView.cardTimelineBg.paddingBottom
         )
         when (category) {
-            "dance" -> itemView.cardTimelineBg.setBackgroundResource(R.drawable.card_timeline_bg_dances)
             "languages" -> itemView.cardTimelineBg.setBackgroundResource(R.drawable.card_timeline_bg_languages)
-            "sport" -> itemView.cardTimelineBg.setBackgroundResource(R.drawable.card_timeline_bg_sports)
-            else -> itemView.cardTimelineBg.setBackgroundResource(R.drawable.card_timeline_bg_sports)
+            "sports" -> itemView.cardTimelineBg.setBackgroundResource(R.drawable.card_timeline_bg_sports)
+            "musics" -> itemView.cardTimelineBg.setBackgroundResource(R.drawable.card_timeline_bg_dances)
+            "it" -> itemView.cardTimelineBg.setBackgroundResource(R.drawable.card_timeline_bg_it)
+            "dances" -> itemView.cardTimelineBg.setBackgroundResource(R.drawable.card_timeline_bg_dances)
+            "art_design" -> itemView.cardTimelineBg.setBackgroundResource(R.drawable.card_timeline_bg_art_design)
+            "craft" -> itemView.cardTimelineBg.setBackgroundResource(R.drawable.card_timeline_bg_craft)
+            "designing" -> itemView.cardTimelineBg.setBackgroundResource(R.drawable.card_timeline_bg_designing)
+            "literature" -> itemView.cardTimelineBg.setBackgroundResource(R.drawable.card_timeline_bg_literature)
+            "fashion_style" -> itemView.cardTimelineBg.setBackgroundResource(R.drawable.card_timeline_bg_fashion_style)
+            "entertainment_arts" -> itemView.cardTimelineBg.setBackgroundResource(R.drawable.card_timeline_bg_entertainment_arts)
+            else -> itemView.cardTimelineBg.setBackgroundResource(R.drawable.card_timeline_bg_languages)
         }
         itemView.cardTimelineBg.setPadding(padding[0], padding[1], padding[2], padding[3])
     }

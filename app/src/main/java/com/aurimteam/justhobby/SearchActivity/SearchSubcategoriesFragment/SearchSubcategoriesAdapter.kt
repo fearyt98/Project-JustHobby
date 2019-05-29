@@ -4,11 +4,11 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.aurimteam.justhobby.R
-import com.aurimteam.justhobby.Response.SubcategoriesResponse
+import com.aurimteam.justhobby.Response.SubcategoryResponse
 
 class SearchSubcategoriesAdapter : RecyclerView.Adapter<SearchSubcategoriesHolder>() {
 
-    private val subcategories: MutableList<SubcategoriesResponse> = mutableListOf()
+    private val subcategories: MutableList<SubcategoryResponse> = mutableListOf()
 
     override fun getItemCount(): Int = subcategories.size
     override fun onBindViewHolder(holder: SearchSubcategoriesHolder, position: Int) {
@@ -23,7 +23,7 @@ class SearchSubcategoriesAdapter : RecyclerView.Adapter<SearchSubcategoriesHolde
         LayoutInflater.from(parent.context).inflate(R.layout.fragment_card_subcategories, parent, false)
     )
 
-    fun onDataChange(subcategories: List<SubcategoriesResponse>) {
+    fun onDataChange(subcategories: List<SubcategoryResponse>) {
         this.subcategories.clear()
         this.subcategories.addAll(subcategories)
         notifyDataSetChanged()

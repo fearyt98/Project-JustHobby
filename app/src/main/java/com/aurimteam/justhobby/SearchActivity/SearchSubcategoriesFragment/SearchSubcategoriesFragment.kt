@@ -11,7 +11,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.aurimteam.justhobby.R
-import com.aurimteam.justhobby.Response.SubcategoriesResponse
+import com.aurimteam.justhobby.Response.SubcategoryResponse
 import kotlinx.android.synthetic.main.fragment_bottomsheets_subcategories.*
 
 class SearchSubcategoriesFragment : BottomSheetDialogFragment(), ISearchSubcategoriesView {
@@ -26,7 +26,7 @@ class SearchSubcategoriesFragment : BottomSheetDialogFragment(), ISearchSubcateg
         return inflater.inflate(R.layout.fragment_bottomsheets_subcategories, container, false)
     }
 
-    override fun showSubcategories(subcategories: List<SubcategoriesResponse>) {
+    override fun showSubcategories(subcategories: List<SubcategoryResponse>) {
         adapter.onDataChange(subcategories)
     }
 
