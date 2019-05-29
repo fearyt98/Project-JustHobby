@@ -23,20 +23,20 @@
         <activity android:name=".Main.RecommendationPageViewer.RecommendationFragment"/>
         <activity android:name=".Main.MainNav"
                   android:label="@string/title_activity_home_main"/>
-        <activity android:name=".AuthActivity.AuthActivity"
+        <activity android:name="com.aurimteam.justhobby.Start.AuthActivity.AuthActivity"
                   android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".RegistryActivity.RegistryActivity"
+        <activity android:name="com.aurimteam.justhobby.Start.RegistryActivity.RegistryActivity"
                   android:screenOrientation="portrait"/>
-        <activity android:name=".RecoveryActivity.RecoveryActivity"
+        <activity android:name="com.aurimteam.justhobby.Start.RecoveryActivity.RecoveryActivity"
                   android:screenOrientation="portrait"/>
-        <activity android:name=".FeaturesActivities.FeaturesActivity"
+        <activity android:name="com.aurimteam.justhobby.Start.FeaturesActivities.FeaturesActivity"
                   android:screenOrientation="portrait"/>
         <activity android:name=".Main.Home.HomeTimeLineFragment"/>
-        <activity android:name=".RegistryActivity.RegistryStartActivity.RegistryStartActivity"/>
+        <activity android:name="com.aurimteam.justhobby.Start.RegistryActivity.RegistryStartActivity.RegistryStartActivity"/>
     </application>
 </manifest>

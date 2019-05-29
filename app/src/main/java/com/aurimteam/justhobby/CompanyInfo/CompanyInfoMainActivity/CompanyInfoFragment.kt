@@ -20,8 +20,8 @@ class CompanyInfoFragment : Fragment(), ICompanyInfoView {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_company_info, container, false)
-        view.findViewById<ImageButton>(R.id.backArrowCompanyInfo).setOnClickListener { backToRecommendedFragment() }
-        view.findViewById<TextView>(R.id.showAllCompanyCourses).setOnClickListener { allCompanyCoursesFragment() }
+        view.findViewById<ImageButton>(R.id.companyInfoBtnBack).setOnClickListener { backToRecommendedFragment() }
+        view.findViewById<TextView>(R.id.companyInfoShowAllCourses).setOnClickListener { allCompanyCoursesFragment() }
         return view
     }
 
@@ -32,8 +32,8 @@ class CompanyInfoFragment : Fragment(), ICompanyInfoView {
     override fun onStart() {
         super.onStart()
         presenter.getCompanyCourses()
-        coursesRecyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        coursesRecyclerView.adapter = adapter
+        companyInfoCoursesRecyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        companyInfoCoursesRecyclerView.adapter = adapter
     }
 
     override fun onDestroy() {

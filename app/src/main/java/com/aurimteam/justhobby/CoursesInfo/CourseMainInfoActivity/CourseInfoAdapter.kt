@@ -15,7 +15,7 @@ class CourseInfoAdapter : RecyclerView.Adapter<CourseInfoGroupsHolder>() {
         holder.bind(
             courseGroupsList[position].id,
             courseGroupsList[position].title,
-            courseGroupsList[position].tutor,
+            courseGroupsList[position].teacher,
             courseGroupsList[position].price
         )
     }

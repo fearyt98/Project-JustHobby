@@ -14,6 +14,7 @@ class NotificationsNewAdapter : RecyclerView.Adapter<NotificationsHolder>() {
     override fun onBindViewHolder(holder: NotificationsHolder, position: Int) {
         holder.bind(
             position == 0,
+            false,
             notifications[position].title,
             notifications[position].description,
             notifications[position].day,

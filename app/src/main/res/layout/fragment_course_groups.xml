@@ -14,7 +14,7 @@
         <ImageButton android:layout_width="wrap_content"
                      android:layout_height="match_parent"
                      android:layout_gravity="center_vertical"
-                     android:id="@+id/backArrowCourseGroups"
+                     android:id="@+id/courseGroupsBtnBack"
                      android:paddingStart="20dp"
                      android:paddingEnd="20dp"
                      android:tint="@color/whiteTop"
@@ -30,21 +30,22 @@
                   android:gravity="center"
                   android:text="Восточные танцы"
                   android:textColor="@color/whiteTop"
-                  app:layout_constraintLeft_toRightOf="@id/backArrowCourseGroups"
+                  app:layout_constraintLeft_toRightOf="@id/courseGroupsBtnBack"
                   app:layout_constraintTop_toTopOf="parent"
-                  style="@style/Body1.Medium"/>
+                  style="@style/Body1.Medium"
+                  tools:ignore="HardcodedText"/>
         <TextView android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
                   android:layout_gravity="center"
                   android:gravity="center"
                   android:text="@string/test_company_title"
                   android:textColor="@color/whiteTop"
-                  app:layout_constraintLeft_toRightOf="@id/backArrowCourseGroups"
+                  app:layout_constraintLeft_toRightOf="@id/courseGroupsBtnBack"
                   app:layout_constraintBottom_toBottomOf="parent"
                   style="@style/Body2"/>
     </android.support.constraint.ConstraintLayout>
     <android.support.v7.widget.RecyclerView android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
-                                            android:id="@+id/courseAllGroupsRecyclerView"
+                                            android:id="@+id/courseGroupsRecyclerView"
                                             tools:listitem="@layout/fragment_card_group"/>
 </LinearLayout>

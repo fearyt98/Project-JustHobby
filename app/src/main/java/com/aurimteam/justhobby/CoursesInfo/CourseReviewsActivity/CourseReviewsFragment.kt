@@ -2,6 +2,7 @@ package com.aurimteam.justhobby.CoursesInfo.CourseReviewsActivity
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v4.view.ViewCompat
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
@@ -16,8 +17,7 @@ class CourseReviewsFragment : Fragment(), ICourseReviewsView {
     private val adapter = CourseReviewsAdapter()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_course_reviews, container, false)
-        return view
+        return inflater.inflate(R.layout.fragment_course_reviews, container, false)
     }
 
     override fun onStart() {
@@ -25,6 +25,7 @@ class CourseReviewsFragment : Fragment(), ICourseReviewsView {
         presenter.getCourseReviews()
         courseReviewsRecyclerView.layoutManager = LinearLayoutManager(context)
         courseReviewsRecyclerView.adapter = adapter
+        ViewCompat.setNestedScrollingEnabled(courseReviewsRecyclerView, false)
     }
 
     override fun showCourseReviews(courseReviews: List<CourseReviewsResponse>) {

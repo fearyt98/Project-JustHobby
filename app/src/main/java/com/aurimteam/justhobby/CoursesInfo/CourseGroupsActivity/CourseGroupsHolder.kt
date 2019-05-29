@@ -8,11 +8,11 @@ class CourseGroupsHolder(view: View):RecyclerView.ViewHolder(view){
     fun bind(
         id: Long,
         title: String,
-        tutor: String,
+        teacher: String,
         price: String
     ) {
         itemView.cardGroupPrice.text = price
-        itemView.tutorGroup.text = tutor
-        itemView.titleGroup.text = title
+        itemView.cardGroupTeacher.text = teacher
+        itemView.cardGroupTitle.text = title
     }
 }

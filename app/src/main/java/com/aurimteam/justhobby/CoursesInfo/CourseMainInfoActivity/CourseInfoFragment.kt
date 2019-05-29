@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import com.aurimteam.justhobby.R
 import com.aurimteam.justhobby.Response.GroupResponse
-import kotlinx.android.synthetic.main.fragment_course_main.*
+import kotlinx.android.synthetic.main.fragment_course_info.*
 
 class CourseInfoFragment : Fragment(), ICourseInfoView {
 
@@ -17,8 +17,8 @@ class CourseInfoFragment : Fragment(), ICourseInfoView {
     private val adapter = CourseInfoAdapter()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_course_main, container, false)
-        view.findViewById<ImageButton>(R.id.backArrowCourseInfo).setOnClickListener { backToRecommendedFragment() }
+        val view = inflater.inflate(R.layout.fragment_course_info, container, false)
+        view.findViewById<ImageButton>(R.id.courseInfoBtnBack).setOnClickListener { backToRecommendedFragment() }
         return view
     }
 
@@ -29,8 +29,8 @@ class CourseInfoFragment : Fragment(), ICourseInfoView {
     override fun onStart() {
         super.onStart()
         presenter.getCourseGroups()
-        groupsRecyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        groupsRecyclerView.adapter = adapter
+        courseInfoGroupsRecyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        courseInfoGroupsRecyclerView.adapter = adapter
     }
 
     override fun onDestroy() {

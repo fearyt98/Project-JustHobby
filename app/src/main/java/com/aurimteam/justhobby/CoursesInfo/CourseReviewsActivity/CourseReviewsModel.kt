@@ -10,10 +10,11 @@ class CourseReviewsModel : ICourseReviewsModel {
 
     override fun getCourseReviewsData(onFinishedListener: onFinishedListener) {
         val courseReviews: List<CourseReviewsResponse> = listOf(
-            CourseReviewsResponse(0, "Петр Андреевич", 2.3f, "Все просто отлично"),
+            CourseReviewsResponse(0, "Петр Андреевич", 5f, "Все просто отлично"),
+            CourseReviewsResponse(0, "Петр Андреевич", 4f, "Все просто отлично"),
             CourseReviewsResponse(0, "Петр Андреевич", 3f, "Все просто ужасно"),
-            CourseReviewsResponse(0, "Петр Андреевич", 1f, "Почти смогли"),
-            CourseReviewsResponse(0, "Петр Андреевич", 4f, "Смогли!!!")
+            CourseReviewsResponse(0, "Петр Андреевич", 2f, "Почти смогли"),
+            CourseReviewsResponse(0, "Петр Андреевич", 1f, "Смогли!!!")
         )
         onFinishedListener.onResultSuccess(courseReviews)
     }

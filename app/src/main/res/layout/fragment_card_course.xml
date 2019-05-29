@@ -105,7 +105,7 @@
                            android:id="@+id/cardCourseStatus"
                            android:layout_gravity="center_vertical"
                            android:tint="@color/gray"
-                           app:srcCompat="@drawable/ic_success"
+                           app:srcCompat="@drawable/ic_success_24dp"
                            android:background="@android:color/transparent"
                            tools:ignore="ContentDescription"/>
                 <ImageView android:layout_width="3dp"

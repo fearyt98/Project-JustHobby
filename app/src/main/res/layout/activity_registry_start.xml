@@ -7,7 +7,7 @@
             android:background="@color/colorPrimary"
             android:fitsSystemWindows="true"
             android:fillViewport="true">
-    <LinearLayout android:id="@+id/auth"
+    <LinearLayout android:id="@+id/registryStart"
                   android:layout_width="match_parent"
                   android:layout_height="wrap_content"
                   android:gravity="center"
@@ -15,10 +15,11 @@
                   android:clickable="true"
                   android:focusable="true"
                   android:focusableInTouchMode="true"
-                  tools:context=".RecoveryActivity.RecoveryActivity">
+                  tools:context=".Start.RecoveryActivity.RecoveryActivity">
         <TextView android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
-                  android:paddingTop="25dp"
+                  android:paddingTop="16dp"
+                  android:paddingBottom="8dp"
                   android:layout_gravity="center"
                   android:text="@string/general_info"
                   style="@style/H2.Medium"/>
@@ -28,12 +29,23 @@
                   android:textAlignment="center"
                   android:text="@string/about_registry_start"
                   style="@style/Body2"/>
-        <ImageView android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:layout_marginTop="20dp"
-                   android:layout_marginBottom="20dp"
-                   app:srcCompat="@drawable/big_ic_default_avatar"
-                   tools:ignore="ContentDescription"/>
+        <FrameLayout android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_marginTop="12dp"
+                     android:layout_marginBottom="8dp">
+            <ImageView android:layout_width="120dp"
+                       android:layout_height="120dp"
+                       app:srcCompat="@drawable/avatar_bg"
+                       tools:ignore="ContentDescription"/>
+            <ImageButton android:layout_width="36dp"
+                         android:layout_height="37dp"
+                         android:paddingBottom="5dp"
+                         android:layout_gravity="end"
+                         app:srcCompat="@drawable/ic_edit_24dp"
+                         android:tint="@color/colorPrimary"
+                         android:background="@drawable/avatar_btn_bg"
+                         tools:ignore="ContentDescription"/>
+        </FrameLayout>
         <LinearLayout android:layout_width="match_parent"
                       android:layout_height="wrap_content"
                       android:orientation="vertical"
@@ -46,17 +58,19 @@
                 <FrameLayout android:layout_width="match_parent"
                              android:layout_height="wrap_content">
                     <EditText android:id="@+id/registryStartFirstName"
-                              style="@style/EditText"/>
-                    <ImageButton android:id="@+id/registrySuccessFirstNameVisible"
+                              style="@style/EditText"
+                              android:paddingEnd="64dp"
+                              tools:ignore="RtlSymmetry"/>
+                    <ImageButton android:id="@+id/registryStartSuccessFirstNameVisible"
                                  android:layout_width="wrap_content"
                                  android:layout_height="wrap_content"
                                  android:layout_gravity="end|center_vertical"
-                                 android:visibility="gone"
+                                 android:visibility="visible"
                                  android:paddingTop="2.5dp"
                                  android:paddingBottom="7.5dp"
                                  android:paddingStart="0dp"
-                                 android:paddingEnd="24dp"
-                                 app:srcCompat="@drawable/ic_visibility_24dp"
+                                 android:paddingEnd="28dp"
+                                 app:srcCompat="@drawable/ic_fail_24dp"
                                  android:background="@android:color/transparent"/>
                 </FrameLayout>
             </LinearLayout>
@@ -69,18 +83,18 @@
                              android:layout_height="wrap_content">
                     <EditText android:id="@+id/registryStartLastName"
                               style="@style/EditText"
-                              android:paddingStart="0dp"
-                              android:paddingEnd="64dp"/>
-                    <ImageButton android:id="@+id/registrySuccessLastNameVisible"
+                              android:paddingEnd="64dp"
+                              tools:ignore="RtlSymmetry"/>
+                    <ImageButton android:id="@+id/registryStartSuccessLastNameVisible"
                                  android:layout_width="wrap_content"
                                  android:layout_height="wrap_content"
                                  android:layout_gravity="end|center_vertical"
-                                 android:visibility="gone"
+                                 android:visibility="visible"
                                  android:paddingTop="2.5dp"
                                  android:paddingBottom="7.5dp"
                                  android:paddingStart="0dp"
-                                 android:paddingEnd="24dp"
-                                 app:srcCompat="@drawable/ic_visibility_24dp"
+                                 android:paddingEnd="28dp"
+                                 app:srcCompat="@drawable/ic_success_24dp"
                                  android:background="@android:color/transparent"/>
                 </FrameLayout>
             </LinearLayout>
@@ -88,21 +102,16 @@
                     android:text="@string/ready"
                     android:layout_marginTop="15dp"
                     style="@style/ButtonWhite"/>
-        </LinearLayout>
-        <LinearLayout android:layout_width="match_parent"
-                      android:layout_height="match_parent"
-                      android:layout_marginTop="8dp"
-                      android:orientation="vertical"
-                      android:gravity="center">
             <TextView android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
                       android:text="@string/about_btn_ready"
+                      android:paddingTop="16dp"
                       style="@style/Body2"/>
             <TextView android:id="@+id/registryStartUserAgreement"
                       android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
                       android:text="@string/user_agreement"
-                      android:shadowColor="#66000000"
+                      android:shadowColor="#0D000000"
                       android:shadowRadius="4"
                       android:shadowDy="2"
                       style="@style/Body2.Medium"/>

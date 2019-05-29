@@ -13,7 +13,7 @@
         <ImageButton android:layout_width="wrap_content"
                      android:layout_height="match_parent"
                      android:layout_gravity="center_vertical"
-                     android:id="@+id/backArrowCourseReview"
+                     android:id="@+id/courseReviewsBtnBack"
                      android:paddingStart="20dp"
                      android:paddingEnd="20dp"
                      android:tint="@color/whiteTop"
@@ -29,16 +29,17 @@
                   android:gravity="center"
                   android:text="Восточные танцы"
                   android:textColor="@color/whiteTop"
-                  app:layout_constraintLeft_toRightOf="@id/backArrowCourseReview"
+                  app:layout_constraintLeft_toRightOf="@id/courseReviewsBtnBack"
                   app:layout_constraintTop_toTopOf="parent"
-                  style="@style/Body1.Medium"/>
+                  style="@style/Body1.Medium"
+                  tools:ignore="HardcodedText"/>
         <TextView android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
                   android:layout_gravity="center"
                   android:gravity="center"
                   android:text="@string/test_company_title"
                   android:textColor="@color/whiteTop"
-                  app:layout_constraintLeft_toRightOf="@id/backArrowCourseReview"
+                  app:layout_constraintLeft_toRightOf="@id/courseReviewsBtnBack"
                   app:layout_constraintBottom_toBottomOf="parent"
                   style="@style/Body2"/>
     </android.support.constraint.ConstraintLayout>
@@ -48,8 +49,8 @@
                   android:layout_gravity="center"
                   android:gravity="center"
                   android:orientation="vertical">
-        <ImageView android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
+        <ImageView android:layout_width="114dp"
+                   android:layout_height="114dp"
                    app:srcCompat="@drawable/big_ic_star"
                    android:layout_gravity="center"
                    tools:ignore="ContentDescription"/>

@@ -14,7 +14,7 @@
         <ImageButton android:layout_width="wrap_content"
                      android:layout_height="match_parent"
                      android:layout_gravity="center_vertical"
-                     android:id="@+id/bookmarksBtnBackTimeLine"
+                     android:id="@+id/bookmarksBtnBack"
                      android:paddingStart="20dp"
                      android:tint="@color/whiteTop"
                      app:srcCompat="@drawable/ic_arrow_back_24dp"

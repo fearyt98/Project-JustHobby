@@ -13,7 +13,7 @@
         <TextView android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
                   android:textColor="@color/whiteText"
-                  android:id="@+id/titleGroup"
+                  android:id="@+id/cardGroupTitle"
                   android:text="Начинающие"
                   app:layout_constraintLeft_toLeftOf="parent"
                   app:layout_constraintTop_toTopOf="parent"
@@ -29,7 +29,7 @@
                      android:background="@android:color/transparent"
                      app:layout_constraintTop_toTopOf="parent"
                      app:layout_constraintBottom_toBottomOf="parent"
-                     app:layout_constraintLeft_toRightOf="@id/titleGroup"
+                     app:layout_constraintLeft_toRightOf="@id/cardGroupTitle"
                      tools:ignore="ContentDescription"/>
         <ImageButton android:layout_width="wrap_content"
                      android:layout_height="wrap_content"
@@ -53,7 +53,7 @@
     <TextView android:layout_width="wrap_content"
               android:layout_height="wrap_content"
               android:textColor="@color/whiteText"
-              android:id="@+id/tutorGroup"
+              android:id="@+id/cardGroupTeacher"
               android:text="Ирина Валекжанина"
               tools:ignore="HardcodedText"
               style="@style/Caption2"/>
@@ -77,10 +77,10 @@
                    android:layout_height="12dp"
                    android:layout_marginLeft="5dp"
                    android:layout_marginRight="5dp"
-                   android:id="@+id/cardCourseStatus"
+                   android:id="@+id/cardGroupStatus"
                    android:layout_gravity="center_vertical"
                    android:tint="@color/whiteTop"
-                   app:srcCompat="@drawable/ic_success"
+                   app:srcCompat="@drawable/ic_success_24dp"
                    android:background="@android:color/transparent"
                    tools:ignore="ContentDescription"/>
         <ImageView android:layout_width="3dp"
@@ -94,7 +94,7 @@
                    tools:ignore="ContentDescription"/>
         <ImageView android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
-                   android:id="@+id/cardCourseSexFemale"
+                   android:id="@+id/cardGroupSexFemale"
                    android:layout_gravity="center_vertical"
                    android:tint="@color/whiteTop"
                    app:srcCompat="@drawable/ic_female"
@@ -102,7 +102,7 @@
                    tools:ignore="ContentDescription"/>
         <ImageView android:layout_width="0dp"
                    android:layout_height="wrap_content"
-                   android:id="@+id/cardCourseSexMale"
+                   android:id="@+id/cardGroupSexMale"
                    android:layout_gravity="center_vertical"
                    android:tint="@color/whiteTop"
                    app:srcCompat="@drawable/ic_male"
@@ -111,7 +111,7 @@
         <LinearLayout android:layout_width="0dp"
                       android:layout_height="wrap_content"
                       android:layout_gravity="center_vertical"
-                      android:id="@+id/cardCourseSex">
+                      android:id="@+id/cardGroupSex">
             <ImageView android:layout_width="wrap_content"
                        android:layout_height="wrap_content"
                        android:layout_gravity="center_vertical"

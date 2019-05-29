@@ -61,7 +61,9 @@
                       tools:ignore="HardcodedText"/>
         </LinearLayout>
     </LinearLayout>
-    <View android:layout_width="match_parent"
+    <View android:id="@+id/cardNotificationLastLine"
+          android:layout_width="match_parent"
           android:layout_height="1dp"
-          android:background="@color/grayLightTopMiddle"/>
+          android:background="@color/grayLightTopMiddle"
+          android:layout_marginBottom="8dp"/>
 </LinearLayout>

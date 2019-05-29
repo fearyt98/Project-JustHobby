@@ -1,37 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:layout_height="match_parent"
-              android:layout_width="match_parent"
-              android:orientation="vertical">
-    <FrameLayout android:layout_width="match_parent"
-                 android:layout_height="64dp"
-                 android:paddingBottom="8dp"
-                 android:background="@drawable/appbar_bg"
-                 android:orientation="horizontal">
-        <TextView android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:layout_gravity="center"
-                  android:gravity="center"
-                  android:text="@string/notifications"
-                  android:textColor="@color/whiteTop"
-                  style="@style/Body1.Medium.UpperCase"/>
-        <ImageButton android:layout_width="wrap_content"
-                     android:layout_height="match_parent"
-                     android:layout_gravity="end"
-                     android:paddingEnd="20dp"
-                     android:id="@+id/notificationsBtnClear"
-                     android:tint="@color/whiteTop"
-                     app:srcCompat="@drawable/ic_delete_24dp"
-                     android:background="@android:color/transparent"
-                     android:contentDescription="@string/clear_notifications"
-                     tools:ignore="RtlSymmetry"/>
-    </FrameLayout>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                             xmlns:app="http://schemas.android.com/apk/res-auto"
+                                             xmlns:tools="http://schemas.android.com/tools"
+                                             android:layout_height="match_parent"
+                                             android:layout_width="match_parent"
+                                             android:orientation="vertical">
     <ScrollView android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="-8.5dp"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                app:layout_constraintTop_toBottomOf="@id/notificationsMarginSpacer"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:paddingBottom="56dp">
         <LinearLayout android:layout_width="match_parent"
                       android:layout_height="wrap_content"
                       android:orientation="vertical">
@@ -91,4 +71,38 @@
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
-</LinearLayout>
+    <android.support.v4.widget.Space android:id="@+id/notificationsMarginSpacer"
+                                     android:layout_width="0dp"
+                                     android:layout_height="0dp"
+                                     android:layout_marginBottom="8dp"
+                                     app:layout_constraintBottom_toBottomOf="@id/notificationsBar"
+                                     app:layout_constraintLeft_toLeftOf="@id/notificationsBar"
+                                     app:layout_constraintRight_toRightOf="@id/notificationsBar"/>
+    <FrameLayout android:id="@+id/notificationsBar"
+                 android:layout_width="match_parent"
+                 android:layout_height="64dp"
+                 android:paddingBottom="8dp"
+                 android:background="@drawable/appbar_bg"
+                 android:orientation="horizontal"
+                 app:layout_constraintTop_toTopOf="parent"
+                 app:layout_constraintLeft_toLeftOf="parent"
+                 app:layout_constraintRight_toRightOf="parent">
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_gravity="center"
+                  android:gravity="center"
+                  android:text="@string/notifications"
+                  android:textColor="@color/whiteTop"
+                  style="@style/Body1.Medium.UpperCase"/>
+        <ImageButton android:layout_width="wrap_content"
+                     android:layout_height="match_parent"
+                     android:layout_gravity="end"
+                     android:paddingEnd="20dp"
+                     android:id="@+id/notificationsBtnClear"
+                     android:tint="@color/whiteTop"
+                     app:srcCompat="@drawable/ic_delete_24dp"
+                     android:background="@android:color/transparent"
+                     android:contentDescription="@string/clear_notifications"
+                     tools:ignore="RtlSymmetry"/>
+    </FrameLayout>
+</android.support.constraint.ConstraintLayout>

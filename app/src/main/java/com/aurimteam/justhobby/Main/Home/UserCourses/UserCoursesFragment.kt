@@ -28,9 +28,8 @@ class UserCoursesFragment : Fragment(), IUserCoursesView {
     override fun onStart() {
         super.onStart()
         presenter.getUserCourses()
-        //userCoursesRecycler.
-        userCoursesRecycler.layoutManager = LinearLayoutManager(context)
-        userCoursesRecycler.adapter = adapter
+        userCoursesRecyclerView.layoutManager = LinearLayoutManager(context)
+        userCoursesRecyclerView.adapter = adapter
     }
 
     override fun onDestroy() {
