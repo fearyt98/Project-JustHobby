@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.aurimteam.justhobby.R
 import com.aurimteam.justhobby.Response.SubcategoriesResponse
-import kotlinx.android.synthetic.main.fragment_card_search_category_subcategories.*
+import kotlinx.android.synthetic.main.fragment_card_search_subcategories.*
 
 class SearchFiltersFragment : BottomSheetDialogFragment(), ISearchFiltersView {
 
@@ -16,7 +16,7 @@ class SearchFiltersFragment : BottomSheetDialogFragment(), ISearchFiltersView {
     private val presenter = SearchFiltersPresenter(this, SearchFiltersModel())
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(
-            R.layout.fragment_card_search_category_subcategories,
+            R.layout.fragment_card_search_subcategories,
             container, false
         )
         return view
@@ -29,8 +29,8 @@ class SearchFiltersFragment : BottomSheetDialogFragment(), ISearchFiltersView {
     override fun onStart() {
         super.onStart()
         presenter.getFilters()
-        subcategoriesRecycler.layoutManager = LinearLayoutManager(context)
-        subcategoriesRecycler.adapter = adapter
+        subcategoriesRecyclerView.layoutManager = LinearLayoutManager(context)
+        subcategoriesRecyclerView.adapter = adapter
     }
 
     override fun onDestroy() {

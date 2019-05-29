@@ -10,17 +10,13 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
 import android.widget.ImageButton
 import com.aurimteam.justhobby.R
 import com.aurimteam.justhobby.SearchActivity.SearchResultsActivity.SearchResultFragment
-import kotlinx.android.synthetic.main.fragment_recommendation_search.*
 import com.aurimteam.justhobby.SearchActivity.SearchFiltersFragment.SearchFiltersFragment
 import kotlinx.android.synthetic.main.fragment_search.*
 import android.view.inputmethod.InputMethodManager
-import android.widget.LinearLayout
 import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent
-import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEventListener
 
 
 class SearchFragment : Fragment(), ISearchView {
@@ -29,7 +25,7 @@ class SearchFragment : Fragment(), ISearchView {
     private val adapter = SearchAdapter()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_recommendation_search, container, false)
+        val view = inflater.inflate(R.layout.fragment_search, container, false)
         view.findViewById<ImageButton>(R.id.searchFilters).setOnClickListener { openFilters() }
         return view
     }

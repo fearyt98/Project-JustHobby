@@ -74,7 +74,8 @@
                      app:layout_constraintLeft_toLeftOf="@id/searchEditText"
                      app:layout_constraintBottom_toBottomOf="@id/searchEditText"
                      android:contentDescription="@string/back"/>
-        <ImageButton android:layout_width="wrap_content"
+        <ImageButton android:id="@+id/searchFilters"
+                     android:layout_width="wrap_content"
                      android:layout_height="wrap_content"
                      android:layout_marginTop="9dp"
                      android:paddingTop="10dp"
