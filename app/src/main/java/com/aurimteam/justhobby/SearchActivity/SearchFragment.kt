@@ -40,25 +40,7 @@ class SearchFragment : Fragment(), ISearchView {
         searchCategories.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         searchCategories.adapter = adapter
-        searchEditText.requestFocus()
-        val imm = this.activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?
-        imm!!.toggleSoftInput(0, 0)
-        KeyboardVisibilityEvent.setEventListener(activity) { isOpen ->
-            if (isOpen) {
-                activity?.findViewById<BottomNavigationView>(R.id.mainNavNavigation)?.visibility = View.GONE
-                activity?.findViewById<Space>(R.id.mainNavMarginSpacer)?.visibility = View.GONE
-            } else {
-                activity?.findViewById<BottomNavigationView>(R.id.mainNavNavigation)?.visibility = View.VISIBLE
-                activity?.findViewById<Space>(R.id.mainNavMarginSpacer)?.visibility = View.VISIBLE
-            }
-        }
-
-        search.setOnFocusChangeListener { view: View, hasFocus: Boolean ->
-            if (hasFocus) {
-                val inputMethodManager = this.activity?.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager?
-                inputMethodManager?.hideSoftInputFromWindow(view.windowToken, 0)
-            }
-        }
+        init()
 
         fragmentManager!!
             .beginTransaction()
@@ -73,5 +55,28 @@ class SearchFragment : Fragment(), ISearchView {
 
     private fun openSubcategories(){
         SearchSubcategoriesFragment().show(fragmentManager,"Subcategories")
+    }
+
+    private fun init() {
+        searchEditText.requestFocus()
+        val imm =
+            this.activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?
+        imm!!.toggleSoftInput(0, 0)
+        KeyboardVisibilityEvent.setEventListener(activity) { isOpen ->
+            if (isOpen) {
+                activity?.findViewById<BottomNavigationView>(R.id.mainNavNavigation)?.visibility = View.GONE
+                activity?.findViewById<Space>(R.id.mainNavMarginSpacer)?.visibility = View.GONE
+            } else {
+                activity?.findViewById<BottomNavigationView>(R.id.mainNavNavigation)?.visibility = View.VISIBLE
+                activity?.findViewById<Space>(R.id.mainNavMarginSpacer)?.visibility = View.VISIBLE
+            }
+        }
+        search.setOnFocusChangeListener { view: View, hasFocus: Boolean ->
+            if (hasFocus) {
+                val inputMethodManager =
+                    this.activity?.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager?
+                inputMethodManager?.hideSoftInputFromWindow(view.windowToken, 0)
+            }
+        }
     }
 }
