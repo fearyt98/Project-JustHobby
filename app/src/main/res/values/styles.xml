@@ -154,6 +154,11 @@
         <item name="colorControlNormal">@color/grafit</item>
         <item name="colorControlActivated">@color/grafit</item>
     </style>
+    <!-- CheckBox -->
+    <style name="CheckBox" parent="Theme.AppCompat.Light">
+        <item name="colorControlNormal">@color/grayDarkMiddle</item>
+        <item name="colorControlActivated">@color/colorPrimary</item>
+    </style>
     <!-- Label -->
     <style name="Label">
         <item name="android:layout_width">wrap_content</item>

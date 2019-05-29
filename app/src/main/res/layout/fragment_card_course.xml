@@ -8,8 +8,6 @@
              android:paddingLeft="3dp"
              android:paddingRight="3dp"
              android:layout_marginBottom="-6dp">
-    <View android:id="@+id/cardCoursePaddingTop" android:layout_width="match_parent"
-          android:layout_height="0dp"/>
     <TableRow android:background="@drawable/card_course_bg"
               tools:ignore="UselessParent">
         <FrameLayout android:layout_width="48dp"
@@ -221,6 +219,4 @@
                          android:contentDescription="@string/show_on_map"/>
         </LinearLayout>
     </TableRow>
-    <View android:id="@+id/cardCoursePaddingBottom" android:layout_width="match_parent"
-          android:layout_height="0dp"/>
 </TableLayout>

@@ -5,7 +5,7 @@
                                         android:layout_width="match_parent"
                                         android:overScrollMode="never"
                                         android:layout_height="match_parent"
-                                        android:paddingBottom="9dp"
+                                        android:paddingBottom="17dp"
                                         android:paddingTop="3dp"
                                         android:clipToPadding="false"
                                         tools:listitem="@layout/fragment_card_course"/>

@@ -1,5 +1,6 @@
 package com.aurimteam.justhobby.SearchActivity
 
+import android.app.Activity
 import android.content.Context
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
@@ -13,6 +14,7 @@ import com.aurimteam.justhobby.R
 import com.aurimteam.justhobby.SearchActivity.SearchResultsActivity.SearchResultFragment
 import kotlinx.android.synthetic.main.fragment_search.*
 import android.view.inputmethod.InputMethodManager
+import android.widget.LinearLayout
 import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent
 import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEventListener
 
@@ -46,6 +48,13 @@ class SearchFragment : Fragment(), ISearchView {
             } else {
                 activity?.findViewById<BottomNavigationView>(R.id.mainNavNavigation)?.visibility = View.VISIBLE
                 activity?.findViewById<Space>(R.id.mainNavMarginSpacer)?.visibility = View.VISIBLE
+            }
+        }
+
+        search.setOnFocusChangeListener { view: View, hasFocus: Boolean ->
+            if (hasFocus) {
+                val inputMethodManager = this.activity?.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager?
+                inputMethodManager?.hideSoftInputFromWindow(view.windowToken, 0)
             }
         }
 
