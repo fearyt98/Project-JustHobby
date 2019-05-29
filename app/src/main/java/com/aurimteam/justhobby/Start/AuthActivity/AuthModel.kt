@@ -2,8 +2,8 @@ package com.aurimteam.justhobby.Start.AuthActivity
 
 import com.aurimteam.justhobby.Api.Api
 import com.aurimteam.justhobby.App
-import com.aurimteam.justhobby.Response.AuthBody
-import com.aurimteam.justhobby.Response.AuthResponse
+import com.aurimteam.justhobby.ResponseBody.LoginBody
+import com.aurimteam.justhobby.Response.LoginResponse
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
@@ -12,26 +12,25 @@ import retrofit2.Response
 class AuthModel : IAuthModel {
 
     interface OnFinishedListener {
-        fun onResultSuccess(token: AuthResponse)  //arrUpdates: List<DataItem>
-        fun onResultFail(strError: String) //strError: String
+        fun onResultSuccess(token: LoginResponse)
+        fun onResultFail(strError: String)
     }
 
-    override fun checkUserData(loginMain: String, password: String, onFinishedListener: OnFinishedListener) {
+    override fun loginUser(login: String, password: String, onFinishedListener: OnFinishedListener) {
         App.retrofit
             .create(Api::class.java)
-            .authorization(AuthBody(loginMain, password))
-            .enqueue(object : Callback<AuthResponse> {
-                override fun onFailure(call: Call<AuthResponse>, t: Throwable) {
+            .login(LoginBody(login, password))
+            .enqueue(object : Callback<LoginResponse> {
+                override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
                     onFinishedListener.onResultFail("Error of parsing")
                 }
 
-                override fun onResponse(call: Call<AuthResponse>, response: Response<AuthResponse>) {
-                    val tokenResponse = response.body()
-                    if (tokenResponse != null) {
-                        onFinishedListener.onResultSuccess(tokenResponse)
-
+                override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
+                    val loginResponse = response.body()
+                    if (loginResponse != null) {
+                        onFinishedListener.onResultSuccess(loginResponse)
                     } else {
-                        val jsonObj: JSONObject = JSONObject(response.errorBody()?.string())
+                        val jsonObj = JSONObject(response.errorBody()?.string())
                         onFinishedListener.onResultFail(jsonObj.getString("message").toString())
                     }
                 }

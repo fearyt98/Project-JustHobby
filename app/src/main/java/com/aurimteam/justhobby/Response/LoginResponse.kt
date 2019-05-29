@@ -1,6 +1,6 @@
 package com.aurimteam.justhobby.Response
 
-class AuthResponse(
+class LoginResponse(
     val token: String,
     val user_id: Long
 )

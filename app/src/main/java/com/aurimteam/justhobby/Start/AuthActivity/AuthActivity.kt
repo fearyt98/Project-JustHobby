@@ -14,24 +14,26 @@ import android.text.method.PasswordTransformationMethod
 import android.widget.*
 import com.aurimteam.justhobby.Main.MainNav
 import com.aurimteam.justhobby.Start.RecoveryActivity.RecoveryActivity
+import kotlinx.android.synthetic.main.activity_auth.*
 
 class AuthActivity : AppCompatActivity(), IAuthView {
     /*
     Активити обращается только к методам презентера, передаем ему введенную информацию
     или выводит полученную от презентера
      */
-    private val authPresenter = AuthPresenter(this, AuthModel())
+    private val authPresenter = AuthPresenter(this, AuthModel(), this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_auth)
 
+        authPresenter.isSetToken()
 
         val buttonEnter = findViewById<Button>(R.id.authEnterButton)
         val forget = findViewById<TextView>(R.id.authForget)
         val registry = findViewById<TextView>(R.id.authRegistry)
 
-        buttonEnter.setOnClickListener { getUserData() }
+        buttonEnter.setOnClickListener { loginUser() }
         forget.setOnClickListener { forgetChangeActivity() }
         registry.setOnClickListener { registryChangeActivity() }
     }
@@ -81,25 +83,15 @@ class AuthActivity : AppCompatActivity(), IAuthView {
         password.setSelection(oldPosCursor)
     }
 
-    override fun getUserData() {
-        val intent = Intent(this, MainNav::class.java)
-        startActivity(intent)
-        //authPresenter.gettingUserData(authLogin.text.toString(), authPassword.text.toString())
+    override fun loginUser() {
+        authPresenter.loginUser(authLogin.text.toString(), authPassword.text.toString())
     }
-
-    override fun forgetChangeActivity() {
-        val intent = Intent(this, RecoveryActivity::class.java)
-        startActivity(intent)
-    }
-
-    override fun registryChangeActivity() {
-        val intent = Intent(this, RegistryActivity::class.java)
-        startActivity(intent)
-    }
-
     override fun validEnter() {
-        val intent = Intent(this, RegistryActivity::class.java)
-        startActivity(intent)
+        startActivity(Intent(this, RegistryActivity::class.java))
+    }
+
+    override fun openMain() {
+        startActivity(Intent(this, MainNav::class.java))
     }
 
     override fun setDataError() {
@@ -107,7 +99,16 @@ class AuthActivity : AppCompatActivity(), IAuthView {
     }
 
     override fun onDestroy() {
-        authPresenter.onDestroy()
         super.onDestroy()
+        authPresenter.onDestroy()
     }
+
+    private fun forgetChangeActivity() {
+        startActivity(Intent(this, RecoveryActivity::class.java))
+    }
+
+    private fun registryChangeActivity() {
+        startActivity(Intent(this, RegistryActivity::class.java))
+    }
+
 }

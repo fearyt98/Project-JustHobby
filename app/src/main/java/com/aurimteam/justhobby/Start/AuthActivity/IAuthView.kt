@@ -1,10 +1,8 @@
 package com.aurimteam.justhobby.Start.AuthActivity
 
 interface IAuthView {
-    //fun setData()
+    fun openMain()
     fun validEnter()
     fun setDataError()
-    fun getUserData()
-    fun forgetChangeActivity()
-    fun registryChangeActivity()
+    fun loginUser()
 }
