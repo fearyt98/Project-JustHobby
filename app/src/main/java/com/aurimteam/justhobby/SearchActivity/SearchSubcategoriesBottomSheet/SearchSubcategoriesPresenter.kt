@@ -1,4 +1,4 @@
-package com.aurimteam.justhobby.SearchActivity.SearchSubcategoriesFragment
+package com.aurimteam.justhobby.SearchActivity.SearchSubcategoriesBottomSheet
 
 import com.aurimteam.justhobby.Response.SubcategoryResponse
 

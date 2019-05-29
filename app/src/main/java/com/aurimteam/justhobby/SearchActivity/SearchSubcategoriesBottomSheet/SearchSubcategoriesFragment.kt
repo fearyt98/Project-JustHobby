@@ -1,4 +1,4 @@
-package com.aurimteam.justhobby.SearchActivity.SearchSubcategoriesFragment
+package com.aurimteam.justhobby.SearchActivity.SearchSubcategoriesBottomSheet
 
 import android.app.Dialog
 import android.graphics.Color
@@ -12,18 +12,19 @@ import android.view.View
 import android.view.ViewGroup
 import com.aurimteam.justhobby.R
 import com.aurimteam.justhobby.Response.SubcategoryResponse
-import kotlinx.android.synthetic.main.fragment_bottomsheets_subcategories.*
+import kotlinx.android.synthetic.main.bottomsheets_subcategories.*
 
 class SearchSubcategoriesFragment : BottomSheetDialogFragment(), ISearchSubcategoriesView {
 
-    override fun getTheme(): Int = R.style.BottomSheetDialogTheme
-
-    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog = BottomSheetDialog(requireContext(), theme)
-
     private val adapter = SearchSubcategoriesAdapter()
     private val presenter = SearchSubcategoriesPresenter(this, SearchSubcategoriesModel())
+
+    override fun getTheme(): Int = R.style.BottomSheetDialogTheme
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog = BottomSheetDialog(requireContext(), theme)
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_bottomsheets_subcategories, container, false)
+        val view = inflater.inflate(R.layout.bottomsheets_subcategories, container, false)
+        return view
     }
 
     override fun showSubcategories(subcategories: List<SubcategoryResponse>) {
