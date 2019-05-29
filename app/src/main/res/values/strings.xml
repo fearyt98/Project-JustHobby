@@ -64,6 +64,7 @@
     <string name="no_any_course_reviews">Нет отзывов</string>
     <string name="no_course_reviews">Оставьте первый отзыв</string>
     <string name="no_notifications">Нет уведомлений</string>
+    <string name="no_search_result">Ничего не найдено</string>
     <string name="test_company_title">Drive - Школа танцев в Томске</string>
     <string name="about_btn_ready">Нажимая «Готово» вы принимаете</string>
     <string name="user_agreement">Условия использования</string>
@@ -108,4 +109,5 @@
     </string>
     <string name="about_registry_start">Загрузите фотографию профиля, а\n также укажите свое имя и\n фамилию, они будут показаны при\n оставлении отзыва
     </string>
+    <string name="about_no_search_results">Совсем ничего. Попробйте\n изменить запрос.</string>
 </resources>
