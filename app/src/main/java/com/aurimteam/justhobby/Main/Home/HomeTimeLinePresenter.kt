@@ -19,5 +19,4 @@ class HomeTimeLinePresenter(private var view: IHomeView?, private val model: IHo
     fun onDestroy() {
         view = null
     }
-
 }

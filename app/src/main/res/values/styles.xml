@@ -72,6 +72,22 @@
         <item name="android:background">@drawable/btn_green_bg</item>
         <item name="android:layout_gravity">center</item>
     </style>
+
+    <style name="BottomButtonGreen">
+        <item name="android:textColor">@color/whiteTop</item>
+        <item name="android:textAppearance">@style/Body1.Bold.UpperCase</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingTop">12dp</item>
+        <item name="android:paddingBottom">12dp</item>
+        <item name="android:paddingStart">8dp</item>
+        <item name="android:paddingEnd">8dp</item>
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
     <!-- Tab -->
     <style name="TabsPageViewer"
            parent="Widget.Design.TabLayout">

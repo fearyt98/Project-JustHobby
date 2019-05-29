@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import com.aurimteam.justhobby.R
 import android.support.v4.view.ViewPager
-import android.widget.EditText
 import com.aurimteam.justhobby.SearchActivity.SearchFragment
 
 class RecommendationFragment : Fragment() {
