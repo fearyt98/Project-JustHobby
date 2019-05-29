@@ -1,10 +1,10 @@
-package com.aurimteam.justhobby.SearchActivity.SearchFiltersFragment
+package com.aurimteam.justhobby.SearchActivity.SearchSubcategoriesFragment
 
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import kotlinx.android.synthetic.main.fragment_card_subcategories.view.*
 
-class SearchFiltersHolder(view: View) : RecyclerView.ViewHolder(view) {
+class SearchSubcategoriesHolder(view: View) : RecyclerView.ViewHolder(view) {
     fun bind(
         id: Int,
         slug: String,

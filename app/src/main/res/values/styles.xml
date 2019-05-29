@@ -109,6 +109,15 @@
         <item name="android:textAllCaps">true</item>
         <item name="android:textColor">@color/whiteMiddle</item>
     </style>
+    <!-- Bottom Sheets -->
+    <style name="BottomSheet" parent="@style/Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/bottomsheets_subcat_bg</item>
+    </style>
+    <style name="BaseBottomSheetDialog" parent="@style/Theme.Design.Light.BottomSheetDialog">
+        <item name="android:windowIsFloating">false</item>
+        <item name="bottomSheetStyle">@style/BottomSheet</item>
+    </style>
+    <style name="BottomSheetDialogTheme" parent="BaseBottomSheetDialog" />
     <!-- Days and Time in group card and user courses -->
     <style name="dayWeekNow">
         <item name="android:layout_width">wrap_content</item>
