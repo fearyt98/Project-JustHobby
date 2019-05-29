@@ -3,9 +3,12 @@
               xmlns:tools="http://schemas.android.com/tools"
               android:layout_width="match_parent"
               android:layout_height="wrap_content">
-    <android.support.v7.widget.RecyclerView android:layout_width="match_parent"
-                                            android:layout_height="wrap_content"
-                                            android:overScrollMode="never"
-                                            android:id="@+id/searchResultsRecycler"
-                                            tools:listitem="@layout/fragment_card_course"/>
+    <android.support.v4.widget.NestedScrollView android:layout_width="match_parent"
+                                                android:layout_height="match_parent">
+        <android.support.v7.widget.RecyclerView android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:overScrollMode="never"
+                                                android:id="@+id/searchResultsRecycler"
+                                                tools:listitem="@layout/fragment_card_course"/>
+    </android.support.v4.widget.NestedScrollView>
 </LinearLayout>
