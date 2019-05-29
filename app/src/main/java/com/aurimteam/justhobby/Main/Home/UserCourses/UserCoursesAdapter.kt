@@ -22,7 +22,7 @@ class UserCoursesAdapter : RecyclerView.Adapter<UserCoursesHolder>() {
             userCoursesList[position].timeTable,
             isClickedList[position]
         )
-        holder.itemView.daysOfWeek.setOnClickListener {
+        holder.itemView.cardUserCourseDays.setOnClickListener {
             if (!isClickedList[position]) {
                 setIsClicked(position, true)
                 notifyItemChanged(position)

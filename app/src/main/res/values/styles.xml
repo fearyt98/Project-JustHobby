@@ -16,8 +16,8 @@
         <item name="android:paddingTop">15.5dp
         </item><!-- 13 (padding in edittext) + 2.5 (full padding in background) -->
         <item name="android:paddingBottom">20.5dp</item><!-- 13 + 7.5 -->
-        <item name="android:paddingLeft">31dp</item><!-- 16 + 15 -->
-        <item name="android:paddingRight">31dp</item><!-- 16 + 15 -->
+        <item name="android:paddingStart">31dp</item><!-- 16 + 15 -->
+        <item name="android:paddingEnd">31dp</item><!-- 16 + 15 -->
         <item name="android:background">@drawable/edittext_start_bg</item>
         <item name="android:layout_gravity">center</item>
         <item name="android:textCursorDrawable">@null</item>
@@ -34,8 +34,8 @@
         <item name="android:paddingTop">25dp
         </item><!-- 12 (padding in edittext) + 15 (full padding in background) -->
         <item name="android:paddingBottom">20dp</item><!-- 12 + 8 -->
-        <item name="android:paddingLeft">31dp</item><!-- 16 + 15 -->
-        <item name="android:paddingRight">31dp</item><!-- 16 + 15 -->
+        <item name="android:paddingStart">31dp</item><!-- 16 + 15 -->
+        <item name="android:paddingEnd">31dp</item><!-- 16 + 15 -->
         <item name="android:background">@drawable/edittext_search_bg</item>
         <item name="android:layout_gravity">center</item>
         <item name="android:textCursorDrawable">@null</item>
@@ -50,8 +50,8 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:paddingTop">14.5dp</item><!-- 12 (padding in btn) + 2.5 (full padding in background) -->
         <item name="android:paddingBottom">19.5dp</item><!-- 12 + 7.5 -->
-        <item name="android:paddingLeft">31dp</item><!-- 16 + 15 -->
-        <item name="android:paddingRight">31dp</item><!-- 16 + 15 -->
+        <item name="android:paddingStart">31dp</item><!-- 16 + 15 -->
+        <item name="android:paddingEnd">31dp</item><!-- 16 + 15 -->
         <item name="android:minHeight">0dp</item>
         <item name="android:minWidth">0dp</item>
         <item name="android:background">@drawable/btn_start_bg</item>
@@ -65,8 +65,8 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:paddingTop">14.5dp</item><!-- 12 (padding in btn) + 2.5 (full padding in background) -->
         <item name="android:paddingBottom">19.5dp</item><!-- 12 + 7.5 -->
-        <item name="android:paddingLeft">31dp</item><!-- 16 + 15 -->
-        <item name="android:paddingRight">31dp</item><!-- 16 + 15 -->
+        <item name="android:paddingStart">31dp</item><!-- 16 + 15 -->
+        <item name="android:paddingEnd">31dp</item><!-- 16 + 15 -->
         <item name="android:minHeight">0dp</item>
         <item name="android:minWidth">0dp</item>
         <item name="android:background">@drawable/btn_green_bg</item>
@@ -150,13 +150,7 @@
         <item name="colorControlNormal">@color/orangeText</item>
         <item name="colorControlActivated">@color/orangeText</item>
     </style>
-    <style name="RatingBarCourseReviews" parent="android:Widget.Holo.Light.RatingBar.Small">
-        <item name="android:color">@color/grafit</item>
-        <item name="colorControlNormal">@color/grafit</item>
-        <item name="colorControlActivated">@color/grafit</item>
-    </style>
-    <style name="RatingBarCourseReview" parent="android:Widget.Holo.Light.RatingBar.Small">
-        <item name="android:color">@color/grafit</item>
+    <style name="RatingBarCourseReview">
         <item name="colorControlNormal">@color/grafit</item>
         <item name="colorControlActivated">@color/grafit</item>
     </style>

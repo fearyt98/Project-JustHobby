@@ -19,7 +19,7 @@ class CourseGroupsFragment : Fragment(), ICourseGroupsView {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_course_groups, container, false)
-        view.findViewById<ImageButton>(R.id.backArrowCourseGroups).setOnClickListener { backToRecommendedFragment() }
+        view.findViewById<ImageButton>(R.id.courseGroupsBtnBack).setOnClickListener { backToRecommendedFragment() }
         return view
     }
 
@@ -29,8 +29,8 @@ class CourseGroupsFragment : Fragment(), ICourseGroupsView {
     override fun onStart() {
         super.onStart()
         presenter.getCourseAllGroups()
-        courseAllGroupsRecyclerView.layoutManager = LinearLayoutManager(context)
-        courseAllGroupsRecyclerView.adapter = adapter
+        courseGroupsRecyclerView.layoutManager = LinearLayoutManager(context)
+        courseGroupsRecyclerView.adapter = adapter
     }
 
     override fun onDestroy() {

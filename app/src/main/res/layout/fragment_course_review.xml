@@ -13,7 +13,7 @@
         <ImageButton android:layout_width="wrap_content"
                      android:layout_height="match_parent"
                      android:layout_gravity="center_vertical"
-                     android:id="@+id/backArrowCourseReview"
+                     android:id="@+id/courseReviewBtnBack"
                      android:paddingStart="20dp"
                      android:paddingEnd="20dp"
                      android:tint="@color/whiteTop"
@@ -29,16 +29,17 @@
                   android:gravity="center"
                   android:text="Восточные танцы"
                   android:textColor="@color/whiteTop"
-                  app:layout_constraintLeft_toRightOf="@id/backArrowCourseReview"
+                  app:layout_constraintLeft_toRightOf="@id/courseReviewBtnBack"
                   app:layout_constraintTop_toTopOf="parent"
-                  style="@style/Body1.Medium"/>
+                  style="@style/Body1.Medium"
+                  tools:ignore="HardcodedText"/>
         <TextView android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
                   android:layout_gravity="center"
                   android:gravity="center"
                   android:text="@string/test_company_title"
                   android:textColor="@color/whiteTop"
-                  app:layout_constraintLeft_toRightOf="@id/backArrowCourseReview"
+                  app:layout_constraintLeft_toRightOf="@id/courseReviewBtnBack"
                   app:layout_constraintBottom_toBottomOf="parent"
                   style="@style/Body2"/>
     </android.support.constraint.ConstraintLayout>
@@ -74,7 +75,8 @@
                    app:layout_constraintRight_toRightOf="parent"
                    app:layout_constraintTop_toTopOf="parent"
                    app:layout_constraintBottom_toBottomOf="parent"
-                   style="RatingBarCourseReview"/>
+                   android:theme="@style/RatingBarCourseReview"
+                   style="?attr/ratingBarStyleSmall"/>
     </android.support.constraint.ConstraintLayout>
     <TextView android:layout_width="match_parent"
               android:layout_height="wrap_content"

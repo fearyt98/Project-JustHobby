@@ -2,6 +2,7 @@ package com.aurimteam.justhobby.Main.Notifications
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v4.view.ViewCompat
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
@@ -38,6 +39,8 @@ class NotificationsFragment : Fragment(), INotificationsView {
         notificationsNew.adapter = adapterNewNotify
         notificationsOld.layoutManager = LinearLayoutManager(context)
         notificationsOld.adapter = adapterOldNotify
+        ViewCompat.setNestedScrollingEnabled(notificationsNew, false)
+        ViewCompat.setNestedScrollingEnabled(notificationsOld, false)
     }
 
     override fun onDestroy() {

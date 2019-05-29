@@ -10,6 +10,7 @@ import java.util.*
 class NotificationsHolder(view: View) : RecyclerView.ViewHolder(view) {
     fun bind(
         first: Boolean,
+        last: Boolean,
         title: String,
         description: String,
         day: Int,
@@ -29,6 +30,8 @@ class NotificationsHolder(view: View) : RecyclerView.ViewHolder(view) {
         if(first) {
             itemView.cardNotificationFirstLine.visibility = View.VISIBLE
         }
-
+        if(last) {
+            itemView.cardNotificationLastLine.visibility = View.INVISIBLE
+        }
     }
 }

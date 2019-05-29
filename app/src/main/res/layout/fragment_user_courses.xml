@@ -14,7 +14,7 @@
         <ImageButton android:layout_width="wrap_content"
                      android:layout_height="match_parent"
                      android:layout_gravity="center_vertical"
-                     android:id="@+id/bookmarksBtnBackTimeLine"
+                     android:id="@+id/userCoursesBtnBack"
                      android:paddingStart="20dp"
                      android:tint="@color/whiteTop"
                      app:srcCompat="@drawable/ic_arrow_back_24dp"
@@ -31,6 +31,6 @@
     </FrameLayout>
     <android.support.v7.widget.RecyclerView android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
-                                            android:id="@+id/userCoursesRecycler"
+                                            android:id="@+id/userCoursesRecyclerView"
                                             tools:listitem="@layout/fragment_card_user_course"/>
 </LinearLayout>
