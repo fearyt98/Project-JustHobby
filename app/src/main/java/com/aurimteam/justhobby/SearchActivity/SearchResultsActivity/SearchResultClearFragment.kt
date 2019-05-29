@@ -11,7 +11,7 @@ class SearchResultClearFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(
-            R.layout.fragment_recommendation_search_fr_no_results,
+            R.layout.fragment_search_no_results,
             container, false
         )
         return view

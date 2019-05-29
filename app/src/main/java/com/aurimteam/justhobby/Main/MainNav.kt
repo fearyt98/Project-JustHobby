@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity
 import com.aurimteam.justhobby.R
 import kotlinx.android.synthetic.main.activity_main_nav.*
 import android.support.v4.app.Fragment
+import android.util.Log
 import com.aurimteam.justhobby.Main.Home.HomeTimeLineClearFragment
 import com.aurimteam.justhobby.Main.Home.HomeTimeLineFragment
 import com.aurimteam.justhobby.Main.Home.UserBookmarksMain.UserBookmarksClearFragment
@@ -13,7 +14,6 @@ import com.aurimteam.justhobby.Main.Home.UserCourses.UserCoursesClearFragment
 import com.aurimteam.justhobby.Main.Notifications.NotificationsFragment
 import com.aurimteam.justhobby.Main.RecommendationPageViewer.RecommendationFragment
 import com.aurimteam.justhobby.Main.Settings.SettingsFragment
-
 
 class MainNav : AppCompatActivity() {
 
@@ -43,11 +43,26 @@ class MainNav : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_nav)
         mainNavNavigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+
+        if (savedInstanceState != null) {
+            val fragment = supportFragmentManager.getFragment(savedInstanceState, "mainFragment")
+            if (fragment != null)
+                supportFragmentManager
+                    .beginTransaction()
+                    .replace(R.id.mainNavContainerFragment, fragment)
+                    .commit()
+            else
+                loadFragment(HomeTimeLineFragment())
+        } else
+            loadFragment(HomeTimeLineFragment())
     }
 
-    override fun onResume() {
-        super.onResume()
-        loadFragment(HomeTimeLineFragment())
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+
+        val fragment = supportFragmentManager.findFragmentById(R.id.mainNavContainerFragment)
+        if (fragment != null)
+            supportFragmentManager.putFragment(outState, "mainFragment", fragment)
     }
 
     private fun loadFragment(fragment: Fragment?): Boolean {

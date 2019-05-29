@@ -11,6 +11,7 @@ import com.aurimteam.justhobby.R
 import com.aurimteam.justhobby.Start.RegistryActivity.RegistryActivity
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
+import android.view.Gravity
 import android.widget.*
 import com.aurimteam.justhobby.Main.MainNav
 import com.aurimteam.justhobby.Start.RecoveryActivity.RecoveryActivity
@@ -94,7 +95,14 @@ class AuthActivity : AppCompatActivity(), IAuthView {
         startActivity(Intent(this, MainNav::class.java))
     }
 
-    override fun setDataError() {
+    override fun setDataError(message: String) {
+        val toast = Toast.makeText(
+            this,
+            message,
+            Toast.LENGTH_SHORT
+        )
+        toast.setGravity(Gravity.BOTTOM, 0, 30)
+        toast.show()
         // Show error on UI strError: String
     }
 
@@ -105,6 +113,7 @@ class AuthActivity : AppCompatActivity(), IAuthView {
 
     private fun forgetChangeActivity() {
         startActivity(Intent(this, RecoveryActivity::class.java))
+        finish()
     }
 
     private fun registryChangeActivity() {

@@ -19,11 +19,11 @@ class AuthPresenter(private var view: IAuthView?, private val model: IAuthModel?
     }
 
     override fun onResultFail(strError: String) {
-        val dd = strError
+        view!!.setDataError(strError)
     }
 
     fun loginUser(loginMain: String, password: String) {
-        model?.loginUser(loginMain, password, this)
+        if (Settings(context!!).getProperty("token") == null) model?.loginUser(loginMain, password, this)
     }
 
     fun onDestroy() {

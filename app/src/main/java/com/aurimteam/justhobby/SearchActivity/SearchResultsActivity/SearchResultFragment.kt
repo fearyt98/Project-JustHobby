@@ -2,13 +2,15 @@ package com.aurimteam.justhobby.SearchActivity.SearchResultsActivity
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v4.view.ViewCompat
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.aurimteam.justhobby.R
 import com.aurimteam.justhobby.Response.CourseResponse
-import kotlinx.android.synthetic.main.fragment_recommendation_search_fr_results.*
+import kotlinx.android.synthetic.main.fragment_main_notifications.*
+import kotlinx.android.synthetic.main.fragment_search_results.*
 
 class SearchResultFragment : Fragment(), ISearchResultView {
 
@@ -16,11 +18,7 @@ class SearchResultFragment : Fragment(), ISearchResultView {
     private val adapter = SearchResultAdapter()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(
-            R.layout.fragment_recommendation_search_fr_results,
-            container, false
-        )
-        return view
+        return inflater.inflate(R.layout.fragment_search_results, container, false)
     }
 
     override fun showSearchResults(foundedCourses: List<CourseResponse>) {
@@ -32,6 +30,7 @@ class SearchResultFragment : Fragment(), ISearchResultView {
         presenter.getSearchResults()
         searchResultsRecycler.layoutManager = LinearLayoutManager(context)
         searchResultsRecycler.adapter = adapter
+        ViewCompat.setNestedScrollingEnabled(searchResultsRecycler, false)
 
     }
 
