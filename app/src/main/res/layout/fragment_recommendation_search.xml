@@ -48,11 +48,11 @@
     </android.support.constraint.ConstraintLayout>
     <android.support.v7.widget.RecyclerView android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
+                                            android:overScrollMode="never"
                                             android:id="@+id/recommendationSearchCategories"
                                             tools:listitem="@layout/fragment_card_search_category"
                                             tools:itemCount="1"/>
     <FrameLayout android:layout_width="match_parent"
                  android:layout_height="wrap_content"
-                 android:id="@+id/recommendedSearchContainer"
-                 android:paddingBottom="64dp"/>
+                 android:id="@+id/recommendedSearchContainer"/>
 </LinearLayout>
