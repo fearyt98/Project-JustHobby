@@ -1,4 +1,4 @@
-package com.aurimteam.justhobby.SearchActivity.SearchSubcategoriesFragment
+package com.aurimteam.justhobby.SearchActivity.SearchSubcategoriesBottomSheet
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater

@@ -13,9 +13,9 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import com.aurimteam.justhobby.R
 import com.aurimteam.justhobby.SearchActivity.SearchResultsActivity.SearchResultFragment
-import com.aurimteam.justhobby.SearchActivity.SearchSubcategoriesFragment.SearchSubcategoriesFragment
 import kotlinx.android.synthetic.main.fragment_search.*
 import android.view.inputmethod.InputMethodManager
+import com.aurimteam.justhobby.SearchActivity.SearchFiltersSheetBottom.SearchFiltersFragment
 import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent
 
 
@@ -26,7 +26,7 @@ class SearchFragment : Fragment(), ISearchView {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_search, container, false)
-        view.findViewById<ImageButton>(R.id.searchFilters).setOnClickListener { openSubcategories() }
+        view.findViewById<ImageButton>(R.id.searchFilters).setOnClickListener { openFilters() }
         return view
     }
 
@@ -53,8 +53,8 @@ class SearchFragment : Fragment(), ISearchView {
         presenter.onDestroy()
     }
 
-    private fun openSubcategories(){
-        SearchSubcategoriesFragment().show(fragmentManager,"Subcategories")
+    private fun openFilters(){
+        SearchFiltersFragment().show(fragmentManager,"Filters")
     }
 
     private fun init() {

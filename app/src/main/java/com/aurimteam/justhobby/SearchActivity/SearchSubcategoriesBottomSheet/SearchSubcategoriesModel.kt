@@ -1,10 +1,6 @@
-package com.aurimteam.justhobby.SearchActivity.SearchSubcategoriesFragment
+package com.aurimteam.justhobby.SearchActivity.SearchSubcategoriesBottomSheet
 
-import com.aurimteam.justhobby.Response.CourseResponse
-import com.aurimteam.justhobby.Response.IdentifierResponse
 import com.aurimteam.justhobby.Response.SubcategoriesResponse
-import com.aurimteam.justhobby.SearchActivity.SearchSubcategoriesFragment.ISearchSubcategoriesModel
-import java.sql.Timestamp
 
 class SearchSubcategoriesModel : ISearchSubcategoriesModel {
     interface onFinishedListener {
