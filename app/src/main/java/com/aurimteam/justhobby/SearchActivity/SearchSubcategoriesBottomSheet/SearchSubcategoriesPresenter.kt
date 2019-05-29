@@ -1,11 +1,11 @@
 package com.aurimteam.justhobby.SearchActivity.SearchSubcategoriesBottomSheet
 
-import com.aurimteam.justhobby.Response.SubcategoriesResponse
+import com.aurimteam.justhobby.Response.SubcategoryResponse
 
 class SearchSubcategoriesPresenter(private var view: ISearchSubcategoriesView?, private val model: ISearchSubcategoriesModel?) :
     SearchSubcategoriesModel.onFinishedListener {
 
-    override fun onResultSuccess(subcategories: List<SubcategoriesResponse>) {
+    override fun onResultSuccess(subcategories: List<SubcategoryResponse>) {
         view?.showSubcategories(subcategories)
     }
 

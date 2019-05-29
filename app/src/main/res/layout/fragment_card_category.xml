@@ -18,10 +18,10 @@
                    android:layout_height="wrap_content"
                    android:layout_gravity="center"
                    android:paddingTop="15dp"
-                   android:id="@+id/searchCardImage"
+                   android:id="@+id/cardCategoryImage"
                    android:tint="@color/sports"
                    android:background="@android:color/transparent"
-                   app:srcCompat="@drawable/ic_category_sport"
+                   app:srcCompat="@drawable/category_ic_sports"
                    tools:ignore="ContentDescription"/>
         <TextView android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
@@ -32,7 +32,7 @@
                   android:ellipsize="end"
                   android:singleLine="true"
                   android:paddingTop="15dp"
-                  android:id="@+id/searchCardTitle"
+                  android:id="@+id/cardCategoryTitle"
                   android:textColor="@color/sports"
                   style="@style/Caption3.Bold"/>
     </LinearLayout>

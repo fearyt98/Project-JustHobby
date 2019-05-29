@@ -19,7 +19,7 @@ class AuthPresenter(private var view: IAuthView?, private val model: IAuthModel?
     }
 
     override fun onResultFail(strError: String) {
-        view!!.setDataError(strError)
+        view!!.showMessage(strError)
     }
 
     fun loginUser(loginMain: String, password: String) {

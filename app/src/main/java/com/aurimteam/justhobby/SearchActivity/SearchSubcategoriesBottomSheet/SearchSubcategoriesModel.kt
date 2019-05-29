@@ -1,56 +1,56 @@
 package com.aurimteam.justhobby.SearchActivity.SearchSubcategoriesBottomSheet
 
-import com.aurimteam.justhobby.Response.SubcategoriesResponse
+import com.aurimteam.justhobby.Response.SubcategoryResponse
 
 class SearchSubcategoriesModel : ISearchSubcategoriesModel {
     interface onFinishedListener {
-        fun onResultSuccess(subcategories: List<SubcategoriesResponse>)
+        fun onResultSuccess(subcategories: List<SubcategoryResponse>)
         fun onResultFail()
     }
 
     override fun getSubcategoriesData(onFinishedListener: onFinishedListener) {
-        val subcategories: List<SubcategoriesResponse> = listOf(
-            SubcategoriesResponse(
+        val subcategories: List<SubcategoryResponse> = listOf(
+            SubcategoryResponse(
                 0,
                 "languages",
                 "Английский"
             ),
-            SubcategoriesResponse(
+            SubcategoryResponse(
                 0,
                 "languages",
                 "Английский"
             ),
-            SubcategoriesResponse(
+            SubcategoryResponse(
                 0,
                 "languages",
                 "Английский"
             ),
-            SubcategoriesResponse(
+            SubcategoryResponse(
                 0,
                 "languages",
                 "Английский"
             ),
-            SubcategoriesResponse(
+            SubcategoryResponse(
                 0,
                 "languages",
                 "Английский"
             ),
-            SubcategoriesResponse(
+            SubcategoryResponse(
                 0,
                 "languages",
                 "Английский"
             ),
-            SubcategoriesResponse(
+            SubcategoryResponse(
                 0,
                 "languages",
                 "Английский"
             ),
-            SubcategoriesResponse(
+            SubcategoryResponse(
                 0,
                 "languages",
                 "Английский"
             ),
-            SubcategoriesResponse(
+            SubcategoryResponse(
                 0,
                 "languages",
                 "Английский"

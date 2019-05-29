@@ -1,9 +1,13 @@
 package com.aurimteam.justhobby.SearchActivity
 
-class SearchPresenter(private var view: ISearchView?, private val model: ISearchModel?) :
+import android.content.Context
+import com.aurimteam.justhobby.Response.CategoryResponse
+import com.aurimteam.justhobby.Settings
+
+class SearchPresenter(private var view: ISearchView?, private val model: ISearchModel?, private var context: Context?) :
     SearchModel.onFinishedListener {
 
-    override fun onResultSuccess(categories: List<String>) {
+    override fun onResultSuccess(categories: List<CategoryResponse>) {
         view?.setCategories(categories)
     }
 
@@ -11,12 +15,14 @@ class SearchPresenter(private var view: ISearchView?, private val model: ISearch
 
     }
 
-    override fun onResultFail() {
+    override fun onResultFail(strError: String) {
 
     }
 
     fun getCategories() {
-        model?.getCategoriesData(this)
+        val token = Settings(context!!).getProperty("token")
+        if (token != null)
+            model?.getCategoriesData(token, this)
     }
 
     fun onDestroy() {

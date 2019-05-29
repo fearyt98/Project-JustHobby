@@ -95,7 +95,7 @@ class AuthActivity : AppCompatActivity(), IAuthView {
         startActivity(Intent(this, MainNav::class.java))
     }
 
-    override fun setDataError(message: String) {
+    override fun showMessage(message: String) {
         val toast = Toast.makeText(
             this,
             message,
@@ -103,7 +103,6 @@ class AuthActivity : AppCompatActivity(), IAuthView {
         )
         toast.setGravity(Gravity.BOTTOM, 0, 30)
         toast.show()
-        // Show error on UI strError: String
     }
 
     override fun onDestroy() {

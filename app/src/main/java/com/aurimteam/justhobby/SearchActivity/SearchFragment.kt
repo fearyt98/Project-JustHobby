@@ -21,7 +21,7 @@ import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent
 
 class SearchFragment : Fragment(), ISearchView {
 
-    private val presenter = SearchPresenter(this, SearchModel())
+    private var presenter: SearchPresenter? = null
     private val adapter = SearchAdapter()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -30,13 +30,13 @@ class SearchFragment : Fragment(), ISearchView {
         return view
     }
 
-    override fun setCategories(categories: List<String>) {
+    override fun setCategories(categories: List<CategoryResponse>) {
         adapter.onDataChange(categories)
     }
 
     override fun onStart() {
         super.onStart()
-        presenter.getCategories()
+        presenter?.getCategories()
         searchCategories.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         searchCategories.adapter = adapter
@@ -50,7 +50,7 @@ class SearchFragment : Fragment(), ISearchView {
 
     override fun onDestroy() {
         super.onDestroy()
-        presenter.onDestroy()
+        presenter?.onDestroy()
     }
 
     private fun openFilters(){
