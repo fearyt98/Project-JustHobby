@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.aurimteam.justhobby.R
 import com.aurimteam.justhobby.Response.CourseResponse
-import kotlinx.android.synthetic.main.fragment_recommendation_search_fr_results.*
+import kotlinx.android.synthetic.main.fragment_search_results.*
 
 class SearchResultFragment : Fragment(), ISearchResultView {
 
@@ -17,7 +17,7 @@ class SearchResultFragment : Fragment(), ISearchResultView {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(
-            R.layout.fragment_recommendation_search_fr_results,
+            R.layout.fragment_search_results,
             container, false
         )
         return view
