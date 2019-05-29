@@ -6,7 +6,9 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import com.aurimteam.justhobby.R
+import com.aurimteam.justhobby.SearchActivity.SearchResultsActivity.SearchResultFragment
 import kotlinx.android.synthetic.main.fragment_recommendation_search.*
 
 class SearchFragment : Fragment(), ISearchView {
@@ -22,15 +24,19 @@ class SearchFragment : Fragment(), ISearchView {
     override fun setCategories(categories: List<String>) {
         adapter.onDataChange(categories)
     }
+
     override fun onStart() {
         super.onStart()
         presenter.getCategories()
         recommendationSearchCategories.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         recommendationSearchCategories.adapter = adapter
+
+        fragmentManager!!
+            .beginTransaction()
+            .replace(R.id.recommendedSearchContainer, SearchResultFragment())
+            .commit()
     }
-
-
 
     override fun onDestroy() {
         super.onDestroy()

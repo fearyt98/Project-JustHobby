@@ -7,12 +7,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
-import com.aurimteam.justhobby.CoursesInfo.CourseReviewActivity.CourseReviewFragment
-import com.aurimteam.justhobby.CoursesInfo.CourseReviewsActivity.CourseReviewsFragment
-import com.aurimteam.justhobby.Main.Home.UserBookmarksMain.UserBookmarksFragment
 import com.aurimteam.justhobby.Main.Home.UserCourses.UserCoursesFragment
 import com.aurimteam.justhobby.R
 import com.aurimteam.justhobby.Response.TimelineResponses
+import com.aurimteam.justhobby.SearchActivity.SearchFragment
 import kotlinx.android.synthetic.main.fragment_main_home_timeline.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -55,7 +53,7 @@ class HomeTimeLineFragment : Fragment(), IHomeView {
         fragmentManager!!
             .beginTransaction()
             .addToBackStack(null)
-            .replace(R.id.mainNavContainerFragment, CourseReviewsFragment())
+            .replace(R.id.mainNavContainerFragment, SearchFragment())
             .commit()
     }
 
