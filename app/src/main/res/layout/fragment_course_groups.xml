@@ -1,16 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
               xmlns:tools="http://schemas.android.com/tools"
               xmlns:app="http://schemas.android.com/apk/res-auto"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:orientation="vertical"
               tools:context=".CoursesInfo.CourseGroupsActivity.CourseGroupsFragment">
-    <android.support.constraint.ConstraintLayout android:layout_width="match_parent"
+    <android.support.v7.widget.RecyclerView android:layout_width="match_parent"
+                                            android:id="@+id/courseGroupsRecyclerView"
+                                            android:overScrollMode="never"
+                                            android:layout_height="0dp"
+                                            app:layout_constraintVertical_weight="1"
+                                            android:paddingBottom="74dp"
+                                            android:paddingTop="3dp"
+                                            android:clipToPadding="false"
+                                            tools:listitem="@layout/fragment_card_group"
+                                            app:layout_constraintTop_toBottomOf="@id/courseGroupsMarginSpacer"
+                                            app:layout_constraintLeft_toLeftOf="parent"
+                                            app:layout_constraintRight_toRightOf="parent"/>
+    <android.widget.Space android:id="@+id/courseGroupsMarginSpacer"
+                          android:layout_width="0dp"
+                          android:layout_height="0dp"
+                          android:layout_marginBottom="8dp"
+                          app:layout_constraintBottom_toBottomOf="@id/courseGroupsBar"
+                          app:layout_constraintLeft_toLeftOf="@id/courseGroupsBar"
+                          app:layout_constraintRight_toRightOf="@id/courseGroupsBar"/>
+    <android.support.constraint.ConstraintLayout android:id="@+id/courseGroupsBar"
+                                                 android:layout_width="match_parent"
                                                  android:layout_height="72dp"
                                                  android:paddingTop="4dp"
                                                  android:paddingBottom="12dp"
-                                                 android:background="@drawable/appbar_bg">
+                                                 android:background="@drawable/appbar_bg"
+                                                 app:layout_constraintTop_toTopOf="parent"
+                                                 app:layout_constraintLeft_toLeftOf="parent"
+                                                 app:layout_constraintRight_toRightOf="parent">
         <ImageButton android:layout_width="wrap_content"
                      android:layout_height="match_parent"
                      android:layout_gravity="center_vertical"
@@ -44,8 +67,4 @@
                   app:layout_constraintBottom_toBottomOf="parent"
                   style="@style/Body2"/>
     </android.support.constraint.ConstraintLayout>
-    <android.support.v7.widget.RecyclerView android:layout_width="match_parent"
-                                            android:layout_height="wrap_content"
-                                            android:id="@+id/courseGroupsRecyclerView"
-                                            tools:listitem="@layout/fragment_card_group"/>
-</LinearLayout>
+</android.support.constraint.ConstraintLayout>

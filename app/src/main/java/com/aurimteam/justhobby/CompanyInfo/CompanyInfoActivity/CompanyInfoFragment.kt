@@ -1,4 +1,4 @@
-package com.aurimteam.justhobby.CompanyInfo.CompanyInfoMainActivity
+package com.aurimteam.justhobby.CompanyInfo.CompanyInfoActivity
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
-import com.aurimteam.justhobby.CompanyInfo.CompanyCoursesInfoActivity.CompanyCoursesFragment
+import com.aurimteam.justhobby.CompanyInfo.CompanyCoursesActivity.CompanyCoursesFragment
 import com.aurimteam.justhobby.R
 import com.aurimteam.justhobby.Response.CourseResponse
 import kotlinx.android.synthetic.main.fragment_company_info.*

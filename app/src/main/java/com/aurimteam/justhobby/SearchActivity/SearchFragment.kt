@@ -15,6 +15,7 @@ import com.aurimteam.justhobby.R
 import com.aurimteam.justhobby.SearchActivity.SearchResultsActivity.SearchResultFragment
 import kotlinx.android.synthetic.main.fragment_search.*
 import android.view.inputmethod.InputMethodManager
+import com.aurimteam.justhobby.Response.CategoryResponse
 import com.aurimteam.justhobby.SearchActivity.SearchFiltersSheetBottom.SearchFiltersFragment
 import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent
 

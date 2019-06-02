@@ -1,4 +1,4 @@
-package com.aurimteam.justhobby.CoursesInfo.CourseMainInfoActivity
+package com.aurimteam.justhobby.CoursesInfo.CourseInfoActivity
 
 import com.aurimteam.justhobby.Response.GroupResponse
 

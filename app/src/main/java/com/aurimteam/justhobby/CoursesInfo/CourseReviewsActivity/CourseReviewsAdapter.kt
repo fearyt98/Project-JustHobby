@@ -5,7 +5,6 @@ import android.support.v4.app.FragmentManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import com.aurimteam.justhobby.CoursesInfo.CourseMainInfoActivity.CourseInfoFragment
 import com.aurimteam.justhobby.CoursesInfo.CourseReviewActivity.CourseReviewFragment
 import com.aurimteam.justhobby.R
 import com.aurimteam.justhobby.Response.CourseReviewsResponse

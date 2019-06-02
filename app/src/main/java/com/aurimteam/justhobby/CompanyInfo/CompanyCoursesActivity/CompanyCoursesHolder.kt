@@ -1,4 +1,4 @@
-package com.aurimteam.justhobby.CompanyInfo.CompanyCoursesInfoActivity
+package com.aurimteam.justhobby.CompanyInfo.CompanyCoursesActivity
 
 import android.support.v7.widget.RecyclerView
 import android.view.View

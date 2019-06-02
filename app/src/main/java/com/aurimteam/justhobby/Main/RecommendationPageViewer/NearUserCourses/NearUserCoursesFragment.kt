@@ -6,8 +6,6 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TableRow
-import com.aurimteam.justhobby.CoursesInfo.CourseMainInfoActivity.CourseInfoFragment
 import com.aurimteam.justhobby.Main.RecommendationPageViewer.FragmentsInterfaces.INearCoursesView
 import com.aurimteam.justhobby.R
 import com.aurimteam.justhobby.Response.CourseResponse

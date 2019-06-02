@@ -1,7 +1,5 @@
 package com.aurimteam.justhobby.Response
 
-import java.sql.Timestamp
-
 class CategoryResponse(
     val type: String,
     val id: Int,

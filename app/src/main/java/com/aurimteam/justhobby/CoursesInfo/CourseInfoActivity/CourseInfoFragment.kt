@@ -1,4 +1,4 @@
-package com.aurimteam.justhobby.CoursesInfo.CourseMainInfoActivity
+package com.aurimteam.justhobby.CoursesInfo.CourseInfoActivity
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -7,6 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
+import android.widget.TextView
+import com.aurimteam.justhobby.CompanyInfo.CompanyCoursesActivity.CompanyCoursesFragment
+import com.aurimteam.justhobby.CoursesInfo.CourseGroupsActivity.CourseGroupsFragment
 import com.aurimteam.justhobby.R
 import com.aurimteam.justhobby.Response.GroupResponse
 import kotlinx.android.synthetic.main.fragment_course_info.*
@@ -19,6 +22,7 @@ class CourseInfoFragment : Fragment(), ICourseInfoView {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_course_info, container, false)
         view.findViewById<ImageButton>(R.id.courseInfoBtnBack).setOnClickListener { backToRecommendedFragment() }
+        view.findViewById<TextView>(R.id.courseInfoShowAllCourses).setOnClickListener { allCompanyCoursesFragment() }
         return view
     }
 
@@ -37,8 +41,17 @@ class CourseInfoFragment : Fragment(), ICourseInfoView {
         super.onDestroy()
         presenter.onDestroy()
     }
+
     private fun backToRecommendedFragment() {
         fragmentManager?.popBackStack()
+    }
+
+    private fun allCompanyCoursesFragment() {
+        fragmentManager!!
+            .beginTransaction()
+            .addToBackStack(null)
+            .replace(R.id.mainNavContainerFragment, CourseGroupsFragment())
+            .commit()
     }
 
 }

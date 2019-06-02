@@ -1,15 +1,14 @@
-package com.aurimteam.justhobby.CompanyInfo.CompanyInfoMainActivity
+package com.aurimteam.justhobby.CompanyInfo.CompanyCoursesActivity
 
 import com.aurimteam.justhobby.Response.CourseResponse
 import com.aurimteam.justhobby.Response.IdentifierResponse
 import java.sql.Timestamp
 
-class CompanyInfoModel : ICompanyInfoModel{
+class CompanyCoursesModel : ICompanyCoursesModel{
     interface onFinishedListener{
         fun onResultSuccess(courses: List<CourseResponse>)
         fun onResultFail()
     }
-
     override fun getCompanyCoursesData(onFinishedListener: onFinishedListener) {
         val courses: List<CourseResponse> = listOf(
             CourseResponse(
@@ -52,6 +51,39 @@ class CompanyInfoModel : ICompanyInfoModel{
                 "Drive - школа зажигательных танцев",
                 "пр. Ленина 26, д. 13",
                 IdentifierResponse("sport", 100),
+                IdentifierResponse("Жиг", 101),
+                Timestamp(100),
+                Timestamp(200)
+            ),
+            CourseResponse(
+                "dance",
+                0,
+                "Восточный Шаолинь",
+                "Drive - школа зажигательных танцев",
+                "пр. Ленина 26, д. 13",
+                IdentifierResponse("sport", 100),
+                IdentifierResponse("Жиг", 101),
+                Timestamp(100),
+                Timestamp(200)
+            ),
+            CourseResponse(
+                "dance",
+                0,
+                "Восточный Шаолинь",
+                "Drive - школа зажигательных танцев",
+                "пр. Ленина 26, д. 13",
+                IdentifierResponse("sports", 100),
+                IdentifierResponse("Жиг", 101),
+                Timestamp(100),
+                Timestamp(200)
+            ),
+            CourseResponse(
+                "dance",
+                0,
+                "Восточный Шаолинь",
+                "Drive - школа зажигательных танцев",
+                "пр. Ленина 26, д. 13",
+                IdentifierResponse("sports", 100),
                 IdentifierResponse("Жиг", 101),
                 Timestamp(100),
                 Timestamp(200)

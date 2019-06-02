@@ -1,15 +1,15 @@
-package com.aurimteam.justhobby.CompanyInfo.CompanyCoursesInfoActivity
+package com.aurimteam.justhobby.CompanyInfo.CompanyInfoActivity
 
-import com.aurimteam.justhobby.CompanyInfo.CompanyInfoMainActivity.CompanyInfoModel
 import com.aurimteam.justhobby.Response.CourseResponse
 import com.aurimteam.justhobby.Response.IdentifierResponse
 import java.sql.Timestamp
 
-class CompanyCoursesModel : ICompanyCoursesModel{
+class CompanyInfoModel : ICompanyInfoModel{
     interface onFinishedListener{
         fun onResultSuccess(courses: List<CourseResponse>)
         fun onResultFail()
     }
+
     override fun getCompanyCoursesData(onFinishedListener: onFinishedListener) {
         val courses: List<CourseResponse> = listOf(
             CourseResponse(

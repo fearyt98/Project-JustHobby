@@ -10,13 +10,13 @@
                  android:theme="@style/AppTheme">
         <activity android:name=".CoursesInfo.CourseReviewNewActivity.CourseReviewNewFragment"/>
         <activity android:name=".Main.Home.UserCourses.UserCoursesFragment"/>
-        <activity android:name=".CompanyInfo.CompanyCoursesInfoActivity.CompanyCoursesFragment"/>
-        <activity android:name=".CompanyInfo.CompanyInfoMainActivity.CompanyInfoFragment"/>
+        <activity android:name=".CompanyInfo.CompanyCoursesActivity.CompanyCoursesFragment"/>
+        <activity android:name=".CompanyInfo.CompanyInfoActivity.CompanyInfoFragment"/>
         <activity android:name=".CoursesInfo.CourseGroupsActivity.CourseGroupsFragment"/>
         <activity android:name=".Main.Home.UserCourses.UserCoursesClearFragment"/>
         <activity android:name=".Main.Home.UserBookmarksMain.UserBookmarksClearFragment"/>
         <activity android:name=".Main.Home.HomeTimeLineClearFragment"/>
-        <activity android:name=".CoursesInfo.CourseMainInfoActivity.CourseInfoFragment"/>
+        <activity android:name=".CoursesInfo.CourseInfoActivity.CourseInfoFragment"/>
         <activity android:name=".Main.Notifications.NotificationsFragment"/>
         <activity android:name=".Main.Home.UserBookmarksMain.UserBookmarksFragment"/>
         <activity android:name=".Main.Settings.SettingsFragment"/>

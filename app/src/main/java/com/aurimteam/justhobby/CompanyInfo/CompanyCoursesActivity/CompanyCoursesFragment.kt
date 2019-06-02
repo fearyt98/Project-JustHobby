@@ -1,4 +1,4 @@
-package com.aurimteam.justhobby.CompanyInfo.CompanyCoursesInfoActivity
+package com.aurimteam.justhobby.CompanyInfo.CompanyCoursesActivity
 
 
 import android.os.Bundle

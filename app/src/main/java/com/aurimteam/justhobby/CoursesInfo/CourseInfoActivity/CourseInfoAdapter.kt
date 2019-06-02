@@ -1,4 +1,4 @@
-package com.aurimteam.justhobby.CoursesInfo.CourseMainInfoActivity
+package com.aurimteam.justhobby.CoursesInfo.CourseInfoActivity
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
