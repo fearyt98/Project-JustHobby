@@ -28,10 +28,6 @@
     <string name="feedback_settings">Обратная связь</string>
     <string name="about_app_settings">О приложении</string>
     <string name="exit_account_settings">Выйти из учетной записи</string>
-    <string name="title_activity_home_main">HomeMainActivity</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
     <string name="hide_show_password">Скрыть/Показать пароль</string>
     <string name="apply">Применить</string>
     <string name="mixed">Смешаный</string>

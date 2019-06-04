@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- DatePicker Dialog -->
+    <style name="DatePickerDialog"
+           parent="@style/Theme.AppCompat.DayNight.Dialog">
+        <item name="android:colorAccent">@color/colorPrimary</item>
+        <item name="android:buttonTint">@color/grafitText</item>
+        <item name="colorControlActivated">@color/grafitText</item>
+        <item name="colorControlHighlight">@color/whiteTop</item>
+        <item name="android:windowBackground">@color/whiteTop</item>
+    </style>
+</resources>

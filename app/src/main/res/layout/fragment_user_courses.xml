@@ -5,7 +5,7 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:orientation="vertical"
-              tools:context=".Main.Home.UserCourses.UserCoursesFragment">
+              tools:context=".user.main.home.user_courses.UserCoursesFragment">
     <FrameLayout android:layout_width="match_parent"
                  android:layout_height="64dp"
                  android:paddingBottom="8dp"

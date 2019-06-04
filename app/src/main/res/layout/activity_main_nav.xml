@@ -5,7 +5,7 @@
                                              android:id="@+id/mainNav"
                                              android:layout_width="match_parent"
                                              android:layout_height="match_parent"
-                                             tools:context=".Main.MainNav">
+                                             tools:context=".user.main.MainNav">
     <FrameLayout
             android:id="@+id/mainNavContainerFragment"
             android:layout_width="match_parent"
