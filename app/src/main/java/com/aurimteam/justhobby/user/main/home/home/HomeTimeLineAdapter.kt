@@ -9,14 +9,17 @@ import com.aurimteam.justhobby.response.EventResponse
 class HomeTimeLineAdapter : RecyclerView.Adapter<TimeLineHolder>() {
 
     private val timeLineEvents: MutableList<EventResponse> = mutableListOf()
+    private var isNow: Boolean = true
 
     override fun getItemCount(): Int = timeLineEvents.size
     override fun onBindViewHolder(holder: TimeLineHolder, position: Int) {
         holder.bind(
             position == this.itemCount - 1,
+            isNow,
             timeLineEvents[position].attributes.time_start,
-            timeLineEvents[position].attributes.title_company,
+            timeLineEvents[position].attributes.duration,
             timeLineEvents[position].attributes.title_course,
+            timeLineEvents[position].attributes.title_group,
             timeLineEvents[position].attributes.teacher,
             timeLineEvents[position].attributes.title_company,
             timeLineEvents[position].attributes.address,
@@ -29,9 +32,10 @@ class HomeTimeLineAdapter : RecyclerView.Adapter<TimeLineHolder>() {
             LayoutInflater.from(parent.context).inflate(R.layout.fragment_card_event, parent, false)
         )
 
-    fun onDataChange(events: List<EventResponse>) {
+    fun onDataChange(events: List<EventResponse>, isNow: Boolean) {
         this.timeLineEvents.clear()
         this.timeLineEvents.addAll(events)
         notifyDataSetChanged()
+        this.isNow = isNow
     }
 }

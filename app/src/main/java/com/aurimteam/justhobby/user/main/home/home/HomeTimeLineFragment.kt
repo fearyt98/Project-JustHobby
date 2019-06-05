@@ -79,20 +79,37 @@ class HomeTimeLineFragment : Fragment(), IHomeView {
 
     private fun setInitialDateTime() {
         homeCalendarText.text = SimpleDateFormat("d MMMM, EEEE").format(Date(dateAndTime.timeInMillis))
+
+        val selectDate = GregorianCalendar()
+        selectDate.time = Date(dateAndTime.timeInMillis)
+        val currentDate = GregorianCalendar()
+        val isNow = selectDate.get(Calendar.YEAR) == currentDate.get(Calendar.YEAR) &&
+                selectDate.get(Calendar.DAY_OF_YEAR) == currentDate.get(Calendar.DAY_OF_YEAR)
+        homeCurrentTime.visibility = if (isNow) View.VISIBLE else View.GONE
+
         presenter?.getEventsTimeLine(SimpleDateFormat("dd.MM.yyyy").format(Date(dateAndTime.timeInMillis)))
-        if (SimpleDateFormat("dd.MM.yyyy").format(Date(dateAndTime.timeInMillis)) !=
-            SimpleDateFormat("dd.MM.yyyy").format(Date())
-        )
-            homeCurrentTime.visibility = View.GONE
-        else
-            homeCurrentTime.visibility = View.VISIBLE
     }
 
     override fun showTimeLineEvents(eventsTimeLine: List<EventResponse>) {
-        if (eventsTimeLine.isEmpty()) {
+        toggleContentPB()
+        if (eventsTimeLine.isEmpty())
             showMessage("0")
+        val selectDate = GregorianCalendar()
+        selectDate.time = Date(dateAndTime.timeInMillis)
+        val currentDate = GregorianCalendar()
+        val isNow = selectDate.get(Calendar.YEAR) == currentDate.get(Calendar.YEAR) &&
+                selectDate.get(Calendar.DAY_OF_YEAR) == currentDate.get(Calendar.DAY_OF_YEAR)
+        adapter.onDataChange(eventsTimeLine, isNow)
+    }
+
+    override fun toggleContentPB() {
+        if (homeContent.visibility != View.GONE) {
+            homeProgressBar.visibility = View.VISIBLE
+            homeContent.visibility = View.GONE
+        } else {
+            homeProgressBar.visibility = View.GONE
+            homeContent.visibility = View.VISIBLE
         }
-        adapter.onDataChange(eventsTimeLine)
     }
 
     private fun openUserBookmarks() {

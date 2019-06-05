@@ -4,12 +4,16 @@ import android.support.v7.widget.RecyclerView
 import android.view.View
 import com.aurimteam.justhobby.R
 import kotlinx.android.synthetic.main.fragment_card_event.view.*
+import java.util.*
+
 
 
 class TimeLineHolder(view: View) : RecyclerView.ViewHolder(view) {
     fun bind(
         last: Boolean,
+        isNow: Boolean,
         time: Int,
+        duration: Int,
         titleCourse: String,
         titleGroup: String,
         teacher: String,
@@ -18,6 +22,15 @@ class TimeLineHolder(view: View) : RecyclerView.ViewHolder(view) {
         category: String
     ) {
         itemView.cardTimelineLineLast.visibility = if (last) View.INVISIBLE else View.VISIBLE
+        itemView.cardTimelineCountdown.visibility = if (isNow) View.VISIBLE else View.INVISIBLE
+        if (isNow) {
+            val timeTill = intToTime(if(time <= dayTime()) (time + duration - dayTime()) else (time - dayTime()))
+
+            if(time <= dayTime())
+                itemView.cardTimelineCountdown.text = String.format(itemView.context.resources.getString(R.string.before_end_of_event), timeTill)
+            else
+                itemView.cardTimelineCountdown.text = String.format(itemView.context.resources.getString(R.string.before_event), timeTill)
+        }
 
         itemView.cardTimelineTime.text = intToTime(time)
         itemView.cardTimelineTitle.text = "$titleCourse ($titleGroup)"
@@ -47,7 +60,7 @@ class TimeLineHolder(view: View) : RecyclerView.ViewHolder(view) {
     }
 
     private fun intToTime(intTime: Int): String {
-        val hour = Math.floor((intTime / 60).toDouble())
+        val hour = Math.floor((intTime / 60).toDouble()).toInt()
         val minute = intTime % 60
         var hourStr = "$hour"
         if (hour < 10) hourStr = "0$hour"
@@ -55,6 +68,10 @@ class TimeLineHolder(view: View) : RecyclerView.ViewHolder(view) {
         var minuteStr = "$minute"
         if (minute < 10) minuteStr = "0$minute"
         return "$hourStr:$minuteStr"
+    }
+
+    private fun dayTime(): Int {
+        return GregorianCalendar().get(Calendar.HOUR_OF_DAY) * 60 + GregorianCalendar().get(Calendar.MINUTE)
     }
 
     fun termNum(num: Int, term10to15: String, term0: String, term1: String, term2to4: String, term5toMore: String): String {

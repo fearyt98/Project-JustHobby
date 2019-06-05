@@ -5,4 +5,5 @@ import com.aurimteam.justhobby.response.EventResponse
 interface IHomeView {
     fun showTimeLineEvents(eventsTimeLine: List<EventResponse>)
     fun showMessage(message: String?)
+    fun toggleContentPB()
 }
