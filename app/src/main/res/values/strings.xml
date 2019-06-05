@@ -43,6 +43,9 @@
     <string name="calendar">Календарь</string>
     <string name="bookmarks">Закладки</string>
     <string name="any">Любой</string>
+    <string name="acceptance">Приём</string>
+    <string name="coming">Идет</string>
+    <string name="not_coming">Не идет</string>
     <string name="month">Месяц</string>
     <string name="lesson">Занятие</string>
     <string name="search">Поиск</string>
@@ -128,4 +131,25 @@
     </string>
     <string name="about_no_search_results">Совсем ничего. Попробйте\n изменить запрос.</string>
     <string name="filter">Фильтры</string>
+    <string name="admin_panel">Админ-панель</string>
+    <string name="categories">Категорий</string>
+    <string name="subcategories">Подкатегорий</string>
+    <string name="users">Пользователей</string>
+    <string name="companies">Компаний</string>
+    <string name="count_courses">Курсов</string>
+    <string name="count_groups">Групп</string>
+    <string name="reviews">Отзывов</string>
+    <string name="create_company">Создать компанию</string>
+    <string name="create">Создание</string>
+    <string name="email_hint">E-mail</string>
+    <string name="password_hint">Пароль</string>
+    <string name="contract_number_hint">Номер договора</string>
+    <string name="date_start_hint">Дата заключения</string>
+    <string name="date_end_hint">Дата истичения</string>
+    <string name="company_label">Название</string>
+    <string name="telephone">Телефон</string>
+    <string name="address">Адрес</string>
+    <string name="site">Сайт</string>
+    <string name="company_visibility">Видимость</string>
+    <string name="about_company_hint">Расскажите об этой компании</string>
 </resources>
