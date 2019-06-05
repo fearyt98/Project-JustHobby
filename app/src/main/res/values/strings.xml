@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Just Hobby</string>
+    <string name="app_name">JustHobby</string>
     <string name="password">Пароль</string>
     <string name="forget">Забыли?</string>
     <string name="confirm_password">Подтвердите пароль</string>
@@ -28,10 +28,6 @@
     <string name="feedback_settings">Обратная связь</string>
     <string name="about_app_settings">О приложении</string>
     <string name="exit_account_settings">Выйти из учетной записи</string>
-    <string name="title_activity_home_main">HomeMainActivity</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
     <string name="hide_show_password">Скрыть/Показать пароль</string>
     <string name="apply">Применить</string>
     <string name="mixed">Смешаный</string>
@@ -88,6 +84,8 @@
     <string name="test_company_title">Drive - Школа танцев в Томске</string>
     <string name="about_btn_ready">Нажимая «Готово» вы принимаете</string>
     <string name="user_agreement">Условия использования</string>
+    <string name="before_end_of_event">До конца занятия %1$s</string>
+    <string name="before_event">До занятия %1$s</string>
     <string name="about_recovery">
         Укажите E-mail, к которому привязан аккаунт. Мы пришлем на него\n письмо с инструкцией\n восстановления.
     </string>

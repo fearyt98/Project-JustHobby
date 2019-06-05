@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:tools="http://schemas.android.com/tools"
           package="com.aurimteam.justhobby">
     <uses-permission android:name="android.permission.INTERNET"/>
     <application android:allowBackup="true"
@@ -7,36 +8,27 @@
                  android:label="@string/app_name"
                  android:roundIcon="@mipmap/ic_launcher_round"
                  android:supportsRtl="true"
-                 android:theme="@style/AppTheme">
-        <activity android:name=".CoursesInfo.CourseReviewNewActivity.CourseReviewNewFragment"/>
-        <activity android:name=".Main.Home.UserCourses.UserCoursesFragment"/>
-        <activity android:name=".CompanyInfo.CompanyCoursesActivity.CompanyCoursesFragment"/>
-        <activity android:name=".CompanyInfo.CompanyInfoActivity.CompanyInfoFragment"/>
-        <activity android:name=".CoursesInfo.CourseGroupsActivity.CourseGroupsFragment"/>
-        <activity android:name=".Main.Home.UserCourses.UserCoursesClearFragment"/>
-        <activity android:name=".Main.Home.UserBookmarksMain.UserBookmarksClearFragment"/>
-        <activity android:name=".Main.Home.HomeTimeLineClearFragment"/>
-        <activity android:name=".CoursesInfo.CourseInfoActivity.CourseInfoFragment"/>
-        <activity android:name=".Main.Notifications.NotificationsFragment"/>
-        <activity android:name=".Main.Home.UserBookmarksMain.UserBookmarksFragment"/>
-        <activity android:name=".Main.Settings.SettingsFragment"/>
-        <activity android:name=".Main.RecommendationPageViewer.RecommendationFragment"/>
-        <activity android:name=".Main.MainNav"
-                  android:label="@string/title_activity_home_main"/>
-        <activity android:name="com.aurimteam.justhobby.Start.AuthActivity.AuthActivity"
+                 android:theme="@style/AppTheme"
+                 tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".SplashActivity"
+                  android:theme="@style/SplashTheme"
                   android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name="com.aurimteam.justhobby.Start.RegistryActivity.RegistryActivity"
+        <activity android:name="com.aurimteam.justhobby.user.main.MainNav"
                   android:screenOrientation="portrait"/>
-        <activity android:name="com.aurimteam.justhobby.Start.RecoveryActivity.RecoveryActivity"
+        <activity android:name=".start.auth.AuthActivity"
                   android:screenOrientation="portrait"/>
-        <activity android:name="com.aurimteam.justhobby.Start.FeaturesActivities.FeaturesActivity"
+        <activity android:name=".start.registry.registry.RegistryActivity"
                   android:screenOrientation="portrait"/>
-        <activity android:name=".Main.Home.HomeTimeLineFragment"/>
-        <activity android:name="com.aurimteam.justhobby.Start.RegistryActivity.RegistryStartActivity.RegistryStartActivity"/>
+        <activity android:name=".start.recovery.RecoveryActivity"
+                  android:screenOrientation="portrait"/>
+        <activity android:name=".start.features.FeaturesActivity"
+                  android:screenOrientation="portrait"/>
+        <activity android:name=".start.registry.start.RegistryStartActivity"
+                  android:screenOrientation="portrait"/>
     </application>
 </manifest>

@@ -5,7 +5,7 @@
                                              android:layout_width="match_parent"
                                              android:layout_height="match_parent"
                                              android:orientation="vertical"
-                                             tools:context=".CompanyInfo.CompanyCoursesActivity.CompanyCoursesFragment">
+                                             tools:context=".user.company_info.company_courses.CompanyCoursesFragment">
     <android.support.v7.widget.RecyclerView android:id="@+id/companyCoursesRecyclerView"
                                             android:layout_width="match_parent"
                                             android:overScrollMode="never"

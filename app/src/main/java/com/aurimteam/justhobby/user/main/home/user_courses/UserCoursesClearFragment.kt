@@ -1,0 +1,17 @@
+package com.aurimteam.justhobby.user.main.home.user_courses
+
+import android.os.Bundle
+import android.support.v4.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import com.aurimteam.justhobby.R
+
+class UserCoursesClearFragment : Fragment() {
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        val view = inflater.inflate(R.layout.fragment_user_courses_clear, container, false)
+        //view.findViewById<ImageButton>(R.id.homeBookmarks).setOnClickListener { openUserBookmarks() }
+        return view
+    }
+}
