@@ -150,4 +150,21 @@
     <string name="site">Сайт</string>
     <string name="company_visibility">Видимость</string>
     <string name="about_company_hint">Расскажите об этой компании</string>
+    <string name="change_contract">Изменить договор</string>
+    <string name="edit_courses">Редактировать курсы</string>
+    <string name="course_label">Название</string>
+    <string name="change_category">Изменить категорию</string>
+    <string name="edit">Редактирование</string>
+    <string name="edit_groups">Редактировать группы</string>
+    <string name="label">Название</string>
+    <string name="about_group_hint">Расскажите об этой группе</string>
+    <string name="new_group_limit">Минимум 45 символов</string>
+    <string name="tutor">Учитель</string>
+    <string name="change_type_pay">Изменить тип оплаты</string>
+    <string name="sum_pay">Сумма оплаты</string>
+    <string name="change_type_sex">Изменить пол</string>
+    <string name="min_age">Минимальный возраст</string>
+    <string name="max_age">Максимальный возраст</string>
+    <string name="change_permanent_timetable">Изменить постоянное расписание</string>
+    <string name="change_not_permanent_timetable">Изменить расписание единоразово</string>
 </resources>
