@@ -6,13 +6,13 @@ import kotlinx.android.synthetic.main.fragment_card_group.view.*
 
 class CourseGroupsHolder(view: View):RecyclerView.ViewHolder(view){
     fun bind(
-        id: Long,
+        /*id: Long,
         title: String,
         teacher: String,
-        price: String
+        price: String*/
     ) {
-        itemView.cardGroupPrice.text = price
+        /*itemView.cardGroupPrice.text = price
         itemView.cardGroupTeacher.text = teacher
-        itemView.cardGroupTitle.text = title
+        itemView.cardGroupTitle.text = title*/
     }
 }

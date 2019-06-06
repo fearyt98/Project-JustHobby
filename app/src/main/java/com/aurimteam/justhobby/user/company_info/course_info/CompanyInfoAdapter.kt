@@ -14,7 +14,7 @@ class CompanyInfoAdapter(private var presenter: CompanyInfoPresenter) :
 
     override fun onBindViewHolder(holder: CompanyInfoCoursesHolder, position: Int) {
         holder.bind(
-            companyCoursesList[position].id,
+            companyCoursesList[position].id.toLong(),
             companyCoursesList[position].attributes.title,
             companyCoursesList[position].attributes.description,
             companyCoursesList[position].attributes.address

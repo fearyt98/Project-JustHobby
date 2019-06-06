@@ -7,10 +7,10 @@ class GroupsResponse(
 )
 
 class IncludedResponse(
-    val subcategories: List<SubcategoryResponse>? = null,
-    val courses: List<CourseResponse>? = null,
-    val companies: List<CompanyResponse>? = null,
-    val groups: List<GroupResponse>? = null
+    val subcategories: List<SubcategoryResponse>?,
+    val courses: List<CourseResponse>?,
+    val companies: List<CompanyResponse>?,
+    val groups: List<GroupResponse>?
 
 )
 class GroupResponse(
@@ -32,7 +32,7 @@ class GroupAttrResponse(
     val teacher: String,
     val type_payment: Int,
     val price: Int,
-    val sex: List<Int>,
+    val sex: Int,
     val age_max: Int,
     val age_min: Int,
     val created_at: Long,

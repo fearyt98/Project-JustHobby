@@ -17,7 +17,6 @@ class CompanyCoursesAdapter : RecyclerView.Adapter<CompanyCoursesHolder>() {
             companyCoursesList[position].id,
             companyCoursesList[position].attributes,
             companyCoursesList[position].relationships*/
-
         )
     }
 

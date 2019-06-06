@@ -7,16 +7,16 @@ import kotlinx.android.synthetic.main.fragment_card_course.view.*
 
 class CompanyCoursesHolder(view: View) : RecyclerView.ViewHolder(view) {
     fun bind(
-        id: Long,
+        /*id: Long,
         title: String,
         description: String,
         address: String,
         company: IdentifierResponse,
-        category: IdentifierResponse
+        category: IdentifierResponse*/
     ) {
-        itemView.cardCourseTitle.text = title
+        /*itemView.cardCourseTitle.text = title
         itemView.cardCourseDescription.text = description
-        itemView.cardCourseAddress.text = address
+        itemView.cardCourseAddress.text = address*/
         itemView.cardCourseMetres.text = "750 м"
     }
 }

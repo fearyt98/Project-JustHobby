@@ -41,13 +41,13 @@ class UserCoursesFragment : Fragment(), IUserCoursesView {
     }
 
     override fun toggleContentPB(isVisiblePB: Boolean) {
-        if (isVisiblePB) {
+        /*if (isVisiblePB) {
             homeProgressBar.visibility = View.VISIBLE
             homeContent.visibility = View.GONE
         } else {
             homeProgressBar.visibility = View.GONE
             homeContent.visibility = View.VISIBLE
-        }
+        }*/
     }
 
     override fun showMessage(message: String?) {
