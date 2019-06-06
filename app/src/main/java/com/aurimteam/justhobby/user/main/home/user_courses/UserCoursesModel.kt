@@ -2,9 +2,7 @@ package com.aurimteam.justhobby.user.main.home.user_courses
 
 import com.aurimteam.justhobby.App
 import com.aurimteam.justhobby.api.Api
-import com.aurimteam.justhobby.response.CategoryResponse
-import com.aurimteam.justhobby.response.CourseResponse
-import com.aurimteam.justhobby.response.GroupsResponse
+import com.aurimteam.justhobby.response.*
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
@@ -12,7 +10,7 @@ import retrofit2.Response
 
 class UserCoursesModel : IUserCoursesModel {
     interface OnFinishedListener {
-        fun onResultSuccess(userCourses: List<CategoryResponse>, included: List<CourseResponse>)
+        fun onResultSuccess(userCourses: List<GroupResponse>, included: IncludedResponse)
         fun onResultFail(strError: String?)
     }
 

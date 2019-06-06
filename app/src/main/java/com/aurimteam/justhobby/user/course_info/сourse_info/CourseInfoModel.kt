@@ -9,11 +9,11 @@ class CourseInfoModel : ICourseInfoModel {
     }
 
     override fun getCourseGroupsData(onFinishedListener: OnFinishedListener) {
-        val groups: List<GroupResponse> = listOf(
+        val groups: List<GroupResponse> = listOf(/*
             GroupResponse(1, "Начинающие", "Виктория Алексеевна", "500Р занятие"),
             GroupResponse(2, "Продолжающие", "Виктория Алексеевна", "500Р занятие"),
             GroupResponse(3, "ГГ", "Виктория Алексеевна", "500Р занятие")
-        )
+        */)
         onFinishedListener.onResultSuccess(groups)
     }
 }

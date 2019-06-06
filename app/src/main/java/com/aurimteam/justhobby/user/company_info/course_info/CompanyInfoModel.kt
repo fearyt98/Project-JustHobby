@@ -12,6 +12,7 @@ class CompanyInfoModel : ICompanyInfoModel {
 
     override fun getCompanyCoursesData(onFinishedListener: OnFinishedListener) {
         val courses: List<CourseResponse> = listOf(
+        /*
             CourseResponse(
                 "sport",
                 0,
@@ -56,7 +57,7 @@ class CompanyInfoModel : ICompanyInfoModel {
                 Timestamp(100),
                 Timestamp(200)
             )
-        )
+        */)
         onFinishedListener.onResultSuccess(courses)
     }
 }
