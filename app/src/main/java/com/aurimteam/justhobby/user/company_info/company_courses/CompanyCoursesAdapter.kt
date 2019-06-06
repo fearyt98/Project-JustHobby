@@ -13,12 +13,11 @@ class CompanyCoursesAdapter : RecyclerView.Adapter<CompanyCoursesHolder>() {
     override fun getItemCount(): Int = companyCoursesList.size
     override fun onBindViewHolder(holder: CompanyCoursesHolder, position: Int) {
         holder.bind(
+            /*companyCoursesList[position].type,
             companyCoursesList[position].id,
-            companyCoursesList[position].title,
-            companyCoursesList[position].description,
-            companyCoursesList[position].address,
-            companyCoursesList[position].company,
-            companyCoursesList[position].category
+            companyCoursesList[position].attributes,
+            companyCoursesList[position].relationships*/
+
         )
     }
 

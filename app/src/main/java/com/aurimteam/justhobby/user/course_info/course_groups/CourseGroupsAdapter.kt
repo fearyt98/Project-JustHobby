@@ -13,10 +13,10 @@ class CourseGroupsAdapter : RecyclerView.Adapter<CourseGroupsHolder>() {
     override fun getItemCount(): Int = courseAllGroupsList.size
     override fun onBindViewHolder(holder: CourseGroupsHolder, position: Int) {
         holder.bind(
-            courseAllGroupsList[position].id,
+            /*courseAllGroupsList[position].id,
             courseAllGroupsList[position].title,
             courseAllGroupsList[position].teacher,
-            courseAllGroupsList[position].price
+            courseAllGroupsList[position].price*/
         )
     }
 

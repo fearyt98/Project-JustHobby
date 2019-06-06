@@ -16,7 +16,7 @@ class UserCoursesHolder(view: View) : RecyclerView.ViewHolder(view) {
         timeTable: List<TimetableResponse>,
         isClicked: Boolean
     ) {
-        itemView.cardUserCourseTitle.text = "$titleCourse($titleGroup)"
+        itemView.cardUserCourseTitle.text = "$titleCourse ($titleGroup)"
         itemView.cardUserCourseCompany.text = titleCompany
         itemView.cardUserCourseAddress.text = address
         itemView.cardUserCourseTeacher.text = teacher
