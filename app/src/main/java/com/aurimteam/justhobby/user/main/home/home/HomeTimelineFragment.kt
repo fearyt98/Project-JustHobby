@@ -31,8 +31,16 @@ class HomeTimelineFragment : Fragment(), IHomeView {
     private var selectDate = Calendar.getInstance()
     private var currentDate = Calendar.getInstance()
 
-    private val timer = object : CountDownTimer(1000, 2000)
-    {
+    private var listenerDatePicker: DatePickerDialog.OnDateSetListener =
+        DatePickerDialog.OnDateSetListener { _, year, monthOfYear, dayOfMonth ->
+            oldDate = selectDate.clone() as Calendar
+            selectDate.set(Calendar.YEAR, year)
+            selectDate.set(Calendar.MONTH, monthOfYear)
+            selectDate.set(Calendar.DAY_OF_MONTH, dayOfMonth)
+            setInitialDateTime()
+        }
+
+    private val timer = object : CountDownTimer(1000, 2000) {
         override fun onTick(millisUntilFinished: Long) {
             if (!isOneDay(currentDate, Calendar.getInstance())) {
                 if (isOneDay(currentDate, selectDate)) {
@@ -49,7 +57,8 @@ class HomeTimelineFragment : Fragment(), IHomeView {
             adapter.removeIfIs()
             if (adapter.itemCount == 0) presenter.getNearDayTimeline()
         }
-        override fun onFinish(){}
+
+        override fun onFinish() {}
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -86,14 +95,6 @@ class HomeTimelineFragment : Fragment(), IHomeView {
         presenter.onDestroy()
     }
 
-    private var listenerDatePicker: DatePickerDialog.OnDateSetListener =
-        DatePickerDialog.OnDateSetListener { _, year, monthOfYear, dayOfMonth ->
-            oldDate = selectDate.clone() as Calendar
-            selectDate.set(Calendar.YEAR, year)
-            selectDate.set(Calendar.MONTH, monthOfYear)
-            selectDate.set(Calendar.DAY_OF_MONTH, dayOfMonth)
-            setInitialDateTime()
-        }
 
     private fun openDatePicker() {
         if (this.activity != null && isTimeline) {
@@ -111,18 +112,11 @@ class HomeTimelineFragment : Fragment(), IHomeView {
     private fun setInitialDateTime() {
         if (isTimeline) {
             homeCalendarText.text =
-                SimpleDateFormat(
-                    "d MMMM, EEEE",
-                    Locale.getDefault()
-                ).format(Date(selectDate.timeInMillis))
-
+                SimpleDateFormat("d MMMM, EEEE", Locale.getDefault()).format(Date(selectDate.timeInMillis))
             homeCurrentTime.visibility = if (isNow()) View.VISIBLE else View.GONE
 
             presenter.getEventsTimeline(
-                SimpleDateFormat(
-                    "dd.MM.yyyy",
-                    Locale.getDefault()
-                ).format(Date(selectDate.timeInMillis))
+                SimpleDateFormat("dd.MM.yyyy", Locale.getDefault()).format(Date(selectDate.timeInMillis))
             )
         }
     }
@@ -181,10 +175,9 @@ class HomeTimelineFragment : Fragment(), IHomeView {
     }
 
     private fun isNow(): Boolean = isOneDay(selectDate, Calendar.getInstance())
-    private fun isOneDay(firstDate: Calendar, secondDate: Calendar): Boolean {
-        return firstDate.get(Calendar.YEAR) == secondDate.get(Calendar.YEAR) &&
+    private fun isOneDay(firstDate: Calendar, secondDate: Calendar): Boolean =
+        firstDate.get(Calendar.YEAR) == secondDate.get(Calendar.YEAR) &&
                 firstDate.get(Calendar.DAY_OF_YEAR) == secondDate.get(Calendar.DAY_OF_YEAR)
-    }
 
     override fun showMessage(message: String?) {
         val toast = Toast.makeText(activity, message, Toast.LENGTH_SHORT)

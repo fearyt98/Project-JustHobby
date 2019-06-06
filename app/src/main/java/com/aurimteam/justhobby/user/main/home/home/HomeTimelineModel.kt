@@ -25,7 +25,6 @@ class HomeTimelineModel : IHomeModel {
                 override fun onFailure(call: Call<TimelineNearDayResponse>, t: Throwable) {
                     onFinishedListener.onResultFail(t.message)
                 }
-
                 override fun onResponse(call: Call<TimelineNearDayResponse>, response: Response<TimelineNearDayResponse>) {
                     val responseBody = response.body()
                     if (responseBody != null) {
@@ -46,7 +45,6 @@ class HomeTimelineModel : IHomeModel {
                 override fun onFailure(call: Call<TimelineResponse>, t: Throwable) {
                     onFinishedListener.onResultFail(t.message)
                 }
-
                 override fun onResponse(call: Call<TimelineResponse>, response: Response<TimelineResponse>) {
                     val responseBody = response.body()
                     if (responseBody != null) {
