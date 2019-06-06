@@ -18,7 +18,7 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name="com.aurimteam.justhobby.user.main.MainNav"
+        <activity android:name=".user.main.main_nav.MainNavActivity"
                   android:screenOrientation="portrait"/>
         <activity android:name=".start.auth.AuthActivity"
                   android:screenOrientation="portrait"/>

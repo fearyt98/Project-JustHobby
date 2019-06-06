@@ -16,8 +16,8 @@ import com.aurimteam.justhobby.user.search.results.SearchResultFragment
 import kotlinx.android.synthetic.main.fragment_search.*
 import android.view.inputmethod.InputMethodManager
 import com.aurimteam.justhobby.response.CategoryResponse
-import com.aurimteam.justhobby.user.main.home.home.HomeTimeLineModel
-import com.aurimteam.justhobby.user.main.home.home.HomeTimeLinePresenter
+import com.aurimteam.justhobby.user.main.home.home.HomeTimelineModel
+import com.aurimteam.justhobby.user.main.home.home.HomeTimelinePresenter
 import com.aurimteam.justhobby.user.search.filters_bottom_sheet.SearchFiltersFragment
 import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent
 
