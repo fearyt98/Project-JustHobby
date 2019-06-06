@@ -24,8 +24,8 @@ class SearchSubcategoriesAdapter : RecyclerView.Adapter<SearchSubcategoriesHolde
     )
 
     fun onDataChange(subcategories: List<SubcategoryResponse>) {
-        subcategories.clear()
-        subcategories.addAll(subcategories)
+        this.subcategories.clear()
+        this.subcategories.addAll(subcategories)
         notifyDataSetChanged()
     }
 }

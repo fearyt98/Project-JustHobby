@@ -12,7 +12,7 @@ class SearchResultModel : ISearchResultModel {
     }
 
     override fun getSearchResultsData(onFinishedListener: OnFinishedListener) {
-        val foundedCourses: List<CourseResponse> = listOf(
+        val foundedCourses: List<CourseResponse> = listOf(/*
             CourseResponse(
                 "sport",
                 0,
@@ -68,7 +68,7 @@ class SearchResultModel : ISearchResultModel {
                 Timestamp(100),
                 Timestamp(200)
             )
-        )
+        */)
         onFinishedListener.onResultSuccess(foundedCourses)
     }
 }

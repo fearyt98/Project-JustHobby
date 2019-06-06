@@ -1,7 +1,7 @@
 package com.aurimteam.justhobby.response
 
 class GroupsResponse(
-    val data: List<CategoryResponse>,
+    val data: List<GroupResponse>,
     val included: IncludedResponse,
     val meta: MetaPagesResponse
 )

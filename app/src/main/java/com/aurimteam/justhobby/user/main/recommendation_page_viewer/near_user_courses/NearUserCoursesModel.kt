@@ -13,6 +13,7 @@ class NearUserCoursesModel : INearCoursesModel {
 
     override fun getNearCoursesData(onFinishedListener: OnFinishedListener) {
         val courses: List<CourseResponse> = listOf(
+        /*
             CourseResponse(
                 "sport",
                 0,
@@ -112,7 +113,7 @@ class NearUserCoursesModel : INearCoursesModel {
                 Timestamp(100),
                 Timestamp(200)
             )
-        )
+        */)
         onFinishedListener.onResultSuccess(courses)
     }
 }
