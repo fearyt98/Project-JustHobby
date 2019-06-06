@@ -22,11 +22,9 @@ class NearUserCoursesAdapter : RecyclerView.Adapter<NearUserCoursesHolder>() {
             coursesList[position].id,
             position == 0,
             position == itemCount - 1,
-            coursesList[position].title,
-            coursesList[position].description,
-            coursesList[position].address,
-            coursesList[position].company,
-            coursesList[position].category
+            coursesList[position].attributes.title,
+            coursesList[position].attributes.description,
+            coursesList[position].attributes.address
         )
         holder.itemView.cardCourse.setOnClickListener {
             detailInfoCourse(manager)

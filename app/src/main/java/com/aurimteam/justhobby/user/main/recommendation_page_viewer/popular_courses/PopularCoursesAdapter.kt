@@ -21,11 +21,9 @@ class PopularCoursesAdapter : RecyclerView.Adapter<PopularCoursesHolder>() {
     override fun onBindViewHolder(holder: PopularCoursesHolder, position: Int) {
         holder.bind(
             coursesList[position].id,
-            coursesList[position].title,
-            coursesList[position].description,
-            coursesList[position].address,
-            coursesList[position].company,
-            coursesList[position].category
+            coursesList[position].attributes.title,
+            coursesList[position].attributes.description,
+            coursesList[position].attributes.address
         )
         holder.itemView.cardCourse.setOnClickListener { detailInfoCourse() }
         holder.itemView.cardCourseBtnBookmark.setOnClickListener { addBookmark() }

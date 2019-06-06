@@ -13,9 +13,7 @@ class NearUserCoursesHolder(view: View) : RecyclerView.ViewHolder(view) {
         last: Boolean,
         title: String,
         description: String,
-        address: String,
-        company: IdentifierResponse,
-        category: IdentifierResponse
+        address: String
     ) {
         itemView.cardCourseTitle.text = title
         itemView.cardCourseDescription.text = description

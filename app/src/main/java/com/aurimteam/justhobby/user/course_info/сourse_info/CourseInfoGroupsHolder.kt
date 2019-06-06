@@ -9,9 +9,9 @@ class CourseInfoGroupsHolder(view: View) : RecyclerView.ViewHolder(view) {
         id: Long,
         title: String,
         teacher: String,
-        price: String
+        price: Int
     ) {
-        itemView.cardGroupPrice.text = price
+        itemView.cardGroupPrice.text = price.toString()
         itemView.cardGroupTeacher.text = teacher
         itemView.cardGroupTitle.text = title
     }

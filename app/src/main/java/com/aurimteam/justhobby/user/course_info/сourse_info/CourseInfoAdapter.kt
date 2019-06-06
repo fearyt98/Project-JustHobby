@@ -14,9 +14,9 @@ class CourseInfoAdapter : RecyclerView.Adapter<CourseInfoGroupsHolder>() {
     override fun onBindViewHolder(holder: CourseInfoGroupsHolder, position: Int) {
         holder.bind(
             courseGroupsList[position].id,
-            courseGroupsList[position].title,
-            courseGroupsList[position].teacher,
-            courseGroupsList[position].price
+            courseGroupsList[position].attributes.title,
+            courseGroupsList[position].attributes.teacher,
+            courseGroupsList[position].attributes.price
         )
     }
 
