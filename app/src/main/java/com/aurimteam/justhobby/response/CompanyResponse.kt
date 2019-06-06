@@ -2,13 +2,13 @@ package com.aurimteam.justhobby.response
 
 import java.math.BigInteger
 
-class CourseResponse(
+class CompanyResponse(
     val type: String,
     val id: BigInteger,
     val attributes: CourseAttrResponse
 )
 
-class CourseAttrResponse(
+class CompanyAttrResponse(
     val id: Boolean,
     val title: String,
     val description: String,

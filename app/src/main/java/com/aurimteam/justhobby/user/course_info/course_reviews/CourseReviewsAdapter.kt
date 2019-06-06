@@ -7,22 +7,21 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.aurimteam.justhobby.user.course_info.course_review.CourseReviewFragment
 import com.aurimteam.justhobby.R
-import com.aurimteam.justhobby.response.CourseReviewsResponse
+import com.aurimteam.justhobby.response.ReviewResponse
 import kotlinx.android.synthetic.main.fragment_card_review.view.*
 
 class CourseReviewsAdapter : RecyclerView.Adapter<CourseReviewsHolder>() {
 
-    private val courseReviewsList: MutableList<CourseReviewsResponse> = mutableListOf()
+    private val courseReviewsList: MutableList<ReviewResponse> = mutableListOf()
 
     override fun getItemCount(): Int = courseReviewsList.size
     override fun onBindViewHolder(holder: CourseReviewsHolder, position: Int) {
         val manager = (holder.itemView.context as FragmentActivity).supportFragmentManager
         holder.bind(
-            courseReviewsList[position].id,
             position == itemCount - 1,
-            courseReviewsList[position].name,
-            courseReviewsList[position].rating,
-            courseReviewsList[position].review
+            courseReviewsList[position].user_id.toString(),
+            courseReviewsList[position].attributes.rating.toFloat(),
+            courseReviewsList[position].attributes.review
         )
 
         holder.itemView.courseReview.setOnClickListener {
@@ -39,7 +38,7 @@ class CourseReviewsAdapter : RecyclerView.Adapter<CourseReviewsHolder>() {
             )
         )
 
-    fun onDataChange(courseReviews: List<CourseReviewsResponse>) {
+    fun onDataChange(courseReviews: List<ReviewResponse>) {
         this.courseReviewsList.clear()
         this.courseReviewsList.addAll(courseReviews)
         notifyDataSetChanged()

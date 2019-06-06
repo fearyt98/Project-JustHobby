@@ -5,7 +5,7 @@ import android.view.View
 import com.aurimteam.justhobby.response.IdentifierResponse
 import kotlinx.android.synthetic.main.fragment_card_course.view.*
 
-class UserBookmarksHolder(view: View) : RecyclerView.ViewHolder(view) {
+class CourseHolder(view: View) : RecyclerView.ViewHolder(view) {
     fun bind(
         id: Long,
         title: String,

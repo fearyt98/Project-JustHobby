@@ -8,7 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.aurimteam.justhobby.R
-import com.aurimteam.justhobby.response.CourseReviewsResponse
+import com.aurimteam.justhobby.response.ReviewResponse
 import kotlinx.android.synthetic.main.fragment_course_reviews.*
 
 class CourseReviewsFragment : Fragment(), ICourseReviewsView {
@@ -28,7 +28,7 @@ class CourseReviewsFragment : Fragment(), ICourseReviewsView {
         ViewCompat.setNestedScrollingEnabled(courseReviewsRecyclerView, false)
     }
 
-    override fun showCourseReviews(courseReviews: List<CourseReviewsResponse>) {
+    override fun showCourseReviews(courseReviews: List<ReviewResponse>) {
         adapter.onDataChange(courseReviews)
     }
 

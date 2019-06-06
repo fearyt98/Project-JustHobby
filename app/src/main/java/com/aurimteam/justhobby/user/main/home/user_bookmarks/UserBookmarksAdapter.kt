@@ -1,5 +1,6 @@
 package com.aurimteam.justhobby.user.main.home.user_bookmarks
 
+import android.support.v4.content.ContextCompat
 import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
@@ -8,12 +9,12 @@ import com.aurimteam.justhobby.R
 import com.aurimteam.justhobby.response.CourseResponse
 import kotlinx.android.synthetic.main.fragment_card_course.view.*
 
-class UserBookmarksAdapter : RecyclerView.Adapter<UserBookmarksHolder>() {
+class UserBookmarksAdapter : RecyclerView.Adapter<CourseHolder>() {
 
     private val userBookmarksList: MutableList<CourseResponse> = mutableListOf()
 
     override fun getItemCount(): Int = userBookmarksList.size
-    override fun onBindViewHolder(holder: UserBookmarksHolder, position: Int) {
+    override fun onBindViewHolder(holder: CourseHolder, position: Int) {
         holder.bind(
             userBookmarksList[position].id,
             userBookmarksList[position].title,
@@ -24,13 +25,16 @@ class UserBookmarksAdapter : RecyclerView.Adapter<UserBookmarksHolder>() {
         )
         holder.itemView.cardCourse.setOnClickListener { detailInfoCourse() }
         holder.itemView.cardCourseBtnBookmark.setOnClickListener { deleteBookmark() }
-        holder.itemView.cardCourseBtnBookmark.setColorFilter(R.color.red)
+        holder.itemView.cardCourseBtnBookmark.setColorFilter(
+            ContextCompat.getColor(holder.itemView.context, R.color.colorPrimary)
+        )
         holder.itemView.cardCourseBtnGeo.setOnClickListener { searchCourseOnMap() }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, p1: Int): UserBookmarksHolder = UserBookmarksHolder(
+    override fun onCreateViewHolder(parent: ViewGroup, p1: Int): CourseHolder = CourseHolder(
         LayoutInflater.from(parent.context).inflate(R.layout.fragment_card_course, parent, false)
     )
+
     fun onDataChange(bookmarks: List<CourseResponse>) {
         userBookmarksList.clear()
         userBookmarksList.addAll(bookmarks)
