@@ -15,10 +15,14 @@ class UserBookmarksFragment : Fragment(), IUserBookmarksView {
 
 
     private val presenter = UserBookmarksPresenter(this, UserBookmarksModel())
-    private var adapter = UserBookmarksAdapter()
+    private var adapter = UserBookmarksAdapter(presenter)
 
     override fun showUserBookmarks(bookmarks: List<CourseResponse>) {
         adapter.onDataChange(bookmarks)
+    }
+
+    override fun deletedUserBookmarks(position: Int) {
+        adapter.notifyItemRemoved(position)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -29,7 +33,7 @@ class UserBookmarksFragment : Fragment(), IUserBookmarksView {
 
     override fun onStart() {
         super.onStart()
-        presenter.getUserBookmarks()
+        presenter.getUserBookmarks(context!!)
         bookmarksRecyclerView.layoutManager = LinearLayoutManager(context)
         bookmarksRecyclerView.adapter = adapter
     }

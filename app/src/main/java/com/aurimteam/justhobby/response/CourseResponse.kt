@@ -40,3 +40,7 @@ class CourseAttrResponse(
     val created_at: Long,
     val updated_at: Long
 )
+
+class CoursesResponse(
+    val courses: List<CourseResponse>
+)

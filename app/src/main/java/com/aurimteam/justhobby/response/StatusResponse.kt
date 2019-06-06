@@ -1,5 +1,5 @@
 package com.aurimteam.justhobby.response
 
-class LogoutResponse(
+class StatusResponse(
     val status: String
 )
