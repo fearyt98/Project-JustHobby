@@ -22,7 +22,7 @@ class HomeTimelineAdapter : RecyclerView.Adapter<TimelineHolder>() {
             onBindViewHolder(holder, position)
         else
             holder.bindTime(
-                position == this.itemCount - 1,
+                position == itemCount - 1,
                 isNow,
                 timeLineEvents[position].attributes.time_start,
                 timeLineEvents[position].attributes.duration
@@ -32,7 +32,7 @@ class HomeTimelineAdapter : RecyclerView.Adapter<TimelineHolder>() {
 
     override fun onBindViewHolder(holder: TimelineHolder, position: Int) {
         holder.bind(
-            position == this.itemCount - 1,
+            position == itemCount - 1,
             isNow,
             timeLineEvents[position].attributes.time_start,
             timeLineEvents[position].attributes.duration,
@@ -63,7 +63,7 @@ class HomeTimelineAdapter : RecyclerView.Adapter<TimelineHolder>() {
                 if (item.attributes.time_start + item.attributes.duration < dayTime())
                     timeLineEvents.remove(item)
         notifyDataSetChanged()
-        this.isNow = isNow
+        isNow = isNow
     }
 
     fun removeIfIs() {

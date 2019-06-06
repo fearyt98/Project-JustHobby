@@ -3,10 +3,14 @@ package com.aurimteam.justhobby.user.main.home.user_courses
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.aurimteam.justhobby.R
+import com.aurimteam.justhobby.response.CategoryResponse
+import com.aurimteam.justhobby.response.CourseResponse
 import com.aurimteam.justhobby.response.UserCourseResponse
 import kotlinx.android.synthetic.main.fragment_user_courses.*
 
@@ -21,12 +25,14 @@ class UserCoursesFragment : Fragment(), IUserCoursesView {
         return view
     }
 
-    override fun showUserCourses(userCourses: List<UserCourseResponse>) {
-        adapter.onDataChange(userCourses)
+    override fun showUserCourses(userCourses: List<CategoryResponse>, included: List<CourseResponse>) {
+        adapter.onDataChange(userCourses, included)
     }
+
     override fun onStart() {
         super.onStart()
-        presenter.getUserCourses()
+        if (context != null)
+            presenter.getUserCourses(context!!)
         userCoursesRecyclerView.layoutManager = LinearLayoutManager(context)
         userCoursesRecyclerView.adapter = adapter
     }
@@ -34,5 +40,11 @@ class UserCoursesFragment : Fragment(), IUserCoursesView {
     override fun onDestroy() {
         super.onDestroy()
         presenter.onDestroy()
+    }
+
+    override fun showMessage(message: String?) {
+        val toast = Toast.makeText(activity, message, Toast.LENGTH_SHORT)
+        toast.setGravity(Gravity.BOTTOM, 0, 30)
+        toast.show()
     }
 }

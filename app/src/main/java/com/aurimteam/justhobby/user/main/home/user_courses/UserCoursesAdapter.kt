@@ -4,13 +4,16 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.aurimteam.justhobby.R
+import com.aurimteam.justhobby.response.CategoryResponse
+import com.aurimteam.justhobby.response.CourseResponse
 import com.aurimteam.justhobby.response.UserCourseResponse
 import kotlinx.android.synthetic.main.fragment_card_user_course.view.*
 
 
 class UserCoursesAdapter : RecyclerView.Adapter<UserCoursesHolder>() {
 
-    private val userCoursesList: MutableList<UserCourseResponse> = mutableListOf()
+    private val userCoursesList: MutableList<CategoryResponse> = mutableListOf()
+    private val includedList: MutableList<CourseResponse> = mutableListOf()
     private val isClickedList: MutableList<Boolean> = mutableListOf()
     override fun getItemCount(): Int = userCoursesList.size
     override fun onBindViewHolder(holder: UserCoursesHolder, position: Int) {
@@ -34,7 +37,7 @@ class UserCoursesAdapter : RecyclerView.Adapter<UserCoursesHolder>() {
     }
 
     private fun setIsClicked(position: Int, value: Boolean) {
-        this.isClickedList[position] = value
+        isClickedList[position] = value
         notifyItemChanged(position)
     }
 
@@ -43,11 +46,13 @@ class UserCoursesAdapter : RecyclerView.Adapter<UserCoursesHolder>() {
             LayoutInflater.from(parent.context).inflate(R.layout.fragment_card_user_course, parent, false)
         )
 
-    fun onDataChange(userCourses: List<UserCourseResponse>) {
-        this.userCoursesList.clear()
-        this.userCoursesList.addAll(userCourses)
-        for (item in this.userCoursesList) {
-            isClickedList.add(this.userCoursesList.indexOf(item), false)
+    fun onDataChange(userCourses: List<CategoryResponse>, included: List<CourseResponse>) {
+        userCoursesList.clear()
+        userCoursesList.addAll(userCourses)
+        includedList.clear()
+        includedList.addAll(included)
+        for (item in userCoursesList) {
+            isClickedList.add(userCoursesList.indexOf(item), false)
         }
         notifyDataSetChanged()
     }

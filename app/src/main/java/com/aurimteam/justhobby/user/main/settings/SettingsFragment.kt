@@ -68,12 +68,12 @@ class SettingsFragment : Fragment(), ISettingsView {
     }
 
     override fun openAuth() {
-        startActivity(Intent(this.activity, AuthActivity::class.java))
+        startActivity(Intent(activity, AuthActivity::class.java))
     }
 
     override fun showMessage(message: String) {
         val toast = Toast.makeText(
-            this.activity,
+            activity,
             message,
             Toast.LENGTH_SHORT
         )

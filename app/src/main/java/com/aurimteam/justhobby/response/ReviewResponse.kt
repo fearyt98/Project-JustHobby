@@ -1,7 +1,5 @@
 package com.aurimteam.justhobby.response
 
-import java.math.Int
-
 class ReviewResponse(
     val type: String,
     val user_id: Int,

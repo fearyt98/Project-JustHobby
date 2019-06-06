@@ -21,7 +21,7 @@ class NearUserCoursesAdapter : RecyclerView.Adapter<NearUserCoursesHolder>() {
         holder.bind(
             coursesList[position].id,
             position == 0,
-            position == this.itemCount - 1,
+            position == itemCount - 1,
             coursesList[position].title,
             coursesList[position].description,
             coursesList[position].address,

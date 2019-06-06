@@ -42,4 +42,10 @@ interface Api {
     fun getUser(
         @Query("token") token: String
     ): Call<UserResponse>
+
+    @Headers("Accept: application/json")
+    @GET("user/groups")
+    fun getUserGroups(
+        @Query("token") token: String
+    ): Call<GroupsResponse>
 }

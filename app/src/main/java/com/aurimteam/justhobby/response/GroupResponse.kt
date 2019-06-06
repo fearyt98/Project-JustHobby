@@ -1,9 +1,21 @@
 package com.aurimteam.justhobby.response
 
+class GroupsResponse(
+    val data: List<CategoryResponse>,
+    val included: List<CourseResponse>,
+    val meta: MetaPagesResponse
+)
+
 class GroupResponse(
     val type: String,
     val id: Int,
-    val attributes: GroupAttrResponse
+    val attributes: GroupAttrResponse,
+    val relationships: GroupRelationshipsResponse
+)
+
+class GroupRelationshipsResponse(
+    val course: IdentifierResponse,
+    val timetable_near: List<TimetableResponse>
 )
 
 class GroupAttrResponse(

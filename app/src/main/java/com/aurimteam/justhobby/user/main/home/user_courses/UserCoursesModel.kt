@@ -1,109 +1,39 @@
 package com.aurimteam.justhobby.user.main.home.user_courses
 
+import com.aurimteam.justhobby.App
+import com.aurimteam.justhobby.api.Api
+import com.aurimteam.justhobby.response.CategoryResponse
+import com.aurimteam.justhobby.response.CourseResponse
+import com.aurimteam.justhobby.response.GroupsResponse
 import com.aurimteam.justhobby.response.UserCourseResponse
-import com.aurimteam.justhobby.response.UserCourseTimetableResponse
+import org.json.JSONObject
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class UserCoursesModel : IUserCoursesModel {
     interface OnFinishedListener {
-        fun onResultSuccess(userCourses: List<UserCourseResponse>)
-        fun onResultFail()
+        fun onResultSuccess(userCourses: List<CategoryResponse>, included: List<CourseResponse>)
+        fun onResultFail(strError: String?)
     }
 
-    override fun getUserCoursesData(onFinishedListener: OnFinishedListener) {
-        val userCourses: List<UserCourseResponse> = listOf(
-            UserCourseResponse(
-                "Вотосные единоборства",
-                "Drive - школа единоборств",
-                "пр. Комсомольский 140",
-                "Мария Алексеевна",
-                listOf(
-                    UserCourseTimetableResponse(
-                        "ПН",
-                        "10:00",
-                        "20:00"
-                    ),
-                    UserCourseTimetableResponse(
-                        "СБ",
-                        "10:00",
-                        "20:00"
-                    ),
-                    UserCourseTimetableResponse(
-                        "ВС",
-                        "10:00",
-                        "20:00"
-                    )
-                )
-            ),
-            UserCourseResponse(
-                "Вотосные единоборства",
-                "Drive - школа единоборств",
-                "пр. Комсомольский 140",
-                "Мария Алексеевна",
-                listOf(
-                    UserCourseTimetableResponse(
-                        "ВТ",
-                        "10:00",
-                        "20:00"
-                    ),
-                    UserCourseTimetableResponse(
-                        "ЧТ",
-                        "9:00",
-                        "20:00"
-                    ),
-                    UserCourseTimetableResponse(
-                        "ВС",
-                        "10:00",
-                        "20:00"
-                    )
-                )
-            ),
-            UserCourseResponse(
-                "Вотосные единоборства",
-                "Drive - школа единоборств",
-                "пр. Комсомольский 140",
-                "Мария Алексеевна",
-                listOf(
-                    UserCourseTimetableResponse(
-                        "СР",
-                        "10:00",
-                        "20:00"
-                    ),
-                    UserCourseTimetableResponse(
-                        "ПН",
-                        "5:00",
-                        "20:00"
-                    ),
-                    UserCourseTimetableResponse(
-                        "ВС",
-                        "10:00",
-                        "20:00"
-                    )
-                )
-            ),
-            UserCourseResponse(
-                "Вотосные единоборства",
-                "Drive - школа единоборств",
-                "пр. Комсомольский 140",
-                "Мария Алексеевна",
-                listOf(
-                    UserCourseTimetableResponse(
-                        "ЧТ",
-                        "10:00",
-                        "20:00"
-                    ),
-                    UserCourseTimetableResponse(
-                        "ВТ",
-                        "10:00",
-                        "20:00"
-                    ),
-                    UserCourseTimetableResponse(
-                        "ВС",
-                        "10:00",
-                        "20:00"
-                    )
-                )
-            )
-        )
-        onFinishedListener.onResultSuccess(userCourses)
+    override fun getUserCoursesData(token: String, onFinishedListener: OnFinishedListener) {
+        App.retrofit
+            .create(Api::class.java)
+            .getUserGroups(token)
+            .enqueue(object : Callback<GroupsResponse> {
+                override fun onFailure(call: Call<GroupsResponse>, t: Throwable) {
+                    onFinishedListener.onResultFail(t.message)
+                }
+                override fun onResponse(call: Call<GroupsResponse>, response: Response<GroupsResponse>) {
+                    val responseBody = response.body()
+                    if (responseBody != null) {
+                        onFinishedListener.onResultSuccess(responseBody.data, responseBody.included)
+                    } else {
+                        val jsonObj = JSONObject(response.errorBody()?.string())
+                        onFinishedListener.onResultFail(jsonObj.getJSONObject("error")?.getString("message")?.toString())
+                    }
+                }
+            })
     }
 }

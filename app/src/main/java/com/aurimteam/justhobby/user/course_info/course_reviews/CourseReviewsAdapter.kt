@@ -39,8 +39,8 @@ class CourseReviewsAdapter : RecyclerView.Adapter<CourseReviewsHolder>() {
         )
 
     fun onDataChange(courseReviews: List<ReviewResponse>) {
-        this.courseReviewsList.clear()
-        this.courseReviewsList.addAll(courseReviews)
+        courseReviewsList.clear()
+        courseReviewsList.addAll(courseReviews)
         notifyDataSetChanged()
     }
 

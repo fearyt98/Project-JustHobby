@@ -29,8 +29,8 @@ class CompanyInfoAdapter(private var presenter: CompanyInfoPresenter) :
         )
 
     fun onDataChange(courses: List<CourseResponse>) {
-        this.companyCoursesList.clear()
-        this.companyCoursesList.addAll(courses)
+        companyCoursesList.clear()
+        companyCoursesList.addAll(courses)
         notifyDataSetChanged()
     }
 }

@@ -68,7 +68,7 @@ class SearchFragment : Fragment(), ISearchView {
     private fun init() {
         searchEditText.requestFocus()
         val imm =
-            this.activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?
+            activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?
         imm!!.toggleSoftInput(0, 0)
         KeyboardVisibilityEvent.setEventListener(activity) { isOpen ->
             if (isOpen) {
@@ -82,7 +82,7 @@ class SearchFragment : Fragment(), ISearchView {
         search.setOnFocusChangeListener { view: View, hasFocus: Boolean ->
             if (hasFocus) {
                 val inputMethodManager =
-                    this.activity?.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager?
+                    activity?.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager?
                 inputMethodManager?.hideSoftInputFromWindow(view.windowToken, 0)
             }
         }

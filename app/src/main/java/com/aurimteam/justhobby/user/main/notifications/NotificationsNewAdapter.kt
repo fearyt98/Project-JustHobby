@@ -30,8 +30,8 @@ class NotificationsNewAdapter : RecyclerView.Adapter<NotificationsHolder>() {
         )
 
     fun onDataChange(notifications: List<NotificationResponse>) {
-        this.notifications.clear()
-        this.notifications.addAll(notifications)
+        notifications.clear()
+        notifications.addAll(notifications)
         notifyDataSetChanged()
     }
 }
