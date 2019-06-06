@@ -7,7 +7,7 @@ class GroupsResponse(
 )
 
 class IncludedResponse(
-    val subcategories: List<SubcategoryResponse>?,
+    val subcategories: List<SubcategoryResponse>,
     val courses: List<CourseResponse>?,
     val companies: List<CompanyResponse>?,
     val groups: List<GroupResponse>?

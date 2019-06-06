@@ -57,7 +57,7 @@ interface Api {
     ): Call<CoursesResponse>
 
     @Headers("Accept: application/json")
-    @GET("user/groups?included[groups][]=course&include[course][]=company")
+    @GET("user/groups?include[group][]=course&amp; include[course][]=company")
     fun getUserGroups(
         @Query("token") token: String
     ): Call<GroupsResponse>
