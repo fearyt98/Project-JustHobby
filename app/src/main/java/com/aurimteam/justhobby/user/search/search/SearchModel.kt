@@ -15,10 +15,10 @@ class SearchModel : ISearchModel {
         fun onResultFail(strError: String?)
     }
 
-    override fun getCategoriesData(Token: String, onFinishedListener: OnFinishedListener) {
+    override fun getCategoriesData(token: String, onFinishedListener: OnFinishedListener) {
         App.retrofit
             .create(Api::class.java)
-            .getCategories(Token, 12, 1)
+            .getCategories(token, 12, 1)
             .enqueue(object : Callback<CategoriesResponse> {
                 override fun onFailure(call: Call<CategoriesResponse>, t: Throwable) {
                     onFinishedListener.onResultFail(t.message)

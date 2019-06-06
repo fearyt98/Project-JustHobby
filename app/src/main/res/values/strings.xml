@@ -84,8 +84,12 @@
     <string name="test_company_title">Drive - Школа танцев в Томске</string>
     <string name="about_btn_ready">Нажимая «Готово» вы принимаете</string>
     <string name="user_agreement">Условия использования</string>
+    <string name="in_change_day_no_events">В выбранный день занятия отстутствуют</string>
     <string name="before_end_of_event">До конца занятия %1$s</string>
-    <string name="before_event">До занятия %1$s</string>
+    <string name="before_event_term0">До занятия меньше часа</string>
+    <string name="before_event_term1">До занятия %1$s час</string>
+    <string name="before_event_term2to4">До занятия %1$s часа</string>
+    <string name="before_event_term5toMoreAnd11to14">До занятия %1$s часов</string>
     <string name="about_recovery">
         Укажите E-mail, к которому привязан аккаунт. Мы пришлем на него\n письмо с инструкцией\n восстановления.
     </string>
@@ -109,8 +113,14 @@
         не остается времени
         во время тренировок.
     </string>
-    <string name="about_no_timetable">
-        Нажмите на + на карточке группы\n в курсе, чтобы добавить его к себе.\n
+    <string name="about_no_timeline_before_plus">
+        Нажмите на
+    </string>
+    <string name="about_no_timeline_after_plus">
+        на карточке группы
+    </string>
+    <string name="about_no_timeline_other">
+        в курсе, чтобы добавить его к себе.\n
         Таким образом он добавиться в\n Ваше расписание, а также Вам\n будут приходить уведомления\n и напоминания о
         нем.
     </string>

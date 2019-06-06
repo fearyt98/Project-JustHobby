@@ -23,7 +23,7 @@ class UserBookmarksFragment : Fragment(), IUserBookmarksView {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_user_bookmarks, container, false)
-        view.findViewById<ImageButton>(R.id.bookmarksBtnBack).setOnClickListener { backToTimeLineFragment() }
+        view.findViewById<ImageButton>(R.id.bookmarksBtnBack).setOnClickListener { backToTimelineFragment() }
         return view
     }
 
@@ -39,7 +39,7 @@ class UserBookmarksFragment : Fragment(), IUserBookmarksView {
         presenter.onDestroy()
     }
 
-    private fun backToTimeLineFragment() {
+    private fun backToTimelineFragment() {
         fragmentManager?.popBackStack()
     }
 }

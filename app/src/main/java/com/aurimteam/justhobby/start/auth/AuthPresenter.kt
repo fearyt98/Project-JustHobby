@@ -23,7 +23,12 @@ class AuthPresenter(private var view: IAuthView?, private val model: IAuthModel?
     }
 
     fun loginUser(loginMain: String, password: String) {
-        if (Settings(context!!).getProperty("token") == null) model?.loginUser(loginMain, password, this)
+        if (Settings(context!!).getProperty("token") == null) {
+            view?.togglePB(true)
+            model?.loginUser(loginMain, password, this)
+        } else {
+            view?.openMain()
+        }
     }
 
     fun onDestroy() {

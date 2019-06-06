@@ -25,8 +25,8 @@ class SettingsModel : ISettingsModel {
                 }
 
                 override fun onResponse(call: Call<LogoutResponse>, response: Response<LogoutResponse>) {
-                    val logoutResponse = response.body()
-                    if (logoutResponse != null) {
+                    val responseBody = response.body()
+                    if (responseBody != null) {
                         onFinishedListener.onResultSuccess()
                     } else {
                         val jsonObj = JSONObject(response.errorBody()?.string())

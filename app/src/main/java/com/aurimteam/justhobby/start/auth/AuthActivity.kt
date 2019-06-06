@@ -13,7 +13,7 @@ import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
 import android.view.Gravity
 import android.widget.*
-import com.aurimteam.justhobby.user.main.MainNav
+import com.aurimteam.justhobby.user.main.main_nav.MainNavActivity
 import com.aurimteam.justhobby.start.recovery.RecoveryActivity
 import kotlinx.android.synthetic.main.activity_auth.*
 
@@ -22,13 +22,13 @@ class AuthActivity : AppCompatActivity(), IAuthView {
     Активити обращается только к методам презентера, передаем ему введенную информацию
     или выводит полученную от презентера
      */
-    private val authPresenter = AuthPresenter(this, AuthModel(), this)
+    private val presenter = AuthPresenter(this, AuthModel(), this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_auth)
 
-        authPresenter.isSetToken()
+        presenter.isSetToken()
 
         val buttonEnter = findViewById<Button>(R.id.authEnterButton)
         val forget = findViewById<TextView>(R.id.authForget)
@@ -60,6 +60,38 @@ class AuthActivity : AppCompatActivity(), IAuthView {
         }
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        presenter.onDestroy()
+    }
+
+    override fun loginUser() {
+        presenter.loginUser(authLogin.text.toString(), authPassword.text.toString())
+    }
+
+    override fun openMain() {
+        startActivity(Intent(this, MainNavActivity::class.java))
+        finish()
+    }
+
+    override fun showMessage(message: String) {
+        val toast = Toast.makeText(
+            this,
+            message,
+            Toast.LENGTH_SHORT
+        )
+        toast.setGravity(Gravity.BOTTOM, 0, 30)
+        toast.show()
+    }
+
+    override fun togglePB(isVisiblePB: Boolean) {
+        if (isVisiblePB) {
+            authProgressBar.visibility = View.VISIBLE
+        } else {
+            authProgressBar.visibility = View.GONE
+        }
+    }
+
     private fun changeButtonVisible(password: EditText, btn: ImageButton) {
         if (password.isFocused) btn.setColorFilter(ContextCompat.getColor(this, R.color.colorPrimary))
         else btn.clearColorFilter()
@@ -84,35 +116,8 @@ class AuthActivity : AppCompatActivity(), IAuthView {
         password.setSelection(oldPosCursor)
     }
 
-    override fun loginUser() {
-        authPresenter.loginUser(authLogin.text.toString(), authPassword.text.toString())
-    }
-    override fun validEnter() {
-        startActivity(Intent(this, RegistryActivity::class.java))
-    }
-
-    override fun openMain() {
-        startActivity(Intent(this, MainNav::class.java))
-    }
-
-    override fun showMessage(message: String) {
-        val toast = Toast.makeText(
-            this,
-            message,
-            Toast.LENGTH_SHORT
-        )
-        toast.setGravity(Gravity.BOTTOM, 0, 30)
-        toast.show()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        authPresenter.onDestroy()
-    }
-
     private fun forgetChangeActivity() {
         startActivity(Intent(this, RecoveryActivity::class.java))
-        finish()
     }
 
     private fun registryChangeActivity() {

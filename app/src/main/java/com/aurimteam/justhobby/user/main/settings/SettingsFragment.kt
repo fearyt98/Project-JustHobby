@@ -7,7 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
-import com.aurimteam.justhobby.user.main.home.home.HomeTimeLineFragment
+import com.aurimteam.justhobby.user.main.home.home.HomeTimelineFragment
 import com.aurimteam.justhobby.R
 import com.aurimteam.justhobby.start.auth.AuthActivity
 import android.view.Gravity
@@ -15,7 +15,7 @@ import android.widget.Toast
 
 class SettingsFragment : Fragment(), ISettingsView {
 
-    private var settingsPresenter: SettingsPresenter? = null
+    private var presenter: SettingsPresenter? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_main_settings, container, false)
@@ -24,7 +24,7 @@ class SettingsFragment : Fragment(), ISettingsView {
         view.findViewById<LinearLayout>(R.id.settingsAbout).setOnClickListener { aboutItemClick() }
         view.findViewById<LinearLayout>(R.id.settingsLogout).setOnClickListener { leaveItemClick() }
 
-        settingsPresenter = SettingsPresenter(this, SettingsModel(), container?.context)
+        presenter = SettingsPresenter(this, SettingsModel(), container?.context)
         return view
     }
 
@@ -32,7 +32,7 @@ class SettingsFragment : Fragment(), ISettingsView {
         fragmentManager!!
             .beginTransaction()
             .addToBackStack(null)
-            .replace(R.id.mainNavContainerFragment, HomeTimeLineFragment())
+            .replace(R.id.mainNavContainerFragment, HomeTimelineFragment())
             .commit()
 
     }
@@ -41,7 +41,7 @@ class SettingsFragment : Fragment(), ISettingsView {
         fragmentManager!!
             .beginTransaction()
             .addToBackStack(null)
-            .replace(R.id.mainNavContainerFragment, HomeTimeLineFragment())
+            .replace(R.id.mainNavContainerFragment, HomeTimelineFragment())
             .commit()
     }
 
@@ -49,7 +49,7 @@ class SettingsFragment : Fragment(), ISettingsView {
         fragmentManager!!
             .beginTransaction()
             .addToBackStack(null)
-            .replace(R.id.mainNavContainerFragment, HomeTimeLineFragment())
+            .replace(R.id.mainNavContainerFragment, HomeTimelineFragment())
             .commit()
 
     }
@@ -58,13 +58,13 @@ class SettingsFragment : Fragment(), ISettingsView {
         fragmentManager!!
             .beginTransaction()
             .addToBackStack(null)
-            .replace(R.id.mainNavContainerFragment, HomeTimeLineFragment())
+            .replace(R.id.mainNavContainerFragment, HomeTimelineFragment())
             .commit()
 
     }
 
     private fun leaveItemClick() {
-        settingsPresenter?.logoutUser()
+        presenter?.logoutUser()
     }
 
     override fun openAuth() {
@@ -83,6 +83,6 @@ class SettingsFragment : Fragment(), ISettingsView {
 
     override fun onDestroy() {
         super.onDestroy()
-        settingsPresenter?.onDestroy()
+        presenter?.onDestroy()
     }
 }

@@ -54,11 +54,11 @@
                      tools:ignore="RtlSymmetry"/>
     </FrameLayout>
     <ProgressBar android:id="@+id/homeProgressBar"
-                 android:visibility="gone"
                  android:layout_width="wrap_content"
                  android:layout_height="wrap_content"
                  android:layout_gravity="center"/>
     <LinearLayout android:id="@+id/homeContent"
+                  android:visibility="gone"
                   android:layout_width="match_parent"
                   android:layout_height="wrap_content"
                   android:orientation="vertical">
@@ -106,5 +106,51 @@
                                                 android:layout_width="match_parent"
                                                 android:overScrollMode="never"
                                                 tools:listitem="@layout/fragment_card_event"/>
+    </LinearLayout>
+    <LinearLayout android:id="@+id/homeContentClear"
+                  android:visibility="gone"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:gravity="center"
+                  android:orientation="vertical">
+        <ImageView android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   app:srcCompat="@drawable/big_ic_calendar"
+                   android:layout_gravity="center"
+                   tools:ignore="ContentDescription"/>
+        <TextView style="@style/H2.Medium"
+                  android:paddingTop="16dp"
+                  android:paddingBottom="8dp"
+                  android:textAlignment="center"
+                  android:textColor="@color/grafitText"
+                  android:text="@string/no_user_timetable"/>
+        <LinearLayout android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:orientation="horizontal">
+            <TextView style="@style/Body2"
+                      android:textAlignment="center"
+                      android:textColor="@color/grafitText"
+                      android:text="@string/about_no_timeline_before_plus"/>
+            <ImageView android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       app:srcCompat="@drawable/ic_add_24dp"
+                       android:tint="@color/colorPrimary"
+                       android:layout_gravity="top|start"
+                       android:paddingTop="4dp"
+                       tools:ignore="ContentDescription"/>
+            <TextView style="@style/Body2"
+                      android:textAlignment="center"
+                      android:textColor="@color/grafitText"
+                      android:text="@string/about_no_timeline_after_plus"/>
+        </LinearLayout>
+        <TextView style="@style/Body2"
+                  android:paddingTop="0dp"
+                  android:paddingBottom="8dp"
+                  android:textAlignment="center"
+                  android:textColor="@color/grafitText"
+                  android:text="@string/about_no_timeline_other"/>
+        <Button style="@style/ButtonGreen"
+                android:id="@+id/homeClearBtn"
+                android:text="@string/go_to_search"/>
     </LinearLayout>
 </LinearLayout>

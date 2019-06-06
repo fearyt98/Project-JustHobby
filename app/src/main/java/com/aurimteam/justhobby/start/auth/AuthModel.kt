@@ -26,12 +26,12 @@ class AuthModel : IAuthModel {
                 }
 
                 override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
-                    val loginResponse = response.body()
-                    if (loginResponse != null) {
-                        onFinishedListener.onResultSuccess(loginResponse)
+                    val responseBody = response.body()
+                    if (responseBody != null) {
+                        onFinishedListener.onResultSuccess(responseBody)
                     } else {
                         val jsonObj = JSONObject(response.errorBody()?.string())
-                        onFinishedListener.onResultFail(jsonObj.getJSONObject("error").getString("message").toString())
+                        onFinishedListener.onResultFail(jsonObj.getJSONObject("error")?.getString("message").toString())
                     }
                 }
             })

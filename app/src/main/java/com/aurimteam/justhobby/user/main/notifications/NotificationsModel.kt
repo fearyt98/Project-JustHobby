@@ -4,7 +4,7 @@ import com.aurimteam.justhobby.response.NotificationResponse
 
 class NotificationsModel : INotificationsModel {
     interface OnFinishedListener {
-        fun onResultSuccess(notifications: List<NotificationResponse>)  //arrUpdates: List<DataItem>eventsTimeLine: List<TimelineResponses>
+        fun onResultSuccess(notifications: List<NotificationResponse>)  //arrUpdates: List<DataItem>eventsTimeline: List<TimelineResponses>
         fun onResultFail() //strError: String
     }
 

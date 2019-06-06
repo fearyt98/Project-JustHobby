@@ -1,10 +1,7 @@
 package com.aurimteam.justhobby.api
 
-import com.aurimteam.justhobby.response.CategoriesResponse
+import com.aurimteam.justhobby.response.*
 import com.aurimteam.justhobby.response_body.LoginBody
-import com.aurimteam.justhobby.response.LoginResponse
-import com.aurimteam.justhobby.response.LogoutResponse
-import com.aurimteam.justhobby.response.TimelineResponse
 import com.aurimteam.justhobby.response_body.LogoutBody
 import retrofit2.Call
 import retrofit2.http.*
@@ -28,9 +25,21 @@ interface Api {
     ): Call<CategoriesResponse>
 
     @Headers("Accept: application/json")
-    @GET("timeline")
+    @GET("user/timeline/near_day")
+    fun getNearDayTimeline(
+        @Query("token") token: String
+    ): Call<TimelineNearDayResponse>
+
+    @Headers("Accept: application/json")
+    @GET("user/timeline")
     fun getTimeline(
         @Query("token") token: String,
         @Query("date") date: String
     ): Call<TimelineResponse>
+
+    @Headers("Accept: application/json")
+    @GET("user")
+    fun getUser(
+        @Query("token") token: String
+    ): Call<UserResponse>
 }

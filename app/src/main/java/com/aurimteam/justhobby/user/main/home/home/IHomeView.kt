@@ -1,9 +1,11 @@
 package com.aurimteam.justhobby.user.main.home.home
 
 import com.aurimteam.justhobby.response.EventResponse
+import com.aurimteam.justhobby.response.TimelineNearDayResponse
 
 interface IHomeView {
-    fun showTimeLineEvents(eventsTimeLine: List<EventResponse>)
+    fun showTimelineEvents(eventsTimeline: List<EventResponse>)
     fun showMessage(message: String?)
-    fun toggleContentPB()
+    fun toggleContentPB(isVisiblePB: Boolean)
+    fun showContent(nearDay: TimelineNearDayResponse)
 }
