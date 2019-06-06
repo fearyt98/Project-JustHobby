@@ -85,7 +85,7 @@ class HomeTimelineFragment : Fragment(), IHomeView {
 
     override fun onResume() {
         super.onResume()
-        homeCalendarText.text = SimpleDateFormat("d MMMM, EEEE", Locale.getDefault()).format(Date())
+        homeCalendarText.text = SimpleDateFormat("d MMMM, EEEE", Locale.getDefault()).format(Date(selectDate.timeInMillis))
     }
 
     override fun onDestroy() {
