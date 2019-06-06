@@ -177,4 +177,7 @@
     <string name="max_age">Максимальный возраст</string>
     <string name="change_permanent_timetable">Изменить постоянное расписание</string>
     <string name="change_not_permanent_timetable">Изменить расписание единоразово</string>
+    <string name="card_count_courses">%1$s курсов</string>
+    <string name="card_count_groups">%1$s групп</string>
+    <string name="card_count_reviews">%1$s отзывов</string>
 </resources>

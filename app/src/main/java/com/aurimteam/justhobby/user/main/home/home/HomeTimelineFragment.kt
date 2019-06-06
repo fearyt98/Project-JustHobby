@@ -24,12 +24,15 @@ import android.os.CountDownTimer
 
 class HomeTimelineFragment : Fragment(), IHomeView {
 
-    private var presenter: HomeTimelinePresenter? = null
+    private lateinit var presenter: HomeTimelinePresenter
     private var adapter = HomeTimelineAdapter()
+    private var isTimeline = true
     private var oldDate = Calendar.getInstance()
     private var selectDate = Calendar.getInstance()
     private var currentDate = Calendar.getInstance()
-    private val timer = object : CountDownTimer(1000, 2000) {
+
+    private val timer = object : CountDownTimer(1000, 2000)
+    {
         override fun onTick(millisUntilFinished: Long) {
             if (!isOneDay(currentDate, Calendar.getInstance())) {
                 if (isOneDay(currentDate, selectDate)) {
@@ -41,18 +44,13 @@ class HomeTimelineFragment : Fragment(), IHomeView {
             val layoutManager = homeEventsRecyclerView.layoutManager as LinearLayoutManager
             val first = layoutManager.findFirstVisibleItemPosition()
             val last = layoutManager.findLastVisibleItemPosition()
-            for (i in first..last)
-                adapter.notifyItemChanged(i, listOf(1))
+
+            for (i in first..last) adapter.notifyItemChanged(i, listOf(1))
             adapter.removeIfIs()
-
-            if (adapter.itemCount == 0)
-                presenter?.getNearDayTimeline()
+            if (adapter.itemCount == 0) presenter.getNearDayTimeline()
         }
-
-        override fun onFinish() {
-        }
+        override fun onFinish(){}
     }
-    private var isTimeline = true
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_main_home_timeline, container, false)
@@ -60,19 +58,13 @@ class HomeTimelineFragment : Fragment(), IHomeView {
         view.findViewById<ImageButton>(R.id.homeCourses).setOnClickListener { openUserCourses() }
         view.findViewById<ImageButton>(R.id.homeCalendar).setOnClickListener { openDatePicker() }
         view.findViewById<TextView>(R.id.homeCalendarText).setOnClickListener { openDatePicker() }
-
-        presenter = HomeTimelinePresenter(
-            this,
-            HomeTimelineModel(),
-            container?.context
-        )
-
-        presenter?.getNearDayTimeline()
         return view
     }
 
     override fun onStart() {
         super.onStart()
+        presenter = HomeTimelinePresenter(this, HomeTimelineModel(), context)
+        presenter.getNearDayTimeline()
         homeEventsRecyclerView.layoutManager = LinearLayoutManager(context)
         homeEventsRecyclerView.adapter = adapter
     }
@@ -80,7 +72,7 @@ class HomeTimelineFragment : Fragment(), IHomeView {
     override fun onStop() {
         super.onStop()
         timer.cancel()
-        presenter?.onDestroy()
+        presenter.onDestroy()
     }
 
     override fun onResume() {
@@ -91,7 +83,7 @@ class HomeTimelineFragment : Fragment(), IHomeView {
     override fun onDestroy() {
         super.onDestroy()
         timer.cancel()
-        presenter?.onDestroy()
+        presenter.onDestroy()
     }
 
     private var listenerDatePicker: DatePickerDialog.OnDateSetListener =
@@ -126,7 +118,7 @@ class HomeTimelineFragment : Fragment(), IHomeView {
 
             homeCurrentTime.visibility = if (isNow()) View.VISIBLE else View.GONE
 
-            presenter?.getEventsTimeline(
+            presenter.getEventsTimeline(
                 SimpleDateFormat(
                     "dd.MM.yyyy",
                     Locale.getDefault()
@@ -151,7 +143,7 @@ class HomeTimelineFragment : Fragment(), IHomeView {
         if (nearDay.status == "success") {
             oldDate.timeInMillis = nearDay.date * 1000
             selectDate = oldDate.clone() as Calendar
-            presenter?.getEventsTimeline(SimpleDateFormat("dd.MM.yyyy", Locale.getDefault()).format(Date()))
+            presenter.getEventsTimeline(SimpleDateFormat("dd.MM.yyyy", Locale.getDefault()).format(Date()))
         } else {
             isTimeline = false
             homeProgressBar.visibility = View.GONE
@@ -188,21 +180,14 @@ class HomeTimelineFragment : Fragment(), IHomeView {
             .commit()
     }
 
-    private fun isNow(): Boolean {
-        return isOneDay(selectDate, Calendar.getInstance())
-    }
-
+    private fun isNow(): Boolean = isOneDay(selectDate, Calendar.getInstance())
     private fun isOneDay(firstDate: Calendar, secondDate: Calendar): Boolean {
         return firstDate.get(Calendar.YEAR) == secondDate.get(Calendar.YEAR) &&
                 firstDate.get(Calendar.DAY_OF_YEAR) == secondDate.get(Calendar.DAY_OF_YEAR)
     }
 
     override fun showMessage(message: String?) {
-        val toast = Toast.makeText(
-            this.activity,
-            message,
-            Toast.LENGTH_SHORT
-        )
+        val toast = Toast.makeText(activity, message, Toast.LENGTH_SHORT)
         toast.setGravity(Gravity.BOTTOM, 0, 30)
         toast.show()
     }

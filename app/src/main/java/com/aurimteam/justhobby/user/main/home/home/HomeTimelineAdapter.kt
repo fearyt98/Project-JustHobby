@@ -9,25 +9,26 @@ import java.util.*
 
 class HomeTimelineAdapter : RecyclerView.Adapter<TimelineHolder>() {
 
-    private var timeLineEvents: MutableList<EventResponse> = mutableListOf()
     private var isNow: Boolean = true
     private var itemRemove: MutableList<Int> = mutableListOf()
+    private var timeLineEvents: MutableList<EventResponse> = mutableListOf()
 
     override fun getItemCount(): Int = timeLineEvents.size
     override fun onBindViewHolder(holder: TimelineHolder, position: Int, payloads: MutableList<Any>) {
-        when {
-            timeLineEvents[position].attributes.time_start + timeLineEvents[position].attributes.duration < dayTime() && isNow -> itemRemove.add(
-                position
-            )
-            payloads.isEmpty() -> onBindViewHolder(holder, position)
-            else -> holder.bindTime(
+        val item = timeLineEvents[position]
+        if ((item.attributes.time_start + item.attributes.duration) < dayTime() && isNow)
+            itemRemove.add(position)
+        else if (payloads.isEmpty())
+            onBindViewHolder(holder, position)
+        else
+            holder.bindTime(
                 position == this.itemCount - 1,
                 isNow,
                 timeLineEvents[position].attributes.time_start,
                 timeLineEvents[position].attributes.duration
             )
-        }
     }
+
 
     override fun onBindViewHolder(holder: TimelineHolder, position: Int) {
         holder.bind(
@@ -44,9 +45,10 @@ class HomeTimelineAdapter : RecyclerView.Adapter<TimelineHolder>() {
         )
     }
 
-    private fun dayTime(): Int {
-        return GregorianCalendar().get(Calendar.HOUR_OF_DAY) * 60 + GregorianCalendar().get(Calendar.MINUTE)
-    }
+    private fun dayTime(): Int = (
+            GregorianCalendar().get(Calendar.HOUR_OF_DAY) * 60 + GregorianCalendar().get(Calendar.MINUTE)
+            )
+
 
     override fun onCreateViewHolder(parent: ViewGroup, p1: Int): TimelineHolder =
         TimelineHolder(
@@ -56,7 +58,7 @@ class HomeTimelineAdapter : RecyclerView.Adapter<TimelineHolder>() {
     fun onDataChange(events: List<EventResponse>, isNow: Boolean) {
         timeLineEvents.clear()
         timeLineEvents.addAll(events)
-        if(isNow)
+        if (isNow)
             for (item in events)
                 if (item.attributes.time_start + item.attributes.duration < dayTime())
                     timeLineEvents.remove(item)
@@ -65,8 +67,7 @@ class HomeTimelineAdapter : RecyclerView.Adapter<TimelineHolder>() {
     }
 
     fun removeIfIs() {
-        for (position in itemRemove)
-            removeItem(position)
+        for (position in itemRemove) removeItem(position)
         itemRemove.clear()
     }
 
