@@ -78,7 +78,7 @@ class RegistryActivity : AppCompatActivity(), IRegistryView {
     }
 
     fun regBtnClick() {
-        var intent = Intent(this, RegistryStartActivity::class.java)
+        val intent = Intent(this, RegistryStartActivity::class.java)
         startActivity(intent)
     }
 }
