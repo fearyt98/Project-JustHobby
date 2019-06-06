@@ -12,7 +12,7 @@ class PopularCoursesModel : IPopularCoursesModel {
     }
 
     override fun getPopularCoursesData(onFinishedListener: OnFinishedListener) {
-        val courses: List<CourseResponse> = listOf(
+        val courses: List<CourseResponse> = listOf(/*
             CourseResponse(
                 "sport",
                 0,
@@ -35,7 +35,7 @@ class PopularCoursesModel : IPopularCoursesModel {
                 Timestamp(100),
                 Timestamp(200)
             )
-        )
+        */)
         /*App.retrofit
             .create(Api::class.java)
             .getAllEvents()
