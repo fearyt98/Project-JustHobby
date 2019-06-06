@@ -1,15 +1,13 @@
 package com.aurimteam.justhobby.response
 
-import java.math.BigInteger
-
 class CourseResponse(
     val type: String,
-    val id: BigInteger,
+    val id: Int,
     val attributes: CourseAttrResponse
 )
 
 class CourseAttrResponse(
-    val id: Boolean,
+    val is_visible: Boolean,
     val title: String,
     val description: String,
 

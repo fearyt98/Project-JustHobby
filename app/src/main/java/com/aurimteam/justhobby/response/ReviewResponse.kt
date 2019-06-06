@@ -1,11 +1,11 @@
 package com.aurimteam.justhobby.response
 
-import java.math.BigInteger
+import java.math.Int
 
 class ReviewResponse(
     val type: String,
-    val user_id: BigInteger,
-    val course_id: BigInteger,
+    val user_id: Int,
+    val course_id: Int,
     val attributes: ReviewAttrResponse
 )
 

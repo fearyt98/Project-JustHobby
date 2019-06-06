@@ -1,10 +1,8 @@
 package com.aurimteam.justhobby.response
 
-import java.math.BigInteger
-
 class UserResponse(
     val type: String,
-    val id: BigInteger,
+    val id: Int,
     val attributes: UserAttrResponse
 )
 
