@@ -63,7 +63,7 @@ class HomeTimelineAdapter : RecyclerView.Adapter<TimelineHolder>() {
                 if (item.attributes.time_start + item.attributes.duration < dayTime())
                     timeLineEvents.remove(item)
         notifyDataSetChanged()
-        isNow = isNow
+        this.isNow = isNow
     }
 
     fun removeIfIs() {

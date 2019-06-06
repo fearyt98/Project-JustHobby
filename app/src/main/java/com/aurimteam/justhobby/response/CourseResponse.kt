@@ -2,7 +2,7 @@ package com.aurimteam.justhobby.response
 
 class CourseResponse(
     val type: String,
-    val id: Int,
+    val id: Long,
     val attributes: CourseAttrResponse
 )
 
@@ -28,4 +28,8 @@ class CourseAttrResponse(
 
     val created_at: Long,
     val updated_at: Long
+)
+
+class CoursesResponse(
+    val courses: List<CourseResponse>
 )

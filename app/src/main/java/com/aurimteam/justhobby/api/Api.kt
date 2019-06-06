@@ -54,7 +54,7 @@ interface Api {
     @GET("user/bookmarks")
     fun getUserBookmarks(
         @Query("token") token: String
-    ): Call<CourseResponse>
+    ): Call<CoursesResponse>
 
     @Headers("Accept: application/json")
     @GET("user/groups")

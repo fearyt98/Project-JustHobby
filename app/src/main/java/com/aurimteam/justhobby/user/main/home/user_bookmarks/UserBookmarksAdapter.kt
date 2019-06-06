@@ -10,19 +10,16 @@ import com.aurimteam.justhobby.response.CourseResponse
 import kotlinx.android.synthetic.main.fragment_card_course.view.*
 
 class UserBookmarksAdapter(private val presenter: UserBookmarksPresenter) :
-    RecyclerView.Adapter<UserBookmarksHolder>() {
+    RecyclerView.Adapter<CourseHolder>() {
 
     private val userBookmarksList: MutableList<CourseResponse> = mutableListOf()
 
     override fun getItemCount(): Int = userBookmarksList.size
     override fun onBindViewHolder(holder: CourseHolder, position: Int) {
         holder.bind(
+            userBookmarksList[position].type,
             userBookmarksList[position].id,
-            userBookmarksList[position].title,
-            userBookmarksList[position].description,
-            userBookmarksList[position].address,
-            userBookmarksList[position].company,
-            userBookmarksList[position].category
+            userBookmarksList[position].attributes
         )
         holder.itemView.cardCourse.setOnClickListener { detailInfoCourse() }
         holder.itemView.cardCourseBtnBookmark.setOnClickListener {
@@ -33,7 +30,7 @@ class UserBookmarksAdapter(private val presenter: UserBookmarksPresenter) :
             )
         }
         holder.itemView.cardCourseBtnBookmark.setColorFilter(
-            ContextCompat.getColor(holder.itemView.context, R.color.colorPrimary)
+            ContextCompat.getColor(holder.itemView.context, R.color.red)
         )
         holder.itemView.cardCourseBtnGeo.setOnClickListener { searchCourseOnMap() }
     }
@@ -52,10 +49,9 @@ class UserBookmarksAdapter(private val presenter: UserBookmarksPresenter) :
 
     }
 
-    private fun deleteBookmark(holder: UserBookmarksHolder, courseId: Long, position: Int) {
+    private fun deleteBookmark(holder: CourseHolder, courseId: Long, position: Int) {
         presenter.deleteUserBookmarks(holder.itemView.context, courseId, position)
         userBookmarksList.removeAt(position)
-        notifyItemRemoved(position)
     }
 
     private fun searchCourseOnMap() {

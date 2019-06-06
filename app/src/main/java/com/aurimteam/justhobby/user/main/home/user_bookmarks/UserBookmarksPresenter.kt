@@ -12,7 +12,7 @@ class UserBookmarksPresenter(private var view: IUserBookmarksView?, private val 
     }
 
     override fun deletedUserBookmark(position: Int) {
-
+        view?.deletedUserBookmarks(position)
     }
 
     override fun onResultFail(strError: String?) {
@@ -25,8 +25,10 @@ class UserBookmarksPresenter(private var view: IUserBookmarksView?, private val 
             model?.deleteUserBookmarkData(token, courseId, position, this)
     }
 
-    fun getUserBookmarks() {
-        model?.getUserBookmarksData(this)
+    fun getUserBookmarks(context: Context) {
+        val token = Settings(context).getProperty("token")
+        if (token != null)
+            model?.getUserBookmarksData(token, this)
     }
 
     fun onDestroy() {

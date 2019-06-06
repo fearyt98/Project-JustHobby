@@ -4,4 +4,5 @@ import com.aurimteam.justhobby.response.CourseResponse
 
 interface IUserBookmarksView {
     fun showUserBookmarks(bookmarks: List<CourseResponse>)
+    fun deletedUserBookmarks(position :Int)
 }

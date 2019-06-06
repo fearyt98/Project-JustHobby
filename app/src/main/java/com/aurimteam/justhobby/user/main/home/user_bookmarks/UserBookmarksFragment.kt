@@ -21,6 +21,10 @@ class UserBookmarksFragment : Fragment(), IUserBookmarksView {
         adapter.onDataChange(bookmarks)
     }
 
+    override fun deletedUserBookmarks(position: Int) {
+        adapter.notifyItemRemoved(position)
+    }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_user_bookmarks, container, false)
         view.findViewById<ImageButton>(R.id.bookmarksBtnBack).setOnClickListener { backToTimelineFragment() }
@@ -29,7 +33,7 @@ class UserBookmarksFragment : Fragment(), IUserBookmarksView {
 
     override fun onStart() {
         super.onStart()
-        presenter.getUserBookmarks()
+        presenter.getUserBookmarks(context!!)
         bookmarksRecyclerView.layoutManager = LinearLayoutManager(context)
         bookmarksRecyclerView.adapter = adapter
     }
