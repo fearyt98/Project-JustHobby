@@ -8,7 +8,8 @@ import com.aurimteam.justhobby.R
 import com.aurimteam.justhobby.response.CourseResponse
 import kotlinx.android.synthetic.main.fragment_card_course.view.*
 
-class UserBookmarksAdapter : RecyclerView.Adapter<UserBookmarksHolder>() {
+class UserBookmarksAdapter(private val presenter: UserBookmarksPresenter) :
+    RecyclerView.Adapter<UserBookmarksHolder>() {
 
     private val userBookmarksList: MutableList<CourseResponse> = mutableListOf()
 
@@ -23,7 +24,13 @@ class UserBookmarksAdapter : RecyclerView.Adapter<UserBookmarksHolder>() {
             userBookmarksList[position].category
         )
         holder.itemView.cardCourse.setOnClickListener { detailInfoCourse() }
-        holder.itemView.cardCourseBtnBookmark.setOnClickListener { deleteBookmark() }
+        holder.itemView.cardCourseBtnBookmark.setOnClickListener {
+            deleteBookmark(
+                holder,
+                userBookmarksList[position].id,
+                position
+            )
+        }
         holder.itemView.cardCourseBtnBookmark.setColorFilter(R.color.red)
         holder.itemView.cardCourseBtnGeo.setOnClickListener { searchCourseOnMap() }
     }
@@ -31,6 +38,7 @@ class UserBookmarksAdapter : RecyclerView.Adapter<UserBookmarksHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, p1: Int): UserBookmarksHolder = UserBookmarksHolder(
         LayoutInflater.from(parent.context).inflate(R.layout.fragment_card_course, parent, false)
     )
+
     fun onDataChange(bookmarks: List<CourseResponse>) {
         userBookmarksList.clear()
         userBookmarksList.addAll(bookmarks)
@@ -41,8 +49,10 @@ class UserBookmarksAdapter : RecyclerView.Adapter<UserBookmarksHolder>() {
 
     }
 
-    private fun deleteBookmark() {
-        Log.d("addBookmark", "granted")
+    private fun deleteBookmark(holder: UserBookmarksHolder, courseId: Long, position: Int) {
+        presenter.deleteUserBookmarks(holder.itemView.context, courseId, position)
+        userBookmarksList.removeAt(position)
+        notifyItemRemoved(position)
     }
 
     private fun searchCourseOnMap() {

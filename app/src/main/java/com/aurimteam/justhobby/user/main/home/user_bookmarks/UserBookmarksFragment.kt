@@ -15,7 +15,7 @@ class UserBookmarksFragment : Fragment(), IUserBookmarksView {
 
 
     private val presenter = UserBookmarksPresenter(this, UserBookmarksModel())
-    private var adapter = UserBookmarksAdapter()
+    private var adapter = UserBookmarksAdapter(presenter)
 
     override fun showUserBookmarks(bookmarks: List<CourseResponse>) {
         adapter.onDataChange(bookmarks)

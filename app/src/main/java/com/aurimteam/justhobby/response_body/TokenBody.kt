@@ -1,5 +1,5 @@
 package com.aurimteam.justhobby.response_body
 
-class LogoutBody(
+class TokenBody(
     val token: String
 )

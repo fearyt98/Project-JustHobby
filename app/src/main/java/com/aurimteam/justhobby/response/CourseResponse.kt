@@ -13,3 +13,4 @@ class CourseResponse(
     val created_at: Timestamp,
     val updated_at: Timestamp
 )
+

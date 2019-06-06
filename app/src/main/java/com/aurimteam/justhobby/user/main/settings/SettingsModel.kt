@@ -2,8 +2,8 @@ package com.aurimteam.justhobby.user.main.settings
 
 import com.aurimteam.justhobby.api.Api
 import com.aurimteam.justhobby.App
-import com.aurimteam.justhobby.response.LogoutResponse
-import com.aurimteam.justhobby.response_body.LogoutBody
+import com.aurimteam.justhobby.response.StatusResponse
+import com.aurimteam.justhobby.response_body.TokenBody
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
@@ -18,13 +18,13 @@ class SettingsModel : ISettingsModel {
     override fun logoutUser(token: String, onFinishedListener: OnFinishedListener) {
         App.retrofit
             .create(Api::class.java)
-            .logout(LogoutBody(token))
-            .enqueue(object : Callback<LogoutResponse> {
-                override fun onFailure(call: Call<LogoutResponse>, t: Throwable) {
+            .logout(TokenBody(token))
+            .enqueue(object : Callback<StatusResponse> {
+                override fun onFailure(call: Call<StatusResponse>, t: Throwable) {
                     onFinishedListener.onResultFail("Error of parsing")
                 }
 
-                override fun onResponse(call: Call<LogoutResponse>, response: Response<LogoutResponse>) {
+                override fun onResponse(call: Call<StatusResponse>, response: Response<StatusResponse>) {
                     val responseBody = response.body()
                     if (responseBody != null) {
                         onFinishedListener.onResultSuccess()
