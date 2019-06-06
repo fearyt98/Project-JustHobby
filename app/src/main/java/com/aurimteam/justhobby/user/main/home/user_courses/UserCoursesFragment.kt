@@ -9,9 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.aurimteam.justhobby.R
-import com.aurimteam.justhobby.response.CategoryResponse
-import com.aurimteam.justhobby.response.CourseResponse
-import com.aurimteam.justhobby.response.UserCourseResponse
+import com.aurimteam.justhobby.response.*
 import kotlinx.android.synthetic.main.fragment_main_home_timeline.*
 import kotlinx.android.synthetic.main.fragment_user_courses.*
 
@@ -25,7 +23,7 @@ class UserCoursesFragment : Fragment(), IUserCoursesView {
         return view
     }
 
-    override fun showUserCourses(userCourses: List<CategoryResponse>, included: List<CourseResponse>) {
+    override fun showUserCourses(userCourses: List<GroupResponse>, included: IncludedResponse) {
         adapter.onDataChange(userCourses, included)
     }
 
