@@ -14,11 +14,9 @@ class SearchResultAdapter : RecyclerView.Adapter<SearchResultHolder>() {
     override fun onBindViewHolder(holder: SearchResultHolder, position: Int) {
         holder.bind(
             foundCourses[position].id,
-            foundCourses[position].title,
-            foundCourses[position].description,
-            foundCourses[position].address,
-            foundCourses[position].company,
-            foundCourses[position].category
+            foundCourses[position].attributes.title,
+            foundCourses[position].attributes.description,
+            foundCourses[position].attributes.address
         )
     }
 

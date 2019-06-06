@@ -24,8 +24,8 @@ class SearchAdapter : RecyclerView.Adapter<SearchHolder>() {
         )
 
     fun onDataChange(categories: List<CategoryResponse>) {
-        categories.clear()
-        categories.addAll(categories)
+        this.categories.clear()
+        this.categories.addAll(categories)
         notifyDataSetChanged()
     }
 }

@@ -23,7 +23,7 @@ class TimelineHolder(view: View) : RecyclerView.ViewHolder(view) {
         bindTime(last, isNow, time, duration)
 
         itemView.cardTimelineTime.text = intToTime(time)
-        itemView.cardTimelineTitle.text = "$titleCourse ($titleGroup)"
+        itemView.cardTimelineTitle.text = "$titleCourse($titleGroup)"
         itemView.cardTimelineTeacher.text = teacher
         itemView.cardTimelineCompany.text = titleCompany
         itemView.cardTimelineAddress.text = address

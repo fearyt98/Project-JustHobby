@@ -1,9 +1,20 @@
 package com.aurimteam.justhobby.response
 
+class CourseResponseR(
+    val type: String,
+    val id: Long,
+    val attributes: CourseAttrResponse
+)
+
 class CourseResponse(
     val type: String,
-    val id: Int,
-    val attributes: CourseAttrResponse
+    val id: Long,
+    val attributes: CourseAttrResponse,
+    val relationships: CourseRelationshipsResponse
+)
+
+class CourseRelationshipsResponse(
+    val company: IdentifierResponse
 )
 
 class CourseAttrResponse(
@@ -11,9 +22,9 @@ class CourseAttrResponse(
     val title: String,
     val description: String,
 
-    val address: String?,
-    val fias_id: String?,
-    val house: String?,
+    val address: String,
+    val fias_id: String,
+    val house: String,
     val lat: String,
     val lon: String,
 

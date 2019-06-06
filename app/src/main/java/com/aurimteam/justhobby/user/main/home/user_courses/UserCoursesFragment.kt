@@ -12,6 +12,7 @@ import com.aurimteam.justhobby.R
 import com.aurimteam.justhobby.response.CategoryResponse
 import com.aurimteam.justhobby.response.CourseResponse
 import com.aurimteam.justhobby.response.UserCourseResponse
+import kotlinx.android.synthetic.main.fragment_main_home_timeline.*
 import kotlinx.android.synthetic.main.fragment_user_courses.*
 
 class UserCoursesFragment : Fragment(), IUserCoursesView {
@@ -21,7 +22,6 @@ class UserCoursesFragment : Fragment(), IUserCoursesView {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_user_courses, container, false)
-        //view.findViewById<ImageButton>(R.id.homeBookmarks).setOnClickListener { openUserBookmarks() }
         return view
     }
 
@@ -40,6 +40,16 @@ class UserCoursesFragment : Fragment(), IUserCoursesView {
     override fun onDestroy() {
         super.onDestroy()
         presenter.onDestroy()
+    }
+
+    override fun toggleContentPB(isVisiblePB: Boolean) {
+        if (isVisiblePB) {
+            homeProgressBar.visibility = View.VISIBLE
+            homeContent.visibility = View.GONE
+        } else {
+            homeProgressBar.visibility = View.GONE
+            homeContent.visibility = View.VISIBLE
+        }
     }
 
     override fun showMessage(message: String?) {

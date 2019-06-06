@@ -2,7 +2,7 @@ package com.aurimteam.justhobby.response
 
 class CompanyResponse(
     val type: String,
-    val id: Int,
+    val id: Long,
     val attributes: CourseAttrResponse
 )
 
@@ -13,9 +13,9 @@ class CompanyAttrResponse(
     val title: String,
     val phone: String,
 
-    val address: String?,
-    val fias_id: String?,
-    val house: String?,
+    val address: String,
+    val fias_id: String,
+    val house: String,
     val lat: String,
     val lon: String,
 

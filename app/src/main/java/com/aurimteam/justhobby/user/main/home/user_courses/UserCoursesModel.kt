@@ -5,7 +5,6 @@ import com.aurimteam.justhobby.api.Api
 import com.aurimteam.justhobby.response.CategoryResponse
 import com.aurimteam.justhobby.response.CourseResponse
 import com.aurimteam.justhobby.response.GroupsResponse
-import com.aurimteam.justhobby.response.UserCourseResponse
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
