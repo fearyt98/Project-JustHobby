@@ -28,8 +28,8 @@ class SearchResultAdapter : RecyclerView.Adapter<SearchResultHolder>() {
         )
 
     fun onDataChange(foundedCourses: List<CourseResponse>){
-        this.foundCourses.clear()
-        this.foundCourses.addAll(foundedCourses)
+        foundCourses.clear()
+        foundCourses.addAll(foundedCourses)
         notifyDataSetChanged()
     }
 }

@@ -45,9 +45,20 @@ interface Api {
 
     @Headers("Accept: application/json")
     @HTTP(method = "DELETE", path = "user/bookmarks/{course_id}", hasBody = true)
-    fun deleteBookmark(@Body tokenBody: TokenBody, @Path("course_id") courseId: Long): Call<StatusResponse>
+    fun deleteBookmark(
+        @Body tokenBody: TokenBody, 
+        @Path("course_id") courseId: Long
+    ): Call<StatusResponse>
 
     @Headers("Accept: application/json")
     @GET("user/bookmarks")
-    fun getUserBookmarks(@Body tokenBody: TokenBody): Call<CourseResponse>
+    fun getUserBookmarks(
+        @Query("token") token: String
+    ): Call<CourseResponse>
+
+    @Headers("Accept: application/json")
+    @GET("user/groups")
+    fun getUserGroups(
+        @Query("token") token: String
+    ): Call<GroupsResponse>
 }

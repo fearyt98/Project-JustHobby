@@ -24,7 +24,7 @@ import android.os.CountDownTimer
 
 class HomeTimelineFragment : Fragment(), IHomeView {
 
-    private lateinit var presenter: HomeTimelinePresenter
+    private var presenter = HomeTimelinePresenter(this, HomeTimelineModel())
     private var adapter = HomeTimelineAdapter()
     private var isTimeline = true
     private var oldDate = Calendar.getInstance()
@@ -55,7 +55,7 @@ class HomeTimelineFragment : Fragment(), IHomeView {
 
             for (i in first..last) adapter.notifyItemChanged(i, listOf(1))
             adapter.removeIfIs()
-            if (adapter.itemCount == 0) presenter.getNearDayTimeline()
+            if (adapter.itemCount == 0 && context != null) presenter.getNearDayTimeline(context!!)
         }
 
         override fun onFinish() {}
@@ -72,8 +72,7 @@ class HomeTimelineFragment : Fragment(), IHomeView {
 
     override fun onStart() {
         super.onStart()
-        presenter = HomeTimelinePresenter(this, HomeTimelineModel(), context)
-        presenter.getNearDayTimeline()
+        if (context != null) presenter.getNearDayTimeline(context!!)
         homeEventsRecyclerView.layoutManager = LinearLayoutManager(context)
         homeEventsRecyclerView.adapter = adapter
     }
@@ -86,7 +85,8 @@ class HomeTimelineFragment : Fragment(), IHomeView {
 
     override fun onResume() {
         super.onResume()
-        homeCalendarText.text = SimpleDateFormat("d MMMM, EEEE", Locale.getDefault()).format(Date(selectDate.timeInMillis))
+        homeCalendarText.text =
+            SimpleDateFormat("d MMMM, EEEE", Locale.getDefault()).format(Date(selectDate.timeInMillis))
     }
 
     override fun onDestroy() {
@@ -97,9 +97,9 @@ class HomeTimelineFragment : Fragment(), IHomeView {
 
 
     private fun openDatePicker() {
-        if (this.activity != null && isTimeline) {
+        if (activity != null && isTimeline) {
             val datePicker = DatePickerDialog(
-                this.activity!!, R.style.DatePickerDialog, listenerDatePicker,
+                activity!!, R.style.DatePickerDialog, listenerDatePicker,
                 selectDate.get(Calendar.YEAR),
                 selectDate.get(Calendar.MONTH),
                 selectDate.get(Calendar.DAY_OF_MONTH)
@@ -115,9 +115,11 @@ class HomeTimelineFragment : Fragment(), IHomeView {
                 SimpleDateFormat("d MMMM, EEEE", Locale.getDefault()).format(Date(selectDate.timeInMillis))
             homeCurrentTime.visibility = if (isNow()) View.VISIBLE else View.GONE
 
-            presenter.getEventsTimeline(
-                SimpleDateFormat("dd.MM.yyyy", Locale.getDefault()).format(Date(selectDate.timeInMillis))
-            )
+            if (context != null)
+                presenter.getEventsTimeline(
+                    context!!,
+                    SimpleDateFormat("dd.MM.yyyy", Locale.getDefault()).format(Date(selectDate.timeInMillis))
+                )
         }
     }
 
@@ -137,7 +139,11 @@ class HomeTimelineFragment : Fragment(), IHomeView {
         if (nearDay.status == "success") {
             oldDate.timeInMillis = nearDay.date * 1000
             selectDate = oldDate.clone() as Calendar
-            presenter.getEventsTimeline(SimpleDateFormat("dd.MM.yyyy", Locale.getDefault()).format(Date()))
+            if (context != null)
+            presenter.getEventsTimeline(
+                context!!,
+                SimpleDateFormat("dd.MM.yyyy", Locale.getDefault()).format(Date())
+            )
         } else {
             isTimeline = false
             homeProgressBar.visibility = View.GONE

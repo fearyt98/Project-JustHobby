@@ -1,5 +1,6 @@
 package com.aurimteam.justhobby.user.main.home.user_bookmarks
 
+import android.support.v4.content.ContextCompat
 import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
@@ -14,7 +15,7 @@ class UserBookmarksAdapter(private val presenter: UserBookmarksPresenter) :
     private val userBookmarksList: MutableList<CourseResponse> = mutableListOf()
 
     override fun getItemCount(): Int = userBookmarksList.size
-    override fun onBindViewHolder(holder: UserBookmarksHolder, position: Int) {
+    override fun onBindViewHolder(holder: CourseHolder, position: Int) {
         holder.bind(
             userBookmarksList[position].id,
             userBookmarksList[position].title,
@@ -31,11 +32,13 @@ class UserBookmarksAdapter(private val presenter: UserBookmarksPresenter) :
                 position
             )
         }
-        holder.itemView.cardCourseBtnBookmark.setColorFilter(R.color.red)
+        holder.itemView.cardCourseBtnBookmark.setColorFilter(
+            ContextCompat.getColor(holder.itemView.context, R.color.colorPrimary)
+        )
         holder.itemView.cardCourseBtnGeo.setOnClickListener { searchCourseOnMap() }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, p1: Int): UserBookmarksHolder = UserBookmarksHolder(
+    override fun onCreateViewHolder(parent: ViewGroup, p1: Int): CourseHolder = CourseHolder(
         LayoutInflater.from(parent.context).inflate(R.layout.fragment_card_course, parent, false)
     )
 

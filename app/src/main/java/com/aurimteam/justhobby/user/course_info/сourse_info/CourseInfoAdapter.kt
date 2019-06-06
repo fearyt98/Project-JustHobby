@@ -26,8 +26,8 @@ class CourseInfoAdapter : RecyclerView.Adapter<CourseInfoGroupsHolder>() {
         )
 
     fun onDataChange(groups: List<GroupResponse>) {
-        this.courseGroupsList.clear()
-        this.courseGroupsList.addAll(groups)
+        courseGroupsList.clear()
+        courseGroupsList.addAll(groups)
         notifyDataSetChanged()
     }
 }

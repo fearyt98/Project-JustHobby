@@ -1,20 +1,27 @@
 package com.aurimteam.justhobby.user.main.home.user_courses
 
-import com.aurimteam.justhobby.response.UserCourseResponse
+import android.content.Context
+import com.aurimteam.justhobby.Settings
+import com.aurimteam.justhobby.response.CategoryResponse
+import com.aurimteam.justhobby.response.CourseResponse
 
 class UserCoursesPresenter(private var view: IUserCoursesView?, private val model: IUserCoursesModel?) :
     UserCoursesModel.OnFinishedListener {
 
-    override fun onResultSuccess(userCourses: List<UserCourseResponse>) {
-        view?.showUserCourses(userCourses)
+    override fun onResultSuccess(userCourses: List<CategoryResponse>, included: List<CourseResponse>) {
+        view?.showUserCourses(userCourses, included)
     }
 
-    override fun onResultFail() {
-
+    override fun onResultFail(strError: String?) {
+        view?.showMessage(strError)
     }
 
-    fun getUserCourses() {
-        model?.getUserCoursesData(this)
+    fun getUserCourses(context: Context) {
+        val token = Settings(context).getProperty("token")
+        if (token != null) {
+            view?.toggleContentPB(true)
+            model?.getUserCoursesData(token, this)
+        }
     }
 
     fun onDestroy() {

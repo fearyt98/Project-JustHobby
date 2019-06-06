@@ -7,8 +7,7 @@ import com.aurimteam.justhobby.response.TimelineNearDayResponse
 
 class HomeTimelinePresenter(
     private var view: IHomeView?,
-    private val model: IHomeModel?,
-    private var context: Context?
+    private val model: IHomeModel?
 ) : HomeTimelineModel.OnFinishedListener {
 
     override fun onResultSuccessNearDayTimeline(nearDay: TimelineNearDayResponse) {
@@ -23,21 +22,17 @@ class HomeTimelinePresenter(
         view?.showMessage(strError)
     }
 
-    fun getNearDayTimeline() {
-        if (context != null) {
-            val token = Settings(context!!).getProperty("token")
-            if (token != null)
-                model?.getNearDayTimeline(token, this)
-        }
+    fun getNearDayTimeline(context: Context) {
+        val token = Settings(context).getProperty("token")
+        if (token != null)
+            model?.getNearDayTimeline(token, this)
     }
 
-    fun getEventsTimeline(date: String) {
-        if (context != null) {
-            val token = Settings(context!!).getProperty("token")
-            if (token != null) {
-                view?.toggleContentPB(true)
-                model?.getEventsTimeline(token, date, this)
-            }
+    fun getEventsTimeline(context: Context, date: String) {
+        val token = Settings(context).getProperty("token")
+        if (token != null) {
+            view?.toggleContentPB(true)
+            model?.getEventsTimeline(token, date, this)
         }
     }
 

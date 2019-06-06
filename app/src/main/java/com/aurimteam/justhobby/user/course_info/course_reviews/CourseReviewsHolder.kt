@@ -9,7 +9,6 @@ import com.aurimteam.justhobby.R
 
 class CourseReviewsHolder(view: View) : RecyclerView.ViewHolder(view) {
     fun bind(
-        id: Long,
         last: Boolean,
         name: String,
         rating: Float,
