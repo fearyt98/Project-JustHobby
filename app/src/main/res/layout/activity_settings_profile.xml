@@ -44,7 +44,8 @@
                      tools:ignore="RtlSymmetry"/>
     </android.support.constraint.ConstraintLayout>
     <ScrollView android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:overScrollMode="never">
         <LinearLayout android:layout_width="match_parent"
                       android:layout_height="wrap_content"
                       android:orientation="vertical">
@@ -66,11 +67,6 @@
                              android:background="@drawable/avatar_btn_bg"
                              tools:ignore="ContentDescription"/>
             </FrameLayout>
-            <ImageView android:layout_width="match_parent"
-                       android:layout_height="1dp"
-                       android:background="@android:color/transparent"
-                       android:tint="@color/grayLightTopMiddle"
-                       app:srcCompat="@drawable/ic_circle_separator"/>
             <android.support.design.widget.TextInputLayout android:layout_width="match_parent"
                                                            android:layout_height="wrap_content"
                                                            android:layout_marginTop="5dp"

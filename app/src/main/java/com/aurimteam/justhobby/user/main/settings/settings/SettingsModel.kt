@@ -1,4 +1,4 @@
-package com.aurimteam.justhobby.user.main.settings
+package com.aurimteam.justhobby.user.main.settings.settings
 
 import com.aurimteam.justhobby.api.Api
 import com.aurimteam.justhobby.App

@@ -1,5 +1,6 @@
-package com.aurimteam.justhobby.user.main.settings
+package com.aurimteam.justhobby.user.main.settings.settings
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -12,6 +13,11 @@ import com.aurimteam.justhobby.R
 import com.aurimteam.justhobby.start.auth.AuthActivity
 import android.view.Gravity
 import android.widget.Toast
+import com.aurimteam.justhobby.user.main.main_nav.MainNavActivity
+import com.aurimteam.justhobby.user.main.settings.about_app.AboutAppFragment
+import com.aurimteam.justhobby.user.main.settings.notifications.NotificationsFragament
+import com.aurimteam.justhobby.user.main.settings.user_profile.UserProfileActivity
+import kotlinx.android.synthetic.main.fragment_main_settings.*
 
 class SettingsFragment : Fragment(), ISettingsView {
 
@@ -20,11 +26,16 @@ class SettingsFragment : Fragment(), ISettingsView {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_main_settings, container, false)
         view.findViewById<LinearLayout>(R.id.settingsNotification).setOnClickListener { notificationItemClick() }
-        view.findViewById<LinearLayout>(R.id.settingsAccount).setOnClickListener { accountItemClick() }
+        view.findViewById<LinearLayout>(R.id.settingsAccount)
+            .setOnClickListener { accountItemClick(container?.context) }
         view.findViewById<LinearLayout>(R.id.settingsAbout).setOnClickListener { aboutItemClick() }
         view.findViewById<LinearLayout>(R.id.settingsLogout).setOnClickListener { leaveItemClick() }
 
-        presenter = SettingsPresenter(this, SettingsModel(), container?.context)
+        presenter = SettingsPresenter(
+            this,
+            SettingsModel(),
+            container?.context
+        )
         return view
     }
 
@@ -32,17 +43,13 @@ class SettingsFragment : Fragment(), ISettingsView {
         fragmentManager!!
             .beginTransaction()
             .addToBackStack(null)
-            .replace(R.id.mainNavContainerFragment, HomeTimelineFragment())
+            .replace(R.id.mainNavContainerFragment, NotificationsFragament())
             .commit()
 
     }
 
-    private fun accountItemClick() {
-        fragmentManager!!
-            .beginTransaction()
-            .addToBackStack(null)
-            .replace(R.id.mainNavContainerFragment, HomeTimelineFragment())
-            .commit()
+    private fun accountItemClick(context: Context?) {
+        startActivity(Intent(context, UserProfileActivity::class.java))
     }
 
     private fun feedbackItemClick() {
@@ -58,7 +65,7 @@ class SettingsFragment : Fragment(), ISettingsView {
         fragmentManager!!
             .beginTransaction()
             .addToBackStack(null)
-            .replace(R.id.mainNavContainerFragment, HomeTimelineFragment())
+            .replace(R.id.mainNavContainerFragment, AboutAppFragment())
             .commit()
 
     }

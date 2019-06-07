@@ -13,7 +13,7 @@ import com.aurimteam.justhobby.start.auth.AuthActivity
 import com.aurimteam.justhobby.user.main.home.home.HomeTimelineFragment
 import com.aurimteam.justhobby.user.main.notifications.NotificationsFragment
 import com.aurimteam.justhobby.user.main.recommendation_page_viewer.RecommendationFragment
-import com.aurimteam.justhobby.user.main.settings.SettingsFragment
+import com.aurimteam.justhobby.user.main.settings.settings.SettingsFragment
 
 class MainNavActivity : AppCompatActivity(), IMainNavView {
 

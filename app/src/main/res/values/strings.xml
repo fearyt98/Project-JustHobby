@@ -84,7 +84,7 @@
     <string name="no_search_result">Ничего не найдено</string>
     <string name="test_company_title">Drive - Школа танцев в Томске</string>
     <string name="about_btn_ready">Нажимая «Готово» вы принимаете</string>
-    <string name="user_agreement">Условия использования</string>
+    <string name="user_agreement">Пользовательское соглашение</string>
     <string name="in_change_day_no_events">В выбранный день занятия отстутствуют</string>
     <string name="before_end_of_event">До конца занятия %1$s</string>
     <string name="before_event_term0">До занятия меньше часа</string>
@@ -195,7 +195,6 @@
     <string name="about_app">О приложении</string>
     <string name="version_app">Версия 1.1</string>
     <string name="confident_politic">Политика конфиденциальности</string>
-    <string name="user_agreement">Условия использования</string>
     <string name="licenses">Лицензии</string>
     <string name="teacher">Педагог:</string>
     <string name="payment_one">%1$sР / занятие</string>

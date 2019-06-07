@@ -1,4 +1,4 @@
-package com.aurimteam.justhobby.user.main.settings
+package com.aurimteam.justhobby.user.main.settings.settings
 
 import android.content.Context
 import com.aurimteam.justhobby.Settings

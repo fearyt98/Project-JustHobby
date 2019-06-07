@@ -94,8 +94,8 @@
                        app:srcCompat="@drawable/ic_circle_separator"/>
             <android.support.constraint.ConstraintLayout android:layout_width="match_parent"
                                                          android:layout_height="wrap_content"
-                                                         android:paddingTop="18dp"
-                                                         android:paddingBottom="18dp"
+                                                         android:paddingTop="10dp"
+                                                         android:paddingBottom="15dp"
                                                          android:paddingStart="12dp"
                                                          android:paddingEnd="12dp">
                 <TextView android:layout_width="wrap_content"
@@ -110,7 +110,7 @@
                 <TextView android:layout_width="wrap_content"
                           android:layout_height="wrap_content"
                           android:textColor="@color/gray"
-                          android:visibility="gone"
+                          android:text="2 часа до занятия"
                           android:id="@+id/changeTimeNotification"
                           app:layout_constraintLeft_toLeftOf="parent"
                           app:layout_constraintTop_toBottomOf="@id/changeTimeNotificationBtn"
@@ -124,6 +124,7 @@
             <TextView android:layout_width="wrap_content"
                       android:layout_height="match_parent"
                       android:textColor="@color/orangeText"
+                      android:visibility="gone"
                       android:text="@string/notify_from_groups"
                       android:paddingTop="18dp"
                       android:paddingBottom="18dp"
