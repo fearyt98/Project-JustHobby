@@ -46,9 +46,6 @@ class UserBookmarksAdapter(private val presenter: UserBookmarksPresenter) :
                 position
             )
         }
-        holder.itemView.cardCourseBtnBookmark.setColorFilter(
-            ContextCompat.getColor(holder.itemView.context, R.color.red)
-        )
         holder.itemView.cardCourseBtnGeo.setOnClickListener { searchCourseOnMap() }
     }
 
