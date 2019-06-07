@@ -2,7 +2,7 @@ package com.aurimteam.justhobby.response
 
 class TimelineResponse(
     val data: List<EventResponse>,
-    val meta: MetaPagesResponse
+    val meta: MetaPagesResponses
 )
 
 class EventResponse(

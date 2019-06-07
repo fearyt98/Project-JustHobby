@@ -1,12 +1,18 @@
 package com.aurimteam.justhobby.response
 
-class CourseResponseR(
+class CoursesResponse(
+    val data: List<CourseResponseR>,
+    val included: IncludedResponse,
+    val meta: MetaPagesResponses
+)
+
+class CourseResponse(
     val type: String,
     val id: Long,
     val attributes: CourseAttrResponse
 )
 
-class CourseResponse(
+class CourseResponseR(
     val type: String,
     val id: Long,
     val attributes: CourseAttrResponse,
@@ -23,6 +29,7 @@ class CourseAttrResponse(
     val description: String,
 
     val address: String,
+    val length: Int?,
     val fias_id: String,
     val house: String,
     val lat: String,
@@ -39,8 +46,4 @@ class CourseAttrResponse(
 
     val created_at: Long,
     val updated_at: Long
-)
-
-class CoursesResponse(
-    val courses: List<CourseResponse>
 )

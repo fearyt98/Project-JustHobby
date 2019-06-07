@@ -3,7 +3,7 @@ package com.aurimteam.justhobby.response
 class CompanyResponse(
     val type: String,
     val id: Long,
-    val attributes: CourseAttrResponse
+    val attributes: CompanyAttrResponse
 )
 
 class CompanyAttrResponse(

@@ -61,5 +61,5 @@
                                             app:layout_constraintTop_toBottomOf="@id/searchBar"
                                             app:layout_constraintLeft_toLeftOf="parent"
                                             app:layout_constraintRight_toRightOf="parent"
-                                            tools:listitem="@layout/fragment_admin_card_search"/>
+                                            tools:listitem="@layout/card_admin_search"/>
 </android.support.constraint.ConstraintLayout>

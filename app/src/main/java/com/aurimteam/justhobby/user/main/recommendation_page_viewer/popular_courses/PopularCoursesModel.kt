@@ -7,8 +7,8 @@ import java.sql.Timestamp
 
 class PopularCoursesModel : IPopularCoursesModel {
     interface OnFinishedListener {
-        fun onResultSuccess(courses: List<CourseResponse>)  //arrUpdates: List<DataItem>
-        fun onResultFail() //strError: String
+        fun onResultSuccess(courses: List<CourseResponse>)
+        fun onResultFail()
     }
 
     override fun getPopularCoursesData(onFinishedListener: OnFinishedListener) {

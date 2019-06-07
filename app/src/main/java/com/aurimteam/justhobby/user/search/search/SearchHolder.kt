@@ -4,7 +4,7 @@ import android.support.v4.content.ContextCompat
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import com.aurimteam.justhobby.R
-import kotlinx.android.synthetic.main.fragment_card_category.view.*
+import kotlinx.android.synthetic.main.card_category.view.*
 
 class SearchHolder(view: View) : RecyclerView.ViewHolder(view) {
     fun bind(

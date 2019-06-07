@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.aurimteam.justhobby.R
 import com.aurimteam.justhobby.response.CourseResponse
-import kotlinx.android.synthetic.main.fragment_card_course.view.*
+import kotlinx.android.synthetic.main.card_course.view.*
 
 class PopularCoursesAdapter : RecyclerView.Adapter<PopularCoursesHolder>() {
 
@@ -15,7 +15,7 @@ class PopularCoursesAdapter : RecyclerView.Adapter<PopularCoursesHolder>() {
     override fun getItemCount(): Int = coursesList.size
     override fun onCreateViewHolder(parent: ViewGroup, p1: Int): PopularCoursesHolder =
         PopularCoursesHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.fragment_card_course, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.card_course, parent, false)
         )
 
     override fun onBindViewHolder(holder: PopularCoursesHolder, position: Int) {

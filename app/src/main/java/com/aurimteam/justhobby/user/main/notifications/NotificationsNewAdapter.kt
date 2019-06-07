@@ -26,7 +26,7 @@ class NotificationsNewAdapter : RecyclerView.Adapter<NotificationsHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, p1: Int): NotificationsHolder =
         NotificationsHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.fragment_card_notification, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.card_notification, parent, false)
         )
 
     fun onDataChange(notifications: List<NotificationResponse>) {

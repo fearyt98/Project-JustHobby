@@ -3,37 +3,51 @@ package com.aurimteam.justhobby.user.main.home.user_bookmarks
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
+import android.widget.Toast
 import com.aurimteam.justhobby.R
-import com.aurimteam.justhobby.response.CourseResponse
+import com.aurimteam.justhobby.response.CourseResponseR
+import com.aurimteam.justhobby.response.IncludedResponse
 import kotlinx.android.synthetic.main.fragment_user_bookmarks.*
 
 class UserBookmarksFragment : Fragment(), IUserBookmarksView {
 
-
     private val presenter = UserBookmarksPresenter(this, UserBookmarksModel())
     private var adapter = UserBookmarksAdapter(presenter)
 
-    override fun showUserBookmarks(bookmarks: List<CourseResponse>) {
-        adapter.onDataChange(bookmarks)
+    override fun showUserBookmarks(bookmarks: List<CourseResponseR>, included: IncludedResponse?) {
+        if (bookmarks.isEmpty() || included == null) {
+            bookmarksProgressBar.visibility = View.GONE
+            bookmarksRecyclerView.visibility = View.GONE
+            bookmarksClear.visibility = View.VISIBLE
+        } else {
+            toggleContentPB(false)
+            adapter.onDataChange(bookmarks, included)
+        }
     }
 
     override fun deletedUserBookmarks(position: Int) {
-        adapter.notifyItemRemoved(position)
+        adapter.removeItem(position)
+        if(adapter.itemCount == 0) {
+            bookmarksProgressBar.visibility = View.GONE
+            bookmarksRecyclerView.visibility = View.GONE
+            bookmarksClear.visibility = View.VISIBLE
+        }
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_user_bookmarks, container, false)
-        view.findViewById<ImageButton>(R.id.bookmarksBtnBack).setOnClickListener { backToTimelineFragment() }
+        view.findViewById<ImageButton>(R.id.bookmarksBtnBack).setOnClickListener { back() }
         return view
     }
 
     override fun onStart() {
         super.onStart()
-        presenter.getUserBookmarks(context!!)
+        if (context != null) presenter.getUserBookmarks(context!!)
         bookmarksRecyclerView.layoutManager = LinearLayoutManager(context)
         bookmarksRecyclerView.adapter = adapter
     }
@@ -43,7 +57,23 @@ class UserBookmarksFragment : Fragment(), IUserBookmarksView {
         presenter.onDestroy()
     }
 
-    private fun backToTimelineFragment() {
+    override fun toggleContentPB(isVisiblePB: Boolean) {
+        if (isVisiblePB) {
+            bookmarksProgressBar.visibility = View.VISIBLE
+            bookmarksRecyclerView.visibility = View.GONE
+        } else {
+            bookmarksProgressBar.visibility = View.GONE
+            bookmarksRecyclerView.visibility = View.VISIBLE
+        }
+    }
+
+    override fun showMessage(message: String?) {
+        val toast = Toast.makeText(activity, message, Toast.LENGTH_SHORT)
+        toast.setGravity(Gravity.BOTTOM, 0, 30)
+        toast.show()
+    }
+
+    private fun back() {
         fragmentManager?.popBackStack()
     }
 }

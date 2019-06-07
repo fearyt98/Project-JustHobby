@@ -8,4 +8,4 @@
                                         android:paddingBottom="17dp"
                                         android:paddingTop="3dp"
                                         android:clipToPadding="false"
-                                        tools:listitem="@layout/fragment_card_course"/>
+                                        tools:listitem="@layout/card_course"/>

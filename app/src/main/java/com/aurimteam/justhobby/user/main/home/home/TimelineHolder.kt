@@ -3,7 +3,7 @@ package com.aurimteam.justhobby.user.main.home.home
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import com.aurimteam.justhobby.R
-import kotlinx.android.synthetic.main.fragment_card_event.view.*
+import kotlinx.android.synthetic.main.card_event.view.*
 import java.util.*
 
 
@@ -26,7 +26,7 @@ class TimelineHolder(view: View) : RecyclerView.ViewHolder(view) {
         itemView.cardTimelineTitle.text = "$titleCourse($titleGroup)"
         itemView.cardTimelineTeacher.text = teacher
         itemView.cardTimelineCompany.text = titleCompany
-        itemView.cardTimelineAddress.text = address
+        itemView.cardTimelineAddress.text = "$address"
 
         val padding: List<Int> = listOf(
             itemView.cardTimelineBg.paddingLeft, itemView.cardTimelineBg.paddingTop,

@@ -105,7 +105,7 @@
                                                 android:layout_height="match_parent"
                                                 android:layout_width="match_parent"
                                                 android:overScrollMode="never"
-                                                tools:listitem="@layout/fragment_card_event"/>
+                                                tools:listitem="@layout/card_event"/>
     </LinearLayout>
     <LinearLayout android:id="@+id/homeContentClear"
                   android:visibility="gone"

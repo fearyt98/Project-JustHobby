@@ -25,7 +25,7 @@
                                                     android:paddingEnd="12dp"
                                                     android:layout_marginBottom="-9dp"
                                                     android:clipToPadding="false"
-                                                    tools:listitem="@layout/fragment_card_category"
+                                                    tools:listitem="@layout/card_category"
                                                     tools:itemCount="1"
                                                     tools:ignore="RtlSymmetry"/>
             <FrameLayout android:layout_width="match_parent"
