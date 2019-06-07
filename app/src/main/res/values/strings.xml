@@ -180,4 +180,19 @@
     <string name="card_count_courses">%1$s курсов</string>
     <string name="card_count_groups">%1$s групп</string>
     <string name="card_count_reviews">%1$s отзывов</string>
+    <string name="change_password">Сменить пароль</string>
+    <string name="home_address">Адрес дома</string>
+    <string name="about_home_address">Адрес используется для отображения рекомендаций «Рядом с вами», а также для
+        указания расстояния до кружка
+    </string>
+    <string name="user_location">Использовать местоположение</string>
+    <string name="vibration">Вибрация</string>
+    <string name="not_disturb">Не беспокоить</string>
+    <string name="notify_for">Уведомлять за</string>
+    <string name="notify_from_groups">Уведомления от групп</string>
+    <string name="about_app">О приложении</string>
+    <string name="version_app">Версия 1.1</string>
+    <string name="confident_politic">Политика конфиденциальности</string>
+    <string name="user_agreement">Условия использования</string>
+    <string name="licenses">Лицензии</string>
 </resources>
