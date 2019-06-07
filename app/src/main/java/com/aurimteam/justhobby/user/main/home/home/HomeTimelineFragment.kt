@@ -7,7 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
-import com.aurimteam.justhobby.user.main.home.user_courses.UserCoursesFragment
+import com.aurimteam.justhobby.user.main.home.user_groups.UserGroupsFragment
 import com.aurimteam.justhobby.R
 import com.aurimteam.justhobby.response.EventResponse
 import kotlinx.android.synthetic.main.fragment_main_home_timeline.*
@@ -20,7 +20,6 @@ import android.widget.Toast
 import com.aurimteam.justhobby.response.TimelineNearDayResponse
 import com.aurimteam.justhobby.user.main.home.user_bookmarks.UserBookmarksFragment
 import android.os.CountDownTimer
-
 
 class HomeTimelineFragment : Fragment(), IHomeView {
 
@@ -95,7 +94,6 @@ class HomeTimelineFragment : Fragment(), IHomeView {
         presenter.onDestroy()
     }
 
-
     private fun openDatePicker() {
         if (activity != null && isTimeline) {
             val datePicker = DatePickerDialog(
@@ -140,10 +138,10 @@ class HomeTimelineFragment : Fragment(), IHomeView {
             oldDate.timeInMillis = nearDay.date * 1000
             selectDate = oldDate.clone() as Calendar
             if (context != null)
-            presenter.getEventsTimeline(
-                context!!,
-                SimpleDateFormat("dd.MM.yyyy", Locale.getDefault()).format(Date())
-            )
+                presenter.getEventsTimeline(
+                    context!!,
+                    SimpleDateFormat("dd.MM.yyyy", Locale.getDefault()).format(Date(selectDate.timeInMillis))
+                )
         } else {
             isTimeline = false
             homeProgressBar.visibility = View.GONE
@@ -153,13 +151,14 @@ class HomeTimelineFragment : Fragment(), IHomeView {
     }
 
     override fun toggleContentPB(isVisiblePB: Boolean) {
-        if (isVisiblePB) {
-            homeProgressBar.visibility = View.VISIBLE
-            homeContent.visibility = View.GONE
-        } else {
-            homeProgressBar.visibility = View.GONE
-            homeContent.visibility = View.VISIBLE
-        }
+        if (isTimeline)
+            if (isVisiblePB) {
+                homeProgressBar.visibility = View.VISIBLE
+                homeContent.visibility = View.GONE
+            } else {
+                homeProgressBar.visibility = View.GONE
+                homeContent.visibility = View.VISIBLE
+            }
     }
 
     private fun openUserBookmarks() {
@@ -175,7 +174,7 @@ class HomeTimelineFragment : Fragment(), IHomeView {
         fragmentManager!!
             .beginTransaction()
             .addToBackStack(null)
-            .replace(R.id.mainNavContainerFragment, UserCoursesFragment())
+            .replace(R.id.mainNavContainerFragment, UserGroupsFragment())
             .remove(HomeTimelineFragment())
             .commit()
     }

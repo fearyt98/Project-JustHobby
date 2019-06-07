@@ -3,16 +3,9 @@ package com.aurimteam.justhobby.response
 class GroupsResponse(
     val data: List<GroupResponse>,
     val included: IncludedResponse,
-    val meta: MetaPagesResponse
+    val meta: MetaPagesResponses
 )
 
-class IncludedResponse(
-    val subcategories: List<SubcategoryResponse>,
-    val courses: List<CourseResponse>?,
-    val companies: List<CompanyResponse>?,
-    val groups: List<GroupResponse>?
-
-)
 class GroupResponse(
     val type: String,
     val id: Long,

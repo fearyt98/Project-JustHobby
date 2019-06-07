@@ -308,7 +308,7 @@
                                                 android:id="@+id/courseInfoGroupsRecyclerView"
                                                 android:orientation="horizontal"
                                                 app:stackFromEnd="true"
-                                                tools:listitem="@layout/fragment_card_group"/>
+                                                tools:listitem="@layout/card_group"/>
         <TextView android:id="@+id/courseInfoDesc"
                   style="@style/Body2"
                   android:layout_width="match_parent"

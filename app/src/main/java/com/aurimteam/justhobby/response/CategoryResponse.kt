@@ -2,7 +2,7 @@ package com.aurimteam.justhobby.response
 
 class CategoriesResponse(
     val data: List<CategoryResponse>,
-    val meta: MetaPagesResponse
+    val meta: MetaPagesResponses
 )
 
 class CategoryResponse(

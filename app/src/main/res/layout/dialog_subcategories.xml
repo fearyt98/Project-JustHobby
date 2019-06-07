@@ -47,7 +47,7 @@
     <android.support.v7.widget.RecyclerView android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
                                             android:id="@+id/subcategoriesRecyclerView"
-                                            tools:listitem="@layout/fragment_card_subcategories"/>
+                                            tools:listitem="@layout/card_subcategories"/>
     <Button android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Принять"

@@ -23,7 +23,7 @@ class CompanyInfoAdapter(private var presenter: CompanyInfoPresenter) :
 
     override fun onCreateViewHolder(parent: ViewGroup, p1: Int): CompanyInfoCoursesHolder =
         CompanyInfoCoursesHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.fragment_card_course, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.card_course, parent, false)
         )
 
     fun onDataChange(courses: List<CourseResponse>) {

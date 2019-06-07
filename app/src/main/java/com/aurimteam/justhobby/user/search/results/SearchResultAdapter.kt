@@ -22,7 +22,7 @@ class SearchResultAdapter : RecyclerView.Adapter<SearchResultHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, p1: Int): SearchResultHolder =
         SearchResultHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.fragment_card_course, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.card_course, parent, false)
         )
 
     fun onDataChange(foundedCourses: List<CourseResponse>){

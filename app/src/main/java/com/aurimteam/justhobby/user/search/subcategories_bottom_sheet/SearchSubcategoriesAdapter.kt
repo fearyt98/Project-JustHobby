@@ -20,7 +20,7 @@ class SearchSubcategoriesAdapter : RecyclerView.Adapter<SearchSubcategoriesHolde
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, p1: Int): SearchSubcategoriesHolder = SearchSubcategoriesHolder(
-        LayoutInflater.from(parent.context).inflate(R.layout.fragment_card_subcategories, parent, false)
+        LayoutInflater.from(parent.context).inflate(R.layout.card_subcategories, parent, false)
     )
 
     fun onDataChange(subcategories: List<SubcategoryResponse>) {

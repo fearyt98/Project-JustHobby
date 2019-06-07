@@ -81,7 +81,7 @@
                                                         android:layout_height="wrap_content"
                                                         android:id="@+id/courseReviewsRecyclerView"
                                                         android:overScrollMode="never"
-                                                        tools:listitem="@layout/fragment_card_review"/>
+                                                        tools:listitem="@layout/card_review"/>
             </android.support.v4.widget.NestedScrollView>
         </LinearLayout>
     </ScrollView>

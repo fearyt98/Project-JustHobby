@@ -2,7 +2,7 @@ package com.aurimteam.justhobby.user.main.notifications
 
 import android.support.v7.widget.RecyclerView
 import android.view.View
-import kotlinx.android.synthetic.main.fragment_card_notification.view.*
+import kotlinx.android.synthetic.main.card_notification.view.*
 import java.text.SimpleDateFormat
 import java.util.*
 

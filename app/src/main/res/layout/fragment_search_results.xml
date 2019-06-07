@@ -11,5 +11,5 @@
                                             android:paddingTop="3dp"
                                             android:clipToPadding="false"
                                             android:id="@+id/searchResultsRecycler"
-                                            tools:listitem="@layout/fragment_card_course"/>
+                                            tools:listitem="@layout/card_course"/>
 </android.support.v4.widget.NestedScrollView>

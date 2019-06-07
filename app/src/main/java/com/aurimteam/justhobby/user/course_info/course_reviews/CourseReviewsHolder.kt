@@ -2,7 +2,7 @@ package com.aurimteam.justhobby.user.course_info.course_reviews
 
 import android.support.v7.widget.RecyclerView
 import android.view.View
-import kotlinx.android.synthetic.main.fragment_card_review.view.*
+import kotlinx.android.synthetic.main.card_review.view.*
 import android.support.v4.graphics.drawable.DrawableCompat
 import com.aurimteam.justhobby.R
 

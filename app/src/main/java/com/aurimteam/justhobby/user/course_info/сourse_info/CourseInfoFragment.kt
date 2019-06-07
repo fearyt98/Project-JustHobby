@@ -10,18 +10,23 @@ import android.widget.ImageButton
 import android.widget.TextView
 import com.aurimteam.justhobby.user.course_info.course_groups.CourseGroupsFragment
 import com.aurimteam.justhobby.R
+import com.aurimteam.justhobby.response.CompanyResponse
+import com.aurimteam.justhobby.response.CourseResponseR
 import com.aurimteam.justhobby.response.GroupResponse
 import kotlinx.android.synthetic.main.fragment_course_info.*
 
-class CourseInfoFragment : Fragment(), ICourseInfoView {
+class CourseInfoFragment() : Fragment(), ICourseInfoView {
 
     private val presenter = CourseInfoPresenter(this, CourseInfoModel())
     private val adapter = CourseInfoAdapter()
+    private var course: CourseResponseR? = null
+    private var company: CompanyResponse? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_course_info, container, false)
         view.findViewById<ImageButton>(R.id.courseInfoBtnBack).setOnClickListener { backToRecommendedFragment() }
         view.findViewById<TextView>(R.id.courseInfoShowAllCourses).setOnClickListener { allCompanyCoursesFragment() }
+        val bundle = arguments
         return view
     }
 

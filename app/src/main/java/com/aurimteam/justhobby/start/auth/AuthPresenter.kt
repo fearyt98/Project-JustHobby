@@ -19,6 +19,7 @@ class AuthPresenter(private var view: IAuthView?, private val model: IAuthModel?
     }
 
     override fun onResultFail(strError: String) {
+        view?.togglePB(false)
         view?.showMessage(strError)
     }
 

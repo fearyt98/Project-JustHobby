@@ -20,7 +20,7 @@ class SearchAdapter : RecyclerView.Adapter<SearchHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, p1: Int): SearchHolder =
         SearchHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.fragment_card_category, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.card_category, parent, false)
         )
 
     fun onDataChange(categories: List<CategoryResponse>) {

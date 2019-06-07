@@ -14,8 +14,9 @@
                      android:layout_height="match_parent"
                      android:id="@+id/cardCourseRatingBg"
                      android:orientation="vertical"
-                     android:background="@drawable/card_rating_five">
-            <TextView android:layout_width="wrap_content"
+                     android:background="@drawable/card_rating5">
+            <TextView android:id="@+id/cardCourseRating"
+                      android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
                       android:layout_gravity="center"
                       android:gravity="center"
@@ -23,9 +24,7 @@
                       android:textSize="18sp"
                       android:fontFamily="sans-serif-medium"
                       android:drawableTop="@drawable/ic_star_24dp"
-                      android:drawablePadding="3dp"
-                      android:text="5"
-                      tools:ignore="HardcodedText"/>
+                      android:drawablePadding="3dp"/>
         </FrameLayout>
         <LinearLayout android:layout_width="0dp"
                       android:layout_weight="1"
@@ -40,20 +39,16 @@
                       android:ellipsize="end"
                       android:singleLine="true"
                       android:layout_width="wrap_content"
-                      android:id="@+id/cardCourseTitle"
-                      android:text="Восточные танцы"
-                      tools:ignore="HardcodedText"/>
+                      android:id="@+id/cardCourseTitle"/>
             <TextView style="@style/Caption2"
                       android:maxLines="1"
                       android:ellipsize="end"
                       android:singleLine="true"
                       android:textColor="@color/grayDarkMiddle"
                       android:layout_width="wrap_content"
-                      android:id="@+id/cardCourseDescription"
+                      android:id="@+id/cardCourseCompany"
                       android:layout_marginTop="-6dp"
-                      android:paddingBottom="5dp"
-                      android:text="Drive - Школа танцев в Томске"
-                      tools:ignore="HardcodedText"/>
+                      android:paddingBottom="5dp"/>
             <LinearLayout android:layout_width="wrap_content"
                           android:layout_height="wrap_content"
                           android:orientation="horizontal">
@@ -64,10 +59,9 @@
                           android:textColor="@color/grafitText"
                           android:layout_width="wrap_content"
                           android:id="@+id/cardCourseAddress"
-                          android:paddingEnd="5dp"
-                          android:text="пр. Ленина, 147"
-                          tools:ignore="HardcodedText"/>
-                <ImageView android:layout_width="3dp"
+                          android:paddingEnd="5dp"/>
+                <ImageView android:id="@+id/cardCourseAddressSep"
+                           android:layout_width="3dp"
                            android:layout_height="3dp"
                            android:layout_marginLeft="5dp"
                            android:layout_marginRight="5dp"
@@ -84,9 +78,7 @@
                           android:layout_width="wrap_content"
                           android:layout_height="wrap_content"
                           android:id="@+id/cardCourseMetres"
-                          android:paddingStart="5dp"
-                          android:text="750 м"
-                          tools:ignore="HardcodedText"/>
+                          android:paddingStart="5dp"/>
             </LinearLayout>
             <ImageView android:layout_width="50dp"
                        android:layout_height="1dp"
@@ -117,22 +109,25 @@
                            tools:ignore="ContentDescription"/>
                 <ImageView android:layout_width="wrap_content"
                            android:layout_height="wrap_content"
+                           android:visibility="gone"
                            android:id="@+id/cardCourseSexFemale"
                            android:layout_gravity="center_vertical"
                            android:tint="@color/gray"
                            app:srcCompat="@drawable/ic_female"
                            android:background="@android:color/transparent"
                            tools:ignore="ContentDescription"/>
-                <ImageView android:layout_width="0dp"
+                <ImageView android:layout_width="wrap_content"
                            android:layout_height="wrap_content"
+                           android:visibility="gone"
                            android:id="@+id/cardCourseSexMale"
                            android:layout_gravity="center_vertical"
                            android:tint="@color/gray"
                            app:srcCompat="@drawable/ic_male"
                            android:background="@android:color/transparent"
                            tools:ignore="ContentDescription"/>
-                <LinearLayout android:layout_width="0dp"
+                <LinearLayout android:layout_width="wrap_content"
                               android:layout_height="wrap_content"
+                              android:visibility="gone"
                               android:layout_gravity="center_vertical"
                               android:id="@+id/cardCourseSex">
                     <ImageView android:layout_width="wrap_content"
@@ -163,10 +158,8 @@
                 <TextView style="@style/Caption2"
                           android:layout_width="wrap_content"
                           android:layout_height="wrap_content"
-                          android:id="@+id/cardCourseAgePeople"
-                          android:textColor="@color/gray"
-                          android:text="20 - 80"
-                          tools:ignore="HardcodedText"/>
+                          android:id="@+id/cardCourseAgeRange"
+                          android:textColor="@color/gray"/>
                 <ImageView android:layout_width="3dp"
                            android:layout_height="3dp"
                            android:layout_marginLeft="5dp"
@@ -180,9 +173,7 @@
                           android:layout_width="wrap_content"
                           android:layout_height="wrap_content"
                           android:id="@+id/cardCoursePrice"
-                          android:textColor="@color/gray"
-                          android:text="500Р / занятие"
-                          tools:ignore="HardcodedText"/>
+                          android:textColor="@color/gray"/>
             </LinearLayout>
         </LinearLayout>
         <ImageView android:layout_width="1dp"

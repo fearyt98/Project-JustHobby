@@ -22,7 +22,7 @@ class CourseInfoAdapter : RecyclerView.Adapter<CourseInfoGroupsHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, p1: Int): CourseInfoGroupsHolder =
         CourseInfoGroupsHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.fragment_card_group, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.card_group, parent, false)
         )
 
     fun onDataChange(groups: List<GroupResponse>) {

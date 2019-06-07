@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import com.aurimteam.justhobby.user.course_info.course_review.CourseReviewFragment
 import com.aurimteam.justhobby.R
 import com.aurimteam.justhobby.response.ReviewResponse
-import kotlinx.android.synthetic.main.fragment_card_review.view.*
+import kotlinx.android.synthetic.main.card_review.view.*
 
 class CourseReviewsAdapter : RecyclerView.Adapter<CourseReviewsHolder>() {
 
@@ -32,7 +32,7 @@ class CourseReviewsAdapter : RecyclerView.Adapter<CourseReviewsHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, p1: Int): CourseReviewsHolder =
         CourseReviewsHolder(
             LayoutInflater.from(parent.context).inflate(
-                R.layout.fragment_card_review,
+                R.layout.card_review,
                 parent,
                 false
             )

@@ -61,6 +61,7 @@
     <string name="back">Назад</string>
     <string name="add_in_my_courses">Добавить в мои курсы</string>
     <string name="remove_from_my_courses">Удалить из мои курсов</string>
+    <string name="remove_from_my_courses_btn">Удалить курс</string>
     <string name="reception">Прием</string>
     <string name="timetable">Расписание</string>
     <string name="short_monday">ПН</string>
@@ -90,6 +91,7 @@
     <string name="before_event_term1">До занятия %1$s час</string>
     <string name="before_event_term2to4">До занятия %1$s часа</string>
     <string name="before_event_term5toMoreAnd11to14">До занятия %1$s часов</string>
+    <string name="length_meters">%1$s м</string>
     <string name="about_recovery">
         Укажите E-mail, к которому привязан аккаунт. Мы пришлем на него\n письмо с инструкцией\n восстановления.
     </string>
@@ -180,4 +182,8 @@
     <string name="card_count_courses">%1$s курсов</string>
     <string name="card_count_groups">%1$s групп</string>
     <string name="card_count_reviews">%1$s отзывов</string>
+    <string name="teacher">Педагог:</string>
+    <string name="payment_one">%1$sР / занятие</string>
+    <string name="payment_month">%1$sР / месяц</string>
+    <string name="payment_course">%1$sР / курс</string>
 </resources>

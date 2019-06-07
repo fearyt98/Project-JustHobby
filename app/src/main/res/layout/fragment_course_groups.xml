@@ -14,7 +14,7 @@
                                             android:paddingBottom="74dp"
                                             android:paddingTop="3dp"
                                             android:clipToPadding="false"
-                                            tools:listitem="@layout/fragment_card_group"
+                                            tools:listitem="@layout/card_group"
                                             app:layout_constraintTop_toBottomOf="@id/courseGroupsMarginSpacer"
                                             app:layout_constraintLeft_toLeftOf="parent"
                                             app:layout_constraintRight_toRightOf="parent"/>

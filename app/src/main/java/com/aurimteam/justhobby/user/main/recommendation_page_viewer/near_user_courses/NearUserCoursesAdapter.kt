@@ -9,7 +9,7 @@ import com.aurimteam.justhobby.user.company_info.course_info.CompanyInfoFragment
 import com.aurimteam.justhobby.user.course_info.сourse_info.CourseInfoFragment
 import com.aurimteam.justhobby.R
 import com.aurimteam.justhobby.response.CourseResponse
-import kotlinx.android.synthetic.main.fragment_card_course.view.*
+import kotlinx.android.synthetic.main.card_course.view.*
 
 class NearUserCoursesAdapter : RecyclerView.Adapter<NearUserCoursesHolder>() {
 
@@ -29,7 +29,7 @@ class NearUserCoursesAdapter : RecyclerView.Adapter<NearUserCoursesHolder>() {
         holder.itemView.cardCourse.setOnClickListener {
             detailInfoCourse(manager)
         }
-        holder.itemView.cardCourseDescription.setOnClickListener {
+        holder.itemView.cardCourseCompany.setOnClickListener {
             detailCompanyInfo(manager)
         }
         holder.itemView.cardCourseBtnBookmark.setOnClickListener { addBookmark() }
@@ -38,7 +38,7 @@ class NearUserCoursesAdapter : RecyclerView.Adapter<NearUserCoursesHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, p1: Int): NearUserCoursesHolder =
         NearUserCoursesHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.fragment_card_course, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.card_course, parent, false)
         )
 
     fun onDataChange(courses: List<CourseResponse>) {
