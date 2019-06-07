@@ -63,9 +63,9 @@ class NearUserCoursesAdapter : RecyclerView.Adapter<NearUserCoursesHolder>() {
             LayoutInflater.from(parent.context).inflate(R.layout.card_course, parent, false)
         )
 
-    fun onDataChange(bookmarks: List<CourseResponseR>, included: IncludedResponse) {
+    fun onDataChange(courses: List<CourseResponseR>, included: IncludedResponse) {
         coursesList.clear()
-        coursesList.addAll(bookmarks)
+        coursesList.addAll(courses)
         companyIncludedList.clear()
         if (included.companies != null)
             for (item in included.companies)
