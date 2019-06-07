@@ -20,6 +20,7 @@ class CourseResponseR(
 )
 
 class CourseRelationshipsResponse(
+    val user: Boolean?,
     val company: IdentifierResponse
 )
 

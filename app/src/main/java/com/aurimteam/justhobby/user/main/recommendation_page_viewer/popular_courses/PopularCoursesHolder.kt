@@ -1,20 +1,81 @@
 package com.aurimteam.justhobby.user.main.recommendation_page_viewer.popular_courses
 
+import android.support.v4.content.ContextCompat
 import android.support.v7.widget.RecyclerView
 import android.view.View
+import com.aurimteam.justhobby.R
 import com.aurimteam.justhobby.response.IdentifierResponse
 import kotlinx.android.synthetic.main.card_course.view.*
 
 class PopularCoursesHolder(view: View) : RecyclerView.ViewHolder(view) {
     fun bind(
-        id: Long,
-        title: String,
-        description: String,
-        address: String
+        rating: String,
+        titleCourse: String,
+        titleCompany: String,
+        address: String,
+        length: Int?,
+        status: Boolean,
+        typePayment: Int,
+        price: Int,
+        sex: List<Int>,
+        ageMax: Int,
+        ageMin: Int,
+        user: Boolean?
     ) {
-        itemView.cardCourseTitle.text=title
-        itemView.cardCourseCompany.text=description
-        itemView.cardCourseAddress.text=address
-        itemView.cardCourseMetres.text="750 м"
+        val ratingInt = rating.toDouble()
+        when {
+            ratingInt in 0.0..1.0 -> itemView.cardCourseRatingBg.setBackgroundResource(R.drawable.card_rating1)
+            ratingInt > 1 && ratingInt < 2 -> itemView.cardCourseRatingBg.setBackgroundResource(R.drawable.card_rating2)
+            ratingInt >= 2 && ratingInt < 3 -> itemView.cardCourseRatingBg.setBackgroundResource(R.drawable.card_rating3)
+            ratingInt >= 3 && ratingInt < 4.5 -> itemView.cardCourseRatingBg.setBackgroundResource(R.drawable.card_rating4)
+            ratingInt >= 4.5 -> itemView.cardCourseRatingBg.setBackgroundResource(R.drawable.card_rating5)
+        }
+        itemView.cardCourseRating.text = rating
+        itemView.cardCourseTitle.text = titleCourse
+        itemView.cardCourseCompany.text = titleCompany
+        itemView.cardCourseAddress.text = address
+        if(length != null) {
+            itemView.cardCourseMetres.text =
+                String.format(itemView.context.resources.getString(R.string.length_meters), length)
+        } else {
+            itemView.cardCourseAddressSep.visibility = View.GONE
+            itemView.cardCourseMetres.visibility = View.GONE
+        }
+
+        itemView.cardCourseStatus.setImageResource(
+            if (status) R.drawable.ic_success_24dp else R.drawable.ic_fail_24dp
+        )
+        for (i in sex) {
+            when (i) {
+                0 -> itemView.cardCourseSex.visibility = View.VISIBLE
+                1 -> itemView.cardCourseSexMale.visibility = View.VISIBLE
+                2 -> itemView.cardCourseSexFemale.visibility = View.VISIBLE
+            }
+        }
+        itemView.cardCoursePrice.text =
+            String.format(
+                itemView.context.resources.getString(
+                    when (typePayment) {
+                        1 -> R.string.payment_month
+                        2 -> R.string.payment_course
+                        else -> R.string.payment_one
+                    }
+                ),
+                price
+            )
+        itemView.cardCourseAgeRange.text = "$ageMin - $ageMax"
+
+        changeColorBtnBookmark(user)
+    }
+
+    fun changeColorBtnBookmark(user: Boolean?) {
+        if(user != null && user)
+            itemView.cardCourseBtnBookmark.setColorFilter(
+                ContextCompat.getColor(itemView.context, R.color.red)
+            )
+        else
+            itemView.cardCourseBtnBookmark.setColorFilter(
+                ContextCompat.getColor(itemView.context, R.color.gray)
+            )
     }
 }
