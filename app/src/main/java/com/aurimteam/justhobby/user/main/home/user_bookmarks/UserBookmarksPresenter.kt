@@ -2,7 +2,6 @@ package com.aurimteam.justhobby.user.main.home.user_bookmarks
 
 import android.content.Context
 import com.aurimteam.justhobby.Settings
-import com.aurimteam.justhobby.response.CourseResponse
 import com.aurimteam.justhobby.response.CourseResponseR
 import com.aurimteam.justhobby.response.IncludedResponse
 
@@ -18,7 +17,7 @@ class UserBookmarksPresenter(private var view: IUserBookmarksView?, private val 
     }
 
     override fun onResultFail(strError: String?) {
-
+        view?.showMessage(strError)
     }
 
     fun deleteUserBookmarks(context: Context, courseId: Long, position: Int) {

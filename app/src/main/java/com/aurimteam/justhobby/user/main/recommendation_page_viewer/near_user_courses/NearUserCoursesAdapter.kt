@@ -2,33 +2,38 @@ package com.aurimteam.justhobby.user.main.recommendation_page_viewer.near_user_c
 
 import android.support.v4.app.FragmentActivity
 import android.support.v4.app.FragmentManager
-import android.support.v4.content.ContextCompat
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import com.aurimteam.justhobby.user.company_info.course_info.CompanyInfoFragment
 import com.aurimteam.justhobby.user.course_info.сourse_info.CourseInfoFragment
 import com.aurimteam.justhobby.R
 import com.aurimteam.justhobby.response.CompanyResponse
-import com.aurimteam.justhobby.response.CourseResponse
 import com.aurimteam.justhobby.response.CourseResponseR
 import com.aurimteam.justhobby.response.IncludedResponse
-import com.aurimteam.justhobby.user.main.home.user_bookmarks.UserBookmarksHolder
+import com.aurimteam.justhobby.CourseHolder
 import kotlinx.android.synthetic.main.card_course.view.*
 
-class NearUserCoursesAdapter : RecyclerView.Adapter<NearUserCoursesHolder>() {
+class NearUserCoursesAdapter(private val presenter: NearUserCoursesPresenter) : RecyclerView.Adapter<CourseHolder>() {
 
     private val coursesList: MutableList<CourseResponseR> = mutableListOf()
     private val companyIncludedList: MutableMap<Long, CompanyResponse> = mutableMapOf()
+    private val coursesOfUser: MutableList<Boolean> = mutableListOf()
 
     override fun getItemCount(): Int = coursesList.size
-    override fun onBindViewHolder(holder: NearUserCoursesHolder, position: Int, payloads: MutableList<Any>) {
+    override fun onCreateViewHolder(parent: ViewGroup, p1: Int): CourseHolder =
+        CourseHolder(
+            LayoutInflater.from(parent.context).inflate(R.layout.card_course, parent, false)
+        )
+
+    override fun onBindViewHolder(holder: CourseHolder, position: Int, payloads: MutableList<Any>) {
         if (payloads.isEmpty())
             onBindViewHolder(holder, position)
         else
             holder.changeColorBtnBookmark(payloads[0] as Boolean?)
     }
-    override fun onBindViewHolder(holder: NearUserCoursesHolder, position: Int) {
+
+    override fun onBindViewHolder(holder: CourseHolder, position: Int) {
         val manager = (holder.itemView.context as FragmentActivity).supportFragmentManager
         val item = coursesList[position]
         val itemCompany = companyIncludedList[item.relationships.company.id]!!
@@ -48,29 +53,50 @@ class NearUserCoursesAdapter : RecyclerView.Adapter<NearUserCoursesHolder>() {
         )
         holder.itemView.cardCourse.setOnClickListener { detailInfoCourse(manager, item, itemCompany) }
         holder.itemView.cardCourseBtnBookmark.setOnClickListener {
-            /*deleteBookmark(
-                holder,
-                coursesList[position].id,
-                position
-            )
-            addBookmark()*/
+            if (coursesOfUser[position]) {
+                deleteBookmark(
+                    holder,
+                    coursesList[position].id,
+                    position
+                )
+            } else {
+                addBookmark(
+                    holder,
+                    coursesList[position].id,
+                    position
+                )
+            }
         }
         holder.itemView.cardCourseBtnGeo.setOnClickListener { searchCourseOnMap() }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, p1: Int): NearUserCoursesHolder =
-        NearUserCoursesHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.card_course, parent, false)
-        )
-
     fun onDataChange(courses: List<CourseResponseR>, included: IncludedResponse) {
-        coursesList.clear()
+        this.coursesList.clear()
         coursesList.addAll(courses)
         companyIncludedList.clear()
         if (included.companies != null)
             for (item in included.companies)
                 companyIncludedList[item.id] = item
+        for (item in coursesList)
+            if (item.relationships.user != null)
+                coursesOfUser.add(coursesList.indexOf(item), item.relationships.user)
+            else
+                coursesOfUser.add(coursesList.indexOf(item), false)
         notifyDataSetChanged()
+    }
+
+    fun deletedBookmark(position: Int) {
+        coursesOfUser[position] = false
+        notifyItemChanged(position, listOf(false))
+    }
+
+    fun addedBookmark(position: Int) {
+        coursesOfUser[position] = true
+        notifyItemChanged(position, listOf(true))
+    }
+
+    private fun searchCourseOnMap() {
+        Log.d("searchCourseOnMap", "granted")
     }
 
     private fun detailInfoCourse(fm: FragmentManager, course: CourseResponseR, company: CompanyResponse) {
@@ -80,15 +106,11 @@ class NearUserCoursesAdapter : RecyclerView.Adapter<NearUserCoursesHolder>() {
             .commit()
     }
 
-    private fun deleteBookmark(holder: UserBookmarksHolder, courseId: Long, position: Int) {
-        //presenter.deleteUserBookmarks(holder.itemView.context, courseId, position)
+    private fun deleteBookmark(holder: CourseHolder, courseId: Long, position: Int) {
+        presenter.deleteUserBookmark(holder.itemView.context, courseId, position)
     }
 
-    private fun addBookmark() {
-
-    }
-
-    private fun searchCourseOnMap() {
-
+    private fun addBookmark(holder: CourseHolder, courseId: Long, position: Int) {
+        presenter.addUserBookmark(holder.itemView.context, courseId, position)
     }
 }

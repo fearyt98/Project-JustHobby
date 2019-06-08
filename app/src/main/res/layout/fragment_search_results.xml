@@ -1,16 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-                                            xmlns:tools="http://schemas.android.com/tools"
-                                            android:layout_width="match_parent"
-                                            android:layout_height="wrap_content"
-                                            android:paddingBottom="12dp">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
 
-    <android.support.v7.widget.RecyclerView android:id="@+id/searchResultsRecycler"
-                                            android:layout_width="match_parent"
-                                            android:layout_height="wrap_content"
-                                            android:clipToPadding="false"
-                                            android:overScrollMode="never"
-                                            android:paddingTop="3dp"
-                                            android:paddingBottom="9dp"
-                                            tools:listitem="@layout/card_course"/>
-</android.support.v4.widget.NestedScrollView>
+    <ProgressBar android:id="@+id/searchResultsProgressBar"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_gravity="center"/>
+
+    <LinearLayout android:id="@+id/searchResultsClear"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:layout_gravity="center"
+                  android:gravity="center"
+                  android:orientation="vertical"
+                  android:visibility="gone">
+
+        <ImageView android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_gravity="center"
+                   app:srcCompat="@drawable/big_ic_no_results"
+                   tools:ignore="ContentDescription"/>
+
+        <TextView style="@style/H2.Medium"
+                  android:paddingTop="16dp"
+                  android:paddingBottom="8dp"
+                  android:text="@string/no_search_result"
+                  android:textAlignment="center"
+                  android:textColor="@color/grafitText"/>
+
+        <TextView style="@style/Body2"
+                  android:paddingBottom="8dp"
+                  android:text="@string/about_no_search_results"
+                  android:textAlignment="center"
+                  android:textColor="@color/grafitText"/>
+    </LinearLayout>
+
+    <android.support.v4.widget.NestedScrollView android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:paddingBottom="12dp"
+                                                android:visibility="gone">
+
+        <android.support.v7.widget.RecyclerView android:id="@+id/searchResultsRecyclerView"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:clipToPadding="false"
+                                                android:overScrollMode="never"
+                                                android:paddingTop="3dp"
+                                                android:paddingBottom="9dp"
+                                                tools:listitem="@layout/card_course"/>
+    </android.support.v4.widget.NestedScrollView>
+</LinearLayout>

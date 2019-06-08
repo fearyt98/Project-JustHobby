@@ -1,13 +1,11 @@
-package com.aurimteam.justhobby.user.main.recommendation_page_viewer.popular_courses
+package com.aurimteam.justhobby
 
 import android.support.v4.content.ContextCompat
 import android.support.v7.widget.RecyclerView
 import android.view.View
-import com.aurimteam.justhobby.R
-import com.aurimteam.justhobby.response.IdentifierResponse
 import kotlinx.android.synthetic.main.card_course.view.*
 
-class PopularCoursesHolder(view: View) : RecyclerView.ViewHolder(view) {
+class CourseHolder(view: View) : RecyclerView.ViewHolder(view) {
     fun bind(
         rating: String,
         titleCourse: String,
@@ -22,13 +20,18 @@ class PopularCoursesHolder(view: View) : RecyclerView.ViewHolder(view) {
         ageMin: Int,
         user: Boolean?
     ) {
-        val ratingInt = rating.toDouble()
-        when {
-            ratingInt in 0.0..1.0 -> itemView.cardCourseRatingBg.setBackgroundResource(R.drawable.card_rating1)
-            ratingInt > 1 && ratingInt < 2 -> itemView.cardCourseRatingBg.setBackgroundResource(R.drawable.card_rating2)
-            ratingInt >= 2 && ratingInt < 3 -> itemView.cardCourseRatingBg.setBackgroundResource(R.drawable.card_rating3)
-            ratingInt >= 3 && ratingInt < 4.5 -> itemView.cardCourseRatingBg.setBackgroundResource(R.drawable.card_rating4)
-            ratingInt >= 4.5 -> itemView.cardCourseRatingBg.setBackgroundResource(R.drawable.card_rating5)
+
+        if(rating != "-") {
+            val ratingInt = rating.toDouble()
+            when {
+                ratingInt in 0.0..1.0 -> itemView.cardCourseRatingBg.setBackgroundResource(R.drawable.card_rating1)
+                ratingInt > 1 && ratingInt < 2 -> itemView.cardCourseRatingBg.setBackgroundResource(R.drawable.card_rating2)
+                ratingInt >= 2 && ratingInt < 3 -> itemView.cardCourseRatingBg.setBackgroundResource(R.drawable.card_rating3)
+                ratingInt >= 3 && ratingInt < 4.5 -> itemView.cardCourseRatingBg.setBackgroundResource(R.drawable.card_rating4)
+                ratingInt >= 4.5 -> itemView.cardCourseRatingBg.setBackgroundResource(R.drawable.card_rating5)
+            }
+        } else {
+            itemView.cardCourseRatingBg.setBackgroundResource(R.drawable.card_rating_none)
         }
         itemView.cardCourseRating.text = rating
         itemView.cardCourseTitle.text = titleCourse

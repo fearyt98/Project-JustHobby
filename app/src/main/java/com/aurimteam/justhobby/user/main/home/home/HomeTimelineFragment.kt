@@ -79,7 +79,6 @@ class HomeTimelineFragment : Fragment(), IHomeView {
     override fun onStop() {
         super.onStop()
         timer.cancel()
-        presenter.onDestroy()
     }
 
     override fun onResume() {

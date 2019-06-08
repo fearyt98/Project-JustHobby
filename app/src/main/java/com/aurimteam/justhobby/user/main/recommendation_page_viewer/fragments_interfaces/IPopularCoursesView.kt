@@ -5,4 +5,8 @@ import com.aurimteam.justhobby.response.IncludedResponse
 
 interface IPopularCoursesView {
     fun showPopularCourses(courses: List<CourseResponseR>, included: IncludedResponse?)
+    fun showMessage(message: String?)
+    fun toggleContentPB(isVisiblePB: Boolean)
+    fun deletedUserBookmarks(position: Int)
+    fun addedUserBookmarks(position: Int)
 }

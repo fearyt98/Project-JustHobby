@@ -91,30 +91,23 @@
         <item name="android:layout_gravity">center</item>
     </style>
     <!-- Button Filters -->
-    <style name="BottomFiltersButtonGreen">
-        <item name="android:textColor">@color/whiteTop</item>
+    <style name="BottomFiltersCheckBoxWhite">
+        <item name="android:textColor">@drawable/btn_filter_color</item>
         <item name="android:textAppearance">@style/Body2</item>
+        <item name="android:textAlignment">center</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:paddingTop">8dp</item>
         <item name="android:paddingBottom">8dp</item>
         <item name="android:minHeight">0dp</item>
         <item name="android:minWidth">0dp</item>
-        <item name="android:background">@drawable/btn_green_filter_bg</item>
+        <item name="android:background">@drawable/btn_filter_bg</item>
+        <item name="android:button">@android:color/transparent</item>
         <item name="android:layout_gravity">center</item>
     </style>
-
-    <style name="BottomFiltersButtonWhite">
-        <item name="android:textColor">@color/grayDarkMiddle</item>
-        <item name="android:textAppearance">@style/Body2</item>
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:paddingTop">8dp</item>
-        <item name="android:paddingBottom">8dp</item>
-        <item name="android:minHeight">0dp</item>
-        <item name="android:minWidth">0dp</item>
-        <item name="android:background">@drawable/btn_green_filter_bg</item>
-        <item name="android:layout_gravity">center</item>
+    <!-- Seek Bar -->
+    <style name="SeekBar" parent="Widget.AppCompat.SeekBar">
+        <item name="colorAccent">@color/colorAccent</item>
     </style>
     <!-- Tab -->
     <style name="TabsPageViewer" parent="Widget.Design.TabLayout">

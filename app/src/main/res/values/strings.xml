@@ -212,4 +212,5 @@
     <string name="payment_one">%1$sР / занятие</string>
     <string name="payment_month">%1$sР / месяц</string>
     <string name="payment_course">%1$sР / курс</string>
+    <string name="age">Возраст</string>
 </resources>
