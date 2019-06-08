@@ -15,6 +15,9 @@ import com.aurimteam.justhobby.start.registry.start.RegistryStartActivity
 import kotlinx.android.synthetic.main.activity_registry.*
 
 class RegistryActivity : AppCompatActivity(), IRegistryView {
+
+    private val presenter = RegistryPresenter(this, RegistryModel(), this)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registry)
@@ -49,10 +52,25 @@ class RegistryActivity : AppCompatActivity(), IRegistryView {
             finish()
         }
 
-        val registry = findViewById<TextView>(R.id.registryEnterButton)
-        registry.setOnClickListener { regBtnClick() }
+        findViewById<TextView>(R.id.registryEnterButton).setOnClickListener { regBtnClick() }
     }
 
+    override fun openRegistryStart() {
+        startActivity(Intent(Intent(this, RegistryStartActivity::class.java)))
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        presenter.onDestroy()
+    }
+
+    override fun togglePB(isVisiblePB: Boolean) {
+        if (isVisiblePB) {
+            registryProgressBar.visibility = View.VISIBLE
+        } else {
+            registryProgressBar.visibility = View.GONE
+        }
+    }
 
     private fun changeButtonVisible(password: EditText, btn: ImageButton) {
         if (password.isFocused) btn.setColorFilter(ContextCompat.getColor(this, R.color.colorPrimary))
@@ -78,11 +96,11 @@ class RegistryActivity : AppCompatActivity(), IRegistryView {
         password.setSelection(oldPosCursor)
     }
 
-    fun regBtnClick() {
-        val intent = Intent(this, RegistryStartActivity::class.java)
-        intent.putExtra("email", registryLogin.text.toString())
-        intent.putExtra("password", registryPassword.text.toString())
-        intent.putExtra("confirm_password", registryConfirmPassword.text.toString())
-        startActivity(intent)
+    private fun regBtnClick() {
+        presenter.sendUserInfo(
+            registryLogin.text.toString(),
+            registryPassword.text.toString(),
+            registryConfirmPassword.text.toString()
+        )
     }
 }

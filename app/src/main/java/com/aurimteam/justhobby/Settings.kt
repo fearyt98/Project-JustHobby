@@ -19,8 +19,17 @@ class Settings(val context: Context) {
         editor?.apply()
     }
 
+    fun setPropertyBoolean(name: String, value: Boolean) {
+        editor?.putBoolean(name, value)
+        editor?.apply()
+    }
+
     fun getProperty(name: String): String? {
         return settings?.getString(name, null)
+    }
+
+    fun getPropertyBoolean(name: String, default: Boolean): Boolean? {
+        return settings?.getBoolean(name, default)
     }
 
     fun removeProperty(name: String) {

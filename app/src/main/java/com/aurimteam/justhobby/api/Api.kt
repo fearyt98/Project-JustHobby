@@ -4,6 +4,7 @@ import com.aurimteam.justhobby.response.*
 import com.aurimteam.justhobby.response_body.LoginBody
 import com.aurimteam.justhobby.response_body.RegistryBody
 import com.aurimteam.justhobby.response_body.TokenBody
+import com.aurimteam.justhobby.response_body.UpdateUserBody
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -11,7 +12,7 @@ import retrofit2.http.*
 interface Api {
     @Headers("Accept: application/json")
     @POST("login")
-    fun login(@Body loginBody: LoginBody): Call<LoginResponse>
+    fun login(@Body loginBody: LoginBody): Call<TokenResponse>
 
     @Headers("Accept: application/json")
     @HTTP(method = "DELETE", path = "logout", hasBody = true)
@@ -78,5 +79,9 @@ interface Api {
 
     @Headers("Accept: application/json")
     @POST("register")
-    fun registry(@Body registryBody: RegistryBody): Call<LoginResponse>
+    fun registry(@Body registryBody: RegistryBody): Call<TokenResponse>
+
+    @Headers("Accept: application/json")
+    @PATCH("user")
+    fun updateUser(@Body updateUserBody: UpdateUserBody): Call<UserResponse>
 }

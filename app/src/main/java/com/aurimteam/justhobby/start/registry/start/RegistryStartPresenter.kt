@@ -9,26 +9,19 @@ class RegistryStartPresenter(
     private var context: Context?
 ) : RegistryStartModel.OnFinishedListener {
 
-    override fun onResultSuccess(token: String, userId: Long) {
-        if (token != "") {
-            Settings(context!!).setProperty("token", token)
-            Settings(context!!).setProperty("user_id", userId.toString())
-            view?.userRegistrited()
-        }
+    override fun onResultSuccess() {
+        Settings(context!!).setPropertyBoolean("is_full_reg", true)
+        view?.userRegistered()
     }
 
     override fun onResultFail(error: String) {
-
+        view?.togglePB(false)
     }
 
-    fun sendUserInfo(
-        first_name: String,
-        last_name: String,
-        email: String,
-        password: String,
-        password_confirmation: String
-    ) {
-        model?.sendUserInfoData(first_name, last_name, email, password, password_confirmation, this)
+    fun sendUserInfo(first_name: String, last_name: String) {
+        view?.togglePB(true)
+        val token = Settings(context!!).getProperty("token")
+        model?.sendUserInfoData(token!!, first_name, last_name, this)
     }
 
     fun onDestroy() {

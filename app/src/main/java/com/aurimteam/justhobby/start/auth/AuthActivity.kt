@@ -15,6 +15,7 @@ import android.view.Gravity
 import android.widget.*
 import com.aurimteam.justhobby.user.main.main_nav.MainNavActivity
 import com.aurimteam.justhobby.start.recovery.RecoveryActivity
+import com.aurimteam.justhobby.start.registry.start.RegistryStartActivity
 import kotlinx.android.synthetic.main.activity_auth.*
 
 class AuthActivity : AppCompatActivity(), IAuthView {
@@ -71,6 +72,11 @@ class AuthActivity : AppCompatActivity(), IAuthView {
 
     override fun openMain() {
         startActivity(Intent(this, MainNavActivity::class.java))
+        finish()
+    }
+
+    override fun openStartRegistry() {
+        startActivity(Intent(this, RegistryStartActivity::class.java))
         finish()
     }
 

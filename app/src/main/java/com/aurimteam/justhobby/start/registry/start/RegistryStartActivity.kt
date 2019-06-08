@@ -3,9 +3,11 @@ package com.aurimteam.justhobby.start.registry.start
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.view.View
 import android.widget.Button
 import com.aurimteam.justhobby.start.features.FeaturesActivity
 import com.aurimteam.justhobby.R
+import kotlinx.android.synthetic.main.activity_registry.*
 import kotlinx.android.synthetic.main.activity_registry_start.*
 
 class RegistryStartActivity : AppCompatActivity(), IRegistryStartView {
@@ -25,24 +27,22 @@ class RegistryStartActivity : AppCompatActivity(), IRegistryStartView {
         presenter.onDestroy()
     }
 
-    override fun userRegistrited() {
-        val intent = Intent(this, FeaturesActivity::class.java)
-        startActivity(intent)
+    override fun userRegistered() {
+        startActivity(Intent(this, FeaturesActivity::class.java))
     }
 
-    fun readyBtnClick() {
-        if (arguments != null
-            && registryStartFirstName.text.toString() != " "
-            && registryStartLastName.text.toString() != " "
-        ) {
-            presenter.sendUserInfo(
-                registryStartFirstName.text.toString(),
-                registryStartLastName.text.toString(),
-                arguments?.get("email").toString(),
-                arguments?.get("password").toString(),
-                arguments?.get("confirm_password").toString()
-            )
-
+    override fun togglePB(isVisiblePB: Boolean) {
+        if (isVisiblePB) {
+            registryStartProgressBar.visibility = View.VISIBLE
+        } else {
+            registryStartProgressBar.visibility = View.GONE
         }
+    }
+
+    private fun readyBtnClick() {
+        presenter.sendUserInfo(
+            registryStartFirstName.text.toString(),
+            registryStartLastName.text.toString()
+        )
     }
 }
