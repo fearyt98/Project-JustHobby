@@ -1,7 +1,7 @@
 package com.aurimteam.justhobby.start.auth
 
 import android.content.Context
-import com.aurimteam.justhobby.response.LoginResponse
+import com.aurimteam.justhobby.response.TokenResponse
 import com.aurimteam.justhobby.Settings
 
 class AuthPresenter(private var view: IAuthView?, private val model: IAuthModel?, private var context: Context?) :
@@ -11,11 +11,12 @@ class AuthPresenter(private var view: IAuthView?, private val model: IAuthModel?
     Сами методы View не используются в Presenter
     Таким образом выполняется связь между Presenter и View
     */
-
-    override fun onResultSuccess(token: LoginResponse) {
+    override fun onResultSuccess(token: TokenResponse) {
         Settings(context!!).setProperty("token", token.token)
         Settings(context!!).setProperty("user_id", token.user_id.toString())
-        view?.openMain()
+        Settings(context!!).setPropertyBoolean("is_full_reg", token.is_full_reg)
+        if (token.is_full_reg) view?.openMain()
+        else view?.openStartRegistry()
     }
 
     override fun onResultFail(strError: String) {
@@ -35,6 +36,11 @@ class AuthPresenter(private var view: IAuthView?, private val model: IAuthModel?
     }
 
     fun isSetToken() {
-        if (Settings(context!!).getProperty("token") != null) view!!.openMain()
+        if (Settings(context!!).getProperty("token") != null &&
+            Settings(context!!).getPropertyBoolean("is_full_reg", false) != false
+        ) view?.openMain()
+        else if (Settings(context!!).getProperty("token") != null
+            && Settings(context!!).getPropertyBoolean("is_full_reg", false) == false
+        ) view?.openStartRegistry()
     }
 }

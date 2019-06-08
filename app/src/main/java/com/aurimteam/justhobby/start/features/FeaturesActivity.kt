@@ -68,8 +68,8 @@ class FeaturesActivity : AppCompatActivity() {
     }
 
     private fun setClickListener() {
-        val textView: TextView = findViewById(R.id.introSkip)
-        textView.setOnClickListener { skipIntro() }
+        findViewById<TextView>(R.id.introComplete).setOnClickListener { runTimelineActivity() }
+        findViewById<TextView>(R.id.introSkip).setOnClickListener { runTimelineActivity() }
     }
 
     private fun addDotsIndicator(position: Int) {
@@ -85,7 +85,7 @@ class FeaturesActivity : AppCompatActivity() {
             mDots[position].setTextColor(ContextCompat.getColor(this, R.color.whiteTop))
     }
 
-    private fun skipIntro() {
+    private fun runTimelineActivity() {
         startActivity(Intent(this, MainNavActivity::class.java))
     }
 }

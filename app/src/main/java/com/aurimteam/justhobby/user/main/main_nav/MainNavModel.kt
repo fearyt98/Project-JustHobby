@@ -2,8 +2,6 @@ package com.aurimteam.justhobby.user.main.main_nav
 
 import com.aurimteam.justhobby.api.Api
 import com.aurimteam.justhobby.App
-import com.aurimteam.justhobby.response_body.LoginBody
-import com.aurimteam.justhobby.response.LoginResponse
 import com.aurimteam.justhobby.response.UserResponse
 import org.json.JSONObject
 import retrofit2.Call

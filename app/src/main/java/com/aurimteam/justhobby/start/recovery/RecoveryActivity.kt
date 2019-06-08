@@ -8,7 +8,7 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.LinearLayout
 import android.widget.TextView
-
+import kotlinx.android.synthetic.main.activity_recovery.*
 
 class RecoveryActivity : AppCompatActivity(), IRecoveryView {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,6 +26,14 @@ class RecoveryActivity : AppCompatActivity(), IRecoveryView {
         val cancel = findViewById<TextView>(R.id.recoveryCancel)
         cancel.setOnClickListener {
             finish()
+        }
+    }
+
+    override fun togglePB(isVisiblePB: Boolean) {
+        if (isVisiblePB) {
+            recoveryProgressBar.visibility = View.VISIBLE
+        } else {
+            recoveryProgressBar.visibility = View.GONE
         }
     }
 }
