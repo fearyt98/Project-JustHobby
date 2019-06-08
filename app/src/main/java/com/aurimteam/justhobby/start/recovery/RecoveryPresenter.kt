@@ -1,17 +1,29 @@
 package com.aurimteam.justhobby.start.recovery
 
-class RecoveryPresenter(private var view: IRecoveryView?, private val model: IRecoveryModel) :
-    RecoveryModel.OnFinishedListener {
+import android.content.Context
+
+class RecoveryPresenter(
+    private var view: IRecoveryView?,
+    private val model: IRecoveryModel?,
+    private var context: Context?
+) : RecoveryModel.OnFinishedListener {
 
     override fun onResultSuccess() {
+        view?.togglePB(false)
+        view?.backToMainActivity()
+    }
+
+    override fun onResultFail(error: String) {
 
     }
 
-    override fun onResultFail() {
-
+    fun sendRecoveryEmail(email: String) {
+        view?.togglePB(true)
+        model?.sendRecoveryEmail(email, this)
     }
 
-    fun onDestroy(){
+    fun onDestroy() {
+        context = null
         view = null
     }
 }

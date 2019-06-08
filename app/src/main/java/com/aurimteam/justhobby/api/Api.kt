@@ -1,11 +1,7 @@
 package com.aurimteam.justhobby.api
 
 import com.aurimteam.justhobby.response.*
-import com.aurimteam.justhobby.response_body.BookmarkAddBody
-import com.aurimteam.justhobby.response_body.LoginBody
-import com.aurimteam.justhobby.response_body.RegistryBody
-import com.aurimteam.justhobby.response_body.TokenBody
-import com.aurimteam.justhobby.response_body.UpdateUserBody
+import com.aurimteam.justhobby.response_body.*
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -92,4 +88,8 @@ interface Api {
     @Headers("Accept: application/json")
     @PATCH("user")
     fun updateUser(@Body updateUserBody: UpdateUserBody): Call<UserResponse>
+
+    @Headers("Accept: application/json")
+    @POST("forgot")
+    fun recallEmail(@Body recoveryBody: RecoveryBody): Call<StatusResponse>
 }

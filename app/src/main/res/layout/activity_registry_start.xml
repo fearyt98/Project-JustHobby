@@ -89,7 +89,7 @@
                                      android:paddingTop="2.5dp"
                                      android:paddingEnd="28dp"
                                      android:paddingBottom="7.5dp"
-                                     android:visibility="visible"
+                                     android:visibility="gone"
                                      app:srcCompat="@drawable/ic_fail_24dp"/>
                     </FrameLayout>
                 </LinearLayout>
@@ -98,8 +98,25 @@
                               android:layout_height="wrap_content"
                               android:orientation="vertical">
 
-                    <TextView style="@style/Label"
-                              android:text="@string/last_name"/>
+                    <android.support.constraint.ConstraintLayout android:layout_width="match_parent"
+                                                                 android:layout_height="wrap_content"
+                                                                 android:paddingStart="0dp"
+                                                                 android:paddingEnd="16dp">
+
+                        <TextView style="@style/Label"
+                                  android:text="@string/last_name"
+                                  app:layout_constraintBottom_toBottomOf="parent"
+                                  app:layout_constraintLeft_toLeftOf="parent"
+                                  app:layout_constraintTop_toTopOf="parent"/>
+
+                        <TextView android:id="@+id/emailErrorAuth"
+                                  style="@style/ErrorMessage"
+                                  android:layout_width="wrap_content"
+                                  android:layout_height="wrap_content"
+                                  app:layout_constraintBottom_toBottomOf="parent"
+                                  app:layout_constraintRight_toRightOf="parent"
+                                  app:layout_constraintTop_toTopOf="parent"/>
+                    </android.support.constraint.ConstraintLayout>
 
                     <FrameLayout android:layout_width="match_parent"
                                  android:layout_height="wrap_content">
@@ -118,7 +135,7 @@
                                      android:paddingTop="2.5dp"
                                      android:paddingEnd="28dp"
                                      android:paddingBottom="7.5dp"
-                                     android:visibility="visible"
+                                     android:visibility="gone"
                                      app:srcCompat="@drawable/ic_success_24dp"/>
                     </FrameLayout>
                 </LinearLayout>

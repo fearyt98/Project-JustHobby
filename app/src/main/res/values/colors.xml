@@ -10,6 +10,7 @@
 
     <color name="red">#F40000</color>
     <color name="gold">#F4CD00</color>
+    <color name="errorMessage">#FFEE01</color>
     <color name="grafit">#333333</color>
 
     <color name="ratingOne">#DD1E23</color>
