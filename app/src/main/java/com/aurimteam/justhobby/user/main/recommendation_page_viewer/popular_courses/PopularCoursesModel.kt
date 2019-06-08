@@ -1,56 +1,157 @@
 package com.aurimteam.justhobby.user.main.recommendation_page_viewer.popular_courses
 
+import com.aurimteam.justhobby.response.*
 import com.aurimteam.justhobby.user.main.recommendation_page_viewer.fragments_interfaces.IPopularCoursesModel
-import com.aurimteam.justhobby.response.CourseResponse
-import com.aurimteam.justhobby.response.IdentifierResponse
 import java.sql.Timestamp
 
 class PopularCoursesModel : IPopularCoursesModel {
     interface OnFinishedListener {
-        fun onResultSuccess(courses: List<CourseResponse>)
+        fun onResultSuccess(courses: List<CourseResponseR>, included: IncludedResponse?)
         fun onResultFail()
     }
 
     override fun getPopularCoursesData(onFinishedListener: OnFinishedListener) {
-        val courses: List<CourseResponse> = listOf(/*
-            CourseResponse(
-                "sport",
-                0,
-                "Восточный брейк",
-                "Drive - школа зажигательных танцев",
-                "пр. Ленина 286, д. 12",
-                IdentifierResponse("sport", 100),
-                IdentifierResponse("Жиг", 101),
-                Timestamp(100),
-                Timestamp(200)
+        val courses: List<CourseResponseR> = listOf(
+            CourseResponseR(
+                "course", 16,
+                CourseAttrResponse(
+                    true, "Temporibus",
+                    "Odit natus ducimus velit amet.",
+                    "Громов Street, 4",
+                    null,
+                    "auayDrZcytdBCyQEaR9NTQV0oW9Q64",
+                    "4",
+                    "56.4647440000",
+                    "84.9665670000",
+                    "2.2",
+                    true,
+                    2,
+                    6764,
+                    listOf(0, 1),
+                    100,
+                    0,
+                    1558258963,
+                    1558258963
+                ),
+                CourseRelationshipsResponse(true, IdentifierResponse("company_id", 2))
             ),
-            CourseResponse(
-                "dance",
-                0,
-                "Восточный базар",
-                "Drive - школа зажигательных танцев",
-                "пр. Ленина 26, д. 13",
-                IdentifierResponse("sport", 100),
-                IdentifierResponse("Жиг", 101),
-                Timestamp(100),
-                Timestamp(200)
+            CourseResponseR(
+                "course", 16,
+                CourseAttrResponse(
+                    true, "Temporibus",
+                    "Odit natus ducimus velit amet.",
+                    "Громов Street, 4",
+                    null,
+                    "auayDrZcytdBCyQEaR9NTQV0oW9Q64",
+                    "4",
+                    "56.4647440000",
+                    "84.9665670000",
+                    "3",
+                    true,
+                    2,
+                    6764,
+                    listOf(0, 1),
+                    100,
+                    0,
+                    1558258963,
+                    1558258963
+                ),
+                CourseRelationshipsResponse(true, IdentifierResponse("company_id", 2))
+            ),
+            CourseResponseR(
+                "course", 16,
+                CourseAttrResponse(
+                    true, "Temporibus",
+                    "Odit natus ducimus velit amet.",
+                    "Громов Street, 4",
+                    null,
+                    "auayDrZcytdBCyQEaR9NTQV0oW9Q64",
+                    "4",
+                    "56.4647440000",
+                    "84.9665670000",
+                    "4",
+                    true,
+                    2,
+                    6764,
+                    listOf(0, 1),
+                    100,
+                    0,
+                    1558258963,
+                    1558258963
+                ),
+                CourseRelationshipsResponse(true, IdentifierResponse("company_id", 2))
+            ),
+            CourseResponseR(
+                "course", 16,
+                CourseAttrResponse(
+                    true, "Temporibus",
+                    "Odit natus ducimus velit amet.",
+                    "Громов Street, 4",
+                    null,
+                    "auayDrZcytdBCyQEaR9NTQV0oW9Q64",
+                    "4",
+                    "56.4647440000",
+                    "84.9665670000",
+                    "5",
+                    true,
+                    2,
+                    6764,
+                    listOf(0, 1),
+                    100,
+                    0,
+                    1558258963,
+                    1558258963
+                ),
+                CourseRelationshipsResponse(true, IdentifierResponse("company_id", 2))
+            ),
+            CourseResponseR(
+                "course", 16,
+                CourseAttrResponse(
+                    true, "Temporibus",
+                    "Odit natus ducimus velit amet.",
+                    "Громов Street, 4",
+                    null,
+                    "auayDrZcytdBCyQEaR9NTQV0oW9Q64",
+                    "4",
+                    "56.4647440000",
+                    "84.9665670000",
+                    "2.5",
+                    true,
+                    2,
+                    6764,
+                    listOf(0, 1),
+                    100,
+                    0,
+                    1558258963,
+                    1558258963
+                ),
+                CourseRelationshipsResponse(true, IdentifierResponse("company_id", 2))
             )
-        */)
-        /*App.retrofit
-            .create(Api::class.java)
-            .getAllEvents()
-            .enqueue(object : Callback<List<EventResponse>> {
-                override fun onFailure(call: Call<List<EventResponse>>, t: Throwable) {
-                    Log.e("asd", t.toString())
-                }
-                override fun onResponse(call: Call<List<EventResponse>>, response: Response<List<EventResponse>>) {
-                    val events = response.body()
-
-                    if (events != null) {
-                        view?.showEvents(events)
-                    }
-                }
-            })*/
-        onFinishedListener.onResultSuccess(courses)
+        )
+        val included: IncludedResponse =
+            IncludedResponse(
+                null, null, listOf(
+                    CompanyResponse(
+                        "company",
+                        2,
+                        CompanyAttrResponse(
+                            "CT-02970",
+                            true,
+                            "МКК ТелекомМорСантех",
+                            "77324305560",
+                            "Меркушев Street, 44",
+                            "XopfRTSoxONhIB8HYnNkYiv2FBBJDh",
+                            "44",
+                            "56.5053270000",
+                            "84.9694710000",
+                            "https://ignatov.ru/",
+                            "2.68",
+                            1558258962,
+                            1558258962
+                        )
+                    )
+                ), null
+            )
+        onFinishedListener.onResultSuccess(courses, included)
     }
 }

@@ -9,6 +9,8 @@ import android.view.ViewGroup
 import com.aurimteam.justhobby.user.main.recommendation_page_viewer.fragments_interfaces.INearCoursesView
 import com.aurimteam.justhobby.R
 import com.aurimteam.justhobby.response.CourseResponse
+import com.aurimteam.justhobby.response.CourseResponseR
+import com.aurimteam.justhobby.response.IncludedResponse
 import kotlinx.android.synthetic.main.fragment_near_user_courses.*
 
 class NearUserCoursesFragment : Fragment(), INearCoursesView {
@@ -21,8 +23,8 @@ class NearUserCoursesFragment : Fragment(), INearCoursesView {
         return view
     }
 
-    override fun showNearUserCourses(courses: List<CourseResponse>) {
-        adapter.onDataChange(courses)
+    override fun showNearUserCourses(courses: List<CourseResponseR>, included: IncludedResponse?) {
+        adapter.onDataChange(courses, included!!)
     }
 
     override fun onStart() {

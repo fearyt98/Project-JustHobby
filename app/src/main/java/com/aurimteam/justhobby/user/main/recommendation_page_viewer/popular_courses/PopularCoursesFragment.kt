@@ -9,6 +9,8 @@ import android.view.ViewGroup
 import com.aurimteam.justhobby.user.main.recommendation_page_viewer.fragments_interfaces.IPopularCoursesView
 import com.aurimteam.justhobby.R
 import com.aurimteam.justhobby.response.CourseResponse
+import com.aurimteam.justhobby.response.CourseResponseR
+import com.aurimteam.justhobby.response.IncludedResponse
 import kotlinx.android.synthetic.main.fragment_popular_courses.*
 
 class PopularCoursesFragment : Fragment(), IPopularCoursesView {
@@ -20,8 +22,8 @@ class PopularCoursesFragment : Fragment(), IPopularCoursesView {
         return inflater.inflate(R.layout.fragment_popular_courses, container, false)
     }
 
-    override fun showPopularCourses(courses: List<CourseResponse>) {
-        adapter.onDataChange(courses)
+    override fun showPopularCourses(courses: List<CourseResponseR>, included: IncludedResponse?) {
+        adapter.onDataChange(courses, included!!)
     }
 
     override fun onStart() {
