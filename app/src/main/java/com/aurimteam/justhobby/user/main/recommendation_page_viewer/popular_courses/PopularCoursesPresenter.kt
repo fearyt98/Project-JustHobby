@@ -1,5 +1,7 @@
 package com.aurimteam.justhobby.user.main.recommendation_page_viewer.popular_courses
 
+import android.content.Context
+import com.aurimteam.justhobby.Settings
 import com.aurimteam.justhobby.user.main.recommendation_page_viewer.fragments_interfaces.IPopularCoursesModel
 import com.aurimteam.justhobby.user.main.recommendation_page_viewer.fragments_interfaces.IPopularCoursesView
 import com.aurimteam.justhobby.response.CourseResponse
@@ -13,12 +15,34 @@ class PopularCoursesPresenter(private var view: IPopularCoursesView?, private va
         view?.showPopularCourses(courses, included)
     }
 
-    override fun onResultFail() {
-
+    override fun onResultFail(strError: String?) {
+        view?.showMessage(strError)
     }
 
-    fun getPopularCourses() {
-        model?.getPopularCoursesData(this)
+    override fun deletedUserBookmark(position: Int) {
+        view?.deletedUserBookmarks(position)
+    }
+
+    override fun addedUserBookmark(position: Int) {
+        view?.addedUserBookmarks(position)
+    }
+
+    fun deleteUserBookmark(context: Context, courseId: Long, position: Int) {
+        val token = Settings(context).getProperty("token")
+        if (token != null)
+            model?.deleteUserBookmark(token, courseId, position, this)
+    }
+
+    fun addUserBookmark(context: Context, courseId: Long, position: Int) {
+        val token = Settings(context).getProperty("token")
+        if (token != null)
+            model?.deleteUserBookmark(token, courseId, position, this)
+    }
+
+    fun getPopularCourses(context: Context) {
+        val token = Settings(context).getProperty("token")
+        if (token != null)
+            model?.getPopularCoursesData(token, this)
     }
 
     fun onDestroy() {

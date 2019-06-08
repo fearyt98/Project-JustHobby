@@ -52,12 +52,12 @@ class AuthActivity : AppCompatActivity(), IAuthView {
         }
 
         val password = findViewById<EditText>(R.id.authPassword)
-        val buttonChangeVisiblePassword = findViewById<ImageButton>(R.id.authPasswordVisible)
+        val btnChangeVisible = findViewById<ImageButton>(R.id.authPasswordVisible)
         password.setOnFocusChangeListener { _: View, _: Boolean ->
-            changeButtonVisible(password, buttonChangeVisiblePassword)
+            changeButtonVisible(password, btnChangeVisible)
         }
-        buttonChangeVisiblePassword.setOnClickListener {
-            changeVisiblePassword(password, buttonChangeVisiblePassword)
+        btnChangeVisible.setOnClickListener {
+            changeVisiblePassword(password, btnChangeVisible)
         }
     }
 
@@ -99,27 +99,48 @@ class AuthActivity : AppCompatActivity(), IAuthView {
     }
 
     private fun changeButtonVisible(password: EditText, btn: ImageButton) {
-        if (password.isFocused) btn.setColorFilter(ContextCompat.getColor(this, R.color.colorPrimary))
-        else btn.clearColorFilter()
-        if (password.transformationMethod == PasswordTransformationMethod.getInstance()) {
-            btn.setImageResource(R.drawable.ic_visibility_off_24dp)
+        if (password.isFocused) {
+            btn.setColorFilter(ContextCompat.getColor(this, R.color.colorPrimary))
         } else {
-            btn.setImageResource(R.drawable.ic_visibility_24dp)
+            btn.clearColorFilter()
         }
+
+        btn.setImageResource(
+            if (isVisiblePassword(password)) {
+                R.drawable.ic_visibility_off_24dp
+            } else {
+                R.drawable.ic_visibility_24dp
+            }
+        )
     }
 
     private fun changeVisiblePassword(password: EditText, btn: ImageButton) {
         if (password.isFocused) btn.setColorFilter(ContextCompat.getColor(this, R.color.colorPrimary))
         else btn.clearColorFilter()
         val oldPosCursor = password.selectionStart
-        if (password.transformationMethod == PasswordTransformationMethod.getInstance()) {
-            btn.setImageResource(R.drawable.ic_visibility_24dp)
-            password.transformationMethod = HideReturnsTransformationMethod.getInstance()
-        } else {
-            btn.setImageResource(R.drawable.ic_visibility_off_24dp)
-            password.transformationMethod = PasswordTransformationMethod.getInstance()
-        }
+
+        btn.setImageResource(
+            if (isVisiblePassword(password)) {
+                R.drawable.ic_visibility_24dp
+            } else {
+                R.drawable.ic_visibility_off_24dp
+            }
+        )
+        setVisiblePassword(password, isVisiblePassword(password))
+
         password.setSelection(oldPosCursor)
+    }
+
+    private fun isVisiblePassword(password: EditText): Boolean {
+        return password.transformationMethod == PasswordTransformationMethod.getInstance()
+    }
+
+    private fun setVisiblePassword(password: EditText, isVisible: Boolean) {
+        password.transformationMethod = if (isVisible) {
+            HideReturnsTransformationMethod.getInstance()
+        } else {
+            PasswordTransformationMethod.getInstance()
+        }
     }
 
     private fun forgetChangeActivity() {

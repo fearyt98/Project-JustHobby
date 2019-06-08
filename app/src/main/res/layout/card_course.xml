@@ -125,6 +125,7 @@
                 <LinearLayout android:id="@+id/cardCourseSexFemale"
                               android:layout_width="wrap_content"
                               android:layout_height="wrap_content"
+                              android:layout_gravity="center_vertical"
                               android:orientation="horizontal"
                               android:visibility="gone">
 
@@ -150,6 +151,7 @@
                 <LinearLayout android:id="@+id/cardCourseSexMale"
                               android:layout_width="wrap_content"
                               android:layout_height="wrap_content"
+                              android:layout_gravity="center_vertical"
                               android:orientation="horizontal"
                               android:visibility="gone">
 
@@ -194,22 +196,25 @@
                                android:tint="@color/gray"
                                app:srcCompat="@drawable/ic_male"
                                tools:ignore="ContentDescription"/>
-                </LinearLayout>
 
-                <ImageView android:layout_width="3dp"
-                           android:layout_height="3dp"
-                           android:layout_gravity="center_vertical"
-                           android:layout_marginLeft="5dp"
-                           android:layout_marginRight="5dp"
-                           android:background="@android:color/transparent"
-                           android:tint="@color/grayLight"
-                           app:srcCompat="@drawable/ic_circle_separator"
-                           tools:ignore="ContentDescription"/>
+                    <ImageView android:layout_width="3dp"
+                               android:layout_height="3dp"
+                               android:layout_gravity="center_vertical"
+                               android:layout_marginLeft="5dp"
+                               android:layout_marginRight="5dp"
+                               android:background="@android:color/transparent"
+                               android:tint="@color/grayLight"
+                               app:srcCompat="@drawable/ic_circle_separator"
+                               tools:ignore="ContentDescription"/>
+                </LinearLayout>
 
                 <TextView android:id="@+id/cardCourseAgeRange"
                           style="@style/Caption2"
                           android:layout_width="wrap_content"
                           android:layout_height="wrap_content"
+                          android:ellipsize="end"
+                          android:maxLines="1"
+                          android:singleLine="true"
                           android:textColor="@color/gray"/>
 
                 <ImageView android:layout_width="3dp"
@@ -226,6 +231,9 @@
                           style="@style/Caption2"
                           android:layout_width="wrap_content"
                           android:layout_height="wrap_content"
+                          android:ellipsize="end"
+                          android:maxLines="1"
+                          android:singleLine="true"
                           android:textColor="@color/gray"/>
             </LinearLayout>
         </LinearLayout>

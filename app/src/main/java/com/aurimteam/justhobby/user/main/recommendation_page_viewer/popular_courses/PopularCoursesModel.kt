@@ -1,157 +1,95 @@
 package com.aurimteam.justhobby.user.main.recommendation_page_viewer.popular_courses
 
+import com.aurimteam.justhobby.App
+import com.aurimteam.justhobby.api.Api
 import com.aurimteam.justhobby.response.*
+import com.aurimteam.justhobby.response_body.BookmarkAddBody
+import com.aurimteam.justhobby.response_body.TokenBody
 import com.aurimteam.justhobby.user.main.recommendation_page_viewer.fragments_interfaces.IPopularCoursesModel
+import org.json.JSONObject
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.sql.Timestamp
 
 class PopularCoursesModel : IPopularCoursesModel {
     interface OnFinishedListener {
         fun onResultSuccess(courses: List<CourseResponseR>, included: IncludedResponse?)
-        fun onResultFail()
+        fun deletedUserBookmark(position: Int)
+        fun addedUserBookmark(position: Int)
+        fun onResultFail(strError: String?)
     }
 
-    override fun getPopularCoursesData(onFinishedListener: OnFinishedListener) {
-        val courses: List<CourseResponseR> = listOf(
-            CourseResponseR(
-                "course", 16,
-                CourseAttrResponse(
-                    true, "Temporibus",
-                    "Odit natus ducimus velit amet.",
-                    "Громов Street, 4",
-                    null,
-                    "auayDrZcytdBCyQEaR9NTQV0oW9Q64",
-                    "4",
-                    "56.4647440000",
-                    "84.9665670000",
-                    "2.2",
-                    true,
-                    2,
-                    6764,
-                    listOf(0, 1),
-                    100,
-                    0,
-                    1558258963,
-                    1558258963
-                ),
-                CourseRelationshipsResponse(true, IdentifierResponse("company_id", 2))
-            ),
-            CourseResponseR(
-                "course", 16,
-                CourseAttrResponse(
-                    true, "Temporibus",
-                    "Odit natus ducimus velit amet.",
-                    "Громов Street, 4",
-                    null,
-                    "auayDrZcytdBCyQEaR9NTQV0oW9Q64",
-                    "4",
-                    "56.4647440000",
-                    "84.9665670000",
-                    "3",
-                    true,
-                    2,
-                    6764,
-                    listOf(0, 1),
-                    100,
-                    0,
-                    1558258963,
-                    1558258963
-                ),
-                CourseRelationshipsResponse(true, IdentifierResponse("company_id", 2))
-            ),
-            CourseResponseR(
-                "course", 16,
-                CourseAttrResponse(
-                    true, "Temporibus",
-                    "Odit natus ducimus velit amet.",
-                    "Громов Street, 4",
-                    null,
-                    "auayDrZcytdBCyQEaR9NTQV0oW9Q64",
-                    "4",
-                    "56.4647440000",
-                    "84.9665670000",
-                    "4",
-                    true,
-                    2,
-                    6764,
-                    listOf(0, 1),
-                    100,
-                    0,
-                    1558258963,
-                    1558258963
-                ),
-                CourseRelationshipsResponse(true, IdentifierResponse("company_id", 2))
-            ),
-            CourseResponseR(
-                "course", 16,
-                CourseAttrResponse(
-                    true, "Temporibus",
-                    "Odit natus ducimus velit amet.",
-                    "Громов Street, 4",
-                    null,
-                    "auayDrZcytdBCyQEaR9NTQV0oW9Q64",
-                    "4",
-                    "56.4647440000",
-                    "84.9665670000",
-                    "5",
-                    true,
-                    2,
-                    6764,
-                    listOf(0, 1),
-                    100,
-                    0,
-                    1558258963,
-                    1558258963
-                ),
-                CourseRelationshipsResponse(true, IdentifierResponse("company_id", 2))
-            ),
-            CourseResponseR(
-                "course", 16,
-                CourseAttrResponse(
-                    true, "Temporibus",
-                    "Odit natus ducimus velit amet.",
-                    "Громов Street, 4",
-                    null,
-                    "auayDrZcytdBCyQEaR9NTQV0oW9Q64",
-                    "4",
-                    "56.4647440000",
-                    "84.9665670000",
-                    "2.5",
-                    true,
-                    2,
-                    6764,
-                    listOf(0, 1),
-                    100,
-                    0,
-                    1558258963,
-                    1558258963
-                ),
-                CourseRelationshipsResponse(true, IdentifierResponse("company_id", 2))
-            )
-        )
-        val included: IncludedResponse =
-            IncludedResponse(
-                null, null, listOf(
-                    CompanyResponse(
-                        "company",
-                        2,
-                        CompanyAttrResponse(
-                            "CT-02970",
-                            true,
-                            "МКК ТелекомМорСантех",
-                            "77324305560",
-                            "Меркушев Street, 44",
-                            "XopfRTSoxONhIB8HYnNkYiv2FBBJDh",
-                            "44",
-                            "56.5053270000",
-                            "84.9694710000",
-                            "https://ignatov.ru/",
-                            "2.68",
-                            1558258962,
-                            1558258962
-                        )
-                    )
-                ), null
-            )
-        onFinishedListener.onResultSuccess(courses, included)
+    override fun getPopularCoursesData(token: String, OnFinishedListener: OnFinishedListener) {
+        App.retrofit
+            .create(Api::class.java)
+            .getCourses(token)
+            .enqueue(object : Callback<CoursesResponse> {
+                override fun onFailure(call: Call<CoursesResponse>, t: Throwable) {
+                    OnFinishedListener.onResultFail(t.message)
+                }
+
+                override fun onResponse(call: Call<CoursesResponse>, response: Response<CoursesResponse>) {
+                    val responseBody = response.body()
+                    if (responseBody != null) {
+                        OnFinishedListener.onResultSuccess(responseBody.data, responseBody.included)
+                    } else {
+                        val jsonObj = JSONObject(response.errorBody()?.string())
+                        OnFinishedListener.onResultFail(jsonObj.getJSONObject("error")?.getString("message")?.toString())
+                    }
+                }
+            })
+    }
+
+    override fun deleteUserBookmark(
+        token: String,
+        courseId: Long,
+        position: Int,
+        OnFinishedListener: OnFinishedListener
+    ) {
+        App.retrofit
+            .create(Api::class.java)
+            .deleteBookmark(TokenBody(token), courseId)
+            .enqueue(object : Callback<StatusResponse> {
+                override fun onFailure(call: Call<StatusResponse>, t: Throwable) {
+                    OnFinishedListener.onResultFail(t.message)
+                }
+
+                override fun onResponse(call: Call<StatusResponse>, response: Response<StatusResponse>) {
+                    val responseBody = response.body()
+                    if (responseBody != null) {
+                        OnFinishedListener.deletedUserBookmark(position)
+                    } else {
+                        val jsonObj = JSONObject(response.errorBody()?.string())
+                        OnFinishedListener.onResultFail(jsonObj.getJSONObject("error")?.getString("message")?.toString())
+                    }
+                }
+            })
+    }
+
+    override fun addUserBookmark(
+        token: String,
+        courseId: Long,
+        position: Int,
+        OnFinishedListener: OnFinishedListener
+    ) {
+        App.retrofit
+            .create(Api::class.java)
+            .addBookmark(BookmarkAddBody(token, courseId))
+            .enqueue(object : Callback<StatusResponse> {
+                override fun onFailure(call: Call<StatusResponse>, t: Throwable) {
+                    OnFinishedListener.onResultFail(t.message)
+                }
+
+                override fun onResponse(call: Call<StatusResponse>, response: Response<StatusResponse>) {
+                    val responseBody = response.body()
+                    if (responseBody != null) {
+                        OnFinishedListener.deletedUserBookmark(position)
+                    } else {
+                        val jsonObj = JSONObject(response.errorBody()?.string())
+                        OnFinishedListener.onResultFail(jsonObj.getJSONObject("error")?.getString("message")?.toString())
+                    }
+                }
+            })
     }
 }

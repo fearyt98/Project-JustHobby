@@ -19,26 +19,6 @@ class UserBookmarksFragment : Fragment(), IUserBookmarksView {
     private val presenter = UserBookmarksPresenter(this, UserBookmarksModel())
     private var adapter = UserBookmarksAdapter(presenter)
 
-    override fun showUserBookmarks(bookmarks: List<CourseResponseR>, included: IncludedResponse?) {
-        if (bookmarks.isEmpty() || included == null) {
-            bookmarksProgressBar.visibility = View.GONE
-            bookmarksRecyclerView.visibility = View.GONE
-            bookmarksClear.visibility = View.VISIBLE
-        } else {
-            toggleContentPB(false)
-            adapter.onDataChange(bookmarks, included)
-        }
-    }
-
-    override fun deletedUserBookmarks(position: Int) {
-        adapter.removeItem(position)
-        if(adapter.itemCount == 0) {
-            bookmarksProgressBar.visibility = View.GONE
-            bookmarksRecyclerView.visibility = View.GONE
-            bookmarksClear.visibility = View.VISIBLE
-        }
-    }
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_user_bookmarks, container, false)
         view.findViewById<ImageButton>(R.id.bookmarksBtnBack).setOnClickListener { back() }
@@ -71,6 +51,26 @@ class UserBookmarksFragment : Fragment(), IUserBookmarksView {
         val toast = Toast.makeText(activity, message, Toast.LENGTH_SHORT)
         toast.setGravity(Gravity.BOTTOM, 0, 30)
         toast.show()
+    }
+
+    override fun showUserBookmarks(bookmarks: List<CourseResponseR>, included: IncludedResponse?) {
+        if (bookmarks.isEmpty() || included == null) {
+            bookmarksProgressBar.visibility = View.GONE
+            bookmarksRecyclerView.visibility = View.GONE
+            bookmarksClear.visibility = View.VISIBLE
+        } else {
+            toggleContentPB(false)
+            adapter.onDataChange(bookmarks, included)
+        }
+    }
+
+    override fun deletedUserBookmarks(position: Int) {
+        adapter.removeItem(position)
+        if(adapter.itemCount == 0) {
+            bookmarksProgressBar.visibility = View.GONE
+            bookmarksRecyclerView.visibility = View.GONE
+            bookmarksClear.visibility = View.VISIBLE
+        }
     }
 
     private fun back() {

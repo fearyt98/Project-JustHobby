@@ -1,21 +1,45 @@
 package com.aurimteam.justhobby.user.company_info.company_courses
 
-import com.aurimteam.justhobby.response.CourseResponse
+import android.content.Context
+import com.aurimteam.justhobby.Settings
+import com.aurimteam.justhobby.response.CourseResponseR
+import com.aurimteam.justhobby.response.IncludedResponse
 
-class CompanyCoursesPresenter(private var view: ICompanyCoursesView?, private val model: ICompanyCoursesModel) :
+class CompanyCoursesPresenter(private var view: ICompanyCoursesView?, private val model: ICompanyCoursesModel?) :
     CompanyCoursesModel.OnFinishedListener {
 
-    override fun onResultSuccess(courses: List<CourseResponse>) {
-        view?.showCompanyCourses(courses)
+    override fun onResultSuccess(courses: List<CourseResponseR>, included: IncludedResponse?) {
+        view?.showCompanyCourses(courses, included)
     }
 
-    override fun onResultFail() {
-
+    override fun onResultFail(strError: String?) {
+        view?.showMessage(strError)
     }
 
-    fun getCompanyCourses() {
-        model?.getCompanyCoursesData(this)
+    override fun deletedUserBookmark(position: Int) {
+        view?.deletedUserBookmarks(position)
+    }
 
+    override fun addedUserBookmark(position: Int) {
+        view?.addedUserBookmarks(position)
+    }
+
+    fun deleteUserBookmark(context: Context, courseId: Long, position: Int) {
+        val token = Settings(context).getProperty("token")
+        if (token != null)
+            model?.deleteUserBookmark(token, courseId, position, this)
+    }
+
+    fun addUserBookmark(context: Context, courseId: Long, position: Int) {
+        val token = Settings(context).getProperty("token")
+        if (token != null)
+            model?.deleteUserBookmark(token, courseId, position, this)
+    }
+
+    fun getCompanyCourses(context: Context) {
+        val token = Settings(context).getProperty("token")
+        if (token != null)
+            model?.getCompanyCoursesData(token, this)
     }
 
     fun onDestroy() {

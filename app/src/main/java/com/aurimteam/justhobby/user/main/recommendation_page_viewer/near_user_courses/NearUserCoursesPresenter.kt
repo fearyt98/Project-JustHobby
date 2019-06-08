@@ -1,24 +1,47 @@
 package com.aurimteam.justhobby.user.main.recommendation_page_viewer.near_user_courses
 
-import com.aurimteam.justhobby.user.main.recommendation_page_viewer.fragments_interfaces.INearCoursesModel
-import com.aurimteam.justhobby.user.main.recommendation_page_viewer.fragments_interfaces.INearCoursesView
-import com.aurimteam.justhobby.response.CourseResponse
+import android.content.Context
+import com.aurimteam.justhobby.Settings
 import com.aurimteam.justhobby.response.CourseResponseR
 import com.aurimteam.justhobby.response.IncludedResponse
+import com.aurimteam.justhobby.user.main.recommendation_page_viewer.fragments_interfaces.INearCoursesModel
+import com.aurimteam.justhobby.user.main.recommendation_page_viewer.fragments_interfaces.INearCoursesView
 
 class NearUserCoursesPresenter(private var view: INearCoursesView?, private val model: INearCoursesModel?) :
     NearUserCoursesModel.OnFinishedListener {
 
     override fun onResultSuccess(courses: List<CourseResponseR>, included: IncludedResponse?) {
-        view?.showNearUserCourses(courses, included!!)
+        view?.showNearUserCourses(courses, included)
     }
 
-    override fun onResultFail() {
-
+    override fun onResultFail(strError: String?) {
+        view?.showMessage(strError)
     }
 
-    fun getNearCourses() {
-        model?.getNearCoursesData(this)
+    override fun deletedUserBookmark(position: Int) {
+        view?.deletedUserBookmarks(position)
+    }
+
+    override fun addedUserBookmark(position: Int) {
+        view?.addedUserBookmarks(position)
+    }
+
+    fun deleteUserBookmark(context: Context, courseId: Long, position: Int) {
+        val token = Settings(context).getProperty("token")
+        if (token != null)
+            model?.deleteUserBookmark(token, courseId, position, this)
+    }
+
+    fun addUserBookmark(context: Context, courseId: Long, position: Int) {
+        val token = Settings(context).getProperty("token")
+        if (token != null)
+            model?.deleteUserBookmark(token, courseId, position, this)
+    }
+
+    fun getNearCourses(context: Context) {
+        val token = Settings(context).getProperty("token")
+        if (token != null)
+            model?.getNearCoursesData(token, this)
     }
 
     fun onDestroy() {

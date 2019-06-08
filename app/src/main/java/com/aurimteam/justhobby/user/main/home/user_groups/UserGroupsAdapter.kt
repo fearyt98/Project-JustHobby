@@ -17,6 +17,7 @@ class UserGroupsAdapter(private val presenter: UserGroupsPresenter) : RecyclerVi
     private val courseIncludedList: MutableMap<Long, CourseResponseR> = mutableMapOf()
     private val companyIncludedList: MutableMap<Long, CompanyResponse> = mutableMapOf()
     private val isClickedList: MutableList<Boolean> = mutableListOf()
+
     override fun getItemCount(): Int = userGroupsList.size
     override fun onBindViewHolder(holder: UserGroupsHolder, position: Int, payloads: MutableList<Any>) {
         if (payloads.isEmpty())

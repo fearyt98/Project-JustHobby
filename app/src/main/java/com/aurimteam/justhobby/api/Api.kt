@@ -1,13 +1,13 @@
 package com.aurimteam.justhobby.api
 
 import com.aurimteam.justhobby.response.*
+import com.aurimteam.justhobby.response_body.BookmarkAddBody
 import com.aurimteam.justhobby.response_body.LoginBody
 import com.aurimteam.justhobby.response_body.RegistryBody
 import com.aurimteam.justhobby.response_body.TokenBody
 import com.aurimteam.justhobby.response_body.UpdateUserBody
 import retrofit2.Call
 import retrofit2.http.*
-
 
 interface Api {
     @Headers("Accept: application/json")
@@ -16,7 +16,9 @@ interface Api {
 
     @Headers("Accept: application/json")
     @HTTP(method = "DELETE", path = "logout", hasBody = true)
-    fun logout(@Body tokenBody: TokenBody): Call<StatusResponse>
+    fun logout(
+        @Body tokenBody: TokenBody
+    ): Call<StatusResponse>
 
     @Headers("Accept: application/json")
     @GET("categories")
@@ -48,8 +50,14 @@ interface Api {
     @Headers("Accept: application/json")
     @HTTP(method = "DELETE", path = "user/bookmarks/{course_id}", hasBody = true)
     fun deleteBookmark(
-        @Body tokenBody: TokenBody, 
+        @Body tokenBody: TokenBody,
         @Path("course_id") courseId: Long
+    ): Call<StatusResponse>
+
+    @Headers("Accept: application/json")
+    @POST("user/bookmarks/{course_id}")
+    fun addBookmark(
+        @Body bookmarkAddBody: BookmarkAddBody
     ): Call<StatusResponse>
 
     @Headers("Accept: application/json")
