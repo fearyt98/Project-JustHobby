@@ -96,9 +96,9 @@ class AuthActivity : AppCompatActivity(), IAuthView {
         if (password.isFocused) btn.setColorFilter(ContextCompat.getColor(this, R.color.colorPrimary))
         else btn.clearColorFilter()
         if (password.transformationMethod == PasswordTransformationMethod.getInstance()) {
-            btn.setImageResource(R.drawable.ic_visibility_24dp)
-        } else {
             btn.setImageResource(R.drawable.ic_visibility_off_24dp)
+        } else {
+            btn.setImageResource(R.drawable.ic_visibility_24dp)
         }
     }
 
@@ -107,10 +107,10 @@ class AuthActivity : AppCompatActivity(), IAuthView {
         else btn.clearColorFilter()
         val oldPosCursor = password.selectionStart
         if (password.transformationMethod == PasswordTransformationMethod.getInstance()) {
-            btn.setImageResource(R.drawable.ic_visibility_off_24dp)
+            btn.setImageResource(R.drawable.ic_visibility_24dp)
             password.transformationMethod = HideReturnsTransformationMethod.getInstance()
         } else {
-            btn.setImageResource(R.drawable.ic_visibility_24dp)
+            btn.setImageResource(R.drawable.ic_visibility_off_24dp)
             password.transformationMethod = PasswordTransformationMethod.getInstance()
         }
         password.setSelection(oldPosCursor)

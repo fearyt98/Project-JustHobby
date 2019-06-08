@@ -4,92 +4,106 @@
               xmlns:tools="http://schemas.android.com/tools"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:orientation="vertical"
-              android:background="@color/whiteTop">
+              android:background="@color/whiteTop"
+              android:orientation="vertical">
+
     <FrameLayout android:layout_width="match_parent"
                  android:layout_height="64dp"
-                 android:paddingBottom="8dp"
-                 android:background="@drawable/appbar_bg">
-        <TextView android:layout_width="wrap_content"
+                 android:background="@drawable/appbar_bg"
+                 android:paddingBottom="8dp">
+
+        <TextView style="@style/Body1.Medium.UpperCase"
+                  android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
                   android:layout_gravity="center"
                   android:gravity="center"
                   android:text="@string/settings"
-                  android:textColor="@color/whiteTop"
-                  style="@style/Body1.Medium.UpperCase"/>
+                  android:textColor="@color/whiteTop"/>
     </FrameLayout>
+
     <LinearLayout android:layout_width="match_parent"
                   android:layout_height="wrap_content"
-                  android:orientation="vertical"
                   android:layout_marginTop="-8.5dp"
+                  android:orientation="vertical"
                   android:paddingStart="16dp"
                   android:paddingTop="16dp"
                   tools:ignore="RtlSymmetry">
-        <LinearLayout android:layout_width="match_parent"
+
+        <LinearLayout android:id="@+id/settingsNotification"
+                      android:layout_width="match_parent"
                       android:layout_height="wrap_content"
                       android:orientation="horizontal"
-                      android:id="@+id/settingsNotification"
                       tools:ignore="UseCompoundDrawables">
+
             <ImageView android:layout_width="wrap_content"
                        android:layout_height="wrap_content"
+                       android:background="@android:color/transparent"
                        android:tint="@color/gray"
                        app:srcCompat="@drawable/ic_notifications_24dp"
-                       android:background="@android:color/transparent"
                        tools:ignore="ContentDescription"/>
+
             <TextView android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
                       android:layout_gravity="center"
                       android:paddingStart="16dp"
-                      android:textColor="@color/grafitText"
-                      android:text="@string/notifications"/>
+                      android:text="@string/notifications"
+                      android:textColor="@color/grafitText"/>
         </LinearLayout>
-        <LinearLayout android:layout_width="match_parent"
+
+        <LinearLayout android:id="@+id/settingsAccount"
+                      android:layout_width="match_parent"
                       android:layout_height="wrap_content"
                       android:orientation="horizontal"
-                      android:id="@+id/settingsAccount"
                       android:paddingTop="16dp"
                       tools:ignore="UseCompoundDrawables">
+
             <ImageView android:layout_width="wrap_content"
                        android:layout_height="wrap_content"
+                       android:background="@android:color/transparent"
                        android:tint="@color/gray"
                        app:srcCompat="@drawable/ic_account_24dp"
-                       android:background="@android:color/transparent"
                        tools:ignore="ContentDescription"/>
+
             <TextView android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
                       android:layout_gravity="center"
                       android:paddingStart="16dp"
-                      android:textColor="@color/grafitText"
-                      android:text="@string/user_account_settings"/>
+                      android:text="@string/user_account_settings"
+                      android:textColor="@color/grafitText"/>
         </LinearLayout>
-        <LinearLayout android:layout_width="match_parent"
+
+        <LinearLayout android:id="@+id/settingsAbout"
+                      android:layout_width="match_parent"
                       android:layout_height="wrap_content"
                       android:orientation="horizontal"
                       android:paddingTop="16dp"
-                      android:id="@+id/settingsAbout"
                       tools:ignore="UseCompoundDrawables">
+
             <ImageView android:layout_width="wrap_content"
                        android:layout_height="wrap_content"
+                       android:background="@android:color/transparent"
                        android:tint="@color/gray"
                        app:srcCompat="@drawable/ic_info_24dp"
-                       android:background="@android:color/transparent"
                        tools:ignore="ContentDescription"/>
+
             <TextView android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
                       android:layout_gravity="center"
                       android:paddingStart="16dp"
-                      android:textColor="@color/grafitText"
-                      android:text="@string/about_app_settings"/>
+                      android:text="@string/about_app_settings"
+                      android:textColor="@color/grafitText"/>
         </LinearLayout>
-        <LinearLayout android:layout_width="match_parent"
+
+        <LinearLayout android:id="@+id/settingsLogout"
+                      android:layout_width="match_parent"
                       android:layout_height="wrap_content"
                       android:orientation="horizontal"
-                      android:paddingTop="16dp"
-                      android:id="@+id/settingsLogout">
+                      android:paddingTop="16dp">
+
             <TextView android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
-                      android:textColor="@color/redText"
-                      android:text="@string/exit_account_settings"/>
+                      android:text="@string/exit_account_settings"
+                      android:textColor="@color/redText"/>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

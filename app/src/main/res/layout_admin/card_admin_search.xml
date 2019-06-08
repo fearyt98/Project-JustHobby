@@ -3,76 +3,85 @@
               xmlns:app="http://schemas.android.com/apk/res-auto"
               xmlns:tools="http://schemas.android.com/tools"
               android:id="@+id/adminCardSearchCompany"
-              android:layout_height="wrap_content"
               android:layout_width="match_parent"
+              android:layout_height="wrap_content"
               android:layout_marginStart="3dp"
               android:layout_marginEnd="3dp"
               android:layout_marginBottom="-6dp"
               android:background="@drawable/card_company_bg">
+
     <LinearLayout android:layout_width="match_parent"
                   android:layout_height="wrap_content"
                   android:orientation="vertical"
+                  android:paddingStart="8dp"
                   android:paddingTop="4dp"
                   android:paddingBottom="16dp"
-                  android:paddingStart="8dp"
                   tools:ignore="RtlSymmetry">
-        <TextView style="@style/Body2.Medium"
-                  android:id="@+id/adminCardSearchTitle"
-                  android:maxLines="1"
-                  android:ellipsize="end"
-                  android:singleLine="true"
+
+        <TextView android:id="@+id/adminCardSearchTitle"
+                  style="@style/Body2.Medium"
                   android:layout_width="wrap_content"
                   android:layout_marginTop="5dp"
-                  android:paddingBottom="5dp"
-                  android:textColor="@color/grafitText"/>
-        <TextView style="@style/Caption2"
-                  android:id="@+id/adminCardSearchCountAddress"
-                  android:maxLines="1"
                   android:ellipsize="end"
-                  android:singleLine="true"
-                  android:layout_width="wrap_content"
+                  android:maxLines="1"
                   android:paddingBottom="5dp"
+                  android:singleLine="true"
                   android:textColor="@color/grafitText"/>
+
+        <TextView android:id="@+id/adminCardSearchCountAddress"
+                  style="@style/Caption2"
+                  android:layout_width="wrap_content"
+                  android:ellipsize="end"
+                  android:maxLines="1"
+                  android:paddingBottom="5dp"
+                  android:singleLine="true"
+                  android:textColor="@color/grafitText"/>
+
         <LinearLayout android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
                       android:orientation="horizontal">
-            <TextView style="@style/Caption2"
-                      android:id="@+id/adminCardSearchCountCourses"
+
+            <TextView android:id="@+id/adminCardSearchCountCourses"
+                      style="@style/Caption2"
                       android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
-                      android:textColor="@color/grafitText"
-                      android:text="@string/card_count_courses"/>
+                      android:text="@string/card_count_courses"
+                      android:textColor="@color/grafitText"/>
+
             <ImageView android:layout_width="3dp"
                        android:layout_height="3dp"
+                       android:layout_gravity="center_vertical"
                        android:layout_marginLeft="5dp"
                        android:layout_marginRight="5dp"
-                       android:layout_gravity="center_vertical"
-                       android:tint="@color/grayLight"
                        android:background="@android:color/transparent"
+                       android:tint="@color/grayLight"
                        app:srcCompat="@drawable/ic_circle_separator"
                        tools:ignore="ContentDescription"/>
-            <TextView style="@style/Caption2"
-                      android:id="@+id/adminCardSearchCountGroups"
+
+            <TextView android:id="@+id/adminCardSearchCountGroups"
+                      style="@style/Caption2"
                       android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
-                      android:textColor="@color/grafitText"
                       android:text="@string/card_count_groups"
+                      android:textColor="@color/grafitText"
                       tools:ignore="HardcodedText"/>
+
             <ImageView android:layout_width="3dp"
                        android:layout_height="3dp"
+                       android:layout_gravity="center_vertical"
                        android:layout_marginLeft="5dp"
                        android:layout_marginRight="5dp"
-                       android:layout_gravity="center_vertical"
-                       android:tint="@color/grayLight"
                        android:background="@android:color/transparent"
+                       android:tint="@color/grayLight"
                        app:srcCompat="@drawable/ic_circle_separator"
                        tools:ignore="ContentDescription"/>
-            <TextView style="@style/Caption2"
-                      android:id="@+id/adminCardSearchCountReviews"
+
+            <TextView android:id="@+id/adminCardSearchCountReviews"
+                      style="@style/Caption2"
                       android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
-                      android:textColor="@color/grafitText"
                       android:text="@string/card_count_reviews"
+                      android:textColor="@color/grafitText"
                       tools:ignore="HardcodedText"/>
         </LinearLayout>
     </LinearLayout>

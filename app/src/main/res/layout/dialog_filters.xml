@@ -1,328 +1,396 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:id="@+id/dialogFilters"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:orientation="vertical">
-    <android.support.constraint.ConstraintLayout android:layout_width="match_parent"
-                                                 android:layout_height="wrap_content"
-                                                 android:layout_marginTop="7.5dp"
-                                                 android:layout_marginBottom="7.5dp">
-        <TextView android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:paddingStart="15dp"
-                  android:paddingEnd="15dp"
-                  android:textColor="@color/grafitText"
-                  android:text="@string/search_params"
-                  app:layout_constraintLeft_toLeftOf="parent"
-                  app:layout_constraintTop_toTopOf="parent"
-                  app:layout_constraintBottom_toBottomOf="parent"
-                  style="@style/Body2.Medium"/>
-        <TextView android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:paddingStart="15dp"
-                  android:paddingEnd="15dp"
-                  android:textColor="@color/greenText"
-                  android:text="@string/reset"
-                  app:layout_constraintRight_toRightOf="parent"
-                  app:layout_constraintTop_toTopOf="parent"
-                  app:layout_constraintBottom_toBottomOf="parent"
-                  style="@style/Caption1.Medium"/>
-    </android.support.constraint.ConstraintLayout>
-    <TextView android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:paddingStart="15dp"
-              android:paddingEnd="15dp"
-              android:paddingBottom="10dp"
-              android:textColor="@color/gray"
-              android:text="@string/sorting"/>
-    <LinearLayout android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:paddingStart="15dp"
-                  android:paddingEnd="15dp"
-                  android:layout_marginTop="7.5dp"
-                  android:layout_marginBottom="7.5dp"
-                  android:orientation="horizontal">
-        <Button android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:elevation="1dp"
-                android:text="@string/near"
-                style="@style/BottomFiltersButtonWhite"/>
-        <Button android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginStart="15dp"
-                android:layout_marginEnd="0dp"
-                android:elevation="1dp"
-                android:text="@string/rating"
-                style="@style/BottomFiltersButtonWhite"/>
-        <Button android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:layout_marginEnd="0dp"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:padding="9dp"
-                android:textColor="@color/grayDarkMiddle"
-                android:text="@string/price"
-                style="@style/BottomFiltersButtonWhite"/>
-    </LinearLayout>
-    <TextView android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:paddingStart="15dp"
-              android:paddingEnd="15dp"
-              android:paddingBottom="10dp"
-              android:textColor="@color/gray"
-              android:text="@string/cost"/>
-    <android.support.constraint.ConstraintLayout android:layout_width="match_parent"
-                                                 android:layout_height="wrap_content"
-                                                 android:paddingStart="6dp"
-                                                 android:paddingEnd="6dp"
-                                                 android:layout_marginTop="7.5dp"
-                                                 android:layout_marginBottom="7.5dp">
-        <android.support.constraint.ConstraintLayout android:layout_width="match_parent"
-                                                     android:layout_height="40dp"
-                                                     app:layout_constraintBottom_toBottomOf="@id/filtersPriceSeekBar">
-            <TextView android:layout_width="wrap_content"
+
+    <ScrollView android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+        <LinearLayout android:layout_width="match_parent"
+                      android:layout_height="match_parent"
+                      android:orientation="vertical">
+
+            <android.support.constraint.ConstraintLayout android:layout_width="match_parent"
+                                                         android:layout_height="wrap_content"
+                                                         android:layout_marginTop="7.5dp"
+                                                         android:layout_marginBottom="7.5dp">
+
+                <TextView style="@style/Body2.Medium"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:paddingStart="15dp"
+                          android:paddingEnd="15dp"
+                          android:text="@string/search_params"
+                          android:textColor="@color/grafitText"
+                          app:layout_constraintBottom_toBottomOf="parent"
+                          app:layout_constraintLeft_toLeftOf="parent"
+                          app:layout_constraintTop_toTopOf="parent"/>
+
+                <TextView style="@style/Caption1.Medium"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:paddingStart="15dp"
+                          android:paddingEnd="15dp"
+                          android:text="@string/reset"
+                          android:textColor="@color/greenText"
+                          app:layout_constraintBottom_toBottomOf="parent"
+                          app:layout_constraintRight_toRightOf="parent"
+                          app:layout_constraintTop_toTopOf="parent"/>
+            </android.support.constraint.ConstraintLayout>
+
+            <TextView android:layout_width="match_parent"
                       android:layout_height="wrap_content"
-                      android:layout_marginBottom="20dp"
-                      android:layout_marginStart="12dp"
-                      android:layout_marginEnd="0dp"
-                      app:layout_constraintLeft_toLeftOf="parent"
-                      app:layout_constraintBottom_toBottomOf="parent"/>
-            <TextView android:layout_width="wrap_content"
+                      android:paddingStart="15dp"
+                      android:paddingEnd="15dp"
+                      android:paddingBottom="10dp"
+                      android:text="@string/sorting"
+                      android:textColor="@color/gray"/>
+
+            <LinearLayout android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:clipToPadding="false"
+                          android:orientation="horizontal"
+                          android:paddingStart="15dp"
+                          android:paddingTop="10dp"
+                          android:paddingEnd="15dp"
+                          android:paddingBottom="10dp">
+
+                <Button style="@style/BottomFiltersButtonWhite"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:elevation="1dp"
+                        android:text="@string/near"/>
+
+                <Button style="@style/BottomFiltersButtonWhite"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginEnd="0dp"
+                        android:layout_weight="1"
+                        android:elevation="1dp"
+                        android:text="@string/rating"/>
+
+                <Button style="@style/BottomFiltersButtonWhite"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginEnd="0dp"
+                        android:layout_weight="1"
+                        android:text="@string/price"/>
+            </LinearLayout>
+
+            <TextView android:layout_width="match_parent"
                       android:layout_height="wrap_content"
-                      android:layout_marginStart="0dp"
-                      android:layout_marginEnd="12dp"
-                      android:layout_marginBottom="20dp"
-                      app:layout_constraintRight_toRightOf="parent"
-                      app:layout_constraintBottom_toBottomOf="parent"/>
-        </android.support.constraint.ConstraintLayout>
-        <SeekBar android:layout_width="match_parent"
-                 android:layout_height="wrap_content"
-                 android:id="@+id/filtersPriceSeekBar"
-                 app:layout_constraintBottom_toBottomOf="parent"/>
-    </android.support.constraint.ConstraintLayout>
-    <TextView android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:paddingStart="15dp"
-              android:paddingEnd="15dp"
-              android:paddingBottom="10dp"
-              android:textColor="@color/gray"
-              android:text="@string/type_pay"/>
-    <LinearLayout android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:paddingStart="15dp"
-                  android:paddingEnd="15dp"
-                  android:layout_marginTop="7.5dp"
-                  android:layout_marginBottom="7.5dp"
-                  android:orientation="horizontal">
-        <Button android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:elevation="1dp"
-                android:text="@string/any"
-                style="@style/BottomFiltersButtonWhite"/>
-        <Button android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginStart="15dp"
-                android:layout_marginEnd="0dp"
-                android:elevation="1dp"
-                android:text="@string/lesson"
-                style="@style/BottomFiltersButtonWhite"/>
-        <Button android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginStart="15dp"
-                android:layout_marginEnd="0dp"
-                android:elevation="1dp"
-                android:text="@string/month"
-                style="@style/BottomFiltersButtonWhite"/>
-        <Button android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginStart="15dp"
-                android:layout_marginEnd="0dp"
-                android:elevation="1dp"
-                android:text="@string/course"
-                style="@style/BottomFiltersButtonWhite"/>
-    </LinearLayout>
-    <TextView android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:paddingStart="15dp"
-              android:paddingEnd="15dp"
-              android:paddingBottom="10dp"
-              android:textColor="@color/gray"
-              android:text="@string/sex"/>
-    <LinearLayout android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:paddingStart="15dp"
-                  android:paddingEnd="15dp"
-                  android:layout_marginTop="7.5dp"
-                  android:layout_marginBottom="7.5dp">
-        <Button android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:elevation="1dp"
-                android:text="@string/mixed"
-                style="@style/BottomFiltersButtonWhite"/>
-        <Button android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginStart="15dp"
-                android:layout_marginEnd="0dp"
-                android:elevation="1dp"
-                android:text="@string/man"
-                style="@style/BottomFiltersButtonWhite"/>
-        <Button android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginStart="15dp"
-                android:layout_marginEnd="0dp"
-                android:elevation="1dp"
-                android:text="@string/woman"
-                style="@style/BottomFiltersButtonWhite"/>
-    </LinearLayout>
-    <TextView android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:paddingStart="15dp"
-              android:paddingEnd="15dp"
-              android:paddingBottom="10dp"
-              android:textColor="@color/gray"
-              android:text="@string/timetable"/>
-    <LinearLayout android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:paddingStart="15dp"
-                  android:paddingEnd="15dp"
-                  android:layout_marginTop="7.5dp"
-                  android:layout_marginBottom="7.5dp">
-        <Button android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:elevation="1dp"
-                android:text="@string/short_monday"
-                style="@style/BottomFiltersButtonWhite"/>
-        <Button android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginStart="15dp"
-                android:layout_marginEnd="0dp"
-                android:elevation="1dp"
-                android:text="@string/short_tuesday"
-                style="@style/BottomFiltersButtonWhite"/>
-        <Button android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginStart="15dp"
-                android:layout_marginEnd="0dp"
-                android:elevation="1dp"
-                android:text="@string/short_wednesday"
-                style="@style/BottomFiltersButtonWhite"/>
-        <Button android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginStart="15dp"
-                android:layout_marginEnd="0dp"
-                android:elevation="1dp"
-                android:text="@string/short_thursday"
-                style="@style/BottomFiltersButtonWhite"/>
-        <Button android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginStart="15dp"
-                android:layout_marginEnd="0dp"
-                android:elevation="1dp"
-                android:text="@string/short_friday"
-                style="@style/BottomFiltersButtonWhite"/>
-        <Button android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginStart="15dp"
-                android:layout_marginEnd="0dp"
-                android:elevation="1dp"
-                android:text="@string/short_saturday"
-                style="@style/BottomFiltersButtonWhite"/>
-        <Button android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginStart="15dp"
-                android:layout_marginEnd="0dp"
-                android:elevation="1dp"
-                android:text="@string/short_sunday"
-                style="@style/BottomFiltersButtonWhite"/>
-    </LinearLayout>
-    <android.support.constraint.ConstraintLayout android:layout_width="match_parent"
-                                                 android:layout_height="wrap_content"
-                                                 android:paddingStart="6dp"
-                                                 android:paddingEnd="6dp"
-                                                 android:layout_marginTop="7.5dp"
-                                                 android:layout_marginBottom="7.5dp">
-        <android.support.constraint.ConstraintLayout android:layout_width="match_parent"
-                                                     android:layout_height="40dp"
-                                                     app:layout_constraintBottom_toBottomOf="@id/filtersAgeSeekBar">
-            <TextView android:layout_width="wrap_content"
+                      android:paddingStart="15dp"
+                      android:paddingEnd="15dp"
+                      android:paddingBottom="10dp"
+                      android:text="@string/cost"
+                      android:textColor="@color/gray"/>
+
+            <android.support.constraint.ConstraintLayout android:layout_width="match_parent"
+                                                         android:layout_height="wrap_content"
+                                                         android:layout_marginTop="7.5dp"
+                                                         android:layout_marginBottom="7.5dp"
+                                                         android:paddingStart="6dp"
+                                                         android:paddingEnd="6dp">
+
+                <android.support.constraint.ConstraintLayout android:layout_width="match_parent"
+                                                             android:layout_height="40dp"
+                                                             app:layout_constraintBottom_toBottomOf="@id/filtersPriceSeekBar">
+
+                    <TextView android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:layout_marginStart="12dp"
+                              android:layout_marginEnd="0dp"
+                              android:layout_marginBottom="20dp"
+                              app:layout_constraintBottom_toBottomOf="parent"
+                              app:layout_constraintLeft_toLeftOf="parent"/>
+
+                    <TextView android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:layout_marginStart="0dp"
+                              android:layout_marginEnd="12dp"
+                              android:layout_marginBottom="20dp"
+                              app:layout_constraintBottom_toBottomOf="parent"
+                              app:layout_constraintRight_toRightOf="parent"/>
+                </android.support.constraint.ConstraintLayout>
+
+                <SeekBar android:id="@+id/filtersPriceSeekBar"
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content"
+                         app:layout_constraintBottom_toBottomOf="parent"/>
+            </android.support.constraint.ConstraintLayout>
+
+            <TextView android:layout_width="match_parent"
                       android:layout_height="wrap_content"
-                      android:layout_marginBottom="20dp"
-                      android:layout_marginStart="12dp"
-                      android:layout_marginEnd="0dp"
-                      app:layout_constraintLeft_toLeftOf="parent"
-                      app:layout_constraintBottom_toBottomOf="parent"/>
-            <TextView android:layout_width="wrap_content"
+                      android:paddingStart="15dp"
+                      android:paddingEnd="15dp"
+                      android:paddingBottom="10dp"
+                      android:text="@string/type_pay"
+                      android:textColor="@color/gray"
+                      android:visibility="gone"/>
+
+            <LinearLayout android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:clipToPadding="false"
+                          android:orientation="horizontal"
+                          android:paddingStart="15dp"
+                          android:paddingTop="10dp"
+                          android:paddingEnd="15dp"
+                          android:paddingBottom="10dp"
+                          android:visibility="gone">
+
+                <Button style="@style/BottomFiltersButtonWhite"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:elevation="1dp"
+                        android:text="@string/any"/>
+
+                <Button style="@style/BottomFiltersButtonWhite"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginEnd="0dp"
+                        android:layout_weight="1"
+                        android:elevation="1dp"
+                        android:text="@string/lesson"/>
+
+                <Button style="@style/BottomFiltersButtonWhite"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginEnd="0dp"
+                        android:layout_weight="1"
+                        android:elevation="1dp"
+                        android:text="@string/month"/>
+
+                <Button style="@style/BottomFiltersButtonWhite"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginEnd="0dp"
+                        android:layout_weight="1"
+                        android:elevation="1dp"
+                        android:text="@string/course"/>
+            </LinearLayout>
+
+            <TextView android:layout_width="match_parent"
                       android:layout_height="wrap_content"
-                      android:layout_marginStart="0dp"
-                      android:layout_marginEnd="12dp"
-                      android:layout_marginBottom="20dp"
-                      app:layout_constraintRight_toRightOf="parent"
-                      app:layout_constraintBottom_toBottomOf="parent"/>
-        </android.support.constraint.ConstraintLayout>
-        <SeekBar android:layout_width="match_parent"
-                 android:layout_height="wrap_content"
-                 android:id="@+id/filtersAgeSeekBar"
-                 app:layout_constraintBottom_toBottomOf="parent"/>
-    </android.support.constraint.ConstraintLayout>
-    <TextView android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:paddingStart="15dp"
-              android:paddingEnd="15dp"
-              android:paddingBottom="10dp"
-              android:textColor="@color/gray"
-              android:text="@string/acceptance"/>
-    <LinearLayout android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:paddingStart="15dp"
-                  android:paddingEnd="15dp"
-                  android:layout_marginTop="7.5dp"
-                  android:layout_marginBottom="7.5dp"
-                  android:orientation="horizontal">
-        <Button android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:elevation="1dp"
-                android:text="@string/any"
-                style="@style/BottomFiltersButtonWhite"/>
-        <Button android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginStart="15dp"
-                android:layout_marginEnd="0dp"
-                android:elevation="1dp"
-                android:text="@string/coming"
-                style="@style/BottomFiltersButtonWhite"/>
-        <Button android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginStart="15dp"
-                android:layout_marginEnd="0dp"
-                android:elevation="1dp"
-                android:text="@string/not_coming"
-                style="@style/BottomFiltersButtonWhite"/>
-    </LinearLayout>
-    <Button android:layout_width="match_parent"
+                      android:paddingStart="15dp"
+                      android:paddingEnd="15dp"
+                      android:paddingBottom="10dp"
+                      android:text="@string/sex"
+                      android:textColor="@color/gray"/>
+
+            <LinearLayout android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:clipToPadding="false"
+                          android:orientation="horizontal"
+                          android:paddingStart="15dp"
+                          android:paddingTop="10dp"
+                          android:paddingEnd="15dp"
+                          android:paddingBottom="10dp">
+
+                <Button style="@style/BottomFiltersButtonWhite"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:elevation="1dp"
+                        android:text="@string/mixed"/>
+
+                <Button style="@style/BottomFiltersButtonWhite"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginEnd="0dp"
+                        android:layout_weight="1"
+                        android:elevation="1dp"
+                        android:text="@string/man"/>
+
+                <Button style="@style/BottomFiltersButtonWhite"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginEnd="0dp"
+                        android:layout_weight="1"
+                        android:elevation="1dp"
+                        android:text="@string/woman"/>
+            </LinearLayout>
+
+            <TextView android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:paddingStart="15dp"
+                      android:paddingEnd="15dp"
+                      android:paddingBottom="10dp"
+                      android:text="@string/timetable"
+                      android:textColor="@color/gray"/>
+
+            <LinearLayout android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:clipToPadding="false"
+                          android:orientation="horizontal"
+                          android:paddingStart="15dp"
+                          android:paddingTop="10dp"
+                          android:paddingEnd="15dp"
+                          android:paddingBottom="10dp">
+
+                <Button style="@style/BottomFiltersButtonWhite"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:elevation="1dp"
+                        android:text="@string/short_monday"
+                        android:textAppearance="@style/Caption1"/>
+
+                <Button style="@style/BottomFiltersButtonWhite"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginEnd="0dp"
+                        android:layout_weight="1"
+                        android:elevation="1dp"
+                        android:text="@string/short_tuesday"
+                        android:textAppearance="@style/Caption1"/>
+
+                <Button style="@style/BottomFiltersButtonWhite"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginEnd="0dp"
+                        android:layout_weight="1"
+                        android:elevation="1dp"
+                        android:text="@string/short_wednesday"
+                        android:textAppearance="@style/Caption1"/>
+
+                <Button style="@style/BottomFiltersButtonWhite"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginEnd="0dp"
+                        android:layout_weight="1"
+                        android:elevation="1dp"
+                        android:text="@string/short_thursday"
+                        android:textAppearance="@style/Caption1"/>
+
+                <Button style="@style/BottomFiltersButtonWhite"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginEnd="0dp"
+                        android:layout_weight="1"
+                        android:elevation="1dp"
+                        android:text="@string/short_friday"
+                        android:textAppearance="@style/Caption1"/>
+
+                <Button style="@style/BottomFiltersButtonWhite"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginEnd="0dp"
+                        android:layout_weight="1"
+                        android:elevation="1dp"
+                        android:text="@string/short_saturday"
+                        android:textAppearance="@style/Caption1"/>
+
+                <Button style="@style/BottomFiltersButtonWhite"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginEnd="0dp"
+                        android:layout_weight="1"
+                        android:elevation="1dp"
+                        android:text="@string/short_sunday"
+                        android:textAppearance="@style/Caption1"/>
+            </LinearLayout>
+
+            <android.support.constraint.ConstraintLayout android:layout_width="match_parent"
+                                                         android:layout_height="wrap_content"
+                                                         android:layout_marginTop="7.5dp"
+                                                         android:layout_marginBottom="7.5dp"
+                                                         android:paddingStart="6dp"
+                                                         android:paddingEnd="6dp">
+
+                <android.support.constraint.ConstraintLayout android:layout_width="match_parent"
+                                                             android:layout_height="40dp"
+                                                             app:layout_constraintBottom_toBottomOf="@id/filtersAgeSeekBar">
+
+                    <TextView android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:layout_marginStart="12dp"
+                              android:layout_marginEnd="0dp"
+                              android:layout_marginBottom="20dp"
+                              app:layout_constraintBottom_toBottomOf="parent"
+                              app:layout_constraintLeft_toLeftOf="parent"/>
+
+                    <TextView android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:layout_marginStart="0dp"
+                              android:layout_marginEnd="12dp"
+                              android:layout_marginBottom="20dp"
+                              app:layout_constraintBottom_toBottomOf="parent"
+                              app:layout_constraintRight_toRightOf="parent"/>
+                </android.support.constraint.ConstraintLayout>
+
+                <SeekBar android:id="@+id/filtersAgeSeekBar"
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content"
+                         app:layout_constraintBottom_toBottomOf="parent"/>
+            </android.support.constraint.ConstraintLayout>
+
+            <TextView android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:paddingStart="15dp"
+                      android:paddingEnd="15dp"
+                      android:paddingBottom="10dp"
+                      android:text="@string/acceptance"
+                      android:textColor="@color/gray"/>
+
+            <LinearLayout android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:clipToPadding="false"
+                          android:orientation="horizontal"
+                          android:paddingStart="15dp"
+                          android:paddingTop="10dp"
+                          android:paddingEnd="15dp"
+                          android:paddingBottom="10dp">
+
+                <Button style="@style/BottomFiltersButtonWhite"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:elevation="1dp"
+                        android:text="@string/any"/>
+
+                <Button style="@style/BottomFiltersButtonWhite"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginEnd="0dp"
+                        android:layout_weight="1"
+                        android:elevation="1dp"
+                        android:text="@string/coming"/>
+
+                <Button style="@style/BottomFiltersButtonWhite"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginEnd="0dp"
+                        android:layout_weight="1"
+                        android:elevation="1dp"
+                        android:text="@string/not_coming"/>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <Button android:id="@+id/filtersAcceptButton"
+            style="@style/BottomButtonGreen"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/filtersAcceptButton"
-            android:text="@string/apply"
-            style="@style/BottomButtonGreen"/>
+            android:text="@string/apply"/>
 </LinearLayout>

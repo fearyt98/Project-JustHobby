@@ -7,296 +7,347 @@
               android:layout_marginStart="3dp"
               android:layout_marginEnd="3dp"
               android:layout_marginBottom="-6dp"
-              android:padding="17dp"
+              android:background="@drawable/card_group_bg"
               android:orientation="vertical"
-              android:background="@drawable/card_group_bg">
+              android:padding="17dp">
+
     <android.support.constraint.ConstraintLayout android:layout_width="match_parent"
                                                  android:layout_height="wrap_content">
-        <TextView android:layout_width="wrap_content"
+
+        <TextView android:id="@+id/cardGroupTitle"
+                  style="@style/Body2.Medium"
+                  android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
-                  android:textColor="@color/whiteText"
-                  android:id="@+id/cardGroupTitle"
                   android:text="Начинающие"
+                  android:textColor="@color/whiteText"
+                  app:layout_constraintBottom_toBottomOf="parent"
                   app:layout_constraintLeft_toLeftOf="parent"
                   app:layout_constraintTop_toTopOf="parent"
-                  app:layout_constraintBottom_toBottomOf="parent"
-                  tools:ignore="HardcodedText"
-                  style="@style/Body2.Medium"/>
+                  tools:ignore="HardcodedText"/>
+
         <ImageButton android:layout_width="wrap_content"
                      android:layout_height="wrap_content"
+                     android:background="@android:color/transparent"
                      android:paddingStart="5dp"
                      android:paddingEnd="0dp"
                      android:tint="@color/greenDark"
-                     app:srcCompat="@drawable/ic_info_16dp"
-                     android:background="@android:color/transparent"
-                     app:layout_constraintTop_toTopOf="parent"
                      app:layout_constraintBottom_toBottomOf="parent"
                      app:layout_constraintLeft_toRightOf="@id/cardGroupTitle"
+                     app:layout_constraintTop_toTopOf="parent"
+                     app:srcCompat="@drawable/ic_info_16dp"
                      tools:ignore="ContentDescription"/>
+
         <ImageButton android:layout_width="wrap_content"
                      android:layout_height="wrap_content"
+                     android:background="@android:color/transparent"
+                     android:contentDescription="@string/remove_from_my_courses"
                      android:tint="@color/greenDark"
-                     app:srcCompat="@drawable/ic_check_24dp"
-                     android:background="@android:color/transparent"
-                     app:layout_constraintTop_toTopOf="parent"
                      app:layout_constraintBottom_toBottomOf="parent"
                      app:layout_constraintRight_toRightOf="parent"
-                     android:contentDescription="@string/remove_from_my_courses"/>
+                     app:layout_constraintTop_toTopOf="parent"
+                     app:srcCompat="@drawable/ic_check_24dp"/>
+
         <ImageButton android:layout_width="wrap_content"
                      android:layout_height="wrap_content"
-                     android:visibility="invisible"
-                     app:srcCompat="@drawable/ic_add_24dp"
                      android:background="@android:color/transparent"
-                     app:layout_constraintTop_toTopOf="parent"
+                     android:contentDescription="@string/add_in_bookmarks"
+                     android:visibility="invisible"
                      app:layout_constraintBottom_toBottomOf="parent"
                      app:layout_constraintRight_toRightOf="parent"
-                     android:contentDescription="@string/add_in_bookmarks"/>
+                     app:layout_constraintTop_toTopOf="parent"
+                     app:srcCompat="@drawable/ic_add_24dp"/>
     </android.support.constraint.ConstraintLayout>
-    <TextView android:layout_width="wrap_content"
+
+    <TextView android:id="@+id/cardGroupTeacher"
+              style="@style/Caption2"
+              android:layout_width="wrap_content"
               android:layout_height="wrap_content"
-              android:textColor="@color/whiteText"
-              android:id="@+id/cardGroupTeacher"
               android:text="Ирина Валекжанина"
-              tools:ignore="HardcodedText"
-              style="@style/Caption2"/>
+              android:textColor="@color/whiteText"
+              tools:ignore="HardcodedText"/>
+
     <ImageView android:layout_width="match_parent"
                android:layout_height="1dp"
-               app:srcCompat="@drawable/ic_circle_separator"
-               android:tint="@color/greenWhiteBottom"
                android:layout_marginTop="6dp"
                android:layout_marginBottom="6dp"
+               android:tint="@color/greenWhiteBottom"
+               app:srcCompat="@drawable/ic_circle_separator"
                tools:ignore="ContentDescription"/>
+
     <LinearLayout android:layout_width="match_parent"
                   android:layout_height="wrap_content"
                   android:orientation="horizontal">
-        <TextView android:layout_width="wrap_content"
+
+        <TextView style="@style/Caption2"
+                  android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
-                  android:textColor="@color/whiteText"
                   android:text="@string/reception"
-                  tools:ignore="HardcodedText"
-                  style="@style/Caption2"/>
-        <ImageView android:layout_width="12dp"
+                  android:textColor="@color/whiteText"
+                  tools:ignore="HardcodedText"/>
+
+        <ImageView android:id="@+id/cardGroupStatus"
+                   android:layout_width="12dp"
                    android:layout_height="12dp"
+                   android:layout_gravity="center_vertical"
                    android:layout_marginLeft="5dp"
                    android:layout_marginRight="5dp"
-                   android:id="@+id/cardGroupStatus"
-                   android:layout_gravity="center_vertical"
+                   android:background="@android:color/transparent"
                    android:tint="@color/whiteTop"
                    app:srcCompat="@drawable/ic_success_24dp"
-                   android:background="@android:color/transparent"
                    tools:ignore="ContentDescription"/>
+
         <ImageView android:layout_width="3dp"
                    android:layout_height="3dp"
+                   android:layout_gravity="center_vertical"
                    android:layout_marginLeft="5dp"
                    android:layout_marginRight="5dp"
-                   android:layout_gravity="center_vertical"
-                   app:srcCompat="@drawable/ic_circle_separator"
-                   android:tint="@color/whiteMiddle"
                    android:background="@android:color/transparent"
+                   android:tint="@color/whiteMiddle"
+                   app:srcCompat="@drawable/ic_circle_separator"
                    tools:ignore="ContentDescription"/>
-        <ImageView android:layout_width="wrap_content"
+
+        <ImageView android:id="@+id/cardGroupSexFemale"
+                   android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
-                   android:id="@+id/cardGroupSexFemale"
                    android:layout_gravity="center_vertical"
+                   android:background="@android:color/transparent"
                    android:tint="@color/whiteTop"
                    app:srcCompat="@drawable/ic_female"
-                   android:background="@android:color/transparent"
                    tools:ignore="ContentDescription"/>
-        <ImageView android:layout_width="0dp"
+
+        <ImageView android:id="@+id/cardGroupSexMale"
+                   android:layout_width="0dp"
                    android:layout_height="wrap_content"
-                   android:id="@+id/cardGroupSexMale"
                    android:layout_gravity="center_vertical"
+                   android:background="@android:color/transparent"
                    android:tint="@color/whiteTop"
                    app:srcCompat="@drawable/ic_male"
-                   android:background="@android:color/transparent"
                    tools:ignore="ContentDescription"/>
-        <LinearLayout android:layout_width="0dp"
+
+        <LinearLayout android:id="@+id/cardGroupSex"
+                      android:layout_width="0dp"
                       android:layout_height="wrap_content"
-                      android:layout_gravity="center_vertical"
-                      android:id="@+id/cardGroupSex">
+                      android:layout_gravity="center_vertical">
+
             <ImageView android:layout_width="wrap_content"
                        android:layout_height="wrap_content"
                        android:layout_gravity="center_vertical"
+                       android:background="@android:color/transparent"
                        android:tint="@color/whiteTop"
                        app:srcCompat="@drawable/ic_female"
-                       android:background="@android:color/transparent"
                        tools:ignore="ContentDescription"/>
+
             <ImageView android:layout_width="wrap_content"
                        android:layout_height="wrap_content"
                        android:layout_gravity="center_vertical"
                        android:layout_marginStart="2dp"
+                       android:background="@android:color/transparent"
                        android:tint="@color/whiteTop"
                        app:srcCompat="@drawable/ic_male"
-                       android:background="@android:color/transparent"
                        tools:ignore="ContentDescription"/>
         </LinearLayout>
+
         <ImageView android:layout_width="3dp"
                    android:layout_height="3dp"
+                   android:layout_gravity="center_vertical"
                    android:layout_marginLeft="5dp"
                    android:layout_marginRight="5dp"
-                   android:layout_gravity="center_vertical"
-                   app:srcCompat="@drawable/ic_circle_separator"
-                   android:tint="@color/whiteMiddle"
                    android:background="@android:color/transparent"
+                   android:tint="@color/whiteMiddle"
+                   app:srcCompat="@drawable/ic_circle_separator"
                    tools:ignore="ContentDescription"/>
-        <TextView android:layout_width="wrap_content"
+
+        <TextView android:id="@+id/cardGroupAgePeople"
+                  style="@style/Caption2"
+                  android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
-                  android:id="@+id/cardGroupAgePeople"
-                  android:textColor="@color/whiteTop"
                   android:text="20 - 80"
-                  tools:ignore="HardcodedText"
-                  style="@style/Caption2"/>
+                  android:textColor="@color/whiteTop"
+                  tools:ignore="HardcodedText"/>
+
         <ImageView android:layout_width="3dp"
                    android:layout_height="3dp"
+                   android:layout_gravity="center_vertical"
                    android:layout_marginLeft="5dp"
                    android:layout_marginRight="5dp"
-                   android:layout_gravity="center_vertical"
-                   app:srcCompat="@drawable/ic_circle_separator"
-                   android:tint="@color/whiteMiddle"
                    android:background="@android:color/transparent"
+                   android:tint="@color/whiteMiddle"
+                   app:srcCompat="@drawable/ic_circle_separator"
                    tools:ignore="ContentDescription"/>
-        <TextView android:layout_width="wrap_content"
+
+        <TextView android:id="@+id/cardGroupPrice"
+                  style="@style/Caption2"
+                  android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
-                  android:id="@+id/cardGroupPrice"
-                  android:textColor="@color/whiteTop"
                   android:text="500Р / занятие"
-                  tools:ignore="HardcodedText"
-                  style="@style/Caption2"/>
+                  android:textColor="@color/whiteTop"
+                  tools:ignore="HardcodedText"/>
     </LinearLayout>
+
     <ImageView android:layout_width="match_parent"
                android:layout_height="1dp"
-               app:srcCompat="@drawable/ic_circle_separator"
-               android:tint="@color/greenWhiteBottom"
                android:layout_marginTop="6dp"
                android:layout_marginBottom="6dp"
+               android:tint="@color/greenWhiteBottom"
+               app:srcCompat="@drawable/ic_circle_separator"
                tools:ignore="ContentDescription"/>
+
     <TableLayout android:layout_width="match_parent"
                  android:layout_height="wrap_content">
+
         <TableRow tools:ignore="UselessParent">
+
             <LinearLayout android:layout_width="0dp"
-                          android:layout_weight="1"
                           android:layout_height="wrap_content"
-                          android:orientation="vertical"
-                          android:background="@drawable/card_group_day_style_default"
-                          android:paddingTop="3dp"
-                          android:paddingBottom="3dp"
-                          android:layout_marginEnd="8dp">
-                <TextView android:text="@string/short_monday"
-                          tools:ignore="HardcodedText"
-                          style="@style/dayWeekDefault"/>
-                <TextView android:text="19:30"
-                          tools:ignore="HardcodedText"
-                          style="@style/timeDayWeekDefault"/>
-                <TextView android:text="20:30"
-                          tools:ignore="HardcodedText"
-                          style="@style/timeDayWeekDefault"/>
-            </LinearLayout>
-            <LinearLayout android:layout_width="0dp"
+                          android:layout_marginEnd="8dp"
                           android:layout_weight="1"
-                          android:layout_height="wrap_content"
-                          android:orientation="vertical"
                           android:background="@drawable/card_group_day_style_default"
-                          android:paddingTop="3dp"
-                          android:paddingBottom="3dp"
-                          android:layout_marginEnd="8dp">
-                <TextView android:text="@string/short_tuesday"
-                          tools:ignore="HardcodedText"
-                          style="@style/dayWeekDefault"/>
-                <TextView android:text="19:30"
-                          tools:ignore="HardcodedText"
-                          style="@style/timeDayWeekDefault"/>
-                <TextView android:text="20:30"
-                          tools:ignore="HardcodedText"
-                          style="@style/timeDayWeekDefault"/>
-            </LinearLayout>
-            <LinearLayout android:layout_width="0dp"
-                          android:layout_weight="1"
-                          android:layout_height="wrap_content"
                           android:orientation="vertical"
-                          android:background="@drawable/card_group_day_style_default"
-                          android:paddingTop="3dp"
-                          android:paddingBottom="3dp"
-                          android:layout_marginEnd="8dp">
-                <TextView android:text="@string/short_wednesday"
-                          tools:ignore="HardcodedText"
-                          style="@style/dayWeekDefault"/>
-                <TextView android:text="19:30"
-                          tools:ignore="HardcodedText"
-                          style="@style/timeDayWeekDefault"/>
-                <TextView android:text="20:30"
-                          tools:ignore="HardcodedText"
-                          style="@style/timeDayWeekDefault"/>
-            </LinearLayout>
-            <LinearLayout android:layout_width="0dp"
-                          android:layout_weight="1"
-                          android:layout_height="wrap_content"
-                          android:orientation="vertical"
-                          android:background="@drawable/card_group_day_style_default"
-                          android:paddingTop="3dp"
-                          android:paddingBottom="3dp"
-                          android:layout_marginEnd="8dp">
-                <TextView android:text="@string/short_thursday"
-                          tools:ignore="HardcodedText"
-                          style="@style/dayWeekDefault"/>
-                <TextView android:text="19:30"
-                          tools:ignore="HardcodedText"
-                          style="@style/timeDayWeekDefault"/>
-                <TextView android:text="20:30"
-                          tools:ignore="HardcodedText"
-                          style="@style/timeDayWeekDefault"/>
-            </LinearLayout>
-            <LinearLayout android:layout_width="0dp"
-                          android:layout_weight="1"
-                          android:layout_height="wrap_content"
-                          android:orientation="vertical"
-                          android:background="@drawable/card_group_day_style_default"
-                          android:paddingTop="3dp"
-                          android:paddingBottom="3dp"
-                          android:layout_marginEnd="8dp">
-                <TextView android:text="@string/short_friday"
-                          tools:ignore="HardcodedText"
-                          style="@style/dayWeekDefault"/>
-                <TextView android:text="19:30"
-                          tools:ignore="HardcodedText"
-                          style="@style/timeDayWeekDefault"/>
-                <TextView android:text="20:30"
-                          tools:ignore="HardcodedText"
-                          style="@style/timeDayWeekDefault"/>
-            </LinearLayout>
-            <LinearLayout android:layout_width="0dp"
-                          android:layout_weight="1"
-                          android:layout_height="wrap_content"
-                          android:orientation="vertical"
-                          android:background="@drawable/card_group_day_style_default"
-                          android:paddingTop="3dp"
-                          android:paddingBottom="3dp"
-                          android:layout_marginEnd="8dp">
-                <TextView android:text="@string/short_saturday"
-                          tools:ignore="HardcodedText"
-                          style="@style/dayWeekDefault"/>
-                <TextView android:text="19:30"
-                          tools:ignore="HardcodedText"
-                          style="@style/timeDayWeekDefault"/>
-                <TextView android:text="20:30"
-                          tools:ignore="HardcodedText"
-                          style="@style/timeDayWeekDefault"/>
-            </LinearLayout>
-            <LinearLayout android:layout_width="0dp"
-                          android:layout_weight="1"
-                          android:layout_height="wrap_content"
-                          android:orientation="vertical"
-                          android:background="@drawable/card_group_day_style_default"
                           android:paddingTop="3dp"
                           android:paddingBottom="3dp">
-                <TextView android:text="@string/short_sunday"
-                          tools:ignore="HardcodedText"
-                          style="@style/dayWeekDefault"/>
-                <TextView android:text="19:30"
-                          tools:ignore="HardcodedText"
-                          style="@style/timeDayWeekDefault"/>
-                <TextView android:text="20:30"
-                          tools:ignore="HardcodedText"
-                          style="@style/timeDayWeekDefault"/>
+
+                <TextView style="@style/dayWeekDefault"
+                          android:text="@string/short_monday"
+                          tools:ignore="HardcodedText"/>
+
+                <TextView style="@style/timeDayWeekDefault"
+                          android:text="19:30"
+                          tools:ignore="HardcodedText"/>
+
+                <TextView style="@style/timeDayWeekDefault"
+                          android:text="20:30"
+                          tools:ignore="HardcodedText"/>
+            </LinearLayout>
+
+            <LinearLayout android:layout_width="0dp"
+                          android:layout_height="wrap_content"
+                          android:layout_marginEnd="8dp"
+                          android:layout_weight="1"
+                          android:background="@drawable/card_group_day_style_default"
+                          android:orientation="vertical"
+                          android:paddingTop="3dp"
+                          android:paddingBottom="3dp">
+
+                <TextView style="@style/dayWeekDefault"
+                          android:text="@string/short_tuesday"
+                          tools:ignore="HardcodedText"/>
+
+                <TextView style="@style/timeDayWeekDefault"
+                          android:text="19:30"
+                          tools:ignore="HardcodedText"/>
+
+                <TextView style="@style/timeDayWeekDefault"
+                          android:text="20:30"
+                          tools:ignore="HardcodedText"/>
+            </LinearLayout>
+
+            <LinearLayout android:layout_width="0dp"
+                          android:layout_height="wrap_content"
+                          android:layout_marginEnd="8dp"
+                          android:layout_weight="1"
+                          android:background="@drawable/card_group_day_style_default"
+                          android:orientation="vertical"
+                          android:paddingTop="3dp"
+                          android:paddingBottom="3dp">
+
+                <TextView style="@style/dayWeekDefault"
+                          android:text="@string/short_wednesday"
+                          tools:ignore="HardcodedText"/>
+
+                <TextView style="@style/timeDayWeekDefault"
+                          android:text="19:30"
+                          tools:ignore="HardcodedText"/>
+
+                <TextView style="@style/timeDayWeekDefault"
+                          android:text="20:30"
+                          tools:ignore="HardcodedText"/>
+            </LinearLayout>
+
+            <LinearLayout android:layout_width="0dp"
+                          android:layout_height="wrap_content"
+                          android:layout_marginEnd="8dp"
+                          android:layout_weight="1"
+                          android:background="@drawable/card_group_day_style_default"
+                          android:orientation="vertical"
+                          android:paddingTop="3dp"
+                          android:paddingBottom="3dp">
+
+                <TextView style="@style/dayWeekDefault"
+                          android:text="@string/short_thursday"
+                          tools:ignore="HardcodedText"/>
+
+                <TextView style="@style/timeDayWeekDefault"
+                          android:text="19:30"
+                          tools:ignore="HardcodedText"/>
+
+                <TextView style="@style/timeDayWeekDefault"
+                          android:text="20:30"
+                          tools:ignore="HardcodedText"/>
+            </LinearLayout>
+
+            <LinearLayout android:layout_width="0dp"
+                          android:layout_height="wrap_content"
+                          android:layout_marginEnd="8dp"
+                          android:layout_weight="1"
+                          android:background="@drawable/card_group_day_style_default"
+                          android:orientation="vertical"
+                          android:paddingTop="3dp"
+                          android:paddingBottom="3dp">
+
+                <TextView style="@style/dayWeekDefault"
+                          android:text="@string/short_friday"
+                          tools:ignore="HardcodedText"/>
+
+                <TextView style="@style/timeDayWeekDefault"
+                          android:text="19:30"
+                          tools:ignore="HardcodedText"/>
+
+                <TextView style="@style/timeDayWeekDefault"
+                          android:text="20:30"
+                          tools:ignore="HardcodedText"/>
+            </LinearLayout>
+
+            <LinearLayout android:layout_width="0dp"
+                          android:layout_height="wrap_content"
+                          android:layout_marginEnd="8dp"
+                          android:layout_weight="1"
+                          android:background="@drawable/card_group_day_style_default"
+                          android:orientation="vertical"
+                          android:paddingTop="3dp"
+                          android:paddingBottom="3dp">
+
+                <TextView style="@style/dayWeekDefault"
+                          android:text="@string/short_saturday"
+                          tools:ignore="HardcodedText"/>
+
+                <TextView style="@style/timeDayWeekDefault"
+                          android:text="19:30"
+                          tools:ignore="HardcodedText"/>
+
+                <TextView style="@style/timeDayWeekDefault"
+                          android:text="20:30"
+                          tools:ignore="HardcodedText"/>
+            </LinearLayout>
+
+            <LinearLayout android:layout_width="0dp"
+                          android:layout_height="wrap_content"
+                          android:layout_weight="1"
+                          android:background="@drawable/card_group_day_style_default"
+                          android:orientation="vertical"
+                          android:paddingTop="3dp"
+                          android:paddingBottom="3dp">
+
+                <TextView style="@style/dayWeekDefault"
+                          android:text="@string/short_sunday"
+                          tools:ignore="HardcodedText"/>
+
+                <TextView style="@style/timeDayWeekDefault"
+                          android:text="19:30"
+                          tools:ignore="HardcodedText"/>
+
+                <TextView style="@style/timeDayWeekDefault"
+                          android:text="20:30"
+                          tools:ignore="HardcodedText"/>
             </LinearLayout>
         </TableRow>
     </TableLayout>

@@ -1,5 +1,6 @@
 package com.aurimteam.justhobby.start.features
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
 import android.support.v4.view.ViewPager
@@ -9,6 +10,7 @@ import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.aurimteam.justhobby.R
+import com.aurimteam.justhobby.user.main.main_nav.MainNavActivity
 import kotlinx.android.synthetic.main.activity_features_viewpager.*
 
 class FeaturesActivity : AppCompatActivity() {
@@ -22,8 +24,7 @@ class FeaturesActivity : AppCompatActivity() {
         setContentView(R.layout.activity_features_viewpager)
 
         preferenceManager = PreferenceManager(this)
-        if (!preferenceManager.isFirstLaunch())
-            launchMainScreen()
+        if (!preferenceManager.isFirstLaunch()) launchMainScreen()
 
         viewPager = findViewById(R.id.introViewPager)
         dotsLayout = findViewById(R.id.introLayoutDots)
@@ -45,17 +46,15 @@ class FeaturesActivity : AppCompatActivity() {
                     toggleVisibilityView(introComplete, false)
                 }
             }
+
             override fun onPageScrolled(p0: Int, p1: Float, p2: Int) {}
             override fun onPageScrollStateChanged(p0: Int) {}
         })
     }
 
     private fun toggleVisibilityView(view: View, is_visible: Boolean) {
-        if(is_visible) {
-            view.layoutParams.height = LinearLayout.LayoutParams.WRAP_CONTENT
-        } else {
-            view.layoutParams.height = 0
-        }
+        if (is_visible) view.layoutParams.height = LinearLayout.LayoutParams.WRAP_CONTENT
+        else view.layoutParams.height = 0
     }
 
     private fun launchMainScreen() {
@@ -87,8 +86,7 @@ class FeaturesActivity : AppCompatActivity() {
     }
 
     private fun skipIntro() {
-        /*val intent = Intent(this, RecoveryActivity::class.java)
-        startActivity(intent)*/
+        startActivity(Intent(this, MainNavActivity::class.java))
     }
 }
 

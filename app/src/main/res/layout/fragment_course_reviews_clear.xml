@@ -5,25 +5,29 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:orientation="vertical">
+
     <android.support.constraint.ConstraintLayout android:layout_width="match_parent"
                                                  android:layout_height="72dp"
+                                                 android:background="@drawable/appbar_bg"
                                                  android:paddingTop="4dp"
-                                                 android:paddingBottom="12dp"
-                                                 android:background="@drawable/appbar_bg">
-        <ImageButton android:layout_width="wrap_content"
+                                                 android:paddingBottom="12dp">
+
+        <ImageButton android:id="@+id/courseReviewsBtnBack"
+                     android:layout_width="wrap_content"
                      android:layout_height="match_parent"
                      android:layout_gravity="center_vertical"
-                     android:id="@+id/courseReviewsBtnBack"
+                     android:background="@android:color/transparent"
+                     android:contentDescription="@string/back"
                      android:paddingStart="20dp"
                      android:paddingEnd="20dp"
                      android:tint="@color/whiteTop"
-                     app:srcCompat="@drawable/ic_arrow_back_24dp"
-                     android:background="@android:color/transparent"
-                     android:contentDescription="@string/back"
+                     app:layout_constraintBottom_toBottomOf="parent"
                      app:layout_constraintLeft_toLeftOf="parent"
                      app:layout_constraintTop_toTopOf="parent"
-                     app:layout_constraintBottom_toBottomOf="parent"/>
-        <TextView android:layout_width="wrap_content"
+                     app:srcCompat="@drawable/ic_arrow_back_24dp"/>
+
+        <TextView style="@style/Body1.Medium"
+                  android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
                   android:layout_gravity="center"
                   android:gravity="center"
@@ -31,37 +35,41 @@
                   android:textColor="@color/whiteTop"
                   app:layout_constraintLeft_toRightOf="@id/courseReviewsBtnBack"
                   app:layout_constraintTop_toTopOf="parent"
-                  style="@style/Body1.Medium"
                   tools:ignore="HardcodedText"/>
-        <TextView android:layout_width="wrap_content"
+
+        <TextView style="@style/Body2"
+                  android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
                   android:layout_gravity="center"
                   android:gravity="center"
                   android:text="@string/test_company_title"
                   android:textColor="@color/whiteTop"
-                  app:layout_constraintLeft_toRightOf="@id/courseReviewsBtnBack"
                   app:layout_constraintBottom_toBottomOf="parent"
-                  style="@style/Body2"/>
+                  app:layout_constraintLeft_toRightOf="@id/courseReviewsBtnBack"/>
     </android.support.constraint.ConstraintLayout>
+
     <LinearLayout android:layout_width="match_parent"
                   android:layout_height="match_parent"
-                  android:layout_marginTop="-8.5dp"
                   android:layout_gravity="center"
+                  android:layout_marginTop="-8.5dp"
                   android:gravity="center"
                   android:orientation="vertical">
+
         <ImageView android:layout_width="114dp"
                    android:layout_height="114dp"
-                   app:srcCompat="@drawable/big_ic_star"
                    android:layout_gravity="center"
+                   app:srcCompat="@drawable/big_ic_star"
                    tools:ignore="ContentDescription"/>
+
         <TextView style="@style/H2.Medium"
                   android:paddingTop="16dp"
                   android:paddingBottom="8dp"
+                  android:text="@string/no_any_course_reviews"
                   android:textAlignment="center"
-                  android:textColor="@color/grafitText"
-                  android:text="@string/no_any_course_reviews"/>
-        <Button style="@style/ButtonGreen"
-                android:id="@+id/courseReviewsClearBtn"
+                  android:textColor="@color/grafitText"/>
+
+        <Button android:id="@+id/courseReviewsClearBtn"
+                style="@style/ButtonGreen"
                 android:text="@string/no_course_reviews"/>
     </LinearLayout>
 </LinearLayout>

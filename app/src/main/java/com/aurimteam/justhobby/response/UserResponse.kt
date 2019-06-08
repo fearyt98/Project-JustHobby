@@ -16,6 +16,7 @@ class UserAttrResponse(
     val lat: String,
     val lon: String,
     val email: String,
+    val avatar: String?,
     val teacher: String,
     val created_at: Long,
     val updated_at: Long

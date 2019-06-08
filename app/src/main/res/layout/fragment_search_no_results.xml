@@ -6,20 +6,23 @@
               android:layout_height="match_parent"
               android:gravity="center"
               android:orientation="vertical">
+
     <ImageView android:layout_width="wrap_content"
                android:layout_height="wrap_content"
-               app:srcCompat="@drawable/big_ic_no_results"
                android:layout_gravity="center"
+               app:srcCompat="@drawable/big_ic_no_results"
                tools:ignore="ContentDescription"/>
+
     <TextView style="@style/H2.Medium"
               android:paddingTop="16dp"
               android:paddingBottom="8dp"
+              android:text="@string/no_search_result"
               android:textAlignment="center"
-              android:textColor="@color/grafitText"
-              android:text="@string/no_search_result"/>
+              android:textColor="@color/grafitText"/>
+
     <TextView style="@style/Body2"
               android:paddingBottom="8dp"
+              android:text="@string/about_no_search_results"
               android:textAlignment="center"
-              android:textColor="@color/grafitText"
-              android:text="@string/about_no_search_results"/>
+              android:textColor="@color/grafitText"/>
 </LinearLayout>

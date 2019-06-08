@@ -1,7 +1,6 @@
 <resources>
     <!-- Base application theme. -->
-    <style name="AppTheme"
-           parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
@@ -76,6 +75,7 @@
         <item name="android:background">@drawable/btn_green_bg</item>
         <item name="android:layout_gravity">center</item>
     </style>
+
     <style name="BottomButtonGreen">
         <item name="android:textColor">@color/whiteTop</item>
         <item name="android:textAppearance">@style/Body1.Bold.UpperCase</item>
@@ -90,6 +90,7 @@
         <item name="android:background">@color/colorPrimary</item>
         <item name="android:layout_gravity">center</item>
     </style>
+    <!-- Button Filters -->
     <style name="BottomFiltersButtonGreen">
         <item name="android:textColor">@color/whiteTop</item>
         <item name="android:textAppearance">@style/Body2</item>
@@ -97,13 +98,12 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:paddingTop">8dp</item>
         <item name="android:paddingBottom">8dp</item>
-        <item name="android:paddingStart">8dp</item>
-        <item name="android:paddingEnd">8dp</item>
         <item name="android:minHeight">0dp</item>
         <item name="android:minWidth">0dp</item>
         <item name="android:background">@drawable/btn_green_filter_bg</item>
         <item name="android:layout_gravity">center</item>
     </style>
+
     <style name="BottomFiltersButtonWhite">
         <item name="android:textColor">@color/grayDarkMiddle</item>
         <item name="android:textAppearance">@style/Body2</item>
@@ -111,16 +111,13 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:paddingTop">8dp</item>
         <item name="android:paddingBottom">8dp</item>
-        <item name="android:paddingStart">8dp</item>
-        <item name="android:paddingEnd">8dp</item>
         <item name="android:minHeight">0dp</item>
         <item name="android:minWidth">0dp</item>
         <item name="android:background">@drawable/btn_green_filter_bg</item>
         <item name="android:layout_gravity">center</item>
     </style>
     <!-- Tab -->
-    <style name="TabsPageViewer"
-           parent="Widget.Design.TabLayout">
+    <style name="TabsPageViewer" parent="Widget.Design.TabLayout">
         <item name="android:layout_height">52dp</item>
         <item name="tabIndicatorColor">@color/whiteTop</item>
         <item name="tabIndicatorHeight">4dp</item>
@@ -131,8 +128,7 @@
         <item name="tabPaddingBottom">9dp</item>
     </style>
     <!-- Tab text -->
-    <style name="TabTextAppearance"
-           parent="TextAppearance.Design.Tab">
+    <style name="TabTextAppearance" parent="TextAppearance.Design.Tab">
         <item name="android:textSize">15sp</item>
         <item name="android:lineSpacingMultiplier">1.7</item>
         <item name="android:fontFamily">sans-serif-medium</item>
@@ -143,12 +139,13 @@
     <style name="BottomSheet" parent="@style/Widget.Design.BottomSheet.Modal">
         <item name="android:background">@drawable/bottomsheets_subcat_bg</item>
     </style>
+
     <style name="BaseBottomSheetDialog" parent="@style/Theme.Design.Light.BottomSheetDialog">
         <item name="android:windowIsFloating">false</item>
-
         <item name="bottomSheetStyle">@style/BottomSheet</item>
     </style>
-    <style name="BottomSheetDialogTheme" parent="BaseBottomSheetDialog" />
+
+    <style name="BottomSheetDialogTheme" parent="BaseBottomSheetDialog"/>
     <!-- Days and Time in group card and user courses -->
     <style name="dayWeekNow">
         <item name="android:layout_width">wrap_content</item>
@@ -163,6 +160,7 @@
         <item name="android:paddingBottom">0.5dp</item>
         <item name="android:fontFamily">sans-serif-medium</item>
     </style>
+
     <style name="timeDayWeekNow">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
@@ -177,6 +175,7 @@
         <item name="android:paddingBottom">1dp</item>
         <item name="android:textStyle">bold</item>
     </style>
+
     <style name="dayWeekDefault">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -188,6 +187,7 @@
         <item name="android:paddingBottom">0.5dp</item>
         <item name="android:fontFamily">sans-serif-medium</item>
     </style>
+
     <style name="timeDayWeekDefault">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
@@ -206,6 +206,7 @@
         <item name="colorControlNormal">@color/orangeText</item>
         <item name="colorControlActivated">@color/orangeText</item>
     </style>
+
     <style name="RatingBarCourseReview">
         <item name="colorControlNormal">@color/grafit</item>
         <item name="colorControlActivated">@color/grafit</item>
@@ -246,9 +247,11 @@
         <item name="android:paddingBottom">2dp</item>
         <item name="android:textColor">@color/whiteText</item>
     </style>
+
     <style name="H2.Medium">
         <item name="android:fontFamily">sans-serif-medium</item>
     </style>
+
     <style name="H2.Medium.UpperCase">
         <item name="android:textAllCaps">true</item>
     </style>
@@ -262,15 +265,19 @@
         <item name="android:paddingBottom">4dp</item>
         <item name="android:textColor">@color/whiteText</item>
     </style>
+
     <style name="Body1.Bold">
         <item name="android:textStyle">bold</item>
     </style>
+
     <style name="Body1.Bold.UpperCase">
         <item name="android:textAllCaps">true</item>
     </style>
+
     <style name="Body1.Medium">
         <item name="android:fontFamily">sans-serif-medium</item>
     </style>
+
     <style name="Body1.Medium.UpperCase">
         <item name="android:textAllCaps">true</item>
     </style>
@@ -284,9 +291,11 @@
         <item name="android:paddingBottom">5dp</item>
         <item name="android:textColor">@color/whiteText</item>
     </style>
+
     <style name="Body2.Medium">
         <item name="android:fontFamily">sans-serif-medium</item>
     </style>
+
     <style name="Body2.Medium.UpperCase">
         <item name="android:textAllCaps">true</item>
     </style>
@@ -300,9 +309,11 @@
         <item name="android:paddingBottom">2dp</item>
         <item name="android:textColor">@color/whiteText</item>
     </style>
+
     <style name="Caption1.Medium">
         <item name="android:fontFamily">sans-serif-medium</item>
     </style>
+
     <style name="Caption1.Medium.UpperCase">
         <item name="android:textAllCaps">true</item>
     </style>
@@ -315,9 +326,11 @@
         <item name="android:paddingBottom">0.5dp</item>
         <item name="android:textColor">@color/whiteText</item>
     </style>
+
     <style name="Caption2.Medium">
         <item name="android:fontFamily">sans-serif-medium</item>
     </style>
+
     <style name="Caption2.Bold">
         <item name="android:textStyle">bold</item>
     </style>
@@ -331,6 +344,7 @@
         <item name="android:paddingBottom">1dp</item>
         <item name="android:textColor">@color/whiteText</item>
     </style>
+
     <style name="Caption3.Bold">
         <item name="android:textStyle">bold</item>
     </style>

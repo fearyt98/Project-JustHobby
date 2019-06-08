@@ -3,115 +3,129 @@
               xmlns:app="http://schemas.android.com/apk/res-auto"
               xmlns:tools="http://schemas.android.com/tools"
               android:id="@+id/cardTimeline"
-              android:layout_height="wrap_content"
               android:layout_width="match_parent"
+              android:layout_height="wrap_content"
               android:orientation="horizontal"
               android:paddingStart="16dp"
               android:paddingEnd="7dp">
+
     <LinearLayout android:layout_width="10dp"
                   android:layout_height="match_parent"
                   android:orientation="vertical"
                   android:weightSum="1">
+
         <View android:layout_width="8dp"
               android:layout_height="8dp"
+              android:layout_gravity="center_horizontal"
               android:layout_marginTop="8dp"
               android:layout_marginBottom="8dp"
-              android:layout_gravity="center_horizontal"
               android:background="@drawable/ic_circle_separator"/>
-        <View android:layout_width="2dp"
+
+        <View android:id="@+id/cardTimelineLineLast"
+              android:layout_width="2dp"
               android:layout_height="0dp"
-              android:id="@+id/cardTimelineLineLast"
               android:layout_gravity="center_horizontal"
               android:layout_weight="1"
               android:background="@drawable/ic_circle_separator"/>
     </LinearLayout>
+
     <android.support.constraint.ConstraintLayout android:layout_width="match_parent"
                                                  android:layout_height="wrap_content"
-                                                 android:orientation="vertical"
                                                  android:layout_marginStart="6dp"
+                                                 android:orientation="vertical"
                                                  android:paddingTop="0dp"
                                                  android:paddingBottom="7dp">
+
         <LinearLayout android:id="@+id/cardTimelineBg"
                       android:layout_width="match_parent"
                       android:layout_height="wrap_content"
-                      android:orientation="vertical"
                       android:background="@drawable/card_timeline_bg_dances"
-                      android:paddingBottom="9dp"
-                      android:paddingRight="17dp"
+                      android:orientation="vertical"
                       android:paddingLeft="17dp"
                       android:paddingTop="13dp"
+                      android:paddingRight="17dp"
+                      android:paddingBottom="9dp"
                       android:translationY="-9dp"
-                      tools:ignore="RtlSymmetry"
-                      app:layout_constraintTop_toBottomOf="@id/cardTimelineTimeFull">
-            <TextView style="@style/Body2.Medium"
+                      app:layout_constraintTop_toBottomOf="@id/cardTimelineTimeFull"
+                      tools:ignore="RtlSymmetry">
+
+            <TextView android:id="@+id/cardTimelineTitle"
+                      style="@style/Body2.Medium"
                       android:layout_width="match_parent"
                       android:layout_height="wrap_content"
-                      android:id="@+id/cardTimelineTitle"
-                      android:textColor="@color/whiteText"
-                      android:maxLines="1"
                       android:ellipsize="end"
+                      android:maxLines="1"
                       android:singleLine="true"
+                      android:textColor="@color/whiteText"
                       tools:ignore="RtlHardcoded"/>
-            <TextView style="@style/Caption1.Medium"
+
+            <TextView android:id="@+id/cardTimelineTeacher"
+                      style="@style/Caption1.Medium"
                       android:layout_width="match_parent"
                       android:layout_height="wrap_content"
-                      android:id="@+id/cardTimelineTeacher"
-                      android:paddingTop="3dp"
-                      android:maxLines="1"
                       android:ellipsize="end"
+                      android:maxLines="1"
+                      android:paddingTop="3dp"
                       android:singleLine="true"
                       android:textColor="@color/whiteText"/>
+
             <LinearLayout android:layout_width="match_parent"
                           android:layout_height="wrap_content"
                           android:orientation="horizontal"
                           android:paddingTop="8dp"
                           android:paddingBottom="9dp">
+
                 <ImageView android:layout_width="16dp"
                            android:layout_height="16dp"
-                           android:background="@drawable/ic_place_24dp"
                            android:layout_gravity="center_vertical"
+                           android:background="@drawable/ic_place_24dp"
                            tools:ignore="ContentDescription"/>
-                <TextView style="@style/Caption1.Medium"
+
+                <TextView android:id="@+id/cardTimelineCompany"
+                          style="@style/Caption1.Medium"
                           android:layout_width="0dp"
                           android:layout_height="wrap_content"
-                          android:paddingStart="8dp"
-                          android:id="@+id/cardTimelineCompany"
                           android:layout_weight="1"
-                          android:maxLines="1"
                           android:ellipsize="end"
+                          android:maxLines="1"
+                          android:paddingStart="8dp"
                           android:singleLine="true"
                           android:textColor="@color/whiteText"/>
-                <TextView style="@style/Caption1.Medium"
+
+                <TextView android:id="@+id/cardTimelineAddress"
+                          style="@style/Caption1.Medium"
                           android:layout_width="wrap_content"
                           android:layout_height="wrap_content"
-                          android:id="@+id/cardTimelineAddress"
                           android:textColor="@color/whiteText"/>
             </LinearLayout>
         </LinearLayout>
+
         <LinearLayout android:id="@+id/cardTimelineTimeFull"
                       android:layout_width="match_parent"
                       android:layout_height="wrap_content"
                       android:orientation="horizontal"
-                      app:layout_constraintTop_toTopOf="parent"
-                      app:layout_constraintStart_toStartOf="parent">
-            <TextView style="@style/Caption1.Medium"
+                      app:layout_constraintStart_toStartOf="parent"
+                      app:layout_constraintTop_toTopOf="parent">
+
+            <TextView android:id="@+id/cardTimelineTime"
+                      style="@style/Caption1.Medium"
                       android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
-                      android:id="@+id/cardTimelineTime"
-                      android:textColor="@color/grafitText"
+                      android:paddingStart="17dp"
                       android:paddingTop="2dp"
-                      android:paddingBottom="2dp"
                       android:paddingEnd="8dp"
-                      android:paddingStart="17dp"/>
-            <TextView style="@style/Caption3"
+                      android:paddingBottom="2dp"
+                      android:textColor="@color/grafitText"/>
+
+            <TextView android:id="@+id/cardTimelineCountdown"
+                      style="@style/Caption3"
                       android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
-                      android:id="@+id/cardTimelineCountdown"
-                      android:textColor="@color/grayDarkMiddle"
                       android:layout_gravity="center"
                       android:paddingTop="2dp"
-                      android:paddingBottom="2dp"
                       android:paddingEnd="8dp"
+                      android:paddingBottom="2dp"
+                      android:textColor="@color/grayDarkMiddle"
                       tools:ignore="RtlSymmetry"/>
         </LinearLayout>
     </android.support.constraint.ConstraintLayout>

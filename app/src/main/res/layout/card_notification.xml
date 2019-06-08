@@ -4,66 +4,76 @@
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:orientation="vertical">
+
     <View android:id="@+id/cardNotificationFirstLine"
           android:layout_width="match_parent"
           android:layout_height="1dp"
-          android:visibility="invisible"
-          android:background="@color/grayLightTopMiddle"/>
+          android:background="@color/grayLightTopMiddle"
+          android:visibility="invisible"/>
+
     <LinearLayout android:layout_width="match_parent"
                   android:layout_height="wrap_content"
-                  android:paddingTop="8dp"
-                  android:paddingStart="20dp"
                   android:orientation="vertical"
+                  android:paddingStart="20dp"
+                  android:paddingTop="8dp"
                   tools:ignore="RtlSymmetry">
-        <TextView android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:id="@+id/cardNotificationTitle"
-                  android:textColor="@color/greenText"
-                  android:text="Восточные танцы"
+
+        <TextView android:id="@+id/cardNotificationTitle"
                   style="@style/Body2.Medium"
-                  tools:ignore="HardcodedText"/>
-        <TextView android:layout_width="match_parent"
+                  android:layout_width="match_parent"
                   android:layout_height="wrap_content"
-                  android:id="@+id/cardNotificationDescription"
-                  android:textColor="@color/grafitText"
-                  android:text="Через 2 часа в 15:00 у Вас состоится занятие по адресу пр. Ленина, 147"
-                  style="@style/Caption1"
+                  android:text="Восточные танцы"
+                  android:textColor="@color/greenText"
                   tools:ignore="HardcodedText"/>
-        <LinearLayout android:layout_width="match_parent"
+
+        <TextView android:id="@+id/cardNotificationDescription"
+                  style="@style/Caption1"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:text="Через 2 часа в 15:00 у Вас состоится занятие по адресу пр. Ленина, 147"
+                  android:textColor="@color/grafitText"
+                  tools:ignore="HardcodedText"/>
+
+        <LinearLayout style="@style/Caption3"
+                      android:layout_width="match_parent"
                       android:layout_height="wrap_content"
-                      android:paddingBottom="8dp"
-                      style="@style/Caption3">
-            <TextView android:layout_width="wrap_content"
+                      android:paddingBottom="8dp">
+
+            <TextView android:id="@+id/cardNotificationDay"
+                      android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
-                      android:id="@+id/cardNotificationDay"
-                      android:textColor="@color/gray"
                       android:text="26"
-                      tools:ignore="HardcodedText"/>
-            <TextView android:layout_width="wrap_content"
-                      android:layout_height="wrap_content"
-                      android:id="@+id/cardNotificationMonth"
-                      android:paddingStart="4dp"
                       android:textColor="@color/gray"
-                      android:text="февраля"
                       tools:ignore="HardcodedText"/>
+
+            <TextView android:id="@+id/cardNotificationMonth"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:paddingStart="4dp"
+                      android:text="февраля"
+                      android:textColor="@color/gray"
+                      tools:ignore="HardcodedText"/>
+
             <TextView android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
                       android:paddingStart="4dp"
                       android:paddingEnd="4dp"
-                      android:textColor="@color/gray"
                       android:text="в"
-                      tools:ignore="HardcodedText"/>
-            <TextView android:layout_width="wrap_content"
-                      android:layout_height="wrap_content"
-                      android:id="@+id/cardNotificationTime"
                       android:textColor="@color/gray"
+                      tools:ignore="HardcodedText"/>
+
+            <TextView android:id="@+id/cardNotificationTime"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
                       android:text="13:00"
+                      android:textColor="@color/gray"
                       tools:ignore="HardcodedText"/>
         </LinearLayout>
     </LinearLayout>
+
     <View android:id="@+id/cardNotificationLastLine"
           android:layout_width="match_parent"
           android:layout_height="1dp"
-          android:background="@color/grayLightTopMiddle"
-          android:layout_marginBottom="8dp"/>
+          android:layout_marginBottom="8dp"
+          android:background="@color/grayLightTopMiddle"/>
 </LinearLayout>
