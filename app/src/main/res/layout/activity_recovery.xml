@@ -1,73 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:tools="http://schemas.android.com/tools"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/colorPrimary"
-            android:fitsSystemWindows="true"
-            android:fillViewport="true">
-    <LinearLayout android:id="@+id/recovery"
-                  android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:gravity="center"
-                  android:orientation="vertical"
-                  android:clickable="true"
-                  android:focusable="true"
-                  android:focusableInTouchMode="true"
-                  tools:context=".start.recovery.RecoveryActivity">
-        <ImageView android:layout_marginTop="44dp"
-                   android:layout_marginBottom="40dp"
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   app:srcCompat="@drawable/logo"
-                   tools:ignore="ContentDescription"/>
-        <LinearLayout android:layout_width="match_parent"
-                      android:layout_height="wrap_content"
-                      android:orientation="vertical"
-                      android:gravity="center">
-            <TextView android:layout_marginRight="16dp"
-                      android:layout_marginLeft="16dp"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                             xmlns:app="http://schemas.android.com/apk/res-auto"
+                                             xmlns:tools="http://schemas.android.com/tools"
+                                             android:layout_width="match_parent"
+                                             android:layout_height="match_parent">
+
+    <ScrollView android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/colorPrimary"
+                android:fillViewport="true"
+                android:fitsSystemWindows="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout android:id="@+id/recovery"
                       android:layout_width="match_parent"
                       android:layout_height="wrap_content"
-                      android:textAppearance="@style/H2"
-                      android:text="@string/password_recovery"
-                      android:gravity="center_horizontal|center_vertical"/>
-            <TextView style="@style/Body2"
-                      android:layout_marginTop="8dp"
-                      android:layout_marginBottom="8dp"
-                      android:layout_width="249dp"
-                      android:layout_height="wrap_content"
-                      app:autoSizeTextType="uniform"
-                      app:autoSizeMinTextSize="12sp"
-                      app:autoSizeMaxTextSize="100sp"
-                      app:autoSizeStepGranularity="2sp"
-                      android:text="@string/about_recovery"
-                      android:gravity="center_horizontal|center_vertical"/>
+                      android:clickable="true"
+                      android:focusable="true"
+                      android:focusableInTouchMode="true"
+                      android:gravity="center"
+                      android:orientation="vertical"
+                      tools:context=".start.recovery.RecoveryActivity">
+
+            <ImageView android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:layout_marginTop="44dp"
+                       android:layout_marginBottom="40dp"
+                       app:srcCompat="@drawable/logo"
+                       tools:ignore="ContentDescription"/>
+
             <LinearLayout android:layout_width="match_parent"
                           android:layout_height="wrap_content"
+                          android:gravity="center"
                           android:orientation="vertical">
-                <TextView style="@style/Label"
-                          android:text="@string/email"/>
-                <EditText android:id="@+id/recoveryLogin"
-                          style="@style/EditText"
-                          android:autofillHints="email"
-                          android:inputType="textEmailAddress"
-                          tools:ignore="LabelFor,UnusedAttribute"/>
+
+                <TextView android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:layout_marginLeft="16dp"
+                          android:layout_marginRight="16dp"
+                          android:gravity="center_horizontal|center_vertical"
+                          android:text="@string/password_recovery"
+                          android:textAppearance="@style/H2"/>
+
+                <TextView style="@style/Body2"
+                          android:layout_width="249dp"
+                          android:layout_height="wrap_content"
+                          android:layout_marginTop="8dp"
+                          android:layout_marginBottom="8dp"
+                          android:gravity="center_horizontal|center_vertical"
+                          android:text="@string/about_recovery"
+                          app:autoSizeMaxTextSize="100sp"
+                          app:autoSizeMinTextSize="12sp"
+                          app:autoSizeStepGranularity="2sp"
+                          app:autoSizeTextType="uniform"/>
+
+                <LinearLayout android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              android:orientation="vertical">
+
+                    <TextView style="@style/Label"
+                              android:text="@string/email"/>
+
+                    <EditText android:id="@+id/recoveryLogin"
+                              style="@style/EditText"
+                              android:autofillHints="email"
+                              android:inputType="textEmailAddress"
+                              tools:ignore="LabelFor,UnusedAttribute"/>
+                </LinearLayout>
+
+                <Button android:id="@+id/recoveryEnterButton"
+                        style="@style/ButtonWhite"
+                        android:layout_marginTop="16dp"
+                        android:text="@string/restore"/>
             </LinearLayout>
-            <Button android:id="@+id/recoveryEnterButton"
-                    style="@style/ButtonWhite"
-                    android:layout_marginTop="16dp"
-                    android:text="@string/restore"/>
+
+            <LinearLayout android:layout_width="match_parent"
+                          android:layout_height="match_parent"
+                          android:gravity="center_horizontal|bottom"
+                          android:orientation="vertical">
+
+                <TextView android:id="@+id/recoveryCancel"
+                          style="@style/BtnBottomFirstScreens"
+                          android:alpha="0.5"
+                          android:text="@string/cancel"/>
+            </LinearLayout>
         </LinearLayout>
-        <LinearLayout android:layout_width="match_parent"
-                      android:layout_height="match_parent"
-                      android:orientation="vertical"
-                      android:gravity="center_horizontal|bottom">
-            <TextView android:id="@+id/recoveryCancel"
-                      style="@style/BtnBottomFirstScreens"
-                      android:text="@string/cancel"
-                      android:alpha="0.5"/>
-        </LinearLayout>
-    </LinearLayout>
-</ScrollView>
+    </ScrollView>
+
+    <FrameLayout android:id="@+id/recoveryProgressBar"
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent"
+                 android:background="@color/whiteUpMiddle"
+                 android:visibility="gone"
+                 app:layout_constraintBottom_toBottomOf="parent"
+                 app:layout_constraintLeft_toLeftOf="parent"
+                 app:layout_constraintRight_toRightOf="parent"
+                 app:layout_constraintTop_toTopOf="parent">
+
+        <ProgressBar android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_gravity="center"/>
+    </FrameLayout>
+</android.support.constraint.ConstraintLayout>

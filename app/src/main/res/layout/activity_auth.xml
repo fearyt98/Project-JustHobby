@@ -1,110 +1,137 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:app="http://schemas.android.com/apk/res-auto"
-             xmlns:tools="http://schemas.android.com/tools"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent">
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                             xmlns:app="http://schemas.android.com/apk/res-auto"
+                                             xmlns:tools="http://schemas.android.com/tools"
+                                             android:layout_width="match_parent"
+                                             android:layout_height="match_parent">
+
     <ScrollView android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/colorPrimary"
+                android:fillViewport="true"
                 android:fitsSystemWindows="true"
-                android:fillViewport="true">
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
         <LinearLayout android:id="@+id/auth"
                       android:layout_width="match_parent"
                       android:layout_height="wrap_content"
-                      android:gravity="center"
-                      android:orientation="vertical"
                       android:clickable="true"
                       android:focusable="true"
                       android:focusableInTouchMode="true"
+                      android:gravity="center"
+                      android:orientation="vertical"
                       tools:context=".start.recovery.RecoveryActivity">
-            <ImageView android:layout_marginTop="44dp"
-                       android:layout_marginBottom="40dp"
-                       android:layout_width="wrap_content"
+
+            <ImageView android:layout_width="wrap_content"
                        android:layout_height="wrap_content"
+                       android:layout_marginTop="44dp"
+                       android:layout_marginBottom="40dp"
                        app:srcCompat="@drawable/logo"
                        tools:ignore="ContentDescription"/>
+
             <LinearLayout android:layout_width="match_parent"
                           android:layout_height="wrap_content"
-                          android:orientation="vertical"
-                          android:gravity="center">
+                          android:gravity="center"
+                          android:orientation="vertical">
+
                 <LinearLayout android:layout_width="match_parent"
                               android:layout_height="wrap_content"
                               android:orientation="vertical">
+
                     <TextView style="@style/Label"
                               android:text="@string/email"/>
+
                     <EditText android:id="@+id/authLogin"
                               style="@style/EditText"
                               android:autofillHints="email"
                               android:inputType="textEmailAddress"
                               tools:ignore="LabelFor,UnusedAttribute"/>
                 </LinearLayout>
+
                 <LinearLayout android:layout_width="match_parent"
                               android:layout_height="wrap_content"
                               android:orientation="vertical">
+
                     <TextView style="@style/Label"
                               android:text="@string/password"/>
+
                     <FrameLayout android:layout_width="match_parent"
                                  android:layout_height="wrap_content">
+
                         <EditText android:id="@+id/authPassword"
                                   style="@style/EditText"
-                                  android:paddingEnd="64dp"
                                   android:autofillHints="email"
                                   android:inputType="textPassword"
+                                  android:paddingEnd="64dp"
                                   tools:ignore="LabelFor,RtlSymmetry,UnusedAttribute"/>
+
                         <ImageButton android:id="@+id/authPasswordVisible"
                                      android:layout_width="wrap_content"
                                      android:layout_height="wrap_content"
                                      android:layout_gravity="end|center_vertical"
-                                     android:paddingTop="2.5dp"
-                                     android:paddingBottom="7.5dp"
-                                     android:paddingEnd="28dp"
-                                     app:srcCompat="@drawable/ic_visibility_24dp"
                                      android:background="@android:color/transparent"
-                                     tools:ignore="RtlSymmetry"
-                                     android:contentDescription="@string/hide_show_password"/>
+                                     android:contentDescription="@string/hide_show_password"
+                                     android:paddingTop="2.5dp"
+                                     android:paddingEnd="28dp"
+                                     android:paddingBottom="7.5dp"
+                                     app:srcCompat="@drawable/ic_visibility_off_24dp"
+                                     tools:ignore="RtlSymmetry"/>
                     </FrameLayout>
                 </LinearLayout>
+
                 <LinearLayout android:layout_width="match_parent"
                               android:layout_height="wrap_content"
                               android:orientation="vertical">
-                    <TextView style="@style/Caption1"
-                              android:id="@+id/authForget"
+
+                    <TextView android:id="@+id/authForget"
+                              style="@style/Caption1"
                               android:layout_width="wrap_content"
                               android:layout_height="wrap_content"
-                              android:paddingTop="0.5dp"
-                              android:paddingBottom="5.5dp"
-                              android:paddingEnd="16dp"
-                              android:textColor="@color/whiteTopUnder"
-                              android:text="@string/forget"
                               android:layout_gravity="end"
+                              android:paddingTop="0.5dp"
+                              android:paddingEnd="16dp"
+                              android:paddingBottom="5.5dp"
+                              android:text="@string/forget"
+                              android:textColor="@color/whiteTopUnder"
                               tools:ignore="RtlSymmetry"/>
+
                     <Button android:id="@+id/authEnterButton"
                             style="@style/ButtonWhite"
                             android:text="@string/sign_in"/>
                 </LinearLayout>
             </LinearLayout>
+
             <LinearLayout android:layout_width="match_parent"
                           android:layout_height="match_parent"
                           android:layout_marginTop="8dp"
-                          android:orientation="vertical"
-                          android:gravity="center_horizontal|bottom">
+                          android:gravity="center_horizontal|bottom"
+                          android:orientation="vertical">
+
                 <TextView android:id="@+id/authRegistry"
                           style="@style/BtnBottomFirstScreens"
-                          android:text="@string/sign_up"
                           android:shadowColor="#66000000"
+                          android:shadowDy="2"
                           android:shadowRadius="4"
-                          android:shadowDy="2"/>
+                          android:text="@string/sign_up"/>
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
+
     <FrameLayout android:id="@+id/authProgressBar"
-                 android:visibility="gone"
                  android:layout_width="match_parent"
                  android:layout_height="match_parent"
-                 android:background="@color/whiteUpMiddle">
+                 android:background="@color/whiteUpMiddle"
+                 android:visibility="gone"
+                 app:layout_constraintBottom_toBottomOf="parent"
+                 app:layout_constraintLeft_toLeftOf="parent"
+                 app:layout_constraintRight_toRightOf="parent"
+                 app:layout_constraintTop_toTopOf="parent">
+
         <ProgressBar android:layout_width="wrap_content"
                      android:layout_height="wrap_content"
                      android:layout_gravity="center"/>
     </FrameLayout>
-</FrameLayout>
+</android.support.constraint.ConstraintLayout>

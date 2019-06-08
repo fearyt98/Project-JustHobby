@@ -1,81 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:tools="http://schemas.android.com/tools"
               xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:orientation="vertical">
+
     <android.support.constraint.ConstraintLayout android:layout_width="match_parent"
                                                  android:layout_height="wrap_content"
                                                  android:background="@color/colorPrimary"
                                                  android:paddingTop="15dp"
                                                  android:paddingBottom="15dp">
-        <ImageButton android:layout_width="wrap_content"
+
+        <ImageButton android:id="@+id/reviewNewBtnBack"
+                     android:layout_width="wrap_content"
                      android:layout_height="match_parent"
-                     android:id="@+id/reviewNewBtnBack"
-                     android:tint="@color/whiteTop"
-                     android:paddingStart="16dp"
                      android:background="@android:color/transparent"
                      android:contentDescription="@string/courses"
-                     app:srcCompat="@drawable/ic_arrow_back_24dp"
+                     android:paddingStart="16dp"
+                     android:tint="@color/whiteTop"
+                     app:layout_constraintBottom_toBottomOf="parent"
                      app:layout_constraintLeft_toLeftOf="parent"
                      app:layout_constraintTop_toTopOf="parent"
-                     app:layout_constraintBottom_toBottomOf="parent"
+                     app:srcCompat="@drawable/ic_arrow_back_24dp"
                      tools:ignore="RtlSymmetry"/>
-        <TextView android:layout_width="wrap_content"
+
+        <TextView style="@style/H2.Medium.UpperCase"
+                  android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
                   android:paddingStart="0dp"
                   android:paddingEnd="40dp"
                   android:text="@string/about_app"
+                  app:layout_constraintBottom_toBottomOf="parent"
                   app:layout_constraintLeft_toRightOf="@+id/reviewNewBtnBack"
                   app:layout_constraintRight_toRightOf="parent"
-                  app:layout_constraintTop_toTopOf="parent"
-                  app:layout_constraintBottom_toBottomOf="parent"
-                  style="@style/H2.Medium.UpperCase"/>
+                  app:layout_constraintTop_toTopOf="parent"/>
     </android.support.constraint.ConstraintLayout>
+
     <LinearLayout android:layout_width="match_parent"
                   android:layout_height="wrap_content"
                   android:layout_marginTop="60dp"
                   android:layout_marginBottom="60dp"
                   android:orientation="vertical">
+
         <ImageView android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
                    android:layout_gravity="center"
                    android:background="@drawable/ic_settings_logo"/>
+
         <TextView android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
                   android:layout_gravity="center"
-                  android:textColor="@color/gray"
-                  android:text="@string/version_app"/>
+                  android:text="@string/version_app"
+                  android:textColor="@color/gray"/>
     </LinearLayout>
-    <TextView android:layout_width="wrap_content"
+
+    <TextView android:id="@+id/confidentPoliticBtn"
+              style="@style/Body1"
+              android:layout_width="wrap_content"
               android:layout_height="wrap_content"
-              android:textColor="@color/grafitText"
+              android:paddingStart="12dp"
+              android:paddingTop="15dp"
+              android:paddingEnd="12dp"
+              android:paddingBottom="15dp"
               android:text="@string/confident_politic"
-              android:id="@+id/confidentPoliticBtn"
-              android:paddingTop="15dp"
-              android:paddingBottom="15dp"
-              android:paddingStart="12dp"
-              android:paddingEnd="12dp"
-              style="@style/Body1"/>
-    <TextView android:layout_width="wrap_content"
+              android:textColor="@color/grafitText"/>
+
+    <TextView android:id="@+id/userAgreementBtn"
+              style="@style/Body1"
+              android:layout_width="wrap_content"
               android:layout_height="wrap_content"
-              android:textColor="@color/grafitText"
+              android:paddingStart="12dp"
+              android:paddingTop="15dp"
+              android:paddingEnd="12dp"
+              android:paddingBottom="15dp"
               android:text="@string/user_agreement"
-              android:id="@+id/userAgreementBtn"
-              android:paddingTop="15dp"
-              android:paddingBottom="15dp"
-              android:paddingStart="12dp"
-              android:paddingEnd="12dp"
-              style="@style/Body1"/>
-    <TextView android:layout_width="wrap_content"
+              android:textColor="@color/grafitText"/>
+
+    <TextView android:id="@+id/licensesBtn"
+              style="@style/Body1"
+              android:layout_width="wrap_content"
               android:layout_height="wrap_content"
-              android:textColor="@color/grafitText"
-              android:text="@string/licenses"
-              android:id="@+id/licensesBtn"
-              android:paddingTop="15dp"
-              android:paddingBottom="15dp"
               android:paddingStart="12dp"
+              android:paddingTop="15dp"
               android:paddingEnd="12dp"
-              style="@style/Body1"/>
+              android:paddingBottom="15dp"
+              android:text="@string/licenses"
+              android:textColor="@color/grafitText"/>
 </LinearLayout>

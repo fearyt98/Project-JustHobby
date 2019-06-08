@@ -2,105 +2,130 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
                                              xmlns:app="http://schemas.android.com/apk/res-auto"
                                              xmlns:tools="http://schemas.android.com/tools"
-                                             android:layout_height="match_parent"
                                              android:layout_width="match_parent"
+                                             android:layout_height="match_parent"
                                              android:orientation="vertical">
+
     <ScrollView android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:visibility="gone"
+                android:layout_height="0dp"
                 android:orientation="vertical"
-                app:layout_constraintTop_toBottomOf="@id/notificationsMarginSpacer"
+                android:overScrollMode="never"
+                android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                android:paddingBottom="56dp">
+                app:layout_constraintTop_toBottomOf="@id/notificationsMarginSpacer">
+
         <LinearLayout android:layout_width="match_parent"
                       android:layout_height="wrap_content"
                       android:orientation="vertical">
+
             <LinearLayout android:layout_width="match_parent"
                           android:layout_height="wrap_content"
                           android:orientation="vertical">
+
                 <TextView android:id="@+id/notificationsNewHeading"
+                          style="@style/Caption1.Medium.UpperCase"
                           android:layout_width="wrap_content"
                           android:layout_height="wrap_content"
                           android:layout_gravity="center"
-                          android:gravity="center"
                           android:layout_marginTop="16dp"
                           android:layout_marginBottom="16dp"
-                          android:paddingTop="3dp"
-                          android:paddingBottom="3dp"
-                          android:paddingStart="15dp"
-                          android:paddingEnd="15dp"
-                          android:textColor="@color/whiteText"
-                          android:text="@string/new_notification"
                           android:background="@drawable/notification_activity_word"
-                          style="@style/Caption1.Medium.UpperCase"/>
+                          android:gravity="center"
+                          android:paddingStart="15dp"
+                          android:paddingTop="3dp"
+                          android:paddingEnd="15dp"
+                          android:paddingBottom="3dp"
+                          android:text="@string/new_notification"
+                          android:textColor="@color/whiteText"/>
+
                 <android.support.v4.widget.NestedScrollView android:layout_width="match_parent"
                                                             android:layout_height="match_parent">
-                    <android.support.v7.widget.RecyclerView android:layout_width="match_parent"
+
+                    <android.support.v7.widget.RecyclerView android:id="@+id/notificationsNew"
+                                                            android:layout_width="match_parent"
                                                             android:layout_height="wrap_content"
-                                                            android:id="@+id/notificationsNew"
-                                                            tools:listitem="@layout/card_notification"
-                                                            tools:itemCount="2"/>
+                                                            tools:itemCount="2"
+                                                            tools:listitem="@layout/card_notification"/>
                 </android.support.v4.widget.NestedScrollView>
             </LinearLayout>
+
             <LinearLayout android:layout_width="match_parent"
                           android:layout_height="wrap_content"
                           android:orientation="vertical">
+
                 <TextView android:id="@+id/notificationsOldHeading"
+                          style="@style/Caption1.Medium.UpperCase"
                           android:layout_width="wrap_content"
                           android:layout_height="wrap_content"
                           android:layout_gravity="center"
-                          android:gravity="center"
                           android:layout_marginTop="16dp"
                           android:layout_marginBottom="16dp"
-                          android:paddingTop="3dp"
-                          android:paddingBottom="3dp"
-                          android:paddingStart="15dp"
-                          android:paddingEnd="15dp"
-                          android:textColor="@color/whiteText"
-                          android:text="@string/old_notification"
                           android:background="@drawable/notification_activity_word"
-                          style="@style/Caption1.Medium.UpperCase"/>
+                          android:gravity="center"
+                          android:paddingStart="15dp"
+                          android:paddingTop="3dp"
+                          android:paddingEnd="15dp"
+                          android:paddingBottom="3dp"
+                          android:text="@string/old_notification"
+                          android:textColor="@color/whiteText"/>
+
                 <android.support.v4.widget.NestedScrollView android:layout_width="match_parent"
                                                             android:layout_height="match_parent">
-                    <android.support.v7.widget.RecyclerView android:layout_width="match_parent"
+
+                    <android.support.v7.widget.RecyclerView android:id="@+id/notificationsOld"
+                                                            android:layout_width="match_parent"
                                                             android:layout_height="wrap_content"
                                                             android:orientation="horizontal"
-                                                            android:id="@+id/notificationsOld"
                                                             tools:listitem="@layout/card_notification"/>
                 </android.support.v4.widget.NestedScrollView>
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
+
+    <ProgressBar android:id="@+id/notificationsProgressBar"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_gravity="center"
+                 app:layout_constraintLeft_toLeftOf="parent"
+                 app:layout_constraintRight_toRightOf="parent"
+                 app:layout_constraintTop_toBottomOf="@id/notificationsBar"/>
+
     <LinearLayout android:layout_width="match_parent"
                   android:layout_height="0dp"
                   android:gravity="center"
                   android:orientation="vertical"
-                  app:layout_constraintTop_toBottomOf="@id/notificationsMarginSpacer"
+                  android:visibility="gone"
                   app:layout_constraintBottom_toBottomOf="parent"
                   app:layout_constraintLeft_toLeftOf="parent"
-                  app:layout_constraintRight_toRightOf="parent">
+                  app:layout_constraintRight_toRightOf="parent"
+                  app:layout_constraintTop_toBottomOf="@id/notificationsMarginSpacer">
+
         <ImageView android:layout_width="129dp"
                    android:layout_height="129dp"
-                   app:srcCompat="@drawable/big_ic_notification"
                    android:layout_gravity="center"
+                   app:srcCompat="@drawable/big_ic_notification"
                    tools:ignore="ContentDescription"/>
+
         <TextView style="@style/H2.Medium"
                   android:paddingTop="16dp"
                   android:paddingBottom="8dp"
+                  android:text="@string/no_notifications"
                   android:textAlignment="center"
-                  android:textColor="@color/grafitText"
-                  android:text="@string/no_notifications"/>
+                  android:textColor="@color/grafitText"/>
+
         <TextView style="@style/Body2"
                   android:paddingBottom="8dp"
+                  android:text="@string/about_no_notifications"
                   android:textAlignment="center"
-                  android:textColor="@color/grafitText"
-                  android:text="@string/about_no_notifications"/>
-        <Button style="@style/ButtonGreen"
-                android:id="@+id/notificationsClearBtn"
+                  android:textColor="@color/grafitText"/>
+
+        <Button android:id="@+id/notificationsClearBtn"
+                style="@style/ButtonGreen"
                 android:text="@string/go_to_search"/>
     </LinearLayout>
+
     <android.widget.Space android:id="@+id/notificationsMarginSpacer"
                           android:layout_width="0dp"
                           android:layout_height="0dp"
@@ -108,32 +133,35 @@
                           app:layout_constraintBottom_toBottomOf="@id/notificationsBar"
                           app:layout_constraintLeft_toLeftOf="@id/notificationsBar"
                           app:layout_constraintRight_toRightOf="@id/notificationsBar"/>
+
     <FrameLayout android:id="@+id/notificationsBar"
                  android:layout_width="match_parent"
                  android:layout_height="64dp"
-                 android:paddingBottom="8dp"
                  android:background="@drawable/appbar_bg"
                  android:orientation="horizontal"
-                 app:layout_constraintTop_toTopOf="parent"
+                 android:paddingBottom="8dp"
                  app:layout_constraintLeft_toLeftOf="parent"
-                 app:layout_constraintRight_toRightOf="parent">
-        <TextView android:layout_width="wrap_content"
+                 app:layout_constraintRight_toRightOf="parent"
+                 app:layout_constraintTop_toTopOf="parent">
+
+        <TextView style="@style/Body1.Medium.UpperCase"
+                  android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
                   android:layout_gravity="center"
                   android:gravity="center"
                   android:text="@string/notifications"
-                  android:textColor="@color/whiteTop"
-                  style="@style/Body1.Medium.UpperCase"/>
-        <ImageButton android:layout_width="wrap_content"
+                  android:textColor="@color/whiteTop"/>
+
+        <ImageButton android:id="@+id/notificationsBtnClear"
+                     android:layout_width="wrap_content"
                      android:layout_height="match_parent"
-                     android:visibility="gone"
                      android:layout_gravity="end"
-                     android:paddingEnd="20dp"
-                     android:id="@+id/notificationsBtnClear"
-                     android:tint="@color/whiteTop"
-                     app:srcCompat="@drawable/ic_delete_24dp"
                      android:background="@android:color/transparent"
                      android:contentDescription="@string/clear_notifications"
+                     android:paddingEnd="20dp"
+                     android:tint="@color/whiteTop"
+                     android:visibility="gone"
+                     app:srcCompat="@drawable/ic_delete_24dp"
                      tools:ignore="RtlSymmetry"/>
     </FrameLayout>
 </android.support.constraint.ConstraintLayout>

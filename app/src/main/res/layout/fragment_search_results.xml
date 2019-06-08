@@ -4,12 +4,13 @@
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
                                             android:paddingBottom="12dp">
-    <android.support.v7.widget.RecyclerView android:layout_width="match_parent"
+
+    <android.support.v7.widget.RecyclerView android:id="@+id/searchResultsRecycler"
+                                            android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
-                                            android:overScrollMode="never"
-                                            android:paddingBottom="9dp"
-                                            android:paddingTop="3dp"
                                             android:clipToPadding="false"
-                                            android:id="@+id/searchResultsRecycler"
+                                            android:overScrollMode="never"
+                                            android:paddingTop="3dp"
+                                            android:paddingBottom="9dp"
                                             tools:listitem="@layout/card_course"/>
 </android.support.v4.widget.NestedScrollView>

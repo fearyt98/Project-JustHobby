@@ -1,108 +1,151 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            xmlns:tools="http://schemas.android.com/tools"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/colorPrimary"
-            android:fitsSystemWindows="true"
-            android:fillViewport="true">
-    <LinearLayout android:id="@+id/registry"
-                  android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:gravity="center"
-                  android:orientation="vertical"
-                  android:clickable="true"
-                  android:focusable="true"
-                  android:focusableInTouchMode="true"
-                  tools:context=".start.recovery.RecoveryActivity">
-        <ImageView android:layout_marginTop="44dp"
-                   android:layout_marginBottom="40dp"
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   app:srcCompat="@drawable/logo"
-                   tools:ignore="ContentDescription"/>
-        <LinearLayout android:layout_width="match_parent"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                             xmlns:app="http://schemas.android.com/apk/res-auto"
+                                             xmlns:tools="http://schemas.android.com/tools"
+                                             android:layout_width="match_parent"
+                                             android:layout_height="match_parent"
+                                             android:orientation="vertical">
+
+    <ScrollView android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/colorPrimary"
+                android:fillViewport="true"
+                android:fitsSystemWindows="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout android:id="@+id/registry"
+                      android:layout_width="match_parent"
                       android:layout_height="wrap_content"
+                      android:clickable="true"
+                      android:focusable="true"
+                      android:focusableInTouchMode="true"
+                      android:gravity="center"
                       android:orientation="vertical"
-                      android:gravity="center">
+                      tools:context=".start.recovery.RecoveryActivity">
+
+            <ImageView android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:layout_marginTop="44dp"
+                       android:layout_marginBottom="40dp"
+                       app:srcCompat="@drawable/logo"
+                       tools:ignore="ContentDescription"/>
+
             <LinearLayout android:layout_width="match_parent"
                           android:layout_height="wrap_content"
+                          android:gravity="center"
                           android:orientation="vertical">
-                <TextView style="@style/Label"
-                          android:text="@string/email"/>
-                <EditText android:id="@+id/registryLogin"
-                          style="@style/EditText"
-                          android:autofillHints="email"
-                          android:inputType="textEmailAddress"
-                          tools:ignore="LabelFor,UnusedAttribute"/>
-            </LinearLayout>
-            <LinearLayout android:layout_width="match_parent"
-                          android:layout_height="wrap_content"
-                          android:orientation="vertical">
-                <TextView style="@style/Label"
-                          android:text="@string/password"/>
-                <FrameLayout android:layout_width="match_parent"
-                             android:layout_height="wrap_content">
-                    <EditText android:id="@+id/registryPassword"
-                              android:paddingEnd="64dp"
+
+                <LinearLayout android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              android:orientation="vertical">
+
+                    <TextView style="@style/Label"
+                              android:text="@string/email"/>
+
+                    <EditText android:id="@+id/registryLogin"
                               style="@style/EditText"
                               android:autofillHints="email"
-                              android:inputType="textPassword"
-                              tools:ignore="LabelFor,RtlSymmetry,UnusedAttribute"/>
-                    <ImageButton android:id="@+id/registryPasswordVisible"
-                                 android:layout_width="wrap_content"
-                                 android:layout_height="wrap_content"
-                                 android:layout_gravity="end|center_vertical"
-                                 android:paddingTop="2.5dp"
-                                 android:paddingBottom="7.5dp"
-                                 android:paddingEnd="28dp"
-                                 app:srcCompat="@drawable/ic_visibility_24dp"
-                                 android:background="@android:color/transparent"
-                                 tools:ignore="RtlSymmetry"
-                                 android:contentDescription="@string/hide_show_password"/>
-                </FrameLayout>
+                              android:inputType="textEmailAddress"
+                              tools:ignore="LabelFor,UnusedAttribute"/>
+                </LinearLayout>
+
+                <LinearLayout android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              android:orientation="vertical">
+
+                    <TextView style="@style/Label"
+                              android:text="@string/password"/>
+
+                    <FrameLayout android:layout_width="match_parent"
+                                 android:layout_height="wrap_content">
+
+                        <EditText android:id="@+id/registryPassword"
+                                  style="@style/EditText"
+                                  android:autofillHints="email"
+                                  android:inputType="textPassword"
+                                  android:paddingEnd="64dp"
+                                  tools:ignore="LabelFor,RtlSymmetry,UnusedAttribute"/>
+
+                        <ImageButton android:id="@+id/registryPasswordVisible"
+                                     android:layout_width="wrap_content"
+                                     android:layout_height="wrap_content"
+                                     android:layout_gravity="end|center_vertical"
+                                     android:background="@android:color/transparent"
+                                     android:contentDescription="@string/hide_show_password"
+                                     android:paddingTop="2.5dp"
+                                     android:paddingEnd="28dp"
+                                     android:paddingBottom="7.5dp"
+                                     app:srcCompat="@drawable/ic_visibility_24dp"
+                                     tools:ignore="RtlSymmetry"/>
+                    </FrameLayout>
+                </LinearLayout>
+
+                <LinearLayout android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              android:orientation="vertical">
+
+                    <TextView style="@style/Label"
+                              android:text="@string/confirm_password"/>
+
+                    <FrameLayout android:layout_width="match_parent"
+                                 android:layout_height="wrap_content">
+
+                        <EditText android:id="@+id/registryConfirmPassword"
+                                  style="@style/EditText"
+                                  android:autofillHints="email"
+                                  android:inputType="textPassword"
+                                  android:paddingEnd="64dp"
+                                  tools:ignore="LabelFor,RtlSymmetry,UnusedAttribute"/>
+
+                        <ImageButton android:id="@+id/registryConfirmPasswordVisible"
+                                     android:layout_width="wrap_content"
+                                     android:layout_height="wrap_content"
+                                     android:layout_gravity="end|center_vertical"
+                                     android:background="@android:color/transparent"
+                                     android:contentDescription="@string/hide_show_password"
+                                     android:paddingTop="2.5dp"
+                                     android:paddingEnd="28dp"
+                                     android:paddingBottom="7.5dp"
+                                     app:srcCompat="@drawable/ic_visibility_24dp"
+                                     tools:ignore="RtlSymmetry"/>
+                    </FrameLayout>
+                </LinearLayout>
+
+                <Button android:id="@+id/registryEnterButton"
+                        style="@style/ButtonWhite"
+                        android:layout_marginTop="16dp"
+                        android:text="@string/sign_up"/>
             </LinearLayout>
+
             <LinearLayout android:layout_width="match_parent"
-                          android:layout_height="wrap_content"
+                          android:layout_height="match_parent"
+                          android:layout_marginTop="24dp"
+                          android:gravity="center_horizontal|bottom"
                           android:orientation="vertical">
-                <TextView style="@style/Label"
-                          android:text="@string/confirm_password"/>
-                <FrameLayout android:layout_width="match_parent"
-                             android:layout_height="wrap_content">
-                    <EditText android:id="@+id/registryConfirmPassword"
-                              android:paddingEnd="64dp"
-                              style="@style/EditText"
-                              android:autofillHints="email"
-                              android:inputType="textPassword"
-                              tools:ignore="LabelFor,RtlSymmetry,UnusedAttribute"/>
-                    <ImageButton android:id="@+id/registryConfirmPasswordVisible"
-                                 android:layout_width="wrap_content"
-                                 android:layout_height="wrap_content"
-                                 android:layout_gravity="end|center_vertical"
-                                 android:paddingTop="2.5dp"
-                                 android:paddingBottom="7.5dp"
-                                 android:paddingEnd="28dp"
-                                 app:srcCompat="@drawable/ic_visibility_24dp"
-                                 android:background="@android:color/transparent"
-                                 tools:ignore="RtlSymmetry"
-                                 android:contentDescription="@string/hide_show_password"/>
-                </FrameLayout>
+
+                <TextView android:id="@+id/registryCancel"
+                          style="@style/BtnBottomFirstScreens"
+                          android:alpha="0.5"
+                          android:text="@string/cancel"/>
             </LinearLayout>
-            <Button android:id="@+id/registryEnterButton"
-                    style="@style/ButtonWhite"
-                    android:layout_marginTop="16dp"
-                    android:text="@string/sign_up"/>
         </LinearLayout>
-        <LinearLayout android:layout_width="match_parent"
-                      android:layout_height="match_parent"
-                      android:layout_marginTop="24dp"
-                      android:orientation="vertical"
-                      android:gravity="center_horizontal|bottom">
-            <TextView android:id="@+id/registryCancel"
-                      style="@style/BtnBottomFirstScreens"
-                      android:text="@string/cancel"
-                      android:alpha="0.5"/>
-        </LinearLayout>
-    </LinearLayout>
-</ScrollView>
+    </ScrollView>
+
+    <FrameLayout android:id="@+id/registryProgressBar"
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent"
+                 android:background="@color/whiteUpMiddle"
+                 android:visibility="gone"
+                 app:layout_constraintBottom_toBottomOf="parent"
+                 app:layout_constraintLeft_toLeftOf="parent"
+                 app:layout_constraintRight_toRightOf="parent"
+                 app:layout_constraintTop_toTopOf="parent">
+
+        <ProgressBar android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_gravity="center"/>
+    </FrameLayout>
+</android.support.constraint.ConstraintLayout>

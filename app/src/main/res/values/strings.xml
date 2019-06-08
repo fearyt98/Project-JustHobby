@@ -126,11 +126,23 @@
         Таким образом он добавиться в\n Ваше расписание, а также Вам\n будут приходить уведомления\n и напоминания о
         нем.
     </string>
-    <string name="about_no_bookmarks">
-        Нажмите на, чтобы добавить\n курс в закладки. Таким образом вы\n можете легко найти его позже.
+    <string name="about_no_bookmarks_before_bookmark">
+        Нажмите на
     </string>
-    <string name="about_no_courses">
-        Нажмите на карточке группы\n в курсе, чтобы добавить его к себе.\n
+    <string name="about_no_bookmarks_after_bookmark">
+        , чтобы добавить
+    </string>
+    <string name="about_no_bookmarks_other">
+        курс в закладки. Таким образом вы\n можете легко найти его позже.
+    </string>
+    <string name="about_no_courses_before_plus">
+        Нажмите на
+    </string>
+    <string name="about_no_courses_after_plus">
+        на карточке группы
+    </string>
+    <string name="about_no_courses_other">
+        в курсе, чтобы добавить его к себе.\n
         Таким образом он добавиться в\n Ваше расписание, а также Вам\n будут приходить уведомления\n
         и напоминания о нем.
     </string>
