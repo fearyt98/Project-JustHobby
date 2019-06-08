@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.Toast
 import com.aurimteam.justhobby.R
+import com.aurimteam.justhobby.course.CourseAdapter
 import com.aurimteam.justhobby.response.CourseResponse
 import com.aurimteam.justhobby.response.CourseResponseR
 import com.aurimteam.justhobby.response.IncludedResponse
@@ -19,7 +20,7 @@ import kotlinx.android.synthetic.main.fragment_company_courses.*
 class CompanyCoursesFragment : Fragment(), ICompanyCoursesView {
 
     private val presenter = CompanyCoursesPresenter(this, CompanyCoursesModel())
-    private val adapter = CompanyCoursesAdapter(presenter)
+    private val adapter = CourseAdapter(presenter)
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_company_courses, container, false)
@@ -29,14 +30,21 @@ class CompanyCoursesFragment : Fragment(), ICompanyCoursesView {
 
     override fun onStart() {
         super.onStart()
+        if (!presenter.isSetView())
+            presenter.attachView(this)
         if (context != null) presenter.getCompanyCourses(context!!)
         companyCoursesRecyclerView.layoutManager = LinearLayoutManager(context)
         companyCoursesRecyclerView.adapter = adapter
     }
 
+    override fun onStop() {
+        super.onStop()
+        presenter.detachView()
+    }
+
     override fun onDestroy() {
         super.onDestroy()
-        presenter.onDestroy()
+        presenter.detachView()
     }
 
     override fun showCompanyCourses(courses: List<CourseResponseR>, included: IncludedResponse?) {

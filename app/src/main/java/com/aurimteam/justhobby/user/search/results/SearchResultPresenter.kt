@@ -2,11 +2,12 @@ package com.aurimteam.justhobby.user.search.results
 
 import android.content.Context
 import com.aurimteam.justhobby.Settings
+import com.aurimteam.justhobby.course.ICoursePresenter
 import com.aurimteam.justhobby.response.CourseResponseR
 import com.aurimteam.justhobby.response.IncludedResponse
 
 class SearchResultPresenter(private var view: ISearchResultView?, private val model: ISearchResultModel?) :
-    SearchResultModel.OnFinishedListener {
+    SearchResultModel.OnFinishedListener, ICoursePresenter {
 
     override fun onResultSuccess(foundedCourses: List<CourseResponseR>, included: IncludedResponse?) {
         view?.showSearchResults(foundedCourses, included)
@@ -24,16 +25,16 @@ class SearchResultPresenter(private var view: ISearchResultView?, private val mo
         view?.addedUserBookmarks(position)
     }
 
-    fun deleteUserBookmark(context: Context, courseId: Long, position: Int) {
+    override fun deleteUserBookmark(context: Context, courseId: Long, position: Int) {
         val token = Settings(context).getProperty("token")
         if (token != null)
             model?.deleteUserBookmark(token, courseId, position, this)
     }
 
-    fun addUserBookmark(context: Context, courseId: Long, position: Int) {
+    override fun addUserBookmark(context: Context, courseId: Long, position: Int) {
         val token = Settings(context).getProperty("token")
         if (token != null)
-            model?.deleteUserBookmark(token, courseId, position, this)
+            model?.addUserBookmark(token, courseId, position, this)
     }
 
     fun getSearchResults(context: Context) {

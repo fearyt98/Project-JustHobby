@@ -1,6 +1,7 @@
 package com.aurimteam.justhobby.user.main.home.home
 
 import android.content.Context
+import android.view.View
 import com.aurimteam.justhobby.Settings
 import com.aurimteam.justhobby.response.EventResponse
 import com.aurimteam.justhobby.response.TimelineNearDayResponse
@@ -36,7 +37,15 @@ class HomeTimelinePresenter(
         }
     }
 
-    fun onDestroy() {
+    fun isSetView(): Boolean {
+        return view != null
+    }
+
+    fun attachView(view: IHomeView?) {
+        this.view = view
+    }
+
+    fun detachView() {
         view = null
     }
 }

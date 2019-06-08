@@ -22,7 +22,7 @@ class SearchResultModel : ISearchResultModel {
     override fun getSearchResultsData(token: String, OnFinishedListener: OnFinishedListener) {
         App.retrofit
             .create(Api::class.java)
-            .getUserBookmarks(token)
+            .getCourses(token)
             .enqueue(object : Callback<CoursesResponse> {
                 override fun onFailure(call: Call<CoursesResponse>, t: Throwable) {
                     OnFinishedListener.onResultFail(t.message)
@@ -83,7 +83,7 @@ class SearchResultModel : ISearchResultModel {
                 override fun onResponse(call: Call<StatusResponse>, response: Response<StatusResponse>) {
                     val responseBody = response.body()
                     if (responseBody != null) {
-                        OnFinishedListener.deletedUserBookmark(position)
+                        OnFinishedListener.addedUserBookmark(position)
                     } else {
                         val jsonObj = JSONObject(response.errorBody()?.string())
                         OnFinishedListener.onResultFail(jsonObj.getJSONObject("error")?.getString("message")?.toString())

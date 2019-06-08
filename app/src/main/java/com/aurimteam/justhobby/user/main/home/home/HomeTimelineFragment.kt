@@ -71,6 +71,8 @@ class HomeTimelineFragment : Fragment(), IHomeView {
 
     override fun onStart() {
         super.onStart()
+        if (!presenter.isSetView())
+            presenter.attachView(this)
         if (context != null) presenter.getNearDayTimeline(context!!)
         homeEventsRecyclerView.layoutManager = LinearLayoutManager(context)
         homeEventsRecyclerView.adapter = adapter
@@ -79,6 +81,7 @@ class HomeTimelineFragment : Fragment(), IHomeView {
     override fun onStop() {
         super.onStop()
         timer.cancel()
+        presenter.detachView()
     }
 
     override fun onResume() {
@@ -90,7 +93,7 @@ class HomeTimelineFragment : Fragment(), IHomeView {
     override fun onDestroy() {
         super.onDestroy()
         timer.cancel()
-        presenter.onDestroy()
+        presenter.detachView()
     }
 
     private fun openDatePicker() {

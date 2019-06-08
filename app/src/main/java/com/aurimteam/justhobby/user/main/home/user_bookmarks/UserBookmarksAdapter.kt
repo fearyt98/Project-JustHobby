@@ -6,7 +6,7 @@ import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import com.aurimteam.justhobby.CourseHolder
+import com.aurimteam.justhobby.course.CourseHolder
 import com.aurimteam.justhobby.R
 import com.aurimteam.justhobby.response.CompanyResponse
 import com.aurimteam.justhobby.response.CourseResponseR

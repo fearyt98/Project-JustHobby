@@ -56,7 +56,7 @@ interface Api {
     ): Call<StatusResponse>
 
     @Headers("Accept: application/json")
-    @POST("user/bookmarks/{course_id}")
+    @POST("user/bookmarks")
     fun addBookmark(
         @Body bookmarkAddBody: BookmarkAddBody
     ): Call<StatusResponse>
@@ -81,8 +81,20 @@ interface Api {
     ): Call<GroupsResponse>
 
     @Headers("Accept: application/json")
-    @GET("courses?include[course][]=company&include[course][]=user")
+    @GET("courses?page[size]=5&include[course][]=company&include[course][]=user")
     fun getCourses(
+        @Query("token") token: String
+    ): Call<CoursesResponse>
+
+    @Headers("Accept: application/json")
+    @GET("courses?page[size]=5&include[course][]=company&include[course][]=user")
+    fun getPopularCourses(
+        @Query("token") token: String
+    ): Call<CoursesResponse>
+
+    @Headers("Accept: application/json")
+    @GET("courses?page[size]=5&include[course][]=company&include[course][]=user")
+    fun getNearCourses(
         @Query("token") token: String
     ): Call<CoursesResponse>
 

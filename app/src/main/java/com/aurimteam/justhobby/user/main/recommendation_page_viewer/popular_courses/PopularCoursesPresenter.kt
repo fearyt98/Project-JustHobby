@@ -2,6 +2,7 @@ package com.aurimteam.justhobby.user.main.recommendation_page_viewer.popular_cou
 
 import android.content.Context
 import com.aurimteam.justhobby.Settings
+import com.aurimteam.justhobby.course.ICoursePresenter
 import com.aurimteam.justhobby.user.main.recommendation_page_viewer.fragments_interfaces.IPopularCoursesModel
 import com.aurimteam.justhobby.user.main.recommendation_page_viewer.fragments_interfaces.IPopularCoursesView
 import com.aurimteam.justhobby.response.CourseResponse
@@ -9,7 +10,7 @@ import com.aurimteam.justhobby.response.CourseResponseR
 import com.aurimteam.justhobby.response.IncludedResponse
 
 class PopularCoursesPresenter(private var view: IPopularCoursesView?, private val model: IPopularCoursesModel?) :
-    PopularCoursesModel.OnFinishedListener {
+    PopularCoursesModel.OnFinishedListener, ICoursePresenter {
 
     override fun onResultSuccess(courses: List<CourseResponseR>, included: IncludedResponse?) {
         view?.showPopularCourses(courses, included)
@@ -27,16 +28,16 @@ class PopularCoursesPresenter(private var view: IPopularCoursesView?, private va
         view?.addedUserBookmarks(position)
     }
 
-    fun deleteUserBookmark(context: Context, courseId: Long, position: Int) {
+    override fun deleteUserBookmark(context: Context, courseId: Long, position: Int) {
         val token = Settings(context).getProperty("token")
         if (token != null)
             model?.deleteUserBookmark(token, courseId, position, this)
     }
 
-    fun addUserBookmark(context: Context, courseId: Long, position: Int) {
+    override fun addUserBookmark(context: Context, courseId: Long, position: Int) {
         val token = Settings(context).getProperty("token")
         if (token != null)
-            model?.deleteUserBookmark(token, courseId, position, this)
+            model?.addUserBookmark(token, courseId, position, this)
     }
 
     fun getPopularCourses(context: Context) {
@@ -46,6 +47,18 @@ class PopularCoursesPresenter(private var view: IPopularCoursesView?, private va
     }
 
     fun onDestroy() {
+        view = null
+    }
+
+    fun isSetView(): Boolean {
+        return view != null
+    }
+
+    fun attachView(view: IPopularCoursesView?) {
+        this.view = view
+    }
+
+    fun detachView() {
         view = null
     }
 }

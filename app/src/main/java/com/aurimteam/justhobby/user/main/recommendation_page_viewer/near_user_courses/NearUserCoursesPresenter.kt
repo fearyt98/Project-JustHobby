@@ -2,13 +2,14 @@ package com.aurimteam.justhobby.user.main.recommendation_page_viewer.near_user_c
 
 import android.content.Context
 import com.aurimteam.justhobby.Settings
+import com.aurimteam.justhobby.course.ICoursePresenter
 import com.aurimteam.justhobby.response.CourseResponseR
 import com.aurimteam.justhobby.response.IncludedResponse
 import com.aurimteam.justhobby.user.main.recommendation_page_viewer.fragments_interfaces.INearCoursesModel
 import com.aurimteam.justhobby.user.main.recommendation_page_viewer.fragments_interfaces.INearCoursesView
 
 class NearUserCoursesPresenter(private var view: INearCoursesView?, private val model: INearCoursesModel?) :
-    NearUserCoursesModel.OnFinishedListener {
+    NearUserCoursesModel.OnFinishedListener, ICoursePresenter {
 
     override fun onResultSuccess(courses: List<CourseResponseR>, included: IncludedResponse?) {
         view?.showNearUserCourses(courses, included)
@@ -26,16 +27,16 @@ class NearUserCoursesPresenter(private var view: INearCoursesView?, private val 
         view?.addedUserBookmarks(position)
     }
 
-    fun deleteUserBookmark(context: Context, courseId: Long, position: Int) {
+    override fun deleteUserBookmark(context: Context, courseId: Long, position: Int) {
         val token = Settings(context).getProperty("token")
         if (token != null)
             model?.deleteUserBookmark(token, courseId, position, this)
     }
 
-    fun addUserBookmark(context: Context, courseId: Long, position: Int) {
+    override fun addUserBookmark(context: Context, courseId: Long, position: Int) {
         val token = Settings(context).getProperty("token")
         if (token != null)
-            model?.deleteUserBookmark(token, courseId, position, this)
+            model?.addUserBookmark(token, courseId, position, this)
     }
 
     fun getNearCourses(context: Context) {
@@ -45,6 +46,18 @@ class NearUserCoursesPresenter(private var view: INearCoursesView?, private val 
     }
 
     fun onDestroy() {
+        view = null
+    }
+
+    fun isSetView(): Boolean {
+        return view != null
+    }
+
+    fun attachView(view: INearCoursesView?) {
+        this.view = view
+    }
+
+    fun detachView() {
         view = null
     }
 }
