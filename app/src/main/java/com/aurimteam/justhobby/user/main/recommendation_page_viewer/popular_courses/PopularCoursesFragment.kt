@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.aurimteam.justhobby.user.main.recommendation_page_viewer.fragments_interfaces.IPopularCoursesView
 import com.aurimteam.justhobby.R
+import com.aurimteam.justhobby.course.CourseAdapter
 import com.aurimteam.justhobby.response.CourseResponse
 import com.aurimteam.justhobby.response.CourseResponseR
 import com.aurimteam.justhobby.response.IncludedResponse
@@ -18,7 +19,7 @@ import kotlinx.android.synthetic.main.fragment_popular_courses.*
 class PopularCoursesFragment : Fragment(), IPopularCoursesView {
 
     private val presenter = PopularCoursesPresenter(this, PopularCoursesModel())
-    private var adapter = PopularCoursesAdapter(presenter)
+    private var adapter = CourseAdapter(presenter)
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_popular_courses, container, false)
@@ -26,14 +27,22 @@ class PopularCoursesFragment : Fragment(), IPopularCoursesView {
 
     override fun onStart() {
         super.onStart()
+        if (!presenter.isSetView())
+            presenter.attachView(this)
         if (context != null) presenter.getPopularCourses(context!!)
         popularCoursesRecyclerView.layoutManager = LinearLayoutManager(context)
         popularCoursesRecyclerView.adapter = adapter
     }
 
+    override fun onStop() {
+        super.onStop()
+        presenter.detachView()
+    }
+
+
     override fun onDestroy() {
         super.onDestroy()
-        presenter.onDestroy()
+        presenter.detachView()
     }
 
     override fun showPopularCourses(courses: List<CourseResponseR>, included: IncludedResponse?) {

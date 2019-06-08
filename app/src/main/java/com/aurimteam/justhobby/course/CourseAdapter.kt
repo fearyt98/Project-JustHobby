@@ -1,4 +1,4 @@
-package com.aurimteam.justhobby.user.search.results
+package com.aurimteam.justhobby.course
 
 import android.support.v4.app.FragmentActivity
 import android.support.v4.app.FragmentManager
@@ -6,15 +6,14 @@ import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import com.aurimteam.justhobby.CourseHolder
 import com.aurimteam.justhobby.R
+import com.aurimteam.justhobby.user.course_info.сourse_info.CourseInfoFragment
 import com.aurimteam.justhobby.response.CompanyResponse
 import com.aurimteam.justhobby.response.CourseResponseR
 import com.aurimteam.justhobby.response.IncludedResponse
-import com.aurimteam.justhobby.user.course_info.сourse_info.CourseInfoFragment
 import kotlinx.android.synthetic.main.card_course.view.*
 
-class SearchResultAdapter(private val presenter: SearchResultPresenter) : RecyclerView.Adapter<CourseHolder>() {
+class CourseAdapter(private val presenter: ICoursePresenter) : RecyclerView.Adapter<CourseHolder>() {
 
     private val coursesList: MutableList<CourseResponseR> = mutableListOf()
     private val companyIncludedList: MutableMap<Long, CompanyResponse> = mutableMapOf()
@@ -30,7 +29,7 @@ class SearchResultAdapter(private val presenter: SearchResultPresenter) : Recycl
         if (payloads.isEmpty())
             onBindViewHolder(holder, position)
         else
-            holder.changeColorBtnBookmark(payloads[0] as Boolean?)
+            holder.changeColorBtnBookmark(coursesOfUser[position])
     }
 
     override fun onBindViewHolder(holder: CourseHolder, position: Int) {
@@ -87,12 +86,12 @@ class SearchResultAdapter(private val presenter: SearchResultPresenter) : Recycl
 
     fun deletedBookmark(position: Int) {
         coursesOfUser[position] = false
-        notifyItemChanged(position, listOf(false))
+        notifyItemChanged(position, listOf(1))
     }
 
     fun addedBookmark(position: Int) {
         coursesOfUser[position] = true
-        notifyItemChanged(position, listOf(true))
+        notifyItemChanged(position, listOf(1))
     }
 
     private fun searchCourseOnMap() {

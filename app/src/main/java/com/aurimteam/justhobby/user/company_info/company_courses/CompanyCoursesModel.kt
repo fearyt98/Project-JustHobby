@@ -5,6 +5,7 @@ import com.aurimteam.justhobby.api.Api
 import com.aurimteam.justhobby.response.*
 import com.aurimteam.justhobby.response_body.BookmarkAddBody
 import com.aurimteam.justhobby.response_body.TokenBody
+import com.aurimteam.justhobby.user.main.recommendation_page_viewer.near_user_courses.NearUserCoursesModel
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
@@ -83,7 +84,7 @@ class CompanyCoursesModel : ICompanyCoursesModel {
                 override fun onResponse(call: Call<StatusResponse>, response: Response<StatusResponse>) {
                     val responseBody = response.body()
                     if (responseBody != null) {
-                        OnFinishedListener.deletedUserBookmark(position)
+                        OnFinishedListener.addedUserBookmark(position)
                     } else {
                         val jsonObj = JSONObject(response.errorBody()?.string())
                         OnFinishedListener.onResultFail(jsonObj.getJSONObject("error")?.getString("message")?.toString())

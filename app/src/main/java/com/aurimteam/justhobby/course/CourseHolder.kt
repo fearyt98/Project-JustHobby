@@ -1,8 +1,9 @@
-package com.aurimteam.justhobby
+package com.aurimteam.justhobby.course
 
 import android.support.v4.content.ContextCompat
 import android.support.v7.widget.RecyclerView
 import android.view.View
+import com.aurimteam.justhobby.R
 import kotlinx.android.synthetic.main.card_course.view.*
 
 class CourseHolder(view: View) : RecyclerView.ViewHolder(view) {

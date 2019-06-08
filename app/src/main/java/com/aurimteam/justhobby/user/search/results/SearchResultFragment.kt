@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.aurimteam.justhobby.R
+import com.aurimteam.justhobby.course.CourseAdapter
 import com.aurimteam.justhobby.response.CourseResponseR
 import com.aurimteam.justhobby.response.IncludedResponse
 import kotlinx.android.synthetic.main.fragment_search_results.*
@@ -17,7 +18,7 @@ import kotlinx.android.synthetic.main.fragment_search_results.*
 class SearchResultFragment : Fragment(), ISearchResultView {
 
     private val presenter = SearchResultPresenter(this, SearchResultModel())
-    private val adapter = SearchResultAdapter(presenter)
+    private val adapter = CourseAdapter(presenter)
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_search_results, container, false)
@@ -29,7 +30,6 @@ class SearchResultFragment : Fragment(), ISearchResultView {
         searchResultsRecyclerView.layoutManager = LinearLayoutManager(context)
         searchResultsRecyclerView.adapter = adapter
         ViewCompat.setNestedScrollingEnabled(searchResultsRecyclerView, false)
-
     }
 
     override fun onDestroy() {
@@ -40,7 +40,7 @@ class SearchResultFragment : Fragment(), ISearchResultView {
     override fun showSearchResults(foundedCourses: List<CourseResponseR>, included: IncludedResponse?) {
         if (foundedCourses.isEmpty() || included == null) {
             searchResultsProgressBar.visibility = View.GONE
-            searchResultsRecyclerView.visibility = View.GONE
+            searchResultsParentRecyclerView.visibility = View.GONE
             searchResultsClear.visibility = View.VISIBLE
         } else {
             toggleContentPB(false)
@@ -59,10 +59,10 @@ class SearchResultFragment : Fragment(), ISearchResultView {
     override fun toggleContentPB(isVisiblePB: Boolean) {
         if (isVisiblePB) {
             searchResultsProgressBar.visibility = View.VISIBLE
-            searchResultsRecyclerView.visibility = View.GONE
+            searchResultsParentRecyclerView.visibility = View.GONE
         } else {
             searchResultsProgressBar.visibility = View.GONE
-            searchResultsRecyclerView.visibility = View.VISIBLE
+            searchResultsParentRecyclerView.visibility = View.VISIBLE
         }
     }
 

@@ -9,7 +9,8 @@
     <ProgressBar android:id="@+id/searchResultsProgressBar"
                  android:layout_width="wrap_content"
                  android:layout_height="wrap_content"
-                 android:layout_gravity="center"/>
+                 android:layout_gravity="center"
+                 android:layout_marginTop="9dp"/>
 
     <LinearLayout android:id="@+id/searchResultsClear"
                   android:layout_width="match_parent"
@@ -39,7 +40,8 @@
                   android:textColor="@color/grafitText"/>
     </LinearLayout>
 
-    <android.support.v4.widget.NestedScrollView android:layout_width="match_parent"
+    <android.support.v4.widget.NestedScrollView android:id="@+id/searchResultsParentRecyclerView"
+                                                android:layout_width="match_parent"
                                                 android:layout_height="wrap_content"
                                                 android:paddingBottom="12dp"
                                                 android:visibility="gone">
