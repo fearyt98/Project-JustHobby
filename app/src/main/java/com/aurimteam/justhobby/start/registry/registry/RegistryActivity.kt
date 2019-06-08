@@ -12,6 +12,7 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.*
 import com.aurimteam.justhobby.R
 import com.aurimteam.justhobby.start.registry.start.RegistryStartActivity
+import kotlinx.android.synthetic.main.activity_registry.*
 
 class RegistryActivity : AppCompatActivity(), IRegistryView {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -79,6 +80,9 @@ class RegistryActivity : AppCompatActivity(), IRegistryView {
 
     fun regBtnClick() {
         val intent = Intent(this, RegistryStartActivity::class.java)
+        intent.putExtra("email", registryLogin.text.toString())
+        intent.putExtra("password", registryPassword.text.toString())
+        intent.putExtra("confirm_password", registryConfirmPassword.text.toString())
         startActivity(intent)
     }
 }

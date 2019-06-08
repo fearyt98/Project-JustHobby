@@ -2,6 +2,7 @@ package com.aurimteam.justhobby.api
 
 import com.aurimteam.justhobby.response.*
 import com.aurimteam.justhobby.response_body.LoginBody
+import com.aurimteam.justhobby.response_body.RegistryBody
 import com.aurimteam.justhobby.response_body.TokenBody
 import retrofit2.Call
 import retrofit2.http.*
@@ -74,4 +75,8 @@ interface Api {
     fun getCourses(
         @Query("token") token: String
     ): Call<CoursesResponse>
+
+    @Headers("Accept: application/json")
+    @POST("register")
+    fun registry(@Body registryBody: RegistryBody): Call<LoginResponse>
 }

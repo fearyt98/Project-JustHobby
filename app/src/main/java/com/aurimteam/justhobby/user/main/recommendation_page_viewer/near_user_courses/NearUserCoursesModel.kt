@@ -63,7 +63,7 @@ class NearUserCoursesModel : INearCoursesModel {
                 ), MetaPagesResponses(null, null, null, null)
             )
         )
-        
+
         onFinishedListener.onResultSuccess(courses)
     }
 }
