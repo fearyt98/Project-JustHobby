@@ -20,7 +20,7 @@ class SearchHolder(view: View) : RecyclerView.ViewHolder(view) {
                         R.color.languages
                     )
                 )
-                itemView.cardCategoryTitle.setTextColor(itemView.context.resources.getColor(R.color.languages))
+                itemView.cardCategoryTitle.setTextColor(ContextCompat.getColor(itemView.context,R.color.languages))
             }
             "sports" -> {
                 itemView.cardCategoryImage.setImageResource(R.drawable.category_ic_sports)
@@ -30,7 +30,7 @@ class SearchHolder(view: View) : RecyclerView.ViewHolder(view) {
                         R.color.sports
                     )
                 )
-                itemView.cardCategoryTitle.setTextColor(itemView.context.resources.getColor(R.color.sports))
+                itemView.cardCategoryTitle.setTextColor(ContextCompat.getColor(itemView.context,R.color.sports))
             }
             "musics" -> {
                 itemView.cardCategoryImage.setImageResource(R.drawable.category_ic_musics)
@@ -40,7 +40,7 @@ class SearchHolder(view: View) : RecyclerView.ViewHolder(view) {
                         R.color.musics
                     )
                 )
-                itemView.cardCategoryTitle.setTextColor(itemView.context.resources.getColor(R.color.musics))
+                itemView.cardCategoryTitle.setTextColor(ContextCompat.getColor(itemView.context,R.color.musics))
             }
             "it" -> {
                 itemView.cardCategoryImage.setImageResource(R.drawable.category_ic_it)
@@ -50,7 +50,7 @@ class SearchHolder(view: View) : RecyclerView.ViewHolder(view) {
                         R.color.it
                     )
                 )
-                itemView.cardCategoryTitle.setTextColor(itemView.context.resources.getColor(R.color.it))
+                itemView.cardCategoryTitle.setTextColor(ContextCompat.getColor(itemView.context,R.color.it))
             }
             "dances" ->  {
                 itemView.cardCategoryImage.setImageResource(R.drawable.category_ic_dances)
@@ -60,7 +60,7 @@ class SearchHolder(view: View) : RecyclerView.ViewHolder(view) {
                         R.color.dances
                     )
                 )
-                itemView.cardCategoryTitle.setTextColor(itemView.context.resources.getColor(R.color.dances))
+                itemView.cardCategoryTitle.setTextColor(ContextCompat.getColor(itemView.context,R.color.dances))
             }
             "art_design" ->  {
                 itemView.cardCategoryImage.setImageResource(R.drawable.category_ic_art_design)
@@ -70,7 +70,7 @@ class SearchHolder(view: View) : RecyclerView.ViewHolder(view) {
                         R.color.art_design
                     )
                 )
-                itemView.cardCategoryTitle.setTextColor(itemView.context.resources.getColor(R.color.art_design))
+                itemView.cardCategoryTitle.setTextColor(ContextCompat.getColor(itemView.context,R.color.art_design))
             }
             "craft" ->  {
                 itemView.cardCategoryImage.setImageResource(R.drawable.category_ic_craft)
@@ -80,7 +80,7 @@ class SearchHolder(view: View) : RecyclerView.ViewHolder(view) {
                         R.color.craft
                     )
                 )
-                itemView.cardCategoryTitle.setTextColor(itemView.context.resources.getColor(R.color.craft))
+                itemView.cardCategoryTitle.setTextColor(ContextCompat.getColor(itemView.context,R.color.craft))
             }
             "designing" ->  {
                 itemView.cardCategoryImage.setImageResource(R.drawable.category_ic_designing)
@@ -90,7 +90,7 @@ class SearchHolder(view: View) : RecyclerView.ViewHolder(view) {
                         R.color.designing
                     )
                 )
-                itemView.cardCategoryTitle.setTextColor(itemView.context.resources.getColor(R.color.designing))
+                itemView.cardCategoryTitle.setTextColor(ContextCompat.getColor(itemView.context,R.color.designing))
             }
             "literature" ->  {
                 itemView.cardCategoryImage.setImageResource(R.drawable.category_ic_literature)
@@ -100,7 +100,7 @@ class SearchHolder(view: View) : RecyclerView.ViewHolder(view) {
                         R.color.literature
                     )
                 )
-                itemView.cardCategoryTitle.setTextColor(itemView.context.resources.getColor(R.color.literature))
+                itemView.cardCategoryTitle.setTextColor(ContextCompat.getColor(itemView.context,R.color.literature))
             }
             "fashion_style" ->  {
                 itemView.cardCategoryImage.setImageResource(R.drawable.category_ic_fashion_style)
@@ -110,7 +110,7 @@ class SearchHolder(view: View) : RecyclerView.ViewHolder(view) {
                         R.color.fashion_style
                     )
                 )
-                itemView.cardCategoryTitle.setTextColor(itemView.context.resources.getColor(R.color.fashion_style))
+                itemView.cardCategoryTitle.setTextColor(ContextCompat.getColor(itemView.context,R.color.fashion_style))
             }
             "entertainment_arts" ->  {
                 itemView.cardCategoryImage.setImageResource(R.drawable.category_ic_entertainment_arts)
@@ -120,7 +120,7 @@ class SearchHolder(view: View) : RecyclerView.ViewHolder(view) {
                         R.color.entertainment_arts
                     )
                 )
-                itemView.cardCategoryTitle.setTextColor(itemView.context.resources.getColor(R.color.entertainment_arts))
+                itemView.cardCategoryTitle.setTextColor(ContextCompat.getColor(itemView.context,R.color.entertainment_arts))
             }
             else -> {
                 itemView.cardCategoryImage.setImageResource(R.drawable.category_ic_languages)
@@ -130,7 +130,7 @@ class SearchHolder(view: View) : RecyclerView.ViewHolder(view) {
                         R.color.languages
                     )
                 )
-                itemView.cardCategoryTitle.setTextColor(itemView.context.resources.getColor(R.color.languages))
+                itemView.cardCategoryTitle.setTextColor(ContextCompat.getColor(itemView.context,R.color.languages))
             }
         }
         itemView.cardCategoryTitle.text = title

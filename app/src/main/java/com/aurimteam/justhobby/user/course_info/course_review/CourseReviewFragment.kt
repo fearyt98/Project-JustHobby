@@ -43,5 +43,10 @@ class CourseReviewFragment : Fragment() {
             courseReviewDateTime.text =
                 SimpleDateFormat("d MMMM в HH:mm", Locale.getDefault()).format(Date(createdAt * 1000))
         }
+        courseReviewBtnBack.setOnClickListener { back() }
+    }
+
+    private fun back() {
+        fragmentManager?.popBackStack()
     }
 }

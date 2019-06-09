@@ -22,6 +22,8 @@ class CourseReviewsFragment : Fragment(), ICourseReviewsView {
     private val presenter = CourseReviewsPresenter(this, CourseReviewsModel())
     private val adapter = CourseReviewsAdapter()
     private var courseId: Long = 0
+    private var courseName: String = ""
+    private var companyName: String = ""
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_course_reviews, container, false)
@@ -37,8 +39,10 @@ class CourseReviewsFragment : Fragment(), ICourseReviewsView {
             if (context != null) {
                 presenter.getCourseReviews(context!!, courseId)
             }
-            courseReviewsTitle.text = arguments!!.get("course_name")!!.toString()
-            courseReviewsCompany.text = arguments!!.get("company_name")!!.toString()
+            courseName = arguments!!.get("course_name")!!.toString()
+            companyName = arguments!!.get("company_name")!!.toString()
+            courseReviewsTitle.text = courseName
+            courseReviewsCompany.text = companyName
             val rating = arguments!!.get("rating")!!.toString()
             courseReviewsRating.text = arguments!!.get("rating")!!.toString()
             if (context != null) {
@@ -106,7 +110,7 @@ class CourseReviewsFragment : Fragment(), ICourseReviewsView {
             courseReviewsContent.visibility = View.VISIBLE
         } else {
             toggleContentPB(false)
-            adapter.onDataChange(courseReviews)
+            adapter.onDataChange(courseReviews, courseName, companyName)
         }
     }
 

@@ -52,7 +52,7 @@ class CourseReviewsAdapter : RecyclerView.Adapter<CourseReviewsHolder>() {
 
     private fun detailReviews(fm: FragmentManager, review: ReviewResponse) {
         val bundle = Bundle()
-        bundle.putString("course_name", companyName)
+        bundle.putString("course_name", courseName)
         bundle.putString("company_name", companyName)
         bundle.putString("user_name", review.attributes.user_name)
         bundle.putString("review", review.attributes.review)
