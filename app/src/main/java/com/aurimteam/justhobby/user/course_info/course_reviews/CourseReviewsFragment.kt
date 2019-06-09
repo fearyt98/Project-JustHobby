@@ -14,6 +14,7 @@ import android.widget.Toast
 import com.aurimteam.justhobby.R
 import com.aurimteam.justhobby.response.ReviewResponse
 import com.aurimteam.justhobby.user.course_info.course_review.CourseReviewFragment
+import com.aurimteam.justhobby.user.course_info.course_review_new.CourseReviewNewFragment
 import kotlinx.android.synthetic.main.fragment_course_reviews.*
 
 class CourseReviewsFragment : Fragment(), ICourseReviewsView {
@@ -141,13 +142,13 @@ class CourseReviewsFragment : Fragment(), ICourseReviewsView {
             val bundle = Bundle()
             bundle.putString("course_id", courseId.toString())
 
-            val courseReviewFragment = CourseReviewFragment()
-            courseReviewFragment.arguments = bundle
+            val courseReviewNewFragment = CourseReviewNewFragment()
+            courseReviewNewFragment.arguments = bundle
 
             fragmentManager!!
                 .beginTransaction()
                 .addToBackStack(null)
-                .replace(R.id.mainNavContainerFragment, courseReviewFragment)
+                .replace(R.id.mainNavContainerFragment, courseReviewNewFragment)
                 .commit()
         }
     }

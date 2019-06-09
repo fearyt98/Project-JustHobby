@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               xmlns:app="http://schemas.android.com/apk/res-auto"
               xmlns:tools="http://schemas.android.com/tools"
-              android:id="@+id/courseReview"
+              android:id="@+id/cardReview"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:orientation="vertical">
@@ -18,25 +18,29 @@
                       android:orientation="horizontal"
                       app:layout_constraintBottom_toBottomOf="parent"
                       app:layout_constraintLeft_toLeftOf="parent"
-                      app:layout_constraintTop_toTopOf="parent">
+                      app:layout_constraintTop_toTopOf="parent"
+                      tools:ignore="UseCompoundDrawables">
 
-            <ImageView android:id="@+id/courseReviewUserImage"
+            <ImageView android:id="@+id/cardReviewUserImage"
                        android:layout_width="60dp"
                        android:layout_height="60dp"
-                       android:background="@drawable/ic_circle_separator"/>
+                       android:background="@drawable/ic_circle_separator"
+                       tools:ignore="ContentDescription"/>
 
-            <TextView android:id="@+id/courseReviewName"
+            <TextView android:id="@+id/cardReviewName"
                       style="@style/Body2.Medium"
                       android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
                       android:layout_gravity="center"
+                      android:ellipsize="end"
+                      android:maxLines="1"
                       android:paddingStart="10dp"
                       android:paddingEnd="0dp"
-                      android:text="Степа Данилов"
+                      android:singleLine="true"
                       android:textColor="@color/greenText"/>
         </LinearLayout>
 
-        <RatingBar android:id="@+id/courseReviewRating"
+        <RatingBar android:id="@+id/cardReviewRating"
                    style="?attr/ratingBarStyleSmall"
                    android:layout_width="80dp"
                    android:layout_height="20dp"
@@ -50,7 +54,7 @@
                    app:layout_constraintTop_toTopOf="parent"/>
     </android.support.constraint.ConstraintLayout>
 
-    <TextView android:id="@+id/courseReviewUserReview"
+    <TextView android:id="@+id/cardReviewReview"
               style="@style/Caption1"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
@@ -60,49 +64,21 @@
               android:paddingStart="15dp"
               android:paddingTop="10dp"
               android:paddingEnd="15dp"
-              android:text="Мне нравится, как построен процесс обучения. За одно занятие мы успеваем узнать много нового. Все занятия разные, интерактивные и динамичные. Скучно не бывает, время проходит незаметно. Благодаря малочисленности группы, обучение практически проходит в индивидуальной форме. Я комфортно чувствую себя в группе. Наш преподаватель Яна очень доброжелательная, внимательная и отзывчивая. Спасибо за возможность учиться в Lingvo Studio. Надеюсь, мы пройдем дальнейший путь в том же составе."
               android:textColor="@color/grafitText"/>
 
-    <LinearLayout android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:orientation="horizontal"
-                  android:paddingStart="15dp"
-                  android:paddingTop="10dp"
-                  android:paddingEnd="15dp">
+    <TextView android:id="@+id/cardReviewDateTime"
+              style="@style/Caption3"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:ellipsize="end"
+              android:maxLines="1"
+              android:paddingStart="15dp"
+              android:paddingTop="10dp"
+              android:paddingEnd="15dp"
+              android:singleLine="true"
+              android:textColor="@color/gray"/>
 
-        <TextView android:id="@+id/courseReviewDate"
-                  style="@style/Caption3"
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:text="26"
-                  android:textColor="@color/gray"/>
-
-        <TextView android:id="@+id/courseReviewMonth"
-                  style="@style/Caption3"
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:paddingStart="5dp"
-                  android:paddingEnd="5dp"
-                  android:text="февраля"
-                  android:textColor="@color/gray"/>
-
-        <TextView style="@style/Caption3"
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:text="в"
-                  android:textColor="@color/gray"/>
-
-        <TextView android:id="@+id/courseReviewTime"
-                  style="@style/Caption3"
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:paddingStart="5dp"
-                  android:paddingEnd="5dp"
-                  android:text="13:00"
-                  android:textColor="@color/gray"/>
-    </LinearLayout>
-
-    <ImageView android:id="@+id/courseReviewLineBottom"
+    <ImageView android:id="@+id/cardReviewLineBottom"
                android:layout_width="match_parent"
                android:layout_height="1dp"
                android:layout_marginTop="8dp"
