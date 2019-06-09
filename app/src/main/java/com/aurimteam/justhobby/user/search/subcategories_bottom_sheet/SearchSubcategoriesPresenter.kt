@@ -9,7 +9,7 @@ class SearchSubcategoriesPresenter(private var view: ISearchSubcategoriesView?, 
         view?.showSubcategories(subcategories)
     }
 
-    override fun onResultFail() {
+    override fun onResultFail(strError: String?) {
 
     }
 

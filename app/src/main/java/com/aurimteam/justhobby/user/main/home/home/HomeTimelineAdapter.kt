@@ -1,5 +1,6 @@
 package com.aurimteam.justhobby.user.main.home.home
 
+import android.os.Bundle
 import android.support.v4.app.FragmentActivity
 import android.support.v4.app.FragmentManager
 import android.support.v7.widget.RecyclerView
@@ -79,10 +80,15 @@ class HomeTimelineAdapter : RecyclerView.Adapter<TimelineHolder>() {
         itemRemove.clear()
     }
 
-    private fun detailInfoCourse(fm: FragmentManager, courseId: Int) {
+    private fun detailInfoCourse(fm: FragmentManager, courseId: Long) {
+        val bundle = Bundle()
+        bundle.putString("course_id", courseId.toString())
+        val courseInfoFragment = CourseInfoFragment()
+        courseInfoFragment.arguments = bundle
+
         fm.beginTransaction()
             .addToBackStack(null)
-            .replace(R.id.mainNavContainerFragment, CourseInfoFragment())
+            .replace(R.id.mainNavContainerFragment, courseInfoFragment)
             .commit()
     }
 

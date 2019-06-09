@@ -7,7 +7,7 @@ class TimelineResponse(
 
 class EventResponse(
     val type: String,
-    val id: Int,
+    val id: Long,
     val attributes: EventAttrResponse
 )
 

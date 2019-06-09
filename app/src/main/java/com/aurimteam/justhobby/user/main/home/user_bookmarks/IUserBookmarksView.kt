@@ -7,5 +7,5 @@ interface IUserBookmarksView {
     fun showUserBookmarks(bookmarks: List<CourseResponseR>, included: IncludedResponse?)
     fun showMessage(message: String?)
     fun toggleContentPB(isVisiblePB: Boolean)
-    fun deletedUserBookmarks(position: Int)
+    fun deletedUserBookmark(position: Int)
 }

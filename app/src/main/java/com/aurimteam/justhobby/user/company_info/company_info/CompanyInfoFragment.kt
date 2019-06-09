@@ -1,4 +1,4 @@
-package com.aurimteam.justhobby.user.company_info.course_info
+package com.aurimteam.justhobby.user.company_info.company_info
 
 import android.os.Bundle
 import android.support.v4.app.Fragment

@@ -14,6 +14,7 @@ import com.aurimteam.justhobby.user.main.home.home.HomeTimelineFragment
 import com.aurimteam.justhobby.user.main.notifications.NotificationsFragment
 import com.aurimteam.justhobby.user.main.recommendation_page_viewer.RecommendationFragment
 import com.aurimteam.justhobby.user.main.settings.settings.SettingsFragment
+import com.aurimteam.justhobby.user.search.search.SearchFragment
 
 class MainNavActivity : AppCompatActivity(), IMainNavView {
 
@@ -87,6 +88,18 @@ class MainNavActivity : AppCompatActivity(), IMainNavView {
         )
         toast.setGravity(Gravity.BOTTOM, 0, 30)
         toast.show()
+    }
+    override fun onBackPressed() {
+        val count = supportFragmentManager.findFragmentById(R.id.mainNavContainerFragment)
+
+        if (count is SearchFragment) {
+            supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.mainNavContainerFragment, RecommendationFragment())
+                .commit()
+        } else {
+            super.onBackPressed()
+        }
     }
 
     private fun loadFragment(fragment: Fragment?): Boolean {

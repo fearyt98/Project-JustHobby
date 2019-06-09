@@ -23,13 +23,13 @@ class CourseHolder(view: View) : RecyclerView.ViewHolder(view) {
     ) {
 
         if(rating != "-") {
-            val ratingInt = rating.toDouble()
+            val ratingDouble = rating.toDouble()
             when {
-                ratingInt in 0.0..1.0 -> itemView.cardCourseRatingBg.setBackgroundResource(R.drawable.card_rating1)
-                ratingInt > 1 && ratingInt < 2 -> itemView.cardCourseRatingBg.setBackgroundResource(R.drawable.card_rating2)
-                ratingInt >= 2 && ratingInt < 3 -> itemView.cardCourseRatingBg.setBackgroundResource(R.drawable.card_rating3)
-                ratingInt >= 3 && ratingInt < 4.5 -> itemView.cardCourseRatingBg.setBackgroundResource(R.drawable.card_rating4)
-                ratingInt >= 4.5 -> itemView.cardCourseRatingBg.setBackgroundResource(R.drawable.card_rating5)
+                ratingDouble < 1.5 -> itemView.cardCourseRatingBg.setBackgroundResource(R.drawable.card_rating1)
+                ratingDouble >= 1.5 && ratingDouble < 2.5 -> itemView.cardCourseRatingBg.setBackgroundResource(R.drawable.card_rating2)
+                ratingDouble >= 2.5 && ratingDouble < 3.5 -> itemView.cardCourseRatingBg.setBackgroundResource(R.drawable.card_rating3)
+                ratingDouble >= 3.5 && ratingDouble < 4.5 -> itemView.cardCourseRatingBg.setBackgroundResource(R.drawable.card_rating4)
+                ratingDouble >= 4.5 -> itemView.cardCourseRatingBg.setBackgroundResource(R.drawable.card_rating5)
             }
         } else {
             itemView.cardCourseRatingBg.setBackgroundResource(R.drawable.card_rating_none)

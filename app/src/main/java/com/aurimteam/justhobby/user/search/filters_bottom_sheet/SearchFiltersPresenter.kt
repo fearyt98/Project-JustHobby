@@ -7,7 +7,7 @@ class SearchFiltersPresenter(private var view: ISearchFiltersView?, private val 
 
     }
 
-    override fun onResultFail() {
+    override fun onResultFail(strError: String?) {
 
     }
 

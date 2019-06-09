@@ -6,7 +6,7 @@ class CourseReviewNewPresenter(private var view: ICourseReviewNewView?, private 
 
     }
 
-    override fun onResultFail() {
+    override fun onResultFail(strError: String?) {
 
     }
 

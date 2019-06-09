@@ -7,7 +7,7 @@ class CourseReviewPresenter(private var view: ICourseReviewView?, private val mo
         view?.showReview()
     }
 
-    override fun onResultFail() {
+    override fun onResultFail(strError: String?) {
 
     }
 

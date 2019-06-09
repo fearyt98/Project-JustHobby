@@ -36,11 +36,10 @@ class AuthPresenter(private var view: IAuthView?, private val model: IAuthModel?
     }
 
     fun isSetToken() {
-        if (Settings(context!!).getProperty("token") != null &&
-            Settings(context!!).getPropertyBoolean("is_full_reg", false) != false
-        ) view?.openMain()
-        else if (Settings(context!!).getProperty("token") != null
-            && Settings(context!!).getPropertyBoolean("is_full_reg", false) == false
-        ) view?.openStartRegistry()
+        if (Settings(context!!).getProperty("token") != null)
+            if (Settings(context!!).getPropertyBoolean("is_full_reg", true) != false)
+                view?.openMain()
+            else
+                view?.openStartRegistry()
     }
 }

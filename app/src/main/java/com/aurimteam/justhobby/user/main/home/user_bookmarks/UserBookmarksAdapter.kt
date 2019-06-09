@@ -1,5 +1,6 @@
 package com.aurimteam.justhobby.user.main.home.user_bookmarks
 
+import android.os.Bundle
 import android.support.v4.app.FragmentActivity
 import android.support.v4.app.FragmentManager
 import android.support.v7.widget.RecyclerView
@@ -32,14 +33,14 @@ class UserBookmarksAdapter(private val presenter: UserBookmarksPresenter) :
             item.attributes.address,
             item.attributes.length,
             item.attributes.status,
-            item.attributes.type_payment,
+            0,//item.attributes.type_payment,
             item.attributes.price,
             item.attributes.sex,
             item.attributes.age_max,
             item.attributes.age_min,
             true
         )
-        holder.itemView.cardCourse.setOnClickListener { detailInfoCourse(manager, item, itemCompany) }
+        holder.itemView.cardCourse.setOnClickListener { detailInfoCourse(manager, item) }
         holder.itemView.cardCourseBtnBookmark.setOnClickListener {
             deleteBookmark(
                 holder,
@@ -71,10 +72,15 @@ class UserBookmarksAdapter(private val presenter: UserBookmarksPresenter) :
         notifyItemRangeChanged(position, userBookmarksList.count())
     }
 
-    private fun detailInfoCourse(fm: FragmentManager, course: CourseResponseR, company: CompanyResponse) {
+    private fun detailInfoCourse(fm: FragmentManager, course: CourseResponseR) {
+        val bundle = Bundle()
+        bundle.putString("course_id", course.id.toString())
+        val courseInfoFragment = CourseInfoFragment()
+        courseInfoFragment.arguments = bundle
+
         fm.beginTransaction()
             .addToBackStack(null)
-            .replace(R.id.mainNavContainerFragment, CourseInfoFragment())
+            .replace(R.id.mainNavContainerFragment, courseInfoFragment)
             .commit()
     }
 

@@ -249,5 +249,6 @@
             android:maxLines="1"
             android:padding="5dp"
             android:singleLine="true"
-            android:text="@string/remove_from_my_courses_btn"/>
+            android:text="@string/remove_from_my_courses_btn"
+            android:visibility="gone"/>
 </LinearLayout>

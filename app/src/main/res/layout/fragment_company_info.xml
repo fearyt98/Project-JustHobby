@@ -353,7 +353,6 @@
                       android:paddingTop="16dp"
                       android:paddingEnd="12dp"
                       android:paddingBottom="12dp"
-                      android:text="@string/about_company"
                       android:textColor="@color/grafitText"/>
         </LinearLayout>
     </ScrollView>

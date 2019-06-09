@@ -6,12 +6,13 @@ import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import com.aurimteam.justhobby.R
 import com.aurimteam.justhobby.user.course_info.сourse_info.CourseInfoFragment
 import com.aurimteam.justhobby.response.CompanyResponse
 import com.aurimteam.justhobby.response.CourseResponseR
 import com.aurimteam.justhobby.response.IncludedResponse
 import kotlinx.android.synthetic.main.card_course.view.*
+import android.os.Bundle
+import com.aurimteam.justhobby.R
 
 class CourseAdapter(private val presenter: ICoursePresenter) : RecyclerView.Adapter<CourseHolder>() {
 
@@ -43,14 +44,14 @@ class CourseAdapter(private val presenter: ICoursePresenter) : RecyclerView.Adap
             item.attributes.address,
             item.attributes.length,
             item.attributes.status,
-            item.attributes.type_payment,
+            0,//item.attributes.type_payment,
             item.attributes.price,
             item.attributes.sex,
             item.attributes.age_max,
             item.attributes.age_min,
             item.relationships.user
         )
-        holder.itemView.cardCourse.setOnClickListener { detailInfoCourse(manager, item, itemCompany) }
+        holder.itemView.cardCourse.setOnClickListener { detailInfoCourse(manager, item) }
         holder.itemView.cardCourseBtnBookmark.setOnClickListener {
             if (coursesOfUser[position]) {
                 deleteBookmark(
@@ -98,10 +99,15 @@ class CourseAdapter(private val presenter: ICoursePresenter) : RecyclerView.Adap
         Log.d("searchCourseOnMap", "granted")
     }
 
-    private fun detailInfoCourse(fm: FragmentManager, course: CourseResponseR, company: CompanyResponse) {
+    private fun detailInfoCourse(fm: FragmentManager, course: CourseResponseR) {
+        val bundle = Bundle()
+        bundle.putString("course_id", course.id.toString())
+        val courseInfoFragment = CourseInfoFragment()
+        courseInfoFragment.arguments = bundle
+
         fm.beginTransaction()
             .addToBackStack(null)
-            .replace(R.id.mainNavContainerFragment, CourseInfoFragment())
+            .replace(R.id.mainNavContainerFragment, courseInfoFragment)
             .commit()
     }
 

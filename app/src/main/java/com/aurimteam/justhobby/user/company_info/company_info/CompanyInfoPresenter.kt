@@ -1,4 +1,4 @@
-package com.aurimteam.justhobby.user.company_info.course_info
+package com.aurimteam.justhobby.user.company_info.company_info
 
 import com.aurimteam.justhobby.response.CourseResponse
 
@@ -9,7 +9,7 @@ class CompanyInfoPresenter(private var view: ICompanyInfoView?, private val mode
         view?.showCompanyCourses(courses)
     }
 
-    override fun onResultFail() {
+    override fun onResultFail(strError: String?) {
 
     }
 

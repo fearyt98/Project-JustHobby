@@ -16,8 +16,7 @@ import com.aurimteam.justhobby.user.search.results.SearchResultFragment
 import kotlinx.android.synthetic.main.fragment_search.*
 import android.view.inputmethod.InputMethodManager
 import com.aurimteam.justhobby.response.CategoryResponse
-import com.aurimteam.justhobby.user.main.home.home.HomeTimelineModel
-import com.aurimteam.justhobby.user.main.home.home.HomeTimelinePresenter
+import com.aurimteam.justhobby.user.main.recommendation_page_viewer.RecommendationFragment
 import com.aurimteam.justhobby.user.search.filters_bottom_sheet.SearchFiltersFragment
 import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent
 
@@ -29,6 +28,7 @@ class SearchFragment : Fragment(), ISearchView {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_search, container, false)
         view.findViewById<ImageButton>(R.id.searchFilters).setOnClickListener { openFilters() }
+        view.findViewById<ImageButton>(R.id.searchBtnBack).setOnClickListener { back() }
 
         presenter = SearchPresenter(
             this,
@@ -86,5 +86,12 @@ class SearchFragment : Fragment(), ISearchView {
                 inputMethodManager?.hideSoftInputFromWindow(view.windowToken, 0)
             }
         }
+    }
+
+    private fun back() {
+        fragmentManager!!
+            .beginTransaction()
+            .replace(R.id.mainNavContainerFragment, RecommendationFragment())
+            .commit()
     }
 }

@@ -20,6 +20,9 @@ import android.widget.Toast
 import com.aurimteam.justhobby.response.TimelineNearDayResponse
 import com.aurimteam.justhobby.user.main.home.user_bookmarks.UserBookmarksFragment
 import android.os.CountDownTimer
+import android.support.design.widget.BottomNavigationView
+import android.widget.Button
+import com.aurimteam.justhobby.user.search.search.SearchFragment
 
 class HomeTimelineFragment : Fragment(), IHomeView {
 
@@ -66,6 +69,7 @@ class HomeTimelineFragment : Fragment(), IHomeView {
         view.findViewById<ImageButton>(R.id.homeCourses).setOnClickListener { openUserCourses() }
         view.findViewById<ImageButton>(R.id.homeCalendar).setOnClickListener { openDatePicker() }
         view.findViewById<TextView>(R.id.homeCalendarText).setOnClickListener { openDatePicker() }
+        view.findViewById<Button>(R.id.homeClearBtn).setOnClickListener { openSearch() }
         return view
     }
 
@@ -161,6 +165,14 @@ class HomeTimelineFragment : Fragment(), IHomeView {
                 homeProgressBar.visibility = View.GONE
                 homeContent.visibility = View.VISIBLE
             }
+    }
+
+    private fun openSearch() {
+        activity?.findViewById<BottomNavigationView>(R.id.mainNavNavigation)?.selectedItemId = R.id.navigation_search
+        fragmentManager!!
+            .beginTransaction()
+            .replace(R.id.mainNavContainerFragment, SearchFragment())
+            .commit()
     }
 
     private fun openUserBookmarks() {

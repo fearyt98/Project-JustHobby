@@ -18,7 +18,7 @@ class NotificationsPresenter(private var view: INotificationsView?, private val 
         if (oldNotifications.size != 0) view?.showOldNotifications(oldNotifications)
     }
 
-    override fun onResultFail() {
+    override fun onResultFail(strError: String?) {
 
     }
 

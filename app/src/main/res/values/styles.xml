@@ -216,7 +216,7 @@
         <item name="android:gravity">left|center_vertical</item>
         <item name="android:textAppearance">@style/Caption1</item>
         <item name="android:textColor">@color/whiteTopUnder</item>
-        <item name="android:paddingStart">33.5dp</item>
+        <item name="android:paddingStart">31dp</item>
     </style>
     <!-- Btn bottom first screens -->
     <style name="BtnBottomFirstScreens">

@@ -20,12 +20,12 @@ class UserGroupsModel : IUserGroupsModel {
         App.retrofit
             .create(Api::class.java)
             .getUserGroups(token)
-            .enqueue(object : Callback<GroupsResponse> {
-                override fun onFailure(call: Call<GroupsResponse>, t: Throwable) {
+            .enqueue(object : Callback<GroupsResponseI> {
+                override fun onFailure(call: Call<GroupsResponseI>, t: Throwable) {
                     onFinishedListener.onResultFail(t.message)
                 }
 
-                override fun onResponse(call: Call<GroupsResponse>, response: Response<GroupsResponse>) {
+                override fun onResponse(call: Call<GroupsResponseI>, response: Response<GroupsResponseI>) {
                     val responseBody = response.body()
                     if (responseBody != null) {
                         onFinishedListener.onResultSuccess(responseBody.data, responseBody.included)
@@ -41,23 +41,23 @@ class UserGroupsModel : IUserGroupsModel {
         token: String,
         groupId: Long,
         position: Int,
-        OnFinishedListener: OnFinishedListener
+        onFinishedListener: OnFinishedListener
     ) {
         App.retrofit
             .create(Api::class.java)
             .deleteGroup(TokenBody(token), groupId)
             .enqueue(object : Callback<StatusResponse> {
                 override fun onFailure(call: Call<StatusResponse>, t: Throwable) {
-                    OnFinishedListener.onResultFail(t.message)
+                    onFinishedListener.onResultFail(t.message)
                 }
 
                 override fun onResponse(call: Call<StatusResponse>, response: Response<StatusResponse>) {
                     val responseBody = response.body()
                     if (responseBody != null) {
-                        OnFinishedListener.deletedUserGroup(position)
+                        onFinishedListener.deletedUserGroup(position)
                     } else {
                         val jsonObj = JSONObject(response.errorBody()?.string())
-                        OnFinishedListener.onResultFail(jsonObj.getJSONObject("error")?.getString("message")?.toString())
+                        onFinishedListener.onResultFail(jsonObj.getJSONObject("error")?.getString("message")?.toString())
                     }
                 }
             })

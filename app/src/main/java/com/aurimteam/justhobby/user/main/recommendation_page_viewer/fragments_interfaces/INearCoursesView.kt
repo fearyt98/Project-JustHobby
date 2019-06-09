@@ -7,6 +7,6 @@ interface INearCoursesView {
     fun showNearUserCourses(courses: List<CourseResponseR>, included: IncludedResponse?)
     fun showMessage(message: String?)
     fun toggleContentPB(isVisiblePB: Boolean)
-    fun deletedUserBookmarks(position: Int)
-    fun addedUserBookmarks(position: Int)
+    fun deletedUserBookmark(position: Int)
+    fun addedUserBookmark(position: Int)
 }

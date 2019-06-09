@@ -13,7 +13,7 @@ class UserGroupsHolder(view: View) : RecyclerView.ViewHolder(view) {
         titleCompany: String,
         address: String,
         teacher: String,
-        timeTable: List<TimetableResponse>,
+        timeTable: List<TimetableResponse>?,
         isClicked: Boolean
     ) {
         itemView.cardUserGroupTitle.text = "$titleCourse ($titleGroup)"
@@ -27,16 +27,18 @@ class UserGroupsHolder(view: View) : RecyclerView.ViewHolder(view) {
         itemView.cardUserGroupDay5.visibility = View.GONE
         itemView.cardUserGroupDay6.visibility = View.GONE
         itemView.cardUserGroupDay7.visibility = View.GONE
-        itemView.cardUserGroupDay1Str.text = dayWeekStr(timeTable[0].day_week)
-        itemView.cardUserGroupDay1StartTime.text = intToTime(timeTable[0].attributes.time_start)
-        itemView.cardUserGroupDay1EndTime.text =
-            intToTime(timeTable[0].attributes.time_start + timeTable[0].attributes.duration)
+        if (timeTable != null) {
+            itemView.cardUserGroupDay1Str.text = dayWeekStr(timeTable[0].day_week)
+            itemView.cardUserGroupDay1StartTime.text = intToTime(timeTable[0].attributes.time_start)
+            itemView.cardUserGroupDay1EndTime.text =
+                intToTime(timeTable[0].attributes.time_start + timeTable[0].attributes.duration)
+        }
 
-        toogleTimetable(timeTable, isClicked)
+        toggleTimetable(timeTable, isClicked)
     }
 
-    fun toogleTimetable(timeTable: List<TimetableResponse>, isClicked: Boolean) {
-        if (isClicked) {
+    fun toggleTimetable(timeTable: List<TimetableResponse>?, isClicked: Boolean) {
+        if (isClicked && timeTable != null) {
             for (item in timeTable) {
                 when (timeTable.indexOf(item)) {
                     1 -> {

@@ -5,7 +5,7 @@ import com.aurimteam.justhobby.response.ReviewResponse
 class CourseReviewsModel : ICourseReviewsModel {
     interface OnFinishedListener {
         fun onResultSuccess(courseReviews: List<ReviewResponse>)
-        fun onResultFail()
+        fun onResultFail(strError: String?)
     }
 
     override fun getCourseReviewsData(onFinishedListener: OnFinishedListener) {

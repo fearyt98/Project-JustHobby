@@ -19,6 +19,20 @@ class CourseResponseR(
     val relationships: CourseRelationshipsResponse
 )
 
+class CourseResponseOneR(
+    val type: String,
+    val id: Long,
+    val attributes: CourseAttrResponse,
+    val relationships: CourseOneRelationshipsResponse
+)
+
+class CourseOneRelationshipsResponse(
+    val user: Boolean?,
+    val company: CompanyResponse,
+    val count_reviews: Long,
+    val count_groups: Long
+)
+
 class CourseRelationshipsResponse(
     val user: Boolean?,
     val company: IdentifierResponse
@@ -39,7 +53,7 @@ class CourseAttrResponse(
     val rating: String,
 
     val status: Boolean,
-    val type_payment: Int,
+    //val type_payment: Int,
     val price: Int,
     val sex: List<Int>,
     val age_max: Int,

@@ -13,7 +13,7 @@ class UserBookmarksPresenter(private var view: IUserBookmarksView?, private val 
     }
 
     override fun deletedUserBookmark(position: Int) {
-        view?.deletedUserBookmarks(position)
+        view?.deletedUserBookmark(position)
     }
 
     override fun onResultFail(strError: String?) {

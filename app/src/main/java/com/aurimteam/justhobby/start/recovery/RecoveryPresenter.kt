@@ -7,7 +7,7 @@ class RecoveryPresenter(private var view: IRecoveryView?, private val model: IRe
 
     }
 
-    override fun onResultFail() {
+    override fun onResultFail(strError: String?) {
 
     }
 

@@ -20,11 +20,11 @@ class NearUserCoursesPresenter(private var view: INearCoursesView?, private val 
     }
 
     override fun deletedUserBookmark(position: Int) {
-        view?.deletedUserBookmarks(position)
+        view?.deletedUserBookmark(position)
     }
 
     override fun addedUserBookmark(position: Int) {
-        view?.addedUserBookmarks(position)
+        view?.addedUserBookmark(position)
     }
 
     override fun deleteUserBookmark(context: Context, courseId: Long, position: Int) {
@@ -43,10 +43,6 @@ class NearUserCoursesPresenter(private var view: INearCoursesView?, private val 
         val token = Settings(context).getProperty("token")
         if (token != null)
             model?.getNearCoursesData(token, this)
-    }
-
-    fun onDestroy() {
-        view = null
     }
 
     fun isSetView(): Boolean {

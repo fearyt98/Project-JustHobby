@@ -5,7 +5,7 @@ import com.aurimteam.justhobby.response.SubcategoryResponse
 class SearchSubcategoriesModel : ISearchSubcategoriesModel {
     interface OnFinishedListener {
         fun onResultSuccess(subcategories: List<SubcategoryResponse>)
-        fun onResultFail()
+        fun onResultFail(strError: String?)
     }
 
     override fun getSubcategoriesData(onFinishedListener: OnFinishedListener) {

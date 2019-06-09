@@ -9,7 +9,7 @@ class CourseReviewsPresenter(private var view: ICourseReviewsView?, private val 
         view?.showCourseReviews(courseReviews)
     }
 
-    override fun onResultFail() {
+    override fun onResultFail(strError: String?) {
 
     }
     fun getCourseReviews(){
