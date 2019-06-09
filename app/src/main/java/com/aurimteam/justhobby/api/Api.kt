@@ -8,7 +8,9 @@ import retrofit2.http.*
 interface Api {
     @Headers("Accept: application/json")
     @POST("login")
-    fun login(@Body loginBody: LoginBody): Call<TokenResponse>
+    fun login(
+        @Body loginBody: LoginBody
+    ): Call<TokenResponse>
 
     @Headers("Accept: application/json")
     @HTTP(method = "DELETE", path = "logout", hasBody = true)
@@ -18,11 +20,21 @@ interface Api {
 
     @Headers("Accept: application/json")
     @POST("register")
-    fun registry(@Body registryBody: RegistryBody): Call<TokenResponse>
+    fun registry(
+        @Body registryBody: RegistryBody
+    ): Call<TokenResponse>
 
     @Headers("Accept: application/json")
     @PATCH("user")
-    fun updateUser(@Body updateUserBody: UpdateUserBody): Call<UserResponse>
+    fun updateUser(
+        @Body updateUserBody: UpdateUserBody
+    ): Call<UserResponse>
+
+    @Headers("Accept: application/json")
+    @POST("forgot")
+    fun recallEmail(
+        @Body recoveryBody: RecoveryBody
+    ): Call<StatusResponse>
 
     @Headers("Accept: application/json")
     @GET("categories")
@@ -124,12 +136,4 @@ interface Api {
         @Path("course_id") courseId: Long,
         @Query("token") token: String
     ): Call<GroupsResponse>
-
-    @Headers("Accept: application/json")
-    @PATCH("user")
-    fun updateUser(@Body updateUserBody: UpdateUserBody): Call<UserResponse>
-
-    @Headers("Accept: application/json")
-    @POST("forgot")
-    fun recallEmail(@Body recoveryBody: RecoveryBody): Call<StatusResponse>
 }
