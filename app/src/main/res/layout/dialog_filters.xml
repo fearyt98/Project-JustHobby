@@ -31,6 +31,7 @@
                           app:layout_constraintTop_toTopOf="parent"/>
 
                 <TextView style="@style/Caption1.Medium"
+                          android:id="@+id/resetBtn"
                           android:layout_width="wrap_content"
                           android:layout_height="wrap_content"
                           android:paddingStart="15dp"
@@ -60,6 +61,7 @@
                           android:paddingBottom="10dp">
 
                 <CheckBox style="@style/BottomFiltersCheckBoxWhite"
+                          android:id="@+id/sortNear"
                           android:layout_width="wrap_content"
                           android:layout_height="wrap_content"
                           android:layout_weight="1"
@@ -67,6 +69,7 @@
                           android:text="@string/near"/>
 
                 <CheckBox style="@style/BottomFiltersCheckBoxWhite"
+                          android:id="@+id/sortRating"
                           android:layout_width="wrap_content"
                           android:layout_height="wrap_content"
                           android:layout_marginStart="15dp"
@@ -76,6 +79,7 @@
                           android:text="@string/rating"/>
 
                 <CheckBox style="@style/BottomFiltersCheckBoxWhite"
+                          android:id="@+id/sortPrice"
                           android:layout_width="wrap_content"
                           android:layout_height="wrap_content"
                           android:layout_gravity="center"
@@ -99,9 +103,10 @@
 
                 <android.support.constraint.ConstraintLayout android:layout_width="match_parent"
                                                              android:layout_height="wrap_content"
-                                                             app:layout_constraintBottom_toBottomOf="@id/filtersPriceSeekBar">
+                                                             app:layout_constraintBottom_toBottomOf="@id/filtersCostSeekBar">
 
                     <TextView style="@style/Body1.Medium"
+                              android:id="@+id/costStart"
                               android:layout_width="wrap_content"
                               android:layout_height="wrap_content"
                               android:layout_marginStart="12dp"
@@ -114,6 +119,7 @@
                               app:layout_constraintTop_toTopOf="parent"/>
 
                     <TextView style="@style/Body1.Medium"
+                              android:id="@+id/costEnd"
                               android:layout_width="wrap_content"
                               android:layout_height="wrap_content"
                               android:layout_marginStart="0dp"
@@ -126,7 +132,7 @@
                               app:layout_constraintTop_toTopOf="parent"/>
                 </android.support.constraint.ConstraintLayout>
 
-                <SeekBar android:id="@+id/filtersPriceSeekBar"
+                <SeekBar android:id="@+id/filtersCostSeekBar"
                          android:layout_width="match_parent"
                          android:layout_height="wrap_content"
                          android:theme="@style/SeekBar"
@@ -153,6 +159,7 @@
                           android:visibility="gone">
 
                 <CheckBox style="@style/BottomFiltersCheckBoxWhite"
+                          android:id="@+id/typePayAny"
                           android:layout_width="wrap_content"
                           android:layout_height="wrap_content"
                           android:layout_weight="1"
@@ -160,6 +167,7 @@
                           android:text="@string/any"/>
 
                 <CheckBox style="@style/BottomFiltersCheckBoxWhite"
+                          android:id="@+id/typePayLesson"
                           android:layout_width="wrap_content"
                           android:layout_height="wrap_content"
                           android:layout_marginStart="15dp"
@@ -169,6 +177,7 @@
                           android:text="@string/lesson"/>
 
                 <CheckBox style="@style/BottomFiltersCheckBoxWhite"
+                          android:id="@+id/typePayMonth"
                           android:layout_width="wrap_content"
                           android:layout_height="wrap_content"
                           android:layout_marginStart="15dp"
@@ -178,6 +187,7 @@
                           android:text="@string/month"/>
 
                 <CheckBox style="@style/BottomFiltersCheckBoxWhite"
+                          android:id="@+id/typePayCourse"
                           android:layout_width="wrap_content"
                           android:layout_height="wrap_content"
                           android:layout_marginStart="15dp"
@@ -204,6 +214,7 @@
                           android:paddingBottom="16dp">
 
                 <CheckBox style="@style/BottomFiltersCheckBoxWhite"
+                          android:id="@+id/sexAny"
                           android:layout_width="wrap_content"
                           android:layout_height="wrap_content"
                           android:layout_marginEnd="10dp"
@@ -212,6 +223,7 @@
                           android:text="@string/mixed"/>
 
                 <CheckBox style="@style/BottomFiltersCheckBoxWhite"
+                          android:id="@+id/sexMan"
                           android:layout_width="wrap_content"
                           android:layout_height="wrap_content"
                           android:layout_marginStart="5dp"
@@ -221,6 +233,7 @@
                           android:text="@string/man"/>
 
                 <CheckBox style="@style/BottomFiltersCheckBoxWhite"
+                          android:id="@+id/sexWoman"
                           android:layout_width="wrap_content"
                           android:layout_height="wrap_content"
                           android:layout_marginStart="10dp"
@@ -246,6 +259,7 @@
                           android:paddingBottom="16dp">
 
                 <CheckBox style="@style/BottomFiltersCheckBoxWhite"
+                          android:id="@+id/filterDayMonday"
                           android:layout_width="wrap_content"
                           android:layout_height="wrap_content"
                           android:layout_weight="1"
@@ -254,6 +268,7 @@
                           android:textAppearance="@style/Caption1"/>
 
                 <CheckBox style="@style/BottomFiltersCheckBoxWhite"
+                          android:id="@+id/filterDayTuesday"
                           android:layout_width="wrap_content"
                           android:layout_height="wrap_content"
                           android:layout_marginStart="15dp"
@@ -264,6 +279,7 @@
                           android:textAppearance="@style/Caption1"/>
 
                 <CheckBox style="@style/BottomFiltersCheckBoxWhite"
+                          android:id="@+id/filterDayWednesday"
                           android:layout_width="wrap_content"
                           android:layout_height="wrap_content"
                           android:layout_marginStart="12dp"
@@ -274,6 +290,7 @@
                           android:textAppearance="@style/Caption1"/>
 
                 <CheckBox style="@style/BottomFiltersCheckBoxWhite"
+                          android:id="@+id/filterDayThursday"
                           android:layout_width="wrap_content"
                           android:layout_height="wrap_content"
                           android:layout_marginStart="15dp"
@@ -284,6 +301,7 @@
                           android:textAppearance="@style/Caption1"/>
 
                 <CheckBox style="@style/BottomFiltersCheckBoxWhite"
+                          android:id="@+id/filterDayFriday"
                           android:layout_width="wrap_content"
                           android:layout_height="wrap_content"
                           android:layout_marginStart="15dp"
@@ -294,6 +312,7 @@
                           android:textAppearance="@style/Caption1"/>
 
                 <CheckBox style="@style/BottomFiltersCheckBoxWhite"
+                          android:id="@+id/filterDaySaturday"
                           android:layout_width="wrap_content"
                           android:layout_height="wrap_content"
                           android:layout_marginStart="15dp"
@@ -304,6 +323,7 @@
                           android:textAppearance="@style/Caption1"/>
 
                 <CheckBox style="@style/BottomFiltersCheckBoxWhite"
+                          android:id="@+id/filterDaySunday"
                           android:layout_width="wrap_content"
                           android:layout_height="wrap_content"
                           android:layout_marginStart="15dp"
@@ -330,6 +350,7 @@
                                                              app:layout_constraintBottom_toBottomOf="@id/filtersAgeSeekBar">
 
                     <TextView style="@style/Body1.Medium"
+                              android:id="@+id/ageStart"
                               android:layout_width="wrap_content"
                               android:layout_height="wrap_content"
                               android:layout_marginStart="12dp"
@@ -342,6 +363,7 @@
                               app:layout_constraintTop_toTopOf="parent"/>
 
                     <TextView style="@style/Body1.Medium"
+                              android:id="@+id/ageEnd"
                               android:layout_width="wrap_content"
                               android:layout_height="wrap_content"
                               android:layout_marginStart="0dp"
@@ -378,6 +400,7 @@
                           android:paddingBottom="16dp">
 
                 <CheckBox style="@style/BottomFiltersCheckBoxWhite"
+                          android:id="@+id/applyAny"
                           android:layout_width="wrap_content"
                           android:layout_height="wrap_content"
                           android:layout_marginEnd="10dp"
@@ -386,6 +409,7 @@
                           android:text="@string/any"/>
 
                 <CheckBox style="@style/BottomFiltersCheckBoxWhite"
+                          android:id="@+id/applyGo"
                           android:layout_width="wrap_content"
                           android:layout_height="wrap_content"
                           android:layout_marginStart="5dp"
@@ -395,6 +419,7 @@
                           android:text="@string/coming"/>
 
                 <CheckBox style="@style/BottomFiltersCheckBoxWhite"
+                          android:id="@+id/applyNotGo"
                           android:layout_width="wrap_content"
                           android:layout_height="wrap_content"
                           android:layout_marginStart="10dp"
