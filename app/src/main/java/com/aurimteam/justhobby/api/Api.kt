@@ -124,4 +124,12 @@ interface Api {
         @Path("course_id") courseId: Long,
         @Query("token") token: String
     ): Call<GroupsResponse>
+
+    @Headers("Accept: application/json")
+    @PATCH("user")
+    fun updateUser(@Body updateUserBody: UpdateUserBody): Call<UserResponse>
+
+    @Headers("Accept: application/json")
+    @POST("forgot")
+    fun recallEmail(@Body recoveryBody: RecoveryBody): Call<StatusResponse>
 }

@@ -30,27 +30,19 @@ class AuthActivity : AppCompatActivity(), IAuthView {
         setContentView(R.layout.activity_auth)
 
         presenter.isSetToken()
-
-        val buttonEnter = findViewById<Button>(R.id.authEnterButton)
-        val forget = findViewById<TextView>(R.id.authForget)
-        val registry = findViewById<TextView>(R.id.authRegistry)
-
-        buttonEnter.setOnClickListener { loginUser() }
-        forget.setOnClickListener { forgetChangeActivity() }
-        registry.setOnClickListener { registryChangeActivity() }
+        findViewById<Button>(R.id.authEnterButton).setOnClickListener { loginUser() }
+        findViewById<TextView>(R.id.authForget).setOnClickListener { forgetChangeActivity() }
+        findViewById<TextView>(R.id.authRegistry).setOnClickListener { registryChangeActivity() }
     }
 
     override fun onResume() {
         super.onResume()
-
-        val authView = findViewById<LinearLayout>(R.id.auth)
-        authView.setOnFocusChangeListener { view: View, hasFocus: Boolean ->
+        findViewById<LinearLayout>(R.id.auth).setOnFocusChangeListener { view: View, hasFocus: Boolean ->
             if (hasFocus) {
                 val inputMethodManager = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
                 inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
             }
         }
-
         val password = findViewById<EditText>(R.id.authPassword)
         val btnChangeVisible = findViewById<ImageButton>(R.id.authPasswordVisible)
         password.setOnFocusChangeListener { _: View, _: Boolean ->
@@ -91,26 +83,17 @@ class AuthActivity : AppCompatActivity(), IAuthView {
     }
 
     override fun togglePB(isVisiblePB: Boolean) {
-        if (isVisiblePB) {
-            authProgressBar.visibility = View.VISIBLE
-        } else {
-            authProgressBar.visibility = View.GONE
-        }
+        if (isVisiblePB) authProgressBar.visibility = View.VISIBLE
+        else authProgressBar.visibility = View.GONE
+
     }
 
     private fun changeButtonVisible(password: EditText, btn: ImageButton) {
-        if (password.isFocused) {
-            btn.setColorFilter(ContextCompat.getColor(this, R.color.colorPrimary))
-        } else {
-            btn.clearColorFilter()
-        }
-
+        if (password.isFocused) btn.setColorFilter(ContextCompat.getColor(this, R.color.colorPrimary))
+        else btn.clearColorFilter()
         btn.setImageResource(
-            if (isVisiblePassword(password)) {
-                R.drawable.ic_visibility_off_24dp
-            } else {
-                R.drawable.ic_visibility_24dp
-            }
+            if (isVisiblePassword(password)) R.drawable.ic_visibility_off_24dp
+            else R.drawable.ic_visibility_24dp
         )
     }
 

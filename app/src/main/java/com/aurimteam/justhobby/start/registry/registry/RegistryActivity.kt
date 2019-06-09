@@ -22,8 +22,7 @@ class RegistryActivity : AppCompatActivity(), IRegistryView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registry)
 
-        val registryView = findViewById<LinearLayout>(R.id.registry)
-        registryView.setOnFocusChangeListener { view: View, hasFocus: Boolean ->
+        findViewById<LinearLayout>(R.id.registry).setOnFocusChangeListener { view: View, hasFocus: Boolean ->
             if (hasFocus) {
                 val inputMethodManager = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
                 inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
@@ -35,9 +34,7 @@ class RegistryActivity : AppCompatActivity(), IRegistryView {
         password.setOnFocusChangeListener { _: View, _: Boolean ->
             changeButtonVisible(password, btnChangeVisible)
         }
-        btnChangeVisible.setOnClickListener {
-            changeVisiblePassword(password, btnChangeVisible)
-        }
+        btnChangeVisible.setOnClickListener { changeVisiblePassword(password, btnChangeVisible) }
 
         val confirmPassword = findViewById<EditText>(R.id.registryConfirmPassword)
         val btnChangeVisibleConfirm = findViewById<ImageButton>(R.id.registryConfirmPasswordVisible)
@@ -47,11 +44,7 @@ class RegistryActivity : AppCompatActivity(), IRegistryView {
         btnChangeVisibleConfirm.setOnClickListener {
             changeVisiblePassword(confirmPassword, btnChangeVisibleConfirm)
         }
-
-        findViewById<TextView>(R.id.registryCancel).setOnClickListener {
-            finish()
-        }
-
+        findViewById<TextView>(R.id.registryCancel).setOnClickListener { finish() }
         findViewById<TextView>(R.id.registryEnterButton).setOnClickListener { regBtnClick() }
     }
 
@@ -65,26 +58,17 @@ class RegistryActivity : AppCompatActivity(), IRegistryView {
     }
 
     override fun togglePB(isVisiblePB: Boolean) {
-        if (isVisiblePB) {
-            registryProgressBar.visibility = View.VISIBLE
-        } else {
-            registryProgressBar.visibility = View.GONE
-        }
+        if (isVisiblePB) registryProgressBar.visibility = View.VISIBLE
+        else registryProgressBar.visibility = View.GONE
     }
 
     private fun changeButtonVisible(password: EditText, btn: ImageButton) {
-        if (password.isFocused) {
-            btn.setColorFilter(ContextCompat.getColor(this, R.color.colorPrimary))
-        } else {
-            btn.clearColorFilter()
-        }
+        if (password.isFocused) btn.setColorFilter(ContextCompat.getColor(this, R.color.colorPrimary))
+        else btn.clearColorFilter()
 
         btn.setImageResource(
-            if (isVisiblePassword(password)) {
-                R.drawable.ic_visibility_off_24dp
-            } else {
-                R.drawable.ic_visibility_24dp
-            }
+            if (isVisiblePassword(password)) R.drawable.ic_visibility_off_24dp
+            else R.drawable.ic_visibility_24dp
         )
     }
 

@@ -41,8 +41,25 @@
                               android:layout_height="wrap_content"
                               android:orientation="vertical">
 
-                    <TextView style="@style/Label"
-                              android:text="@string/email"/>
+                    <android.support.constraint.ConstraintLayout android:layout_width="match_parent"
+                                                                 android:layout_height="wrap_content"
+                                                                 android:paddingStart="0dp"
+                                                                 android:paddingEnd="16dp">
+
+                        <TextView style="@style/Label"
+                                  android:text="@string/email"
+                                  app:layout_constraintBottom_toBottomOf="parent"
+                                  app:layout_constraintLeft_toLeftOf="parent"
+                                  app:layout_constraintTop_toTopOf="parent"/>
+
+                        <TextView android:id="@+id/emailErrorAuth"
+                                  style="@style/ErrorMessage"
+                                  android:layout_width="wrap_content"
+                                  android:layout_height="wrap_content"
+                                  app:layout_constraintBottom_toBottomOf="parent"
+                                  app:layout_constraintRight_toRightOf="parent"
+                                  app:layout_constraintTop_toTopOf="parent"/>
+                    </android.support.constraint.ConstraintLayout>
 
                     <EditText android:id="@+id/authLogin"
                               style="@style/EditText"
@@ -55,8 +72,22 @@
                               android:layout_height="wrap_content"
                               android:orientation="vertical">
 
-                    <TextView style="@style/Label"
-                              android:text="@string/password"/>
+                    <android.support.constraint.ConstraintLayout android:layout_width="match_parent"
+                                                                 android:layout_height="wrap_content"
+                                                                 android:paddingStart="0dp"
+                                                                 android:paddingEnd="16dp">
+
+                        <TextView style="@style/Label"
+                                  android:text="@string/password"/>
+
+                        <TextView android:id="@+id/emailPasswordAuth"
+                                  style="@style/ErrorMessage"
+                                  android:layout_width="wrap_content"
+                                  android:layout_height="wrap_content"
+                                  app:layout_constraintBottom_toBottomOf="parent"
+                                  app:layout_constraintRight_toRightOf="parent"
+                                  app:layout_constraintTop_toTopOf="parent"/>
+                    </android.support.constraint.ConstraintLayout>
 
                     <FrameLayout android:layout_width="match_parent"
                                  android:layout_height="wrap_content">

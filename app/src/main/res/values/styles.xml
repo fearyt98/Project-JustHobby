@@ -109,6 +109,10 @@
     <style name="SeekBar" parent="Widget.AppCompat.SeekBar">
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+    <style name="ErrorMessage">
+        <item name="android:textColor">@color/errorMessage</item>
+        <item name="android:textAppearance">@style/Caption1.Medium</item>
+    </style>
     <!-- Tab -->
     <style name="TabsPageViewer" parent="Widget.Design.TabLayout">
         <item name="android:layout_height">52dp</item>
