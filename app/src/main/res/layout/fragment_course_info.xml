@@ -6,10 +6,11 @@
               android:layout_height="match_parent"
               android:orientation="vertical">
 
-    <ScrollView android:layout_width="match_parent"
+    <ScrollView android:id="@+id/courseInfoContent"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:visibility="gone">
+                android:visibility="visible">
 
         <LinearLayout android:layout_width="match_parent"
                       android:layout_height="wrap_content"
@@ -62,7 +63,8 @@
                                  app:layout_constraintTop_toTopOf="parent"
                                  app:srcCompat="@drawable/ic_arrow_back_24dp"/>
 
-                    <ImageButton android:layout_width="wrap_content"
+                    <ImageButton android:id="@+id/courseInfoBtnBookmark"
+                                 android:layout_width="wrap_content"
                                  android:layout_height="wrap_content"
                                  android:background="@android:color/transparent"
                                  android:contentDescription="@string/add_in_bookmarks"
@@ -70,7 +72,6 @@
                                  android:paddingTop="20dp"
                                  android:paddingEnd="20dp"
                                  android:paddingBottom="10dp"
-                                 android:tint="@color/whiteTop"
                                  app:layout_constraintRight_toRightOf="parent"
                                  app:layout_constraintTop_toTopOf="parent"
                                  app:srcCompat="@drawable/ic_bookmark_24dp"/>
@@ -79,27 +80,29 @@
                               style="@style/H2.Medium"
                               android:layout_width="wrap_content"
                               android:layout_height="wrap_content"
+                              android:ellipsize="end"
+                              android:maxLines="1"
                               android:paddingStart="10dp"
                               android:paddingEnd="10dp"
                               android:paddingBottom="5dp"
-                              android:text="Восточные танцы"
+                              android:singleLine="true"
                               android:textColor="@color/whiteText"
                               app:layout_constraintBottom_toTopOf="@id/courseInfoCompany"
-                              app:layout_constraintLeft_toLeftOf="parent"
-                              tools:ignore="HardcodedText"/>
+                              app:layout_constraintLeft_toLeftOf="parent"/>
 
                     <TextView android:id="@+id/courseInfoCompany"
                               style="@style/Body1"
                               android:layout_width="wrap_content"
                               android:layout_height="wrap_content"
+                              android:ellipsize="end"
+                              android:maxLines="1"
                               android:paddingStart="10dp"
                               android:paddingEnd="10dp"
                               android:paddingBottom="10dp"
-                              android:text="Drive - Школа танцев в Томске"
+                              android:singleLine="true"
                               android:textColor="@color/whiteText"
                               app:layout_constraintBottom_toBottomOf="@id/courseInfoImage"
-                              app:layout_constraintLeft_toLeftOf="parent"
-                              tools:ignore="HardcodedText"/>
+                              app:layout_constraintLeft_toLeftOf="parent"/>
                 </android.support.constraint.ConstraintLayout>
 
                 <LinearLayout android:layout_width="match_parent"
@@ -131,16 +134,15 @@
                                        app:srcCompat="@drawable/ic_place_24dp"
                                        tools:ignore="ContentDescription"/>
 
-                            <TextView style="@style/Body2.Medium"
+                            <TextView android:id="@+id/courseInfoAddress"
+                                      style="@style/Body2.Medium"
                                       android:layout_width="wrap_content"
                                       android:layout_height="wrap_content"
                                       android:layout_gravity="center"
                                       android:ellipsize="end"
                                       android:maxLines="1"
                                       android:singleLine="true"
-                                      android:text="пр. Ленина, 147"
-                                      android:textColor="@color/greenText"
-                                      tools:ignore="HardcodedText"/>
+                                      android:textColor="@color/greenText"/>
                         </LinearLayout>
 
                         <ImageView android:layout_width="1dp"
@@ -170,16 +172,15 @@
                                        app:srcCompat="@drawable/ic_local_phone_24dp"
                                        tools:ignore="ContentDescription"/>
 
-                            <TextView style="@style/Body2.Medium"
+                            <TextView android:id="@+id/courseInfoPhone"
+                                      style="@style/Body2.Medium"
                                       android:layout_width="wrap_content"
                                       android:layout_height="wrap_content"
                                       android:layout_gravity="center"
                                       android:ellipsize="end"
                                       android:maxLines="1"
                                       android:singleLine="true"
-                                      android:text="+7 (3822) 23-52-07"
-                                      android:textColor="@color/greenText"
-                                      tools:ignore="HardcodedText"/>
+                                      android:textColor="@color/greenText"/>
                         </LinearLayout>
                     </LinearLayout>
 
@@ -201,24 +202,23 @@
                                           android:layout_height="wrap_content"
                                           tools:ignore="UselessParent">
 
-                                <LinearLayout android:id="@+id/courseInfoRating"
-                                              android:layout_width="wrap_content"
+                                <LinearLayout android:layout_width="wrap_content"
                                               android:layout_height="wrap_content"
                                               android:layout_gravity="center"
                                               android:orientation="horizontal"
                                               tools:ignore="UseCompoundDrawables">
 
-                                    <TextView style="@style/Body1.Medium"
+                                    <TextView android:id="@+id/courseInfoRating"
+                                              style="@style/Body1.Medium"
                                               android:layout_width="wrap_content"
                                               android:layout_height="wrap_content"
                                               android:layout_gravity="center"
                                               android:layout_marginEnd="1dp"
                                               android:gravity="center"
-                                              android:text="2"
-                                              android:textColor="@color/ratingTwo"
-                                              tools:ignore="HardcodedText"/>
+                                              android:textColor="@color/ratingTwo"/>
 
-                                    <ImageView android:layout_width="24dp"
+                                    <ImageView android:id="@+id/courseInfoRatingStar"
+                                               android:layout_width="24dp"
                                                android:layout_height="match_parent"
                                                android:layout_marginEnd="10dp"
                                                android:background="@android:color/transparent"
@@ -227,22 +227,20 @@
                                                tools:ignore="ContentDescription"/>
                                 </LinearLayout>
 
-                                <LinearLayout android:id="@+id/courseInfoCountReviews"
-                                              android:layout_width="wrap_content"
+                                <LinearLayout android:layout_width="wrap_content"
                                               android:layout_height="wrap_content"
                                               android:layout_gravity="center"
                                               android:orientation="horizontal"
                                               tools:ignore="UseCompoundDrawables">
 
-                                    <TextView style="@style/Body1.Medium"
+                                    <TextView android:id="@+id/courseInfoCountReviews"
+                                              style="@style/Body1.Medium"
                                               android:layout_width="wrap_content"
                                               android:layout_height="wrap_content"
                                               android:layout_gravity="center"
                                               android:layout_marginEnd="5dp"
                                               android:gravity="center"
-                                              android:text="3"
-                                              android:textColor="@color/grayDarkMiddle"
-                                              tools:ignore="HardcodedText"/>
+                                              android:textColor="@color/grayDarkMiddle"/>
 
                                     <ImageView android:layout_width="17dp"
                                                android:layout_height="match_parent"
@@ -282,7 +280,8 @@
                                        app:srcCompat="@drawable/ic_price_24dp"
                                        tools:ignore="ContentDescription"/>
 
-                            <TextView style="@style/Body2.Medium"
+                            <TextView android:id="@+id/courseInfoPrice"
+                                      style="@style/Body2.Medium"
                                       android:layout_width="wrap_content"
                                       android:layout_height="wrap_content"
                                       android:layout_gravity="center"
@@ -291,9 +290,19 @@
                                       android:maxLines="1"
                                       android:padding="0dp"
                                       android:singleLine="true"
-                                      android:text="500Р"
-                                      android:textColor="@color/grafitText"
-                                      tools:ignore="HardcodedText"/>
+                                      android:textColor="@color/grafitText"/>
+
+                            <TextView style="@style/Caption3"
+                                      android:layout_width="wrap_content"
+                                      android:layout_height="wrap_content"
+                                      android:layout_gravity="center"
+                                      android:ellipsize="end"
+                                      android:gravity="center"
+                                      android:maxLines="1"
+                                      android:padding="0dp"
+                                      android:singleLine="true"
+                                      android:text="@string/minimum"
+                                      android:textColor="@color/grayLight"/>
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
@@ -322,11 +331,9 @@
                           android:layout_height="match_parent"
                           android:paddingStart="5dp"
                           android:paddingEnd="5dp"
-                          android:text="5"
                           android:textColor="@color/gray"
                           app:layout_constraintLeft_toRightOf="@id/courseInfoWordGroup"
-                          app:layout_constraintTop_toTopOf="parent"
-                          tools:ignore="HardcodedText"/>
+                          app:layout_constraintTop_toTopOf="parent"/>
 
                 <TextView android:id="@+id/courseInfoShowAllCourses"
                           style="@style/Caption1"
@@ -359,7 +366,6 @@
                       android:paddingTop="8dp"
                       android:paddingEnd="12dp"
                       android:paddingBottom="12dp"
-                      android:text="@string/about_company"
                       android:textColor="@color/grafitText"/>
         </LinearLayout>
     </ScrollView>
@@ -367,7 +373,8 @@
     <FrameLayout android:id="@+id/courseInfoProgressBar"
                  android:layout_width="match_parent"
                  android:layout_height="match_parent"
-                 android:background="@color/whiteTop">
+                 android:background="@color/whiteTop"
+                 tools:visibility="visible">
 
         <ProgressBar android:layout_width="wrap_content"
                      android:layout_height="wrap_content"

@@ -2,10 +2,10 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <!-- <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen> -->
-    <dimen name="design_bottom_navigation_text_size"
-           tools:override="true">16sp
+    <dimen name="design_bottom_navigation_text_size" tools:override="true">16sp
     </dimen>
-    <dimen name="design_bottom_navigation_height"
-           tools:override="true">56dp
+    <dimen name="design_bottom_navigation_height" tools:override="true">56dp
     </dimen>
+    <dimen name="design_tooltip_arrow_height">6dp</dimen>
+    <dimen name="design_tooltip_arrow_width">12dp</dimen>
 </resources>

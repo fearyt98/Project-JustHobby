@@ -48,11 +48,11 @@ class SearchResultFragment : Fragment(), ISearchResultView {
         }
     }
 
-    override fun deletedUserBookmarks(position: Int) {
+    override fun deletedUserBookmark(position: Int) {
         adapter.deletedBookmark(position)
     }
 
-    override fun addedUserBookmarks(position: Int) {
+    override fun addedUserBookmark(position: Int) {
         adapter.addedBookmark(position)
     }
 

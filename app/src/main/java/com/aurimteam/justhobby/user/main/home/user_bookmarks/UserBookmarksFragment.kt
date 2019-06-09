@@ -64,7 +64,7 @@ class UserBookmarksFragment : Fragment(), IUserBookmarksView {
         }
     }
 
-    override fun deletedUserBookmarks(position: Int) {
+    override fun deletedUserBookmark(position: Int) {
         adapter.removeItem(position)
         if(adapter.itemCount == 0) {
             bookmarksProgressBar.visibility = View.GONE

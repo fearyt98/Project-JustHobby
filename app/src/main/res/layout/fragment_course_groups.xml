@@ -13,7 +13,7 @@
                                             android:clipToPadding="false"
                                             android:overScrollMode="never"
                                             android:paddingTop="3dp"
-                                            android:paddingBottom="74dp"
+                                            android:paddingBottom="9dp"
                                             android:visibility="gone"
                                             app:layout_constraintBottom_toBottomOf="parent"
                                             app:layout_constraintLeft_toLeftOf="parent"
@@ -61,23 +61,22 @@
                      app:layout_constraintTop_toTopOf="parent"
                      app:srcCompat="@drawable/ic_arrow_back_24dp"/>
 
-        <TextView style="@style/Body1.Medium"
+        <TextView android:id="@+id/courseGroupsTitle"
+                  style="@style/Body1.Medium"
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
                   android:layout_gravity="center"
                   android:gravity="center"
-                  android:text="Восточные танцы"
                   android:textColor="@color/whiteTop"
                   app:layout_constraintLeft_toRightOf="@id/courseGroupsBtnBack"
-                  app:layout_constraintTop_toTopOf="parent"
-                  tools:ignore="HardcodedText"/>
+                  app:layout_constraintTop_toTopOf="parent"/>
 
-        <TextView style="@style/Body2"
+        <TextView android:id="@+id/courseGroupsCompany"
+                  style="@style/Body2"
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
                   android:layout_gravity="center"
                   android:gravity="center"
-                  android:text="@string/test_company_title"
                   android:textColor="@color/whiteTop"
                   app:layout_constraintBottom_toBottomOf="parent"
                   app:layout_constraintLeft_toRightOf="@id/courseGroupsBtnBack"/>

@@ -13,7 +13,7 @@ class RecoveryPresenter(
         view?.backToMainActivity()
     }
 
-    override fun onResultFail(error: String) {
+    override fun onResultFail(strError: String) {
 
     }
 

@@ -18,18 +18,17 @@
                   style="@style/Body2.Medium"
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
-                  android:text="Начинающие"
                   android:textColor="@color/whiteText"
                   app:layout_constraintBottom_toBottomOf="parent"
                   app:layout_constraintLeft_toLeftOf="parent"
-                  app:layout_constraintTop_toTopOf="parent"
-                  tools:ignore="HardcodedText"/>
+                  app:layout_constraintTop_toTopOf="parent"/>
 
-        <ImageButton android:layout_width="wrap_content"
+        <ImageButton android:id="@+id/cardGroupBtnInfo"
+                     android:layout_width="wrap_content"
                      android:layout_height="wrap_content"
                      android:background="@android:color/transparent"
                      android:paddingStart="5dp"
-                     android:paddingEnd="0dp"
+                     android:paddingEnd="5dp"
                      android:tint="@color/greenDark"
                      app:layout_constraintBottom_toBottomOf="parent"
                      app:layout_constraintLeft_toRightOf="@id/cardGroupTitle"
@@ -37,7 +36,8 @@
                      app:srcCompat="@drawable/ic_info_16dp"
                      tools:ignore="ContentDescription"/>
 
-        <ImageButton android:layout_width="wrap_content"
+        <ImageButton android:id="@+id/cardGroupBtnDelete"
+                     android:layout_width="wrap_content"
                      android:layout_height="wrap_content"
                      android:background="@android:color/transparent"
                      android:contentDescription="@string/remove_from_my_courses"
@@ -47,7 +47,8 @@
                      app:layout_constraintTop_toTopOf="parent"
                      app:srcCompat="@drawable/ic_check_24dp"/>
 
-        <ImageButton android:layout_width="wrap_content"
+        <ImageButton android:id="@+id/cardGroupBtnAdd"
+                     android:layout_width="wrap_content"
                      android:layout_height="wrap_content"
                      android:background="@android:color/transparent"
                      android:contentDescription="@string/add_in_bookmarks"
@@ -62,9 +63,7 @@
               style="@style/Caption2"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
-              android:text="Ирина Валекжанина"
-              android:textColor="@color/whiteText"
-              tools:ignore="HardcodedText"/>
+              android:textColor="@color/whiteText"/>
 
     <ImageView android:layout_width="match_parent"
                android:layout_height="1dp"
@@ -86,9 +85,9 @@
                   tools:ignore="HardcodedText"/>
 
         <ImageView android:id="@+id/cardGroupStatus"
-                   android:layout_width="12dp"
-                   android:layout_height="12dp"
-                   android:layout_gravity="center_vertical"
+                   android:layout_width="16dp"
+                   android:layout_height="16dp"
+                   android:layout_gravity="center"
                    android:layout_marginLeft="5dp"
                    android:layout_marginRight="5dp"
                    android:background="@android:color/transparent"
@@ -112,22 +111,25 @@
                    android:layout_gravity="center_vertical"
                    android:background="@android:color/transparent"
                    android:tint="@color/whiteTop"
+                   android:visibility="gone"
                    app:srcCompat="@drawable/ic_female"
                    tools:ignore="ContentDescription"/>
 
         <ImageView android:id="@+id/cardGroupSexMale"
-                   android:layout_width="0dp"
+                   android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
                    android:layout_gravity="center_vertical"
                    android:background="@android:color/transparent"
                    android:tint="@color/whiteTop"
+                   android:visibility="gone"
                    app:srcCompat="@drawable/ic_male"
                    tools:ignore="ContentDescription"/>
 
         <LinearLayout android:id="@+id/cardGroupSex"
-                      android:layout_width="0dp"
+                      android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
-                      android:layout_gravity="center_vertical">
+                      android:layout_gravity="center_vertical"
+                      android:visibility="gone">
 
             <ImageView android:layout_width="wrap_content"
                        android:layout_height="wrap_content"
@@ -161,9 +163,7 @@
                   style="@style/Caption2"
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
-                  android:text="20 - 80"
-                  android:textColor="@color/whiteTop"
-                  tools:ignore="HardcodedText"/>
+                  android:textColor="@color/whiteTop"/>
 
         <ImageView android:layout_width="3dp"
                    android:layout_height="3dp"
@@ -179,9 +179,7 @@
                   style="@style/Caption2"
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
-                  android:text="500Р / занятие"
-                  android:textColor="@color/whiteTop"
-                  tools:ignore="HardcodedText"/>
+                  android:textColor="@color/whiteTop"/>
     </LinearLayout>
 
     <ImageView android:layout_width="match_parent"
@@ -197,10 +195,12 @@
 
         <TableRow tools:ignore="UselessParent">
 
-            <LinearLayout android:layout_width="0dp"
+            <LinearLayout android:id="@+id/cardGroupDay1"
+                          android:layout_width="0dp"
                           android:layout_height="wrap_content"
                           android:layout_marginEnd="8dp"
                           android:layout_weight="1"
+                          android:alpha="0.5"
                           android:background="@drawable/card_group_day_style_default"
                           android:orientation="vertical"
                           android:paddingTop="3dp"
@@ -210,19 +210,33 @@
                           android:text="@string/short_monday"
                           tools:ignore="HardcodedText"/>
 
-                <TextView style="@style/timeDayWeekDefault"
-                          android:text="19:30"
-                          tools:ignore="HardcodedText"/>
+                <FrameLayout android:layout_width="match_parent"
+                             android:layout_height="match_parent">
 
-                <TextView style="@style/timeDayWeekDefault"
-                          android:text="20:30"
-                          tools:ignore="HardcodedText"/>
+                    <LinearLayout android:layout_width="match_parent"
+                                  android:layout_height="match_parent"
+                                  android:orientation="vertical">
+
+                        <TextView android:id="@+id/cardGroupDay1StartTime"
+                                  style="@style/timeDayWeekDefault"/>
+
+                        <TextView android:id="@+id/cardGroupDay1EndTime"
+                                  style="@style/timeDayWeekDefault"/>
+                    </LinearLayout>
+
+                    <TextView android:id="@+id/cardGroupDay1None"
+                              style="@style/timeDayWeekDefault"
+                              android:text="-"
+                              tools:ignore="HardcodedText"/>
+                </FrameLayout>
             </LinearLayout>
 
-            <LinearLayout android:layout_width="0dp"
+            <LinearLayout android:id="@+id/cardGroupDay2"
+                          android:layout_width="0dp"
                           android:layout_height="wrap_content"
                           android:layout_marginEnd="8dp"
                           android:layout_weight="1"
+                          android:alpha="0.5"
                           android:background="@drawable/card_group_day_style_default"
                           android:orientation="vertical"
                           android:paddingTop="3dp"
@@ -232,19 +246,33 @@
                           android:text="@string/short_tuesday"
                           tools:ignore="HardcodedText"/>
 
-                <TextView style="@style/timeDayWeekDefault"
-                          android:text="19:30"
-                          tools:ignore="HardcodedText"/>
+                <FrameLayout android:layout_width="match_parent"
+                             android:layout_height="match_parent">
 
-                <TextView style="@style/timeDayWeekDefault"
-                          android:text="20:30"
-                          tools:ignore="HardcodedText"/>
+                    <LinearLayout android:layout_width="match_parent"
+                                  android:layout_height="match_parent"
+                                  android:orientation="vertical">
+
+                        <TextView android:id="@+id/cardGroupDay2StartTime"
+                                  style="@style/timeDayWeekDefault"/>
+
+                        <TextView android:id="@+id/cardGroupDay2EndTime"
+                                  style="@style/timeDayWeekDefault"/>
+                    </LinearLayout>
+
+                    <TextView android:id="@+id/cardGroupDay2None"
+                              style="@style/timeDayWeekDefault"
+                              android:text="-"
+                              tools:ignore="HardcodedText"/>
+                </FrameLayout>
             </LinearLayout>
 
-            <LinearLayout android:layout_width="0dp"
+            <LinearLayout android:id="@+id/cardGroupDay3"
+                          android:layout_width="0dp"
                           android:layout_height="wrap_content"
                           android:layout_marginEnd="8dp"
                           android:layout_weight="1"
+                          android:alpha="0.5"
                           android:background="@drawable/card_group_day_style_default"
                           android:orientation="vertical"
                           android:paddingTop="3dp"
@@ -254,19 +282,33 @@
                           android:text="@string/short_wednesday"
                           tools:ignore="HardcodedText"/>
 
-                <TextView style="@style/timeDayWeekDefault"
-                          android:text="19:30"
-                          tools:ignore="HardcodedText"/>
+                <FrameLayout android:layout_width="match_parent"
+                             android:layout_height="match_parent">
 
-                <TextView style="@style/timeDayWeekDefault"
-                          android:text="20:30"
-                          tools:ignore="HardcodedText"/>
+                    <LinearLayout android:layout_width="match_parent"
+                                  android:layout_height="match_parent"
+                                  android:orientation="vertical">
+
+                        <TextView android:id="@+id/cardGroupDay3StartTime"
+                                  style="@style/timeDayWeekDefault"/>
+
+                        <TextView android:id="@+id/cardGroupDay3EndTime"
+                                  style="@style/timeDayWeekDefault"/>
+                    </LinearLayout>
+
+                    <TextView android:id="@+id/cardGroupDay3None"
+                              style="@style/timeDayWeekDefault"
+                              android:text="-"
+                              tools:ignore="HardcodedText"/>
+                </FrameLayout>
             </LinearLayout>
 
-            <LinearLayout android:layout_width="0dp"
+            <LinearLayout android:id="@+id/cardGroupDay4"
+                          android:layout_width="0dp"
                           android:layout_height="wrap_content"
                           android:layout_marginEnd="8dp"
                           android:layout_weight="1"
+                          android:alpha="0.5"
                           android:background="@drawable/card_group_day_style_default"
                           android:orientation="vertical"
                           android:paddingTop="3dp"
@@ -276,19 +318,33 @@
                           android:text="@string/short_thursday"
                           tools:ignore="HardcodedText"/>
 
-                <TextView style="@style/timeDayWeekDefault"
-                          android:text="19:30"
-                          tools:ignore="HardcodedText"/>
+                <FrameLayout android:layout_width="match_parent"
+                             android:layout_height="match_parent">
 
-                <TextView style="@style/timeDayWeekDefault"
-                          android:text="20:30"
-                          tools:ignore="HardcodedText"/>
+                    <LinearLayout android:layout_width="match_parent"
+                                  android:layout_height="match_parent"
+                                  android:orientation="vertical">
+
+                        <TextView android:id="@+id/cardGroupDay4StartTime"
+                                  style="@style/timeDayWeekDefault"/>
+
+                        <TextView android:id="@+id/cardGroupDay4EndTime"
+                                  style="@style/timeDayWeekDefault"/>
+                    </LinearLayout>
+
+                    <TextView android:id="@+id/cardGroupDay4None"
+                              style="@style/timeDayWeekDefault"
+                              android:text="-"
+                              tools:ignore="HardcodedText"/>
+                </FrameLayout>
             </LinearLayout>
 
-            <LinearLayout android:layout_width="0dp"
+            <LinearLayout android:id="@+id/cardGroupDay5"
+                          android:layout_width="0dp"
                           android:layout_height="wrap_content"
                           android:layout_marginEnd="8dp"
                           android:layout_weight="1"
+                          android:alpha="0.5"
                           android:background="@drawable/card_group_day_style_default"
                           android:orientation="vertical"
                           android:paddingTop="3dp"
@@ -298,19 +354,33 @@
                           android:text="@string/short_friday"
                           tools:ignore="HardcodedText"/>
 
-                <TextView style="@style/timeDayWeekDefault"
-                          android:text="19:30"
-                          tools:ignore="HardcodedText"/>
+                <FrameLayout android:layout_width="match_parent"
+                             android:layout_height="match_parent">
 
-                <TextView style="@style/timeDayWeekDefault"
-                          android:text="20:30"
-                          tools:ignore="HardcodedText"/>
+                    <LinearLayout android:layout_width="match_parent"
+                                  android:layout_height="match_parent"
+                                  android:orientation="vertical">
+
+                        <TextView android:id="@+id/cardGroupDay5StartTime"
+                                  style="@style/timeDayWeekDefault"/>
+
+                        <TextView android:id="@+id/cardGroupDay5EndTime"
+                                  style="@style/timeDayWeekDefault"/>
+                    </LinearLayout>
+
+                    <TextView android:id="@+id/cardGroupDay5None"
+                              style="@style/timeDayWeekDefault"
+                              android:text="-"
+                              tools:ignore="HardcodedText"/>
+                </FrameLayout>
             </LinearLayout>
 
-            <LinearLayout android:layout_width="0dp"
+            <LinearLayout android:id="@+id/cardGroupDay6"
+                          android:layout_width="0dp"
                           android:layout_height="wrap_content"
                           android:layout_marginEnd="8dp"
                           android:layout_weight="1"
+                          android:alpha="0.5"
                           android:background="@drawable/card_group_day_style_default"
                           android:orientation="vertical"
                           android:paddingTop="3dp"
@@ -320,18 +390,32 @@
                           android:text="@string/short_saturday"
                           tools:ignore="HardcodedText"/>
 
-                <TextView style="@style/timeDayWeekDefault"
-                          android:text="19:30"
-                          tools:ignore="HardcodedText"/>
+                <FrameLayout android:layout_width="match_parent"
+                             android:layout_height="match_parent">
 
-                <TextView style="@style/timeDayWeekDefault"
-                          android:text="20:30"
-                          tools:ignore="HardcodedText"/>
+                    <LinearLayout android:layout_width="match_parent"
+                                  android:layout_height="match_parent"
+                                  android:orientation="vertical">
+
+                        <TextView android:id="@+id/cardGroupDay6StartTime"
+                                  style="@style/timeDayWeekDefault"/>
+
+                        <TextView android:id="@+id/cardGroupDay6EndTime"
+                                  style="@style/timeDayWeekDefault"/>
+                    </LinearLayout>
+
+                    <TextView android:id="@+id/cardGroupDay6None"
+                              style="@style/timeDayWeekDefault"
+                              android:text="-"
+                              tools:ignore="HardcodedText"/>
+                </FrameLayout>
             </LinearLayout>
 
-            <LinearLayout android:layout_width="0dp"
+            <LinearLayout android:id="@+id/cardGroupDay7"
+                          android:layout_width="0dp"
                           android:layout_height="wrap_content"
                           android:layout_weight="1"
+                          android:alpha="0.5"
                           android:background="@drawable/card_group_day_style_default"
                           android:orientation="vertical"
                           android:paddingTop="3dp"
@@ -341,13 +425,25 @@
                           android:text="@string/short_sunday"
                           tools:ignore="HardcodedText"/>
 
-                <TextView style="@style/timeDayWeekDefault"
-                          android:text="19:30"
-                          tools:ignore="HardcodedText"/>
+                <FrameLayout android:layout_width="match_parent"
+                             android:layout_height="match_parent">
 
-                <TextView style="@style/timeDayWeekDefault"
-                          android:text="20:30"
-                          tools:ignore="HardcodedText"/>
+                    <LinearLayout android:layout_width="match_parent"
+                                  android:layout_height="match_parent"
+                                  android:orientation="vertical">
+
+                        <TextView android:id="@+id/cardGroupDay7StartTime"
+                                  style="@style/timeDayWeekDefault"/>
+
+                        <TextView android:id="@+id/cardGroupDay7EndTime"
+                                  style="@style/timeDayWeekDefault"/>
+                    </LinearLayout>
+
+                    <TextView android:id="@+id/cardGroupDay7None"
+                              style="@style/timeDayWeekDefault"
+                              android:text="-"
+                              tools:ignore="HardcodedText"/>
+                </FrameLayout>
             </LinearLayout>
         </TableRow>
     </TableLayout>

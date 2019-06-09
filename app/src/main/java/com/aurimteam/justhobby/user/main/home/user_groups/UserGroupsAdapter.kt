@@ -1,5 +1,6 @@
 package com.aurimteam.justhobby.user.main.home.user_groups
 
+import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.FragmentActivity
 import android.support.v4.app.FragmentManager
@@ -23,7 +24,7 @@ class UserGroupsAdapter(private val presenter: UserGroupsPresenter) : RecyclerVi
         if (payloads.isEmpty())
             onBindViewHolder(holder, position)
         else
-            holder.toogleTimetable(
+            holder.toggleTimetable(
                 userGroupsList[position].relationships.timetable_near,
                 isClickedList[position]
             )
@@ -44,23 +45,24 @@ class UserGroupsAdapter(private val presenter: UserGroupsPresenter) : RecyclerVi
             isClickedList[position]
         )
         holder.itemView.cardUserGroupDays.setOnClickListener {
-            if (item.relationships.timetable_near.size > 1)
-                if (!isClickedList[position]) {
-                    setIsClicked(position, true)
-                    notifyItemChanged(position, listOf(1))
-                } else {
-                    setIsClicked(position, false)
-                    notifyItemChanged(position, listOf(1))
-                }
+            if (item.relationships.timetable_near != null)
+                if (item.relationships.timetable_near.size > 1)
+                    if (!isClickedList[position]) {
+                        setIsClicked(position, true)
+                        notifyItemChanged(position, listOf(1))
+                    } else {
+                        setIsClicked(position, false)
+                        notifyItemChanged(position, listOf(1))
+                    }
         }
-        holder.itemView.cardUserGroupCenter.setOnClickListener { detailInfoCourse(manager, itemCourse, itemCompany) }
-        holder.itemView.userGroupsDeleteBtn.setOnClickListener {
+        holder.itemView.cardUserGroupCenter.setOnClickListener { detailInfoCourse(manager, itemCourse) }
+        /*holder.itemView.userGroupsDeleteBtn.setOnClickListener {
             deleteGroup(
                 holder,
                 item.id,
                 position
             )
-        }
+        }*/
     }
 
     private fun setIsClicked(position: Int, value: Boolean) {
@@ -89,15 +91,20 @@ class UserGroupsAdapter(private val presenter: UserGroupsPresenter) : RecyclerVi
         notifyDataSetChanged()
     }
 
-    private fun detailInfoCourse(fm: FragmentManager, course: CourseResponseR, company: CompanyResponse) {
+    private fun detailInfoCourse(fm: FragmentManager, course: CourseResponseR) {
+        val bundle = Bundle()
+        bundle.putString("course_id", course.id.toString())
+        val courseInfoFragment = CourseInfoFragment()
+        courseInfoFragment.arguments = bundle
+
         fm.beginTransaction()
             .addToBackStack(null)
-            .replace(R.id.mainNavContainerFragment, CourseInfoFragment())
+            .replace(R.id.mainNavContainerFragment, courseInfoFragment)
             .commit()
     }
 
-    private fun deleteGroup(holder: UserGroupsHolder, groupId: Long, position: Int) {
-        presenter.deleteUserGroup(holder.itemView.context, groupId, position)
+    fun deleteGroup(context: Context, position: Int) {
+        presenter.deleteUserGroup(context, userGroupsList[position].id, position)
     }
 
     fun removeItem(position: Int) {

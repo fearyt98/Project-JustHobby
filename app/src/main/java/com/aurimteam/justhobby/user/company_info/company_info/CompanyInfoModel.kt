@@ -1,13 +1,11 @@
-package com.aurimteam.justhobby.user.company_info.course_info
+package com.aurimteam.justhobby.user.company_info.company_info
 
 import com.aurimteam.justhobby.response.CourseResponse
-import com.aurimteam.justhobby.response.IdentifierResponse
-import java.sql.Timestamp
 
 class CompanyInfoModel : ICompanyInfoModel {
     interface OnFinishedListener{
         fun onResultSuccess(courses: List<CourseResponse>)
-        fun onResultFail()
+        fun onResultFail(strError: String?)
     }
 
     override fun getCompanyCoursesData(onFinishedListener: OnFinishedListener) {

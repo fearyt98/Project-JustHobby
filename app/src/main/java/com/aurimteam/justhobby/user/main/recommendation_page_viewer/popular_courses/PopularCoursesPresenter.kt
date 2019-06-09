@@ -21,11 +21,11 @@ class PopularCoursesPresenter(private var view: IPopularCoursesView?, private va
     }
 
     override fun deletedUserBookmark(position: Int) {
-        view?.deletedUserBookmarks(position)
+        view?.deletedUserBookmark(position)
     }
 
     override fun addedUserBookmark(position: Int) {
-        view?.addedUserBookmarks(position)
+        view?.addedUserBookmark(position)
     }
 
     override fun deleteUserBookmark(context: Context, courseId: Long, position: Int) {

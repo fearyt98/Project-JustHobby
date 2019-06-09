@@ -12,7 +12,7 @@ import retrofit2.Response
 class RecoveryModel: IRecoveryModel {
     interface OnFinishedListener{
         fun onResultSuccess()
-        fun onResultFail(error: String)
+        fun onResultFail(strError: String)
     }
 
     override fun sendRecoveryEmail(email: String, onFinishedListener: OnFinishedListener) {
