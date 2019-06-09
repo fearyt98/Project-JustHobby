@@ -9,65 +9,66 @@ import android.widget.Button
 import android.widget.CheckBox
 import android.widget.TextView
 import com.aurimteam.justhobby.R
+import kotlinx.android.synthetic.main.dialog_filters.*
+import com.aurimteam.justhobby.user.search.search.SearchFragment
 
-class SearchFiltersFragment : BottomSheetDialogFragment(), ISearchFiltersView {
+class SearchFiltersFragment : BottomSheetDialogFragment() {
 
-    private val presenter = SearchFiltersPresenter(this, SearchFiltersModel())
     private var filters: Bundle = Bundle()
     private var filtersClickedMap = mutableMapOf<String, Boolean>()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.dialog_filters, container, false)
         view.findViewById<TextView>(R.id.resetBtn).setOnClickListener {
-            resetFilters()
+            reset()
         }
         view.findViewById<CheckBox>(R.id.sortNear).setOnClickListener {
-            addFilter("sortNear", view, R.id.sortNear)
+            changeFilter("sortNear", view, R.id.sortNear)
         }
         view.findViewById<CheckBox>(R.id.sortPrice).setOnClickListener {
-            addFilter("sortPrice", view, R.id.sortPrice)
+            changeFilter("sortPrice", view, R.id.sortPrice)
         }
         view.findViewById<CheckBox>(R.id.sortRating).setOnClickListener {
-            addFilter("sortRating", view, R.id.sortRating)
+            changeFilter("sortRating", view, R.id.sortRating)
         }
         view.findViewById<CheckBox>(R.id.sexAny).setOnClickListener {
-            addFilter("sexAny", view, R.id.sexAny)
+            changeFilter("sexAny", view, R.id.sexAny)
         }
         view.findViewById<CheckBox>(R.id.sexMan).setOnClickListener {
-            addFilter("sexMan", view, R.id.sexMan)
+            changeFilter("sexMan", view, R.id.sexMan)
         }
         view.findViewById<CheckBox>(R.id.sexWoman).setOnClickListener {
-            addFilter("sexWoman", view, R.id.sexWoman)
+            changeFilter("sexWoman", view, R.id.sexWoman)
         }
         view.findViewById<CheckBox>(R.id.filterDayMonday).setOnClickListener {
-            addFilter("filterDayMonday", view, R.id.filterDayMonday)
+            changeFilter("filterDays", view, R.id.filterDayMonday)
         }
         view.findViewById<CheckBox>(R.id.filterDayTuesday).setOnClickListener {
-            addFilter("filterDayTuesday", view, R.id.filterDayTuesday)
+            changeFilter("filterDays", view, R.id.filterDayTuesday)
         }
         view.findViewById<CheckBox>(R.id.filterDayWednesday).setOnClickListener {
-            addFilter("filterDayWednesday", view, R.id.filterDayWednesday)
+            changeFilter("filterDays", view, R.id.filterDayWednesday)
         }
         view.findViewById<CheckBox>(R.id.filterDayThursday).setOnClickListener {
-            addFilter("filterDayThursday", view, R.id.filterDayThursday)
+            changeFilter("filterDays", view, R.id.filterDayThursday)
         }
         view.findViewById<CheckBox>(R.id.filterDayFriday).setOnClickListener {
-            addFilter("filterDayFriday", view, R.id.filterDayFriday)
+            changeFilter("filterDays", view, R.id.filterDayFriday)
         }
         view.findViewById<CheckBox>(R.id.filterDaySaturday).setOnClickListener {
-            addFilter("filterDaySaturday", view, R.id.filterDaySaturday)
+            changeFilter("filterDays", view, R.id.filterDaySaturday)
         }
         view.findViewById<CheckBox>(R.id.filterDaySunday).setOnClickListener {
-            addFilter("filterDaySunday", view, R.id.filterDaySunday)
+            changeFilter("filterDays", view, R.id.filterDaySunday)
         }
-        view.findViewById<CheckBox>(R.id.applyAny).setOnClickListener {
-            addFilter("applyAny", view, R.id.applyAny)
+        view.findViewById<CheckBox>(R.id.statusAny).setOnClickListener {
+            changeFilter("statusAny", view, R.id.statusAny)
         }
-        view.findViewById<CheckBox>(R.id.applyGo).setOnClickListener {
-            addFilter("applyGo", view, R.id.applyGo)
+        view.findViewById<CheckBox>(R.id.statusTrue).setOnClickListener {
+            changeFilter("statusTrue", view, R.id.statusTrue)
         }
-        view.findViewById<CheckBox>(R.id.applyNotGo).setOnClickListener {
-            addFilter("applyNotGo", view, R.id.applyNotGo)
+        view.findViewById<CheckBox>(R.id.statusFalse).setOnClickListener {
+            changeFilter("statusFalse", view, R.id.statusFalse)
         }
         view.findViewById<Button>(R.id.filtersAcceptButton).setOnClickListener {
             sendChosenFilters()
@@ -77,138 +78,248 @@ class SearchFiltersFragment : BottomSheetDialogFragment(), ISearchFiltersView {
 
     override fun onStart() {
         super.onStart()
-        filters.putBoolean("sortNear", false)
-        filtersClickedMap["sortNear"] = false
 
-        filters.putBoolean("sortPrice", false)
-        filtersClickedMap["sortPrice"] = false
-
-        filters.putBoolean("sortRating", false)
-        filtersClickedMap["sortRating"] = false
-
-        filters.putBoolean("sexAny", false)
-        filtersClickedMap["sexAny"] = false
-
-        filters.putBoolean("sexMan", false)
-        filtersClickedMap["sexMan"] = false
-
-        filters.putBoolean("sexWoman", false)
-        filtersClickedMap["sexWoman"] = false
-
-        filters.putBoolean("filterDayMonday", false)
-        filtersClickedMap["filterDayMonday"] = false
-
-        filters.putBoolean("filterDayTuesday", false)
-        filtersClickedMap["filterDayTuesday"] = false
-
-        filters.putBoolean("filterDayWednesday", false)
-        filtersClickedMap["filterDayWednesday"] = false
-
-        filters.putBoolean("filterDayThursday", false)
-        filtersClickedMap["filterDayThursday"] = false
-
-        filters.putBoolean("filterDayFriday", false)
-        filtersClickedMap["filterDayFriday"] = false
-
-        filters.putBoolean("filterDaySaturday", false)
-        filtersClickedMap["filterDaySaturday"] = false
-
-        filters.putBoolean("filterDaySunday", false)
-        filtersClickedMap["filterDaySunday"] = false
-
-        filters.putBoolean("applyAny", false)
-        filtersClickedMap["applyAny"] = false
-
-        filters.putBoolean("applyGo", false)
-        filtersClickedMap["applyGo"] = false
-
-        filters.putBoolean("applyNotGo", false)
-        filtersClickedMap["applyNotGo"] = false
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        presenter.onDestroy()
-    }
-
-    private fun addFilter(type: String, view: View, typeId: Int) {
-        if (filtersClickedMap[type] == false) {
-            filtersClickedMap[type] = true
-            filters.putBoolean(type, true)
-            view.findViewById<CheckBox>(typeId).isChecked = true
-        } else if (filtersClickedMap[type] == true) {
-            filtersClickedMap[type] = false
-            filters.putBoolean(type, false)
-            view.findViewById<CheckBox>(typeId).isChecked = false
+        filters.putInt("ageMaxAll", 100)
+        filters.putInt("ageMinAll", 0)
+        if (arguments != null)
+            filters.putAll(arguments!!)
+        if (!filters.containsKey("sortNear")) {
+            resetFilters()
         }
+        setFromArguments()
+    }
+
+    private fun setFromArguments() {
+        setCheck("sortNear", view!!, R.id.sortNear)
+        setCheck("sortPrice", view!!, R.id.sortPrice)
+        setCheck("sortRating", view!!, R.id.sortRating)
+        setCheck("sexAny", view!!, R.id.sexAny)
+        setCheck("sexMan", view!!, R.id.sexMan)
+        setCheck("sexWoman", view!!, R.id.sexWoman)
+        setCheck("filterDays", view!!, R.id.filterDayMonday)
+        setCheck("filterDays", view!!, R.id.filterDayTuesday)
+        setCheck("filterDays", view!!, R.id.filterDayWednesday)
+        setCheck("filterDays", view!!, R.id.filterDayThursday)
+        setCheck("filterDays", view!!, R.id.filterDayFriday)
+        setCheck("filterDays", view!!, R.id.filterDaySaturday)
+        setCheck("filterDays", view!!, R.id.filterDaySunday)
+        setCheck("statusAny", view!!, R.id.statusAny)
+        setCheck("statusTrue", view!!, R.id.statusTrue)
+        setCheck("statusFalse", view!!, R.id.statusFalse)
+        setRange("cost")
+        setRange("age")
+
+    }
+
+    private fun changeFilter(type: String, view: View, id: Int) {
+        if (filtersClickedMap[
+                    if (type == "filterDays")
+                        "filterDays$id"
+                    else
+                        type
+            ] == false
+        )
+            if (type == "sortPrice")
+                setSortPrice("sortPrice", view, R.id.sortPrice, 1)
+            else
+                setCheck(type, view, id, true)
+        else
+            if (type == "sortPrice")
+                if (filters.getInt(type) == 1)
+                    setSortPrice(type, view, id, 2)
+                else
+                    setSortPrice(type, view, id, 1)
+            else
+                setCheck(type, view, id, false)
         if (type == "sortNear" || type == "sortRating" || type == "sortPrice") {
-            if (filtersClickedMap["sortRating"] == true) {
-                filtersClickedMap["sortNear"] = false
-                filtersClickedMap["sortPrice"] = false
-                view.findViewById<CheckBox>(R.id.sortNear).isChecked = false
-                view.findViewById<CheckBox>(R.id.sortPrice).isChecked = false
-                filters.putBoolean("sortNear", false)
-                filters.putBoolean("sortPrice", false)
-            } else if (filtersClickedMap["sortNear"] == true) {
-                filtersClickedMap["sortRating"] = false
-                filtersClickedMap["sortPrice"] = false
-                view.findViewById<CheckBox>(R.id.sortRating).isChecked = false
-                view.findViewById<CheckBox>(R.id.sortPrice).isChecked = false
-                filters.putBoolean("sortRating", false)
-                filters.putBoolean("sortPrice", false)
-            } else if (filtersClickedMap["sortPrice"] == true) {
-                filtersClickedMap["sortRating"] = false
-                filtersClickedMap["sortNear"] = false
-                view.findViewById<CheckBox>(R.id.sortRating).isChecked = false
-                view.findViewById<CheckBox>(R.id.sortNear).isChecked = false
-                filters.putBoolean("sortRating", false)
-                filters.putBoolean("sortNear", false)
+            when {
+                filtersClickedMap["sortRating"] == true && type == "sortRating" -> {
+                    setCheck("sortNear", view, R.id.sortNear, false)
+                    setSortPrice("sortPrice", view, R.id.sortPrice, 0)
+                }
+                filtersClickedMap["sortNear"] == true && type == "sortNear" -> {
+                    setCheck("sortRating", view, R.id.sortRating, false)
+                    setSortPrice("sortPrice", view, R.id.sortPrice, 0)
+                }
+                filtersClickedMap["sortPrice"] == true && type == "sortPrice" -> {
+                    setCheck("sortRating", view, R.id.sortRating, false)
+                    setCheck("sortNear", view, R.id.sortNear, false)
+                }
             }
         } else if (type == "sexAny" || type == "sexMan" || type == "sexWoman") {
-            if (filtersClickedMap["sexAny"] == true && filtersClickedMap["sexMan"] == true) {
-                filtersClickedMap["sexWoman"] = false
-                view.findViewById<CheckBox>(R.id.sexWoman).isChecked = false
-            } else if (filtersClickedMap["sexAny"] == true && filtersClickedMap["sexWoman"] == true) {
-                filtersClickedMap["sexMan"] = false
-                view.findViewById<CheckBox>(R.id.sexMan).isChecked = false
-            } else if (filtersClickedMap["sexMan"] == true) {
-                filtersClickedMap["sexWoman"] = false
-                view.findViewById<CheckBox>(R.id.sexWoman).isChecked = false
-            } else if (filtersClickedMap["sexWoman"] == true) {
-                filtersClickedMap["sexMan"] = false
-                view.findViewById<CheckBox>(R.id.sexMan).isChecked = false
+            when {
+                filtersClickedMap["sexMan"] == true && type == "sexMan" -> {
+                    setCheck("sexWoman", view, R.id.sexWoman, false)
+                }
+                filtersClickedMap["sexWoman"] == true && type == "sexWoman" -> {
+                    setCheck("sexMan", view, R.id.sexMan, false)
+                }
             }
-        } else if (type == "applyAny" || type == "applyGo" || type == "applyNotGo") {
-            if (filtersClickedMap["applyAny"] == true) {
-                filtersClickedMap["applyGo"] = false
-                filtersClickedMap["applyNotGo"] = false
-                view.findViewById<CheckBox>(R.id.applyGo).isChecked = false
-                view.findViewById<CheckBox>(R.id.applyNotGo).isChecked = false
-                filters.putBoolean("applyGo", false)
-                filters.putBoolean("applyNotGo", false)
-            } else if (filtersClickedMap["applyGo"] == true) {
-                filtersClickedMap["applyAny"] = false
-                filtersClickedMap["applyNotGo"] = false
-                view.findViewById<CheckBox>(R.id.applyAny).isChecked = false
-                view.findViewById<CheckBox>(R.id.applyNotGo).isChecked = false
-                filters.putBoolean("applyAny", false)
-                filters.putBoolean("applyNotGo", false)
-            } else if (filtersClickedMap["applyNotGo"] == true) {
-                filtersClickedMap["applyGo"] = false
-                filtersClickedMap["applyAny"] = false
-                view.findViewById<CheckBox>(R.id.applyAny).isChecked = false
-                view.findViewById<CheckBox>(R.id.applyGo).isChecked = false
-                filters.putBoolean("applyAny", false)
-                filters.putBoolean("applyGo", false)
+        } else if (type == "statusAny" || type == "statusTrue" || type == "statusFalse") {
+            when {
+                filtersClickedMap["statusAny"] == true && type == "statusAny" -> {
+                    setCheck("statusTrue", view, R.id.statusTrue, false)
+                    setCheck("statusFalse", view, R.id.statusFalse, false)
+                }
+                filtersClickedMap["statusTrue"] == true && type == "statusTrue" -> {
+                    setCheck("statusAny", view, R.id.statusAny, false)
+                    setCheck("statusFalse", view, R.id.statusFalse, false)
+                }
+                filtersClickedMap["statusFalse"] == true && type == "statusFalse" -> {
+                    setCheck("statusAny", view, R.id.statusAny, false)
+                    setCheck("statusTrue", view, R.id.statusTrue, false)
+                }
             }
         }
+    }
+
+    private fun setCheck(type: String, view: View, id: Int, isCheck: Boolean) {
+        if (type == "filterDays") {
+            var days = filters.getString(type)
+            if (days != null) {
+                val daysArray = days.split(",")
+                val daysArrayNew = mutableListOf<String>()
+                for (day in daysArray)
+                    if (day.toInt() != getIndexDay(id))
+                        daysArrayNew.add(day)
+                if (isCheck)
+                    daysArrayNew.add(getIndexDay(id).toString())
+                if (daysArrayNew.size != 0) {
+                    days = daysArrayNew[0]
+                    for (day in daysArrayNew)
+                        if (daysArrayNew.indexOf(day) != 0)
+                            days = "$days,$day"
+                    filtersClickedMap[
+                            if (type == "filterDays")
+                                "filterDays$id"
+                            else
+                                type
+                    ] = isCheck
+                    view.findViewById<CheckBox>(id).isChecked = isCheck
+                    filters.putString(type, days)
+                }
+            }
+        } else {
+            filters.putBoolean(type, isCheck)
+        }
+    }
+
+    private fun setSortPrice(type: String, view: View, id: Int, check: Int) {
+        if (check == 0) {
+            filtersClickedMap[type] = false
+            view.findViewById<CheckBox>(id).isChecked = false
+            sortPriceImage.visibility = View.GONE
+        } else {
+            filtersClickedMap[type] = true
+            view.findViewById<CheckBox>(id).isChecked = true
+            sortPriceImage.visibility = View.VISIBLE
+            if (check == 1) {
+                sortPriceImage.setImageResource(R.drawable.ic_arrow_upward_24dp)
+            } else {
+                sortPriceImage.setImageResource(R.drawable.ic_arrow_downward_24dp)
+            }
+        }
+        filters.putInt(type, check)
+    }
+
+    private fun setCheck(type: String, view: View, id: Int) {
+        if (type == "filterDays") {
+            val days = filters.getString(type)
+            if (days != null) {
+                val daysArray = days.split(",")
+                var isSetDay = false
+                for (day in daysArray)
+                    if (day.toInt() == getIndexDay(id)) {
+                        isSetDay = true
+                        setCheck(type, view, id, true)
+                    }
+                if (!isSetDay)
+                    setCheck(type, view, id, false)
+            }
+        } else if (type == "sortPrice") {
+            setSortPrice(type, view, id, filters.getInt(type))
+        } else
+            setCheck(type, view, id, filters.getBoolean(type))
+    }
+
+    private fun getIndexDay(id: Int): Int {
+        return when (id) {
+            R.id.filterDayMonday -> 0
+            R.id.filterDayTuesday -> 1
+            R.id.filterDayWednesday -> 2
+            R.id.filterDayThursday -> 3
+            R.id.filterDayFriday -> 4
+            R.id.filterDaySaturday -> 5
+            R.id.filterDaySunday -> 6
+            else -> 0
+        }
+    }
+
+    private fun setRange(type: String, currentMin: Int, currentMax: Int, min: Int, max: Int) {
+        var seekBar = filtersCostSeekBar
+        var minTextView = costMin
+        var maxTextView = costMax
+        if (type == "age") {
+            seekBar = filtersAgeSeekBar
+            minTextView = ageMin
+            maxTextView = ageMax
+            seekBar.setSteps(5f)
+        } else {
+            seekBar.setSteps(10f)
+        }
+        minTextView.text = currentMin.toString()
+        maxTextView.text = currentMax.toString()
+        seekBar.setMinStartValue(min.toFloat())
+        seekBar.setMaxStartValue(max.toFloat())
+        seekBar.setMinValue(currentMin.toFloat())
+        seekBar.setMaxValue(currentMax.toFloat())
+        seekBar.setOnRangeSeekbarChangeListener { minValue, maxValue ->
+            minTextView.text = minValue.toString()
+            maxTextView.text = maxValue.toString()
+            filters.putInt(type + "Min", minValue.toInt())
+            filters.putInt(type + "Max", maxValue.toInt())
+        }
+    }
+
+    private fun setRange(type: String) {
+        setRange(
+            type,
+            filters.getInt(type + "Min"),
+            filters.getInt(type + "Max"),
+            filters.getInt(type + "MinAll"),
+            filters.getInt(type + "MaxAll")
+        )
     }
 
     private fun resetFilters() {
+        filters.putBoolean("sortNear", false)
+        filters.putBoolean("sortRating", true)
+        filters.putInt("sortPrice", 0)
+        filters.putBoolean("sexAny", true)
+        filters.putBoolean("sexMan", false)
+        filters.putBoolean("sexWoman", false)
+        filters.putString("filterDays", "0,1,2,3,4,5,6")
+        filters.putBoolean("statusAny", true)
+        filters.putBoolean("statusTrue", false)
+        filters.putBoolean("statusFalse", false)
+        filters.putInt("ageMax", filters.getInt("ageMaxAll"))
+        filters.putInt("ageMin", filters.getInt("ageMinAll"))
+        filters.putInt("costMax", filters.getInt("costMaxAll"))
+        filters.putInt("costMin", filters.getInt("costMinAll"))
+        setFromArguments()
+    }
 
+    private fun reset() {
+        resetFilters()
+        sendChosenFilters()
     }
 
     private fun sendChosenFilters() {
-        presenter.sendChosenFilters()
+        if (activity != null) {
+            val searchFragment =
+                activity!!.supportFragmentManager.findFragmentById(R.id.mainNavContainerFragment) as SearchFragment
+            searchFragment.setFilters(filters)
+            dismiss()
+        }
     }
 }

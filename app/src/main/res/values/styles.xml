@@ -105,10 +105,6 @@
         <item name="android:button">@android:color/transparent</item>
         <item name="android:layout_gravity">center</item>
     </style>
-    <!-- Seek Bar -->
-    <style name="SeekBar" parent="Widget.AppCompat.SeekBar">
-        <item name="colorAccent">@color/colorAccent</item>
-    </style>
     <style name="ErrorMessage">
         <item name="android:textColor">@color/errorMessage</item>
         <item name="android:textAppearance">@style/Caption1.Medium</item>

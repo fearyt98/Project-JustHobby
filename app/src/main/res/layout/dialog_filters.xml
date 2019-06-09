@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
               android:id="@+id/dialogFilters"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
@@ -22,8 +23,8 @@
                 <TextView style="@style/Body2.Medium"
                           android:layout_width="wrap_content"
                           android:layout_height="wrap_content"
-                          android:paddingStart="15dp"
-                          android:paddingEnd="15dp"
+                          android:paddingStart="12dp"
+                          android:paddingEnd="12dp"
                           android:text="@string/search_params"
                           android:textColor="@color/grafitText"
                           app:layout_constraintBottom_toBottomOf="parent"
@@ -34,8 +35,8 @@
                           style="@style/Caption1.Medium"
                           android:layout_width="wrap_content"
                           android:layout_height="wrap_content"
-                          android:paddingStart="15dp"
-                          android:paddingEnd="15dp"
+                          android:paddingStart="12dp"
+                          android:paddingEnd="12dp"
                           android:text="@string/reset"
                           android:textColor="@color/greenText"
                           app:layout_constraintBottom_toBottomOf="parent"
@@ -55,39 +56,62 @@
                           android:layout_height="wrap_content"
                           android:clipToPadding="false"
                           android:orientation="horizontal"
-                          android:paddingStart="15dp"
-                          android:paddingTop="10dp"
-                          android:paddingEnd="15dp"
-                          android:paddingBottom="10dp">
+                          android:paddingStart="12dp"
+                          tools:ignore="RtlSymmetry">
 
                 <CheckBox android:id="@+id/sortNear"
                           style="@style/BottomFiltersCheckBoxWhite"
-                          android:layout_width="wrap_content"
+                          android:layout_width="0dp"
                           android:layout_height="wrap_content"
+                          android:layout_marginTop="10dp"
+                          android:layout_marginBottom="10dp"
                           android:layout_weight="1"
                           android:elevation="1dp"
                           android:text="@string/near"/>
 
                 <CheckBox android:id="@+id/sortRating"
                           style="@style/BottomFiltersCheckBoxWhite"
-                          android:layout_width="wrap_content"
+                          android:layout_width="0dp"
                           android:layout_height="wrap_content"
-                          android:layout_marginStart="15dp"
+                          android:layout_marginStart="12dp"
+                          android:layout_marginTop="10dp"
                           android:layout_marginEnd="0dp"
+                          android:layout_marginBottom="10dp"
                           android:layout_weight="1"
                           android:elevation="1dp"
                           android:text="@string/rating"/>
 
-                <CheckBox android:id="@+id/sortPrice"
-                          style="@style/BottomFiltersCheckBoxWhite"
-                          android:layout_width="wrap_content"
-                          android:layout_height="wrap_content"
-                          android:layout_gravity="center"
-                          android:layout_marginStart="15dp"
-                          android:layout_marginEnd="0dp"
-                          android:layout_weight="1"
-                          android:elevation="1dp"
-                          android:text="@string/price"/>
+                <FrameLayout android:layout_width="0dp"
+                             android:layout_height="wrap_content"
+                             android:layout_weight="1.2"
+                             android:clipToPadding="false">
+
+                    <FrameLayout android:layout_width="match_parent"
+                                 android:layout_height="match_parent"
+                                 android:clipToPadding="false"
+                                 android:paddingStart="12dp"
+                                 android:paddingTop="10dp"
+                                 android:paddingEnd="12dp"
+                                 android:paddingBottom="10dp">
+
+                        <CheckBox android:id="@+id/sortPrice"
+                                  style="@style/BottomFiltersCheckBoxWhite"
+                                  android:layout_width="match_parent"
+                                  android:layout_height="wrap_content"
+                                  android:layout_gravity="center"
+                                  android:checked="true"
+                                  android:elevation="1dp"
+                                  android:text="@string/price"/>
+                    </FrameLayout>
+
+                    <ImageView android:id="@+id/sortPriceImage"
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content"
+                               android:layout_gravity="end|center_vertical"
+                               android:paddingEnd="22dp"
+                               app:srcCompat="@drawable/ic_arrow_upward_24dp"
+                               tools:ignore="ContentDescription,RtlSymmetry"/>
+                </FrameLayout>
             </LinearLayout>
 
             <TextView android:layout_width="match_parent"
@@ -99,44 +123,45 @@
 
             <android.support.constraint.ConstraintLayout android:layout_width="match_parent"
                                                          android:layout_height="wrap_content"
+                                                         android:layout_marginStart="12dp"
+                                                         android:layout_marginEnd="12dp"
                                                          android:layout_marginBottom="7.5dp">
 
                 <android.support.constraint.ConstraintLayout android:layout_width="match_parent"
                                                              android:layout_height="wrap_content"
+                                                             android:layout_marginBottom="20dp"
                                                              app:layout_constraintBottom_toBottomOf="@id/filtersCostSeekBar">
 
-                    <TextView android:id="@+id/costStart"
+                    <TextView android:id="@+id/costMin"
                               style="@style/Body1.Medium"
                               android:layout_width="wrap_content"
                               android:layout_height="wrap_content"
-                              android:layout_marginStart="12dp"
-                              android:layout_marginEnd="0dp"
-                              android:layout_marginBottom="20dp"
-                              android:text="4"
                               android:textColor="@color/grayDarkMiddle"
                               app:layout_constraintBottom_toBottomOf="parent"
                               app:layout_constraintLeft_toLeftOf="parent"
                               app:layout_constraintTop_toTopOf="parent"/>
 
-                    <TextView android:id="@+id/costEnd"
+                    <TextView android:id="@+id/costMax"
                               style="@style/Body1.Medium"
                               android:layout_width="wrap_content"
                               android:layout_height="wrap_content"
-                              android:layout_marginStart="0dp"
-                              android:layout_marginEnd="12dp"
-                              android:layout_marginBottom="20dp"
-                              android:text="4"
                               android:textColor="@color/grayDarkMiddle"
                               app:layout_constraintBottom_toBottomOf="parent"
                               app:layout_constraintRight_toRightOf="parent"
                               app:layout_constraintTop_toTopOf="parent"/>
                 </android.support.constraint.ConstraintLayout>
 
-                <SeekBar android:id="@+id/filtersCostSeekBar"
-                         android:layout_width="match_parent"
-                         android:layout_height="wrap_content"
-                         android:theme="@style/SeekBar"
-                         app:layout_constraintBottom_toBottomOf="parent"/>
+                <com.aurimteam.justhobby.RangeSeekBar android:id="@+id/filtersCostSeekBar"
+                                                      android:layout_width="match_parent"
+                                                      android:layout_height="wrap_content"
+                                                      app:bar_color="@color/grayLightTopMiddle"
+                                                      app:bar_highlight_color="@color/gold"
+                                                      app:data_type="_integer"
+                                                      app:layout_constraintBottom_toBottomOf="parent"
+                                                      app:left_thumb_color="@color/gold"
+                                                      app:left_thumb_color_pressed="@color/gold"
+                                                      app:right_thumb_color="@color/gold"
+                                                      app:right_thumb_color_pressed="@color/gold"/>
             </android.support.constraint.ConstraintLayout>
 
             <TextView android:layout_width="match_parent"
@@ -151,8 +176,8 @@
                           android:layout_height="wrap_content"
                           android:clipToPadding="false"
                           android:orientation="horizontal"
-                          android:paddingStart="15dp"
-                          android:paddingEnd="15dp"
+                          android:paddingStart="12dp"
+                          android:paddingEnd="12dp"
                           android:paddingBottom="16dp">
 
                 <CheckBox android:id="@+id/sexAny"
@@ -197,7 +222,7 @@
                           android:clipToPadding="false"
                           android:orientation="horizontal"
                           android:paddingStart="12dp"
-                          android:paddingEnd="15dp"
+                          android:paddingEnd="12dp"
                           android:paddingBottom="16dp">
 
                 <CheckBox android:id="@+id/filterDayMonday"
@@ -213,7 +238,7 @@
                           style="@style/BottomFiltersCheckBoxWhite"
                           android:layout_width="wrap_content"
                           android:layout_height="wrap_content"
-                          android:layout_marginStart="15dp"
+                          android:layout_marginStart="12dp"
                           android:layout_marginEnd="0dp"
                           android:layout_weight="1"
                           android:elevation="1dp"
@@ -235,7 +260,7 @@
                           style="@style/BottomFiltersCheckBoxWhite"
                           android:layout_width="wrap_content"
                           android:layout_height="wrap_content"
-                          android:layout_marginStart="15dp"
+                          android:layout_marginStart="12dp"
                           android:layout_marginEnd="0dp"
                           android:layout_weight="1"
                           android:elevation="1dp"
@@ -246,7 +271,7 @@
                           style="@style/BottomFiltersCheckBoxWhite"
                           android:layout_width="wrap_content"
                           android:layout_height="wrap_content"
-                          android:layout_marginStart="15dp"
+                          android:layout_marginStart="12dp"
                           android:layout_marginEnd="0dp"
                           android:layout_weight="1"
                           android:elevation="1dp"
@@ -257,7 +282,7 @@
                           style="@style/BottomFiltersCheckBoxWhite"
                           android:layout_width="wrap_content"
                           android:layout_height="wrap_content"
-                          android:layout_marginStart="15dp"
+                          android:layout_marginStart="12dp"
                           android:layout_marginEnd="0dp"
                           android:layout_weight="1"
                           android:elevation="1dp"
@@ -268,7 +293,7 @@
                           style="@style/BottomFiltersCheckBoxWhite"
                           android:layout_width="wrap_content"
                           android:layout_height="wrap_content"
-                          android:layout_marginStart="15dp"
+                          android:layout_marginStart="12dp"
                           android:layout_marginEnd="0dp"
                           android:layout_weight="1"
                           android:elevation="1dp"
@@ -285,44 +310,45 @@
 
             <android.support.constraint.ConstraintLayout android:layout_width="match_parent"
                                                          android:layout_height="wrap_content"
+                                                         android:layout_marginStart="12dp"
+                                                         android:layout_marginEnd="12dp"
                                                          android:layout_marginBottom="7.5dp">
 
                 <android.support.constraint.ConstraintLayout android:layout_width="match_parent"
                                                              android:layout_height="wrap_content"
+                                                             android:layout_marginBottom="20dp"
                                                              app:layout_constraintBottom_toBottomOf="@id/filtersAgeSeekBar">
 
-                    <TextView android:id="@+id/ageStart"
+                    <TextView android:id="@+id/ageMin"
                               style="@style/Body1.Medium"
                               android:layout_width="wrap_content"
                               android:layout_height="wrap_content"
-                              android:layout_marginStart="12dp"
-                              android:layout_marginEnd="0dp"
-                              android:layout_marginBottom="20dp"
-                              android:text="5"
                               android:textColor="@color/grayDarkMiddle"
                               app:layout_constraintBottom_toBottomOf="parent"
                               app:layout_constraintLeft_toLeftOf="parent"
                               app:layout_constraintTop_toTopOf="parent"/>
 
-                    <TextView android:id="@+id/ageEnd"
+                    <TextView android:id="@+id/ageMax"
                               style="@style/Body1.Medium"
                               android:layout_width="wrap_content"
                               android:layout_height="wrap_content"
-                              android:layout_marginStart="0dp"
-                              android:layout_marginEnd="12dp"
-                              android:layout_marginBottom="20dp"
-                              android:text="5"
                               android:textColor="@color/grayDarkMiddle"
                               app:layout_constraintBottom_toBottomOf="parent"
                               app:layout_constraintRight_toRightOf="parent"
                               app:layout_constraintTop_toTopOf="parent"/>
                 </android.support.constraint.ConstraintLayout>
 
-                <SeekBar android:id="@+id/filtersAgeSeekBar"
-                         android:layout_width="match_parent"
-                         android:layout_height="wrap_content"
-                         android:theme="@style/SeekBar"
-                         app:layout_constraintBottom_toBottomOf="parent"/>
+                <com.aurimteam.justhobby.RangeSeekBar android:id="@+id/filtersAgeSeekBar"
+                                                      android:layout_width="match_parent"
+                                                      android:layout_height="wrap_content"
+                                                      app:bar_color="@color/grayLightTopMiddle"
+                                                      app:bar_highlight_color="@color/gold"
+                                                      app:data_type="_integer"
+                                                      app:layout_constraintBottom_toBottomOf="parent"
+                                                      app:left_thumb_color="@color/gold"
+                                                      app:left_thumb_color_pressed="@color/gold"
+                                                      app:right_thumb_color="@color/gold"
+                                                      app:right_thumb_color_pressed="@color/gold"/>
             </android.support.constraint.ConstraintLayout>
 
             <TextView android:layout_width="match_parent"
@@ -339,9 +365,9 @@
                           android:orientation="horizontal"
                           android:paddingStart="12dp"
                           android:paddingEnd="12dp"
-                          android:paddingBottom="16dp">
+                          android:paddingBottom="12dp">
 
-                <CheckBox android:id="@+id/applyAny"
+                <CheckBox android:id="@+id/statusAny"
                           style="@style/BottomFiltersCheckBoxWhite"
                           android:layout_width="wrap_content"
                           android:layout_height="wrap_content"
@@ -350,7 +376,7 @@
                           android:elevation="1dp"
                           android:text="@string/any"/>
 
-                <CheckBox android:id="@+id/applyGo"
+                <CheckBox android:id="@+id/statusTrue"
                           style="@style/BottomFiltersCheckBoxWhite"
                           android:layout_width="wrap_content"
                           android:layout_height="wrap_content"
@@ -360,7 +386,7 @@
                           android:elevation="1dp"
                           android:text="@string/coming"/>
 
-                <CheckBox android:id="@+id/applyNotGo"
+                <CheckBox android:id="@+id/statusFalse"
                           style="@style/BottomFiltersCheckBoxWhite"
                           android:layout_width="wrap_content"
                           android:layout_height="wrap_content"

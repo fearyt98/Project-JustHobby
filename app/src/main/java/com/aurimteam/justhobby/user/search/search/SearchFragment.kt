@@ -7,6 +7,7 @@ import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.Fragment
 import android.widget.Space
 import android.support.v7.widget.LinearLayoutManager
+import android.text.Editable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -24,6 +25,7 @@ class SearchFragment : Fragment(), ISearchView {
 
     private var presenter: SearchPresenter? = null
     private val adapter = SearchAdapter()
+    private var filters: Bundle = Bundle()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_search, container, false)
@@ -57,7 +59,17 @@ class SearchFragment : Fragment(), ISearchView {
     }
 
     private fun openFilters() {
-        SearchFiltersFragment().show(fragmentManager, "Filters")
+        val bundle = Bundle()
+
+        bundle.putInt("costMaxAll", 500)
+        bundle.putInt("costMinAll", 0)
+
+        if (!filters.isEmpty)
+            bundle.putAll(filters)
+
+        val searchFiltersFragment = SearchFiltersFragment()
+        searchFiltersFragment.arguments = bundle
+        searchFiltersFragment.show(fragmentManager, "filters")
     }
 
     private fun init() {
@@ -81,6 +93,12 @@ class SearchFragment : Fragment(), ISearchView {
                 inputMethodManager?.hideSoftInputFromWindow(view.windowToken, 0)
             }
         }
+    }
+
+    fun setFilters(filtersNew: Bundle) {
+        filters = filtersNew
+        val resultFragment = fragmentManager!!.findFragmentById(R.id.searchContainer) as SearchResultFragment
+        resultFragment.setFilters(filters)
     }
 
     private fun back() {

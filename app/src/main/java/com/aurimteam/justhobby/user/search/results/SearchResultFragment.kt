@@ -19,6 +19,7 @@ class SearchResultFragment : Fragment(), ISearchResultView {
 
     private val presenter = SearchResultPresenter(this, SearchResultModel())
     private val adapter = CourseAdapter(presenter)
+    private var filters: Bundle = Bundle()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_search_results, container, false)
@@ -70,5 +71,10 @@ class SearchResultFragment : Fragment(), ISearchResultView {
         val toast = Toast.makeText(activity, message, Toast.LENGTH_SHORT)
         toast.setGravity(Gravity.BOTTOM, 0, 30)
         toast.show()
+    }
+
+    fun setFilters(filtersNew: Bundle) {
+        filters = filtersNew
+        showMessage(filters.getString("filterDays"))
     }
 }
