@@ -14,6 +14,7 @@ import com.aurimteam.justhobby.R
 import com.aurimteam.justhobby.group.GroupAdapter
 import com.aurimteam.justhobby.response.CourseResponseOneR
 import com.aurimteam.justhobby.response.GroupResponse
+import com.aurimteam.justhobby.user.company_info.company_info.CompanyInfoFragment
 import kotlinx.android.synthetic.main.fragment_course_info.*
 
 class CourseInfoFragment : Fragment(), ICourseInfoView {
@@ -47,6 +48,7 @@ class CourseInfoFragment : Fragment(), ICourseInfoView {
                 presenter.addUserBookmark(context!!, courseId)
             }
         }
+        courseInfoCompany.setOnClickListener { openCompany() }
         courseInfoShowAllCourses.setOnClickListener { allCompanyCoursesFragment() }
         courseInfoGroupsRecyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         courseInfoGroupsRecyclerView.adapter = adapter
@@ -107,7 +109,7 @@ class CourseInfoFragment : Fragment(), ICourseInfoView {
             courseInfoPrice.text =
                 String.format(context!!.resources.getString(R.string.payment_one), course.attributes.price)
             val rating = course.attributes.rating
-            if (company.attributes.rating != "-") {
+            if (rating != "-") {
                 val ratingDouble = rating.toDouble()
                 val color = when {
                     ratingDouble < 1.5 -> R.color.ratingOne
@@ -146,6 +148,22 @@ class CourseInfoFragment : Fragment(), ICourseInfoView {
 
     private fun back() {
         fragmentManager?.popBackStack()
+    }
+
+    private fun openCompany() {
+        if(course != null) {
+            val bundle = Bundle()
+            bundle.putString("company_id", course!!.relationships.company.id.toString())
+
+            val companyInfoFragment = CompanyInfoFragment()
+            companyInfoFragment.arguments = bundle
+
+            fragmentManager!!
+                .beginTransaction()
+                .addToBackStack(null)
+                .replace(R.id.mainNavContainerFragment, companyInfoFragment)
+                .commit()
+        }
     }
 
     private fun allCompanyCoursesFragment() {

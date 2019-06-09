@@ -21,6 +21,7 @@ class CompanyCoursesFragment : Fragment(), ICompanyCoursesView {
 
     private val presenter = CompanyCoursesPresenter(this, CompanyCoursesModel())
     private val adapter = CourseAdapter(presenter)
+    private var companyId: Long = 0
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_company_courses, container, false)
@@ -32,7 +33,13 @@ class CompanyCoursesFragment : Fragment(), ICompanyCoursesView {
         super.onStart()
         if (!presenter.isSetView())
             presenter.attachView(this)
-        if (context != null) presenter.getCompanyCourses(context!!)
+
+        if (arguments != null) {
+            companyId = arguments!!.get("company_id")!!.toString().toLong()
+            companyCoursesTitle.text = arguments!!.get("company_name")!!.toString()
+            if (context != null)
+                presenter.getCompanyCourses(context!!, companyId)
+        }
         companyCoursesRecyclerView.layoutManager = LinearLayoutManager(context)
         companyCoursesRecyclerView.adapter = adapter
     }

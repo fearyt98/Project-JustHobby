@@ -6,10 +6,11 @@
               android:layout_height="match_parent"
               android:orientation="vertical">
 
-    <ScrollView android:layout_width="match_parent"
+    <ScrollView android:id="@+id/companyInfoContent"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:visibility="gone">
+                android:visibility="visible">
 
         <LinearLayout android:layout_width="match_parent"
                       android:layout_height="wrap_content"
@@ -61,19 +62,6 @@
                                  app:layout_constraintLeft_toLeftOf="parent"
                                  app:layout_constraintTop_toTopOf="parent"
                                  app:srcCompat="@drawable/ic_arrow_back_24dp"/>
-
-                    <ImageButton android:layout_width="wrap_content"
-                                 android:layout_height="wrap_content"
-                                 android:background="@android:color/transparent"
-                                 android:contentDescription="@string/add_in_bookmarks"
-                                 android:paddingStart="5dp"
-                                 android:paddingTop="20dp"
-                                 android:paddingEnd="20dp"
-                                 android:paddingBottom="10dp"
-                                 android:tint="@color/whiteTop"
-                                 app:layout_constraintRight_toRightOf="parent"
-                                 app:layout_constraintTop_toTopOf="parent"
-                                 app:srcCompat="@drawable/ic_bookmark_24dp"/>
 
                     <TextView android:id="@+id/companyInfoTitle"
                               style="@style/Body1"
@@ -178,7 +166,8 @@
                                        app:srcCompat="@drawable/ic_place_24dp"
                                        tools:ignore="ContentDescription"/>
 
-                            <TextView style="@style/Body2.Medium"
+                            <TextView android:id="@+id/companyInfoAddress"
+                                      style="@style/Body2.Medium"
                                       android:layout_width="wrap_content"
                                       android:layout_height="wrap_content"
                                       android:layout_gravity="center"
@@ -217,7 +206,8 @@
                                        app:srcCompat="@drawable/ic_local_phone_24dp"
                                        tools:ignore="ContentDescription"/>
 
-                            <TextView style="@style/Body2.Medium"
+                            <TextView android:id="@+id/companyInfoPhone"
+                                      style="@style/Body2.Medium"
                                       android:layout_width="wrap_content"
                                       android:layout_height="wrap_content"
                                       android:layout_gravity="center"
@@ -255,7 +245,8 @@
                                               android:orientation="horizontal"
                                               tools:ignore="UseCompoundDrawables">
 
-                                    <TextView style="@style/Body1.Medium"
+                                    <TextView android:id="@+id/companyInfoRating"
+                                              style="@style/Body1.Medium"
                                               android:layout_width="wrap_content"
                                               android:layout_height="wrap_content"
                                               android:layout_gravity="center"
@@ -265,7 +256,8 @@
                                               android:textColor="@color/ratingTwo"
                                               tools:ignore="HardcodedText"/>
 
-                                    <ImageView android:layout_width="24dp"
+                                    <ImageView android:id="@+id/companyInfoRatingStar"
+                                               android:layout_width="24dp"
                                                android:layout_height="match_parent"
                                                android:layout_marginEnd="10dp"
                                                android:background="@android:color/transparent"
@@ -281,7 +273,8 @@
                                               android:orientation="horizontal"
                                               tools:ignore="UseCompoundDrawables">
 
-                                    <TextView style="@style/Body1.Medium"
+                                    <TextView android:id="@+id/companyInfoCountReviews"
+                                              style="@style/Body1.Medium"
                                               android:layout_width="wrap_content"
                                               android:layout_height="wrap_content"
                                               android:layout_gravity="center"
@@ -329,7 +322,8 @@
                                        app:srcCompat="@drawable/ic_web_address_24dp"
                                        tools:ignore="ContentDescription"/>
 
-                            <TextView style="@style/Body2.Medium"
+                            <TextView android:id="@+id/companyInfoSite"
+                                      style="@style/Body2.Medium"
                                       android:layout_width="wrap_content"
                                       android:layout_height="wrap_content"
                                       android:layout_gravity="center"
@@ -346,7 +340,8 @@
                 </LinearLayout>
             </android.support.constraint.ConstraintLayout>
 
-            <TextView style="@style/Body2"
+            <TextView android:id="@+id/companyInfoDesc"
+                      style="@style/Body2"
                       android:layout_width="match_parent"
                       android:layout_height="wrap_content"
                       android:paddingStart="12dp"

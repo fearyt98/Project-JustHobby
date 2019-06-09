@@ -5,25 +5,23 @@ import com.aurimteam.justhobby.api.Api
 import com.aurimteam.justhobby.response.*
 import com.aurimteam.justhobby.response_body.BookmarkAddBody
 import com.aurimteam.justhobby.response_body.TokenBody
-import com.aurimteam.justhobby.user.main.recommendation_page_viewer.near_user_courses.NearUserCoursesModel
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.sql.Timestamp
 
 class CompanyCoursesModel : ICompanyCoursesModel {
     interface OnFinishedListener {
         fun onResultSuccess(courses: List<CourseResponseR>, included: IncludedResponse?)
+        fun onResultFail(strError: String?)
         fun deletedUserBookmark(position: Int)
         fun addedUserBookmark(position: Int)
-        fun onResultFail(strError: String?)
     }
 
-    override fun getCompanyCoursesData(token: String, onFinishedListener: OnFinishedListener) {
+    override fun getCompanyCoursesData(token: String, companyId: Long, onFinishedListener: OnFinishedListener) {
         App.retrofit
             .create(Api::class.java)
-            .getCourses(token)
+            .getCoursesOneCompany(companyId, token)
             .enqueue(object : Callback<CoursesResponse> {
                 override fun onFailure(call: Call<CoursesResponse>, t: Throwable) {
                     onFinishedListener.onResultFail(t.message)

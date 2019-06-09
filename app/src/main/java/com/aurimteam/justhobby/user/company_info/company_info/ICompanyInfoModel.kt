@@ -1,5 +1,8 @@
 package com.aurimteam.justhobby.user.company_info.company_info
 
 interface ICompanyInfoModel {
-    fun getCompanyCoursesData(onFinishedListener: CompanyInfoModel.OnFinishedListener)
+    fun getCompanyCoursesData(token: String, companyId: Long, onFinishedListener: CompanyInfoModel.OnFinishedListener)
+    fun getCompanyData(token: String, companyId: Long, onFinishedListener: CompanyInfoModel.OnFinishedListener)
+    fun deleteUserBookmark(token: String, courseId: Long, position: Int, onFinishedListener: CompanyInfoModel.OnFinishedListener)
+    fun addUserBookmark(token: String, courseId: Long, position: Int, onFinishedListener: CompanyInfoModel.OnFinishedListener)
 }

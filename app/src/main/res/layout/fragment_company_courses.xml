@@ -58,7 +58,8 @@
                      app:srcCompat="@drawable/ic_arrow_back_24dp"
                      tools:ignore="RtlSymmetry"/>
 
-        <TextView style="@style/Body1.Medium"
+        <TextView android:id="@+id/companyCoursesTitle"
+                  style="@style/Body1.Medium"
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
                   android:layout_gravity="center"
