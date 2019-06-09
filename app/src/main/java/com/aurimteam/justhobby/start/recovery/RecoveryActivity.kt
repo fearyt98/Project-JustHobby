@@ -5,11 +5,13 @@ import android.os.Bundle
 import com.aurimteam.justhobby.R
 import android.app.Activity
 import android.content.Intent
+import android.view.Gravity
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import com.aurimteam.justhobby.start.auth.AuthActivity
 import kotlinx.android.synthetic.main.activity_recovery.*
 
@@ -36,8 +38,34 @@ class RecoveryActivity : AppCompatActivity(), IRecoveryView {
         startActivity(Intent(Intent(this, AuthActivity::class.java)))
     }
 
+    override fun showServerMessage(message: String) {
+        val toast = Toast.makeText(
+            this,
+            message,
+            Toast.LENGTH_SHORT
+        )
+        toast.setGravity(Gravity.BOTTOM, 0, 30)
+        toast.show()
+    }
+
     override fun recoveryEmail() {
         presenter.sendRecoveryEmail(recoveryLogin.text.toString())
+    }
+
+    override fun changeLengthEmail(message: String) {
+        emailErrorRecovery.text = message
+    }
+
+    override fun clearEmailError(message: String) {
+        emailErrorRecovery.text = message
+    }
+
+    override fun emailError(message: String) {
+        emailErrorRecovery.text = message
+    }
+
+    override fun hideError() {
+        emailErrorRecovery.text = ""
     }
 
     override fun togglePB(isVisiblePB: Boolean) {

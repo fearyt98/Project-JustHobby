@@ -1,6 +1,7 @@
 package com.aurimteam.justhobby.start.auth
 
 import android.app.Activity
+import android.app.Dialog
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -17,12 +18,11 @@ import com.aurimteam.justhobby.user.main.main_nav.MainNavActivity
 import com.aurimteam.justhobby.start.recovery.RecoveryActivity
 import com.aurimteam.justhobby.start.registry.start.RegistryStartActivity
 import kotlinx.android.synthetic.main.activity_auth.*
+import kotlinx.android.synthetic.main.activity_popup_window_error.*
 
 class AuthActivity : AppCompatActivity(), IAuthView {
-    /*
-    Активити обращается только к методам презентера, передаем ему введенную информацию
-    или выводит полученную от презентера
-     */
+    /* Активити обращается только к методам презентера, передаем ему введенную информацию
+    или выводит полученную от презентера */
     private val presenter = AuthPresenter(this, AuthModel(), this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -72,7 +72,12 @@ class AuthActivity : AppCompatActivity(), IAuthView {
         finish()
     }
 
-    override fun showMessage(message: String) {
+    override fun hideErrors() {
+        emailErrorAuth.text = ""
+        passwordErrorAuth.text = ""
+    }
+
+    override fun showServerMessage(message: String) {
         val toast = Toast.makeText(
             this,
             message,
@@ -80,6 +85,32 @@ class AuthActivity : AppCompatActivity(), IAuthView {
         )
         toast.setGravity(Gravity.BOTTOM, 0, 30)
         toast.show()
+
+        /*val dialog = Dialog(this)
+        dialog.setContentView(R.layout.activity_popup_window_error)
+        errorPopUpMessage.text = message
+        closeErrorPopup.setOnClickListener { dialog.dismiss() }*/
+    }
+
+    override fun changeLengthPassword(message: String) {
+        passwordErrorAuth.text = message
+    }
+
+    override fun changeLengthEmail(message: String) {
+        emailErrorAuth.text = message
+    }
+
+    override fun clearEmailError(message: String) {
+        emailErrorAuth.text = message
+    }
+
+    override fun clearPasswordError(message: String) {
+        passwordErrorAuth.text = message
+    }
+
+    override fun emailOrPasswordError(message: String) {
+        emailErrorAuth.text = message
+        passwordErrorAuth.text = message
     }
 
     override fun togglePB(isVisiblePB: Boolean) {

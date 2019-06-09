@@ -78,9 +78,12 @@
                                                                  android:paddingEnd="16dp">
 
                         <TextView style="@style/Label"
-                                  android:text="@string/password"/>
+                                  android:text="@string/password"
+                                  app:layout_constraintBottom_toBottomOf="parent"
+                                  app:layout_constraintLeft_toLeftOf="parent"
+                                  app:layout_constraintTop_toTopOf="parent"/>
 
-                        <TextView android:id="@+id/emailPasswordAuth"
+                        <TextView android:id="@+id/passwordErrorAuth"
                                   style="@style/ErrorMessage"
                                   android:layout_width="wrap_content"
                                   android:layout_height="wrap_content"

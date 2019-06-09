@@ -3,8 +3,10 @@ package com.aurimteam.justhobby.start.registry.start
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.view.Gravity
 import android.view.View
 import android.widget.Button
+import android.widget.Toast
 import com.aurimteam.justhobby.start.features.FeaturesActivity
 import com.aurimteam.justhobby.R
 import kotlinx.android.synthetic.main.activity_registry.*
@@ -13,13 +15,11 @@ import kotlinx.android.synthetic.main.activity_registry_start.*
 class RegistryStartActivity : AppCompatActivity(), IRegistryStartView {
 
     private val presenter = RegistryStartPresenter(this, RegistryStartModel(), this)
-    private var arguments: Bundle? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registry_start)
         findViewById<Button>(R.id.registryStartReadyBtn).setOnClickListener { readyBtnClick() }
-        arguments = intent.extras
     }
 
     override fun onDestroy() {
@@ -27,16 +27,44 @@ class RegistryStartActivity : AppCompatActivity(), IRegistryStartView {
         presenter.onDestroy()
     }
 
+    override fun clearFirstName(message: String) {
+        firstNameErrorRegistryStart.text = message
+    }
+
+    override fun clearLastName(message: String) {
+        lastNameErrorRegistryStart.text = message
+    }
+
+    override fun hideErrors() {
+        firstNameErrorRegistryStart.text = ""
+        lastNameErrorRegistryStart.text = ""
+    }
+
+    override fun changeLengthFirstName(message: String) {
+        firstNameErrorRegistryStart.text = message
+    }
+
+    override fun changeLengthLastName(message: String) {
+        lastNameErrorRegistryStart.text = message
+    }
+
+    override fun showServerMessage(message: String) {
+        val toast = Toast.makeText(
+            this,
+            message,
+            Toast.LENGTH_SHORT
+        )
+        toast.setGravity(Gravity.BOTTOM, 0, 30)
+        toast.show()
+    }
+
     override fun userRegistered() {
         startActivity(Intent(this, FeaturesActivity::class.java))
     }
 
     override fun togglePB(isVisiblePB: Boolean) {
-        if (isVisiblePB) {
-            registryStartProgressBar.visibility = View.VISIBLE
-        } else {
-            registryStartProgressBar.visibility = View.GONE
-        }
+        if (isVisiblePB) registryStartProgressBar.visibility = View.VISIBLE
+        else registryStartProgressBar.visibility = View.GONE
     }
 
     private fun readyBtnClick() {

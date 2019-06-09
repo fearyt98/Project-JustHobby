@@ -1,6 +1,7 @@
 package com.aurimteam.justhobby.start.registry.registry
 
 import android.content.Context
+import com.aurimteam.justhobby.R
 import com.aurimteam.justhobby.Settings
 import com.aurimteam.justhobby.response.TokenResponse
 
@@ -22,11 +23,36 @@ class RegistryPresenter(
 
     override fun onResultFail(error: String) {
         view?.togglePB(false)
+        view?.showServerMessage(error)
     }
 
     fun sendUserInfo(email: String, password: String, confirmPassword: String) {
-        view?.togglePB(true)
-        model?.sendUserInfoData(email, password, confirmPassword, this)
+        if (email == "" || password == "" || confirmPassword == "") {
+            view?.hideErrors()
+            if (email == "")
+                view?.clearEmailError(context!!.getString(R.string.emptyField))
+            if (password == "")
+                view?.clearPasswordError(context!!.getString(R.string.emptyField))
+            else if (password != "" || confirmPassword == "")
+                view?.passwordsNotSimilar(context!!.getString(R.string.passwords_not_similar))
+        } else if ((email.length !in 5..256) || password.length !in 6..256 || confirmPassword.length !in 6..256) {
+            view?.hideErrors()
+            if (email.length < 5)
+                view?.changeLengthEmail(context!!.getString(R.string.min_5_symbols))
+            if (email.length > 255)
+                view?.changeLengthEmail(context!!.getString(R.string.min_255_symbols))
+            if (password.length < 6 || confirmPassword.length < 6)
+                view?.changeLengthPasswords(context!!.getString(R.string.min_6_symbols))
+            if (password.length > 255 || confirmPassword.length > 255)
+                view?.changeLengthPasswords(context!!.getString(R.string.min_255_symbols))
+        } else if (password != confirmPassword) {
+            view?.hideErrors()
+            view?.passwordsNotSimilar(context!!.getString(R.string.passwords_not_similar))
+        } else {
+            view?.hideErrors()
+            view?.togglePB(true)
+            model?.sendUserInfoData(email, password, confirmPassword, this)
+        }
     }
 
     fun onDestroy() {
