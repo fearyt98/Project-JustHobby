@@ -124,7 +124,7 @@ interface Api {
     ): Call<CoursesResponse>
 
     @Headers("Accept: application/json")
-    @GET("courses/{course_id}?include[course][]=company&include[course][]=user&include[course][]=count_groups")
+    @GET("courses/{course_id}?include[course][]=company&include[course][]=user&include[course][]=count_groups&include[course][]=count_reviews")
     fun getOneCourse(
         @Path("course_id") courseId: Long,
         @Query("token") token: String
@@ -136,4 +136,18 @@ interface Api {
         @Path("course_id") courseId: Long,
         @Query("token") token: String
     ): Call<GroupsResponse>
+
+    @Headers("Accept: application/json")
+    @GET("companies/{company_id}?include[company][]=count_courses&include[company][]=count_reviews")
+    fun getOneCompany(
+        @Path("company_id") companyId: Long,
+        @Query("token") token: String
+    ): Call<CompanyResponseOneR>
+
+    @Headers("Accept: application/json")
+    @GET("companies/{company_id}/courses?&include[course][]=company&include[courses][]=user")
+    fun getCoursesOneCompany(
+        @Path("company_id") companyId: Long,
+        @Query("token") token: String
+    ): Call<CoursesResponse>
 }
