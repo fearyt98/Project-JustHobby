@@ -14,6 +14,7 @@ import android.widget.Toast
 import com.aurimteam.justhobby.R
 import com.aurimteam.justhobby.response.ReviewResponse
 import com.aurimteam.justhobby.user.course_info.course_review.CourseReviewFragment
+import com.aurimteam.justhobby.user.course_info.course_review_new.CourseReviewNewFragment
 import kotlinx.android.synthetic.main.fragment_course_reviews.*
 
 class CourseReviewsFragment : Fragment(), ICourseReviewsView {
@@ -21,6 +22,8 @@ class CourseReviewsFragment : Fragment(), ICourseReviewsView {
     private val presenter = CourseReviewsPresenter(this, CourseReviewsModel())
     private val adapter = CourseReviewsAdapter()
     private var courseId: Long = 0
+    private var courseName: String = ""
+    private var companyName: String = ""
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_course_reviews, container, false)
@@ -36,8 +39,10 @@ class CourseReviewsFragment : Fragment(), ICourseReviewsView {
             if (context != null) {
                 presenter.getCourseReviews(context!!, courseId)
             }
-            courseReviewsTitle.text = arguments!!.get("course_name")!!.toString()
-            courseReviewsCompany.text = arguments!!.get("company_name")!!.toString()
+            courseName = arguments!!.get("course_name")!!.toString()
+            companyName = arguments!!.get("company_name")!!.toString()
+            courseReviewsTitle.text = courseName
+            courseReviewsCompany.text = companyName
             val rating = arguments!!.get("rating")!!.toString()
             courseReviewsRating.text = arguments!!.get("rating")!!.toString()
             if (context != null) {
@@ -105,7 +110,7 @@ class CourseReviewsFragment : Fragment(), ICourseReviewsView {
             courseReviewsContent.visibility = View.VISIBLE
         } else {
             toggleContentPB(false)
-            adapter.onDataChange(courseReviews)
+            adapter.onDataChange(courseReviews, courseName, companyName)
         }
     }
 
@@ -141,13 +146,13 @@ class CourseReviewsFragment : Fragment(), ICourseReviewsView {
             val bundle = Bundle()
             bundle.putString("course_id", courseId.toString())
 
-            val courseReviewFragment = CourseReviewFragment()
-            courseReviewFragment.arguments = bundle
+            val courseReviewNewFragment = CourseReviewNewFragment()
+            courseReviewNewFragment.arguments = bundle
 
             fragmentManager!!
                 .beginTransaction()
                 .addToBackStack(null)
-                .replace(R.id.mainNavContainerFragment, courseReviewFragment)
+                .replace(R.id.mainNavContainerFragment, courseReviewNewFragment)
                 .commit()
         }
     }

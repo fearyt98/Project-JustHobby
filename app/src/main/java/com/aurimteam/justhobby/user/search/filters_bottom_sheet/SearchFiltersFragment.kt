@@ -18,41 +18,60 @@ class SearchFiltersFragment : BottomSheetDialogFragment(), ISearchFiltersView {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.dialog_filters, container, false)
-        view.findViewById<TextView>(R.id.resetBtn).setOnClickListener { resetFilters() }
-        view.findViewById<CheckBox>(R.id.sortNear)
-            .setOnClickListener { addFilter("sortNear", view, R.id.sortNear) }
-        view.findViewById<CheckBox>(R.id.sortPrice)
-            .setOnClickListener { addFilter("sortPrice", view, R.id.sortPrice) }
-        view.findViewById<CheckBox>(R.id.sortRating)
-            .setOnClickListener { addFilter("sortRating", view, R.id.sortRating) }
-        view.findViewById<CheckBox>(R.id.sexAny)
-            .setOnClickListener { addFilter("sexAny", view, R.id.sexAny) }
-        view.findViewById<CheckBox>(R.id.sexMan)
-            .setOnClickListener { addFilter("sexMan", view, R.id.sexMan) }
-        view.findViewById<CheckBox>(R.id.sexWoman)
-            .setOnClickListener { addFilter("sexWoman", view, R.id.sexWoman) }
-        view.findViewById<CheckBox>(R.id.filterDayMonday)
-            .setOnClickListener { addFilter("filterDayMonday", view, R.id.filterDayMonday) }
-        view.findViewById<CheckBox>(R.id.filterDayTuesday)
-            .setOnClickListener { addFilter("filterDayTuesday", view, R.id.filterDayTuesday) }
-        view.findViewById<CheckBox>(R.id.filterDayWednesday)
-            .setOnClickListener { addFilter("filterDayWednesday", view, R.id.filterDayWednesday) }
-        view.findViewById<CheckBox>(R.id.filterDayThursday)
-            .setOnClickListener { addFilter("filterDayThursday", view, R.id.filterDayThursday) }
-        view.findViewById<CheckBox>(R.id.filterDayFriday)
-            .setOnClickListener { addFilter("filterDayFriday", view, R.id.filterDayFriday) }
-        view.findViewById<CheckBox>(R.id.filterDaySaturday)
-            .setOnClickListener { addFilter("filterDaySaturday", view, R.id.filterDaySaturday) }
-        view.findViewById<CheckBox>(R.id.filterDaySunday)
-            .setOnClickListener { addFilter("filterDaySunday", view, R.id.filterDaySunday) }
-        view.findViewById<CheckBox>(R.id.applyAny)
-            .setOnClickListener { addFilter("applyAny", view, R.id.applyAny) }
-        view.findViewById<CheckBox>(R.id.applyGo)
-            .setOnClickListener { addFilter("applyGo", view, R.id.applyGo) }
-        view.findViewById<CheckBox>(R.id.applyNotGo)
-            .setOnClickListener { addFilter("applyNotGo", view, R.id.applyNotGo) }
-        view.findViewById<Button>(R.id.filtersAcceptButton)
-            .setOnClickListener { sendChosenFilters() }
+        view.findViewById<TextView>(R.id.resetBtn).setOnClickListener {
+            resetFilters()
+        }
+        view.findViewById<CheckBox>(R.id.sortNear).setOnClickListener {
+            addFilter("sortNear", view, R.id.sortNear)
+        }
+        view.findViewById<CheckBox>(R.id.sortPrice).setOnClickListener {
+            addFilter("sortPrice", view, R.id.sortPrice)
+        }
+        view.findViewById<CheckBox>(R.id.sortRating).setOnClickListener {
+            addFilter("sortRating", view, R.id.sortRating)
+        }
+        view.findViewById<CheckBox>(R.id.sexAny).setOnClickListener {
+            addFilter("sexAny", view, R.id.sexAny)
+        }
+        view.findViewById<CheckBox>(R.id.sexMan).setOnClickListener {
+            addFilter("sexMan", view, R.id.sexMan)
+        }
+        view.findViewById<CheckBox>(R.id.sexWoman).setOnClickListener {
+            addFilter("sexWoman", view, R.id.sexWoman)
+        }
+        view.findViewById<CheckBox>(R.id.filterDayMonday).setOnClickListener {
+            addFilter("filterDayMonday", view, R.id.filterDayMonday)
+        }
+        view.findViewById<CheckBox>(R.id.filterDayTuesday).setOnClickListener {
+            addFilter("filterDayTuesday", view, R.id.filterDayTuesday)
+        }
+        view.findViewById<CheckBox>(R.id.filterDayWednesday).setOnClickListener {
+            addFilter("filterDayWednesday", view, R.id.filterDayWednesday)
+        }
+        view.findViewById<CheckBox>(R.id.filterDayThursday).setOnClickListener {
+            addFilter("filterDayThursday", view, R.id.filterDayThursday)
+        }
+        view.findViewById<CheckBox>(R.id.filterDayFriday).setOnClickListener {
+            addFilter("filterDayFriday", view, R.id.filterDayFriday)
+        }
+        view.findViewById<CheckBox>(R.id.filterDaySaturday).setOnClickListener {
+            addFilter("filterDaySaturday", view, R.id.filterDaySaturday)
+        }
+        view.findViewById<CheckBox>(R.id.filterDaySunday).setOnClickListener {
+            addFilter("filterDaySunday", view, R.id.filterDaySunday)
+        }
+        view.findViewById<CheckBox>(R.id.applyAny).setOnClickListener {
+            addFilter("applyAny", view, R.id.applyAny)
+        }
+        view.findViewById<CheckBox>(R.id.applyGo).setOnClickListener {
+            addFilter("applyGo", view, R.id.applyGo)
+        }
+        view.findViewById<CheckBox>(R.id.applyNotGo).setOnClickListener {
+            addFilter("applyNotGo", view, R.id.applyNotGo)
+        }
+        view.findViewById<Button>(R.id.filtersAcceptButton).setOnClickListener {
+            sendChosenFilters()
+        }
         return view
     }
 

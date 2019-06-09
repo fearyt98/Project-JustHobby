@@ -65,11 +65,6 @@ class HomeTimelineFragment : Fragment(), IHomeView {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_main_home_timeline, container, false)
-        view.findViewById<ImageButton>(R.id.homeBookmarks).setOnClickListener { openUserBookmarks() }
-        view.findViewById<ImageButton>(R.id.homeCourses).setOnClickListener { openUserCourses() }
-        view.findViewById<ImageButton>(R.id.homeCalendar).setOnClickListener { openDatePicker() }
-        view.findViewById<TextView>(R.id.homeCalendarText).setOnClickListener { openDatePicker() }
-        view.findViewById<Button>(R.id.homeClearBtn).setOnClickListener { openSearch() }
         return view
     }
 
@@ -78,6 +73,11 @@ class HomeTimelineFragment : Fragment(), IHomeView {
         if (!presenter.isSetView())
             presenter.attachView(this)
         if (context != null) presenter.getNearDayTimeline(context!!)
+        homeBookmarks.setOnClickListener { openUserBookmarks() }
+        homeCourses.setOnClickListener { openUserCourses() }
+        homeCalendar.setOnClickListener { openDatePicker() }
+        homeCalendarText.setOnClickListener { openDatePicker() }
+        homeClearBtn.setOnClickListener { openSearch() }
         homeEventsRecyclerView.layoutManager = LinearLayoutManager(context)
         homeEventsRecyclerView.adapter = adapter
     }

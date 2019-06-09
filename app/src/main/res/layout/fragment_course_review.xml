@@ -51,7 +51,7 @@
                               android:textColor="@color/greenText"/>
                 </LinearLayout>
 
-                <RatingBar style="?attr/ratingBarStyleSmall"
+                <RatingBar android:id="@+id/courseReviewRating" style="?attr/ratingBarStyleSmall"
                            android:layout_width="wrap_content"
                            android:layout_height="wrap_content"
                            android:numStars="5"
@@ -63,7 +63,8 @@
                            app:layout_constraintTop_toTopOf="parent"/>
             </android.support.constraint.ConstraintLayout>
 
-            <TextView style="@style/Caption1"
+            <TextView android:id="@+id/courseReviewReview"
+                      style="@style/Caption1"
                       android:layout_width="match_parent"
                       android:layout_height="wrap_content"
                       android:paddingStart="16dp"
@@ -73,22 +74,17 @@
                       android:textColor="@color/grafitText"
                       tools:ignore="HardcodedText"/>
 
-            <LinearLayout android:layout_width="wrap_content"
-                          android:layout_height="wrap_content"
-                          android:orientation="horizontal"
-                          android:paddingStart="15dp"
-                          android:paddingTop="10dp"
-                          android:paddingEnd="15dp">
-
-                <TextView android:id="@+id/courseReviewDateTime"
-                          style="@style/Caption3"
-                          android:layout_width="wrap_content"
-                          android:layout_height="wrap_content"
-                          android:ellipsize="end"
-                          android:maxLines="1"
-                          android:singleLine="true"
-                          android:textColor="@color/gray"/>
-            </LinearLayout>
+            <TextView android:id="@+id/courseReviewDateTime"
+                      style="@style/Caption3"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:ellipsize="end"
+                      android:maxLines="1"
+                      android:paddingStart="15dp"
+                      android:paddingTop="10dp"
+                      android:paddingEnd="15dp"
+                      android:singleLine="true"
+                      android:textColor="@color/gray"/>
         </LinearLayout>
     </ScrollView>
 
@@ -124,7 +120,8 @@
                      app:layout_constraintTop_toTopOf="parent"
                      app:srcCompat="@drawable/ic_arrow_back_24dp"/>
 
-        <TextView style="@style/Body1.Medium"
+        <TextView android:id="@+id/courseReviewTitle"
+                  style="@style/Body1.Medium"
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
                   android:layout_gravity="center"
@@ -136,7 +133,8 @@
                   app:layout_constraintLeft_toRightOf="@id/courseReviewBtnBack"
                   app:layout_constraintTop_toTopOf="parent"/>
 
-        <TextView style="@style/Body2"
+        <TextView android:id="@+id/courseReviewCompany"
+                  style="@style/Body2"
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
                   android:layout_gravity="center"
