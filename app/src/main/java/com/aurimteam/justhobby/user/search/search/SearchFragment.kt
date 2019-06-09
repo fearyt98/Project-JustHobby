@@ -31,12 +31,7 @@ class SearchFragment : Fragment(), ISearchView {
         val view = inflater.inflate(R.layout.fragment_search, container, false)
         view.findViewById<ImageButton>(R.id.searchFilters).setOnClickListener { openFilters() }
         view.findViewById<ImageButton>(R.id.searchBtnBack).setOnClickListener { back() }
-
-        presenter = SearchPresenter(
-            this,
-            SearchModel(),
-            container?.context
-        )
+        presenter = SearchPresenter(this, SearchModel(), container?.context)
         return view
     }
 

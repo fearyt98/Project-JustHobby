@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               xmlns:app="http://schemas.android.com/apk/res-auto"
               xmlns:tools="http://schemas.android.com/tools"
+              android:id="@+id/subcategoryBottomSheet"
               android:layout_width="96dp"
               android:layout_height="96dp"
               android:layout_marginStart="3dp"
