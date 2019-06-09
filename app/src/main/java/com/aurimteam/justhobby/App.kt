@@ -6,8 +6,8 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class App: Application(){
-    companion object{
+class App : Application() {
+    companion object {
         private val client = OkHttpClient.Builder()
             .addInterceptor(HttpLoggingInterceptor().apply {
                 level = HttpLoggingInterceptor.Level.BODY
@@ -16,5 +16,7 @@ class App: Application(){
             .baseUrl("https://justhobby.herokuapp.com/api/") //api-адрес к серверу
             .addConverterFactory(GsonConverterFactory.create())
             .build()
+        const val IMAGE_PICK_CODE = 10;
+        const val PERMISSION_CODE = 11;
     }
 }
