@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.aurimteam.justhobby.R
+import com.aurimteam.justhobby.response.SubcategoryAttrResponse
 import com.aurimteam.justhobby.response.SubcategoryResponse
 
 class SearchSubcategoriesAdapter : RecyclerView.Adapter<SearchSubcategoriesHolder>() {
@@ -13,9 +14,10 @@ class SearchSubcategoriesAdapter : RecyclerView.Adapter<SearchSubcategoriesHolde
     override fun getItemCount(): Int = subcategories.size
     override fun onBindViewHolder(holder: SearchSubcategoriesHolder, position: Int) {
         holder.bind(
-            subcategories[position].id,
-            subcategories[position].slug,
-            subcategories[position].title
+            subcategories[position].attributes.title,
+            subcategories[position].attributes.slug,
+            subcategories[position].attributes.created_at,
+            subcategories[position].attributes.updated_at
         )
     }
 

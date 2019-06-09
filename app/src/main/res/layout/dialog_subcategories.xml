@@ -23,7 +23,6 @@
                   android:paddingStart="14dp"
                   android:paddingEnd="8dp"
                   android:singleLine="true"
-                  android:text="Категория Танцы"
                   android:textColor="@color/grafitText"
                   app:layout_constraintBottom_toBottomOf="parent"
                   app:layout_constraintLeft_toRightOf="@id/subcategoriesCheckBox"

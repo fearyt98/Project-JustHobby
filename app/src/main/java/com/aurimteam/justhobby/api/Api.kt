@@ -45,6 +45,13 @@ interface Api {
     ): Call<CategoriesResponse>
 
     @Headers("Accept: application/json")
+    @GET("categories/{category_id}/subcategories")
+    fun getSubcategories(
+        @Path("category_id") categoryId: Int,
+        @Query("token") token: String
+    ): Call<SubcategoriesResponse>
+
+    @Headers("Accept: application/json")
     @GET("user/timeline/near_day")
     fun getNearDayTimeline(
         @Query("token") token: String

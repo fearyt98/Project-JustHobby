@@ -1,7 +1,6 @@
 package com.aurimteam.justhobby.user.search.filters_bottom_sheet
 
 import android.os.Bundle
-import android.support.design.widget.BottomSheetBehavior
 import android.support.design.widget.BottomSheetDialogFragment
 import android.view.LayoutInflater
 import android.view.View

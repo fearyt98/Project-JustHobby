@@ -6,9 +6,10 @@ import kotlinx.android.synthetic.main.card_subcategories.view.*
 
 class SearchSubcategoriesHolder(view: View) : RecyclerView.ViewHolder(view) {
     fun bind(
-        id: Int,
+        title: String,
         slug: String,
-        title: String
+        created_at: Long,
+        updated_at: Long
     ) {
         itemView.subcategoryTitle.text = title
     }
