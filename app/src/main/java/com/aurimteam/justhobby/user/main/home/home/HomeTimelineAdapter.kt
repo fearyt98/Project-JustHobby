@@ -7,22 +7,19 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.aurimteam.justhobby.R
-import com.aurimteam.justhobby.response.CompanyResponse
-import com.aurimteam.justhobby.response.CourseResponseR
 import com.aurimteam.justhobby.response.EventResponse
 import com.aurimteam.justhobby.user.course_info.сourse_info.CourseInfoFragment
 import kotlinx.android.synthetic.main.card_event.view.*
-import kotlinx.android.synthetic.main.card_user_group.view.*
 import java.util.*
 
-class HomeTimelineAdapter : RecyclerView.Adapter<TimelineHolder>() {
+class HomeTimelineAdapter : RecyclerView.Adapter<HomeTimelineHolder>() {
 
     private var isNow: Boolean = true
     private var itemRemove: MutableList<Int> = mutableListOf()
     private var timeLineEvents: MutableList<EventResponse> = mutableListOf()
 
     override fun getItemCount(): Int = timeLineEvents.size
-    override fun onBindViewHolder(holder: TimelineHolder, position: Int, payloads: MutableList<Any>) {
+    override fun onBindViewHolder(holder: HomeTimelineHolder, position: Int, payloads: MutableList<Any>) {
         val item = timeLineEvents[position]
         if ((item.attributes.time_start + item.attributes.duration) < dayTime() && isNow)
             itemRemove.add(position)
@@ -37,7 +34,7 @@ class HomeTimelineAdapter : RecyclerView.Adapter<TimelineHolder>() {
             )
     }
 
-    override fun onBindViewHolder(holder: TimelineHolder, position: Int) {
+    override fun onBindViewHolder(holder: HomeTimelineHolder, position: Int) {
         val manager = (holder.itemView.context as FragmentActivity).supportFragmentManager
         val item = timeLineEvents[position]
         holder.bind(
@@ -59,8 +56,8 @@ class HomeTimelineAdapter : RecyclerView.Adapter<TimelineHolder>() {
             GregorianCalendar().get(Calendar.HOUR_OF_DAY) * 60 + GregorianCalendar().get(Calendar.MINUTE)
             )
 
-    override fun onCreateViewHolder(parent: ViewGroup, p1: Int): TimelineHolder =
-        TimelineHolder(
+    override fun onCreateViewHolder(parent: ViewGroup, p1: Int): HomeTimelineHolder =
+        HomeTimelineHolder(
             LayoutInflater.from(parent.context).inflate(R.layout.card_event, parent, false)
         )
 

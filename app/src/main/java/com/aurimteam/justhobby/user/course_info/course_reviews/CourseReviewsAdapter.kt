@@ -1,5 +1,6 @@
 package com.aurimteam.justhobby.user.course_info.course_reviews
 
+import android.os.Bundle
 import android.support.v4.app.FragmentActivity
 import android.support.v4.app.FragmentManager
 import android.support.v7.widget.RecyclerView
@@ -19,13 +20,13 @@ class CourseReviewsAdapter : RecyclerView.Adapter<CourseReviewsHolder>() {
         val manager = (holder.itemView.context as FragmentActivity).supportFragmentManager
         holder.bind(
             position == itemCount - 1,
-            courseReviewsList[position].user_id.toString(),
+            courseReviewsList[position].attributes.user_name,
             courseReviewsList[position].attributes.rating.toFloat(),
             courseReviewsList[position].attributes.review
         )
 
         holder.itemView.courseReview.setOnClickListener {
-            detailReviews(manager)
+            detailReviews(manager, courseReviewsList[position])
         }
     }
 
@@ -44,10 +45,16 @@ class CourseReviewsAdapter : RecyclerView.Adapter<CourseReviewsHolder>() {
         notifyDataSetChanged()
     }
 
-    private fun detailReviews(fm: FragmentManager) {
+    private fun detailReviews(fm: FragmentManager, review: ReviewResponse) {
+        val bundle = Bundle()
+        bundle.putString("user_id", review.user_id.toString())
+        bundle.putString("course_id", review.course_id.toString())
+        val courseReviewFragment = CourseReviewFragment()
+        courseReviewFragment.arguments = bundle
+
         fm.beginTransaction()
             .addToBackStack(null)
-            .replace(R.id.mainNavContainerFragment, CourseReviewFragment())
+            .replace(R.id.mainNavContainerFragment, courseReviewFragment)
             .commit()
     }
 }

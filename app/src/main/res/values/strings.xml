@@ -90,6 +90,9 @@
     <string name="before_event_term1">До занятия %1$s час</string>
     <string name="before_event_term2to4">До занятия %1$s часа</string>
     <string name="before_event_term5toMoreAnd11to14">До занятия %1$s часов</string>
+    <string name="count_reviews_term1">%1$s отзыв</string>
+    <string name="count_reviews_term2to4">%1$s отзыва</string>
+    <string name="count_reviews_term0andTerm5toMoreAnd11to14">%1$s отзывов</string>
     <string name="length_meters">%1$s м</string>
     <string name="about_recovery">
         Укажите E-mail, к которому привязан аккаунт. Мы пришлем на него\n письмо с инструкцией\n восстановления.

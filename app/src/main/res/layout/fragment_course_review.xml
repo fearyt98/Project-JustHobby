@@ -43,11 +43,12 @@
                               android:layout_width="wrap_content"
                               android:layout_height="wrap_content"
                               android:layout_gravity="center"
+                              android:ellipsize="end"
+                              android:maxLines="1"
                               android:paddingStart="15dp"
                               android:paddingEnd="0dp"
-                              android:text="Степа Данилов"
-                              android:textColor="@color/greenText"
-                              tools:ignore="HardcodedText"/>
+                              android:singleLine="true"
+                              android:textColor="@color/greenText"/>
                 </LinearLayout>
 
                 <RatingBar style="?attr/ratingBarStyleSmall"
@@ -79,40 +80,14 @@
                           android:paddingTop="10dp"
                           android:paddingEnd="15dp">
 
-                <TextView android:id="@+id/courseReviewDate"
+                <TextView android:id="@+id/courseReviewDateTime"
                           style="@style/Caption3"
                           android:layout_width="wrap_content"
                           android:layout_height="wrap_content"
-                          android:text="26"
-                          android:textColor="@color/gray"
-                          tools:ignore="HardcodedText"/>
-
-                <TextView android:id="@+id/courseReviewMonth"
-                          style="@style/Caption3"
-                          android:layout_width="wrap_content"
-                          android:layout_height="wrap_content"
-                          android:paddingStart="5dp"
-                          android:paddingEnd="5dp"
-                          android:text="февраля"
-                          android:textColor="@color/gray"
-                          tools:ignore="HardcodedText"/>
-
-                <TextView style="@style/Caption3"
-                          android:layout_width="wrap_content"
-                          android:layout_height="wrap_content"
-                          android:text="в"
-                          android:textColor="@color/gray"
-                          tools:ignore="HardcodedText"/>
-
-                <TextView android:id="@+id/courseReviewTime"
-                          style="@style/Caption3"
-                          android:layout_width="wrap_content"
-                          android:layout_height="wrap_content"
-                          android:paddingStart="5dp"
-                          android:paddingEnd="5dp"
-                          android:text="13:00"
-                          android:textColor="@color/gray"
-                          tools:ignore="HardcodedText"/>
+                          android:ellipsize="end"
+                          android:maxLines="1"
+                          android:singleLine="true"
+                          android:textColor="@color/gray"/>
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
@@ -153,18 +128,22 @@
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
                   android:layout_gravity="center"
+                  android:ellipsize="end"
                   android:gravity="center"
-                  android:text="Восточные танцы"
+                  android:maxLines="1"
+                  android:singleLine="true"
                   android:textColor="@color/whiteTop"
                   app:layout_constraintLeft_toRightOf="@id/courseReviewBtnBack"
-                  app:layout_constraintTop_toTopOf="parent"
-                  tools:ignore="HardcodedText"/>
+                  app:layout_constraintTop_toTopOf="parent"/>
 
         <TextView style="@style/Body2"
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
                   android:layout_gravity="center"
+                  android:ellipsize="end"
                   android:gravity="center"
+                  android:maxLines="1"
+                  android:singleLine="true"
                   android:textColor="@color/whiteTop"
                   app:layout_constraintBottom_toBottomOf="parent"
                   app:layout_constraintLeft_toRightOf="@id/courseReviewBtnBack"/>

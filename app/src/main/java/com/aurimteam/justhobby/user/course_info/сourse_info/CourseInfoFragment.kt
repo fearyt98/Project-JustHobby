@@ -15,6 +15,7 @@ import com.aurimteam.justhobby.group.GroupAdapter
 import com.aurimteam.justhobby.response.CourseResponseOneR
 import com.aurimteam.justhobby.response.GroupResponse
 import com.aurimteam.justhobby.user.company_info.company_info.CompanyInfoFragment
+import com.aurimteam.justhobby.user.course_info.course_reviews.CourseReviewsFragment
 import kotlinx.android.synthetic.main.fragment_course_info.*
 
 class CourseInfoFragment : Fragment(), ICourseInfoView {
@@ -49,7 +50,8 @@ class CourseInfoFragment : Fragment(), ICourseInfoView {
             }
         }
         courseInfoCompany.setOnClickListener { openCompany() }
-        courseInfoShowAllCourses.setOnClickListener { allCompanyCoursesFragment() }
+        courseInfoShowAllCourses.setOnClickListener { openAllGroups() }
+        courseInfoReviews.setOnClickListener { openReviews() }
         courseInfoGroupsRecyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         courseInfoGroupsRecyclerView.adapter = adapter
     }
@@ -166,7 +168,7 @@ class CourseInfoFragment : Fragment(), ICourseInfoView {
         }
     }
 
-    private fun allCompanyCoursesFragment() {
+    private fun openAllGroups() {
         if(course != null) {
             val bundle = Bundle()
             bundle.putString("course_id", course!!.id.toString())
@@ -180,6 +182,26 @@ class CourseInfoFragment : Fragment(), ICourseInfoView {
                 .beginTransaction()
                 .addToBackStack(null)
                 .replace(R.id.mainNavContainerFragment, courseGroupsFragment)
+                .commit()
+        }
+    }
+
+    private fun openReviews() {
+        if(course != null) {
+            val bundle = Bundle()
+            bundle.putString("course_id", course!!.id.toString())
+            bundle.putString("course_name", course!!.attributes.title)
+            bundle.putString("company_name", course!!.relationships.company.attributes.title)
+            bundle.putString("rating", course!!.attributes.rating)
+            bundle.putString("count_reviews", course!!.relationships.count_reviews.toString())
+
+            val courseReviewsFragment = CourseReviewsFragment()
+            courseReviewsFragment.arguments = bundle
+
+            fragmentManager!!
+                .beginTransaction()
+                .addToBackStack(null)
+                .replace(R.id.mainNavContainerFragment, courseReviewsFragment)
                 .commit()
         }
     }

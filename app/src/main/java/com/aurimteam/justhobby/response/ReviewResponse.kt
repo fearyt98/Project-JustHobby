@@ -1,5 +1,10 @@
 package com.aurimteam.justhobby.response
 
+class ReviewsResponse(
+    val data: List<ReviewResponse>,
+    val meta: MetaPagesResponses
+)
+
 class ReviewResponse(
     val type: String,
     val user_id: Int,
@@ -8,6 +13,7 @@ class ReviewResponse(
 )
 
 class ReviewAttrResponse(
+    val user_name: String,
     val rating: Int,
     val review: String,
     val created_at: Long,
