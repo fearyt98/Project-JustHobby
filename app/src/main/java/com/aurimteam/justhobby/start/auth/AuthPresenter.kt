@@ -1,6 +1,7 @@
 package com.aurimteam.justhobby.start.auth
 
 import android.content.Context
+import com.aurimteam.justhobby.R
 import com.aurimteam.justhobby.response.TokenResponse
 import com.aurimteam.justhobby.Settings
 
@@ -25,24 +26,29 @@ class AuthPresenter(private var view: IAuthView?, private val model: IAuthModel?
     }
 
     override fun wrongEmailOrPassword(strError: String) {
+        view?.togglePB(false)
         if (strError == "The given data was invalid")
-            view?.togglePB(false)
-        view?.emailOrPasswordError("Неверные данные")
+            view?.emailOrPasswordError(context!!.getString(R.string.wrong_data))
+        else view?.showServerMessage(strError)
     }
 
     fun loginUser(loginMain: String, password: String) {
         if (loginMain == "" || password == "") {
             view?.hideErrors()
             if (loginMain == "")
-                view?.clearEmailError("Пустое поле «E-mail»")
+                view?.clearEmailError(context!!.getString(R.string.emptyField))
             if (password == "")
-                view?.clearPasswordError("Пустое поле «Пароль»")
-        } else if ((loginMain.length !in 4..256) || password.length !in 4..256) {
+                view?.clearPasswordError(context!!.getString(R.string.emptyField))
+        } else if ((loginMain.length !in 5..256) || password.length !in 6..256) {
             view?.hideErrors()
-            if (loginMain.length < 5 || loginMain.length > 255)
-                view?.changeLengthEmail("Мин. 5 и максимум 255 символов")
-            if (password.length < 5 || password.length > 255)
-                view?.changeLengthPassword("Мин. 5 и максимум 255 символов")
+            if (loginMain.length < 5)
+                view?.changeLengthEmail(context!!.getString(R.string.min_5_symbols))
+            if (loginMain.length > 255)
+                view?.changeLengthEmail(context!!.getString(R.string.min_255_symbols))
+            if (password.length < 6)
+                view?.changeLengthPassword(context!!.getString(R.string.min_6_symbols))
+            if (password.length > 255)
+                view?.changeLengthPassword(context!!.getString(R.string.min_255_symbols))
         } else if (Settings(context!!).getProperty("token") == null) {
             view?.hideErrors()
             view?.togglePB(true)

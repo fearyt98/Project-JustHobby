@@ -7,11 +7,13 @@ import android.os.Bundle
 import android.support.v4.content.ContextCompat
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
+import android.view.Gravity
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
 import com.aurimteam.justhobby.R
 import com.aurimteam.justhobby.start.registry.start.RegistryStartActivity
+import kotlinx.android.synthetic.main.activity_auth.*
 import kotlinx.android.synthetic.main.activity_registry.*
 
 class RegistryActivity : AppCompatActivity(), IRegistryView {
@@ -55,6 +57,42 @@ class RegistryActivity : AppCompatActivity(), IRegistryView {
     override fun onDestroy() {
         super.onDestroy()
         presenter.onDestroy()
+    }
+
+    override fun changeLengthEmail(message: String) {
+        emailErrorRegistry.text = message
+    }
+
+    override fun changeLengthPasswords(message: String) {
+        passwordErrorRegistry.text = message
+    }
+
+    override fun clearEmailError(message: String) {
+        emailErrorRegistry.text = message
+    }
+
+    override fun clearPasswordError(message: String) {
+        passwordErrorRegistry.text = message
+    }
+
+    override fun passwordsNotSimilar(message: String) {
+        passwordErrorRegistry.text = message
+    }
+
+    override fun showServerMessage(message: String) {
+        val toast = Toast.makeText(
+            this,
+            message,
+            Toast.LENGTH_SHORT
+        )
+        toast.setGravity(Gravity.BOTTOM, 0, 30)
+        toast.show()
+    }
+
+    override fun hideErrors() {
+        emailErrorRegistry.text = ""
+        passwordErrorRegistry.text = ""
+        confirmPasswordErrorRegistry.text = ""
     }
 
     override fun togglePB(isVisiblePB: Boolean) {

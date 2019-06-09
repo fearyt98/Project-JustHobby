@@ -13,6 +13,7 @@ class RecoveryModel: IRecoveryModel {
     interface OnFinishedListener{
         fun onResultSuccess()
         fun onResultFail(strError: String)
+        fun wrongEmail(strError: String)
     }
 
     override fun sendRecoveryEmail(email: String, onFinishedListener: OnFinishedListener) {
@@ -30,7 +31,7 @@ class RecoveryModel: IRecoveryModel {
                         onFinishedListener.onResultSuccess()
                     } else {
                         val jsonObj = JSONObject(response.errorBody()?.string())
-                        onFinishedListener.onResultFail(jsonObj.getJSONObject("error")?.getString("message").toString())
+                        onFinishedListener.wrongEmail(jsonObj.getJSONObject("error")?.getString("message").toString())
                     }
                 }
             })

@@ -1,6 +1,7 @@
 package com.aurimteam.justhobby.start.registry.start
 
 import android.content.Context
+import com.aurimteam.justhobby.R
 import com.aurimteam.justhobby.Settings
 
 class RegistryStartPresenter(
@@ -16,12 +17,32 @@ class RegistryStartPresenter(
 
     override fun onResultFail(error: String) {
         view?.togglePB(false)
+        view?.showServerMessage(error)
     }
 
     fun sendUserInfo(first_name: String, last_name: String) {
-        view?.togglePB(true)
-        val token = Settings(context!!).getProperty("token")
-        model?.sendUserInfoData(token!!, first_name, last_name, this)
+
+        if (first_name == "" || last_name == "") {
+            view?.hideErrors()
+            if (first_name == "")
+                view?.clearFirstName(context!!.getString(R.string.emptyField))
+            if (last_name == "")
+                view?.clearLastName(context!!.getString(R.string.emptyField))
+        } else if ((first_name.length !in 1..256) || last_name.length !in 1..256) {
+            view?.hideErrors()
+            if (first_name.isEmpty())
+                view?.changeLengthFirstName(context!!.getString(R.string.emptyField))
+            if (first_name.length > 255)
+                view?.changeLengthFirstName(context!!.getString(R.string.min_255_symbols))
+            if (last_name.isEmpty())
+                view?.changeLengthLastName(context!!.getString(R.string.emptyField))
+            if (last_name.length > 255)
+                view?.changeLengthLastName(context!!.getString(R.string.min_255_symbols))
+        } else {
+            view?.togglePB(true)
+            val token = Settings(context!!).getProperty("token")
+            model?.sendUserInfoData(token!!, first_name, last_name, this)
+        }
     }
 
     fun onDestroy() {
