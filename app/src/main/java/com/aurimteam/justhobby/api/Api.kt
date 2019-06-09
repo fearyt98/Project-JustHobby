@@ -138,6 +138,13 @@ interface Api {
     ): Call<GroupsResponse>
 
     @Headers("Accept: application/json")
+    @GET("courses/{course_id}/reviews")
+    fun getReviewsOneCourse(
+        @Path("course_id") courseId: Long,
+        @Query("token") token: String
+    ): Call<ReviewsResponse>
+
+    @Headers("Accept: application/json")
     @GET("companies/{company_id}?include[company][]=count_courses&include[company][]=count_reviews")
     fun getOneCompany(
         @Path("company_id") companyId: Long,

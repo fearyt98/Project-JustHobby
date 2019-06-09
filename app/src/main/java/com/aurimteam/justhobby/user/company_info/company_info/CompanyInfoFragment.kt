@@ -73,7 +73,7 @@ class CompanyInfoFragment : Fragment(), ICompanyInfoView {
     }
 
     override fun showCompanyCourses(courses: List<CourseResponseR>, included: IncludedResponse?) {
-        if(included != null) {
+        if (included != null) {
             toggleContentPB(false)
             adapter.onDataChange(courses, included)
         }
@@ -126,10 +126,19 @@ class CompanyInfoFragment : Fragment(), ICompanyInfoView {
     }
 
     private fun allCompanyCoursesFragment() {
-        fragmentManager!!
-            .beginTransaction()
-            .addToBackStack(null)
-            .replace(R.id.mainNavContainerFragment, CompanyCoursesFragment())
-            .commit()
+        if (company != null) {
+            val bundle = Bundle()
+            bundle.putString("company_id", company!!.id.toString())
+            bundle.putString("company_name", company!!.attributes.title)
+
+            val companyCoursesFragment = CompanyCoursesFragment()
+            companyCoursesFragment.arguments = bundle
+
+            fragmentManager!!
+                .beginTransaction()
+                .addToBackStack(null)
+                .replace(R.id.mainNavContainerFragment, companyCoursesFragment)
+                .commit()
+        }
     }
 }

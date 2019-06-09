@@ -6,7 +6,8 @@
                                              android:layout_height="match_parent"
                                              android:orientation="vertical">
 
-    <ScrollView android:layout_width="match_parent"
+    <ScrollView android:id="@+id/courseReviewsContent"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:paddingBottom="56dp"
@@ -18,7 +19,7 @@
                       android:layout_height="wrap_content"
                       android:orientation="vertical">
 
-            <Button android:id="@+id/courseReviewsClearBtn"
+            <Button android:id="@+id/courseReviewsNewBtn"
                     style="@style/ButtonGreen"
                     android:layout_marginTop="10dp"
                     android:text="@string/leave_your_review"/>
@@ -40,7 +41,6 @@
                 <TextView android:id="@+id/courseReviewsRating"
                           android:layout_width="wrap_content"
                           android:layout_height="wrap_content"
-                          android:text="2.2"
                           app:layout_constraintBottom_toBottomOf="parent"
                           app:layout_constraintLeft_toLeftOf="parent"
                           app:layout_constraintTop_toTopOf="parent"/>
@@ -53,7 +53,7 @@
                            android:paddingStart="5dp"
                            android:paddingTop="3dp"
                            android:paddingEnd="0dp"
-                           android:rating="2"
+                           android:stepSize="0.1"
                            android:theme="@style/RatingBarCourseReview"
                            app:layout_constraintBottom_toBottomOf="parent"
                            app:layout_constraintLeft_toRightOf="@id/courseReviewsRating"
@@ -68,15 +68,9 @@
                               app:layout_constraintRight_toRightOf="parent"
                               app:layout_constraintTop_toTopOf="parent">
 
-                    <TextView android:layout_width="wrap_content"
-                              android:layout_height="wrap_content"
-                              android:text="3"
-                              tools:ignore="HardcodedText"/>
-
-                    <TextView android:layout_width="wrap_content"
-                              android:layout_height="wrap_content"
-                              android:text=" отзыва"
-                              tools:ignore="HardcodedText"/>
+                    <TextView android:id="@+id/courseReviewsCountReviews"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"/>
                 </LinearLayout>
             </android.support.constraint.ConstraintLayout>
 
@@ -98,6 +92,44 @@
             </android.support.v4.widget.NestedScrollView>
         </LinearLayout>
     </ScrollView>
+
+    <ProgressBar android:id="@+id/courseReviewsProgressBar"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_gravity="center"
+                 app:layout_constraintLeft_toLeftOf="parent"
+                 app:layout_constraintRight_toRightOf="parent"
+                 app:layout_constraintTop_toBottomOf="@id/courseReviewsBar"/>
+
+    <LinearLayout android:id="@+id/courseReviewsClear"
+                  android:layout_width="match_parent"
+                  android:layout_height="0dp"
+                  android:layout_gravity="center"
+                  android:gravity="center"
+                  android:orientation="vertical"
+                  android:visibility="gone"
+                  app:layout_constraintBottom_toBottomOf="parent"
+                  app:layout_constraintLeft_toLeftOf="parent"
+                  app:layout_constraintRight_toRightOf="parent"
+                  app:layout_constraintTop_toBottomOf="@id/notificationsMarginSpacer">
+
+        <ImageView android:layout_width="114dp"
+                   android:layout_height="114dp"
+                   android:layout_gravity="center"
+                   app:srcCompat="@drawable/big_ic_star"
+                   tools:ignore="ContentDescription"/>
+
+        <TextView style="@style/H2.Medium"
+                  android:paddingTop="16dp"
+                  android:paddingBottom="8dp"
+                  android:text="@string/no_any_course_reviews"
+                  android:textAlignment="center"
+                  android:textColor="@color/grafitText"/>
+
+        <Button android:id="@+id/courseReviewsClearBtn"
+                style="@style/ButtonGreen"
+                android:text="@string/no_course_reviews"/>
+    </LinearLayout>
 
     <android.widget.Space android:id="@+id/notificationsMarginSpacer"
                           android:layout_width="0dp"
@@ -131,21 +163,28 @@
                      app:layout_constraintTop_toTopOf="parent"
                      app:srcCompat="@drawable/ic_arrow_back_24dp"/>
 
-        <TextView style="@style/Body1.Medium"
+        <TextView android:id="@+id/courseReviewsTitle"
+                  style="@style/Body1.Medium"
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
                   android:layout_gravity="center"
+                  android:ellipsize="end"
                   android:gravity="center"
-                  android:text="Восточные танцы"
+                  android:maxLines="1"
+                  android:singleLine="true"
                   android:textColor="@color/whiteTop"
                   app:layout_constraintLeft_toRightOf="@id/courseReviewsBtnBack"
                   app:layout_constraintTop_toTopOf="parent"/>
 
-        <TextView style="@style/Body2"
+        <TextView android:id="@+id/courseReviewsCompany"
+                  style="@style/Body2"
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
                   android:layout_gravity="center"
+                  android:ellipsize="end"
                   android:gravity="center"
+                  android:maxLines="1"
+                  android:singleLine="true"
                   android:textColor="@color/whiteTop"
                   app:layout_constraintBottom_toBottomOf="parent"
                   app:layout_constraintLeft_toRightOf="@id/courseReviewsBtnBack"/>

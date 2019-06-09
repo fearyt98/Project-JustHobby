@@ -7,7 +7,7 @@ import kotlinx.android.synthetic.main.card_event.view.*
 import java.util.*
 
 
-class TimelineHolder(view: View) : RecyclerView.ViewHolder(view) {
+class HomeTimelineHolder(view: View) : RecyclerView.ViewHolder(view) {
     fun bind(
         last: Boolean,
         isNow: Boolean,

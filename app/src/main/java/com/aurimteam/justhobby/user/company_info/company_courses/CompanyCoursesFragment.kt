@@ -8,11 +8,9 @@ import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageButton
 import android.widget.Toast
 import com.aurimteam.justhobby.R
 import com.aurimteam.justhobby.course.CourseAdapter
-import com.aurimteam.justhobby.response.CourseResponse
 import com.aurimteam.justhobby.response.CourseResponseR
 import com.aurimteam.justhobby.response.IncludedResponse
 import kotlinx.android.synthetic.main.fragment_company_courses.*
@@ -24,9 +22,7 @@ class CompanyCoursesFragment : Fragment(), ICompanyCoursesView {
     private var companyId: Long = 0
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_company_courses, container, false)
-        view.findViewById<ImageButton>(R.id.companyCoursesBtnBack).setOnClickListener { backToCompanyInfoFragment() }
-        return view
+        return inflater.inflate(R.layout.fragment_company_courses, container, false)
     }
 
     override fun onStart() {
@@ -40,6 +36,7 @@ class CompanyCoursesFragment : Fragment(), ICompanyCoursesView {
             if (context != null)
                 presenter.getCompanyCourses(context!!, companyId)
         }
+        companyCoursesBtnBack.setOnClickListener { back() }
         companyCoursesRecyclerView.layoutManager = LinearLayoutManager(context)
         companyCoursesRecyclerView.adapter = adapter
     }
@@ -88,7 +85,7 @@ class CompanyCoursesFragment : Fragment(), ICompanyCoursesView {
         toast.show()
     }
 
-    private fun backToCompanyInfoFragment() {
+    private fun back() {
         fragmentManager?.popBackStack()
     }
 }
