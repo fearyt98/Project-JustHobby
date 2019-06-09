@@ -26,14 +26,6 @@ class SearchFiltersFragment : BottomSheetDialogFragment(), ISearchFiltersView {
             .setOnClickListener { addFilter("sortPrice", view, R.id.sortPrice) }
         view.findViewById<CheckBox>(R.id.sortRating)
             .setOnClickListener { addFilter("sortRating", view, R.id.sortRating) }
-        view.findViewById<CheckBox>(R.id.typePayAny)
-            .setOnClickListener { addFilter("typePayAny", view, R.id.typePayAny) }
-        view.findViewById<CheckBox>(R.id.typePayCourse)
-            .setOnClickListener { addFilter("typePayCourse", view, R.id.typePayCourse) }
-        view.findViewById<CheckBox>(R.id.typePayLesson)
-            .setOnClickListener { addFilter("typePayLesson", view, R.id.typePayLesson) }
-        view.findViewById<CheckBox>(R.id.typePayMonth)
-            .setOnClickListener { addFilter("typePayMonth", view, R.id.typePayMonth) }
         view.findViewById<CheckBox>(R.id.sexAny)
             .setOnClickListener { addFilter("sexAny", view, R.id.sexAny) }
         view.findViewById<CheckBox>(R.id.sexMan)
@@ -75,18 +67,6 @@ class SearchFiltersFragment : BottomSheetDialogFragment(), ISearchFiltersView {
 
         filters.putBoolean("sortRating", false)
         filtersClickedMap["sortRating"] = false
-
-        filters.putBoolean("typePayAny", false)
-        filtersClickedMap["typePayAny"] = false
-
-        filters.putBoolean("typePayCourse", false)
-        filtersClickedMap["typePayCourse"] = false
-
-        filters.putBoolean("typePayLesson", false)
-        filtersClickedMap["typePayLesson"] = false
-
-        filters.putBoolean("typePayMonth", false)
-        filtersClickedMap["typePayMonth"] = false
 
         filters.putBoolean("sexAny", false)
         filtersClickedMap["sexAny"] = false
@@ -142,6 +122,67 @@ class SearchFiltersFragment : BottomSheetDialogFragment(), ISearchFiltersView {
             filtersClickedMap[type] = false
             filters.putBoolean(type, false)
             view.findViewById<CheckBox>(typeId).isChecked = false
+        }
+        if (type == "sortNear" || type == "sortRating" || type == "sortPrice") {
+            if (filtersClickedMap["sortRating"] == true) {
+                filtersClickedMap["sortNear"] = false
+                filtersClickedMap["sortPrice"] = false
+                view.findViewById<CheckBox>(R.id.sortNear).isChecked = false
+                view.findViewById<CheckBox>(R.id.sortPrice).isChecked = false
+                filters.putBoolean("sortNear", false)
+                filters.putBoolean("sortPrice", false)
+            } else if (filtersClickedMap["sortNear"] == true) {
+                filtersClickedMap["sortRating"] = false
+                filtersClickedMap["sortPrice"] = false
+                view.findViewById<CheckBox>(R.id.sortRating).isChecked = false
+                view.findViewById<CheckBox>(R.id.sortPrice).isChecked = false
+                filters.putBoolean("sortRating", false)
+                filters.putBoolean("sortPrice", false)
+            } else if (filtersClickedMap["sortPrice"] == true) {
+                filtersClickedMap["sortRating"] = false
+                filtersClickedMap["sortNear"] = false
+                view.findViewById<CheckBox>(R.id.sortRating).isChecked = false
+                view.findViewById<CheckBox>(R.id.sortNear).isChecked = false
+                filters.putBoolean("sortRating", false)
+                filters.putBoolean("sortNear", false)
+            }
+        } else if (type == "sexAny" || type == "sexMan" || type == "sexWoman") {
+            if (filtersClickedMap["sexAny"] == true && filtersClickedMap["sexMan"] == true) {
+                filtersClickedMap["sexWoman"] = false
+                view.findViewById<CheckBox>(R.id.sexWoman).isChecked = false
+            } else if (filtersClickedMap["sexAny"] == true && filtersClickedMap["sexWoman"] == true) {
+                filtersClickedMap["sexMan"] = false
+                view.findViewById<CheckBox>(R.id.sexMan).isChecked = false
+            } else if (filtersClickedMap["sexMan"] == true) {
+                filtersClickedMap["sexWoman"] = false
+                view.findViewById<CheckBox>(R.id.sexWoman).isChecked = false
+            } else if (filtersClickedMap["sexWoman"] == true) {
+                filtersClickedMap["sexMan"] = false
+                view.findViewById<CheckBox>(R.id.sexMan).isChecked = false
+            }
+        } else if (type == "applyAny" || type == "applyGo" || type == "applyNotGo") {
+            if (filtersClickedMap["applyAny"] == true) {
+                filtersClickedMap["applyGo"] = false
+                filtersClickedMap["applyNotGo"] = false
+                view.findViewById<CheckBox>(R.id.applyGo).isChecked = false
+                view.findViewById<CheckBox>(R.id.applyNotGo).isChecked = false
+                filters.putBoolean("applyGo", false)
+                filters.putBoolean("applyNotGo", false)
+            } else if (filtersClickedMap["applyGo"] == true) {
+                filtersClickedMap["applyAny"] = false
+                filtersClickedMap["applyNotGo"] = false
+                view.findViewById<CheckBox>(R.id.applyAny).isChecked = false
+                view.findViewById<CheckBox>(R.id.applyNotGo).isChecked = false
+                filters.putBoolean("applyAny", false)
+                filters.putBoolean("applyNotGo", false)
+            } else if (filtersClickedMap["applyNotGo"] == true) {
+                filtersClickedMap["applyGo"] = false
+                filtersClickedMap["applyAny"] = false
+                view.findViewById<CheckBox>(R.id.applyAny).isChecked = false
+                view.findViewById<CheckBox>(R.id.applyGo).isChecked = false
+                filters.putBoolean("applyAny", false)
+                filters.putBoolean("applyGo", false)
+            }
         }
     }
 
