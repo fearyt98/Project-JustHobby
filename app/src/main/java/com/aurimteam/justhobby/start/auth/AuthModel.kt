@@ -14,6 +14,7 @@ class AuthModel : IAuthModel {
     interface OnFinishedListener {
         fun onResultSuccess(token: TokenResponse)
         fun onResultFail(strError: String)
+        fun wrongEmailOrPassword(strError: String)
     }
 
     override fun loginUser(login: String, password: String, onFinishedListener: OnFinishedListener) {
@@ -27,11 +28,11 @@ class AuthModel : IAuthModel {
 
                 override fun onResponse(call: Call<TokenResponse>, response: Response<TokenResponse>) {
                     val responseBody = response.body()
-                    if (responseBody != null) {
-                        onFinishedListener.onResultSuccess(responseBody)
-                    } else {
+                    if (responseBody != null) onFinishedListener.onResultSuccess(responseBody)
+                    else {
                         val jsonObj = JSONObject(response.errorBody()?.string())
-                        onFinishedListener.onResultFail(jsonObj.getJSONObject("error")?.getString("message").toString())
+                        val error = jsonObj.getJSONObject("error")?.getString("message").toString()
+                        onFinishedListener.wrongEmailOrPassword(error)
                     }
                 }
             })

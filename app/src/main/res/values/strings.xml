@@ -213,4 +213,6 @@
     <string name="payment_month">%1$sР / месяц</string>
     <string name="payment_course">%1$sР / курс</string>
     <string name="age">Возраст</string>
+    <string name="agree">Понятно</string>
+    <string name="error_subalert">(закройте окно нажав на кнопку ниже)</string>
 </resources>
