@@ -1,5 +1,6 @@
 package com.aurimteam.justhobby.user.main.notifications
 
 interface INotificationsModel {
-    fun getNotificationsData(onFinishedListener: NotificationsModel.OnFinishedListener)
+    fun getNotificationsData(token: String, onFinishedListener: NotificationsModel.OnFinishedListener)
+    fun deleteAllNotify(token: String, onFinishedListener: NotificationsModel.OnFinishedListener)
 }

@@ -12,24 +12,16 @@ class NotificationsHolder(view: View) : RecyclerView.ViewHolder(view) {
         last: Boolean,
         title: String,
         description: String,
-        day: Int,
-        month: String,
-        time: Long,
-        new: Boolean
+        createdAt: Long
     ) {
-        var date = Date(time)
         itemView.cardNotificationTitle.text = title
         itemView.cardNotificationDescription.text = description
-        var dateFormat = SimpleDateFormat("d")
-        itemView.cardNotificationDay.text = dateFormat.format(date)
-        dateFormat = SimpleDateFormat("MMMM")
-        itemView.cardNotificationMonth.text = dateFormat.format(date)
-        dateFormat = SimpleDateFormat("HH:mm")
-        itemView.cardNotificationTime.text = dateFormat.format(date)
-        if(first) {
+        itemView.cardNotificationDateTime.text =
+            SimpleDateFormat("d MMMM в HH:mm", Locale.getDefault()).format(Date(createdAt * 1000))
+        if (first) {
             itemView.cardNotificationFirstLine.visibility = View.VISIBLE
         }
-        if(last) {
+        if (last) {
             itemView.cardNotificationLastLine.visibility = View.INVISIBLE
         }
     }

@@ -11,7 +11,8 @@ class NotificationResponse(
     val relationships: NotifyRelationshipsResponse
 )
 class NotifyAttrResponse(
-    val text: String
+    val text: String,
+    val created_at: Long
 )
 
 class NotifyRelationshipsResponse(

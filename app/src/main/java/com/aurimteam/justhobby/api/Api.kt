@@ -46,6 +46,12 @@ interface Api {
     ): Call<NotificationsResponse>
 
     @Headers("Accept: application/json")
+    @HTTP(method = "DELETE", path = "notifications", hasBody = true)
+    fun deleteAllNotify(
+        @Body tokenBody: TokenBody
+    ): Call<StatusResponse>
+
+    @Headers("Accept: application/json")
     @PATCH("user")
     fun updateAllUserInfo(
         @Body updateUserAllBody: UpdateUserAllBody

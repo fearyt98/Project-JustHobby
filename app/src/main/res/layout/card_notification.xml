@@ -22,52 +22,23 @@
                   style="@style/Body2.Medium"
                   android:layout_width="match_parent"
                   android:layout_height="wrap_content"
-                  android:text="Восточные танцы"
-                  android:textColor="@color/greenText"
-                  tools:ignore="HardcodedText"/>
+                  android:textColor="@color/greenText"/>
 
         <TextView android:id="@+id/cardNotificationDescription"
                   style="@style/Caption1"
                   android:layout_width="match_parent"
                   android:layout_height="wrap_content"
-                  android:text="Через 2 часа в 15:00 у Вас состоится занятие по адресу пр. Ленина, 147"
-                  android:textColor="@color/grafitText"
-                  tools:ignore="HardcodedText"/>
+                  android:textColor="@color/grafitText"/>
 
         <LinearLayout style="@style/Caption3"
                       android:layout_width="match_parent"
                       android:layout_height="wrap_content"
                       android:paddingBottom="8dp">
 
-            <TextView android:id="@+id/cardNotificationDay"
+            <TextView android:id="@+id/cardNotificationDateTime"
                       android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
-                      android:text="26"
-                      android:textColor="@color/gray"
-                      tools:ignore="HardcodedText"/>
-
-            <TextView android:id="@+id/cardNotificationMonth"
-                      android:layout_width="wrap_content"
-                      android:layout_height="wrap_content"
-                      android:paddingStart="4dp"
-                      android:text="февраля"
-                      android:textColor="@color/gray"
-                      tools:ignore="HardcodedText"/>
-
-            <TextView android:layout_width="wrap_content"
-                      android:layout_height="wrap_content"
-                      android:paddingStart="4dp"
-                      android:paddingEnd="4dp"
-                      android:text="в"
-                      android:textColor="@color/gray"
-                      tools:ignore="HardcodedText"/>
-
-            <TextView android:id="@+id/cardNotificationTime"
-                      android:layout_width="wrap_content"
-                      android:layout_height="wrap_content"
-                      android:text="13:00"
-                      android:textColor="@color/gray"
-                      tools:ignore="HardcodedText"/>
+                      android:textColor="@color/gray"/>
         </LinearLayout>
     </LinearLayout>
 

@@ -1,29 +1,41 @@
 package com.aurimteam.justhobby.user.main.notifications
 
-import com.aurimteam.justhobby.response.NotificationResponse
+import android.content.Context
+import com.aurimteam.justhobby.Settings
+import com.aurimteam.justhobby.response.NotificationsResponse
 
 class NotificationsPresenter(private var view: INotificationsView?, private val model: INotificationsModel?) :
     NotificationsModel.OnFinishedListener {
 
-    private var newNotifications: MutableList<NotificationResponse> = mutableListOf()
-    private var oldNotifications: MutableList<NotificationResponse> = mutableListOf()
+    override fun onResultSuccessNew(notifications: NotificationsResponse) {
+        view?.showNewNotifications(notifications)
+    }
 
-    override fun onResultSuccess(notifications: List<NotificationResponse>) {
-        for (item in notifications)
-            if (item.new) {
-                newNotifications.add(item)
-                item.new = false
-            } else oldNotifications.add(item)
-        if (newNotifications.size != 0) view?.showNewNotifications(newNotifications)
-        if (oldNotifications.size != 0) view?.showOldNotifications(oldNotifications)
+    override fun onResultSuccessOld(notifications: NotificationsResponse) {
+        view?.showOldNotifications(notifications)
+    }
+
+    override fun onResultSuccessDelete() {
+        view?.showClear()
     }
 
     override fun onResultFail(strError: String?) {
-
+        view?.showMessage(strError)
     }
 
-    fun getNotifications() {
-        model?.getNotificationsData(this)
+    fun getNotifications(context: Context) {
+        val token = Settings(context).getProperty("token")
+        if(token != null) {
+            view?.toggleContentPB(true)
+            model?.getNotificationsData(token, this)
+        }
+    }
+
+    fun deleteAll(context: Context) {
+        val token = Settings(context).getProperty("token")
+        if(token != null) {
+            model?.deleteAllNotify(token, this)
+        }
     }
 
     fun isSetView(): Boolean {
