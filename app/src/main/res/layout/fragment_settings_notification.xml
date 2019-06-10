@@ -12,7 +12,7 @@
                                                  android:paddingTop="15dp"
                                                  android:paddingBottom="15dp">
 
-        <ImageButton android:id="@+id/reviewNewBtnBack"
+        <ImageButton android:id="@+id/settingsNotificationBtnBack"
                      android:layout_width="wrap_content"
                      android:layout_height="match_parent"
                      android:background="@android:color/transparent"
@@ -32,7 +32,7 @@
                   android:paddingEnd="40dp"
                   android:text="@string/notifications"
                   app:layout_constraintBottom_toBottomOf="parent"
-                  app:layout_constraintLeft_toRightOf="@+id/reviewNewBtnBack"
+                  app:layout_constraintLeft_toRightOf="@+id/settingsNotificationBtnBack"
                   app:layout_constraintRight_toRightOf="parent"
                   app:layout_constraintTop_toTopOf="parent"/>
     </android.support.constraint.ConstraintLayout>
@@ -111,7 +111,8 @@
                                                          android:paddingStart="12dp"
                                                          android:paddingTop="10dp"
                                                          android:paddingEnd="12dp"
-                                                         android:paddingBottom="15dp">
+                                                         android:paddingBottom="15dp"
+                                                         android:visibility="gone">
 
                 <TextView android:id="@+id/changeTimeNotificationBtn"
                           style="@style/Body1"
@@ -154,6 +155,7 @@
                                                     android:layout_width="match_parent"
                                                     android:layout_height="wrap_content"
                                                     android:overScrollMode="never"
+                                                    android:visibility="gone"
                                                     tools:listitem="@layout/fragment_card_groups_notifications"/>
         </LinearLayout>
     </ScrollView>

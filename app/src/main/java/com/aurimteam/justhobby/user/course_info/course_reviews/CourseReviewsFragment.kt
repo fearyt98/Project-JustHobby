@@ -144,7 +144,7 @@ class CourseReviewsFragment : Fragment(), ICourseReviewsView {
     private fun openReviewNew() {
         if (courseId > 0) {
             val bundle = Bundle()
-            bundle.putString("course_id", courseId.toString())
+            bundle.putString("courseId", courseId.toString())
 
             val courseReviewNewFragment = CourseReviewNewFragment()
             courseReviewNewFragment.arguments = bundle

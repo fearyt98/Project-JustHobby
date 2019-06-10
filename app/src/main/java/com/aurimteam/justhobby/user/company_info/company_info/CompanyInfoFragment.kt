@@ -1,5 +1,7 @@
 package com.aurimteam.justhobby.user.company_info.company_info
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.content.ContextCompat
@@ -94,9 +96,11 @@ class CompanyInfoFragment : Fragment(), ICompanyInfoView {
         companyInfoCountCourses.text = company.relationships.count_courses.toString()
         companyInfoAddress.text = company.attributes.address
         companyInfoPhone.text = company.attributes.phone
+        companyInfoPhone.setOnClickListener { openPhone() }
         companyInfoCountReviews.text = company.relationships.count_reviews.toString()
         companyInfoDesc.text = company.attributes.description
         companyInfoSite.text = company.attributes.site
+        companyInfoSite.setOnClickListener { openSite() }
         Glide.with(this).load("").centerCrop().into(companyInfoImage)
 
         if (context != null) {
@@ -121,6 +125,16 @@ class CompanyInfoFragment : Fragment(), ICompanyInfoView {
         }
 
         toggleContentPB(false)
+    }
+
+    private fun openSite() {
+        val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(company?.attributes?.site))
+        startActivity(browserIntent)
+    }
+
+    private fun openPhone() {
+        val phoneIntent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:${company?.attributes?.phone}"))
+        startActivity(phoneIntent)
     }
 
     private fun back() {

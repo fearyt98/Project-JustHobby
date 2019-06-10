@@ -1,5 +1,7 @@
 package com.aurimteam.justhobby.user.course_info.сourse_info
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.content.ContextCompat
@@ -102,6 +104,7 @@ class CourseInfoFragment : Fragment(), ICourseInfoView {
         courseInfoCompany.text = company.attributes.title
         courseInfoAddress.text = course.attributes.address
         courseInfoPhone.text = company.attributes.phone
+        courseInfoPhone.setOnClickListener { openPhone() }
         courseInfoCountReviews.text = course.relationships.count_reviews.toString()
         courseInfoCountGroups.text = course.relationships.count_groups.toString()
         courseInfoDesc.text = course.attributes.description
@@ -147,6 +150,11 @@ class CourseInfoFragment : Fragment(), ICourseInfoView {
                     ContextCompat.getColor(context!!, R.color.gray)
                 )
             }
+    }
+
+    private fun openPhone() {
+        val phoneIntent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:${course?.relationships?.company?.attributes?.phone}"))
+        startActivity(phoneIntent)
     }
 
     private fun back() {

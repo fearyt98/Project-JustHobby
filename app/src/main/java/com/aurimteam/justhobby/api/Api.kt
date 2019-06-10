@@ -189,6 +189,13 @@ interface Api {
     ): Call<ReviewsResponse>
 
     @Headers("Accept: application/json")
+    @POST("courses/{course_id}/review")
+    fun addReviewOneCourse(
+        @Path("course_id") courseId: Long,
+        @Body reviewAddBody: ReviewAddBody
+    ): Call<StatusResponse>
+
+    @Headers("Accept: application/json")
     @GET("companies/{company_id}?include[company][]=count_courses&include[company][]=count_reviews")
     fun getOneCompany(
         @Path("company_id") companyId: Long,

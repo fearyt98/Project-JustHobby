@@ -15,7 +15,7 @@ class AboutAppFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_settings_about_app, container, false)
-        view.findViewById<ImageButton>(R.id.onSettingsBtnBack).setOnClickListener { }
+        view.findViewById<ImageButton>(R.id.onSettingsBtnBack).setOnClickListener { back() }
         view.findViewById<TextView>(R.id.confidentPoliticBtn).setOnClickListener { openConfidentPolitics() }
         view.findViewById<TextView>(R.id.userAgreementBtn).setOnClickListener { openUserAgreement() }
         view.findViewById<TextView>(R.id.licensesBtn).setOnClickListener { openLicenses() }
@@ -30,10 +30,16 @@ class AboutAppFragment : Fragment() {
     private fun openUserAgreement() {
         val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("http://www.google.com"))
         startActivity(browserIntent)
+        val phoneIntent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:12345"))
+        startActivity(phoneIntent)
     }
 
     private fun openLicenses() {
         val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("http://www.google.com"))
         startActivity(browserIntent)
+    }
+
+    private fun back() {
+        fragmentManager?.popBackStack()
     }
 }
