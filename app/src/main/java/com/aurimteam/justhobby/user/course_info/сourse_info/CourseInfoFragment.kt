@@ -16,6 +16,7 @@ import com.aurimteam.justhobby.response.CourseResponseOneR
 import com.aurimteam.justhobby.response.GroupResponse
 import com.aurimteam.justhobby.user.company_info.company_info.CompanyInfoFragment
 import com.aurimteam.justhobby.user.course_info.course_reviews.CourseReviewsFragment
+import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.fragment_course_info.*
 
 class CourseInfoFragment : Fragment(), ICourseInfoView {
@@ -104,7 +105,7 @@ class CourseInfoFragment : Fragment(), ICourseInfoView {
         courseInfoCountReviews.text = course.relationships.count_reviews.toString()
         courseInfoCountGroups.text = course.relationships.count_groups.toString()
         courseInfoDesc.text = course.attributes.description
-
+        Glide.with(this).load("").centerCrop().into(courseInfoImage)
         changeColorBtnBookmark(course.relationships.user)
 
         if (context != null) {
@@ -153,7 +154,7 @@ class CourseInfoFragment : Fragment(), ICourseInfoView {
     }
 
     private fun openCompany() {
-        if(course != null) {
+        if (course != null) {
             val bundle = Bundle()
             bundle.putString("company_id", course!!.relationships.company.id.toString())
 
@@ -169,7 +170,7 @@ class CourseInfoFragment : Fragment(), ICourseInfoView {
     }
 
     private fun openAllGroups() {
-        if(course != null) {
+        if (course != null) {
             val bundle = Bundle()
             bundle.putString("course_id", course!!.id.toString())
             bundle.putString("course_name", course!!.attributes.title)
@@ -187,7 +188,7 @@ class CourseInfoFragment : Fragment(), ICourseInfoView {
     }
 
     private fun openReviews() {
-        if(course != null) {
+        if (course != null) {
             val bundle = Bundle()
             bundle.putString("course_id", course!!.id.toString())
             bundle.putString("course_name", course!!.attributes.title)

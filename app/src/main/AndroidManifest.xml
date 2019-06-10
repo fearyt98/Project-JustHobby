@@ -24,7 +24,7 @@
         </activity>
         <activity android:name=".user.main.main_nav.MainNavActivity"
                   android:screenOrientation="portrait"/>
-        <activity android:name=".user.main.settings.user_profile.UserProfileActivity"
+        <activity android:name=".user.main.settings.user_profile.UserProfileFragment"
                   android:screenOrientation="portrait"/>
         <activity android:name=".start.auth.AuthActivity"
                   android:screenOrientation="portrait"/>

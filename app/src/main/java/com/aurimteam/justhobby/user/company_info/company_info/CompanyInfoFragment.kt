@@ -13,6 +13,7 @@ import com.aurimteam.justhobby.user.company_info.company_courses.CompanyCoursesF
 import com.aurimteam.justhobby.R
 import com.aurimteam.justhobby.course.CourseAdapter
 import com.aurimteam.justhobby.response.*
+import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.fragment_company_info.*
 import kotlinx.android.synthetic.main.fragment_course_info.*
 
@@ -96,6 +97,7 @@ class CompanyInfoFragment : Fragment(), ICompanyInfoView {
         companyInfoCountReviews.text = company.relationships.count_reviews.toString()
         companyInfoDesc.text = company.attributes.description
         companyInfoSite.text = company.attributes.site
+        Glide.with(this).load("").centerCrop().into(companyInfoImage)
 
         if (context != null) {
             val rating = company.attributes.rating

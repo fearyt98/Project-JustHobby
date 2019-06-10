@@ -45,10 +45,18 @@
                          android:layout_marginTop="12dp"
                          android:layout_marginBottom="8dp">
 
-                <ImageView android:layout_width="120dp"
-                           android:id="@+id/userPhoto"
+                <ImageView android:id="@+id/userPhotoBg"
+                           android:layout_width="120dp"
                            android:layout_height="120dp"
                            app:srcCompat="@drawable/avatar_bg"
+                           tools:ignore="ContentDescription"/>
+
+                <ImageView android:id="@+id/userPhoto"
+                           android:layout_width="116dp"
+                           android:layout_height="114dp"
+                           android:layout_gravity="top|center_horizontal"
+                           android:layout_marginTop="1dp"
+                           app:srcCompat="@drawable/avatar"
                            tools:ignore="ContentDescription"/>
 
                 <ImageButton android:id="@+id/userPhotoBtn"

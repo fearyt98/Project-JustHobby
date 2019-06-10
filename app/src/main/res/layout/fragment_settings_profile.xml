@@ -12,11 +12,10 @@
                                                  android:paddingTop="15dp"
                                                  android:paddingBottom="15dp">
 
-        <ImageButton android:id="@+id/reviewNewBtnBack"
+        <ImageButton android:id="@+id/userProfileBtnBack"
                      android:layout_width="wrap_content"
                      android:layout_height="match_parent"
                      android:background="@android:color/transparent"
-                     android:contentDescription="@string/courses"
                      android:paddingStart="16dp"
                      android:tint="@color/whiteTop"
                      app:layout_constraintBottom_toBottomOf="parent"
@@ -30,15 +29,14 @@
                   android:layout_height="wrap_content"
                   android:text="@string/user_account_settings"
                   app:layout_constraintBottom_toBottomOf="parent"
-                  app:layout_constraintLeft_toRightOf="@+id/reviewNewBtnBack"
-                  app:layout_constraintRight_toLeftOf="@+id/reviewNewBtnSend"
+                  app:layout_constraintLeft_toRightOf="@+id/userProfileBtnBack"
+                  app:layout_constraintRight_toLeftOf="@+id/userProfileBtnSend"
                   app:layout_constraintTop_toTopOf="parent"/>
 
-        <ImageButton android:id="@+id/reviewNewBtnSend"
+        <ImageButton android:id="@+id/userProfileBtnSend"
                      android:layout_width="wrap_content"
                      android:layout_height="match_parent"
                      android:background="@android:color/transparent"
-                     android:contentDescription="@string/bookmarks"
                      android:paddingEnd="16dp"
                      android:tint="@color/whiteTop"
                      app:layout_constraintBottom_toBottomOf="parent"
@@ -48,7 +46,13 @@
                      tools:ignore="RtlSymmetry"/>
     </android.support.constraint.ConstraintLayout>
 
-    <ScrollView android:layout_width="match_parent"
+    <ProgressBar android:id="@+id/userProfileProgressBar"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_gravity="center|center_vertical"/>
+
+    <ScrollView android:id="@+id/userProfileContent"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:overScrollMode="never">
 
@@ -62,12 +66,22 @@
                          android:layout_marginTop="12dp"
                          android:layout_marginBottom="8dp">
 
-                <ImageView android:layout_width="120dp"
+                <ImageView android:id="@+id/userPhotoProfileBg"
+                           android:layout_width="120dp"
                            android:layout_height="120dp"
                            app:srcCompat="@drawable/avatar_bg"
                            tools:ignore="ContentDescription"/>
 
-                <ImageButton android:layout_width="36dp"
+                <ImageView android:id="@+id/userPhotoProfile"
+                           android:layout_width="116dp"
+                           android:layout_height="114dp"
+                           android:layout_gravity="top|center_horizontal"
+                           android:layout_marginTop="1dp"
+                           app:srcCompat="@drawable/avatar"
+                           tools:ignore="ContentDescription"/>
+
+                <ImageButton android:id="@+id/changeUserPhotoProfileBtn"
+                             android:layout_width="36dp"
                              android:layout_height="37dp"
                              android:layout_gravity="end"
                              android:background="@drawable/avatar_btn_bg"
@@ -84,7 +98,8 @@
                                                            android:layout_marginEnd="12dp"
                                                            android:layout_marginBottom="5dp">
 
-                <android.support.design.widget.TextInputEditText android:layout_width="match_parent"
+                <android.support.design.widget.TextInputEditText android:id="@+id/changeEmailUserProfile"
+                                                                 android:layout_width="match_parent"
                                                                  android:layout_height="wrap_content"
                                                                  android:background="@drawable/input_text_bg"
                                                                  android:hint="@string/email_hint"
@@ -101,9 +116,10 @@
                                                            android:layout_marginStart="12dp"
                                                            android:layout_marginTop="5dp"
                                                            android:layout_marginEnd="12dp"
-                                                           android:layout_marginBottom="15dp">
+                                                           android:layout_marginBottom="5dp">
 
-                <android.support.design.widget.TextInputEditText android:layout_width="match_parent"
+                <android.support.design.widget.TextInputEditText android:id="@+id/changeNameUserProfile"
+                                                                 android:layout_width="match_parent"
                                                                  android:layout_height="wrap_content"
                                                                  android:background="@drawable/input_text_bg"
                                                                  android:hint="@string/first_name"
@@ -122,7 +138,8 @@
                                                            android:layout_marginEnd="12dp"
                                                            android:layout_marginBottom="15dp">
 
-                <android.support.design.widget.TextInputEditText android:layout_width="match_parent"
+                <android.support.design.widget.TextInputEditText android:id="@+id/changeLastNameUserProfile"
+                                                                 android:layout_width="match_parent"
                                                                  android:layout_height="wrap_content"
                                                                  android:background="@drawable/input_text_bg"
                                                                  android:hint="@string/last_name"
@@ -140,14 +157,14 @@
                        android:tint="@color/grayLightTopMiddle"
                        app:srcCompat="@drawable/ic_circle_separator"/>
 
-            <TextView android:id="@+id/changeCategoryBtn"
+            <TextView android:id="@+id/changePasswordUserProfileBtn"
                       style="@style/Body1"
-                      android:layout_width="wrap_content"
+                      android:layout_width="match_parent"
                       android:layout_height="wrap_content"
                       android:paddingStart="12dp"
-                      android:paddingTop="15dp"
+                      android:paddingTop="17dp"
                       android:paddingEnd="12dp"
-                      android:paddingBottom="15dp"
+                      android:paddingBottom="17dp"
                       android:text="@string/change_password"
                       android:textColor="@color/grafitText"/>
 
@@ -199,7 +216,8 @@
                           app:layout_constraintLeft_toLeftOf="parent"
                           app:layout_constraintTop_toTopOf="parent"/>
 
-                <android.support.v7.widget.SwitchCompat android:layout_width="match_parent"
+                <android.support.v7.widget.SwitchCompat android:id="@+id/locationUserProfile"
+                                                        android:layout_width="match_parent"
                                                         android:layout_height="wrap_content"
                                                         app:layout_constraintBottom_toBottomOf="parent"
                                                         app:layout_constraintRight_toRightOf="parent"
@@ -217,9 +235,10 @@
                                                            android:layout_marginStart="12dp"
                                                            android:layout_marginTop="5dp"
                                                            android:layout_marginEnd="12dp"
-                                                           android:layout_marginBottom="15dp">
+                                                           android:layout_marginBottom="20dp">
 
-                <android.support.design.widget.TextInputEditText android:layout_width="match_parent"
+                <android.support.design.widget.TextInputEditText android:id="@+id/changeAddressUserProfile"
+                                                                 android:layout_width="match_parent"
                                                                  android:layout_height="wrap_content"
                                                                  android:background="@drawable/input_text_bg"
                                                                  android:hint="@string/address"

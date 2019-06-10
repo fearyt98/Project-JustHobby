@@ -29,11 +29,12 @@ class CourseReviewsHolder(view: View) : RecyclerView.ViewHolder(view) {
             else -> DrawableCompat.setTint(stars, ContextCompat.getColor(itemView.context, R.color.grayDarkMiddle))
         }
         itemView.cardReviewReview.text = review
-        if(last) {
+        if (last) {
             itemView.cardReviewLineBottom.visibility = View.INVISIBLE
         }
 
         itemView.cardReviewDateTime.text =
             SimpleDateFormat("d MMMM в HH:mm", Locale.getDefault()).format(Date(createdAt * 1000))
+
     }
 }

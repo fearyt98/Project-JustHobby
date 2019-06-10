@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import com.aurimteam.justhobby.user.course_info.course_review.CourseReviewFragment
 import com.aurimteam.justhobby.R
 import com.aurimteam.justhobby.response.ReviewResponse
+import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.card_review.view.*
 
 class CourseReviewsAdapter : RecyclerView.Adapter<CourseReviewsHolder>() {
@@ -27,7 +28,7 @@ class CourseReviewsAdapter : RecyclerView.Adapter<CourseReviewsHolder>() {
             courseReviewsList[position].attributes.review,
             courseReviewsList[position].attributes.created_at
         )
-
+        Glide.with(holder.itemView).load("").circleCrop().into(holder.itemView.cardReviewUserImage)
         holder.itemView.cardReview.setOnClickListener {
             detailReviews(manager, courseReviewsList[position])
         }
