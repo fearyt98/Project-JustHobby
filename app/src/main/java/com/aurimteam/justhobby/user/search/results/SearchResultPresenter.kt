@@ -37,13 +37,66 @@ class SearchResultPresenter(private var view: ISearchResultView?, private val mo
             model?.addUserBookmark(token, courseId, position, this)
     }
 
-    fun getSearchResults(context: Context) {
+    fun getSearchResults(
+        subcategories: String?,
+        sortPrice: Int?,
+        sortRating: Int?,
+        sortLength: Int?,
+        priceMax: Int?,
+        priceMin: Int?,
+        ageMax: Int?,
+        ageMin: Int?,
+        sex1: Int?,
+        sex2: Int?,
+        sex3: Int?,
+        timetable1: Int?,
+        timetable2: Int?,
+        timetable3: Int?,
+        timetable4: Int?,
+        timetable5: Int?,
+        timetable6: Int?,
+        timetable7: Int?,
+        status: Int?,
+        query: String?,
+        context: Context
+    ) {
         val token = Settings(context).getProperty("token")
         if (token != null)
-            model?.getSearchResultsData(token, this)
+            model?.getSearchResultsData(
+                subcategories,
+                sortPrice,
+                sortRating,
+                sortLength,
+                priceMax,
+                priceMin,
+                ageMax,
+                ageMin,
+                sex1,
+                sex2,
+                sex3,
+                timetable1,
+                timetable2,
+                timetable3,
+                timetable4,
+                timetable5,
+                timetable6,
+                timetable7,
+                status,
+                query,
+                token,
+                this
+            )
     }
 
-    fun onDestroy() {
+    fun isSetView(): Boolean {
+        return view != null
+    }
+
+    fun attachView(view: ISearchResultView?) {
+        this.view = view
+    }
+
+    fun detachView() {
         view = null
     }
 }

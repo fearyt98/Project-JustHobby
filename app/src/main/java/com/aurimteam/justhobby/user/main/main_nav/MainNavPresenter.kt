@@ -21,7 +21,17 @@ class MainNavPresenter(private var view: IMainNavView?, private val model: IMain
             view?.openAuth()
     }
 
+    fun isSetViewContext(): Boolean {
+        return view == null || context != null
+    }
+
+    fun attachViewContext(view: IMainNavView?, context: Context) {
+        this.context = context
+        this.view = view
+    }
+
     fun onDestroy() {
+        context = null
         view = null
     }
 }

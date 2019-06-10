@@ -18,6 +18,7 @@ import kotlinx.android.synthetic.main.activity_recovery.*
 class RecoveryActivity : AppCompatActivity(), IRecoveryView {
 
     private val presenter = RecoveryPresenter(this, RecoveryModel(), this)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_recovery)
@@ -34,11 +35,27 @@ class RecoveryActivity : AppCompatActivity(), IRecoveryView {
         findViewById<TextView>(R.id.recoveryCancel).setOnClickListener { finish() }
     }
 
-    override fun backToMainActivity() {
+    override fun onStart() {
+        super.onStart()
+        if(presenter.isSetView())
+            presenter.attachViewContext(this, this)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        presenter.onDestroy()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        presenter.onDestroy()
+    }
+
+    override fun back() {
         startActivity(Intent(Intent(this, AuthActivity::class.java)))
     }
 
-    override fun showServerMessage(message: String) {
+    override fun showMessage(message: String) {
         val toast = Toast.makeText(
             this,
             message,
@@ -71,10 +88,5 @@ class RecoveryActivity : AppCompatActivity(), IRecoveryView {
     override fun togglePB(isVisiblePB: Boolean) {
         if (isVisiblePB) recoveryProgressBar.visibility = View.VISIBLE
         else recoveryProgressBar.visibility = View.GONE
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        presenter.onDestroy()
     }
 }

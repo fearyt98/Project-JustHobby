@@ -15,18 +15,21 @@ import kotlinx.android.synthetic.main.card_category.view.*
 class SearchAdapter : RecyclerView.Adapter<SearchHolder>() {
 
     private val categories: MutableList<CategoryResponse> = mutableListOf()
+    private val isCheckedList: MutableMap<Int, Boolean> = mutableMapOf()
 
     override fun getItemCount(): Int = categories.size
     override fun onBindViewHolder(holder: SearchHolder, position: Int) {
         holder.bind(
             categories[position].attributes.slug,
-            categories[position].attributes.title
+            categories[position].attributes.title,
+            isCheckedList[categories[position].id]
         )
         val manager = (holder.itemView.context as FragmentActivity).supportFragmentManager
-        holder.itemView.subcategoryBottomSheet.setOnClickListener {
+        holder.itemView.cardCategory.setOnClickListener {
             openSubcategories(
                 manager,
-                categories[position].id
+                categories[position].id,
+                categories[position].attributes.title
             )
         }
     }
@@ -39,12 +42,33 @@ class SearchAdapter : RecyclerView.Adapter<SearchHolder>() {
     fun onDataChange(categories: List<CategoryResponse>) {
         this.categories.clear()
         this.categories.addAll(categories)
+        for (item in categories)
+            isCheckedList[item.id] = false
         notifyDataSetChanged()
     }
 
-    private fun openSubcategories(fragmentManager: FragmentManager, categoryId: Int) {
-        val bundle = Bundle()
+    fun changeChecked(categoriesBundle: Bundle) {
+        for (item in categories)
+            if (categoriesBundle.containsKey("category${item.id}") && categoriesBundle.getIntegerArrayList("category${item.id}")?.size != 0) {
+                if (!isCheckedList[item.id]!!)
+                    changeChecked(item.id, true, categories.indexOf(item))
+            } else
+                if (isCheckedList[item.id]!!)
+                    changeChecked(item.id, false, categories.indexOf(item))
+    }
+
+    private fun changeChecked(categoryId: Int, isChecked: Boolean, position: Int) {
+        isCheckedList[categoryId] = isChecked
+        notifyItemChanged(position)
+    }
+
+    private fun openSubcategories(fragmentManager: FragmentManager, categoryId: Int, categoryName: String) {
+        val searchFragment =
+            fragmentManager.findFragmentById(R.id.mainNavContainerFragment) as SearchFragment
+
+        val bundle = searchFragment.getCategories()
         bundle.putInt("categoryId", categoryId)
+        bundle.putString("categoryName", categoryName)
         val searchSubcategoriesFragment = SearchSubcategoriesFragment()
         searchSubcategoriesFragment.arguments = bundle
         searchSubcategoriesFragment.show(fragmentManager, "Subcategories")

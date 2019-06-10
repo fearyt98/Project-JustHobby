@@ -17,11 +17,10 @@ class RegistryStartPresenter(
 
     override fun onResultFail(error: String) {
         view?.togglePB(false)
-        view?.showServerMessage(error)
+        view?.showMessage(error)
     }
 
     fun sendUserInfo(first_name: String, last_name: String) {
-
         if (first_name == "" || last_name == "") {
             view?.hideErrors()
             if (first_name == "")
@@ -43,6 +42,15 @@ class RegistryStartPresenter(
             val token = Settings(context!!).getProperty("token")
             model?.sendUserInfoData(token!!, first_name, last_name, this)
         }
+    }
+
+    fun isSetView(): Boolean {
+        return view != null
+    }
+
+    fun attachViewContext(view: IRegistryStartView?, context: Context) {
+        this.context = context
+        this.view = view
     }
 
     fun onDestroy() {

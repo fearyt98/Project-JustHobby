@@ -11,19 +11,19 @@ class RecoveryPresenter(
 
     override fun onResultSuccess() {
         view?.togglePB(false)
-        view?.backToMainActivity()
+        view?.back()
     }
 
     override fun onResultFail(strError: String) {
         view?.togglePB(false)
-        view?.showServerMessage(strError)
+        view?.showMessage(strError)
     }
 
     override fun wrongEmail(strError: String) {
         view?.togglePB(false)
         if (strError == "The given data was invalid")
             view?.emailError(context!!.getString(R.string.wrong_data))
-        else view?.showServerMessage(strError)
+        else view?.showMessage(strError)
     }
 
     fun sendRecoveryEmail(email: String) {
@@ -40,6 +40,15 @@ class RecoveryPresenter(
             view?.togglePB(true)
             model?.sendRecoveryEmail(email, this)
         }
+    }
+
+    fun isSetView(): Boolean {
+        return view != null
+    }
+
+    fun attachViewContext(view: IRecoveryView?, context: Context) {
+        this.context = context
+        this.view = view
     }
 
     fun onDestroy() {

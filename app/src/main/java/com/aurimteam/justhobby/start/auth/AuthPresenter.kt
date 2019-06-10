@@ -22,14 +22,14 @@ class AuthPresenter(private var view: IAuthView?, private val model: IAuthModel?
 
     override fun onResultFail(strError: String) {
         view?.togglePB(false)
-        view?.showServerMessage(strError)
+        view?.showMessage(strError)
     }
 
     override fun wrongEmailOrPassword(strError: String) {
         view?.togglePB(false)
         if (strError == "The given data was invalid")
             view?.emailOrPasswordError(context!!.getString(R.string.wrong_data))
-        else view?.showServerMessage(strError)
+        else view?.showMessage(strError)
     }
 
     fun loginUser(loginMain: String, password: String) {
@@ -62,6 +62,15 @@ class AuthPresenter(private var view: IAuthView?, private val model: IAuthModel?
                 view?.openMain()
             else
                 view?.openStartRegistry()
+    }
+
+    fun isSetView(): Boolean {
+        return view != null
+    }
+
+    fun attachViewContext(view: IAuthView?, context: Context) {
+        this.context = context
+        this.view = view
     }
 
     fun onDestroy() {

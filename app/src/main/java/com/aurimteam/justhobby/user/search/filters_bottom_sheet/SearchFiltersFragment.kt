@@ -1,5 +1,6 @@
 package com.aurimteam.justhobby.user.search.filters_bottom_sheet
 
+import android.content.DialogInterface
 import android.os.Bundle
 import android.support.design.widget.BottomSheetDialogFragment
 import android.view.LayoutInflater
@@ -71,7 +72,11 @@ class SearchFiltersFragment : BottomSheetDialogFragment() {
             changeFilter("statusFalse", view, R.id.statusFalse)
         }
         view.findViewById<Button>(R.id.filtersAcceptButton).setOnClickListener {
-            sendChosenFilters()
+            dismiss()
+        }
+        if(savedInstanceState != null) {
+            arguments = savedInstanceState
+            savedInstanceState.clear()
         }
         return view
     }
@@ -79,14 +84,26 @@ class SearchFiltersFragment : BottomSheetDialogFragment() {
     override fun onStart() {
         super.onStart()
 
-        filters.putInt("ageMaxAll", 100)
-        filters.putInt("ageMinAll", 0)
         if (arguments != null)
             filters.putAll(arguments!!)
         if (!filters.containsKey("sortNear")) {
             resetFilters()
         }
         setFromArguments()
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putAll(filters)
+    }
+
+    override fun onDismiss(dialog: DialogInterface?) {
+        if (activity != null) {
+            val searchFragment =
+                activity!!.supportFragmentManager.findFragmentById(R.id.mainNavContainerFragment) as SearchFragment
+            searchFragment.setFilters(filters)
+        }
+        super.onDismiss(dialog)
     }
 
     private fun setFromArguments() {
@@ -112,13 +129,8 @@ class SearchFiltersFragment : BottomSheetDialogFragment() {
     }
 
     private fun changeFilter(type: String, view: View, id: Int) {
-        if (filtersClickedMap[
-                    if (type == "filterDays")
-                        "filterDays$id"
-                    else
-                        type
-            ] == false
-        )
+        val typeId = if (type == "filterDays") "filterDays$id" else type
+        if (filtersClickedMap[typeId] == false)
             if (type == "sortPrice")
                 setSortPrice("sortPrice", view, R.id.sortPrice, 1)
             else
@@ -189,17 +201,16 @@ class SearchFiltersFragment : BottomSheetDialogFragment() {
                     for (day in daysArrayNew)
                         if (daysArrayNew.indexOf(day) != 0)
                             days = "$days,$day"
-                    filtersClickedMap[
-                            if (type == "filterDays")
-                                "filterDays$id"
-                            else
-                                type
-                    ] = isCheck
+                    filtersClickedMap["filterDays$id"] = isCheck
                     view.findViewById<CheckBox>(id).isChecked = isCheck
                     filters.putString(type, days)
+                } else {
+                    view.findViewById<CheckBox>(id).isChecked = !isCheck
                 }
             }
         } else {
+            filtersClickedMap[type] = isCheck
+            view.findViewById<CheckBox>(id).isChecked = isCheck
             filters.putBoolean(type, isCheck)
         }
     }
@@ -269,10 +280,10 @@ class SearchFiltersFragment : BottomSheetDialogFragment() {
         }
         minTextView.text = currentMin.toString()
         maxTextView.text = currentMax.toString()
-        seekBar.setMinStartValue(min.toFloat())
-        seekBar.setMaxStartValue(max.toFloat())
-        seekBar.setMinValue(currentMin.toFloat())
-        seekBar.setMaxValue(currentMax.toFloat())
+        seekBar.setMinValue(min.toFloat())
+        seekBar.setMaxValue(max.toFloat())
+        seekBar.setMinStartValue(currentMin.toFloat())
+        seekBar.setMaxStartValue(currentMax.toFloat()).apply()
         seekBar.setOnRangeSeekbarChangeListener { minValue, maxValue ->
             minTextView.text = minValue.toString()
             maxTextView.text = maxValue.toString()
@@ -311,15 +322,6 @@ class SearchFiltersFragment : BottomSheetDialogFragment() {
 
     private fun reset() {
         resetFilters()
-        sendChosenFilters()
-    }
-
-    private fun sendChosenFilters() {
-        if (activity != null) {
-            val searchFragment =
-                activity!!.supportFragmentManager.findFragmentById(R.id.mainNavContainerFragment) as SearchFragment
-            searchFragment.setFilters(filters)
-            dismiss()
-        }
+        dismiss()
     }
 }

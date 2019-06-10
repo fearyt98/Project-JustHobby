@@ -60,11 +60,22 @@ class MainNavActivity : AppCompatActivity(), IMainNavView {
         } else
             loadFragment(HomeTimelineFragment())
     }
-
     override fun onStart() {
         super.onStart()
+        if(presenter.isSetViewContext())
+            presenter.attachViewContext(this, this)
 
         presenter.checkToken()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        presenter.onDestroy()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        presenter.onDestroy()
     }
 
     override fun onSaveInstanceState(outState: Bundle) {

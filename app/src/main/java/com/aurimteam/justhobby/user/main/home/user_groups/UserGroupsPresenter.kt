@@ -34,7 +34,15 @@ class UserGroupsPresenter(private var view: IUserGroupsView?, private val model:
         }
     }
 
-    fun onDestroy() {
+    fun isSetView(): Boolean {
+        return view != null
+    }
+
+    fun attachView(view: IUserGroupsView?) {
+        this.view = view
+    }
+
+    fun detachView() {
         view = null
     }
 }

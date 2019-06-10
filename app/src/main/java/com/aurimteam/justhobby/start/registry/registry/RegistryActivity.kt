@@ -50,13 +50,23 @@ class RegistryActivity : AppCompatActivity(), IRegistryView {
         findViewById<TextView>(R.id.registryEnterButton).setOnClickListener { regBtnClick() }
     }
 
-    override fun openRegistryStart() {
-        startActivity(Intent(Intent(this, RegistryStartActivity::class.java)))
+    override fun onStart() {
+        super.onStart()
+        if(presenter.isSetView())
+            presenter.attachViewContext(this, this)
     }
 
+    override fun onStop() {
+        super.onStop()
+        presenter.onDestroy()
+    }
     override fun onDestroy() {
         super.onDestroy()
         presenter.onDestroy()
+    }
+
+    override fun openRegistryStart() {
+        startActivity(Intent(Intent(this, RegistryStartActivity::class.java)))
     }
 
     override fun changeLengthEmail(message: String) {
@@ -79,7 +89,7 @@ class RegistryActivity : AppCompatActivity(), IRegistryView {
         passwordErrorRegistry.text = message
     }
 
-    override fun showServerMessage(message: String) {
+    override fun showMessage(message: String) {
         val toast = Toast.makeText(
             this,
             message,

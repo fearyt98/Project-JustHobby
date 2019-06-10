@@ -14,47 +14,63 @@
                                                  android:paddingTop="22dp"
                                                  android:paddingEnd="0dp">
 
-        <TextView android:id="@+id/categoryTitle"
-                  style="@style/Body2.Medium"
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:ellipsize="end"
-                  android:maxLines="1"
-                  android:paddingStart="14dp"
-                  android:paddingEnd="8dp"
-                  android:singleLine="true"
-                  android:textColor="@color/grafitText"
-                  app:layout_constraintBottom_toBottomOf="parent"
-                  app:layout_constraintLeft_toRightOf="@id/subcategoriesCheckBox"
-                  app:layout_constraintTop_toTopOf="parent"/>
-
-        <com.buildware.widget.indeterm.IndeterminateCheckBox android:id="@+id/subcategoriesCheckBox"
+        <com.buildware.widget.indeterm.IndeterminateCheckBox android:id="@+id/subcategoriesCategoryTitle"
+                                                             style="@style/Body2.Medium"
                                                              android:layout_width="wrap_content"
                                                              android:layout_height="wrap_content"
+                                                             android:checked="false"
+                                                             android:ellipsize="end"
+                                                             android:maxLines="1"
+                                                             android:paddingStart="14dp"
+                                                             android:paddingEnd="8dp"
+                                                             android:singleLine="true"
+                                                             android:textColor="@color/grafitText"
                                                              android:theme="@style/CheckBox"
-                                                             app:indeterminate="true"
+                                                             app:indeterminate="false"
                                                              app:layout_constraintBottom_toBottomOf="parent"
                                                              app:layout_constraintLeft_toLeftOf="parent"
                                                              app:layout_constraintTop_toTopOf="parent"/>
 
-        <ImageButton android:layout_width="wrap_content"
+        <ImageButton android:id="@+id/subcategoriesBtnClose"
+                     android:layout_width="wrap_content"
                      android:layout_height="wrap_content"
                      android:background="@android:color/transparent"
+                     android:contentDescription="@string/back"
                      android:paddingEnd="24dp"
                      android:tint="@color/grafit"
                      app:layout_constraintBottom_toBottomOf="parent"
                      app:layout_constraintRight_toRightOf="parent"
                      app:layout_constraintTop_toTopOf="parent"
-                     app:srcCompat="@drawable/ic_close_cross_24dp"/>
+                     app:srcCompat="@drawable/ic_close_cross_24dp"
+                     tools:ignore="RtlSymmetry"/>
     </android.support.constraint.ConstraintLayout>
 
-    <android.support.v7.widget.RecyclerView android:id="@+id/subcategoriesRecyclerView"
-                                            android:layout_width="match_parent"
-                                            android:layout_height="wrap_content"
-                                            tools:listitem="@layout/card_subcategories"/>
+    <android.support.v4.widget.NestedScrollView android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:overScrollMode="never">
 
-    <Button style="@style/BottomButtonGreen"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Принять"/>
+        <LinearLayout android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:orientation="vertical">
+
+            <ProgressBar android:id="@+id/subcategoriesPB"
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:layout_gravity="center"
+                         android:layout_marginTop="10dp"
+                         android:layout_marginBottom="10dp"/>
+
+            <android.support.v7.widget.RecyclerView android:id="@+id/subcategoriesRecyclerView"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:visibility="gone"
+                                                    tools:listitem="@layout/card_subcategories"/>
+
+            <Button android:id="@+id/subcategoriesAcceptButton"
+                    style="@style/BottomButtonGreen"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/apply"/>
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
 </LinearLayout>

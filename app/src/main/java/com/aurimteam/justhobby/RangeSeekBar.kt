@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.res.TypedArray
 import android.util.AttributeSet
 import com.crystal.crystalrangeseekbar.widgets.CrystalRangeSeekbar
+import com.crystal.crystalrangeseekbar.widgets.CrystalSeekbar
 
 class RangeSeekBar : CrystalRangeSeekbar {
 
@@ -14,7 +15,7 @@ class RangeSeekBar : CrystalRangeSeekbar {
     constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(context, attrs, defStyleAttr)
 
     override fun getBarHeight(): Float {
-        return 6f
+        return 8f
     }
 
     override fun getCornerRadius(typedArray: TypedArray?): Float {

@@ -39,6 +39,9 @@ class UserGroupsFragment : Fragment(), IUserGroupsView {
 
     override fun onStart() {
         super.onStart()
+        if (!presenter.isSetView())
+            presenter.attachView(this)
+
         if (context != null)
             presenter.getUserCourses(context!!)
         userGroupsBtnBack.setOnClickListener { back() }
@@ -48,9 +51,14 @@ class UserGroupsFragment : Fragment(), IUserGroupsView {
         setUpItemTouchHelper()
     }
 
+    override fun onStop() {
+        super.onStop()
+        presenter.detachView()
+    }
+
     override fun onDestroy() {
         super.onDestroy()
-        presenter.onDestroy()
+        presenter.detachView()
     }
 
     override fun toggleContentPB(isVisiblePB: Boolean) {

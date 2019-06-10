@@ -27,14 +27,23 @@ class UserBookmarksFragment : Fragment(), IUserBookmarksView {
 
     override fun onStart() {
         super.onStart()
-        if (context != null) presenter.getUserBookmarks(context!!)
+        if (!presenter.isSetView())
+            presenter.attachView(this)
+
+        if (context != null)
+            presenter.getUserBookmarks(context!!)
         bookmarksRecyclerView.layoutManager = LinearLayoutManager(context)
         bookmarksRecyclerView.adapter = adapter
     }
 
+    override fun onStop() {
+        super.onStop()
+        presenter.detachView()
+    }
+
     override fun onDestroy() {
         super.onDestroy()
-        presenter.onDestroy()
+        presenter.detachView()
     }
 
     override fun toggleContentPB(isVisiblePB: Boolean) {

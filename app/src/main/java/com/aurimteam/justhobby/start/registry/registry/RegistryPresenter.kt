@@ -23,7 +23,7 @@ class RegistryPresenter(
 
     override fun onResultFail(error: String) {
         view?.togglePB(false)
-        view?.showServerMessage(error)
+        view?.showMessage(error)
     }
 
     fun sendUserInfo(email: String, password: String, confirmPassword: String) {
@@ -53,6 +53,15 @@ class RegistryPresenter(
             view?.togglePB(true)
             model?.sendUserInfoData(email, password, confirmPassword, this)
         }
+    }
+
+    fun isSetView(): Boolean {
+        return view != null
+    }
+
+    fun attachViewContext(view: IRegistryView?, context: Context) {
+        this.context = context
+        this.view = view
     }
 
     fun onDestroy() {

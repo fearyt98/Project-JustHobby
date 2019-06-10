@@ -6,7 +6,6 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageButton
 import com.aurimteam.justhobby.user.main.home.user_groups.UserGroupsFragment
 import com.aurimteam.justhobby.R
 import com.aurimteam.justhobby.response.EventResponse
@@ -15,13 +14,11 @@ import java.text.SimpleDateFormat
 import java.util.*
 import android.app.DatePickerDialog
 import android.view.Gravity
-import android.widget.TextView
 import android.widget.Toast
 import com.aurimteam.justhobby.response.TimelineNearDayResponse
 import com.aurimteam.justhobby.user.main.home.user_bookmarks.UserBookmarksFragment
 import android.os.CountDownTimer
 import android.support.design.widget.BottomNavigationView
-import android.widget.Button
 import com.aurimteam.justhobby.user.search.search.SearchFragment
 
 class HomeTimelineFragment : Fragment(), IHomeView {
@@ -64,14 +61,14 @@ class HomeTimelineFragment : Fragment(), IHomeView {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_main_home_timeline, container, false)
-        return view
+        return inflater.inflate(R.layout.fragment_main_home_timeline, container, false)
     }
 
     override fun onStart() {
         super.onStart()
         if (!presenter.isSetView())
             presenter.attachView(this)
+
         if (context != null) presenter.getNearDayTimeline(context!!)
         homeBookmarks.setOnClickListener { openUserBookmarks() }
         homeCourses.setOnClickListener { openUserCourses() }
@@ -82,16 +79,16 @@ class HomeTimelineFragment : Fragment(), IHomeView {
         homeEventsRecyclerView.adapter = adapter
     }
 
-    override fun onStop() {
-        super.onStop()
-        timer.cancel()
-        presenter.detachView()
-    }
-
     override fun onResume() {
         super.onResume()
         homeCalendarText.text =
             SimpleDateFormat("d MMMM, EEEE", Locale.getDefault()).format(Date(selectDate.timeInMillis))
+    }
+
+    override fun onStop() {
+        super.onStop()
+        timer.cancel()
+        presenter.detachView()
     }
 
     override fun onDestroy() {

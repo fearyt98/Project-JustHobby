@@ -94,6 +94,7 @@
     <string name="count_reviews_term2to4">%1$s отзыва</string>
     <string name="count_reviews_term0andTerm5toMoreAnd11to14">%1$s отзывов</string>
     <string name="length_meters">%1$s м</string>
+    <string name="category_title">Категория &#8220;%1$s&#8221;</string>
     <string name="about_recovery">
         Укажите E-mail, к которому привязан аккаунт. Мы пришлем на него\n письмо с инструкцией\n восстановления.
     </string>

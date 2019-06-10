@@ -8,11 +8,7 @@
               android:paddingEnd="0dp"
               android:paddingBottom="8dp">
 
-    <CheckBox android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:theme="@style/CheckBox"/>
-
-    <TextView android:id="@+id/subcategoryTitle"
+    <CheckBox android:id="@+id/subcategoryTitle"
               style="@style/Body2"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
@@ -21,5 +17,6 @@
               android:paddingStart="14dp"
               android:paddingEnd="8dp"
               android:singleLine="true"
-              android:textColor="@color/grafitText"/>
+              android:textColor="@color/grafitText"
+              android:theme="@style/CheckBox"/>
 </LinearLayout>

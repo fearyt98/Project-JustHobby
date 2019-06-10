@@ -7,10 +7,13 @@ import kotlinx.android.synthetic.main.card_subcategories.view.*
 class SearchSubcategoriesHolder(view: View) : RecyclerView.ViewHolder(view) {
     fun bind(
         title: String,
-        slug: String,
-        created_at: Long,
-        updated_at: Long
+        isChecked: Boolean?
     ) {
         itemView.subcategoryTitle.text = title
+        toggleCheckBox(isChecked)
+    }
+
+    fun toggleCheckBox(isChecked: Boolean?) {
+        itemView.subcategoryTitle.isChecked = isChecked ?: false
     }
 }

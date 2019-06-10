@@ -53,6 +53,17 @@ class AuthActivity : AppCompatActivity(), IAuthView {
         }
     }
 
+    override fun onStart() {
+        super.onStart()
+        if(presenter.isSetView())
+            presenter.attachViewContext(this, this)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        presenter.onDestroy()
+    }
+
     override fun onDestroy() {
         super.onDestroy()
         presenter.onDestroy()
@@ -77,7 +88,7 @@ class AuthActivity : AppCompatActivity(), IAuthView {
         passwordErrorAuth.text = ""
     }
 
-    override fun showServerMessage(message: String) {
+    override fun showMessage(message: String) {
         val toast = Toast.makeText(
             this,
             message,

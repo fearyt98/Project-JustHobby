@@ -21,7 +21,15 @@ class SearchPresenter(private var view: ISearchView?, private val model: ISearch
             model?.getCategoriesData(token, this)
     }
 
-    fun onDestroy() {
+    fun isSetView(): Boolean {
+        return view != null
+    }
+
+    fun attachView(view: ISearchView?) {
+        this.view = view
+    }
+
+    fun detachView() {
         view = null
     }
 }

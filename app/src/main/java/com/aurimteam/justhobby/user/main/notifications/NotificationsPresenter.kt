@@ -26,7 +26,15 @@ class NotificationsPresenter(private var view: INotificationsView?, private val 
         model?.getNotificationsData(this)
     }
 
-    fun onDestroy() {
+    fun isSetView(): Boolean {
+        return view != null
+    }
+
+    fun attachView(view: INotificationsView?) {
+        this.view = view
+    }
+
+    fun detachView() {
         view = null
     }
 }

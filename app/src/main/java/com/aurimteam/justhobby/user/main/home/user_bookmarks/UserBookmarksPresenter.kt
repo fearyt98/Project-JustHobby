@@ -32,7 +32,15 @@ class UserBookmarksPresenter(private var view: IUserBookmarksView?, private val 
             model?.getUserBookmarksData(token, this)
     }
 
-    fun onDestroy() {
+    fun isSetView(): Boolean {
+        return view != null
+    }
+
+    fun attachView(view: IUserBookmarksView?) {
+        this.view = view
+    }
+
+    fun detachView() {
         view = null
     }
 }

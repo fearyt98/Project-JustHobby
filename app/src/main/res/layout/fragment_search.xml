@@ -64,6 +64,7 @@
 
         <EditText android:id="@+id/searchEditText"
                   style="@style/EditTextSearch"
+                  android:textColor="@color/grafitText"
                   android:focusableInTouchMode="true"
                   android:hint="@string/search"
                   android:inputType="text"

@@ -34,6 +34,9 @@ class NotificationsFragment : Fragment(), INotificationsView {
 
     override fun onStart() {
         super.onStart()
+        if (!presenter.isSetView())
+            presenter.attachView(this)
+
         presenter.getNotifications()
         notificationsNew.layoutManager = LinearLayoutManager(context)
         notificationsNew.adapter = adapterNewNotify
@@ -43,9 +46,14 @@ class NotificationsFragment : Fragment(), INotificationsView {
         ViewCompat.setNestedScrollingEnabled(notificationsOld, false)
     }
 
+    override fun onStop() {
+        super.onStop()
+        presenter.detachView()
+    }
+
     override fun onDestroy() {
         super.onDestroy()
-        presenter.onDestroy()
+        presenter.detachView()
     }
 
     private fun deleteNotifications() {

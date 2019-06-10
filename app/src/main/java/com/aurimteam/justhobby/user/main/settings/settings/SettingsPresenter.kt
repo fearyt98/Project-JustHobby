@@ -28,7 +28,17 @@ class SettingsPresenter(
             model?.logoutUser(Settings(context!!).getProperty("token")!!, this)
     }
 
+    fun isSetView(): Boolean {
+        return view != null
+    }
+
+    fun attachViewContext(view: ISettingsView?, context: Context) {
+        this.context = context
+        this.view = view
+    }
+
     fun onDestroy() {
+        context = null
         view = null
     }
 }

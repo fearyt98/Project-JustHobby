@@ -39,6 +39,33 @@ class SettingsFragment : Fragment(), ISettingsView {
         return view
     }
 
+    override fun onStart() {
+        super.onStart()
+        if (presenter != null && context != null)
+            if (presenter!!.isSetView())
+                presenter!!.attachViewContext(this, context!!)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        presenter?.onDestroy()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        presenter?.onDestroy()
+    }
+
+    override fun showMessage(message: String) {
+        val toast = Toast.makeText(
+            activity,
+            message,
+            Toast.LENGTH_SHORT
+        )
+        toast.setGravity(Gravity.BOTTOM, 0, 30)
+        toast.show()
+    }
+
     private fun notificationItemClick() {
         fragmentManager!!
             .beginTransaction()
@@ -76,20 +103,5 @@ class SettingsFragment : Fragment(), ISettingsView {
 
     override fun openAuth() {
         startActivity(Intent(activity, AuthActivity::class.java))
-    }
-
-    override fun showMessage(message: String) {
-        val toast = Toast.makeText(
-            activity,
-            message,
-            Toast.LENGTH_SHORT
-        )
-        toast.setGravity(Gravity.BOTTOM, 0, 30)
-        toast.show()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        presenter?.onDestroy()
     }
 }

@@ -22,6 +22,17 @@ class RegistryStartActivity : AppCompatActivity(), IRegistryStartView {
         findViewById<Button>(R.id.registryStartReadyBtn).setOnClickListener { readyBtnClick() }
     }
 
+    override fun onStart() {
+        super.onStart()
+        if(presenter.isSetView())
+            presenter.attachViewContext(this, this)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        presenter.onDestroy()
+    }
+
     override fun onDestroy() {
         super.onDestroy()
         presenter.onDestroy()
@@ -48,7 +59,7 @@ class RegistryStartActivity : AppCompatActivity(), IRegistryStartView {
         lastNameErrorRegistryStart.text = message
     }
 
-    override fun showServerMessage(message: String) {
+    override fun showMessage(message: String) {
         val toast = Toast.makeText(
             this,
             message,

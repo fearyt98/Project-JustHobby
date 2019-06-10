@@ -4,5 +4,7 @@ import com.aurimteam.justhobby.response.SubcategoryResponse
 
 interface ISearchSubcategoriesView {
     fun showSubcategories(subcategories: List<SubcategoryResponse>)
-    fun showServerMessage(message: String)
+    fun showMessage(message: String)
+    fun changeCheckBox(state: Int)
+    fun toggleContentPB(isVisiblePB: Boolean)
 }

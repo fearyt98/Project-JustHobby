@@ -113,8 +113,28 @@ interface Api {
     ): Call<StatusResponse>
 
     @Headers("Accept: application/json")
-    @GET("courses?page[size]=5&include[course][]=company&include[course][]=user")
+    @GET("courses?page[size]=20&include[course][]=company&include[course][]=user")
     fun getCourses(
+        @Query("filters[subcategories]") subcategories: String?,
+        @Query("sort[price]") sortPrice: Int?,
+        @Query("sort[rating]") sortRating: Int?,
+        @Query("sort[length]") sortLength: Int?,
+        @Query("filters[price_max]") priceMax: Int?,
+        @Query("filters[price_min]") priceMin: Int?,
+        @Query("filters[age_max]") ageMax: Int?,
+        @Query("filters[age_min]") ageMin: Int?,
+        @Query("filters[sex][]") sex1: Int?,
+        @Query("filters[sex][]") sex2: Int?,
+        @Query("filters[sex][]") sex3: Int?,
+        @Query("filters[timetable][]") timetable1: Int?,
+        @Query("filters[timetable][]") timetable2: Int?,
+        @Query("filters[timetable][]") timetable3: Int?,
+        @Query("filters[timetable][]") timetable4: Int?,
+        @Query("filters[timetable][]") timetable5: Int?,
+        @Query("filters[timetable][]") timetable6: Int?,
+        @Query("filters[timetable][]") timetable7: Int?,
+        @Query("filters[status]") status: Int?,
+        @Query("q") query: String?,
         @Query("token") token: String
     ): Call<CoursesResponse>
 

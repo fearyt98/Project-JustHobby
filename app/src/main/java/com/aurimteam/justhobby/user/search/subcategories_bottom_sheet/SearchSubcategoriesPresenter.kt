@@ -20,10 +20,25 @@ class SearchSubcategoriesPresenter(
 
     fun getSubcategories(context: Context, categoryId: Int) {
         val token = Settings(context).getProperty("token")
-        if (token != null) model?.getSubcategoriesData(token,categoryId, this)
+        if (token != null) {
+            view?.toggleContentPB(true)
+            model?.getSubcategoriesData(token,categoryId, this)
+        }
     }
 
-    fun onDestroy() {
+    fun checked(state: Int) {
+        view?.changeCheckBox(state)
+    }
+
+    fun isSetView(): Boolean {
+        return view != null
+    }
+
+    fun attachView(view: ISearchSubcategoriesView?) {
+        this.view = view
+    }
+
+    fun detachView() {
         view = null
     }
 }
