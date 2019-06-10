@@ -18,7 +18,7 @@ import com.aurimteam.justhobby.user.main.main_nav.MainNavActivity
 import com.aurimteam.justhobby.start.recovery.RecoveryActivity
 import com.aurimteam.justhobby.start.registry.start.RegistryStartActivity
 import kotlinx.android.synthetic.main.activity_auth.*
-import kotlinx.android.synthetic.main.activity_popup_window_error.*
+import kotlinx.android.synthetic.main.activity_popup_change_passwords.*
 
 class AuthActivity : AppCompatActivity(), IAuthView {
     /* Активити обращается только к методам презентера, передаем ему введенную информацию
@@ -85,11 +85,6 @@ class AuthActivity : AppCompatActivity(), IAuthView {
         )
         toast.setGravity(Gravity.BOTTOM, 0, 30)
         toast.show()
-
-        /*val dialog = Dialog(this)
-        dialog.setContentView(R.layout.activity_popup_window_error)
-        errorPopUpMessage.text = message
-        closeErrorPopup.setOnClickListener { dialog.dismiss() }*/
     }
 
     override fun changeLengthPassword(message: String) {

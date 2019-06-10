@@ -1,9 +1,9 @@
-package com.aurimteam.justhobby.start.registry.start
+package com.aurimteam.justhobby.user.main.settings.user_profile
 
 import com.aurimteam.justhobby.App
 import com.aurimteam.justhobby.api.Api
 import com.aurimteam.justhobby.response.UserResponse
-import com.aurimteam.justhobby.response_body.UpdateUserBody
+import com.aurimteam.justhobby.response_body.UpdateUserAllBody
 import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -13,12 +13,12 @@ import retrofit2.Callback
 import retrofit2.Response
 import java.io.File
 
-class RegistryStartModel : IRegistryStartModel {
+class UserProfileModel : IUserProfileModel {
     interface OnFinishedListener {
-        fun onResultSuccess()
-        fun onResultFail(error: String)
+        fun onResultSuccess(email: String, name: String, lastName: String, address: String?)
+        fun userInfoSended()
+        fun onResultFail(strError: String)
     }
-
     override fun sendUserImage(token: String, filePath: String?, onFinishedListener: OnFinishedListener) {
         val file = File(filePath)
         val requestBody = RequestBody.create(MediaType.parse("image/*"), file)
@@ -36,10 +36,34 @@ class RegistryStartModel : IRegistryStartModel {
                 override fun onResponse(call: Call<UserResponse>, response: Response<UserResponse>) {
                     val responseBody = response.body()
                     if (responseBody != null) {
-                        onFinishedListener.onResultSuccess()
+                        onFinishedListener.userInfoSended()
                     } else {
                         val jsonObj = JSONObject(response.errorBody()?.string())
                         onFinishedListener.onResultFail(jsonObj.getJSONObject("error")?.getString("message").toString())
+                    }
+                }
+            })
+    }
+
+    override fun getUserInfoData(token: String, onFinishedListener: OnFinishedListener) {
+        App.retrofit
+            .create(Api::class.java)
+            .getUser(token)
+            .enqueue(object : Callback<UserResponse> {
+                override fun onFailure(call: Call<UserResponse>, t: Throwable) {
+                    onFinishedListener.onResultFail("Error of parsing")
+                }
+
+                override fun onResponse(call: Call<UserResponse>, response: Response<UserResponse>) {
+                    val responseBody = response.body()
+                    if (responseBody != null) {
+                        onFinishedListener.onResultSuccess(
+                            responseBody.attributes.email, responseBody.attributes.first_name,
+                            responseBody.attributes.last_name, responseBody.attributes.address
+                        )
+                    } else {
+                        val jsonObj = JSONObject(response.errorBody()?.string())
+                        onFinishedListener.onResultFail(jsonObj.getJSONObject("error").getString("message").toString())
                     }
                 }
             })
@@ -49,11 +73,25 @@ class RegistryStartModel : IRegistryStartModel {
         token: String,
         first_name: String,
         last_name: String,
+        password_old: String,
+        password: String,
+        password_confirmation: String,
+        address: String,
         onFinishedListener: OnFinishedListener
     ) {
         App.retrofit
             .create(Api::class.java)
-            .updateUser(UpdateUserBody(token, first_name, last_name))
+            .updateAllUserInfo(
+                UpdateUserAllBody(
+                    token,
+                    first_name,
+                    last_name,
+                    password_old,
+                    password,
+                    password_confirmation,
+                    address
+                )
+            )
             .enqueue(object : Callback<UserResponse> {
                 override fun onFailure(call: Call<UserResponse>, t: Throwable) {
                     onFinishedListener.onResultFail("Error of parsing")
@@ -62,12 +100,13 @@ class RegistryStartModel : IRegistryStartModel {
                 override fun onResponse(call: Call<UserResponse>, response: Response<UserResponse>) {
                     val responseBody = response.body()
                     if (responseBody != null) {
-                        onFinishedListener.onResultSuccess()
+                        onFinishedListener.userInfoSended()
                     } else {
                         val jsonObj = JSONObject(response.errorBody()?.string())
-                        onFinishedListener.onResultFail(jsonObj.getJSONObject("error")?.getString("message").toString())
+                        onFinishedListener.onResultFail(jsonObj.getJSONObject("error").getString("message").toString())
                     }
                 }
             })
+
     }
 }

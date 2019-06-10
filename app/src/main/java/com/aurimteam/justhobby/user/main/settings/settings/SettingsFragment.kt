@@ -13,11 +13,9 @@ import com.aurimteam.justhobby.R
 import com.aurimteam.justhobby.start.auth.AuthActivity
 import android.view.Gravity
 import android.widget.Toast
-import com.aurimteam.justhobby.user.main.main_nav.MainNavActivity
 import com.aurimteam.justhobby.user.main.settings.about_app.AboutAppFragment
 import com.aurimteam.justhobby.user.main.settings.notifications.NotificationsFragament
-import com.aurimteam.justhobby.user.main.settings.user_profile.UserProfileActivity
-import kotlinx.android.synthetic.main.fragment_main_settings.*
+import com.aurimteam.justhobby.user.main.settings.user_profile.UserProfileFragment
 
 class SettingsFragment : Fragment(), ISettingsView {
 
@@ -27,7 +25,7 @@ class SettingsFragment : Fragment(), ISettingsView {
         val view = inflater.inflate(R.layout.fragment_main_settings, container, false)
         view.findViewById<LinearLayout>(R.id.settingsNotification).setOnClickListener { notificationItemClick() }
         view.findViewById<LinearLayout>(R.id.settingsAccount)
-            .setOnClickListener { accountItemClick(container?.context) }
+            .setOnClickListener { accountItemClick() }
         view.findViewById<LinearLayout>(R.id.settingsAbout).setOnClickListener { aboutItemClick() }
         view.findViewById<LinearLayout>(R.id.settingsLogout).setOnClickListener { leaveItemClick() }
 
@@ -48,8 +46,12 @@ class SettingsFragment : Fragment(), ISettingsView {
 
     }
 
-    private fun accountItemClick(context: Context?) {
-        startActivity(Intent(context, UserProfileActivity::class.java))
+    private fun accountItemClick() {
+        fragmentManager!!
+            .beginTransaction()
+            .addToBackStack(null)
+            .replace(R.id.mainNavContainerFragment, UserProfileFragment())
+            .commit()
     }
 
     private fun feedbackItemClick() {

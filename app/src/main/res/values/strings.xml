@@ -216,4 +216,9 @@
     <string name="min_6_symbols">Минимум 6 символов</string>
     <string name="passwords_not_similar">Пароли не совпадают</string>
     <string name="wrong_data">Неверные данные</string>
+    <string name="change_pass">Изменить пароль</string>
+    <string name="old_password">Старый пароль</string>
+    <string name="new_password">Новый пароль</string>
+    <string name="repeat_password">Повторите пароль</string>
+    <string name="okay">Ок</string>
 </resources>

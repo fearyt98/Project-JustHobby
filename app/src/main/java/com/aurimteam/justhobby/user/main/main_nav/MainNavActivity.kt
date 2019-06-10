@@ -63,7 +63,6 @@ class MainNavActivity : AppCompatActivity(), IMainNavView {
 
     override fun onStart() {
         super.onStart()
-
         presenter.checkToken()
     }
 

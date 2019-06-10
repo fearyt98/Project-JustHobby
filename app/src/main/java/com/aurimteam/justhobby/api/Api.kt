@@ -4,6 +4,8 @@ import com.aurimteam.justhobby.response.*
 import com.aurimteam.justhobby.response_body.*
 import retrofit2.Call
 import retrofit2.http.*
+import okhttp3.RequestBody
+import okhttp3.MultipartBody
 
 interface Api {
     @Headers("Accept: application/json")
@@ -28,6 +30,21 @@ interface Api {
     @PATCH("user")
     fun updateUser(
         @Body updateUserBody: UpdateUserBody
+    ): Call<UserResponse>
+
+    @Headers("Accept: application/json")
+    @PATCH("user")
+    fun updateAllUserInfo(
+        @Body updateUserAllBody: UpdateUserAllBody
+    ): Call<UserResponse>
+
+    @Multipart
+    @Headers("Accept: application/json")
+    @POST("user")
+    fun uploadUserImage(
+        @Query("token") token: String,
+        @Part("name") requestBody: RequestBody,
+        @Part file: MultipartBody.Part
     ): Call<UserResponse>
 
     @Headers("Accept: application/json")

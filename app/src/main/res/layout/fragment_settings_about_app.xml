@@ -12,7 +12,7 @@
                                                  android:paddingTop="15dp"
                                                  android:paddingBottom="15dp">
 
-        <ImageButton android:id="@+id/reviewNewBtnBack"
+        <ImageButton android:id="@+id/onSettingsBtnBack"
                      android:layout_width="wrap_content"
                      android:layout_height="match_parent"
                      android:background="@android:color/transparent"
@@ -32,7 +32,7 @@
                   android:paddingEnd="40dp"
                   android:text="@string/about_app"
                   app:layout_constraintBottom_toBottomOf="parent"
-                  app:layout_constraintLeft_toRightOf="@+id/reviewNewBtnBack"
+                  app:layout_constraintLeft_toRightOf="@+id/onSettingsBtnBack"
                   app:layout_constraintRight_toRightOf="parent"
                   app:layout_constraintTop_toTopOf="parent"/>
     </android.support.constraint.ConstraintLayout>
@@ -64,7 +64,8 @@
               android:paddingEnd="12dp"
               android:paddingBottom="15dp"
               android:text="@string/confident_politic"
-              android:textColor="@color/grafitText"/>
+              android:textColor="@color/grafitText"
+              android:visibility="gone"/>
 
     <TextView android:id="@+id/userAgreementBtn"
               style="@style/Body1"

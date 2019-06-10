@@ -20,8 +20,12 @@ class RegistryStartPresenter(
         view?.showServerMessage(error)
     }
 
-    fun sendUserInfo(first_name: String, last_name: String) {
+    fun sendUserImage(filePath: String?) {
+        val token = Settings(context!!).getProperty("token")
+        model?.sendUserImage(token!!, filePath, this)
+    }
 
+    fun sendUserInfo(first_name: String, last_name: String) {
         if (first_name == "" || last_name == "") {
             view?.hideErrors()
             if (first_name == "")
