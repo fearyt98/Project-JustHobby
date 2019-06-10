@@ -1,7 +1,6 @@
 package com.aurimteam.justhobby.start.auth
 
 import android.app.Activity
-import android.app.Dialog
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -18,7 +17,6 @@ import com.aurimteam.justhobby.user.main.main_nav.MainNavActivity
 import com.aurimteam.justhobby.start.recovery.RecoveryActivity
 import com.aurimteam.justhobby.start.registry.start.RegistryStartActivity
 import kotlinx.android.synthetic.main.activity_auth.*
-import kotlinx.android.synthetic.main.activity_popup_change_passwords.*
 
 class AuthActivity : AppCompatActivity(), IAuthView {
     /* Активити обращается только к методам презентера, передаем ему введенную информацию

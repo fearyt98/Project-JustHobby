@@ -1,10 +1,19 @@
 package com.aurimteam.justhobby.response
 
+class  NotificationsResponse(
+    val data: List<NotificationResponse>,
+    val included: IncludedResponse
+)
 class NotificationResponse(
-    val title: String,
-    val description: String,
-    val day: Int,
-    val month: String,
-    val time: Long,
-    var new: Boolean
+    val type: String,
+    val id: Long,
+    val attributes: NotifyAttrResponse,
+    val relationships: NotifyRelationshipsResponse
+)
+class NotifyAttrResponse(
+    val text: String
+)
+
+class NotifyRelationshipsResponse(
+    val course: IdentifierResponse
 )

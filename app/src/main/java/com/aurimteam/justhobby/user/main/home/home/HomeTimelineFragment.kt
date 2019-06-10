@@ -104,8 +104,10 @@ class HomeTimelineFragment : Fragment(), IHomeView {
     }
     private fun startNotifyService(view: View) {
         val mute = Settings(context!!).getPropertyBoolean("mute", false)
+        val token = Settings(context!!).getProperty("token")
         if (mute != true) {
             val serviceIntent = Intent(view.context, NotificationsService::class.java)
+            serviceIntent.putExtra("token", token)
             activity?.startService(serviceIntent)
         }
     }
