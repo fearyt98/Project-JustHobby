@@ -15,6 +15,7 @@ class AuthPresenter(private var view: IAuthView?, private val model: IAuthModel?
     override fun onResultSuccess(token: TokenResponse) {
         Settings(context!!).setProperty("token", token.token)
         Settings(context!!).setProperty("user_id", token.user_id.toString())
+        Settings(context!!).setPropertyBoolean("mute",  false)
         Settings(context!!).setPropertyBoolean("is_full_reg", token.is_full_reg)
         if (token.is_full_reg) view?.openMain()
         else view?.openStartRegistry()

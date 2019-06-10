@@ -13,6 +13,8 @@ import kotlinx.android.synthetic.main.fragment_main_home_timeline.*
 import java.text.SimpleDateFormat
 import java.util.*
 import android.app.DatePickerDialog
+import android.content.Context
+import android.content.Intent
 import android.view.Gravity
 import android.widget.Toast
 import com.aurimteam.justhobby.response.TimelineNearDayResponse
@@ -63,7 +65,9 @@ class HomeTimelineFragment : Fragment(), IHomeView {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_main_home_timeline, container, false)
+        val view = inflater.inflate(R.layout.fragment_main_home_timeline, container, false)
+        startNotifyService(view)
+        return view
     }
 
     override fun onStart() {
@@ -97,6 +101,13 @@ class HomeTimelineFragment : Fragment(), IHomeView {
         super.onDestroy()
         timer.cancel()
         presenter.detachView()
+    }
+    private fun startNotifyService(view: View) {
+        val mute = Settings(context!!).getPropertyBoolean("mute", false)
+        if (mute != true) {
+            val serviceIntent = Intent(view.context, NotificationsService::class.java)
+            activity?.startService(serviceIntent)
+        }
     }
 
     private fun openDatePicker() {

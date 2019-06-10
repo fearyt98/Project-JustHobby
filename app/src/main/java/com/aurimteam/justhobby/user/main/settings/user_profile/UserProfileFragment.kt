@@ -57,7 +57,7 @@ class UserProfileFragment : Fragment(), IUserProfileView {
                 ) == PackageManager.PERMISSION_DENIED
             ) {
                 val permissions = arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE)
-                requestPermissions(permissions, App.PERMISSION_CODE)
+                requestPermissions(permissions, App.PERMISSION_STORAGE_CODE)
             } else pickImageFromGallery()
         else pickImageFromGallery()
     }
@@ -71,7 +71,7 @@ class UserProfileFragment : Fragment(), IUserProfileView {
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         when (requestCode) {
-            App.PERMISSION_CODE -> {
+            App.PERMISSION_STORAGE_CODE -> {
                 if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)
                     pickImageFromGallery()
                 else Toast.makeText(context, "Загрузка изображения запрещена пользователем", Toast.LENGTH_SHORT).show()

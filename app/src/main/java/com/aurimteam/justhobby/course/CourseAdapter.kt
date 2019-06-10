@@ -1,5 +1,9 @@
 package com.aurimteam.justhobby.course
 
+import android.app.PendingIntent.getActivity
+import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.support.v4.app.FragmentActivity
 import android.support.v4.app.FragmentManager
 import android.support.v7.widget.RecyclerView
@@ -12,6 +16,7 @@ import com.aurimteam.justhobby.response.CourseResponseR
 import com.aurimteam.justhobby.response.IncludedResponse
 import kotlinx.android.synthetic.main.card_course.view.*
 import android.os.Bundle
+import android.support.v4.content.ContextCompat.startActivity
 import com.aurimteam.justhobby.R
 
 class CourseAdapter(private val presenter: ICoursePresenter) : RecyclerView.Adapter<CourseHolder>() {
@@ -67,7 +72,7 @@ class CourseAdapter(private val presenter: ICoursePresenter) : RecyclerView.Adap
                 )
             }
         }
-        holder.itemView.cardCourseBtnGeo.setOnClickListener { searchCourseOnMap() }
+        holder.itemView.cardCourseBtnGeo.setOnClickListener { openMap(holder.itemView.context, item) }
     }
 
     fun onDataChange(courses: List<CourseResponseR>, included: IncludedResponse) {
@@ -95,8 +100,9 @@ class CourseAdapter(private val presenter: ICoursePresenter) : RecyclerView.Adap
         notifyItemChanged(position, listOf(1))
     }
 
-    private fun searchCourseOnMap() {
-        Log.d("searchCourseOnMap", "granted")
+    private fun openMap(context: Context, course: CourseResponseR) {
+        val mapIntent = Intent(Intent.ACTION_VIEW, Uri.parse("geo:${course.attributes.lat},${course.attributes.lon}"))
+        context.startActivity(mapIntent)
     }
 
     private fun detailInfoCourse(fm: FragmentManager, course: CourseResponseR) {

@@ -1,5 +1,8 @@
 package com.aurimteam.justhobby.user.main.home.user_bookmarks
 
+import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.FragmentActivity
 import android.support.v4.app.FragmentManager
@@ -48,7 +51,7 @@ class UserBookmarksAdapter(private val presenter: UserBookmarksPresenter) :
                 position
             )
         }
-        holder.itemView.cardCourseBtnGeo.setOnClickListener { searchCourseOnMap() }
+        holder.itemView.cardCourseBtnGeo.setOnClickListener { openMap(holder.itemView.context, item) }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, p1: Int): CourseHolder =
@@ -86,6 +89,11 @@ class UserBookmarksAdapter(private val presenter: UserBookmarksPresenter) :
 
     private fun deleteBookmark(holder: CourseHolder, courseId: Long, position: Int) {
         presenter.deleteUserBookmarks(holder.itemView.context, courseId, position)
+    }
+
+    private fun openMap(context: Context, course: CourseResponseR) {
+        val mapIntent = Intent(Intent.ACTION_VIEW, Uri.parse("geo:${course.attributes.lat},${course.attributes.lon}"))
+        context.startActivity(mapIntent)
     }
 
     private fun searchCourseOnMap() {

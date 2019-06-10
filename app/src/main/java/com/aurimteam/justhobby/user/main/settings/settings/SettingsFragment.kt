@@ -1,6 +1,5 @@
 package com.aurimteam.justhobby.user.main.settings.settings
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -13,8 +12,9 @@ import com.aurimteam.justhobby.R
 import com.aurimteam.justhobby.start.auth.AuthActivity
 import android.view.Gravity
 import android.widget.Toast
+import com.aurimteam.justhobby.NotificationsService
 import com.aurimteam.justhobby.user.main.settings.about_app.AboutAppFragment
-import com.aurimteam.justhobby.user.main.settings.notifications.NotificationsFragament
+import com.aurimteam.justhobby.user.main.settings.notifications.NotificationsFragment
 import com.aurimteam.justhobby.user.main.settings.user_profile.UserProfileFragment
 
 class SettingsFragment : Fragment(), ISettingsView {
@@ -27,7 +27,7 @@ class SettingsFragment : Fragment(), ISettingsView {
         view.findViewById<LinearLayout>(R.id.settingsAccount)
             .setOnClickListener { accountItemClick() }
         view.findViewById<LinearLayout>(R.id.settingsAbout).setOnClickListener { aboutItemClick() }
-        view.findViewById<LinearLayout>(R.id.settingsLogout).setOnClickListener { leaveItemClick() }
+        view.findViewById<LinearLayout>(R.id.settingsLogout).setOnClickListener { leaveItemClick(view) }
 
         presenter = SettingsPresenter(
             this,
@@ -68,7 +68,7 @@ class SettingsFragment : Fragment(), ISettingsView {
         fragmentManager!!
             .beginTransaction()
             .addToBackStack(null)
-            .replace(R.id.mainNavContainerFragment, NotificationsFragament())
+            .replace(R.id.mainNavContainerFragment, NotificationsFragment())
             .commit()
 
     }
@@ -99,8 +99,14 @@ class SettingsFragment : Fragment(), ISettingsView {
 
     }
 
-    private fun leaveItemClick() {
+    private fun leaveItemClick(view: View) {
+        stopNotifyService(view)
         presenter?.logoutUser()
+    }
+
+    private fun stopNotifyService(view: View) {
+        val serviceIntent = Intent(view.context, NotificationsService::class.java)
+        activity?.stopService(serviceIntent)
     }
 
     override fun openAuth() {

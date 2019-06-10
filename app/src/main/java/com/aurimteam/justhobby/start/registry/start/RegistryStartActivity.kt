@@ -15,7 +15,7 @@ import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import com.aurimteam.justhobby.App.Companion.IMAGE_PICK_CODE
-import com.aurimteam.justhobby.App.Companion.PERMISSION_CODE
+import com.aurimteam.justhobby.App.Companion.PERMISSION_STORAGE_CODE
 import com.aurimteam.justhobby.start.features.FeaturesActivity
 import com.aurimteam.justhobby.R
 import com.bumptech.glide.Glide
@@ -45,7 +45,7 @@ class RegistryStartActivity : AppCompatActivity(), IRegistryStartView {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
             if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
                 val permissions = arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE)
-                requestPermissions(permissions, PERMISSION_CODE)
+                requestPermissions(permissions, PERMISSION_STORAGE_CODE)
             } else pickImageFromGallery()
         else pickImageFromGallery()
     }
@@ -59,7 +59,7 @@ class RegistryStartActivity : AppCompatActivity(), IRegistryStartView {
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         when (requestCode) {
-            PERMISSION_CODE -> {
+            PERMISSION_STORAGE_CODE -> {
                 if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)
                     pickImageFromGallery()
                 else Toast.makeText(this, "Загрузка изображения запрещена пользователем", Toast.LENGTH_SHORT).show()

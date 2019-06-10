@@ -1,6 +1,9 @@
 package com.aurimteam.justhobby
 
 import android.app.Application
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.os.Build
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -16,7 +19,27 @@ class App : Application() {
             .baseUrl("https://justhobby.herokuapp.com/api/") //api-адрес к серверу
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-        const val IMAGE_PICK_CODE = 10;
-        const val PERMISSION_CODE = 11;
+        val IMAGE_PICK_CODE = 10
+        val PERMISSION_STORAGE_CODE = 11
+        val CHANNEL_ID = "0"
     }
+
+    override fun onCreate() {
+        super.onCreate()
+        createNotificationsChannel()
+    }
+
+    private fun createNotificationsChannel() {
+        var notificationChannel: NotificationChannel? = null
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            notificationChannel = NotificationChannel(
+                CHANNEL_ID, "NotifyService", NotificationManager.IMPORTANCE_DEFAULT
+            )
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val notifyManager: NotificationManager = getSystemService(NotificationManager::class.java)
+            notifyManager.createNotificationChannel(notificationChannel)
+        }
+    }
+
 }

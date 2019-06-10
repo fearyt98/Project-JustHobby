@@ -43,7 +43,7 @@ class SearchResultModel : ISearchResultModel {
         token: String,
         onFinishedListener: OnFinishedListener
     ) {
-        App.retrofit
+        /*App.retrofit
             .create(Api::class.java)
             .getCourses(
                 subcategories,
@@ -81,7 +81,7 @@ class SearchResultModel : ISearchResultModel {
                         onFinishedListener.onResultFail(jsonObj.getJSONObject("error")?.getString("message")?.toString())
                     }
                 }
-            })
+            })*/
     }
 
     override fun deleteUserBookmark(

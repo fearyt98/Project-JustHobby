@@ -1,5 +1,6 @@
 package com.aurimteam.justhobby.user.main.main_nav
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
@@ -8,9 +9,9 @@ import com.aurimteam.justhobby.R
 import kotlinx.android.synthetic.main.activity_main_nav.*
 import android.support.v4.app.Fragment
 import android.view.Gravity
+import android.view.View
 import android.widget.Toast
 import com.aurimteam.justhobby.NotificationsService
-import com.aurimteam.justhobby.Settings
 import com.aurimteam.justhobby.start.auth.AuthActivity
 import com.aurimteam.justhobby.user.main.home.home.HomeTimelineFragment
 import com.aurimteam.justhobby.user.main.notifications.NotificationsFragment
@@ -61,15 +62,13 @@ class MainNavActivity : AppCompatActivity(), IMainNavView {
                 loadFragment(HomeTimelineFragment())
         } else
             loadFragment(HomeTimelineFragment())
+
     }
 
     override fun onStart() {
         super.onStart()
         if (presenter.isSetViewContext())
             presenter.attachViewContext(this, this)
-        val token = Settings(this).getProperty("token")
-        val intent = Intent(this, MainNavActivity::class.java)
-        NotificationsService(token!!, this).startService(intent)
         presenter.checkToken()
     }
 
@@ -130,5 +129,4 @@ class MainNavActivity : AppCompatActivity(), IMainNavView {
         }
         return false
     }
-
 }
