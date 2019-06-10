@@ -1,15 +1,21 @@
 package com.aurimteam.justhobby.start.registry.start
 
+import android.Manifest
+import android.app.Activity
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.Gravity
 import android.view.View
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.Toast
+import com.aurimteam.justhobby.App.Companion.IMAGE_PICK_CODE
+import com.aurimteam.justhobby.App.Companion.PERMISSION_CODE
 import com.aurimteam.justhobby.start.features.FeaturesActivity
 import com.aurimteam.justhobby.R
-import kotlinx.android.synthetic.main.activity_registry.*
 import kotlinx.android.synthetic.main.activity_registry_start.*
 
 class RegistryStartActivity : AppCompatActivity(), IRegistryStartView {
@@ -20,6 +26,38 @@ class RegistryStartActivity : AppCompatActivity(), IRegistryStartView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registry_start)
         findViewById<Button>(R.id.registryStartReadyBtn).setOnClickListener { readyBtnClick() }
+        findViewById<ImageButton>(R.id.userPhotoBtn).setOnClickListener { pickImage() }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == Activity.RESULT_OK && requestCode == IMAGE_PICK_CODE)
+            userPhoto.setImageURI(data?.data)
+    }
+
+    private fun pickImage() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+            if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
+                val permissions = arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE)
+                requestPermissions(permissions, PERMISSION_CODE)
+            } else pickImageFromGallery()
+        else pickImageFromGallery()
+    }
+
+    private fun pickImageFromGallery() {
+        Intent(Intent.ACTION_PICK).type = "image/*"
+        startActivityForResult(intent, IMAGE_PICK_CODE)
+    }
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        when (requestCode) {
+            PERMISSION_CODE -> {
+                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)
+                    pickImageFromGallery()
+            }
+        }
+        Toast.makeText(this, "Загрузка изображения запрещена пользователем", Toast.LENGTH_SHORT).show()
     }
 
     override fun onStart() {

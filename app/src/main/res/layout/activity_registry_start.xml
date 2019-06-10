@@ -46,11 +46,13 @@
                          android:layout_marginBottom="8dp">
 
                 <ImageView android:layout_width="120dp"
+                           android:id="@+id/userPhoto"
                            android:layout_height="120dp"
                            app:srcCompat="@drawable/avatar_bg"
                            tools:ignore="ContentDescription"/>
 
-                <ImageButton android:layout_width="36dp"
+                <ImageButton android:id="@+id/userPhotoBtn"
+                             android:layout_width="36dp"
                              android:layout_height="37dp"
                              android:layout_gravity="end"
                              android:background="@drawable/avatar_btn_bg"
