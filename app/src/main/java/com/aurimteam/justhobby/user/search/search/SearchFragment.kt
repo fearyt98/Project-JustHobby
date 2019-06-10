@@ -21,12 +21,13 @@ import com.aurimteam.justhobby.user.main.recommendation_page_viewer.Recommendati
 import com.aurimteam.justhobby.user.search.filters_bottom_sheet.SearchFiltersFragment
 import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent
 import android.text.TextWatcher
-
-
+import android.view.Gravity
+import android.widget.Toast
+import com.aurimteam.justhobby.response.PriceRangeResponse
 
 class SearchFragment : Fragment(), ISearchView {
 
-    private var presenter: SearchPresenter? = null
+    private var presenter: SearchPresenter = SearchPresenter(this, SearchModel())
     private val adapter = SearchAdapter()
     private var filters: Bundle = Bundle()
     private var categories: Bundle = Bundle()
@@ -35,9 +36,8 @@ class SearchFragment : Fragment(), ISearchView {
         val view = inflater.inflate(R.layout.fragment_search, container, false)
         view.findViewById<ImageButton>(R.id.searchFilters).setOnClickListener { openFilters() }
         view.findViewById<ImageButton>(R.id.searchBtnBack).setOnClickListener { back() }
-        presenter = SearchPresenter(this, SearchModel(), container?.context)
 
-        if(savedInstanceState != null) {
+        if (savedInstanceState != null) {
             filters = savedInstanceState.getBundle("filters")!!
             categories = savedInstanceState.getBundle("categories")!!
         }
@@ -46,22 +46,24 @@ class SearchFragment : Fragment(), ISearchView {
 
     override fun setCategories(categories: List<CategoryResponse>) {
         adapter.onDataChange(categories)
+        adapter.changeChecked(this.categories)
     }
 
     override fun onStart() {
         super.onStart()
-        if (presenter != null)
-            if (!presenter!!.isSetView())
-                presenter?.attachView(this)
+        if (!presenter.isSetView())
+            presenter.attachView(this)
 
-        presenter?.getCategories()
+        if (context != null)
+            presenter.getCategories(context!!)
+        presenter.getPriceRange(context!!)
 
         searchCategories.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         searchCategories.adapter = adapter
-        init()
 
-        if(filters.size() == 0) {
+        if (filters.size() == 0) {
+            init()
             filters.putInt("costMaxAll", 15000)
             filters.putInt("costMinAll", 0)
             filters.putInt("ageMaxAll", 100)
@@ -101,7 +103,8 @@ class SearchFragment : Fragment(), ISearchView {
             override fun beforeTextChanged(
                 s: CharSequence, start: Int,
                 count: Int, after: Int
-            ) {}
+            ) {
+            }
 
             override fun onTextChanged(
                 s: CharSequence, start: Int,
@@ -111,13 +114,11 @@ class SearchFragment : Fragment(), ISearchView {
                 resultFragment.setQuery(s.toString())
             }
         })
-
-        adapter.changeChecked(categories)
     }
 
     override fun onStop() {
         super.onStop()
-        presenter?.detachView()
+        presenter.detachView()
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -129,7 +130,18 @@ class SearchFragment : Fragment(), ISearchView {
 
     override fun onDestroy() {
         super.onDestroy()
-        presenter?.detachView()
+        presenter.detachView()
+    }
+
+    override fun setPriceRange(priceRange: PriceRangeResponse) {
+        filters.putInt("costMaxAll", priceRange.max_price)
+        filters.putInt("costMinAll", priceRange.min_price)
+    }
+
+    override fun showMessage(message: String?) {
+        val toast = Toast.makeText(activity, message, Toast.LENGTH_SHORT)
+        toast.setGravity(Gravity.BOTTOM, 0, 30)
+        toast.show()
     }
 
     private fun openFilters() {

@@ -54,6 +54,12 @@ interface Api {
     ): Call<StatusResponse>
 
     @Headers("Accept: application/json")
+    @GET("price")
+    fun getPriceRange(
+        @Query("token") token: String
+    ): Call<PriceRangeResponse>
+
+    @Headers("Accept: application/json")
     @GET("categories")
     fun getCategories(
         @Query("token") token: String,

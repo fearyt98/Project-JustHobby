@@ -33,7 +33,7 @@ class SearchSubcategoriesFragment : BottomSheetDialogFragment(), ISearchSubcateg
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog = BottomSheetDialog(requireContext(), theme)
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        if(savedInstanceState != null) {
+        if (savedInstanceState != null) {
             arguments = savedInstanceState
         }
         return inflater.inflate(R.layout.dialog_subcategories, container, false)
@@ -52,6 +52,8 @@ class SearchSubcategoriesFragment : BottomSheetDialogFragment(), ISearchSubcateg
             categoryId = arguments!!.get("categoryId")!!.toString().toInt()
             presenter.getSubcategories(context!!, categoryId)
             categories = arguments!!
+            categories.remove("categoryId")
+            categories.remove("categoryName")
         }
         subcategoriesCategoryTitle.setOnStateChangedListener { _, newState ->
             if (newState != null)
@@ -85,10 +87,11 @@ class SearchSubcategoriesFragment : BottomSheetDialogFragment(), ISearchSubcateg
         outState.putString("categoryId", arguments!!.get("categoryId")!!.toString())
         categories.putIntegerArrayList("category$categoryId", adapter.getIsCheckedList())
         var cats = categories.getIntegerArrayList("categories")
-        if(cats == null)
+        if (cats == null)
             cats = arrayListOf(categoryId)
         else
-            cats.add(categoryId)
+            if (!cats.contains(categoryId))
+                cats.add(categoryId)
         categories.putIntegerArrayList("categories", cats)
         outState.putAll(categories)
     }
@@ -99,10 +102,11 @@ class SearchSubcategoriesFragment : BottomSheetDialogFragment(), ISearchSubcateg
                 activity!!.supportFragmentManager.findFragmentById(R.id.mainNavContainerFragment) as SearchFragment
             categories.putIntegerArrayList("category$categoryId", adapter.getIsCheckedList())
             var cats = categories.getIntegerArrayList("categories")
-            if(cats == null)
+            if (cats == null)
                 cats = arrayListOf(categoryId)
             else
-                cats.add(categoryId)
+                if (!cats.contains(categoryId))
+                    cats.add(categoryId)
             categories.putIntegerArrayList("categories", cats)
             searchFragment.setCategories(categories)
         }

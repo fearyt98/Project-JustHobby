@@ -95,6 +95,7 @@ class CompanyInfoFragment : Fragment(), ICompanyInfoView {
         companyInfoTitle.text = company.attributes.title
         companyInfoCountCourses.text = company.relationships.count_courses.toString()
         companyInfoAddress.text = company.attributes.address
+        companyInfoAddress.setOnClickListener { openMap() }
         companyInfoPhone.text = company.attributes.phone
         companyInfoPhone.setOnClickListener { openPhone() }
         companyInfoCountReviews.text = company.relationships.count_reviews.toString()
@@ -135,6 +136,11 @@ class CompanyInfoFragment : Fragment(), ICompanyInfoView {
     private fun openPhone() {
         val phoneIntent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:${company?.attributes?.phone}"))
         startActivity(phoneIntent)
+    }
+
+    private fun openMap() {
+        val mapIntent = Intent(Intent.ACTION_VIEW, Uri.parse("geo:${company?.attributes?.lat},${company?.attributes?.lon}"))
+        startActivity(mapIntent)
     }
 
     private fun back() {

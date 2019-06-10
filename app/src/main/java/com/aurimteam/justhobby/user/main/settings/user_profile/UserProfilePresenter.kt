@@ -7,12 +7,12 @@ class UserProfilePresenter(private var view: IUserProfileView?, private val mode
     UserProfileModel.OnFinishedListener {
 
     override fun onResultSuccess(email: String, name: String, lastName: String, address: String?) {
-        view?.setUserDeafultInfo(email, name, lastName, address)
+        view?.setUserDefaultInfo(email, name, lastName, address)
     }
 
     override fun onResultFail(strError: String) {
         view?.toggleContentPB(false)
-        view?.showServerMessage(strError)
+        view?.showMessage(strError)
     }
 
     override fun userInfoSended() {

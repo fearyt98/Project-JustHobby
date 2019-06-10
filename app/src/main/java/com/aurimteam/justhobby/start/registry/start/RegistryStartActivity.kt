@@ -124,7 +124,7 @@ class RegistryStartActivity : AppCompatActivity(), IRegistryStartView {
     }
 
     private fun readyBtnClick() {
-        presenter.sendUserImage(filePath)
+        //presenter.sendUserImage(filePath)
         presenter.sendUserInfo(registryStartFirstName.text.toString(), registryStartLastName.text.toString())
     }
 

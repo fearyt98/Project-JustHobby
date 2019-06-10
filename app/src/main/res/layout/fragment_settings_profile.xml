@@ -108,6 +108,8 @@
                                                                  android:paddingTop="5dp"
                                                                  android:paddingEnd="16dp"
                                                                  android:paddingBottom="5dp"
+                                                                 android:focusable="false"
+                                                                 android:enabled="false"
                                                                  android:textColorHint="@color/gray"/>
             </android.support.design.widget.TextInputLayout>
 

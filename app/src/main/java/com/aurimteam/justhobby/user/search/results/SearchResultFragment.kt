@@ -104,7 +104,7 @@ class SearchResultFragment : Fragment(), ISearchResultView {
                 if (cats.indexOf(cat) != 0) {
                     subcats = categories.getIntegerArrayList("category$cat")
                     if (subcats != null)
-                        categoriesStr += subcats.joinToString(",")
+                        categoriesStr += "," + subcats.joinToString(",")
                 }
         }
         val sortPrice = filters.getInt("sortPrice")
@@ -132,7 +132,7 @@ class SearchResultFragment : Fragment(), ISearchResultView {
             if (filters.getBoolean("statusAny")) null else {
                 if (filters.getBoolean("statusTrue")) 1 else 0
             },
-            query,
+            if (query.length >= 3) query else null,
             context
         )
 

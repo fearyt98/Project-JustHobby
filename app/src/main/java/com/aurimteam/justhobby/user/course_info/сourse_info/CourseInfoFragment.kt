@@ -103,6 +103,7 @@ class CourseInfoFragment : Fragment(), ICourseInfoView {
         courseInfoTitle.text = course.attributes.title
         courseInfoCompany.text = company.attributes.title
         courseInfoAddress.text = course.attributes.address
+        courseInfoAddress.setOnClickListener { openMap() }
         courseInfoPhone.text = company.attributes.phone
         courseInfoPhone.setOnClickListener { openPhone() }
         courseInfoCountReviews.text = course.relationships.count_reviews.toString()
@@ -142,12 +143,12 @@ class CourseInfoFragment : Fragment(), ICourseInfoView {
             if (user != null && user) {
                 isBookmark = true
                 courseInfoBtnBookmark.setColorFilter(
-                    ContextCompat.getColor(context!!, R.color.colorPrimary)
+                    ContextCompat.getColor(context!!, com.aurimteam.justhobby.R.color.colorPrimary)
                 )
             } else {
                 isBookmark = false
                 courseInfoBtnBookmark.setColorFilter(
-                    ContextCompat.getColor(context!!, R.color.gray)
+                    ContextCompat.getColor(context!!, com.aurimteam.justhobby.R.color.gray)
                 )
             }
     }
@@ -155,6 +156,11 @@ class CourseInfoFragment : Fragment(), ICourseInfoView {
     private fun openPhone() {
         val phoneIntent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:${course?.relationships?.company?.attributes?.phone}"))
         startActivity(phoneIntent)
+    }
+
+    private fun openMap() {
+        val mapIntent = Intent(Intent.ACTION_VIEW, Uri.parse("geo:${course?.attributes?.lat},${course?.attributes?.lon}"))
+        startActivity(mapIntent)
     }
 
     private fun back() {

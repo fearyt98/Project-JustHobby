@@ -4,10 +4,8 @@ interface IRegistryView {
     fun togglePB(isVisiblePB: Boolean)
     fun openRegistryStart()
     fun showMessage(message: String)
-    fun clearPasswordError(message: String)
-    fun clearEmailError(message: String)
-    fun changeLengthPasswords(message: String)
-    fun changeLengthEmail(message: String)
-    fun passwordsNotSimilar(message: String)
     fun hideErrors()
+    fun setErrorEmail(message: String)
+    fun setErrorPassword(message: String)
+    fun setErrorPasswordConfirm(message: String)
 }

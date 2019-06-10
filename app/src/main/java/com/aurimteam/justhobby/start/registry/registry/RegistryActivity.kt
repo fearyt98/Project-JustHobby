@@ -69,24 +69,22 @@ class RegistryActivity : AppCompatActivity(), IRegistryView {
         startActivity(Intent(Intent(this, RegistryStartActivity::class.java)))
     }
 
-    override fun changeLengthEmail(message: String) {
+    override fun hideErrors() {
+        emailErrorRegistry.text = ""
+        passwordErrorRegistry.text = ""
+        confirmPasswordErrorRegistry.text = ""
+    }
+
+    override fun setErrorEmail(message: String) {
         emailErrorRegistry.text = message
     }
 
-    override fun changeLengthPasswords(message: String) {
+    override fun setErrorPassword(message: String) {
         passwordErrorRegistry.text = message
     }
 
-    override fun clearEmailError(message: String) {
-        emailErrorRegistry.text = message
-    }
-
-    override fun clearPasswordError(message: String) {
-        passwordErrorRegistry.text = message
-    }
-
-    override fun passwordsNotSimilar(message: String) {
-        passwordErrorRegistry.text = message
+    override fun setErrorPasswordConfirm(message: String) {
+        confirmPasswordErrorRegistry.text = message
     }
 
     override fun showMessage(message: String) {
@@ -97,12 +95,6 @@ class RegistryActivity : AppCompatActivity(), IRegistryView {
         )
         toast.setGravity(Gravity.BOTTOM, 0, 30)
         toast.show()
-    }
-
-    override fun hideErrors() {
-        emailErrorRegistry.text = ""
-        passwordErrorRegistry.text = ""
-        confirmPasswordErrorRegistry.text = ""
     }
 
     override fun togglePB(isVisiblePB: Boolean) {

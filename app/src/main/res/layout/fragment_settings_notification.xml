@@ -32,7 +32,7 @@
                   android:paddingEnd="40dp"
                   android:text="@string/notifications"
                   app:layout_constraintBottom_toBottomOf="parent"
-                  app:layout_constraintLeft_toRightOf="@+id/settingsNotificationBtnBack"
+                  app:layout_constraintLeft_toRightOf="@id/settingsNotificationBtnBack"
                   app:layout_constraintRight_toRightOf="parent"
                   app:layout_constraintTop_toTopOf="parent"/>
     </android.support.constraint.ConstraintLayout>
@@ -57,43 +57,12 @@
                           android:layout_height="wrap_content"
                           android:text="@string/not_disturb"
                           android:textColor="@color/grafitText"
-                          app:layout_constraintBottom_toTopOf="@id/changeMute"
-                          app:layout_constraintLeft_toLeftOf="parent"
-                          app:layout_constraintTop_toTopOf="parent"/>
-
-                <TextView android:id="@+id/changeMute"
-                          android:layout_width="wrap_content"
-                          android:layout_height="wrap_content"
-                          android:textColor="@color/gray"
-                          android:visibility="gone"
-                          app:layout_constraintBottom_toBottomOf="parent"
-                          app:layout_constraintLeft_toLeftOf="parent"
-                          app:layout_constraintTop_toBottomOf="@id/changeMuteBtn"/>
-            </android.support.constraint.ConstraintLayout>
-
-            <ImageView android:layout_width="match_parent"
-                       android:layout_height="1dp"
-                       android:background="@android:color/transparent"
-                       android:tint="@color/grayLightTopMiddle"
-                       app:srcCompat="@drawable/ic_circle_separator"/>
-
-            <android.support.constraint.ConstraintLayout android:layout_width="match_parent"
-                                                         android:layout_height="wrap_content"
-                                                         android:paddingStart="12dp"
-                                                         android:paddingTop="18dp"
-                                                         android:paddingEnd="12dp"
-                                                         android:paddingBottom="18dp">
-
-                <TextView style="@style/Body1"
-                          android:layout_width="wrap_content"
-                          android:layout_height="wrap_content"
-                          android:text="@string/vibration"
-                          android:textColor="@color/grafitText"
                           app:layout_constraintBottom_toBottomOf="parent"
                           app:layout_constraintLeft_toLeftOf="parent"
                           app:layout_constraintTop_toTopOf="parent"/>
 
-                <android.support.v7.widget.SwitchCompat android:layout_width="match_parent"
+                <android.support.v7.widget.SwitchCompat android:id="@+id/changeMuteSwitch"
+                                                        android:layout_width="match_parent"
                                                         android:layout_height="wrap_content"
                                                         app:layout_constraintBottom_toBottomOf="parent"
                                                         app:layout_constraintRight_toRightOf="parent"
@@ -104,7 +73,8 @@
                        android:layout_height="1dp"
                        android:background="@android:color/transparent"
                        android:tint="@color/grayLightTopMiddle"
-                       app:srcCompat="@drawable/ic_circle_separator"/>
+                       app:srcCompat="@drawable/ic_circle_separator"
+                       tools:ignore="ContentDescription"/>
 
             <android.support.constraint.ConstraintLayout android:layout_width="match_parent"
                                                          android:layout_height="wrap_content"

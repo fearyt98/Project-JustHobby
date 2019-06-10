@@ -96,7 +96,7 @@ class UserProfileFragment : Fragment(), IUserProfileView {
         presenter.dettachView()
     }
 
-    override fun setUserDeafultInfo(
+    override fun setUserDefaultInfo(
         email: String,
         name: String,
         lastName: String,
@@ -145,7 +145,7 @@ class UserProfileFragment : Fragment(), IUserProfileView {
     }
 
     private fun sendChangeUserInfo() {
-        presenter.sendUserImage(filePath, context)
+        //presenter.sendUserImage(filePath, context)
         presenter.sendUserInfo(
             changeNameUserProfile.text.toString(),
             changeLastNameUserProfile.text.toString(),
@@ -157,7 +157,7 @@ class UserProfileFragment : Fragment(), IUserProfileView {
         )
     }
 
-    override fun showServerMessage(message: String) {
+    override fun showMessage(message: String?) {
         val toast = Toast.makeText(
             context,
             message,
