@@ -9,6 +9,8 @@ import kotlinx.android.synthetic.main.activity_main_nav.*
 import android.support.v4.app.Fragment
 import android.view.Gravity
 import android.widget.Toast
+import com.aurimteam.justhobby.NotificationsService
+import com.aurimteam.justhobby.Settings
 import com.aurimteam.justhobby.start.auth.AuthActivity
 import com.aurimteam.justhobby.user.main.home.home.HomeTimelineFragment
 import com.aurimteam.justhobby.user.main.notifications.NotificationsFragment
@@ -60,11 +62,14 @@ class MainNavActivity : AppCompatActivity(), IMainNavView {
         } else
             loadFragment(HomeTimelineFragment())
     }
+
     override fun onStart() {
         super.onStart()
-        if(presenter.isSetViewContext())
+        if (presenter.isSetViewContext())
             presenter.attachViewContext(this, this)
-
+        val token = Settings(this).getProperty("token")
+        val intent = Intent(this, MainNavActivity::class.java)
+        NotificationsService(token!!, this).startService(intent)
         presenter.checkToken()
     }
 
@@ -100,6 +105,7 @@ class MainNavActivity : AppCompatActivity(), IMainNavView {
         toast.setGravity(Gravity.BOTTOM, 0, 30)
         toast.show()
     }
+
     override fun onBackPressed() {
         val count = supportFragmentManager.findFragmentById(R.id.mainNavContainerFragment)
 

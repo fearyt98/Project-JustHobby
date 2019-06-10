@@ -144,7 +144,7 @@ class CourseReviewNewFragment : Fragment(), ICourseReviewNewView {
     }
 
     override fun showMessage(message: String?) {
-        val toast = Toast.makeText(activity, message, Toast.LENGTH_SHORT)
+        val toast = Toast.makeText(context, message, Toast.LENGTH_SHORT)
         toast.setGravity(Gravity.BOTTOM, 0, 30)
         toast.show()
     }

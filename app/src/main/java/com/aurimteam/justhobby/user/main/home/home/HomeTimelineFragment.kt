@@ -19,6 +19,8 @@ import com.aurimteam.justhobby.response.TimelineNearDayResponse
 import com.aurimteam.justhobby.user.main.home.user_bookmarks.UserBookmarksFragment
 import android.os.CountDownTimer
 import android.support.design.widget.BottomNavigationView
+import com.aurimteam.justhobby.NotificationsService
+import com.aurimteam.justhobby.Settings
 import com.aurimteam.justhobby.user.search.search.SearchFragment
 
 class HomeTimelineFragment : Fragment(), IHomeView {

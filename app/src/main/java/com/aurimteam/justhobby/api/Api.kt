@@ -33,6 +33,11 @@ interface Api {
     ): Call<UserResponse>
 
     @Headers("Accept: application/json")
+    @GET("notifications/new")
+    fun checkUserNewNotify(
+        @Query("token") token: String
+    ): Call<NewNotificationsStatus>
+    @Headers("Accept: application/json")
     @PATCH("user")
     fun updateAllUserInfo(
         @Body updateUserAllBody: UpdateUserAllBody

@@ -212,8 +212,8 @@
     <string name="error_subalert">(закройте окно нажав на кнопку ниже)</string>
     <string name="minimum">минимум</string>
     <string name="emptyField">Пустое поле</string>
-    <string name="min_20_symbols">Минимум 5 символов</string>
-    <string name="min_5_symbols">Минимум 20 символов</string>
+    <string name="min_20_symbols">Минимум 20 символов</string>
+    <string name="min_5_symbols">Минимум 5 символов</string>
     <string name="min_255_symbols">Максимум 255 символов</string>
     <string name="min_500_symbols">Максимум 500 символов</string>
     <string name="min_6_symbols">Минимум 6 символов</string>

@@ -13,6 +13,7 @@ class CourseReviewNewModel : ICourseReviewNewModel {
     interface OnFinishedListener {
         fun onResultSuccess()
         fun onResultFail(strError: String?)
+        fun userHaveReview(strError: String?)
     }
 
     override fun sendNewReviewData(
@@ -35,7 +36,7 @@ class CourseReviewNewModel : ICourseReviewNewModel {
                     onFinishedListener.onResultSuccess()
                 } else {
                     val jsonObj = JSONObject(response.errorBody()?.string())
-                    onFinishedListener.onResultFail(jsonObj.getJSONObject("error")?.getString("message")?.toString())
+                    onFinishedListener.userHaveReview(jsonObj.getJSONObject("error")?.getString("message")?.toString())
                 }
             }
         })
