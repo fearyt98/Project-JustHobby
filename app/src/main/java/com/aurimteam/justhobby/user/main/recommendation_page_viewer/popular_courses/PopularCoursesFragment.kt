@@ -14,6 +14,7 @@ import com.aurimteam.justhobby.course.CourseAdapter
 import com.aurimteam.justhobby.response.CourseResponse
 import com.aurimteam.justhobby.response.CourseResponseR
 import com.aurimteam.justhobby.response.IncludedResponse
+import com.aurimteam.justhobby.user.main.main_nav.MainNavActivity
 import kotlinx.android.synthetic.main.fragment_popular_courses.*
 
 class PopularCoursesFragment : Fragment(), IPopularCoursesView {
@@ -29,7 +30,11 @@ class PopularCoursesFragment : Fragment(), IPopularCoursesView {
         super.onStart()
         if (!presenter.isSetView())
             presenter.attachView(this)
-        if (context != null) presenter.getPopularCourses(context!!)
+
+        if (context != null && activity != null) {
+            val gpsData = (activity as MainNavActivity).gpsData
+            presenter.getPopularCourses(context!!, gpsData.returnLat(), gpsData.returnLon())
+        }
         popularCoursesRecyclerView.layoutManager = LinearLayoutManager(context)
         popularCoursesRecyclerView.adapter = adapter
     }
@@ -38,7 +43,6 @@ class PopularCoursesFragment : Fragment(), IPopularCoursesView {
         super.onStop()
         presenter.detachView()
     }
-
 
     override fun onDestroy() {
         super.onDestroy()

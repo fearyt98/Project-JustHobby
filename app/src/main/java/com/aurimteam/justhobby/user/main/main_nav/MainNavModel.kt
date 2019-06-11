@@ -25,7 +25,9 @@ class MainNavModel : IMainNavModel {
 
                 override fun onResponse(call: Call<UserResponse>, response: Response<UserResponse>) {
                     val responseBody = response.body()
-                    if (responseBody == null) {
+                    if (responseBody != null) {
+
+                    } else {
                         val jsonObj = JSONObject(response.errorBody()?.string())
                         onFinishedListener.onResultFail(jsonObj.getJSONObject("error").getString("message").toString())
                     }

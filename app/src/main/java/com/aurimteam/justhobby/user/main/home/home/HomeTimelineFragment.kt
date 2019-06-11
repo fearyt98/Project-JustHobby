@@ -13,7 +13,6 @@ import kotlinx.android.synthetic.main.fragment_main_home_timeline.*
 import java.text.SimpleDateFormat
 import java.util.*
 import android.app.DatePickerDialog
-import android.content.Context
 import android.content.Intent
 import android.view.Gravity
 import android.widget.Toast
@@ -36,7 +35,7 @@ class HomeTimelineFragment : Fragment(), IHomeView {
 
     private var listenerDatePicker: DatePickerDialog.OnDateSetListener =
         DatePickerDialog.OnDateSetListener { _, year, monthOfYear, dayOfMonth ->
-            oldDate = selectDate.clone() as Calendar
+            oldDate.timeInMillis = selectDate.timeInMillis
             selectDate.set(Calendar.YEAR, year)
             selectDate.set(Calendar.MONTH, monthOfYear)
             selectDate.set(Calendar.DAY_OF_MONTH, dayOfMonth)
@@ -66,7 +65,6 @@ class HomeTimelineFragment : Fragment(), IHomeView {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_main_home_timeline, container, false)
-        startNotifyService(view)
         return view
     }
 
@@ -101,15 +99,6 @@ class HomeTimelineFragment : Fragment(), IHomeView {
         super.onDestroy()
         timer.cancel()
         presenter.detachView()
-    }
-    private fun startNotifyService(view: View) {
-        val mute = Settings(context!!).getPropertyBoolean("mute", false)
-        val token = Settings(context!!).getProperty("token")
-        if (mute != true) {
-            val serviceIntent = Intent(view.context, NotificationsService::class.java)
-            serviceIntent.putExtra("token", token)
-            activity?.startService(serviceIntent)
-        }
     }
 
     private fun openDatePicker() {

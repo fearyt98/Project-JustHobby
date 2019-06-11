@@ -20,10 +20,10 @@ class PopularCoursesModel : IPopularCoursesModel {
         fun onResultFail(strError: String?)
     }
 
-    override fun getPopularCoursesData(token: String, onFinishedListener: OnFinishedListener) {
+    override fun getPopularCoursesData(token: String, lat: Float?, lon: Float?, onFinishedListener: OnFinishedListener) {
         App.retrofit
             .create(Api::class.java)
-            .getPopularCourses(token)
+            .getPopularCourses(token, lat, lon)
             .enqueue(object : Callback<CoursesResponse> {
                 override fun onFailure(call: Call<CoursesResponse>, t: Throwable) {
                     onFinishedListener.onResultFail(t.message)

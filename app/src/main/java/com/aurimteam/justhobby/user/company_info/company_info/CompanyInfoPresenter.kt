@@ -43,11 +43,11 @@ class CompanyInfoPresenter(private var view: ICompanyInfoView?, private val mode
             model?.addUserBookmark(token, courseId, position, this)
     }
 
-    fun getCompanyCourses(context: Context, companyId: Long) {
+    fun getCompanyCourses(context: Context, companyId: Long, lat: Float?, lon: Float?) {
         val token = Settings(context).getProperty("token")
         if (token != null) {
             view?.toggleContentPB(true)
-            model?.getCompanyCoursesData(token, companyId, this)
+            model?.getCompanyCoursesData(token, companyId, lat, lon, this)
         }
     }
 

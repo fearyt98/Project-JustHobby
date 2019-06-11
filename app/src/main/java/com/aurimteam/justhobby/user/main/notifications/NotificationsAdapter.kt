@@ -19,7 +19,6 @@ class NotificationsAdapter : RecyclerView.Adapter<NotificationsHolder>() {
         val itemCourse = courseIncludedList[item.relationships.course.id]!!
         holder.bind(
             position == 0,
-            position == itemCount - 1,
             itemCourse.attributes.title,
             item.attributes.text,
             item.attributes.created_at

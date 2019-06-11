@@ -39,10 +39,10 @@ class NearUserCoursesPresenter(private var view: INearCoursesView?, private val 
             model?.addUserBookmark(token, courseId, position, this)
     }
 
-    fun getNearCourses(context: Context) {
+    fun getNearCourses(context: Context, lat: Float?, lon: Float?) {
         val token = Settings(context).getProperty("token")
         if (token != null)
-            model?.getNearCoursesData(token, this)
+            model?.getNearCoursesData(token, lat, lon, this)
     }
 
     fun isSetView(): Boolean {

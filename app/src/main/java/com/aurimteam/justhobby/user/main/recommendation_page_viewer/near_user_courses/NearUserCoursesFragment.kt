@@ -13,6 +13,7 @@ import com.aurimteam.justhobby.R
 import com.aurimteam.justhobby.course.CourseAdapter
 import com.aurimteam.justhobby.response.CourseResponseR
 import com.aurimteam.justhobby.response.IncludedResponse
+import com.aurimteam.justhobby.user.main.main_nav.MainNavActivity
 import kotlinx.android.synthetic.main.fragment_near_user_courses.*
 
 class NearUserCoursesFragment : Fragment(), INearCoursesView {
@@ -28,7 +29,11 @@ class NearUserCoursesFragment : Fragment(), INearCoursesView {
         super.onStart()
         if (!presenter.isSetView())
             presenter.attachView(this)
-        if (context != null) presenter.getNearCourses(context!!)
+
+        if (context != null && activity != null) {
+            val gpsData = (activity as MainNavActivity).gpsData
+            presenter.getNearCourses(context!!, gpsData.returnLat(), gpsData.returnLon())
+        }
         nearCoursesRecyclerView.layoutManager = LinearLayoutManager(context)
         nearCoursesRecyclerView.adapter = adapter
     }

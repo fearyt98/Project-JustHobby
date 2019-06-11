@@ -16,10 +16,10 @@ class UserBookmarksModel : IUserBookmarksModel {
         fun onResultFail(strError: String?)
     }
 
-    override fun getUserBookmarksData(token: String, onFinishedListener: OnFinishedListener) {
+    override fun getUserBookmarksData(token: String, lat: Float?, lon: Float?, onFinishedListener: OnFinishedListener) {
         App.retrofit
             .create(Api::class.java)
-            .getUserBookmarks(token)
+            .getUserBookmarks(token, lat, lon)
             .enqueue(object : Callback<CoursesResponse> {
                 override fun onFailure(call: Call<CoursesResponse>, t: Throwable) {
                     onFinishedListener.onResultFail(t.message)

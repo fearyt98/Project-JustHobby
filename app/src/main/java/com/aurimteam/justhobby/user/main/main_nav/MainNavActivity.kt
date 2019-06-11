@@ -1,7 +1,7 @@
 package com.aurimteam.justhobby.user.main.main_nav
 
-import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v7.app.AppCompatActivity
@@ -11,7 +11,10 @@ import android.support.v4.app.Fragment
 import android.view.Gravity
 import android.view.View
 import android.widget.Toast
+import com.aurimteam.justhobby.GpsData
 import com.aurimteam.justhobby.NotificationsService
+import com.aurimteam.justhobby.Settings
+import com.aurimteam.justhobby.response.UserResponse
 import com.aurimteam.justhobby.start.auth.AuthActivity
 import com.aurimteam.justhobby.user.main.home.home.HomeTimelineFragment
 import com.aurimteam.justhobby.user.main.notifications.NotificationsFragment
@@ -22,6 +25,7 @@ import com.aurimteam.justhobby.user.search.search.SearchFragment
 class MainNavActivity : AppCompatActivity(), IMainNavView {
 
     private val presenter = MainNavPresenter(this, MainNavModel(), this)
+    val gpsData = GpsData()
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
@@ -48,6 +52,10 @@ class MainNavActivity : AppCompatActivity(), IMainNavView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        val isGps = Settings(this).getPropertyBoolean("gps", true)
+        if (isGps != null && isGps)
+            gpsData.create(this, this)
+
         setContentView(R.layout.activity_main_nav)
         mainNavNavigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
 
@@ -60,8 +68,10 @@ class MainNavActivity : AppCompatActivity(), IMainNavView {
                     .commit()
             else
                 loadFragment(HomeTimelineFragment())
-        } else
+        } else {
+            startNotifyService()
             loadFragment(HomeTimelineFragment())
+        }
 
     }
 
@@ -69,6 +79,7 @@ class MainNavActivity : AppCompatActivity(), IMainNavView {
         super.onStart()
         if (presenter.isSetViewContext())
             presenter.attachViewContext(this, this)
+
         presenter.checkToken()
     }
 
@@ -88,6 +99,16 @@ class MainNavActivity : AppCompatActivity(), IMainNavView {
         val fragment = supportFragmentManager.findFragmentById(R.id.mainNavContainerFragment)
         if (fragment != null)
             supportFragmentManager.putFragment(outState, "mainFragment", fragment)
+    }
+
+    override fun setGps(user: UserResponse) {
+        if (user.attributes.address == null) {
+            Settings(this).setPropertyBoolean("gps", true)
+            if (!gpsData.isCreated)
+                gpsData.create(this, this)
+        } else {
+            Settings(this).setPropertyBoolean("gps", false)
+        }
     }
 
     override fun openAuth() {
@@ -115,6 +136,26 @@ class MainNavActivity : AppCompatActivity(), IMainNavView {
                 .commit()
         } else {
             super.onBackPressed()
+        }
+    }
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        when (requestCode) {
+            10 -> {
+                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)
+                    gpsData.configureGpsData()
+                else Toast.makeText(this, "Разрешения не выданы", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+    private fun startNotifyService() {
+        val mute = Settings(this).getPropertyBoolean("mute", false)
+        val token = Settings(this).getProperty("token")
+        if (mute != true) {
+            val serviceIntent = Intent(this, NotificationsService::class.java)
+            serviceIntent.putExtra("token", token)
+            this.startService(serviceIntent)
         }
     }
 

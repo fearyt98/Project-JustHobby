@@ -13,6 +13,7 @@ import com.aurimteam.justhobby.R
 import com.aurimteam.justhobby.course.CourseAdapter
 import com.aurimteam.justhobby.response.CourseResponseR
 import com.aurimteam.justhobby.response.IncludedResponse
+import com.aurimteam.justhobby.user.main.main_nav.MainNavActivity
 import kotlinx.android.synthetic.main.fragment_company_courses.*
 
 class CompanyCoursesFragment : Fragment(), ICompanyCoursesView {
@@ -33,8 +34,11 @@ class CompanyCoursesFragment : Fragment(), ICompanyCoursesView {
         if (arguments != null) {
             companyId = arguments!!.get("company_id")!!.toString().toLong()
             companyCoursesTitle.text = arguments!!.get("company_name")!!.toString()
-            if (context != null)
-                presenter.getCompanyCourses(context!!, companyId)
+
+            if (context != null && activity != null) {
+                val gpsData = (activity as MainNavActivity).gpsData
+                presenter.getCompanyCourses(context!!, companyId, gpsData.returnLat(), gpsData.returnLon())
+            }
         }
         companyCoursesBtnBack.setOnClickListener { back() }
         companyCoursesRecyclerView.layoutManager = LinearLayoutManager(context)

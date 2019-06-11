@@ -41,9 +41,11 @@ class SearchResultModel : ISearchResultModel {
         status: Int?,
         query: String?,
         token: String,
+        lat: Float?,
+        lon: Float?,
         onFinishedListener: OnFinishedListener
     ) {
-        /*App.retrofit
+        App.retrofit
             .create(Api::class.java)
             .getCourses(
                 subcategories,
@@ -66,7 +68,9 @@ class SearchResultModel : ISearchResultModel {
                 timetable7,
                 status,
                 query,
-                token
+                token,
+                lat,
+                lon
             ).enqueue(object : Callback<CoursesResponse> {
                 override fun onFailure(call: Call<CoursesResponse>, t: Throwable) {
                     onFinishedListener.onResultFail(t.message)
@@ -81,7 +85,7 @@ class SearchResultModel : ISearchResultModel {
                         onFinishedListener.onResultFail(jsonObj.getJSONObject("error")?.getString("message")?.toString())
                     }
                 }
-            })*/
+            })
     }
 
     override fun deleteUserBookmark(

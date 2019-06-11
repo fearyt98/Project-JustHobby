@@ -35,10 +35,10 @@ class NotificationsFragment : Fragment(), INotificationsView {
         if(context != null)
             presenter.getNotifications(context!!)
         notificationsBtnClear.setOnClickListener { deleteNotifications() }
-        notificationsNew.layoutManager = LinearLayoutManager(context)
-        notificationsNew.adapter = adapterNewNotify
-        notificationsOld.layoutManager = LinearLayoutManager(context)
-        notificationsOld.adapter = adapterOldNotify
+        notificationsNewRecyclerView.layoutManager = LinearLayoutManager(context)
+        notificationsNewRecyclerView.adapter = adapterNewNotify
+        notificationsOldRecyclerView.layoutManager = LinearLayoutManager(context)
+        notificationsOldRecyclerView.adapter = adapterOldNotify
         ViewCompat.setNestedScrollingEnabled(notificationsNew, false)
         ViewCompat.setNestedScrollingEnabled(notificationsOld, false)
     }
@@ -60,7 +60,11 @@ class NotificationsFragment : Fragment(), INotificationsView {
     }
 
     override fun showNewNotifications(notifications: NotificationsResponse) {
-        if(notifications.data.isNotEmpty()) {
+        if(notifications.data.isEmpty()) {
+            notificationsNew.visibility = View.GONE
+            if(notificationsOld.visibility == View.GONE)
+                showClear()
+        } else {
             adapterNewNotify.onDataChange(notifications.data, notifications.included)
         }
     }
@@ -68,7 +72,9 @@ class NotificationsFragment : Fragment(), INotificationsView {
     override fun showOldNotifications(notifications: NotificationsResponse) {
         toggleContentPB(false)
         if(notifications.data.isEmpty()) {
-            showClear()
+            notificationsOld.visibility = View.GONE
+            if(notificationsNew.visibility == View.GONE)
+                showClear()
         } else {
             adapterOldNotify.onDataChange(notifications.data, notifications.included)
         }

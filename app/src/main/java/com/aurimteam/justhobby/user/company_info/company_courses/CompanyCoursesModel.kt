@@ -18,10 +18,10 @@ class CompanyCoursesModel : ICompanyCoursesModel {
         fun addedUserBookmark(position: Int)
     }
 
-    override fun getCompanyCoursesData(token: String, companyId: Long, onFinishedListener: OnFinishedListener) {
+    override fun getCompanyCoursesData(token: String, companyId: Long, lat: Float?, lon: Float?, onFinishedListener: OnFinishedListener) {
         App.retrofit
             .create(Api::class.java)
-            .getCoursesOneCompany(companyId, token)
+            .getCoursesOneCompany(companyId, token, lat, lon)
             .enqueue(object : Callback<CoursesResponse> {
                 override fun onFailure(call: Call<CoursesResponse>, t: Throwable) {
                     onFinishedListener.onResultFail(t.message)

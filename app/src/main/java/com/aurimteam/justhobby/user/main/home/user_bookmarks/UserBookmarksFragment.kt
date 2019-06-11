@@ -12,6 +12,7 @@ import android.widget.Toast
 import com.aurimteam.justhobby.R
 import com.aurimteam.justhobby.response.CourseResponseR
 import com.aurimteam.justhobby.response.IncludedResponse
+import com.aurimteam.justhobby.user.main.main_nav.MainNavActivity
 import kotlinx.android.synthetic.main.fragment_user_bookmarks.*
 
 class UserBookmarksFragment : Fragment(), IUserBookmarksView {
@@ -30,8 +31,10 @@ class UserBookmarksFragment : Fragment(), IUserBookmarksView {
         if (!presenter.isSetView())
             presenter.attachView(this)
 
-        if (context != null)
-            presenter.getUserBookmarks(context!!)
+        if (context != null && activity != null) {
+            val gpsData = (activity as MainNavActivity).gpsData
+            presenter.getUserBookmarks(context!!, gpsData.returnLat(), gpsData.returnLon())
+        }
         bookmarksRecyclerView.layoutManager = LinearLayoutManager(context)
         bookmarksRecyclerView.adapter = adapter
     }

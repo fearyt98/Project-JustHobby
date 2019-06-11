@@ -20,10 +20,10 @@ class NearUserCoursesModel : INearCoursesModel {
         fun onResultFail(strError: String?)
     }
 
-    override fun getNearCoursesData(token: String, onFinishedListener: OnFinishedListener) {
+    override fun getNearCoursesData(token: String, lat: Float?, lon: Float?, onFinishedListener: OnFinishedListener) {
         App.retrofit
             .create(Api::class.java)
-            .getNearCourses(token)
+            .getNearCourses(token, lat, lon)
             .enqueue(object : Callback<CoursesResponse> {
                 override fun onFailure(call: Call<CoursesResponse>, t: Throwable) {
                     onFinishedListener.onResultFail(t.message)

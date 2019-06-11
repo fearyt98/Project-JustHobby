@@ -15,6 +15,7 @@ import com.aurimteam.justhobby.user.company_info.company_courses.CompanyCoursesF
 import com.aurimteam.justhobby.R
 import com.aurimteam.justhobby.course.CourseAdapter
 import com.aurimteam.justhobby.response.*
+import com.aurimteam.justhobby.user.main.main_nav.MainNavActivity
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.fragment_company_info.*
 import kotlinx.android.synthetic.main.fragment_course_info.*
@@ -37,9 +38,11 @@ class CompanyInfoFragment : Fragment(), ICompanyInfoView {
 
         if (arguments != null) {
             companyId = arguments!!.get("company_id")!!.toString().toLong()
-            if (context != null) {
+
+            if (context != null && activity != null) {
+                val gpsData = (activity as MainNavActivity).gpsData
                 presenter.getCompany(context!!, companyId)
-                presenter.getCompanyCourses(context!!, companyId)
+                presenter.getCompanyCourses(context!!, companyId, gpsData.returnLat(), gpsData.returnLon())
             }
         }
         companyInfoBtnBack.setOnClickListener { back() }

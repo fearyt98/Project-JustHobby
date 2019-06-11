@@ -14,6 +14,7 @@ import com.aurimteam.justhobby.R
 import com.aurimteam.justhobby.course.CourseAdapter
 import com.aurimteam.justhobby.response.CourseResponseR
 import com.aurimteam.justhobby.response.IncludedResponse
+import com.aurimteam.justhobby.user.main.main_nav.MainNavActivity
 import kotlinx.android.synthetic.main.fragment_search_results.*
 
 class SearchResultFragment : Fragment(), ISearchResultView {
@@ -110,31 +111,37 @@ class SearchResultFragment : Fragment(), ISearchResultView {
         val sortPrice = filters.getInt("sortPrice")
         val maxPrice = filters.getInt("costMax", -1)
         val days = (filters.getString("filterDays") ?: "").split(',')
-        presenter.getSearchResults(
-            if (categoriesStr == "") null else categoriesStr,
-            if (sortPrice == 0) null else sortPrice - 1,
-            if (!filters.getBoolean("sortRating")) null else 1,
-            if (!filters.getBoolean("sortNear")) null else 1,
-            if (maxPrice == -1) null else maxPrice,
-            filters.getInt("costMin", 0),
-            filters.getInt("ageMax", 100),
-            filters.getInt("ageMin", 0),
-            if (!filters.getBoolean("sexAny")) null else 0,
-            if (!filters.getBoolean("sexMale")) null else 1,
-            if (!filters.getBoolean("sexFemale")) null else 2,
-            if (days.contains("0")) 0 else null,
-            if (days.contains("1")) 1 else null,
-            if (days.contains("2")) 2 else null,
-            if (days.contains("3")) 3 else null,
-            if (days.contains("4")) 4 else null,
-            if (days.contains("5")) 5 else null,
-            if (days.contains("5")) 6 else null,
-            if (filters.getBoolean("statusAny")) null else {
-                if (filters.getBoolean("statusTrue")) 1 else 0
-            },
-            if (query.length >= 3) query else null,
-            context
-        )
+
+        if (activity != null) {
+            val gpsData = (activity as MainNavActivity).gpsData
+            presenter.getSearchResults(
+                if (categoriesStr == "") null else categoriesStr,
+                if (sortPrice == 0) null else sortPrice - 1,
+                if (!filters.getBoolean("sortRating")) null else 1,
+                if (!filters.getBoolean("sortNear")) null else 1,
+                if (maxPrice == -1) null else maxPrice,
+                filters.getInt("costMin", 0),
+                filters.getInt("ageMax", 100),
+                filters.getInt("ageMin", 0),
+                if (!filters.getBoolean("sexAny")) null else 0,
+                if (!filters.getBoolean("sexMale")) null else 1,
+                if (!filters.getBoolean("sexFemale")) null else 2,
+                if (days.contains("0")) 0 else null,
+                if (days.contains("1")) 1 else null,
+                if (days.contains("2")) 2 else null,
+                if (days.contains("3")) 3 else null,
+                if (days.contains("4")) 4 else null,
+                if (days.contains("5")) 5 else null,
+                if (days.contains("5")) 6 else null,
+                if (filters.getBoolean("statusAny")) null else {
+                    if (filters.getBoolean("statusTrue")) 1 else 0
+                },
+                if (query.length >= 3) query else null,
+                gpsData.returnLat(),
+                gpsData.returnLon(),
+                context
+            )
+        }
 
     }
 

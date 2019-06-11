@@ -18,7 +18,9 @@ class GpsData {
     private var locationListener: LocationListener? = null
     private var lat: Double? = null
     private var lon: Double? = null
+    var isCreated = false
     fun create(activity: Activity, context: Context) {
+        isCreated = true
         locationManager = context.getSystemService(LOCATION_SERVICE) as LocationManager
         locationListener = object : LocationListener {
             override fun onLocationChanged(location: Location?) {
@@ -39,36 +41,30 @@ class GpsData {
                     Manifest.permission.ACCESS_COARSE_LOCATION
                 ) != PackageManager.PERMISSION_GRANTED
             ) {
-                val permissions = arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE)
+                val permissions = arrayOf(
+                    Manifest.permission.ACCESS_COARSE_LOCATION,
+                    Manifest.permission.ACCESS_FINE_LOCATION
+                )
                 requestPermissions(activity, permissions, 10)
                 return
             } else {
-                locationManager!!.requestLocationUpdates("gps", 5000, 0f, locationListener)
+                locationManager!!.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0f, locationListener)
+                locationManager!!.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0f, locationListener)
             }
     }
 
     fun configureGpsData() {
-        locationManager!!.requestLocationUpdates("gps", 5000, 0f, locationListener)
-    }
-
-    fun returnLat(): Double {
-        return lat!!
-    }
-
-    fun returnLon(): Double {
-        return lon!!
-    }
-}
-
-/*
-override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        when (requestCode) {
-            10 -> {
-                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)
-                configureGpsData()
-                else Toast.makeText(context, "Разрешения не выданы", Toast.LENGTH_SHORT).show()
-            }
+        if (isCreated) {
+            locationManager!!.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0f, locationListener)
+            locationManager!!.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0f, locationListener)
         }
     }
- */
+
+    fun returnLat(): Float? {
+        return if (lat == null) null else lat!!.toFloat()
+    }
+
+    fun returnLon(): Float? {
+        return if (lon == null) null else lon!!.toFloat()
+    }
+}

@@ -40,10 +40,10 @@ class PopularCoursesPresenter(private var view: IPopularCoursesView?, private va
             model?.addUserBookmark(token, courseId, position, this)
     }
 
-    fun getPopularCourses(context: Context) {
+    fun getPopularCourses(context: Context, lat: Float?, lon: Float?) {
         val token = Settings(context).getProperty("token")
         if (token != null)
-            model?.getPopularCoursesData(token, this)
+            model?.getPopularCoursesData(token,lat, lon, this)
     }
 
     fun onDestroy() {

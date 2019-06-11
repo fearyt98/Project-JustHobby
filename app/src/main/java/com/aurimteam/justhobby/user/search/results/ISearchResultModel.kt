@@ -1,6 +1,6 @@
 package com.aurimteam.justhobby.user.search.results
 
-interface ISearchResultModel{
+interface ISearchResultModel {
     fun getSearchResultsData(
         subcategories: String?,
         sortPrice: Int?,
@@ -23,8 +23,22 @@ interface ISearchResultModel{
         status: Int?,
         query: String?,
         token: String,
+        lat: Float?,
+        lon: Float?,
         onFinishedListener: SearchResultModel.OnFinishedListener
     )
-    fun deleteUserBookmark(token: String, courseId: Long, position: Int, onFinishedListener: SearchResultModel.OnFinishedListener)
-    fun addUserBookmark(token: String, courseId: Long, position: Int, onFinishedListener: SearchResultModel.OnFinishedListener)
+
+    fun deleteUserBookmark(
+        token: String,
+        courseId: Long,
+        position: Int,
+        onFinishedListener: SearchResultModel.OnFinishedListener
+    )
+
+    fun addUserBookmark(
+        token: String,
+        courseId: Long,
+        position: Int,
+        onFinishedListener: SearchResultModel.OnFinishedListener
+    )
 }

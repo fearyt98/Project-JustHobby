@@ -37,10 +37,10 @@ class CompanyCoursesPresenter(private var view: ICompanyCoursesView?, private va
             model?.addUserBookmark(token, courseId, position, this)
     }
 
-    fun getCompanyCourses(context: Context, companyId: Long) {
+    fun getCompanyCourses(context: Context, companyId: Long, lat: Float?, lon: Float?) {
         val token = Settings(context).getProperty("token")
         if (token != null)
-            model?.getCompanyCoursesData(token, companyId, this)
+            model?.getCompanyCoursesData(token, companyId, lat, lon, this)
     }
 
     fun isSetView(): Boolean {

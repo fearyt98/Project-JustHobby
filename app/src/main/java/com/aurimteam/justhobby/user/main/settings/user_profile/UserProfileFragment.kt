@@ -10,15 +10,18 @@ import android.os.Bundle
 import android.support.design.widget.TextInputEditText
 import android.support.v4.app.Fragment
 import android.support.v4.content.PermissionChecker.checkSelfPermission
+import android.support.v7.widget.SwitchCompat
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CompoundButton
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import com.aurimteam.justhobby.App
 import com.aurimteam.justhobby.R
+import com.aurimteam.justhobby.Settings
 import com.aurimteam.justhobby.user.main.settings.settings.SettingsFragment
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.fragment_settings_profile.*
@@ -30,6 +33,7 @@ class UserProfileFragment : Fragment(), IUserProfileView {
     private var oldPass: String = ""
     private var newPass: String = ""
     private var newRepeatPass: String = ""
+    private var isTouched = false
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_settings_profile, container, false)
@@ -37,6 +41,27 @@ class UserProfileFragment : Fragment(), IUserProfileView {
         view.findViewById<ImageView>(R.id.userProfileBtnSend).setOnClickListener { sendChangeUserInfo() }
         view.findViewById<ImageView>(R.id.changeUserPhotoProfileBtn).setOnClickListener { pickImage() }
         view.findViewById<TextView>(R.id.changePasswordUserProfileBtn).setOnClickListener { changePasswords() }
+
+        val gps = Settings(context!!).getPropertyBoolean("gps", false)
+        view.findViewById<SwitchCompat>(R.id.locationUserProfile).isChecked = gps == true
+
+        view.findViewById<SwitchCompat>(R.id.locationUserProfile)
+            .setOnTouchListener(View.OnTouchListener { view, motionEvent ->
+                isTouched = true
+                false
+            })
+        view.findViewById<SwitchCompat>(R.id.locationUserProfile)
+            .setOnCheckedChangeListener(CompoundButton.OnCheckedChangeListener { buttonView, isChecked ->
+                if (isTouched) {
+                    isTouched = false
+                    if (isChecked) {
+                        setGps()
+                    } else {
+                        unsetGps()
+                    }
+                }
+            })
+
         return view
     }
 
@@ -46,6 +71,14 @@ class UserProfileFragment : Fragment(), IUserProfileView {
             Glide.with(this).load(data?.data).circleCrop().into(userPhotoProfile)
             filePath = data?.data?.path
         }
+    }
+
+    private fun setGps() {
+        Settings(context!!).setPropertyBoolean("gps", true)
+    }
+
+    private fun unsetGps() {
+        Settings(context!!).setPropertyBoolean("gps", false)
     }
 
     private fun pickImage() {

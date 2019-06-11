@@ -18,6 +18,7 @@ import com.aurimteam.justhobby.App.Companion.IMAGE_PICK_CODE
 import com.aurimteam.justhobby.App.Companion.PERMISSION_STORAGE_CODE
 import com.aurimteam.justhobby.start.features.FeaturesActivity
 import com.aurimteam.justhobby.R
+import com.aurimteam.justhobby.Settings
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.activity_registry_start.*
 
@@ -115,6 +116,7 @@ class RegistryStartActivity : AppCompatActivity(), IRegistryStartView {
     }
 
     override fun userRegistered() {
+        Settings(this).setPropertyBoolean("gps", true)
         startActivity(Intent(this, FeaturesActivity::class.java))
     }
 

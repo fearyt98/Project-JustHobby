@@ -9,7 +9,6 @@ import java.util.*
 class NotificationsHolder(view: View) : RecyclerView.ViewHolder(view) {
     fun bind(
         first: Boolean,
-        last: Boolean,
         title: String,
         description: String,
         createdAt: Long
@@ -20,9 +19,6 @@ class NotificationsHolder(view: View) : RecyclerView.ViewHolder(view) {
             SimpleDateFormat("d MMMM в HH:mm", Locale.getDefault()).format(Date(createdAt * 1000))
         if (first) {
             itemView.cardNotificationFirstLine.visibility = View.VISIBLE
-        }
-        if (last) {
-            itemView.cardNotificationLastLine.visibility = View.INVISIBLE
         }
     }
 }

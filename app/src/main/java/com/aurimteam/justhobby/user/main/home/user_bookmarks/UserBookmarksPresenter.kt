@@ -26,10 +26,10 @@ class UserBookmarksPresenter(private var view: IUserBookmarksView?, private val 
             model?.deleteUserBookmark(token, courseId, position, this)
     }
 
-    fun getUserBookmarks(context: Context) {
+    fun getUserBookmarks(context: Context, lat: Float?, lon: Float?) {
         val token = Settings(context).getProperty("token")
         if (token != null)
-            model?.getUserBookmarksData(token, this)
+            model?.getUserBookmarksData(token, lat, lon, this)
     }
 
     fun isSetView(): Boolean {

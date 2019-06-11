@@ -58,10 +58,13 @@ class SearchResultPresenter(private var view: ISearchResultView?, private val mo
         timetable7: Int?,
         status: Int?,
         query: String?,
+        lat: Float?,
+        lon: Float?,
         context: Context
     ) {
         val token = Settings(context).getProperty("token")
-        if (token != null)
+        if (token != null) {
+            view?.toggleContentPB(true)
             model?.getSearchResultsData(
                 subcategories,
                 sortPrice,
@@ -84,8 +87,11 @@ class SearchResultPresenter(private var view: ISearchResultView?, private val mo
                 status,
                 query,
                 token,
+                lat,
+                lon,
                 this
             )
+        }
     }
 
     fun isSetView(): Boolean {

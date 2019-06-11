@@ -33,20 +33,20 @@ interface Api {
     ): Call<UserResponse>
 
     @Headers("Accept: application/json")
-    @GET("notifications/create")
+    @GET("user/notifications/create")
     fun checkUserNewNotify(
         @Query("token") token: String
     ): Call<StatusResponse>
 
     @Headers("Accept: application/json")
-    @GET("notifications")
+    @GET("user/notifications")
     fun getUserNotify(
         @Query("token") token: String,
         @Query("is_showed") isShowed: Boolean?
     ): Call<NotificationsResponse>
 
     @Headers("Accept: application/json")
-    @HTTP(method = "DELETE", path = "notifications", hasBody = true)
+    @HTTP(method = "DELETE", path = "user/notifications", hasBody = true)
     fun deleteAllNotify(
         @Body tokenBody: TokenBody
     ): Call<StatusResponse>
@@ -117,9 +117,9 @@ interface Api {
     @Headers("Accept: application/json")
     @GET("user/bookmarks?include[course][]=company")
     fun getUserBookmarks(
-        @Query("token") token: String//,
-        //@Query("geo[lat]") lat: Float?,
-        //@Query("geo[lon]") lon: Float?
+        @Query("token") token: String,
+        @Query("geo[lat]") lat: Float?,
+        @Query("geo[lon]") lon: Float?
     ): Call<CoursesResponse>
 
     @Headers("Accept: application/json")
@@ -179,25 +179,25 @@ interface Api {
         @Query("filters[timetable][]") timetable7: Int?,
         @Query("filters[status]") status: Int?,
         @Query("q") query: String?,
-        @Query("token") token: String//,
-        //@Query("geo[lat]") lat: Float?,
-       // @Query("geo[lon]") lon: Float? //near, popular,bookmarks, coursescomp - get, подгрузка курсов, cardloading
+        @Query("token") token: String,
+        @Query("geo[lat]") lat: Float?,
+        @Query("geo[lon]") lon: Float?
     ): Call<CoursesResponse>
 
     @Headers("Accept: application/json")
     @GET("courses?page[size]=5&include[course][]=company&include[course][]=user&sort[popular]=1")
     fun getPopularCourses(
-        @Query("token") token: String//,
-        //@Query("geo[lat]") lat: Float?,
-        //@Query("geo[lon]") lon: Float?
+        @Query("token") token: String,
+        @Query("geo[lat]") lat: Float?,
+        @Query("geo[lon]") lon: Float?
     ): Call<CoursesResponse>
 
     @Headers("Accept: application/json")
     @GET("courses?page[size]=5&include[course][]=company&include[course][]=user&sort[length]=1")
     fun getNearCourses(
-        @Query("token") token: String//,
-        //@Query("geo[lat]") lat: Float?,
-        //@Query("geo[lon]") lon: Float?
+        @Query("token") token: String,
+        @Query("geo[lat]") lat: Float?,
+        @Query("geo[lon]") lon: Float?
     ): Call<CoursesResponse>
 
     @Headers("Accept: application/json")
@@ -239,8 +239,8 @@ interface Api {
     @GET("companies/{company_id}/courses?&include[course][]=company&include[courses][]=user")
     fun getCoursesOneCompany(
         @Path("company_id") companyId: Long,
-        @Query("token") token: String//,
-        //@Query("geo[lat]") lat: Float?,
-        //@Query("geo[lon]") lon: Float?
+        @Query("token") token: String,
+        @Query("geo[lat]") lat: Float?,
+        @Query("geo[lon]") lon: Float?
     ): Call<CoursesResponse>
 }
