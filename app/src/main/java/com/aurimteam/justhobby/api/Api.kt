@@ -96,7 +96,8 @@ interface Api {
     @Headers("Accept: application/json")
     @GET("user/timeline/near_day")
     fun getNearDayTimeline(
-        @Query("token") token: String
+        @Query("token") token: String,
+        @Query("next") next: Boolean?
     ): Call<TimelineNearDayResponse>
 
     @Headers("Accept: application/json")
@@ -185,7 +186,7 @@ interface Api {
     ): Call<CoursesResponse>
 
     @Headers("Accept: application/json")
-    @GET("courses?page[size]=5&include[course][]=company&include[course][]=user&sort[popular]=1")
+    @GET("courses?page[size]=10&include[course][]=company&include[course][]=user&sort[popular]=1")
     fun getPopularCourses(
         @Query("token") token: String,
         @Query("geo[lat]") lat: Float?,
@@ -193,7 +194,7 @@ interface Api {
     ): Call<CoursesResponse>
 
     @Headers("Accept: application/json")
-    @GET("courses?page[size]=5&include[course][]=company&include[course][]=user&sort[length]=1")
+    @GET("courses?page[size]=10&include[course][]=company&include[course][]=user&sort[length]=1")
     fun getNearCourses(
         @Query("token") token: String,
         @Query("geo[lat]") lat: Float?,

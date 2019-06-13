@@ -23,10 +23,10 @@ class HomeTimelinePresenter(
         view?.showMessage(strError)
     }
 
-    fun getNearDayTimeline(context: Context) {
+    fun getNearDayTimeline(isNext: Boolean, context: Context) {
         val token = Settings(context).getProperty("token")
         if (token != null)
-            model?.getNearDayTimeline(token, this)
+            model?.getNearDayTimeline(isNext, token, this)
     }
 
     fun getEventsTimeline(context: Context, date: String) {

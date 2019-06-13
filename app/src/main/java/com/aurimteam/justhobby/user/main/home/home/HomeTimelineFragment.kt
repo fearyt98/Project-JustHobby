@@ -13,15 +13,12 @@ import kotlinx.android.synthetic.main.fragment_main_home_timeline.*
 import java.text.SimpleDateFormat
 import java.util.*
 import android.app.DatePickerDialog
-import android.content.Intent
 import android.view.Gravity
 import android.widget.Toast
 import com.aurimteam.justhobby.response.TimelineNearDayResponse
 import com.aurimteam.justhobby.user.main.home.user_bookmarks.UserBookmarksFragment
 import android.os.CountDownTimer
 import android.support.design.widget.BottomNavigationView
-import com.aurimteam.justhobby.NotificationsService
-import com.aurimteam.justhobby.Settings
 import com.aurimteam.justhobby.user.search.search.SearchFragment
 
 class HomeTimelineFragment : Fragment(), IHomeView {
@@ -57,15 +54,15 @@ class HomeTimelineFragment : Fragment(), IHomeView {
 
             for (i in first..last) adapter.notifyItemChanged(i, listOf(1))
             adapter.removeIfIs()
-            if (adapter.itemCount == 0 && context != null) presenter.getNearDayTimeline(context!!)
+            if (adapter.itemCount == 0 && context != null)
+                presenter.getNearDayTimeline(true, context!!)
         }
 
         override fun onFinish() {}
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_main_home_timeline, container, false)
-        return view
+        return inflater.inflate(R.layout.fragment_main_home_timeline, container, false)
     }
 
     override fun onStart() {
@@ -73,7 +70,9 @@ class HomeTimelineFragment : Fragment(), IHomeView {
         if (!presenter.isSetView())
             presenter.attachView(this)
 
-        if (context != null) presenter.getNearDayTimeline(context!!)
+        if (context != null)
+            presenter.getNearDayTimeline(false, context!!)
+
         homeBookmarks.setOnClickListener { openUserBookmarks() }
         homeCourses.setOnClickListener { openUserCourses() }
         homeCalendar.setOnClickListener { openDatePicker() }
@@ -143,7 +142,7 @@ class HomeTimelineFragment : Fragment(), IHomeView {
     override fun showContent(nearDay: TimelineNearDayResponse) {
         if (nearDay.status == "success") {
             oldDate.timeInMillis = nearDay.date * 1000
-            selectDate = oldDate.clone() as Calendar
+            selectDate.timeInMillis = oldDate.timeInMillis
             if (context != null)
                 presenter.getEventsTimeline(
                     context!!,

@@ -17,15 +17,19 @@ class HomeTimelineModel : IHomeModel {
         fun onResultFail(strError: String?)
     }
 
-    override fun getNearDayTimeline(token: String, onFinishedListener: OnFinishedListener) {
+    override fun getNearDayTimeline(isNext: Boolean, token: String, onFinishedListener: OnFinishedListener) {
         App.retrofit
             .create(Api::class.java)
-            .getNearDayTimeline(token)
+            .getNearDayTimeline(token, if (isNext) true else null)
             .enqueue(object : Callback<TimelineNearDayResponse> {
                 override fun onFailure(call: Call<TimelineNearDayResponse>, t: Throwable) {
                     onFinishedListener.onResultFail(t.message)
                 }
-                override fun onResponse(call: Call<TimelineNearDayResponse>, response: Response<TimelineNearDayResponse>) {
+
+                override fun onResponse(
+                    call: Call<TimelineNearDayResponse>,
+                    response: Response<TimelineNearDayResponse>
+                ) {
                     val responseBody = response.body()
                     if (responseBody != null) {
                         onFinishedListener.onResultSuccessNearDayTimeline(responseBody)
@@ -45,6 +49,7 @@ class HomeTimelineModel : IHomeModel {
                 override fun onFailure(call: Call<TimelineResponse>, t: Throwable) {
                     onFinishedListener.onResultFail(t.message)
                 }
+
                 override fun onResponse(call: Call<TimelineResponse>, response: Response<TimelineResponse>) {
                     val responseBody = response.body()
                     if (responseBody != null) {
