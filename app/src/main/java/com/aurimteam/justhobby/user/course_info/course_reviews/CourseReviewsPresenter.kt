@@ -7,7 +7,16 @@ import com.aurimteam.justhobby.response.ReviewResponse
 class CourseReviewsPresenter(private var view: ICourseReviewsView?, private val model: ICourseReviewsModel?) :
     CourseReviewsModel.OnFinishedListener {
 
+    private var context: Context? = null
     override fun onResultSuccess(courseReviews: List<ReviewResponse>) {
+        var hideBtnReview = false
+        loop@ for (item in courseReviews)
+            if (item.user_id == Settings(context!!).getProperty("user_id")!!.toInt()) {
+                hideBtnReview = true
+                break@loop
+            }
+        if (hideBtnReview) view?.hideBtnForReview(true)
+        else view?.hideBtnForReview(false)
         view?.showCourseReviews(courseReviews)
     }
 
@@ -16,6 +25,7 @@ class CourseReviewsPresenter(private var view: ICourseReviewsView?, private val 
     }
 
     fun getCourseReviews(context: Context, courseId: Long) {
+        this.context = context
         val token = Settings(context).getProperty("token")
         if (token != null) {
             view?.toggleContentPB(true)

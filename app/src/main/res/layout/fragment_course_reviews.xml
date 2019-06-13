@@ -13,7 +13,7 @@
                 android:paddingBottom="56dp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/notificationsMarginSpacer">
+                app:layout_constraintTop_toBottomOf="@id/courseReviewsMarginSpacer">
 
         <LinearLayout android:layout_width="match_parent"
                       android:layout_height="wrap_content"
@@ -24,12 +24,21 @@
                     android:layout_marginTop="10dp"
                     android:text="@string/leave_your_review"/>
 
-            <ImageView android:layout_width="match_parent"
+            <ImageView android:id="@+id/courseReviewsLine"
+                       android:layout_width="match_parent"
                        android:layout_height="1dp"
                        android:layout_marginTop="5dp"
                        android:layout_marginBottom="6dp"
                        android:tint="@color/grayLightTopMiddle"
                        app:srcCompat="@drawable/ic_circle_separator"
+                       tools:ignore="ContentDescription"/>
+
+            <ImageView android:id="@+id/courseReviewsMarginLine"
+                       android:layout_width="match_parent"
+                       android:layout_height="1dp"
+                       android:visibility="gone"
+                       android:layout_marginBottom="8dp"
+                       android:background="@color/whiteTop"
                        tools:ignore="ContentDescription"/>
 
             <android.support.constraint.ConstraintLayout android:layout_width="match_parent"
@@ -111,7 +120,7 @@
                   app:layout_constraintBottom_toBottomOf="parent"
                   app:layout_constraintLeft_toLeftOf="parent"
                   app:layout_constraintRight_toRightOf="parent"
-                  app:layout_constraintTop_toBottomOf="@id/notificationsMarginSpacer">
+                  app:layout_constraintTop_toBottomOf="@id/courseReviewsMarginSpacer">
 
         <ImageView android:layout_width="114dp"
                    android:layout_height="114dp"
@@ -131,7 +140,7 @@
                 android:text="@string/no_course_reviews"/>
     </LinearLayout>
 
-    <android.widget.Space android:id="@+id/notificationsMarginSpacer"
+    <android.widget.Space android:id="@+id/courseReviewsMarginSpacer"
                           android:layout_width="0dp"
                           android:layout_height="0dp"
                           android:layout_marginBottom="8dp"

@@ -95,6 +95,7 @@ class SearchResultFragment : Fragment(), ISearchResultView {
     }
 
     private fun updateResults(context: Context) {
+        searchResultsClear.visibility = View.GONE
         var categoriesStr = ""
         val cats = categories.getIntegerArrayList("categories")
         if (cats != null) {

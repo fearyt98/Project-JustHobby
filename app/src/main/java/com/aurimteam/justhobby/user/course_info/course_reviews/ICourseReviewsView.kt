@@ -6,4 +6,5 @@ interface ICourseReviewsView {
     fun showCourseReviews(courseReviews: List<ReviewResponse>)
     fun showMessage(message: String?)
     fun toggleContentPB(isVisiblePB: Boolean)
+    fun hideBtnForReview(hide: Boolean)
 }

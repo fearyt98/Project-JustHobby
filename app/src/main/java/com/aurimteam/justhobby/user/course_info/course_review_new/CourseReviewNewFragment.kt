@@ -1,6 +1,5 @@
 package com.aurimteam.justhobby.user.course_info.course_review_new
 
-import android.graphics.Color
 import android.graphics.PorterDuff
 import android.graphics.drawable.LayerDrawable
 import android.os.Bundle
@@ -20,6 +19,9 @@ import android.support.annotation.ColorInt
 import android.graphics.drawable.Drawable
 import android.view.Gravity
 import android.widget.Toast
+import com.tooltip.Tooltip
+
+
 
 class CourseReviewNewFragment : Fragment(), ICourseReviewNewView {
 
@@ -102,17 +104,8 @@ class CourseReviewNewFragment : Fragment(), ICourseReviewNewView {
 
         reviewNewEditText.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable) {}
-
-            override fun beforeTextChanged(
-                s: CharSequence, start: Int,
-                count: Int, after: Int
-            ) {
-            }
-
-            override fun onTextChanged(
-                s: CharSequence, start: Int,
-                before: Int, count: Int
-            ) {
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
                 reviewNewLimit.visibility = if (s.length >= 20) View.GONE else View.VISIBLE
             }
         })

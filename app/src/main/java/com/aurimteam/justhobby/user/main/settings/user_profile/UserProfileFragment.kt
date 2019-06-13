@@ -11,11 +11,12 @@ import android.support.design.widget.TextInputEditText
 import android.support.v4.app.Fragment
 import android.support.v4.content.PermissionChecker.checkSelfPermission
 import android.support.v7.widget.SwitchCompat
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.CompoundButton
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -24,6 +25,7 @@ import com.aurimteam.justhobby.R
 import com.aurimteam.justhobby.Settings
 import com.aurimteam.justhobby.user.main.settings.settings.SettingsFragment
 import com.bumptech.glide.Glide
+import com.tooltip.Tooltip
 import kotlinx.android.synthetic.main.fragment_settings_profile.*
 
 class UserProfileFragment : Fragment(), IUserProfileView {
@@ -46,12 +48,12 @@ class UserProfileFragment : Fragment(), IUserProfileView {
         view.findViewById<SwitchCompat>(R.id.locationUserProfile).isChecked = gps == true
 
         view.findViewById<SwitchCompat>(R.id.locationUserProfile)
-            .setOnTouchListener(View.OnTouchListener { view, motionEvent ->
+            .setOnTouchListener { _, _ ->
                 isTouched = true
                 false
-            })
+            }
         view.findViewById<SwitchCompat>(R.id.locationUserProfile)
-            .setOnCheckedChangeListener(CompoundButton.OnCheckedChangeListener { buttonView, isChecked ->
+            .setOnCheckedChangeListener { _, isChecked ->
                 if (isTouched) {
                     isTouched = false
                     if (isChecked) {
@@ -60,7 +62,7 @@ class UserProfileFragment : Fragment(), IUserProfileView {
                         unsetGps()
                     }
                 }
-            })
+            }
 
         return view
     }
@@ -116,6 +118,19 @@ class UserProfileFragment : Fragment(), IUserProfileView {
         presenter.attachView(this)
         toggleContentPB(false)
         presenter.getUserInfo(context)
+
+        changeAddressUserProfile.setOnTouchListener { _, _ ->
+            showAddressTooltip()
+            false
+        }
+        changeAddressUserProfile.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable) {
+                showAddressTooltip()
+            }
+
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
+        })
     }
 
     override fun onStop() {
@@ -160,6 +175,19 @@ class UserProfileFragment : Fragment(), IUserProfileView {
             userProfileProgressBar.visibility = View.GONE
             userProfileContent.visibility = View.VISIBLE
         }
+    }
+
+    private fun showAddressTooltip() {
+        val builder = Tooltip.Builder(changeAddressUserProfile)
+            .setCancelable(true)
+            .setDismissOnClick(false)
+            .setCornerRadius(10f)
+            .setTextColor(resources.getColor(R.color.whiteText))
+            .setBackgroundColor(resources.getColor(R.color.colorAccent))
+            .setTextAppearance(R.style.Caption2_Medium)
+            .setGravity(Gravity.TOP)
+            .setText("Пример: ул. Карла Маркса, 38")
+        builder.show()
     }
 
     private fun changePasswords() {

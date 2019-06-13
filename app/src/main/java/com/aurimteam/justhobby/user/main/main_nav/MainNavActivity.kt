@@ -66,13 +66,19 @@ class MainNavActivity : AppCompatActivity(), IMainNavView {
                     .beginTransaction()
                     .replace(R.id.mainNavContainerFragment, fragment)
                     .commit()
-            else
+            else {
                 loadFragment(HomeTimelineFragment())
+            }
         } else {
             startNotifyService()
-            loadFragment(HomeTimelineFragment())
+            val intent = intent
+            if (!intent.getBooleanExtra("openNotify", false))
+                loadFragment(HomeTimelineFragment())
+            else {
+                loadFragment(NotificationsFragment())
+                mainNavNavigation.menu.findItem(R.id.navigation_notifications).isChecked = true
+            }
         }
-
     }
 
     override fun onStart() {
@@ -149,6 +155,7 @@ class MainNavActivity : AppCompatActivity(), IMainNavView {
             }
         }
     }
+
     private fun startNotifyService() {
         val mute = Settings(this).getPropertyBoolean("mute", false)
         val token = Settings(this).getProperty("token")

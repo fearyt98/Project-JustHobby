@@ -163,7 +163,6 @@
                      android:contentDescription="@string/clear_notifications"
                      android:paddingEnd="20dp"
                      android:tint="@color/whiteTop"
-                     android:visibility="gone"
                      app:srcCompat="@drawable/ic_delete_24dp"
                      tools:ignore="RtlSymmetry"/>
     </FrameLayout>
