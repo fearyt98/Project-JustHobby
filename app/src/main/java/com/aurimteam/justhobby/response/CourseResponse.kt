@@ -45,12 +45,12 @@ class CourseAttrResponse(
 
     val address: String,
     val length: Int?,
-    val fias_id: String,
-    val house: String,
     val lat: String,
     val lon: String,
 
     val rating: String,
+
+    val image: String?,
 
     val status: Boolean,
     //val type_payment: Int,

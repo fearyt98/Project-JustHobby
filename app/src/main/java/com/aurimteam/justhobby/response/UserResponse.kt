@@ -11,8 +11,6 @@ class UserAttrResponse(
     val last_name: String,
     val full_name: String,
     val address: String?,
-    val fias_id: String?,
-    val house: String?,
     val lat: String,
     val lon: String,
     val email: String,

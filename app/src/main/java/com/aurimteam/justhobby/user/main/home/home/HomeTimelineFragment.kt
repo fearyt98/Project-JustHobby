@@ -39,7 +39,7 @@ class HomeTimelineFragment : Fragment(), IHomeView {
             setInitialDateTime()
         }
 
-    private val timer = object : CountDownTimer(1000, 2000) {
+    private val timer = object : CountDownTimer(5000, 2000) {
         override fun onTick(millisUntilFinished: Long) {
             if (!isOneDay(currentDate, Calendar.getInstance())) {
                 if (isOneDay(currentDate, selectDate)) {
