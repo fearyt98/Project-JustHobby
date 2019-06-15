@@ -23,7 +23,10 @@ class RegistryPresenter(
 
     override fun onResultFail(error: String) {
         view?.togglePB(false)
-        view?.showMessage(error)
+        if (error == "Unique")  view?.setErrorEmail("E-mail зарегестрирован")
+        else if (error == "IncorrectEmail") view?.setErrorEmail("Некорректный ввод")
+        else if (error == "IncorrectPass") view?.setErrorPassword("Некорректный ввод")
+        else view?.showMessage(error)
     }
 
     fun sendUserInfo(email: String, password: String, confirmPassword: String) {
@@ -41,10 +44,18 @@ class RegistryPresenter(
                 view?.setErrorEmail(context!!.getString(R.string.min_5_symbols))
             if (email.length > 255)
                 view?.setErrorEmail(context!!.getString(R.string.min_255_symbols))
-            if (password.length < 6 || confirmPassword.length < 6)
-                view?.setErrorPassword(context!!.getString(R.string.min_6_symbols))
-            if (password.length > 255 || confirmPassword.length > 255)
-                view?.setErrorPassword(context!!.getString(R.string.min_255_symbols))
+            if (password.length < 6 || confirmPassword.length < 6) {
+                if (password.length < 6)
+                    view?.setErrorPassword(context!!.getString(R.string.min_6_symbols))
+                if (confirmPassword.length < 6)
+                    view?.setErrorPasswordConfirm(context!!.getString(R.string.min_6_symbols))
+            }
+            if (password.length > 255 || confirmPassword.length > 255) {
+                if (password.length > 255)
+                    view?.setErrorPassword(context!!.getString(R.string.min_255_symbols))
+                if (confirmPassword.length > 255)
+                    view?.setErrorPasswordConfirm(context!!.getString(R.string.min_255_symbols))
+            }
         } else if (password != confirmPassword) {
             view?.hideErrors()
             view?.setErrorPassword(context!!.getString(R.string.passwords_not_similar))

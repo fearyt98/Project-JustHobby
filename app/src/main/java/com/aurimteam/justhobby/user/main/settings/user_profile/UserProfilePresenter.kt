@@ -2,12 +2,17 @@ package com.aurimteam.justhobby.user.main.settings.user_profile
 
 import android.content.Context
 import com.aurimteam.justhobby.Settings
+import com.aurimteam.justhobby.response.SuggestResponse
 
 class UserProfilePresenter(private var view: IUserProfileView?, private val model: IUserProfileModel?) :
     UserProfileModel.OnFinishedListener {
 
     override fun onResultSuccess(email: String, name: String, lastName: String, address: String?) {
         view?.setUserDefaultInfo(email, name, lastName, address)
+    }
+
+    override fun onSuggestResultSuccess(data: List<SuggestResponse>) {
+        view?.setSuggests(data)
     }
 
     override fun onResultFail(strError: String) {
@@ -17,6 +22,11 @@ class UserProfilePresenter(private var view: IUserProfileView?, private val mode
 
     override fun userInfoSended() {
         view?.toggleContentPB(false)
+        view?.userInfoSended()
+    }
+
+    fun getAddressList(context: Context?, query: String) {
+        model?.getSuggests(Settings(context!!).getProperty("token")!!, query, this)
     }
 
     fun getUserInfo(context: Context?) {
@@ -24,6 +34,7 @@ class UserProfilePresenter(private var view: IUserProfileView?, private val mode
         if (token != null)
             model?.getUserInfoData(token, this)
     }
+
     fun sendUserImage(filePath: String?, context: Context?) {
         val token = Settings(context!!).getProperty("token")
         model?.sendUserImage(token!!, filePath, this)

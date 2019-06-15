@@ -82,5 +82,7 @@ class NearUserCoursesFragment : Fragment(), INearCoursesView {
         val toast = Toast.makeText(activity, message, Toast.LENGTH_SHORT)
         toast.setGravity(Gravity.BOTTOM, 0, 30)
         toast.show()
+        toggleContentPB(false)
+        nearCoursesClear.visibility = View.VISIBLE
     }
 }

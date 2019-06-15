@@ -8,7 +8,14 @@ import okhttp3.RequestBody
 import okhttp3.MultipartBody
 
 interface Api {
+
     @Headers("Accept: application/json")
+    @GET("suggests?token_dadata=16e5cea84211dc08c2069ee6cb7b5d41eb915597")
+    fun getSuggests(
+        @Query ("token") token: String,
+        @Query ("q") query: String
+    ): Call<SuggestsResponse>
+
     @POST("login")
     fun login(
         @Body loginBody: LoginBody
@@ -42,7 +49,8 @@ interface Api {
     @GET("user/notifications")
     fun getUserNotify(
         @Query("token") token: String,
-        @Query("is_showed") isShowed: Boolean?
+        @Query("is_showed") isShowed: Boolean?,
+        @Query("update") update: Boolean?
     ): Call<NotificationsResponse>
 
     @Headers("Accept: application/json")

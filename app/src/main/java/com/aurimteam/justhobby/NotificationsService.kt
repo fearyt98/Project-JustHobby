@@ -75,11 +75,9 @@ class NotificationsService : Service() {
         if (token != null)
             App.retrofit
                 .create(Api::class.java)
-                .getUserNotify(token.toString(), null)
+                .getUserNotify(token.toString(), null, null)
                 .enqueue(object : Callback<NotificationsResponse> {
-                    override fun onFailure(call: Call<NotificationsResponse>, t: Throwable) {
-
-                    }
+                    override fun onFailure(call: Call<NotificationsResponse>, t: Throwable) {}
 
                     override fun onResponse(
                         call: Call<NotificationsResponse>,

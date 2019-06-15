@@ -2,6 +2,8 @@ package com.aurimteam.justhobby.user.main.settings.user_profile
 
 import com.aurimteam.justhobby.App
 import com.aurimteam.justhobby.api.Api
+import com.aurimteam.justhobby.response.SuggestResponse
+import com.aurimteam.justhobby.response.SuggestsResponse
 import com.aurimteam.justhobby.response.UserResponse
 import com.aurimteam.justhobby.response_body.UpdateUserAllBody
 import okhttp3.MediaType
@@ -17,6 +19,7 @@ class UserProfileModel : IUserProfileModel {
     interface OnFinishedListener {
         fun onResultSuccess(email: String, name: String, lastName: String, address: String?)
         fun userInfoSended()
+        fun onSuggestResultSuccess(data: List<SuggestResponse>)
         fun onResultFail(strError: String)
     }
     override fun sendUserImage(token: String, filePath: String?, onFinishedListener: OnFinishedListener) {
@@ -108,5 +111,26 @@ class UserProfileModel : IUserProfileModel {
                 }
             })
 
+    }
+
+    override fun getSuggests(token: String, query: String, onFinishedListener: OnFinishedListener) {
+        App.retrofit
+            .create(Api::class.java)
+            .getSuggests(token, query)
+            .enqueue(object : Callback<SuggestsResponse> {
+                override fun onFailure(call: Call<SuggestsResponse>, t: Throwable) {
+                    onFinishedListener.onResultFail("Error of parsing")
+                }
+
+                override fun onResponse(call: Call<SuggestsResponse>, response: Response<SuggestsResponse>) {
+                    val responseBody = response.body()
+                    if (responseBody != null) {
+                        onFinishedListener.onSuggestResultSuccess(responseBody.data)
+                    } else {
+                        val jsonObj = JSONObject(response.errorBody()?.string())
+                        onFinishedListener.onResultFail(jsonObj.getJSONObject("error").getString("message").toString())
+                    }
+                }
+            })
     }
 }

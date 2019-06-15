@@ -23,6 +23,7 @@ import android.widget.Toast
 import com.aurimteam.justhobby.App
 import com.aurimteam.justhobby.R
 import com.aurimteam.justhobby.Settings
+import com.aurimteam.justhobby.response.SuggestResponse
 import com.aurimteam.justhobby.user.main.settings.settings.SettingsFragment
 import com.bumptech.glide.Glide
 import com.tooltip.Tooltip
@@ -36,6 +37,7 @@ class UserProfileFragment : Fragment(), IUserProfileView {
     private var newPass: String = ""
     private var newRepeatPass: String = ""
     private var isTouched = false
+    private var adapter: AddressArrayAdapter? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_settings_profile, container, false)
@@ -113,19 +115,23 @@ class UserProfileFragment : Fragment(), IUserProfileView {
         }
     }
 
+    override fun setSuggests(data: List<SuggestResponse>) {
+        val suggestList = mutableListOf<String>()
+        for (item in data)
+            suggestList.add(item.address)
+        adapter = AddressArrayAdapter(context!!, android.R.layout.simple_dropdown_item_1line, suggestList)
+        changeAddressUserProfile.setAdapter(adapter)
+        adapter!!.notifyDataSetChanged()
+    }
+
     override fun onStart() {
         super.onStart()
         presenter.attachView(this)
         toggleContentPB(false)
         presenter.getUserInfo(context)
-
-        changeAddressUserProfile.setOnTouchListener { _, _ ->
-            showAddressTooltip()
-            false
-        }
         changeAddressUserProfile.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable) {
-                showAddressTooltip()
+                presenter.getAddressList(context!!, s.toString())
             }
 
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
@@ -177,19 +183,6 @@ class UserProfileFragment : Fragment(), IUserProfileView {
         }
     }
 
-    private fun showAddressTooltip() {
-        val builder = Tooltip.Builder(changeAddressUserProfile)
-            .setCancelable(true)
-            .setDismissOnClick(false)
-            .setCornerRadius(10f)
-            .setTextColor(resources.getColor(R.color.whiteText))
-            .setBackgroundColor(resources.getColor(R.color.colorAccent))
-            .setTextAppearance(R.style.Caption2_Medium)
-            .setGravity(Gravity.TOP)
-            .setText("Пример: ул. Карла Маркса, 38")
-        builder.show()
-    }
-
     private fun changePasswords() {
         val dialog = Dialog(this.context!!)
         dialog.setContentView(R.layout.activity_popup_change_passwords)
@@ -215,6 +208,14 @@ class UserProfileFragment : Fragment(), IUserProfileView {
             changeAddressUserProfile.text.toString(),
             context
         )
+    }
+
+    override fun userInfoSended() {
+        fragmentManager!!
+            .beginTransaction()
+            .addToBackStack(null)
+            .replace(R.id.mainNavContainerFragment, SettingsFragment())
+            .commit()
     }
 
     override fun showMessage(message: String?) {

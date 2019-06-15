@@ -41,6 +41,7 @@ class NotificationsFragment : Fragment(), INotificationsView {
         notificationsOldRecyclerView.adapter = adapterOldNotify
         ViewCompat.setNestedScrollingEnabled(notificationsNew, false)
         ViewCompat.setNestedScrollingEnabled(notificationsOld, false)
+        notificationsClear.visibility = View.GONE
     }
 
     override fun onStop() {

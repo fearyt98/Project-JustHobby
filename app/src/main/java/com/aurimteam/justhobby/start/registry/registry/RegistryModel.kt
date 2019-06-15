@@ -35,7 +35,26 @@ class RegistryModel : IRegistryModel {
                         onFinishedListener.onResultSuccess(responseBody)
                     } else {
                         val jsonObj = JSONObject(response.errorBody()?.string())
-                        onFinishedListener.onResultFail(jsonObj.getJSONObject("error")?.getString("message").toString())
+                        var emailUnique: String? = null
+                        var emailError: String? = null
+                        var passObj: String? = null
+                        if (jsonObj.getJSONObject("error")?.getJSONObject("description") != null) {
+                            emailUnique =
+                                jsonObj.getJSONObject("error")?.getJSONObject("description")?.getJSONObject("email")
+                                    ?.getString("Unique")?.toString()
+                            emailError =
+                                jsonObj.getJSONObject("error")?.getJSONObject("description")?.getJSONObject("email")
+                                    ?.getString("Email")?.toString()
+                            passObj =
+                                jsonObj.getJSONObject("error")?.getJSONObject("description")?.getJSONObject("password")
+                                    ?.getString("Regex")?.toString()
+                        }
+                        if (emailUnique != null)
+                            onFinishedListener.onResultFail("Unique")
+                        if (emailError != null)
+                            onFinishedListener.onResultFail("IncorrectEmail")
+                        if (passObj != null)
+                            onFinishedListener.onResultFail("IncorrectPass")
                     }
                 }
             })

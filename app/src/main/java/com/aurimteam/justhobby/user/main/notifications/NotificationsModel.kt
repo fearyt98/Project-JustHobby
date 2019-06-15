@@ -22,7 +22,7 @@ class NotificationsModel : INotificationsModel {
     override fun getNotificationsData(token: String, onFinishedListener: OnFinishedListener) {
         App.retrofit
             .create(Api::class.java)
-            .getUserNotify(token, null)
+            .getUserNotify(token, null, true)
             .enqueue(object : Callback<NotificationsResponse> {
                 override fun onFailure(call: Call<NotificationsResponse>, t: Throwable) {
                     onFinishedListener.onResultFail(t.message)
@@ -43,7 +43,7 @@ class NotificationsModel : INotificationsModel {
             })
         App.retrofit
             .create(Api::class.java)
-            .getUserNotify(token, true)
+            .getUserNotify(token, true, true)
             .enqueue(object : Callback<NotificationsResponse> {
                 override fun onFailure(call: Call<NotificationsResponse>, t: Throwable) {
                     onFinishedListener.onResultFail(t.message)
