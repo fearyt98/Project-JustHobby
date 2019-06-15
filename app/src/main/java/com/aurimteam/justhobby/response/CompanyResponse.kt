@@ -28,14 +28,14 @@ class CompanyAttrResponse(
     val phone: String,
 
     val address: String?,
-    val fias_id: String?,
-    val house: String?,
     val lat: String?,
     val lon: String?,
 
     val site: String,
     val description: String,
     val rating: String,
+
+    val image: String?,
 
     val created_at: Long,
     val updated_at: Long
