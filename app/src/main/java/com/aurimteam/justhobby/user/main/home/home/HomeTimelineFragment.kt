@@ -129,7 +129,7 @@ class HomeTimelineFragment : Fragment(), IHomeView {
 
     override fun showTimelineEvents(eventsTimeline: List<EventResponse>) {
         if (eventsTimeline.isEmpty()) {
-            selectDate = oldDate.clone() as Calendar
+            selectDate.timeInMillis = oldDate.timeInMillis
             setInitialDateTime()
             showMessage(activity?.resources?.getString(R.string.in_change_day_no_events))
         } else {
@@ -143,11 +143,7 @@ class HomeTimelineFragment : Fragment(), IHomeView {
         if (nearDay.status == "success") {
             oldDate.timeInMillis = nearDay.date * 1000
             selectDate.timeInMillis = oldDate.timeInMillis
-            if (context != null)
-                presenter.getEventsTimeline(
-                    context!!,
-                    SimpleDateFormat("dd.MM.yyyy", Locale.getDefault()).format(Date(selectDate.timeInMillis))
-                )
+            setInitialDateTime()
         } else {
             isTimeline = false
             homeProgressBar.visibility = View.GONE

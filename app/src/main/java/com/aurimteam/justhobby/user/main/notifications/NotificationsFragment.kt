@@ -1,6 +1,7 @@
 package com.aurimteam.justhobby.user.main.notifications
 
 import android.os.Bundle
+import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.Fragment
 import android.support.v4.view.ViewCompat
 import android.support.v7.widget.LinearLayoutManager
@@ -8,11 +9,13 @@ import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageButton
 import android.widget.Toast
 import com.aurimteam.justhobby.R
 import com.aurimteam.justhobby.response.NotificationResponse
 import com.aurimteam.justhobby.response.NotificationsResponse
+import com.aurimteam.justhobby.user.search.search.SearchFragment
 import kotlinx.android.synthetic.main.fragment_main_notifications.*
 
 class NotificationsFragment : Fragment(), INotificationsView {
@@ -23,7 +26,6 @@ class NotificationsFragment : Fragment(), INotificationsView {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_main_notifications, container, false)
-        view.findViewById<ImageButton>(R.id.notificationsBtnClear).setOnClickListener { deleteNotifications() }
         return view
     }
 
@@ -32,9 +34,10 @@ class NotificationsFragment : Fragment(), INotificationsView {
         if (!presenter.isSetView())
             presenter.attachView(this)
 
-        if(context != null)
+        if (context != null)
             presenter.getNotifications(context!!)
         notificationsBtnClear.setOnClickListener { deleteNotifications() }
+        notificationsClearBtn.setOnClickListener { openSearch() }
         notificationsNewRecyclerView.layoutManager = LinearLayoutManager(context)
         notificationsNewRecyclerView.adapter = adapterNewNotify
         notificationsOldRecyclerView.layoutManager = LinearLayoutManager(context)
@@ -61,9 +64,9 @@ class NotificationsFragment : Fragment(), INotificationsView {
     }
 
     override fun showNewNotifications(notifications: NotificationsResponse) {
-        if(notifications.data.isEmpty()) {
+        if (notifications.data.isEmpty()) {
             notificationsNew.visibility = View.GONE
-            if(notificationsOld.visibility == View.GONE)
+            if (notificationsOld.visibility == View.GONE)
                 showClear()
         } else {
             adapterNewNotify.onDataChange(notifications.data, notifications.included)
@@ -72,9 +75,9 @@ class NotificationsFragment : Fragment(), INotificationsView {
 
     override fun showOldNotifications(notifications: NotificationsResponse) {
         toggleContentPB(false)
-        if(notifications.data.isEmpty()) {
+        if (notifications.data.isEmpty()) {
             notificationsOld.visibility = View.GONE
-            if(notificationsNew.visibility == View.GONE)
+            if (notificationsNew.visibility == View.GONE)
                 showClear()
         } else {
             adapterOldNotify.onDataChange(notifications.data, notifications.included)
@@ -97,8 +100,16 @@ class NotificationsFragment : Fragment(), INotificationsView {
         }
     }
 
+    private fun openSearch() {
+        activity?.findViewById<BottomNavigationView>(R.id.mainNavNavigation)?.selectedItemId = R.id.navigation_search
+        fragmentManager!!
+            .beginTransaction()
+            .replace(R.id.mainNavContainerFragment, SearchFragment())
+            .commit()
+    }
+
     private fun deleteNotifications() {
-        if(context != null)
+        if (context != null)
             presenter.deleteAll(context!!)
     }
 }

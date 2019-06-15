@@ -105,7 +105,8 @@ class CompanyInfoFragment : Fragment(), ICompanyInfoView {
         companyInfoDesc.text = company.attributes.description
         companyInfoSite.text = company.attributes.site
         companyInfoSite.setOnClickListener { openSite() }
-        Glide.with(this).load("").centerCrop().into(companyInfoImage)
+        if (company.attributes.image != null)
+            Glide.with(this).load(company.attributes.image).centerCrop().into(companyInfoImage)
 
         if (context != null) {
             val rating = company.attributes.rating
@@ -142,7 +143,8 @@ class CompanyInfoFragment : Fragment(), ICompanyInfoView {
     }
 
     private fun openMap() {
-        val mapIntent = Intent(Intent.ACTION_VIEW, Uri.parse("geo:${company?.attributes?.lat},${company?.attributes?.lon}"))
+        val mapIntent =
+            Intent(Intent.ACTION_VIEW, Uri.parse("geo:${company?.attributes?.lat},${company?.attributes?.lon}"))
         startActivity(mapIntent)
     }
 

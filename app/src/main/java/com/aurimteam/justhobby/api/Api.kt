@@ -245,7 +245,7 @@ interface Api {
     ): Call<CompanyResponseOneR>
 
     @Headers("Accept: application/json")
-    @GET("companies/{company_id}/courses?&include[course][]=company&include[courses][]=user")
+    @GET("companies/{company_id}/courses?&include[course][]=company&include[course][]=user")
     fun getCoursesOneCompany(
         @Path("company_id") companyId: Long,
         @Query("token") token: String,

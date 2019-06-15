@@ -205,17 +205,21 @@ class UserProfileFragment : Fragment(), IUserProfileView {
             oldPass,
             newPass,
             newRepeatPass,
-            changeAddressUserProfile.text.toString(),
+            if (locationUserProfile.isChecked) null
+            else changeAddressUserProfile.text.toString(),
             context
         )
     }
 
     override fun userInfoSended() {
+        if (locationUserProfile.isChecked) setGps()
+        else unsetGps()
         fragmentManager!!
             .beginTransaction()
             .addToBackStack(null)
             .replace(R.id.mainNavContainerFragment, SettingsFragment())
             .commit()
+
     }
 
     override fun showMessage(message: String?) {

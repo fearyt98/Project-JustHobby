@@ -42,7 +42,7 @@
         <item name="android:background">@drawable/edittext_search_bg</item>
         <item name="android:layout_gravity">center</item>
         <item name="android:textCursorDrawable">@null</item>
-        <item name="android:maxLength">180</item>
+        <item name="android:maxLength">128</item>
         <item name="android:imeOptions">actionGo</item>
     </style>
     <!-- Button white | bottom -7.5 | left -2.5 | right -2.5 | top -2.5 -->

@@ -25,7 +25,10 @@ class CourseReviewFragment : Fragment() {
             courseReviewTitle.text = arguments!!.get("course_name")!!.toString()
             courseReviewCompany.text = arguments!!.get("company_name")!!.toString()
             courseReviewName.text = arguments!!.get("user_name")!!.toString()
-            Glide.with(this).load("").circleCrop().into(courseReviewUserImage)
+            if (arguments!!.get("user_image") != null)
+                Glide.with(this).load(arguments!!.get("user_image")!!.toString()).circleCrop().into(
+                    courseReviewUserImage
+                )
             val rating = arguments!!.get("rating")!!.toString().toFloat()
             courseReviewRating.rating = rating
             if (context != null) {

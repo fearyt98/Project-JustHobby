@@ -130,6 +130,8 @@ class SearchFragment : Fragment(), ISearchView {
 
     override fun onDestroy() {
         super.onDestroy()
+        activity?.findViewById<BottomNavigationView>(R.id.mainNavNavigation)?.visibility = View.VISIBLE
+        activity?.findViewById<Space>(R.id.mainNavMarginSpacer)?.visibility = View.VISIBLE
         presenter.detachView()
     }
 

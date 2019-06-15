@@ -56,31 +56,38 @@ class CourseReviewsFragment : Fragment(), ICourseReviewsView {
                     R.string.count_reviews_term0andTerm5toMoreAnd11to14
                 )
                 courseReviewsCountReviews.text = String.format(context!!.resources.getString(stringId), countReviews)
-                val ratingDouble = rating.toDouble()
-                courseReviewsRatingBar.rating = (Math.round(ratingDouble * 10.0) / 10.0).toFloat()
                 val stars = courseReviewsRatingBar.progressDrawable
-                when {
-                    ratingDouble < 1.5 -> DrawableCompat.setTint(
-                        stars,
-                        ContextCompat.getColor(context!!, R.color.ratingOne)
+                if (rating != "-") {
+                    val ratingDouble = rating.toDouble()
+                    courseReviewsRatingBar.rating = (Math.round(ratingDouble * 10.0) / 10.0).toFloat()
+                    when {
+                        ratingDouble < 1.5 -> DrawableCompat.setTint(
+                            stars,
+                            ContextCompat.getColor(context!!, R.color.ratingOne)
+                        )
+                        ratingDouble >= 1.5 && ratingDouble < 2.5 -> DrawableCompat.setTint(
+                            stars,
+                            ContextCompat.getColor(context!!, R.color.ratingTwo)
+                        )
+                        ratingDouble >= 2.5 && ratingDouble < 3.5 -> DrawableCompat.setTint(
+                            stars,
+                            ContextCompat.getColor(context!!, R.color.ratingThree)
+                        )
+                        ratingDouble >= 3.5 && ratingDouble < 4.5 -> DrawableCompat.setTint(
+                            stars,
+                            ContextCompat.getColor(context!!, R.color.ratingFour)
+                        )
+                        ratingDouble >= 4.5 -> DrawableCompat.setTint(
+                            stars,
+                            ContextCompat.getColor(context!!, R.color.ratingFive)
+                        )
+                        else -> DrawableCompat.setTint(stars, ContextCompat.getColor(context!!, R.color.grayDarkMiddle))
+                    }
+                } else {
+                    courseReviewsRatingBar.rating = 0f
+                    DrawableCompat.setTint(
+                        stars, ContextCompat.getColor(context!!, R.color.grayDarkMiddle)
                     )
-                    ratingDouble >= 1.5 && ratingDouble < 2.5 -> DrawableCompat.setTint(
-                        stars,
-                        ContextCompat.getColor(context!!, R.color.ratingTwo)
-                    )
-                    ratingDouble >= 2.5 && ratingDouble < 3.5 -> DrawableCompat.setTint(
-                        stars,
-                        ContextCompat.getColor(context!!, R.color.ratingThree)
-                    )
-                    ratingDouble >= 3.5 && ratingDouble < 4.5 -> DrawableCompat.setTint(
-                        stars,
-                        ContextCompat.getColor(context!!, R.color.ratingFour)
-                    )
-                    ratingDouble >= 4.5 -> DrawableCompat.setTint(
-                        stars,
-                        ContextCompat.getColor(context!!, R.color.ratingFive)
-                    )
-                    else -> DrawableCompat.setTint(stars, ContextCompat.getColor(context!!, R.color.grayDarkMiddle))
                 }
             }
         }
@@ -134,7 +141,7 @@ class CourseReviewsFragment : Fragment(), ICourseReviewsView {
         if (courseReviews.isEmpty()) {
             courseReviewsProgressBar.visibility = View.GONE
             courseReviewsContent.visibility = View.GONE
-            courseReviewsContent.visibility = View.VISIBLE
+            courseReviewsClear.visibility = View.VISIBLE
         } else {
             toggleContentPB(false)
             adapter.onDataChange(courseReviews, courseName, companyName)

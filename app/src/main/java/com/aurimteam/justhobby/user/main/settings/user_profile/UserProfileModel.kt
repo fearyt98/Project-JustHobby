@@ -79,7 +79,7 @@ class UserProfileModel : IUserProfileModel {
         password_old: String,
         password: String,
         password_confirmation: String,
-        address: String,
+        address: String?,
         onFinishedListener: OnFinishedListener
     ) {
         App.retrofit

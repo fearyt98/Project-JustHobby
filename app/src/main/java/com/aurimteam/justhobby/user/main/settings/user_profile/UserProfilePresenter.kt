@@ -46,7 +46,7 @@ class UserProfilePresenter(private var view: IUserProfileView?, private val mode
         password_old: String,
         password: String,
         password_confirmation: String,
-        address: String, context: Context?
+        address: String?, context: Context?
     ) {
         view?.toggleContentPB(true)
         val token = Settings(context!!).getProperty("token")
@@ -58,7 +58,8 @@ class UserProfilePresenter(private var view: IUserProfileView?, private val mode
                 password_old,
                 password,
                 password_confirmation,
-                address,
+                if (address == "") null
+                else address,
                 this
             )
     }

@@ -10,8 +10,6 @@ import com.aurimteam.justhobby.response.GroupResponse
 import kotlinx.android.synthetic.main.card_group.view.*
 import com.tooltip.Tooltip
 
-
-
 class GroupAdapter(private val presenter: IGroupPresenter) : RecyclerView.Adapter<GroupHolder>() {
 
     private val groupsList: MutableList<GroupResponse> = mutableListOf()
@@ -60,21 +58,22 @@ class GroupAdapter(private val presenter: IGroupPresenter) : RecyclerView.Adapte
             )
         }
         holder.itemView.cardGroupBtnInfo.setOnClickListener {
-            Tooltip.Builder(holder.itemView.cardGroupBtnInfo)
-                .setText(item.attributes.description)
-                .setBackgroundColor(ContextCompat.getColor(holder.itemView.context, R.color.grafit))
-                .setCornerRadius(15f)
-                .setTextAppearance(R.style.Caption1_Medium)
-                .setTextColor(ContextCompat.getColor(holder.itemView.context, R.color.whiteTop))
-                .setArrow(R.drawable.tooltip_arrow)
-                .setCancelable(true)
-                .setDismissOnClick(true)
-                .setGravity(Gravity.TOP)
-                .setArrowHeight(R.dimen.design_tooltip_arrow_height)
-                .setArrowWidth(R.dimen.design_tooltip_arrow_width)
-                .setPadding(15f)
-                .setMaxWidth(300)
-                .show()
+            if (item.attributes.description != "")
+                Tooltip.Builder(holder.itemView.cardGroupBtnInfo)
+                    .setText(item.attributes.description)
+                    .setBackgroundColor(ContextCompat.getColor(holder.itemView.context, R.color.grafit))
+                    .setCornerRadius(15f)
+                    .setTextAppearance(R.style.Caption1_Medium)
+                    .setTextColor(ContextCompat.getColor(holder.itemView.context, R.color.whiteTop))
+                    .setArrow(R.drawable.tooltip_arrow)
+                    .setCancelable(true)
+                    .setDismissOnClick(true)
+                    .setGravity(Gravity.TOP)
+                    .setArrowHeight(R.dimen.design_tooltip_arrow_height)
+                    .setArrowWidth(R.dimen.design_tooltip_arrow_width)
+                    .setPadding(15f)
+                    .setMaxWidth(300)
+                    .show()
         }
     }
 

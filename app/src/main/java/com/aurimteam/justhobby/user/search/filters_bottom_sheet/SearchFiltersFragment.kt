@@ -74,7 +74,7 @@ class SearchFiltersFragment : BottomSheetDialogFragment() {
         view.findViewById<Button>(R.id.filtersAcceptButton).setOnClickListener {
             dismiss()
         }
-        if(savedInstanceState != null) {
+        if (savedInstanceState != null) {
             arguments = savedInstanceState
             savedInstanceState.clear()
         }
@@ -135,14 +135,26 @@ class SearchFiltersFragment : BottomSheetDialogFragment() {
                 setSortPrice("sortPrice", view, R.id.sortPrice, 1)
             else
                 setCheck(type, view, id, true)
-        else
+        else {
             if (type == "sortPrice")
                 if (filters.getInt(type) == 1)
                     setSortPrice(type, view, id, 2)
                 else
                     setSortPrice(type, view, id, 1)
-            else
-                setCheck(type, view, id, false)
+            else {
+                if (
+                    (type == "sortNear" && filtersClickedMap[type] == true) ||
+                    (type == "sortRating" && filtersClickedMap[type] == true) ||
+                    (type == "sexAny" && filtersClickedMap[type] == true) ||
+                    (type == "statusAny" && filtersClickedMap[type] == true) ||
+                    (type == "statusTrue" && filtersClickedMap[type] == true) ||
+                    (type == "statusFalse" && filtersClickedMap[type] == true)
+                )
+                    setCheck(type, view, id, true)
+                else
+                    setCheck(type, view, id, false)
+            }
+        }
         if (type == "sortNear" || type == "sortRating" || type == "sortPrice") {
             when {
                 filtersClickedMap["sortRating"] == true && type == "sortRating" -> {

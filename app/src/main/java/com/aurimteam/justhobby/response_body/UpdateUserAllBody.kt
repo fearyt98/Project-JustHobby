@@ -7,5 +7,5 @@ class UpdateUserAllBody(
     val password_old: String,
     val password: String,
     val password_confirmation: String,
-    val address: String
+    val address: String?
 )

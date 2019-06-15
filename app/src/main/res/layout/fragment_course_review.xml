@@ -35,7 +35,7 @@
                     <ImageView android:id="@+id/courseReviewUserImage"
                                android:layout_width="60dp"
                                android:layout_height="60dp"
-                               android:background="@drawable/ic_circle_separator"
+                               app:srcCompat="@drawable/user_default_image"
                                tools:ignore="ContentDescription"/>
 
                     <TextView android:id="@+id/courseReviewName"

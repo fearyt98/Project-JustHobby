@@ -109,7 +109,8 @@ class CourseInfoFragment : Fragment(), ICourseInfoView {
         courseInfoCountReviews.text = course.relationships.count_reviews.toString()
         courseInfoCountGroups.text = course.relationships.count_groups.toString()
         courseInfoDesc.text = course.attributes.description
-        Glide.with(this).load("").centerCrop().into(courseInfoImage)
+        if (course.attributes.image != null)
+            Glide.with(this).load(course.attributes.image).centerCrop().into(courseInfoImage)
         changeColorBtnBookmark(course.relationships.user)
 
         if (context != null) {
@@ -154,12 +155,14 @@ class CourseInfoFragment : Fragment(), ICourseInfoView {
     }
 
     private fun openPhone() {
-        val phoneIntent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:${course?.relationships?.company?.attributes?.phone}"))
+        val phoneIntent =
+            Intent(Intent.ACTION_DIAL, Uri.parse("tel:${course?.relationships?.company?.attributes?.phone}"))
         startActivity(phoneIntent)
     }
 
     private fun openMap() {
-        val mapIntent = Intent(Intent.ACTION_VIEW, Uri.parse("geo:${course?.attributes?.lat},${course?.attributes?.lon}"))
+        val mapIntent =
+            Intent(Intent.ACTION_VIEW, Uri.parse("geo:${course?.attributes?.lat},${course?.attributes?.lon}"))
         startActivity(mapIntent)
     }
 

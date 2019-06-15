@@ -28,7 +28,8 @@ class CourseReviewsAdapter : RecyclerView.Adapter<CourseReviewsHolder>() {
             courseReviewsList[position].attributes.review,
             courseReviewsList[position].attributes.created_at
         )
-        Glide.with(holder.itemView).load("").circleCrop().into(holder.itemView.cardReviewUserImage)
+        if (courseReviewsList[position].attributes.user_image != null)
+            Glide.with(holder.itemView).load(courseReviewsList[position].attributes.user_image).circleCrop().into(holder.itemView.cardReviewUserImage)
         holder.itemView.cardReview.setOnClickListener {
             detailReviews(manager, courseReviewsList[position])
         }
@@ -59,6 +60,8 @@ class CourseReviewsAdapter : RecyclerView.Adapter<CourseReviewsHolder>() {
         bundle.putString("review", review.attributes.review)
         bundle.putString("rating", review.attributes.rating.toString())
         bundle.putString("created_at", review.attributes.created_at.toString())
+        if (review.attributes.user_image != null)
+            bundle.putString("user_image", review.attributes.user_image)
 
         val courseReviewFragment = CourseReviewFragment()
         courseReviewFragment.arguments = bundle

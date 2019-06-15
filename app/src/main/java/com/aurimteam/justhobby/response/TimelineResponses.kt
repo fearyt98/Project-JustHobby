@@ -19,5 +19,7 @@ class EventAttrResponse(
     val title_company: String,
     val teacher: String,
     val address: String,
+    val lat: String,
+    val lon: String,
     val category_slug: String
 )

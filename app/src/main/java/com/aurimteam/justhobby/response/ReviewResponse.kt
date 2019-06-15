@@ -13,6 +13,7 @@ class ReviewResponse(
 )
 
 class ReviewAttrResponse(
+    val user_image: String?,
     val user_name: String,
     val rating: Int,
     val review: String,

@@ -56,7 +56,7 @@
                            android:layout_height="114dp"
                            android:layout_gravity="top|center_horizontal"
                            android:layout_marginTop="1dp"
-                           app:srcCompat="@drawable/avatar"
+                           app:srcCompat="@drawable/user_default_image"
                            tools:ignore="ContentDescription"/>
 
                 <ImageButton android:id="@+id/userPhotoBtn"
