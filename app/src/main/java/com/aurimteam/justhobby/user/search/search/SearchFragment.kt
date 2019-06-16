@@ -71,7 +71,7 @@ class SearchFragment : Fragment(), ISearchView {
             filters.putBoolean("sortNear", false)
             filters.putBoolean("sortRating", true)
             filters.putInt("sortPrice", 0)
-            filters.putBoolean("sexAny", true)
+            filters.putBoolean("sexAny", false)
             filters.putBoolean("sexMan", false)
             filters.putBoolean("sexWoman", false)
             filters.putString("filterDays", "0,1,2,3,4,5,6")
