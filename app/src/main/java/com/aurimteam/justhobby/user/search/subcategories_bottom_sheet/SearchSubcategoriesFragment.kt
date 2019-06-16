@@ -100,13 +100,21 @@ class SearchSubcategoriesFragment : BottomSheetDialogFragment(), ISearchSubcateg
         if (activity != null && isSave) {
             val searchFragment =
                 activity!!.supportFragmentManager.findFragmentById(R.id.mainNavContainerFragment) as SearchFragment
-            categories.putIntegerArrayList("category$categoryId", adapter.getIsCheckedList())
+            val checkedList =adapter.getIsCheckedList()
             var cats = categories.getIntegerArrayList("categories")
-            if (cats == null)
-                cats = arrayListOf(categoryId)
-            else
-                if (!cats.contains(categoryId))
-                    cats.add(categoryId)
+            if(checkedList.isEmpty()) {
+                categories.remove("category$categoryId")
+                if (cats != null)
+                    if (cats.contains(categoryId))
+                        cats.remove(categoryId)
+            } else {
+                categories.putIntegerArrayList("category$categoryId", checkedList)
+                if (cats == null)
+                    cats = arrayListOf(categoryId)
+                else
+                    if (!cats.contains(categoryId))
+                        cats.add(categoryId)
+            }
             categories.putIntegerArrayList("categories", cats)
             searchFragment.setCategories(categories)
         }

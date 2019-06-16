@@ -91,8 +91,9 @@ class UserGroupsHolder(view: View) : RecyclerView.ViewHolder(view) {
     }
 
     private fun intToTime(intTime: Int): String {
-        val hour = Math.floor((intTime / 60).toDouble()).toInt()
-        val minute = intTime % 60
+        val intTimeDay = intTime % 1440
+        val hour = Math.floor((intTimeDay / 60).toDouble()).toInt()
+        val minute = intTimeDay % 60
         var hourStr = "$hour"
         if (hour < 10) hourStr = "0$hour"
 

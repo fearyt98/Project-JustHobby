@@ -98,14 +98,14 @@ class SearchResultFragment : Fragment(), ISearchResultView {
         searchResultsClear.visibility = View.GONE
         var categoriesStr = ""
         val cats = categories.getIntegerArrayList("categories")
-        if (cats != null) {
+        if (cats != null && cats.isNotEmpty()) {
             var subcats = categories.getIntegerArrayList("category" + cats[0].toString())
             if (subcats != null)
                 categoriesStr += subcats.joinToString(",")
             for (cat in cats)
                 if (cats.indexOf(cat) != 0) {
                     subcats = categories.getIntegerArrayList("category$cat")
-                    if (subcats != null)
+                    if (subcats != null && subcats.isNotEmpty())
                         categoriesStr += "," + subcats.joinToString(",")
                 }
         }

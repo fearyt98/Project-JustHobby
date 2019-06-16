@@ -21,7 +21,6 @@ class CourseHolder(view: View) : RecyclerView.ViewHolder(view) {
         ageMin: Int,
         user: Boolean?
     ) {
-
         if(rating != "-") {
             val ratingDouble = rating.toDouble()
             when {
@@ -49,6 +48,11 @@ class CourseHolder(view: View) : RecyclerView.ViewHolder(view) {
         itemView.cardCourseStatus.setImageResource(
             if (status) R.drawable.ic_success_24dp else R.drawable.ic_fail_24dp
         )
+
+        itemView.cardCourseSex.visibility = View.GONE
+        itemView.cardCourseSexMale.visibility = View.GONE
+        itemView.cardCourseSexFemale.visibility = View.GONE
+
         for (i in sex) {
             when (i) {
                 0 -> itemView.cardCourseSex.visibility = View.VISIBLE

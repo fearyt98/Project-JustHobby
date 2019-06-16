@@ -145,7 +145,6 @@ class SearchFiltersFragment : BottomSheetDialogFragment() {
                 if (
                     (type == "sortNear" && filtersClickedMap[type] == true) ||
                     (type == "sortRating" && filtersClickedMap[type] == true) ||
-                    (type == "sexAny" && filtersClickedMap[type] == true) ||
                     (type == "statusAny" && filtersClickedMap[type] == true) ||
                     (type == "statusTrue" && filtersClickedMap[type] == true) ||
                     (type == "statusFalse" && filtersClickedMap[type] == true)
@@ -170,7 +169,7 @@ class SearchFiltersFragment : BottomSheetDialogFragment() {
                     setCheck("sortNear", view, R.id.sortNear, false)
                 }
             }
-        } else if (type == "sexAny" || type == "sexMan" || type == "sexWoman") {
+        } else if (type == "sexMan" || type == "sexWoman") {
             when {
                 filtersClickedMap["sexMan"] == true && type == "sexMan" -> {
                     setCheck("sexWoman", view, R.id.sexWoman, false)
@@ -318,7 +317,7 @@ class SearchFiltersFragment : BottomSheetDialogFragment() {
         filters.putBoolean("sortNear", false)
         filters.putBoolean("sortRating", true)
         filters.putInt("sortPrice", 0)
-        filters.putBoolean("sexAny", true)
+        filters.putBoolean("sexAny", false)
         filters.putBoolean("sexMan", false)
         filters.putBoolean("sexWoman", false)
         filters.putString("filterDays", "0,1,2,3,4,5,6")
