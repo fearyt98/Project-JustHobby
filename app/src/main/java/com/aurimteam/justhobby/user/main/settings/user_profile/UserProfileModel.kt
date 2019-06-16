@@ -17,7 +17,7 @@ import java.io.File
 
 class UserProfileModel : IUserProfileModel {
     interface OnFinishedListener {
-        fun onResultSuccess(email: String, name: String, lastName: String, address: String?)
+        fun onResultSuccess(email: String, name: String, lastName: String, address: String?, image: String?)
         fun userInfoSended()
         fun onSuggestResultSuccess(data: List<SuggestResponse>)
         fun onResultFail(strError: String)
@@ -63,8 +63,8 @@ class UserProfileModel : IUserProfileModel {
                     if (responseBody != null) {
                         onFinishedListener.onResultSuccess(
                             responseBody.attributes.email, responseBody.attributes.first_name,
-                            responseBody.attributes.last_name, responseBody.attributes.address
-                        )
+                            responseBody.attributes.last_name, responseBody.attributes.address,
+                            responseBody.attributes.avatar)
                     } else {
                         val jsonObj = JSONObject(response.errorBody()?.string())
                         onFinishedListener.onResultFail(jsonObj.getJSONObject("error").getString("message").toString())
@@ -77,9 +77,9 @@ class UserProfileModel : IUserProfileModel {
         token: String,
         first_name: String,
         last_name: String,
-        password_old: String,
-        password: String,
-        password_confirmation: String,
+        password_old: String?,
+        password: String?,
+        password_confirmation: String?,
         address: String?,
         onFinishedListener: OnFinishedListener
     ) {
@@ -108,24 +108,25 @@ class UserProfileModel : IUserProfileModel {
                     } else {
                         val jsonObj = JSONObject(response.errorBody()?.string())
 
-                       /* if (jsonObj.getJSONObject("error")?.getString("message") == "Old password incorrect")
+                        if (jsonObj.getJSONObject("error")?.getString("message") == "Old password incorrect")
                             onFinishedListener.onResultFail("IncorrectOldPass")
-
-                        if (jsonObj.getJSONObject("error")?.has("description") != null) {
-                            val description = jsonObj.getJSONObject("error")?.getJSONObject("description")!!
-                            if (description.has("first_name")) {
-                                if (description.getJSONObject("first_name").has("regex"))
-                                    onFinishedListener.onResultFail("regexFirstName")
+                        else {
+                            if (jsonObj.getJSONObject("error")?.has("description") != null) {
+                                val description = jsonObj.getJSONObject("error")?.getJSONObject("description")!!
+                                if (description.has("first_name")) {
+                                    if (description.getJSONObject("first_name").has("Regex"))
+                                        onFinishedListener.onResultFail("regexFirstName")
+                                }
+                                if (description.has("last_name")) {
+                                    if (description.getJSONObject("last_name").has("Regex"))
+                                        onFinishedListener.onResultFail("regexLastName")
+                                }
+                                if (description.has("password")) {
+                                    if (description.getJSONObject("password").has("Regex"))
+                                        onFinishedListener.onResultFail("IncorrectPass")
+                                }
                             }
-                            if (description.has("last_name")) {
-                                if (description.getJSONObject("last_name").has("regex"))
-                                    onFinishedListener.onResultFail("regexLastName")
-                            }
-                            if (description.has("password")) {
-                                if (description.getJSONObject("password").has("Regex"))
-                                    onFinishedListener.onResultFail("IncorrectPass")
-                            }
-                        }*/
+                        }
                     }
                 }
             })
