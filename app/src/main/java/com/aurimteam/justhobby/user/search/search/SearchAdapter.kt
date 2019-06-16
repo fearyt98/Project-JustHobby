@@ -66,11 +66,16 @@ class SearchAdapter : RecyclerView.Adapter<SearchHolder>() {
         val searchFragment =
             fragmentManager.findFragmentById(R.id.mainNavContainerFragment) as SearchFragment
 
-        val bundle = searchFragment.getCategories()
-        bundle.putInt("categoryId", categoryId)
-        bundle.putString("categoryName", categoryName)
-        val searchSubcategoriesFragment = SearchSubcategoriesFragment()
-        searchSubcategoriesFragment.arguments = bundle
-        searchSubcategoriesFragment.show(fragmentManager, "Subcategories")
+        val subcategoriesFragment =
+            fragmentManager.findFragmentByTag("Subcategories")
+
+        if(subcategoriesFragment == null) {
+            val bundle = searchFragment.getCategories()
+            bundle.putInt("categoryId", categoryId)
+            bundle.putString("categoryName", categoryName)
+            val searchSubcategoriesFragment = SearchSubcategoriesFragment()
+            searchSubcategoriesFragment.arguments = bundle
+            searchSubcategoriesFragment.show(fragmentManager, "Subcategories")
+        }
     }
 }

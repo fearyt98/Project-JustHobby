@@ -64,8 +64,8 @@ class NotificationsFragment : Fragment(), INotificationsView {
         notificationsClear.visibility = View.VISIBLE
     }
 
-    override fun showNewNotifications(notifications: List<NotificationResponse>, included: IncludedResponse) {
-        if (notifications.isEmpty()) {
+    override fun showNewNotifications(notifications: List<NotificationResponse>, included: IncludedResponse?) {
+        if (notifications.isEmpty() || included == null) {
             notificationsNew.visibility = View.GONE
             if (notificationsOld.visibility == View.GONE)
                 showClear()
@@ -74,8 +74,8 @@ class NotificationsFragment : Fragment(), INotificationsView {
         }
     }
 
-    override fun showOldNotifications(notifications: List<NotificationResponse>, included: IncludedResponse) {
-        if (notifications.isEmpty()) {
+    override fun showOldNotifications(notifications: List<NotificationResponse>, included: IncludedResponse?) {
+        if (notifications.isEmpty() || included == null) {
             notificationsOld.visibility = View.GONE
             if (notificationsNew.visibility == View.GONE)
                 showClear()

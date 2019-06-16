@@ -45,15 +45,21 @@ class SearchSubcategoriesFragment : BottomSheetDialogFragment(), ISearchSubcateg
             presenter.attachView(this)
 
         if (arguments != null) {
-            subcategoriesCategoryTitle.text = String.format(
-                context!!.resources.getString(R.string.category_title),
-                arguments!!.get("categoryName")!!.toString()
-            )
-            categoryId = arguments!!.get("categoryId")!!.toString().toInt()
-            presenter.getSubcategories(context!!, categoryId)
-            categories = arguments!!
-            categories.remove("categoryId")
-            categories.remove("categoryName")
+            if (arguments!!.get("categoryName") != null && arguments!!.get("categoryId") != null) {
+                subcategoriesCategoryTitle.text = String.format(
+                    context!!.resources.getString(R.string.category_title),
+                    arguments!!.get("categoryName")!!.toString()
+                )
+                categoryId = arguments!!.get("categoryId")!!.toString().toInt()
+                presenter.getSubcategories(context!!, categoryId)
+                categories = arguments!!
+                categories.remove("categoryId")
+                categories.remove("categoryName")
+            } else {
+                dismiss()
+            }
+        } else {
+            dismiss()
         }
         subcategoriesCategoryTitle.setOnStateChangedListener { _, newState ->
             if (newState != null)
@@ -100,9 +106,9 @@ class SearchSubcategoriesFragment : BottomSheetDialogFragment(), ISearchSubcateg
         if (activity != null && isSave) {
             val searchFragment =
                 activity!!.supportFragmentManager.findFragmentById(R.id.mainNavContainerFragment) as SearchFragment
-            val checkedList =adapter.getIsCheckedList()
+            val checkedList = adapter.getIsCheckedList()
             var cats = categories.getIntegerArrayList("categories")
-            if(checkedList.isEmpty()) {
+            if (checkedList.isEmpty()) {
                 categories.remove("category$categoryId")
                 if (cats != null)
                     if (cats.contains(categoryId))
