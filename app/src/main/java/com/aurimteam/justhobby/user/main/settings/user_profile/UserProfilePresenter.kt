@@ -17,6 +17,7 @@ class UserProfilePresenter(private var view: IUserProfileView?, private val mode
 
     override fun onResultFail(strError: String) {
         view?.toggleContentPB(false)
+        if (strError == "IncorrectOldPass")
         view?.showMessage(strError)
     }
 
@@ -37,7 +38,8 @@ class UserProfilePresenter(private var view: IUserProfileView?, private val mode
 
     fun sendUserImage(filePath: String?, context: Context?) {
         val token = Settings(context!!).getProperty("token")
-        model?.sendUserImage(token!!, filePath, this)
+        if (token != null)
+            model?.sendUserImage(token, filePath, this)
     }
 
     fun sendUserInfo(

@@ -35,26 +35,19 @@ class RegistryModel : IRegistryModel {
                         onFinishedListener.onResultSuccess(responseBody)
                     } else {
                         val jsonObj = JSONObject(response.errorBody()?.string())
-                        var emailUnique: String? = null
-                        var emailError: String? = null
-                        var passObj: String? = null
-                        if (jsonObj.getJSONObject("error")?.getJSONObject("description") != null) {
-                            emailUnique =
-                                jsonObj.getJSONObject("error")?.getJSONObject("description")?.getJSONObject("email")
-                                    ?.getString("Unique")?.toString()
-                            emailError =
-                                jsonObj.getJSONObject("error")?.getJSONObject("description")?.getJSONObject("email")
-                                    ?.getString("Email")?.toString()
-                            passObj =
-                                jsonObj.getJSONObject("error")?.getJSONObject("description")?.getJSONObject("password")
-                                    ?.getString("Regex")?.toString()
+                        if (jsonObj.getJSONObject("error")?.has("description") != null) {
+                            val description = jsonObj.getJSONObject("error")?.getJSONObject("description")!!
+                            if (description.has("email")) {
+                                if (description.getJSONObject("email").has("Unique"))
+                                    onFinishedListener.onResultFail("Unique")
+                                if (description.getJSONObject("email").has("Email"))
+                                    onFinishedListener.onResultFail("IncorrectEmail")
+                            }
+                            if (description.has("password")) {
+                                if (description.getJSONObject("password").has("Regex"))
+                                    onFinishedListener.onResultFail("IncorrectPass")
+                            }
                         }
-                        if (emailUnique != null)
-                            onFinishedListener.onResultFail("Unique")
-                        if (emailError != null)
-                            onFinishedListener.onResultFail("IncorrectEmail")
-                        if (passObj != null)
-                            onFinishedListener.onResultFail("IncorrectPass")
                     }
                 }
             })

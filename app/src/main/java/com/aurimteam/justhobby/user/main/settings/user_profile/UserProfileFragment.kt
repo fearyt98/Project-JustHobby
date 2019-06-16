@@ -198,7 +198,7 @@ class UserProfileFragment : Fragment(), IUserProfileView {
     }
 
     private fun sendChangeUserInfo() {
-        //presenter.sendUserImage(filePath, context)
+        presenter.sendUserImage(filePath, context)
         presenter.sendUserInfo(
             changeNameUserProfile.text.toString(),
             changeLastNameUserProfile.text.toString(),

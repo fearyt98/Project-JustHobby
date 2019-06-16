@@ -95,8 +95,4 @@ class UserBookmarksAdapter(private val presenter: UserBookmarksPresenter) :
         val mapIntent = Intent(Intent.ACTION_VIEW, Uri.parse("geo:${course.attributes.lat},${course.attributes.lon}"))
         context.startActivity(mapIntent)
     }
-
-    private fun searchCourseOnMap() {
-        Log.d("searchCourseOnMap", "granted")
-    }
 }

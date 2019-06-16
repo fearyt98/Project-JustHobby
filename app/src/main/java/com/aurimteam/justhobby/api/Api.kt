@@ -49,8 +49,7 @@ interface Api {
     @GET("user/notifications")
     fun getUserNotify(
         @Query("token") token: String,
-        @Query("is_showed") isShowed: Boolean?,
-        @Query("update") update: Boolean?
+        @Query("is_push") isPush: Boolean?
     ): Call<NotificationsResponse>
 
     @Headers("Accept: application/json")

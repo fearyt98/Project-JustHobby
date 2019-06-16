@@ -13,6 +13,7 @@ import android.widget.Button
 import android.widget.ImageButton
 import android.widget.Toast
 import com.aurimteam.justhobby.R
+import com.aurimteam.justhobby.response.IncludedResponse
 import com.aurimteam.justhobby.response.NotificationResponse
 import com.aurimteam.justhobby.response.NotificationsResponse
 import com.aurimteam.justhobby.user.search.search.SearchFragment
@@ -63,24 +64,23 @@ class NotificationsFragment : Fragment(), INotificationsView {
         notificationsClear.visibility = View.VISIBLE
     }
 
-    override fun showNewNotifications(notifications: NotificationsResponse) {
-        if (notifications.data.isEmpty()) {
+    override fun showNewNotifications(notifications: List<NotificationResponse>, included: IncludedResponse) {
+        if (notifications.isEmpty()) {
             notificationsNew.visibility = View.GONE
             if (notificationsOld.visibility == View.GONE)
                 showClear()
         } else {
-            adapterNewNotify.onDataChange(notifications.data, notifications.included)
+            adapterNewNotify.onDataChange(notifications,  included)
         }
     }
 
-    override fun showOldNotifications(notifications: NotificationsResponse) {
-        toggleContentPB(false)
-        if (notifications.data.isEmpty()) {
+    override fun showOldNotifications(notifications: List<NotificationResponse>, included: IncludedResponse) {
+        if (notifications.isEmpty()) {
             notificationsOld.visibility = View.GONE
             if (notificationsNew.visibility == View.GONE)
                 showClear()
         } else {
-            adapterOldNotify.onDataChange(notifications.data, notifications.included)
+            adapterOldNotify.onDataChange(notifications,  included)
         }
     }
 

@@ -1,5 +1,8 @@
 package com.aurimteam.justhobby.user.main.home.home
 
+import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.FragmentActivity
 import android.support.v4.app.FragmentManager
@@ -7,6 +10,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.aurimteam.justhobby.R
+import com.aurimteam.justhobby.response.CourseResponseR
 import com.aurimteam.justhobby.response.EventResponse
 import com.aurimteam.justhobby.user.course_info.сourse_info.CourseInfoFragment
 import kotlinx.android.synthetic.main.card_event.view.*
@@ -50,6 +54,12 @@ class HomeTimelineAdapter : RecyclerView.Adapter<HomeTimelineHolder>() {
             timeLineEvents[position].attributes.category_slug
         )
         holder.itemView.cardTimeline.setOnClickListener { detailInfoCourse(manager, item.id) }
+        holder.itemView.cardTimelineAddress.setOnClickListener {
+            openMap(
+                holder.itemView.context,
+                timeLineEvents[position]
+            )
+        }
     }
 
     private fun dayTime(): Int = (
@@ -93,5 +103,10 @@ class HomeTimelineAdapter : RecyclerView.Adapter<HomeTimelineHolder>() {
         timeLineEvents.removeAt(position)
         notifyItemRemoved(position)
         notifyItemRangeChanged(position, timeLineEvents.count())
+    }
+
+    private fun openMap(context: Context, event: EventResponse) {
+        val mapIntent = Intent(Intent.ACTION_VIEW, Uri.parse("geo:${event.attributes.lat},${event.attributes.lon}"))
+        context.startActivity(mapIntent)
     }
 }

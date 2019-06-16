@@ -13,8 +13,7 @@ import retrofit2.Response
 class NotificationsModel : INotificationsModel {
 
     interface OnFinishedListener {
-        fun onResultSuccessNew(notifications: NotificationsResponse)
-        fun onResultSuccessOld(notifications: NotificationsResponse)
+        fun onResultSuccess(notifications: NotificationsResponse)
         fun onResultFail(strError: String?)
         fun onResultSuccessDelete()
     }
@@ -22,7 +21,7 @@ class NotificationsModel : INotificationsModel {
     override fun getNotificationsData(token: String, onFinishedListener: OnFinishedListener) {
         App.retrofit
             .create(Api::class.java)
-            .getUserNotify(token, null, true)
+            .getUserNotify(token, null)
             .enqueue(object : Callback<NotificationsResponse> {
                 override fun onFailure(call: Call<NotificationsResponse>, t: Throwable) {
                     onFinishedListener.onResultFail(t.message)
@@ -34,28 +33,7 @@ class NotificationsModel : INotificationsModel {
                 ) {
                     val responseBody = response.body()
                     if (responseBody != null) {
-                        onFinishedListener.onResultSuccessNew(responseBody)
-                    } else {
-                        val jsonObj = JSONObject(response.errorBody()?.string())
-                        onFinishedListener.onResultFail(jsonObj.getJSONObject("error")?.getString("message")?.toString())
-                    }
-                }
-            })
-        App.retrofit
-            .create(Api::class.java)
-            .getUserNotify(token, true, true)
-            .enqueue(object : Callback<NotificationsResponse> {
-                override fun onFailure(call: Call<NotificationsResponse>, t: Throwable) {
-                    onFinishedListener.onResultFail(t.message)
-                }
-
-                override fun onResponse(
-                    call: Call<NotificationsResponse>,
-                    response: Response<NotificationsResponse>
-                ) {
-                    val responseBody = response.body()
-                    if (responseBody != null) {
-                        onFinishedListener.onResultSuccessOld(responseBody)
+                        onFinishedListener.onResultSuccess(responseBody)
                     } else {
                         val jsonObj = JSONObject(response.errorBody()?.string())
                         onFinishedListener.onResultFail(jsonObj.getJSONObject("error")?.getString("message")?.toString())

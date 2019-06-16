@@ -126,12 +126,12 @@ class RegistryStartActivity : AppCompatActivity(), IRegistryStartView {
     }
 
     private fun readyBtnClick() {
-        //presenter.sendUserImage(filePath)
+        presenter.sendUserImage(filePath)
         presenter.sendUserInfo(registryStartFirstName.text.toString(), registryStartLastName.text.toString())
     }
 
     private fun openUserAgreement() {
-        val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("http://www.google.com"))
+        val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("http://justhobby.herokuapp.com/public/files/User_Agreement.pdf"))
         startActivity(browserIntent)
     }
 }

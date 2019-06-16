@@ -104,6 +104,7 @@
 
                         <EditText android:id="@+id/registryStartFirstName"
                                   style="@style/EditText"
+                                  android:maxLength="255"
                                   android:paddingEnd="64dp"
                                   tools:ignore="RtlSymmetry"/>
 
@@ -150,6 +151,7 @@
 
                         <EditText android:id="@+id/registryStartLastName"
                                   style="@style/EditText"
+                                  android:maxLength="255"
                                   android:paddingEnd="64dp"
                                   tools:ignore="RtlSymmetry"/>
 

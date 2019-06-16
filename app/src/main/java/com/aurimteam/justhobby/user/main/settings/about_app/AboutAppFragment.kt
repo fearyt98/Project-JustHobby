@@ -28,14 +28,12 @@ class AboutAppFragment : Fragment() {
     }
 
     private fun openUserAgreement() {
-        val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("http://www.google.com"))
+        val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("http://justhobby.herokuapp.com/public/files/User_Agreement.pdf"))
         startActivity(browserIntent)
-        val phoneIntent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:12345"))
-        startActivity(phoneIntent)
     }
 
     private fun openLicenses() {
-        val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("http://www.google.com"))
+        val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("http://justhobby.herokuapp.com/public/files/Software_Licenses.pdf"))
         startActivity(browserIntent)
     }
 

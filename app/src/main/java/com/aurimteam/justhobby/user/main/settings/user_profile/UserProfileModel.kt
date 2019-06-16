@@ -22,6 +22,7 @@ class UserProfileModel : IUserProfileModel {
         fun onSuggestResultSuccess(data: List<SuggestResponse>)
         fun onResultFail(strError: String)
     }
+
     override fun sendUserImage(token: String, filePath: String?, onFinishedListener: OnFinishedListener) {
         val file = File(filePath)
         val requestBody = RequestBody.create(MediaType.parse("image/*"), file)
@@ -106,11 +107,28 @@ class UserProfileModel : IUserProfileModel {
                         onFinishedListener.userInfoSended()
                     } else {
                         val jsonObj = JSONObject(response.errorBody()?.string())
-                        onFinishedListener.onResultFail(jsonObj.getJSONObject("error").getString("message").toString())
+
+                       /* if (jsonObj.getJSONObject("error")?.getString("message") == "Old password incorrect")
+                            onFinishedListener.onResultFail("IncorrectOldPass")
+
+                        if (jsonObj.getJSONObject("error")?.has("description") != null) {
+                            val description = jsonObj.getJSONObject("error")?.getJSONObject("description")!!
+                            if (description.has("first_name")) {
+                                if (description.getJSONObject("first_name").has("regex"))
+                                    onFinishedListener.onResultFail("regexFirstName")
+                            }
+                            if (description.has("last_name")) {
+                                if (description.getJSONObject("last_name").has("regex"))
+                                    onFinishedListener.onResultFail("regexLastName")
+                            }
+                            if (description.has("password")) {
+                                if (description.getJSONObject("password").has("Regex"))
+                                    onFinishedListener.onResultFail("IncorrectPass")
+                            }
+                        }*/
                     }
                 }
             })
-
     }
 
     override fun getSuggests(token: String, query: String, onFinishedListener: OnFinishedListener) {
@@ -122,7 +140,10 @@ class UserProfileModel : IUserProfileModel {
                     onFinishedListener.onResultFail("Error of parsing")
                 }
 
-                override fun onResponse(call: Call<SuggestsResponse>, response: Response<SuggestsResponse>) {
+                override fun onResponse(
+                    call: Call<SuggestsResponse>,
+                    response: Response<SuggestsResponse>
+                ) {
                     val responseBody = response.body()
                     if (responseBody != null) {
                         onFinishedListener.onSuggestResultSuccess(responseBody.data)
@@ -134,3 +155,4 @@ class UserProfileModel : IUserProfileModel {
             })
     }
 }
+
