@@ -26,7 +26,6 @@ import com.aurimteam.justhobby.Settings
 import com.aurimteam.justhobby.response.SuggestResponse
 import com.aurimteam.justhobby.user.main.settings.settings.SettingsFragment
 import com.bumptech.glide.Glide
-import com.tooltip.Tooltip
 import kotlinx.android.synthetic.main.fragment_settings_profile.*
 
 class UserProfileFragment : Fragment(), IUserProfileView {
@@ -38,6 +37,8 @@ class UserProfileFragment : Fragment(), IUserProfileView {
     private var newRepeatPass: String = ""
     private var isTouched = false
     private var adapter: AddressArrayAdapter? = null
+    private var dialog: Dialog? = null
+    private var dialogDismiss = true
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_settings_profile, container, false)
@@ -128,6 +129,7 @@ class UserProfileFragment : Fragment(), IUserProfileView {
         super.onStart()
         presenter.attachView(this)
         toggleContentPB(false)
+        dialog = Dialog(this.context!!)
         presenter.getUserInfo(context)
         changeAddressUserProfile.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable) {
@@ -137,6 +139,55 @@ class UserProfileFragment : Fragment(), IUserProfileView {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
         })
+    }
+
+    override fun passwordsSuccess() {
+        if (!dialogDismiss) {
+            toggleContentPB(false)
+            dialogDismiss = true
+            dialog?.dismiss()
+        }
+    }
+
+    override fun errorFirstName(message: String) {
+        firstNameError.text = message
+    }
+
+    override fun errorLastName(message: String) {
+        lastNameError.text = message
+    }
+
+    override fun errorPasswordNew(message: String) {
+        dialog?.findViewById<TextView>(R.id.newPasswordError)?.text = message
+    }
+
+    override fun errorPasswordOld(message: String) {
+        dialog?.findViewById<TextView>(R.id.oldPasswordError)?.text = message
+    }
+
+    override fun errorConfirmPass(message: String) {
+        dialog?.findViewById<TextView>(R.id.confirmPasswordError)?.text = message
+    }
+
+    override fun hideOtherError() {
+        lastNameError.text = ""
+        firstNameError.text = ""
+    }
+
+    override fun hidePasswordError() {
+        if (!dialogDismiss) {
+            dialog?.findViewById<TextView>(R.id.oldPasswordError)?.text = ""
+            dialog?.findViewById<TextView>(R.id.newPasswordError)?.text = ""
+            dialog?.findViewById<TextView>(R.id.confirmPasswordError)?.text = ""
+        }
+    }
+
+    override fun userNameClear(message: String) {
+        firstNameError.text = message
+    }
+
+    override fun userLastNameClear(message: String) {
+        lastNameError.text = message
     }
 
     override fun onStop() {
@@ -153,7 +204,8 @@ class UserProfileFragment : Fragment(), IUserProfileView {
         email: String,
         name: String,
         lastName: String,
-        address: String?
+        address: String?,
+        image: String?
     ) {
         if (email != "") changeEmailUserProfile.setText(
             email,
@@ -171,6 +223,8 @@ class UserProfileFragment : Fragment(), IUserProfileView {
             address,
             TextView.BufferType.EDITABLE
         )
+        if (image != null){}
+            //Glide.with(this).load(image).circleCrop().into(userPhotoProfile)
     }
 
     override fun toggleContentPB(isVisiblePB: Boolean) {
@@ -184,42 +238,62 @@ class UserProfileFragment : Fragment(), IUserProfileView {
     }
 
     private fun changePasswords() {
-        val dialog = Dialog(this.context!!)
-        dialog.setContentView(R.layout.activity_popup_change_passwords)
-        dialog.findViewById<TextView>(R.id.popupUserProfileOk).setOnClickListener {
-            oldPass = dialog.findViewById<TextInputEditText>(R.id.popupOldPass).text.toString()
-            newPass = dialog.findViewById<TextInputEditText>(R.id.popupNewPass).text.toString()
-            newRepeatPass = dialog.findViewById<TextInputEditText>(R.id.popupRepeatPass).text.toString()
-            dialog.dismiss()
+        dialogDismiss = false
+        dialog?.setContentView(R.layout.activity_popup_change_passwords)
+        dialog?.findViewById<TextView>(R.id.popupUserProfileOk)?.setOnClickListener {
+            oldPass = dialog?.findViewById<TextInputEditText>(R.id.popupOldPass)?.text.toString()
+            newPass = dialog?.findViewById<TextInputEditText>(R.id.popupNewPass)?.text.toString()
+            newRepeatPass = dialog?.findViewById<TextInputEditText>(R.id.popupRepeatPass)?.text.toString()
+            presenter.sendUserInfo(
+                changeNameUserProfile.text.toString(),
+                changeLastNameUserProfile.text.toString(),
+                oldPass,
+                newPass,
+                newRepeatPass,
+                if (locationUserProfile.isChecked) null
+                else changeAddressUserProfile.text.toString(),
+                context,
+                dialogDismiss
+            )
         }
-        dialog.findViewById<TextView>(R.id.popupUserProfileCancel).setOnClickListener { dialog.dismiss() }
-        dialog.window?.setBackgroundDrawableResource(R.drawable.popup_bg)
-        dialog.show()
+        dialog?.findViewById<TextView>(R.id.popupUserProfileCancel)?.setOnClickListener {
+            dialog?.dismiss()
+            dialogDismiss = true
+        }
+        dialog?.window?.setBackgroundDrawableResource(R.drawable.popup_bg)
+        dialog?.show()
     }
 
     private fun sendChangeUserInfo() {
-        presenter.sendUserImage(filePath, context)
+        if (filePath != null) presenter.sendUserImage(filePath, context)
+        if (dialogDismiss) hideOtherError()
+        else hidePasswordError()
         presenter.sendUserInfo(
             changeNameUserProfile.text.toString(),
             changeLastNameUserProfile.text.toString(),
-            oldPass,
-            newPass,
-            newRepeatPass,
+            null,
+            null,
+            null,
             if (locationUserProfile.isChecked) null
             else changeAddressUserProfile.text.toString(),
-            context
+            context,
+            dialogDismiss
         )
     }
 
     override fun userInfoSended() {
         if (locationUserProfile.isChecked) setGps()
         else unsetGps()
-        fragmentManager!!
-            .beginTransaction()
-            .addToBackStack(null)
-            .replace(R.id.mainNavContainerFragment, SettingsFragment())
-            .commit()
-
+        if (dialogDismiss) {
+            toggleContentPB(false)
+            fragmentManager!!
+                .beginTransaction()
+                .addToBackStack(null)
+                .replace(R.id.mainNavContainerFragment, SettingsFragment())
+                .commit()
+            dialogDismiss = false
+        }
+        toggleContentPB(false)
     }
 
     override fun showMessage(message: String?) {
