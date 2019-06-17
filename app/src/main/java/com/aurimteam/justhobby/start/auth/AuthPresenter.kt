@@ -37,9 +37,9 @@ class AuthPresenter(private var view: IAuthView?, private val model: IAuthModel?
         if (loginMain == "" || password == "") {
             view?.hideErrors()
             if (loginMain == "")
-                view?.clearEmailError(context!!.getString(R.string.emptyField))
+                view?.clearEmailError(context!!.getString(R.string.empty_field))
             if (password == "")
-                view?.clearPasswordError(context!!.getString(R.string.emptyField))
+                view?.clearPasswordError(context!!.getString(R.string.empty_field))
         } else if ((loginMain.length !in 5..256) || password.length !in 6..256) {
             view?.hideErrors()
             if (loginMain.length < 5)

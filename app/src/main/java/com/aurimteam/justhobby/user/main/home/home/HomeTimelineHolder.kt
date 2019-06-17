@@ -64,7 +64,7 @@ class HomeTimelineHolder(view: View) : RecyclerView.ViewHolder(view) {
                     String.format(itemView.context.resources.getString(R.string.before_end_of_event), timeTill)
             } else {
                 val hour = intToHour(time - dayTime())
-                val stringId = termNum(
+                var stringId = termNum(
                     hour,
                     R.string.before_event_term5toMoreAnd11to14,
                     R.string.before_event_term0,
@@ -72,6 +72,8 @@ class HomeTimelineHolder(view: View) : RecyclerView.ViewHolder(view) {
                     R.string.before_event_term2to4,
                     R.string.before_event_term5toMoreAnd11to14
                 )
+                if(hour == 0)
+                    stringId = R.string.before_event_min
                 itemView.cardTimelineCountdown.text =
                     String.format(itemView.context.resources.getString(stringId), hour)
             }

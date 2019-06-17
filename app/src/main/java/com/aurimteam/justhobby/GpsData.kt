@@ -19,13 +19,19 @@ class GpsData {
     private var lat: Double? = null
     private var lon: Double? = null
     var isCreated = false
+    private var isDeactivated = false
     fun create(activity: Activity, context: Context) {
         isCreated = true
         locationManager = context.getSystemService(LOCATION_SERVICE) as LocationManager
         locationListener = object : LocationListener {
             override fun onLocationChanged(location: Location?) {
-                lat = location?.latitude
-                lon = location?.longitude
+                if(!isDeactivated) {
+                    lat = location?.latitude
+                    lon = location?.longitude
+                } else {
+                    lat = null
+                    lon = null
+                }
             }
 
             override fun onProviderDisabled(string: String?) {}
@@ -58,6 +64,20 @@ class GpsData {
             locationManager!!.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0f, locationListener)
             locationManager!!.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0f, locationListener)
         }
+    }
+
+    fun activate() {
+        if(isCreated) {
+            isDeactivated = false
+            lat = locationManager!!.getLastKnownLocation(LocationManager.NETWORK_PROVIDER).latitude
+            lon = locationManager!!.getLastKnownLocation(LocationManager.NETWORK_PROVIDER).longitude
+        }
+    }
+
+    fun deactivate() {
+        isDeactivated = true
+        lat = null
+        lon = null
     }
 
     fun returnLat(): Float? {

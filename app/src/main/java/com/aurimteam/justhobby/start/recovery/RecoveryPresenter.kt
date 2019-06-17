@@ -29,7 +29,7 @@ class RecoveryPresenter(
     fun sendRecoveryEmail(email: String) {
         if (email == "") {
             view?.hideError()
-            view?.clearEmailError(context!!.getString(R.string.emptyField))
+            view?.clearEmailError(context!!.getString(R.string.empty_field))
         } else if (email.length !in 5..256) {
             view?.hideError()
             if (email.length < 5)

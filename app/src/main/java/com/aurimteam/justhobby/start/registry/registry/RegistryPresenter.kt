@@ -33,9 +33,9 @@ class RegistryPresenter(
         if (email == "" || password == "" || confirmPassword == "") {
             view?.hideErrors()
             if (email == "")
-                view?.setErrorEmail(context!!.getString(R.string.emptyField))
+                view?.setErrorEmail(context!!.getString(R.string.empty_field))
             if (password == "")
-                view?.setErrorPassword(context!!.getString(R.string.emptyField))
+                view?.setErrorPassword(context!!.getString(R.string.empty_field))
             if (confirmPassword == "")
                 view?.setErrorPasswordConfirm(context!!.getString(R.string.passwords_not_similar))
         } else if ((email.length !in 5..256) || password.length !in 6..256 || confirmPassword.length !in 6..256) {

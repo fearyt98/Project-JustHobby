@@ -21,7 +21,7 @@ class CourseReviewNewPresenter(private var view: ICourseReviewNewView?, private 
 
     fun sendNewReview(courseId: Long, review: String, rating: Int, context: Context) {
         if (review == "") {
-            view?.showError(context.getString(R.string.emptyField))
+            view?.showError(context.getString(R.string.empty_field))
             return
         }
         if (review.length < 20) {

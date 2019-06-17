@@ -1,5 +1,8 @@
 package com.aurimteam.justhobby.start.registry.start
 
+import android.content.Context
+import android.net.Uri
+import android.provider.MediaStore
 import com.aurimteam.justhobby.App
 import com.aurimteam.justhobby.api.Api
 import com.aurimteam.justhobby.response.UserResponse
@@ -19,10 +22,10 @@ class RegistryStartModel : IRegistryStartModel {
         fun onResultFail(error: String)
     }
 
-    override fun sendUserImage(token: String, filePath: String?, onFinishedListener: OnFinishedListener) {
-        val file = File(filePath)
+    override fun sendUserImage(token: String, filePath: Uri, context: Context, onFinishedListener: OnFinishedListener) {
+        val file = File(getPath(filePath, context))
         val requestBody = RequestBody.create(MediaType.parse("image/*"), file)
-        val multipartBodyPart = MultipartBody.Part.createFormData("upload", file.name, requestBody)
+        val multipartBodyPart = MultipartBody.Part.createFormData("avatar", file.name, requestBody)
         val requestBodyDescription = RequestBody.create(MediaType.parse("text/plain"), "image-type")
 
         App.retrofit
@@ -36,13 +39,22 @@ class RegistryStartModel : IRegistryStartModel {
                 override fun onResponse(call: Call<UserResponse>, response: Response<UserResponse>) {
                     val responseBody = response.body()
                     if (responseBody != null) {
-                        onFinishedListener.onResultSuccess()
                     } else {
                         val jsonObj = JSONObject(response.errorBody()?.string())
                         onFinishedListener.onResultFail(jsonObj.getJSONObject("error")?.getString("message").toString())
                     }
                 }
             })
+    }
+
+    private fun getPath(uri: Uri, context: Context): String? {
+        val projection = arrayOf(MediaStore.Images.Media.DATA)
+        val cursor = context.contentResolver.query(uri, projection, null, null, null) ?: return null
+        val columnIndex = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA)
+        cursor.moveToFirst()
+        val s = cursor.getString(columnIndex)
+        cursor.close()
+        return s
     }
 
     override fun sendUserInfoData(

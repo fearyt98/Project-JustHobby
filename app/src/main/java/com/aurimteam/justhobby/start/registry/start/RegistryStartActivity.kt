@@ -25,7 +25,7 @@ import kotlinx.android.synthetic.main.activity_registry_start.*
 class RegistryStartActivity : AppCompatActivity(), IRegistryStartView {
 
     private val presenter = RegistryStartPresenter(this, RegistryStartModel(), this)
-    private var filePath: String? = null
+    private var filePath: Uri? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registry_start)
@@ -38,7 +38,7 @@ class RegistryStartActivity : AppCompatActivity(), IRegistryStartView {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK && requestCode == IMAGE_PICK_CODE) {
             Glide.with(this).load(data?.data).circleCrop().into(userPhoto)
-            filePath = data?.data?.path
+            filePath = data?.data
         }
     }
 
@@ -70,7 +70,7 @@ class RegistryStartActivity : AppCompatActivity(), IRegistryStartView {
 
     override fun onStart() {
         super.onStart()
-        if(presenter.isSetView())
+        if(!presenter.isSetView())
             presenter.attachViewContext(this, this)
     }
 
@@ -126,7 +126,7 @@ class RegistryStartActivity : AppCompatActivity(), IRegistryStartView {
     }
 
     private fun readyBtnClick() {
-       // presenter.sendUserImage(filePath)
+        if(filePath != null) presenter.sendUserImage(filePath!!)
         presenter.sendUserInfo(registryStartFirstName.text.toString(), registryStartLastName.text.toString())
     }
 

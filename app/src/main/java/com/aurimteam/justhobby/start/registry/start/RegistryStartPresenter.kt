@@ -1,6 +1,7 @@
 package com.aurimteam.justhobby.start.registry.start
 
 import android.content.Context
+import android.net.Uri
 import com.aurimteam.justhobby.R
 import com.aurimteam.justhobby.Settings
 
@@ -20,32 +21,34 @@ class RegistryStartPresenter(
         view?.showMessage(error)
     }
 
-    fun sendUserImage(filePath: String?) {
+    fun sendUserImage(filePath: Uri) {
         val token = Settings(context!!).getProperty("token")
-        model?.sendUserImage(token!!, filePath, this)
+        if (token != null)
+            model?.sendUserImage(token, filePath, context!!, this)
     }
 
     fun sendUserInfo(first_name: String, last_name: String) {
         if (first_name == "" || last_name == "") {
             view?.hideErrors()
             if (first_name == "")
-                view?.clearFirstName(context!!.getString(R.string.emptyField))
+                view?.clearFirstName(context!!.getString(R.string.empty_field))
             if (last_name == "")
-                view?.clearLastName(context!!.getString(R.string.emptyField))
+                view?.clearLastName(context!!.getString(R.string.empty_field))
         } else if ((first_name.length !in 1..256) || last_name.length !in 1..256) {
             view?.hideErrors()
             if (first_name.isEmpty())
-                view?.changeLengthFirstName(context!!.getString(R.string.emptyField))
+                view?.changeLengthFirstName(context!!.getString(R.string.empty_field))
             if (first_name.length > 255)
                 view?.changeLengthFirstName(context!!.getString(R.string.min_255_symbols))
             if (last_name.isEmpty())
-                view?.changeLengthLastName(context!!.getString(R.string.emptyField))
+                view?.changeLengthLastName(context!!.getString(R.string.empty_field))
             if (last_name.length > 255)
                 view?.changeLengthLastName(context!!.getString(R.string.min_255_symbols))
         } else {
             view?.togglePB(true)
             val token = Settings(context!!).getProperty("token")
-            model?.sendUserInfoData(token!!, first_name, last_name, this)
+            if (token != null)
+                model?.sendUserInfoData(token, first_name, last_name, this)
         }
     }
 

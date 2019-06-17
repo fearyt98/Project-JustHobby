@@ -1,5 +1,8 @@
 package com.aurimteam.justhobby.start.registry.start
 
+import android.content.Context
+import android.net.Uri
+
 interface IRegistryStartModel {
     fun sendUserInfoData(
         token: String,
@@ -8,7 +11,8 @@ interface IRegistryStartModel {
 
     fun sendUserImage(
         token: String,
-        filePath: String?,
+        filePath: Uri,
+        context: Context,
         onFinishedListener: RegistryStartModel.OnFinishedListener
     )
 }

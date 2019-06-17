@@ -3,21 +3,24 @@ package com.aurimteam.justhobby.user.main.settings.user_profile
 import android.Manifest
 import android.app.Activity
 import android.app.Dialog
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.support.design.widget.BottomNavigationView
 import android.support.design.widget.TextInputEditText
 import android.support.v4.app.Fragment
 import android.support.v4.content.PermissionChecker.checkSelfPermission
-import android.support.v7.widget.SwitchCompat
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
+import android.view.inputmethod.InputMethodManager
+import android.widget.Space
 import android.widget.TextView
 import android.widget.Toast
 import com.aurimteam.justhobby.App
@@ -25,47 +28,26 @@ import com.aurimteam.justhobby.R
 import com.aurimteam.justhobby.Settings
 import com.aurimteam.justhobby.response.SuggestResponse
 import com.aurimteam.justhobby.response.UserResponse
+import com.aurimteam.justhobby.user.main.main_nav.MainNavActivity
 import com.aurimteam.justhobby.user.main.settings.settings.SettingsFragment
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.fragment_settings_profile.*
+import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent
 
 class UserProfileFragment : Fragment(), IUserProfileView {
 
     private val presenter = UserProfilePresenter(this, UserProfileModel())
-    private var filePath: String? = null
+    private var filePath: Uri? = null
     private var oldPass: String = ""
     private var newPass: String = ""
-    private var newRepeatPass: String = ""
+    private var newConfirmPass: String = ""
     private var isTouched = false
     private var adapter: AddressArrayAdapter? = null
     private var dialog: Dialog? = null
-    private var dialogDismiss = true
-    private var setGps = false
     private var setImage = false
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_settings_profile, container, false)
-        view.findViewById<ImageView>(R.id.userProfileBtnBack).setOnClickListener { backToSettings() }
-        view.findViewById<ImageView>(R.id.userProfileBtnSend).setOnClickListener { sendChangeUserInfo() }
-        view.findViewById<ImageView>(R.id.changeUserPhotoProfileBtn).setOnClickListener { pickImage() }
-        view.findViewById<TextView>(R.id.changePasswordUserProfileBtn).setOnClickListener { changePasswords() }
-
-        val gps = Settings(context!!).getPropertyBoolean("gps", false)
-        view.findViewById<SwitchCompat>(R.id.locationUserProfile).isChecked = gps == true
-
-        view.findViewById<SwitchCompat>(R.id.locationUserProfile)
-            .setOnTouchListener { _, _ ->
-                isTouched = true
-                false
-            }
-        view.findViewById<SwitchCompat>(R.id.locationUserProfile)
-            .setOnCheckedChangeListener { _, isChecked ->
-                if (isTouched) {
-                    isTouched = false
-                    setGps = isChecked
-                }
-            }
-        return view
+        return inflater.inflate(R.layout.fragment_settings_profile, container, false)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -73,36 +55,9 @@ class UserProfileFragment : Fragment(), IUserProfileView {
         if (resultCode == Activity.RESULT_OK && requestCode == App.IMAGE_PICK_CODE) {
             userPhotoProfile.setImageBitmap(null)
             Glide.with(this).load(data?.data).circleCrop().into(userPhotoProfile)
-            filePath = data?.data?.path
+            filePath = data?.data
             setImage = true
         }
-    }
-
-    private fun setGps() {
-        Settings(context!!).setPropertyBoolean("gps", true)
-    }
-
-    private fun unsetGps() {
-        Settings(context!!).setPropertyBoolean("gps", false)
-    }
-
-    private fun pickImage() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
-            if (checkSelfPermission(
-                    context!!,
-                    Manifest.permission.READ_EXTERNAL_STORAGE
-                ) == PackageManager.PERMISSION_DENIED
-            ) {
-                val permissions = arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE)
-                requestPermissions(permissions, App.PERMISSION_STORAGE_CODE)
-            } else pickImageFromGallery()
-        else pickImageFromGallery()
-    }
-
-    private fun pickImageFromGallery() {
-        val intent = Intent(Intent.ACTION_PICK)
-        intent.type = "image/*"
-        startActivityForResult(intent, App.IMAGE_PICK_CODE)
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
@@ -127,6 +82,29 @@ class UserProfileFragment : Fragment(), IUserProfileView {
 
     override fun onStart() {
         super.onStart()
+        userProfileBtnBack.setOnClickListener { backToSettings() }
+        userProfileBtnSend.setOnClickListener { sendChangeUserInfo() }
+        changeUserPhotoProfileBtn.setOnClickListener { pickImage() }
+        changePasswordUserProfileBtn.setOnClickListener { changePasswords() }
+
+        val gps = Settings(context!!).getPropertyBoolean("gps", false)
+        locationUserProfile.isChecked = gps == true
+
+        locationUserProfile.setOnTouchListener { _, _ ->
+            isTouched = true
+            false
+        }
+
+        KeyboardVisibilityEvent.setEventListener(activity) { isOpen ->
+            if (isOpen) {
+                activity?.findViewById<BottomNavigationView>(R.id.mainNavNavigation)?.visibility = View.GONE
+                activity?.findViewById<Space>(R.id.mainNavMarginSpacer)?.visibility = View.GONE
+            } else {
+                activity?.findViewById<BottomNavigationView>(R.id.mainNavNavigation)?.visibility = View.VISIBLE
+                activity?.findViewById<Space>(R.id.mainNavMarginSpacer)?.visibility = View.VISIBLE
+            }
+        }
+
         presenter.attachView(this)
         toggleContentPB(false)
         dialog = Dialog(this.context!!)
@@ -142,11 +120,8 @@ class UserProfileFragment : Fragment(), IUserProfileView {
     }
 
     override fun passwordsSuccess() {
-        if (!dialogDismiss) {
-            toggleContentPB(false)
-            dialogDismiss = true
-            dialog?.dismiss()
-        }
+        toggleContentPB(false)
+        dialog?.dismiss()
     }
 
     override fun errorFirstName(message: String) {
@@ -175,11 +150,9 @@ class UserProfileFragment : Fragment(), IUserProfileView {
     }
 
     override fun hidePasswordError() {
-        if (!dialogDismiss) {
-            dialog?.findViewById<TextView>(R.id.oldPasswordError)?.text = ""
-            dialog?.findViewById<TextView>(R.id.newPasswordError)?.text = ""
-            dialog?.findViewById<TextView>(R.id.confirmPasswordError)?.text = ""
-        }
+        dialog?.findViewById<TextView>(R.id.oldPasswordError)?.text = ""
+        dialog?.findViewById<TextView>(R.id.newPasswordError)?.text = ""
+        dialog?.findViewById<TextView>(R.id.confirmPasswordError)?.text = ""
     }
 
     override fun userNameClear(message: String) {
@@ -197,12 +170,14 @@ class UserProfileFragment : Fragment(), IUserProfileView {
 
     override fun onStop() {
         super.onStop()
-        presenter.dettachView()
+        presenter.detachView()
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        presenter.dettachView()
+        activity?.findViewById<BottomNavigationView>(R.id.mainNavNavigation)?.visibility = View.VISIBLE
+        activity?.findViewById<Space>(R.id.mainNavMarginSpacer)?.visibility = View.VISIBLE
+        presenter.detachView()
     }
 
     override fun setUserDefaultInfo(user: UserResponse) {
@@ -238,66 +213,13 @@ class UserProfileFragment : Fragment(), IUserProfileView {
         }
     }
 
-    private fun changePasswords() {
-        dialogDismiss = false
-        dialog?.setContentView(R.layout.activity_popup_change_passwords)
-        dialog?.findViewById<TextView>(R.id.popupUserProfileOk)?.setOnClickListener {
-            oldPass = dialog?.findViewById<TextInputEditText>(R.id.popupOldPass)?.text.toString()
-            newPass = dialog?.findViewById<TextInputEditText>(R.id.popupNewPass)?.text.toString()
-            newRepeatPass = dialog?.findViewById<TextInputEditText>(R.id.popupRepeatPass)?.text.toString()
-            presenter.sendUserInfo(
-                changeNameUserProfile.text.toString(),
-                changeLastNameUserProfile.text.toString(),
-                oldPass,
-                newPass,
-                newRepeatPass,
-                if (locationUserProfile.isChecked) null
-                else changeAddressUserProfile.text.toString(),
-                context,
-                dialogDismiss
-            )
-        }
-        dialog?.findViewById<TextView>(R.id.popupUserProfileCancel)?.setOnClickListener {
-            dialog?.dismiss()
-            dialogDismiss = true
-        }
-        dialog?.window?.setBackgroundDrawableResource(R.drawable.popup_bg)
-        dialog?.show()
-    }
-
-    private fun sendChangeUserInfo() {
-        if (filePath != null) presenter.sendUserImage(filePath, context)
-        if (dialogDismiss) {
-            hideOtherError()
-            if (setGps != Settings(context!!).getPropertyBoolean("gps", false) && !setGps) setGps()
-            else unsetGps()
-        } else hidePasswordError()
-        presenter.sendUserInfo(
-            changeNameUserProfile.text.toString(),
-            changeLastNameUserProfile.text.toString(),
-            null,
-            null,
-            null,
-            if (locationUserProfile.isChecked) null
-            else changeAddressUserProfile.text.toString(),
-            context,
-            dialogDismiss
-        )
-    }
-
     override fun userInfoSended() {
-        if (locationUserProfile.isChecked) setGps()
-        else unsetGps()
-        if (dialogDismiss) {
-            toggleContentPB(false)
-            fragmentManager!!
-                .beginTransaction()
-                .addToBackStack(null)
-                .replace(R.id.mainNavContainerFragment, SettingsFragment())
-                .commit()
-            dialogDismiss = false
-        }
         toggleContentPB(false)
+        fragmentManager!!
+            .beginTransaction()
+            .addToBackStack(null)
+            .replace(R.id.mainNavContainerFragment, SettingsFragment())
+            .commit()
     }
 
     override fun showMessage(message: String?) {
@@ -308,6 +230,79 @@ class UserProfileFragment : Fragment(), IUserProfileView {
         )
         toast.setGravity(Gravity.BOTTOM, 0, 30)
         toast.show()
+    }
+
+    private fun setGps() {
+        Settings(context!!).setPropertyBoolean("gps", true)
+        val gpsData = (activity as MainNavActivity).gpsData
+        if(!gpsData.isCreated) {
+            gpsData.create(activity!!, context!!)
+        } else
+            gpsData.activate()
+    }
+
+    private fun unsetGps() {
+        Settings(context!!).setPropertyBoolean("gps", false)
+        val gpsData = (activity as MainNavActivity).gpsData
+        if(gpsData.isCreated)
+            gpsData.deactivate()
+    }
+
+    private fun pickImage() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+            if (checkSelfPermission(
+                    context!!,
+                    Manifest.permission.READ_EXTERNAL_STORAGE
+                ) == PackageManager.PERMISSION_DENIED
+            ) {
+                val permissions = arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE)
+                requestPermissions(permissions, App.PERMISSION_STORAGE_CODE)
+            } else pickImageFromGallery()
+        else pickImageFromGallery()
+    }
+
+    private fun pickImageFromGallery() {
+        val intent = Intent(Intent.ACTION_PICK)
+        intent.type = "image/*"
+        startActivityForResult(intent, App.IMAGE_PICK_CODE)
+    }
+
+    private fun changePasswords() {
+        dialog?.setContentView(R.layout.dialog_change_passwords)
+        dialog?.findViewById<TextView>(R.id.popupUserProfileOk)?.setOnClickListener {
+            oldPass = dialog?.findViewById<TextInputEditText>(R.id.popupOldPass)?.text.toString()
+            newPass = dialog?.findViewById<TextInputEditText>(R.id.popupNewPass)?.text.toString()
+            newConfirmPass = dialog?.findViewById<TextInputEditText>(R.id.popupRepeatPass)?.text.toString()
+            presenter.sendUserPassword(
+                oldPass,
+                newPass,
+                newConfirmPass,
+                context
+            )
+        }
+        dialog?.findViewById<TextView>(R.id.popupUserProfileCancel)?.setOnClickListener {
+            dialog?.dismiss()
+        }
+        dialog?.window?.setBackgroundDrawableResource(R.drawable.popup_bg)
+        dialog?.show()
+    }
+
+    private fun sendChangeUserInfo() {
+        if (filePath != null) presenter.sendUserImage(filePath!!, context)
+
+        hideOtherError()
+
+        if (locationUserProfile.isChecked)
+            setGps()
+        else
+            unsetGps()
+
+        presenter.sendUserInfo(
+            changeNameUserProfile.text.toString(),
+            changeLastNameUserProfile.text.toString(),
+            changeAddressUserProfile.text.toString(),
+            context
+        )
     }
 
     private fun backToSettings() {

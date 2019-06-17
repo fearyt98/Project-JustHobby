@@ -85,8 +85,9 @@
     <string name="about_btn_ready">Нажимая «Готово» вы принимаете</string>
     <string name="user_agreement">Пользовательское соглашение</string>
     <string name="in_change_day_no_events">В выбранный день занятия отстутствуют</string>
+    <string name="before_event_min">До занятия меньше часа</string>
     <string name="before_end_of_event">До конца занятия %1$s</string>
-    <string name="before_event_term0">До занятия меньше часа</string>
+    <string name="before_event_term0">До занятия %1$s часов</string>
     <string name="before_event_term1">До занятия %1$s час</string>
     <string name="before_event_term2to4">До занятия %1$s часа</string>
     <string name="before_event_term5toMoreAnd11to14">До занятия %1$s часов</string>
@@ -211,7 +212,7 @@
     <string name="agree">Понятно</string>
     <string name="error_subalert">(закройте окно нажав на кнопку ниже)</string>
     <string name="minimum">минимум</string>
-    <string name="emptyField">Пустое поле</string>
+    <string name="empty_field">Пустое поле</string>
     <string name="min_20_symbols">Минимум 20 символов</string>
     <string name="min_5_symbols">Минимум 5 символов</string>
     <string name="min_255_symbols">Максимум 255 символов</string>

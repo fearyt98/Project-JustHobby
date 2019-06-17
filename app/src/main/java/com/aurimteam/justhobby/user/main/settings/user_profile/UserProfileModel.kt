@@ -1,5 +1,7 @@
 package com.aurimteam.justhobby.user.main.settings.user_profile
 
+import android.content.Context
+import android.net.Uri
 import com.aurimteam.justhobby.App
 import com.aurimteam.justhobby.api.Api
 import com.aurimteam.justhobby.response.SuggestResponse
@@ -14,17 +16,21 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.io.File
+import android.provider.MediaStore
+
+
 
 class UserProfileModel : IUserProfileModel {
     interface OnFinishedListener {
         fun onResultSuccess(user: UserResponse)
         fun userInfoSended()
+        fun userPasswordSended()
         fun onSuggestResultSuccess(data: List<SuggestResponse>)
         fun onResultFail(strError: String)
     }
 
-    override fun sendUserImage(token: String, filePath: String?, onFinishedListener: OnFinishedListener) {
-        val file = File(filePath)
+    override fun sendUserImage(token: String, filePath: Uri, context: Context, onFinishedListener: OnFinishedListener) {
+        val file = File(getPath(filePath, context))
         val requestBody = RequestBody.create(MediaType.parse("image/*"), file)
         val multipartBodyPart = MultipartBody.Part.createFormData("avatar", file.name, requestBody)
         val requestBodyDescription = RequestBody.create(MediaType.parse("text/plain"), "image-type")
@@ -47,6 +53,16 @@ class UserProfileModel : IUserProfileModel {
                     }
                 }
             })
+    }
+
+    private fun getPath(uri: Uri, context: Context): String? {
+        val projection = arrayOf(MediaStore.Images.Media.DATA)
+        val cursor = context.contentResolver.query(uri, projection, null, null, null) ?: return null
+        val columnIndex = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA)
+        cursor.moveToFirst()
+        val s = cursor.getString(columnIndex)
+        cursor.close()
+        return s
     }
 
     override fun getUserInfoData(token: String, onFinishedListener: OnFinishedListener) {
@@ -74,9 +90,6 @@ class UserProfileModel : IUserProfileModel {
         token: String,
         first_name: String,
         last_name: String,
-        password_old: String?,
-        password: String?,
-        password_confirmation: String?,
         address: String?,
         onFinishedListener: OnFinishedListener
     ) {
@@ -87,9 +100,9 @@ class UserProfileModel : IUserProfileModel {
                     token,
                     first_name,
                     last_name,
-                    password_old,
-                    password,
-                    password_confirmation,
+                    null,
+                    null,
+                    null,
                     address
                 )
             )
@@ -105,19 +118,59 @@ class UserProfileModel : IUserProfileModel {
                     } else {
                         val jsonObj = JSONObject(response.errorBody()?.string())
 
+                        if (jsonObj.getJSONObject("error")?.has("description") != null) {
+                            val description = jsonObj.getJSONObject("error")?.getJSONObject("description")!!
+                            if (description.has("first_name")) {
+                                if (description.getJSONObject("first_name").has("Regex"))
+                                    onFinishedListener.onResultFail("regexFirstName")
+                            }
+                            if (description.has("last_name")) {
+                                if (description.getJSONObject("last_name").has("Regex"))
+                                    onFinishedListener.onResultFail("regexLastName")
+                            }
+                        }
+                    }
+                }
+            })
+    }
+
+    override fun sendUserPassword(
+        token: String,
+        password_old: String?,
+        password: String?,
+        password_confirmation: String?,
+        onFinishedListener: OnFinishedListener
+    ) {
+        App.retrofit
+            .create(Api::class.java)
+            .updateAllUserInfo(
+                UpdateUserAllBody(
+                    token,
+                    null,
+                    null,
+                    password_old,
+                    password,
+                    password_confirmation,
+                    null
+                )
+            )
+            .enqueue(object : Callback<UserResponse> {
+                override fun onFailure(call: Call<UserResponse>, t: Throwable) {
+                    onFinishedListener.onResultFail("Error of parsing")
+                }
+
+                override fun onResponse(call: Call<UserResponse>, response: Response<UserResponse>) {
+                    val responseBody = response.body()
+                    if (responseBody != null) {
+                        onFinishedListener.userPasswordSended()
+                    } else {
+                        val jsonObj = JSONObject(response.errorBody()?.string())
+
                         if (jsonObj.getJSONObject("error")?.getString("message") == "Old password incorrect")
                             onFinishedListener.onResultFail("IncorrectOldPass")
                         else {
                             if (jsonObj.getJSONObject("error")?.has("description") != null) {
                                 val description = jsonObj.getJSONObject("error")?.getJSONObject("description")!!
-                                if (description.has("first_name")) {
-                                    if (description.getJSONObject("first_name").has("Regex"))
-                                        onFinishedListener.onResultFail("regexFirstName")
-                                }
-                                if (description.has("last_name")) {
-                                    if (description.getJSONObject("last_name").has("Regex"))
-                                        onFinishedListener.onResultFail("regexLastName")
-                                }
                                 if (description.has("password")) {
                                     if (description.getJSONObject("password").has("Regex"))
                                         onFinishedListener.onResultFail("IncorrectPass")

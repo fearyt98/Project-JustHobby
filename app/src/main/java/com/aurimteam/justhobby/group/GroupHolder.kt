@@ -25,6 +25,9 @@ class GroupHolder(view: View) : RecyclerView.ViewHolder(view) {
         itemView.cardGroupStatus.setImageResource(
             if (status) R.drawable.ic_success_24dp else R.drawable.ic_fail_24dp
         )
+        itemView.cardGroupSex.visibility = View.GONE
+        itemView.cardGroupSexMale.visibility = View.GONE
+        itemView.cardGroupSexFemale.visibility = View.GONE
         when (sex) {
             0 -> itemView.cardGroupSex.visibility = View.VISIBLE
             1 -> itemView.cardGroupSexMale.visibility = View.VISIBLE

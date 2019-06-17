@@ -112,6 +112,8 @@ class MainNavActivity : AppCompatActivity(), IMainNavView {
             Settings(this).setPropertyBoolean("gps", true)
             if (!gpsData.isCreated)
                 gpsData.create(this, this)
+            else
+                gpsData.deactivate()
         } else {
             Settings(this).setPropertyBoolean("gps", false)
         }

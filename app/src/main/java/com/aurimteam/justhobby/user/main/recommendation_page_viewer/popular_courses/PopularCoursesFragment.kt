@@ -1,12 +1,16 @@
 package com.aurimteam.justhobby.user.main.recommendation_page_viewer.popular_courses
 
+import android.content.Context
 import android.os.Bundle
+import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
+import android.widget.Space
 import android.widget.Toast
 import com.aurimteam.justhobby.user.main.recommendation_page_viewer.fragments_interfaces.IPopularCoursesView
 import com.aurimteam.justhobby.R
@@ -16,6 +20,7 @@ import com.aurimteam.justhobby.response.CourseResponseR
 import com.aurimteam.justhobby.response.IncludedResponse
 import com.aurimteam.justhobby.user.main.main_nav.MainNavActivity
 import kotlinx.android.synthetic.main.fragment_popular_courses.*
+import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent
 
 class PopularCoursesFragment : Fragment(), IPopularCoursesView {
 
@@ -35,6 +40,7 @@ class PopularCoursesFragment : Fragment(), IPopularCoursesView {
             val gpsData = (activity as MainNavActivity).gpsData
             presenter.getPopularCourses(context!!, gpsData.returnLat(), gpsData.returnLon())
         }
+        
         popularCoursesRecyclerView.layoutManager = LinearLayoutManager(context)
         popularCoursesRecyclerView.adapter = adapter
     }
@@ -46,6 +52,8 @@ class PopularCoursesFragment : Fragment(), IPopularCoursesView {
 
     override fun onDestroy() {
         super.onDestroy()
+        activity?.findViewById<BottomNavigationView>(R.id.mainNavNavigation)?.visibility = View.VISIBLE
+        activity?.findViewById<Space>(R.id.mainNavMarginSpacer)?.visibility = View.VISIBLE
         presenter.detachView()
     }
 
