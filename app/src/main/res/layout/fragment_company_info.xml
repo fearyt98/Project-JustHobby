@@ -10,6 +10,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
+                android:overScrollMode="never"
                 android:visibility="visible">
 
         <LinearLayout android:layout_width="match_parent"
@@ -134,6 +135,7 @@
                                                             android:layout_marginTop="-6dp"
                                                             android:clipToPadding="false"
                                                             android:orientation="horizontal"
+                                                            android:overScrollMode="never"
                                                             android:paddingBottom="6dp"
                                                             app:stackFromEnd="true"
                                                             tools:itemCount="1"

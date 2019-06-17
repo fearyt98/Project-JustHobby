@@ -41,9 +41,11 @@ class NotificationsService : Service() {
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
-        setToken(intent!!.getStringExtra("token"))
-        checkNewUserNotifications()
-        timer.start()
+        if (intent!!.getStringExtra("token") != null) {
+            setToken(intent.getStringExtra("token"))
+            checkNewUserNotifications()
+            timer.start()
+        }
         return START_STICKY
     }
 

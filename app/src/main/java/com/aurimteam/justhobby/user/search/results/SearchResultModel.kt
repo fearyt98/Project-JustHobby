@@ -48,7 +48,6 @@ class SearchResultModel : ISearchResultModel {
         lon: Float?,
         onFinishedListener: OnFinishedListener
     ) {
-        GlobalScope.launch(Dispatchers.IO) {
             App.retrofit
                 .create(Api::class.java)
                 .getCourses(
@@ -90,7 +89,6 @@ class SearchResultModel : ISearchResultModel {
                         }
                     }
                 })
-        }
     }
 
     override fun deleteUserBookmark(

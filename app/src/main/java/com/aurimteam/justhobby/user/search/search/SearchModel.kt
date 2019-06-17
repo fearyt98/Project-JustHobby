@@ -42,25 +42,23 @@ class SearchModel : ISearchModel {
     }
 
     override fun getPriceRangeData(token: String, onFinishedListener: OnFinishedListener) {
-        GlobalScope.launch(Dispatchers.IO) {
-            App.retrofit
-                .create(Api::class.java)
-                .getPriceRange(token)
-                .enqueue(object : Callback<PriceRangeResponse> {
-                    override fun onFailure(call: Call<PriceRangeResponse>, t: Throwable) {
-                        onFinishedListener.onResultFail(t.message)
-                    }
+        App.retrofit
+            .create(Api::class.java)
+            .getPriceRange(token)
+            .enqueue(object : Callback<PriceRangeResponse> {
+                override fun onFailure(call: Call<PriceRangeResponse>, t: Throwable) {
+                    onFinishedListener.onResultFail(t.message)
+                }
 
-                    override fun onResponse(call: Call<PriceRangeResponse>, response: Response<PriceRangeResponse>) {
-                        val responseBody = response.body()
-                        if (responseBody != null) {
-                            onFinishedListener.onResultSuccessPrice(responseBody)
-                        } else {
-                            val jsonObj = JSONObject(response.errorBody()?.string())
-                            onFinishedListener.onResultFail(jsonObj.getJSONObject("error")?.getString("message")?.toString())
-                        }
+                override fun onResponse(call: Call<PriceRangeResponse>, response: Response<PriceRangeResponse>) {
+                    val responseBody = response.body()
+                    if (responseBody != null) {
+                        onFinishedListener.onResultSuccessPrice(responseBody)
+                    } else {
+                        val jsonObj = JSONObject(response.errorBody()?.string())
+                        onFinishedListener.onResultFail(jsonObj.getJSONObject("error")?.getString("message")?.toString())
                     }
-                })
-        }
+                }
+            })
     }
 }
