@@ -110,9 +110,7 @@
                            android:layout_width="match_parent"
                            android:layout_height="wrap_content"
                            android:format24Hour="HH:mm"
-                           android:text="18:10"
-                           android:textColor="@color/grafitText"
-                           tools:ignore="HardcodedText"/>
+                           android:textColor="@color/grafitText"/>
             </LinearLayout>
         </LinearLayout>
 
