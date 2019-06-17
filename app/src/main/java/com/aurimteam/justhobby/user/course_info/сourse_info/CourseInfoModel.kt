@@ -6,6 +6,9 @@ import com.aurimteam.justhobby.response.*
 import com.aurimteam.justhobby.response_body.BookmarkAddBody
 import com.aurimteam.justhobby.response_body.GroupAddBody
 import com.aurimteam.justhobby.response_body.TokenBody
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
@@ -23,45 +26,49 @@ class CourseInfoModel : ICourseInfoModel {
     }
 
     override fun getCourseGroupsData(token: String, courseId: Long, onFinishedListener: OnFinishedListener) {
-        App.retrofit
-            .create(Api::class.java)
-            .getGroupsOneCourse(courseId, token)
-            .enqueue(object : Callback<GroupsResponse> {
-                override fun onFailure(call: Call<GroupsResponse>, t: Throwable) {
-                    onFinishedListener.onResultFail(t.message)
-                }
-
-                override fun onResponse(call: Call<GroupsResponse>, response: Response<GroupsResponse>) {
-                    val responseBody = response.body()
-                    if (responseBody != null) {
-                        onFinishedListener.onResultSuccessCourseGroups(responseBody.data)
-                    } else {
-                        val jsonObj = JSONObject(response.errorBody()?.string())
-                        onFinishedListener.onResultFail(jsonObj.getJSONObject("error")?.getString("message")?.toString())
+        GlobalScope.launch(Dispatchers.IO) {
+            App.retrofit
+                .create(Api::class.java)
+                .getGroupsOneCourse(courseId, token)
+                .enqueue(object : Callback<GroupsResponse> {
+                    override fun onFailure(call: Call<GroupsResponse>, t: Throwable) {
+                        onFinishedListener.onResultFail(t.message)
                     }
-                }
-            })
+
+                    override fun onResponse(call: Call<GroupsResponse>, response: Response<GroupsResponse>) {
+                        val responseBody = response.body()
+                        if (responseBody != null) {
+                            onFinishedListener.onResultSuccessCourseGroups(responseBody.data)
+                        } else {
+                            val jsonObj = JSONObject(response.errorBody()?.string())
+                            onFinishedListener.onResultFail(jsonObj.getJSONObject("error")?.getString("message")?.toString())
+                        }
+                    }
+                })
+        }
     }
 
     override fun getCourseData(token: String, courseId: Long, onFinishedListener: OnFinishedListener) {
-        App.retrofit
-            .create(Api::class.java)
-            .getOneCourse(courseId, token)
-            .enqueue(object : Callback<CourseResponseOneR> {
-                override fun onFailure(call: Call<CourseResponseOneR>, t: Throwable) {
-                    onFinishedListener.onResultFail(t.message)
-                }
-
-                override fun onResponse(call: Call<CourseResponseOneR>, response: Response<CourseResponseOneR>) {
-                    val responseBody = response.body()
-                    if (responseBody != null) {
-                        onFinishedListener.onResultSuccessCourse(responseBody)
-                    } else {
-                        val jsonObj = JSONObject(response.errorBody()?.string())
-                        onFinishedListener.onResultFail(jsonObj.getJSONObject("error")?.getString("message")?.toString())
+        GlobalScope.launch(Dispatchers.IO) {
+            App.retrofit
+                .create(Api::class.java)
+                .getOneCourse(courseId, token)
+                .enqueue(object : Callback<CourseResponseOneR> {
+                    override fun onFailure(call: Call<CourseResponseOneR>, t: Throwable) {
+                        onFinishedListener.onResultFail(t.message)
                     }
-                }
-            })
+
+                    override fun onResponse(call: Call<CourseResponseOneR>, response: Response<CourseResponseOneR>) {
+                        val responseBody = response.body()
+                        if (responseBody != null) {
+                            onFinishedListener.onResultSuccessCourse(responseBody)
+                        } else {
+                            val jsonObj = JSONObject(response.errorBody()?.string())
+                            onFinishedListener.onResultFail(jsonObj.getJSONObject("error")?.getString("message")?.toString())
+                        }
+                    }
+                })
+        }
     }
 
     override fun deleteUserGroup(

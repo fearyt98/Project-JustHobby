@@ -27,6 +27,7 @@ class UserGroupsHolder(view: View) : RecyclerView.ViewHolder(view) {
         itemView.cardUserGroupDay5.visibility = View.GONE
         itemView.cardUserGroupDay6.visibility = View.GONE
         itemView.cardUserGroupDay7.visibility = View.GONE
+
         if (timeTable != null) {
             itemView.cardUserGroupDay1Str.text = dayWeekStr(timeTable[0].day_week)
             itemView.cardUserGroupDay1StartTime.text = intToTime(timeTable[0].attributes.time_start)

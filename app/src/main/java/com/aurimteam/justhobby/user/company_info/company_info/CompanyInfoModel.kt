@@ -5,6 +5,9 @@ import com.aurimteam.justhobby.api.Api
 import com.aurimteam.justhobby.response.*
 import com.aurimteam.justhobby.response_body.BookmarkAddBody
 import com.aurimteam.justhobby.response_body.TokenBody
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
@@ -20,45 +23,49 @@ class CompanyInfoModel : ICompanyInfoModel {
     }
 
     override fun getCompanyCoursesData(token: String, companyId: Long, lat: Float?, lon: Float?,  onFinishedListener: OnFinishedListener) {
-        App.retrofit
-            .create(Api::class.java)
-            .getCoursesOneCompany(companyId, token, lat, lon)
-            .enqueue(object : Callback<CoursesResponse> {
-                override fun onFailure(call: Call<CoursesResponse>, t: Throwable) {
-                    onFinishedListener.onResultFail(t.message)
-                }
-
-                override fun onResponse(call: Call<CoursesResponse>, response: Response<CoursesResponse>) {
-                    val responseBody = response.body()
-                    if (responseBody != null) {
-                        onFinishedListener.onResultSuccessCompanyCourses(responseBody.data, responseBody.included)
-                    } else {
-                        val jsonObj = JSONObject(response.errorBody()?.string())
-                        onFinishedListener.onResultFail(jsonObj.getJSONObject("error")?.getString("message")?.toString())
+        GlobalScope.launch(Dispatchers.IO) {
+            App.retrofit
+                .create(Api::class.java)
+                .getCoursesOneCompany(companyId, token, lat, lon)
+                .enqueue(object : Callback<CoursesResponse> {
+                    override fun onFailure(call: Call<CoursesResponse>, t: Throwable) {
+                        onFinishedListener.onResultFail(t.message)
                     }
-                }
-            })
+
+                    override fun onResponse(call: Call<CoursesResponse>, response: Response<CoursesResponse>) {
+                        val responseBody = response.body()
+                        if (responseBody != null) {
+                            onFinishedListener.onResultSuccessCompanyCourses(responseBody.data, responseBody.included)
+                        } else {
+                            val jsonObj = JSONObject(response.errorBody()?.string())
+                            onFinishedListener.onResultFail(jsonObj.getJSONObject("error")?.getString("message")?.toString())
+                        }
+                    }
+                })
+        }
     }
 
     override fun getCompanyData(token: String, companyId: Long, onFinishedListener: OnFinishedListener) {
-        App.retrofit
-            .create(Api::class.java)
-            .getOneCompany(companyId, token)
-            .enqueue(object : Callback<CompanyResponseOneR> {
-                override fun onFailure(call: Call<CompanyResponseOneR>, t: Throwable) {
-                    onFinishedListener.onResultFail(t.message)
-                }
-
-                override fun onResponse(call: Call<CompanyResponseOneR>, response: Response<CompanyResponseOneR>) {
-                    val responseBody = response.body()
-                    if (responseBody != null) {
-                        onFinishedListener.onResultSuccessCompany(responseBody)
-                    } else {
-                        val jsonObj = JSONObject(response.errorBody()?.string())
-                        onFinishedListener.onResultFail(jsonObj.getJSONObject("error")?.getString("message")?.toString())
+        GlobalScope.launch(Dispatchers.IO) {
+            App.retrofit
+                .create(Api::class.java)
+                .getOneCompany(companyId, token)
+                .enqueue(object : Callback<CompanyResponseOneR> {
+                    override fun onFailure(call: Call<CompanyResponseOneR>, t: Throwable) {
+                        onFinishedListener.onResultFail(t.message)
                     }
-                }
-            })
+
+                    override fun onResponse(call: Call<CompanyResponseOneR>, response: Response<CompanyResponseOneR>) {
+                        val responseBody = response.body()
+                        if (responseBody != null) {
+                            onFinishedListener.onResultSuccessCompany(responseBody)
+                        } else {
+                            val jsonObj = JSONObject(response.errorBody()?.string())
+                            onFinishedListener.onResultFail(jsonObj.getJSONObject("error")?.getString("message")?.toString())
+                        }
+                    }
+                })
+        }
     }
 
     override fun deleteUserBookmark(

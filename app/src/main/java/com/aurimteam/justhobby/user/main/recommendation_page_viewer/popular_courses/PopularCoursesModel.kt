@@ -6,6 +6,9 @@ import com.aurimteam.justhobby.response.*
 import com.aurimteam.justhobby.response_body.BookmarkAddBody
 import com.aurimteam.justhobby.response_body.TokenBody
 import com.aurimteam.justhobby.user.main.recommendation_page_viewer.fragments_interfaces.IPopularCoursesModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
@@ -21,24 +24,26 @@ class PopularCoursesModel : IPopularCoursesModel {
     }
 
     override fun getPopularCoursesData(token: String, lat: Float?, lon: Float?, onFinishedListener: OnFinishedListener) {
-        App.retrofit
-            .create(Api::class.java)
-            .getPopularCourses(token, lat, lon)
-            .enqueue(object : Callback<CoursesResponse> {
-                override fun onFailure(call: Call<CoursesResponse>, t: Throwable) {
-                    onFinishedListener.onResultFail(t.message)
-                }
-
-                override fun onResponse(call: Call<CoursesResponse>, response: Response<CoursesResponse>) {
-                    val responseBody = response.body()
-                    if (responseBody != null) {
-                        onFinishedListener.onResultSuccess(responseBody.data, responseBody.included)
-                    } else {
-                        val jsonObj = JSONObject(response.errorBody()?.string())
-                        onFinishedListener.onResultFail(jsonObj.getJSONObject("error")?.getString("message")?.toString())
+        GlobalScope.launch(Dispatchers.IO) {
+            App.retrofit
+                .create(Api::class.java)
+                .getPopularCourses(token, lat, lon)
+                .enqueue(object : Callback<CoursesResponse> {
+                    override fun onFailure(call: Call<CoursesResponse>, t: Throwable) {
+                        onFinishedListener.onResultFail(t.message)
                     }
-                }
-            })
+
+                    override fun onResponse(call: Call<CoursesResponse>, response: Response<CoursesResponse>) {
+                        val responseBody = response.body()
+                        if (responseBody != null) {
+                            onFinishedListener.onResultSuccess(responseBody.data, responseBody.included)
+                        } else {
+                            val jsonObj = JSONObject(response.errorBody()?.string())
+                            onFinishedListener.onResultFail(jsonObj.getJSONObject("error")?.getString("message")?.toString())
+                        }
+                    }
+                })
+        }
     }
 
     override fun deleteUserBookmark(

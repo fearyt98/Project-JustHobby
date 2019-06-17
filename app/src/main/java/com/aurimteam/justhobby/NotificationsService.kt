@@ -14,6 +14,10 @@ import com.aurimteam.justhobby.App.Companion.CHANNEL_ID
 import com.aurimteam.justhobby.api.Api
 import com.aurimteam.justhobby.response.*
 import com.aurimteam.justhobby.user.main.main_nav.MainNavActivity
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
@@ -26,6 +30,7 @@ class NotificationsService : Service() {
         override fun onTick(millisUntilFinished: Long) {
             checkNewUserNotifications()
         }
+
         override fun onFinish() {
             start()
         }
@@ -96,7 +101,7 @@ class NotificationsService : Service() {
             var count = 0
             val courseIncludedList: MutableMap<Long, CourseResponseR> = mutableMapOf()
             val notifyIntent = Intent(this, MainNavActivity::class.java)
-            notifyIntent.putExtra("openNotify",true)
+            notifyIntent.putExtra("openNotify", true)
             val pendIntent = PendingIntent.getActivity(this, 0, notifyIntent, 0)
             val manager: NotificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
             if (notifications.included.courses!!.isNotEmpty())

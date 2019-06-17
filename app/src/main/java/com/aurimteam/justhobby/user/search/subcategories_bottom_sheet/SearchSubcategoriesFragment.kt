@@ -138,9 +138,7 @@ class SearchSubcategoriesFragment : BottomSheetDialogFragment(), ISearchSubcateg
 
     override fun showSubcategories(subcategories: List<SubcategoryResponse>) {
         toggleContentPB(false)
-        GlobalScope.launch(Dispatchers.Main) {
-            adapter.onDataChange(subcategories, categoryId, categories)
-        }
+        adapter.onDataChange(subcategories, categoryId, categories)
     }
 
     override fun toggleContentPB(isVisiblePB: Boolean) {
