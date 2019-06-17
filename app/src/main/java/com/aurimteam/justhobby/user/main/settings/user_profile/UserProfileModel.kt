@@ -57,7 +57,7 @@ class UserProfileModel : IUserProfileModel {
                             onFinishedListener.onResultFail(jsonObj.getJSONObject("error")?.getString("message").toString())
                         }
                     }
-                }) //enqueu
+                })
         }
     }
 

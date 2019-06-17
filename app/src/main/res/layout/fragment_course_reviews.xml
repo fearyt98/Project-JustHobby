@@ -11,6 +11,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:visibility="gone"
+                android:overScrollMode="never"
                 android:paddingBottom="56dp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
