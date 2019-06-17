@@ -17,7 +17,7 @@ import java.io.File
 
 class UserProfileModel : IUserProfileModel {
     interface OnFinishedListener {
-        fun onResultSuccess(email: String, name: String, lastName: String, address: String?, image: String?)
+        fun onResultSuccess(user: UserResponse)
         fun userInfoSended()
         fun onSuggestResultSuccess(data: List<SuggestResponse>)
         fun onResultFail(strError: String)
@@ -26,7 +26,7 @@ class UserProfileModel : IUserProfileModel {
     override fun sendUserImage(token: String, filePath: String?, onFinishedListener: OnFinishedListener) {
         val file = File(filePath)
         val requestBody = RequestBody.create(MediaType.parse("image/*"), file)
-        val multipartBodyPart = MultipartBody.Part.createFormData("upload", file.name, requestBody)
+        val multipartBodyPart = MultipartBody.Part.createFormData("avatar", file.name, requestBody)
         val requestBodyDescription = RequestBody.create(MediaType.parse("text/plain"), "image-type")
 
         App.retrofit
@@ -61,10 +61,7 @@ class UserProfileModel : IUserProfileModel {
                 override fun onResponse(call: Call<UserResponse>, response: Response<UserResponse>) {
                     val responseBody = response.body()
                     if (responseBody != null) {
-                        onFinishedListener.onResultSuccess(
-                            responseBody.attributes.email, responseBody.attributes.first_name,
-                            responseBody.attributes.last_name, responseBody.attributes.address,
-                            responseBody.attributes.avatar)
+                        onFinishedListener.onResultSuccess(responseBody)
                     } else {
                         val jsonObj = JSONObject(response.errorBody()?.string())
                         onFinishedListener.onResultFail(jsonObj.getJSONObject("error").getString("message").toString())

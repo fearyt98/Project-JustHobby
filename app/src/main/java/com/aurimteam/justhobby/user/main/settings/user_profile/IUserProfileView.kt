@@ -1,9 +1,10 @@
 package com.aurimteam.justhobby.user.main.settings.user_profile
 
 import com.aurimteam.justhobby.response.SuggestResponse
+import com.aurimteam.justhobby.response.UserResponse
 
 interface IUserProfileView {
-    fun setUserDefaultInfo(email: String, name: String, lastName: String, address: String?, image: String?)
+    fun setUserDefaultInfo(user: UserResponse)
     fun showMessage(message: String?)
     fun toggleContentPB(isVisiblePB: Boolean)
     fun setSuggests(data: List<SuggestResponse>)

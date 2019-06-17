@@ -4,13 +4,14 @@ import android.content.Context
 import com.aurimteam.justhobby.R
 import com.aurimteam.justhobby.Settings
 import com.aurimteam.justhobby.response.SuggestResponse
+import com.aurimteam.justhobby.response.UserResponse
 
 class UserProfilePresenter(private var view: IUserProfileView?, private val model: IUserProfileModel?) :
     UserProfileModel.OnFinishedListener {
 
-    override fun onResultSuccess(email: String, name: String, lastName: String, address: String?, image: String?) {
+    override fun onResultSuccess(user: UserResponse) {
         view?.passwordsSuccess()
-        view?.setUserDefaultInfo(email, name, lastName, address, image)
+        view?.setUserDefaultInfo(user)
     }
 
     override fun onSuggestResultSuccess(data: List<SuggestResponse>) {

@@ -24,6 +24,7 @@ import com.aurimteam.justhobby.App
 import com.aurimteam.justhobby.R
 import com.aurimteam.justhobby.Settings
 import com.aurimteam.justhobby.response.SuggestResponse
+import com.aurimteam.justhobby.response.UserResponse
 import com.aurimteam.justhobby.user.main.settings.settings.SettingsFragment
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.fragment_settings_profile.*
@@ -200,30 +201,25 @@ class UserProfileFragment : Fragment(), IUserProfileView {
         presenter.dettachView()
     }
 
-    override fun setUserDefaultInfo(
-        email: String,
-        name: String,
-        lastName: String,
-        address: String?,
-        image: String?
-    ) {
-        if (email != "") changeEmailUserProfile.setText(
-            email,
+    override fun setUserDefaultInfo(user: UserResponse) {
+        changeEmailUserProfile.setText(
+            user.attributes.email,
             TextView.BufferType.EDITABLE
         )
-        if (name != "") changeNameUserProfile.setText(
-            name,
+        changeNameUserProfile.setText(
+            user.attributes.first_name,
             TextView.BufferType.EDITABLE
         )
-        if (lastName != "") changeLastNameUserProfile.setText(
-            lastName,
+        changeLastNameUserProfile.setText(
+            user.attributes.last_name,
             TextView.BufferType.EDITABLE
         )
-        if (address != "") changeAddressUserProfile.setText(
-            address,
-            TextView.BufferType.EDITABLE
-        )
-        if (image != null){}
+        if (user.attributes.address != null)
+            changeAddressUserProfile.setText(
+                user.attributes.address,
+                TextView.BufferType.EDITABLE
+            )
+        if (user.attributes.avatar != null){}
             //Glide.with(this).load(image).circleCrop().into(userPhotoProfile)
     }
 
