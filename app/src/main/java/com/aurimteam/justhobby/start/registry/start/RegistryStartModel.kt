@@ -7,6 +7,9 @@ import com.aurimteam.justhobby.App
 import com.aurimteam.justhobby.api.Api
 import com.aurimteam.justhobby.response.UserResponse
 import com.aurimteam.justhobby.response_body.UpdateUserBody
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -27,24 +30,25 @@ class RegistryStartModel : IRegistryStartModel {
         val requestBody = RequestBody.create(MediaType.parse("image/*"), file)
         val multipartBodyPart = MultipartBody.Part.createFormData("avatar", file.name, requestBody)
         val requestBodyDescription = RequestBody.create(MediaType.parse("text/plain"), "image-type")
-
-        App.retrofit
-            .create(Api::class.java)
-            .uploadUserImage(token, requestBodyDescription, multipartBodyPart)
-            .enqueue(object : Callback<UserResponse> {
-                override fun onFailure(call: Call<UserResponse>, t: Throwable) {
-                    onFinishedListener.onResultFail("Error of parsing")
-                }
-
-                override fun onResponse(call: Call<UserResponse>, response: Response<UserResponse>) {
-                    val responseBody = response.body()
-                    if (responseBody != null) {
-                    } else {
-                        val jsonObj = JSONObject(response.errorBody()?.string())
-                        onFinishedListener.onResultFail(jsonObj.getJSONObject("error")?.getString("message").toString())
+        GlobalScope.launch(Dispatchers.IO) {
+            App.retrofit
+                .create(Api::class.java)
+                .uploadUserImage(token, requestBodyDescription, multipartBodyPart)
+                .enqueue(object : Callback<UserResponse> {
+                    override fun onFailure(call: Call<UserResponse>, t: Throwable) {
+                        onFinishedListener.onResultFail("Error of parsing")
                     }
-                }
-            })
+
+                    override fun onResponse(call: Call<UserResponse>, response: Response<UserResponse>) {
+                        val responseBody = response.body()
+                        if (responseBody != null) {
+                        } else {
+                            val jsonObj = JSONObject(response.errorBody()?.string())
+                            onFinishedListener.onResultFail(jsonObj.getJSONObject("error")?.getString("message").toString())
+                        }
+                    }
+                })
+        }
     }
 
     private fun getPath(uri: Uri, context: Context): String? {
