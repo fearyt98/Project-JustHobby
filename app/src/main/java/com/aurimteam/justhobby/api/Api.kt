@@ -66,7 +66,7 @@ interface Api {
 
     @Multipart
     @Headers("Accept: application/json")
-    @POST("user")
+    @POST("user/avatar")
     fun uploadUserImage(
         @Query("token") token: String,
         @Part("name") requestBody: RequestBody,

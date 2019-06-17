@@ -26,7 +26,7 @@ class UserProfileModel : IUserProfileModel {
     override fun sendUserImage(token: String, filePath: String?, onFinishedListener: OnFinishedListener) {
         val file = File(filePath)
         val requestBody = RequestBody.create(MediaType.parse("image/*"), file)
-        val multipartBodyPart = MultipartBody.Part.createFormData("upload", file.name, requestBody)
+        val multipartBodyPart = MultipartBody.Part.createFormData("avatar", file.name, requestBody)
         val requestBodyDescription = RequestBody.create(MediaType.parse("text/plain"), "image-type")
 
         App.retrofit

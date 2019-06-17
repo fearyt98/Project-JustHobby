@@ -146,7 +146,7 @@
     </string>
     <string name="about_registry_start">Загрузите фотографию профиля, а\n также укажите свое имя и\n фамилию, они будут показаны при\n оставлении отзыва
     </string>
-    <string name="about_no_search_results">Совсем ничего. Попробйте\n изменить запрос.</string>
+    <string name="about_no_search_results">Совсем ничего. Попробуйте\n изменить запрос.</string>
     <string name="filter">Фильтры</string>
     <string name="admin_panel">Админ-панель</string>
     <string name="categories">Категорий</string>

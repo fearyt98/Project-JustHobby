@@ -39,6 +39,8 @@ class UserProfileFragment : Fragment(), IUserProfileView {
     private var adapter: AddressArrayAdapter? = null
     private var dialog: Dialog? = null
     private var dialogDismiss = true
+    private var setGps = false
+    private var setImage = false
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_settings_profile, container, false)
@@ -59,22 +61,19 @@ class UserProfileFragment : Fragment(), IUserProfileView {
             .setOnCheckedChangeListener { _, isChecked ->
                 if (isTouched) {
                     isTouched = false
-                    if (isChecked) {
-                        setGps()
-                    } else {
-                        unsetGps()
-                    }
+                    setGps = isChecked
                 }
             }
-
         return view
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK && requestCode == App.IMAGE_PICK_CODE) {
+            userPhotoProfile.setImageBitmap(null)
             Glide.with(this).load(data?.data).circleCrop().into(userPhotoProfile)
             filePath = data?.data?.path
+            setImage = true
         }
     }
 
@@ -190,6 +189,11 @@ class UserProfileFragment : Fragment(), IUserProfileView {
         lastNameError.text = message
     }
 
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putBoolean("imageSet", true)
+    }
+
     override fun onStop() {
         super.onStop()
         presenter.dettachView()
@@ -223,8 +227,10 @@ class UserProfileFragment : Fragment(), IUserProfileView {
             address,
             TextView.BufferType.EDITABLE
         )
-        if (image != null){}
-            //Glide.with(this).load(image).circleCrop().into(userPhotoProfile)
+        if (image != null && !setImage) {
+            Glide.with(this).load(image).circleCrop().into(userPhotoProfile)
+        }
+
     }
 
     override fun toggleContentPB(isVisiblePB: Boolean) {
@@ -266,8 +272,11 @@ class UserProfileFragment : Fragment(), IUserProfileView {
 
     private fun sendChangeUserInfo() {
         if (filePath != null) presenter.sendUserImage(filePath, context)
-        if (dialogDismiss) hideOtherError()
-        else hidePasswordError()
+        if (dialogDismiss) {
+            hideOtherError()
+            if (setGps != Settings(context!!).getPropertyBoolean("gps", false) && !setGps) setGps()
+            else unsetGps()
+        } else hidePasswordError()
         presenter.sendUserInfo(
             changeNameUserProfile.text.toString(),
             changeLastNameUserProfile.text.toString(),
