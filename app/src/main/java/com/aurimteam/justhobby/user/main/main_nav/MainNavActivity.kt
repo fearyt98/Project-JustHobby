@@ -161,7 +161,7 @@ class MainNavActivity : AppCompatActivity(), IMainNavView {
     private fun startNotifyService() {
         val mute = Settings(this).getPropertyBoolean("mute", false)
         val token = Settings(this).getProperty("token")
-        if (mute != true) {
+        if (mute != true && token != null) {
             val serviceIntent = Intent(this, NotificationsService::class.java)
             serviceIntent.putExtra("token", token)
             this.startService(serviceIntent)

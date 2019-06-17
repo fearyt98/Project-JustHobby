@@ -20,6 +20,9 @@ import com.aurimteam.justhobby.user.search.search.SearchFragment
 import com.buildware.widget.indeterm.IndeterminateCheckBox
 import kotlinx.android.synthetic.main.card_subcategories.*
 import kotlinx.android.synthetic.main.dialog_subcategories.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class SearchSubcategoriesFragment : BottomSheetDialogFragment(), ISearchSubcategoriesView {
 
@@ -135,7 +138,9 @@ class SearchSubcategoriesFragment : BottomSheetDialogFragment(), ISearchSubcateg
 
     override fun showSubcategories(subcategories: List<SubcategoryResponse>) {
         toggleContentPB(false)
-        adapter.onDataChange(subcategories, categoryId, categories)
+        GlobalScope.launch(Dispatchers.Main) {
+            adapter.onDataChange(subcategories, categoryId, categories)
+        }
     }
 
     override fun toggleContentPB(isVisiblePB: Boolean) {

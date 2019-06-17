@@ -5,6 +5,9 @@ import com.aurimteam.justhobby.api.Api
 import com.aurimteam.justhobby.response.*
 import com.aurimteam.justhobby.response_body.BookmarkAddBody
 import com.aurimteam.justhobby.response_body.TokenBody
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
@@ -45,47 +48,49 @@ class SearchResultModel : ISearchResultModel {
         lon: Float?,
         onFinishedListener: OnFinishedListener
     ) {
-        App.retrofit
-            .create(Api::class.java)
-            .getCourses(
-                subcategories,
-                sortPrice,
-                sortRating,
-                sortLength,
-                priceMax,
-                priceMin,
-                ageMax,
-                ageMin,
-                sex1,
-                sex2,
-                sex3,
-                timetable1,
-                timetable2,
-                timetable3,
-                timetable4,
-                timetable5,
-                timetable6,
-                timetable7,
-                status,
-                query,
-                token,
-                lat,
-                lon
-            ).enqueue(object : Callback<CoursesResponse> {
-                override fun onFailure(call: Call<CoursesResponse>, t: Throwable) {
-                    onFinishedListener.onResultFail(t.message)
-                }
-
-                override fun onResponse(call: Call<CoursesResponse>, response: Response<CoursesResponse>) {
-                    val responseBody = response.body()
-                    if (responseBody != null) {
-                        onFinishedListener.onResultSuccess(responseBody.data, responseBody.included)
-                    } else {
-                        val jsonObj = JSONObject(response.errorBody()?.string())
-                        onFinishedListener.onResultFail(jsonObj.getJSONObject("error")?.getString("message")?.toString())
+        GlobalScope.launch(Dispatchers.IO) {
+            App.retrofit
+                .create(Api::class.java)
+                .getCourses(
+                    subcategories,
+                    sortPrice,
+                    sortRating,
+                    sortLength,
+                    priceMax,
+                    priceMin,
+                    ageMax,
+                    ageMin,
+                    sex1,
+                    sex2,
+                    sex3,
+                    timetable1,
+                    timetable2,
+                    timetable3,
+                    timetable4,
+                    timetable5,
+                    timetable6,
+                    timetable7,
+                    status,
+                    query,
+                    token,
+                    lat,
+                    lon
+                ).enqueue(object : Callback<CoursesResponse> {
+                    override fun onFailure(call: Call<CoursesResponse>, t: Throwable) {
+                        onFinishedListener.onResultFail(t.message)
                     }
-                }
-            })
+
+                    override fun onResponse(call: Call<CoursesResponse>, response: Response<CoursesResponse>) {
+                        val responseBody = response.body()
+                        if (responseBody != null) {
+                            onFinishedListener.onResultSuccess(responseBody.data, responseBody.included)
+                        } else {
+                            val jsonObj = JSONObject(response.errorBody()?.string())
+                            onFinishedListener.onResultFail(jsonObj.getJSONObject("error")?.getString("message")?.toString())
+                        }
+                    }
+                })
+        }
     }
 
     override fun deleteUserBookmark(
