@@ -148,7 +148,7 @@ class SearchResultFragment : Fragment(), ISearchResultView {
 
     fun setQuery(queryNew: String) {
         query = queryNew
-        if (context != null && query.length >= 3)
+        if (context != null && query.isNotEmpty())
             updateResults(context!!)
     }
 

@@ -17,8 +17,11 @@ import retrofit2.Callback
 import retrofit2.Response
 import java.io.File
 import android.provider.MediaStore
-
-
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.launch
+import okhttp3.Dispatcher
 
 class UserProfileModel : IUserProfileModel {
     interface OnFinishedListener {
@@ -30,29 +33,32 @@ class UserProfileModel : IUserProfileModel {
     }
 
     override fun sendUserImage(token: String, filePath: Uri, context: Context, onFinishedListener: OnFinishedListener) {
+
         val file = File(getPath(filePath, context))
         val requestBody = RequestBody.create(MediaType.parse("image/*"), file)
         val multipartBodyPart = MultipartBody.Part.createFormData("avatar", file.name, requestBody)
         val requestBodyDescription = RequestBody.create(MediaType.parse("text/plain"), "image-type")
 
-        App.retrofit
-            .create(Api::class.java)
-            .uploadUserImage(token, requestBodyDescription, multipartBodyPart)
-            .enqueue(object : Callback<UserResponse> {
-                override fun onFailure(call: Call<UserResponse>, t: Throwable) {
-                    onFinishedListener.onResultFail("Error of parsing")
-                }
-
-                override fun onResponse(call: Call<UserResponse>, response: Response<UserResponse>) {
-                    val responseBody = response.body()
-                    if (responseBody != null) {
-                        onFinishedListener.userInfoSended()
-                    } else {
-                        val jsonObj = JSONObject(response.errorBody()?.string())
-                        onFinishedListener.onResultFail(jsonObj.getJSONObject("error")?.getString("message").toString())
+        GlobalScope.launch(Dispatchers.IO) {
+            App.retrofit
+                .create(Api::class.java)
+                .uploadUserImage(token, requestBodyDescription, multipartBodyPart)
+                .enqueue(object : Callback<UserResponse> {
+                    override fun onFailure(call: Call<UserResponse>, t: Throwable) {
+                        onFinishedListener.onResultFail("Error of parsing")
                     }
-                }
-            })
+
+                    override fun onResponse(call: Call<UserResponse>, response: Response<UserResponse>) {
+                        val responseBody = response.body()
+                        if (responseBody != null) {
+                            onFinishedListener.userInfoSended()
+                        } else {
+                            val jsonObj = JSONObject(response.errorBody()?.string())
+                            onFinishedListener.onResultFail(jsonObj.getJSONObject("error")?.getString("message").toString())
+                        }
+                    }
+                }) //enqueu
+        }
     }
 
     private fun getPath(uri: Uri, context: Context): String? {
@@ -183,27 +189,29 @@ class UserProfileModel : IUserProfileModel {
     }
 
     override fun getSuggests(token: String, query: String, onFinishedListener: OnFinishedListener) {
-        App.retrofit
-            .create(Api::class.java)
-            .getSuggests(token, query)
-            .enqueue(object : Callback<SuggestsResponse> {
-                override fun onFailure(call: Call<SuggestsResponse>, t: Throwable) {
-                    onFinishedListener.onResultFail("Error of parsing")
-                }
-
-                override fun onResponse(
-                    call: Call<SuggestsResponse>,
-                    response: Response<SuggestsResponse>
-                ) {
-                    val responseBody = response.body()
-                    if (responseBody != null) {
-                        onFinishedListener.onSuggestResultSuccess(responseBody.data)
-                    } else {
-                        val jsonObj = JSONObject(response.errorBody()?.string())
-                        onFinishedListener.onResultFail(jsonObj.getJSONObject("error").getString("message").toString())
+        GlobalScope.launch(Dispatchers.IO) {
+            App.retrofit
+                .create(Api::class.java)
+                .getSuggests(token, query)
+                .enqueue(object : Callback<SuggestsResponse> {
+                    override fun onFailure(call: Call<SuggestsResponse>, t: Throwable) {
+                        onFinishedListener.onResultFail("Error of parsing")
                     }
-                }
-            })
+
+                    override fun onResponse(
+                        call: Call<SuggestsResponse>,
+                        response: Response<SuggestsResponse>
+                    ) {
+                        val responseBody = response.body()
+                        if (responseBody != null) {
+                            onFinishedListener.onSuggestResultSuccess(responseBody.data)
+                        } else {
+                            val jsonObj = JSONObject(response.errorBody()?.string())
+                            onFinishedListener.onResultFail(jsonObj.getJSONObject("error").getString("message").toString())
+                        }
+                    }
+                })
+        }
     }
 }
 
