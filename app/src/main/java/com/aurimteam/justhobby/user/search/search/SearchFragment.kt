@@ -188,9 +188,11 @@ class SearchFragment : Fragment(), ISearchView {
     }
 
     fun setFilters(filtersNew: Bundle) {
-        filters = filtersNew
-        val resultFragment = fragmentManager!!.findFragmentById(R.id.searchContainer) as SearchResultFragment
-        resultFragment.setFilters(filters)
+        if(!equalBundles(filters, filtersNew)) {
+            filters = filtersNew
+            val resultFragment = fragmentManager!!.findFragmentById(R.id.searchContainer) as SearchResultFragment
+            resultFragment.setFilters(filters)
+        }
     }
 
     fun getCategories(): Bundle {
@@ -198,10 +200,41 @@ class SearchFragment : Fragment(), ISearchView {
     }
 
     fun setCategories(categoriesNew: Bundle) {
-        categories = categoriesNew
-        val resultFragment = fragmentManager!!.findFragmentById(R.id.searchContainer) as SearchResultFragment
-        resultFragment.setCategories(categoriesNew)
+        if(!equalBundles(categories, categoriesNew)) {
+            categories = categoriesNew
+            val resultFragment = fragmentManager!!.findFragmentById(R.id.searchContainer) as SearchResultFragment
+            resultFragment.setCategories(categoriesNew)
 
-        adapter.changeChecked(categories)
+            adapter.changeChecked(categories)
+        }
+    }
+
+    private fun equalBundles(one: Bundle, two: Bundle): Boolean {
+        if (one.size() != two.size())
+            return false
+
+        val setOne = HashSet(one.keySet())
+        setOne.addAll(two.keySet())
+        var valueOne: Any?
+        var valueTwo: Any?
+
+        for (key in setOne) {
+            if (!one.containsKey(key) || !two.containsKey(key))
+                return false
+
+            valueOne = one.get(key)
+            valueTwo = two.get(key)
+            if (valueOne is Bundle && valueTwo is Bundle &&
+                !equalBundles(valueOne, valueTwo)
+            ) {
+                return false
+            } else if (valueOne == null) {
+                if (valueTwo != null)
+                    return false
+            } else if (valueOne != valueTwo)
+                return false
+        }
+
+        return true
     }
 }

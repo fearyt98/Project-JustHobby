@@ -55,9 +55,11 @@ class SearchSubcategoriesFragment : BottomSheetDialogFragment(), ISearchSubcateg
                 )
                 categoryId = arguments!!.get("categoryId")!!.toString().toInt()
                 presenter.getSubcategories(context!!, categoryId)
-                categories = arguments!!
-                categories.remove("categoryId")
-                categories.remove("categoryName")
+                val categoriesBundle = arguments!!
+                categoriesBundle.remove("categoryId")
+                categoriesBundle.remove("categoryName")
+                categories.clear()
+                categories.putAll(categoriesBundle)
             } else {
                 dismiss()
             }

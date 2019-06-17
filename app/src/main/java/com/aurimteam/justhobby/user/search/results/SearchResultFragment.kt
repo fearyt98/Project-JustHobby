@@ -137,7 +137,7 @@ class SearchResultFragment : Fragment(), ISearchResultView {
                 if (filters.getBoolean("statusAny")) null else {
                     if (filters.getBoolean("statusTrue")) 1 else 0
                 },
-                if (query.length >= 3) query else null,
+                if (query.isNotEmpty()) query else null,
                 gpsData.returnLat(),
                 gpsData.returnLon(),
                 context
