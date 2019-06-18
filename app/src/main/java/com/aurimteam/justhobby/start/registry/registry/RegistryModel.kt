@@ -12,7 +12,7 @@ import retrofit2.Response
 class RegistryModel : IRegistryModel {
     interface OnFinishedListener {
         fun onResultSuccess(data: TokenResponse)
-        fun onResultFail(error: String)
+        fun onResultFail(error: String?)
     }
 
     override fun sendUserInfoData(
@@ -26,7 +26,7 @@ class RegistryModel : IRegistryModel {
             .registry(RegistryBody(email, password, confirmPassword))
             .enqueue(object : Callback<TokenResponse> {
                 override fun onFailure(call: Call<TokenResponse>, t: Throwable) {
-                    onFinishedListener.onResultFail("Error of parsing")
+                    onFinishedListener.onResultFail(t.message)
                 }
 
                 override fun onResponse(call: Call<TokenResponse>, response: Response<TokenResponse>) {

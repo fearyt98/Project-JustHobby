@@ -124,7 +124,7 @@ class MainNavActivity : AppCompatActivity(), IMainNavView {
         finish()
     }
 
-    override fun showMessage(message: String) {
+    override fun showMessage(message: String?) {
         val devMode = Settings(this).getPropertyBoolean("dev_mode", false)
         if(devMode != null && devMode) {
             val toast = Toast.makeText(

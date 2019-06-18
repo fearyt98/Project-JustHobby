@@ -21,7 +21,7 @@ class RegistryPresenter(
         view?.openRegistryStart()
     }
 
-    override fun onResultFail(error: String) {
+    override fun onResultFail(error: String?) {
         view?.togglePB(false)
         if (error == "Unique")  view?.setErrorEmail("E-mail зарегестрирован")
         else if (error == "IncorrectEmail") view?.setErrorEmail("Некорректный ввод")

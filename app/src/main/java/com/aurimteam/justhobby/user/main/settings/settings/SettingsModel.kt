@@ -12,7 +12,7 @@ import retrofit2.Response
 class SettingsModel : ISettingsModel {
     interface OnFinishedListener {
         fun onResultSuccess()
-        fun onResultFail(strError: String)
+        fun onResultFail(strError: String?)
     }
 
     override fun logoutUser(token: String, onFinishedListener: OnFinishedListener) {
@@ -21,7 +21,7 @@ class SettingsModel : ISettingsModel {
             .logout(TokenBody(token))
             .enqueue(object : Callback<StatusResponse> {
                 override fun onFailure(call: Call<StatusResponse>, t: Throwable) {
-                    onFinishedListener.onResultFail("Error of parsing")
+                    onFinishedListener.onResultFail(t.message)
                 }
 
                 override fun onResponse(call: Call<StatusResponse>, response: Response<StatusResponse>) {

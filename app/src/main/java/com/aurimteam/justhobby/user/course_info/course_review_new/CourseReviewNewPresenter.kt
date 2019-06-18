@@ -16,7 +16,7 @@ class CourseReviewNewPresenter(private var view: ICourseReviewNewView?, private 
     }
 
     override fun userHaveReview(strError: String?) {
-        view?.showMessage("Вы уже оставили отзыв")
+        view?.showMessage("Вы уже оставили отзыв", true)
     }
 
     fun sendNewReview(courseId: Long, review: String, rating: Int, context: Context) {

@@ -20,7 +20,7 @@ class RegistryStartPresenter(
         }
     }
 
-    override fun onResultFail(error: String) {
+    override fun onResultFail(error: String?) {
         view?.showMessage(error)
     }
 

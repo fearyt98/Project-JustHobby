@@ -4,6 +4,6 @@ import com.aurimteam.justhobby.response.UserResponse
 
 interface IMainNavView {
     fun openAuth()
-    fun showMessage(message: String)
+    fun showMessage(message: String?)
     fun setGps(user: UserResponse)
 }

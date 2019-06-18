@@ -15,7 +15,7 @@ class SettingsPresenter(
         view!!.openAuth()
     }
 
-    override fun onResultFail(strError: String) {
+    override fun onResultFail(strError: String?) {
         if(strError == "Wrong token") {
             onResultSuccess()
         } else {

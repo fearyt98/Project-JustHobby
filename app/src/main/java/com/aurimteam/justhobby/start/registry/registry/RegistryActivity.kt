@@ -53,7 +53,7 @@ class RegistryActivity : AppCompatActivity(), IRegistryView {
 
     override fun onStart() {
         super.onStart()
-        if(presenter.isSetView())
+        if(!presenter.isSetView())
             presenter.attachViewContext(this, this)
     }
 
@@ -88,7 +88,7 @@ class RegistryActivity : AppCompatActivity(), IRegistryView {
         confirmPasswordErrorRegistry.text = message
     }
 
-    override fun showMessage(message: String) {
+    override fun showMessage(message: String?) {
         val devMode = Settings(this).getPropertyBoolean("dev_mode", false)
         if(devMode != null && devMode) {
             val toast = Toast.makeText(

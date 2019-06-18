@@ -8,5 +8,5 @@ interface IRecoveryView {
     fun emailError(message: String)
     fun clearEmailError(message: String)
     fun changeLengthEmail(message: String)
-    fun showMessage(message: String)
+    fun showMessage(message: String?)
 }

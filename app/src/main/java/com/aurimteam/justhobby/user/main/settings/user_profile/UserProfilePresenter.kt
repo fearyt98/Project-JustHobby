@@ -19,7 +19,7 @@ class UserProfilePresenter(private var view: IUserProfileView?, private val mode
         view?.setSuggests(data)
     }
 
-    override fun onResultFail(strError: String) {
+    override fun onResultFail(strError: String?) {
         view?.toggleContentPB(false)
         when (strError) {
             "IncorrectOldPass" -> view?.errorPasswordOld("Неверный пароль")

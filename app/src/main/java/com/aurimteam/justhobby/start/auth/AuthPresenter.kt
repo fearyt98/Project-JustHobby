@@ -21,7 +21,7 @@ class AuthPresenter(private var view: IAuthView?, private val model: IAuthModel?
         else view?.openStartRegistry()
     }
 
-    override fun onResultFail(strError: String) {
+    override fun onResultFail(strError: String?) {
         view?.togglePB(false)
         view?.showMessage(strError)
     }
@@ -30,7 +30,8 @@ class AuthPresenter(private var view: IAuthView?, private val model: IAuthModel?
         view?.togglePB(false)
         if (strError == "The given data was invalid")
             view?.emailOrPasswordError(context!!.getString(R.string.wrong_data))
-        else view?.showMessage(strError)
+        else
+            view?.showMessage(strError)
     }
 
     fun loginUser(loginMain: String, password: String) {

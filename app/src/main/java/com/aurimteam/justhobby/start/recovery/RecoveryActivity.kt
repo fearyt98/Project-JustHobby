@@ -38,7 +38,7 @@ class RecoveryActivity : AppCompatActivity(), IRecoveryView {
 
     override fun onStart() {
         super.onStart()
-        if(presenter.isSetView())
+        if(!presenter.isSetView())
             presenter.attachViewContext(this, this)
     }
 
@@ -56,7 +56,7 @@ class RecoveryActivity : AppCompatActivity(), IRecoveryView {
         startActivity(Intent(Intent(this, AuthActivity::class.java)))
     }
 
-    override fun showMessage(message: String) {
+    override fun showMessage(message: String?) {
         val devMode = Settings(this).getPropertyBoolean("dev_mode", false)
         if(devMode != null && devMode) {
             val toast = Toast.makeText(

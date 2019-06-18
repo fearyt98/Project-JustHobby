@@ -6,7 +6,7 @@ import com.aurimteam.justhobby.Settings
 class MainNavPresenter(private var view: IMainNavView?, private val model: IMainNavModel?, private var context: Context?) :
     MainNavModel.OnFinishedListener {
 
-    override fun onResultFail(strError: String) {
+    override fun onResultFail(strError: String?) {
         //view?.showMessage(strError)
         Settings(context!!).removeProperty("token")
         Settings(context!!).removeProperty("user_id")

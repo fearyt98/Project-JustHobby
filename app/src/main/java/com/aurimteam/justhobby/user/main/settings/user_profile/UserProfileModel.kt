@@ -29,11 +29,10 @@ class UserProfileModel : IUserProfileModel {
         fun userInfoSended()
         fun userPasswordSended()
         fun onResultSuccessSuggest(data: List<SuggestResponse>)
-        fun onResultFail(strError: String)
+        fun onResultFail(strError: String?)
     }
 
     override fun sendUserImage(token: String, filePath: Uri, context: Context, onFinishedListener: OnFinishedListener) {
-        val str = getPath(filePath, context)
         val file = File(getPath(filePath, context))
         val requestBody = RequestBody.create(MediaType.parse("image/*"), file)
         val multipartBodyPart = MultipartBody.Part.createFormData("avatar", file.name, requestBody)
@@ -45,7 +44,7 @@ class UserProfileModel : IUserProfileModel {
                 .uploadUserImage(token, requestBodyDescription, multipartBodyPart)
                 .enqueue(object : Callback<UserResponse> {
                     override fun onFailure(call: Call<UserResponse>, t: Throwable) {
-                        onFinishedListener.onResultFail("Error of parsing")
+                        onFinishedListener.onResultFail(t.message)
                     }
 
                     override fun onResponse(call: Call<UserResponse>, response: Response<UserResponse>) {
@@ -77,7 +76,7 @@ class UserProfileModel : IUserProfileModel {
             .getUser(token)
             .enqueue(object : Callback<UserResponse> {
                 override fun onFailure(call: Call<UserResponse>, t: Throwable) {
-                    onFinishedListener.onResultFail("Error of parsing")
+                    onFinishedListener.onResultFail(t.message)
                 }
 
                 override fun onResponse(call: Call<UserResponse>, response: Response<UserResponse>) {
@@ -114,7 +113,7 @@ class UserProfileModel : IUserProfileModel {
             )
             .enqueue(object : Callback<UserResponse> {
                 override fun onFailure(call: Call<UserResponse>, t: Throwable) {
-                    onFinishedListener.onResultFail("Error of parsing")
+                    onFinishedListener.onResultFail(t.message)
                 }
 
                 override fun onResponse(call: Call<UserResponse>, response: Response<UserResponse>) {
@@ -162,7 +161,7 @@ class UserProfileModel : IUserProfileModel {
             )
             .enqueue(object : Callback<UserResponse> {
                 override fun onFailure(call: Call<UserResponse>, t: Throwable) {
-                    onFinishedListener.onResultFail("Error of parsing")
+                    onFinishedListener.onResultFail(t.message)
                 }
 
                 override fun onResponse(call: Call<UserResponse>, response: Response<UserResponse>) {
@@ -195,7 +194,7 @@ class UserProfileModel : IUserProfileModel {
                 .getSuggests(token, query)
                 .enqueue(object : Callback<SuggestsResponse> {
                     override fun onFailure(call: Call<SuggestsResponse>, t: Throwable) {
-                        onFinishedListener.onResultFail("Error of parsing")
+                        onFinishedListener.onResultFail(t.message)
                     }
 
                     override fun onResponse(

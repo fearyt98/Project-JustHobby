@@ -29,6 +29,7 @@ class AuthActivity : AppCompatActivity(), IAuthView {
         setContentView(R.layout.activity_auth)
 
         presenter.isSetToken()
+
         findViewById<Button>(R.id.authEnterButton).setOnClickListener { loginUser() }
         findViewById<TextView>(R.id.authForget).setOnClickListener { forgetChangeActivity() }
         findViewById<TextView>(R.id.authRegistry).setOnClickListener { registryChangeActivity() }
@@ -54,7 +55,7 @@ class AuthActivity : AppCompatActivity(), IAuthView {
 
     override fun onStart() {
         super.onStart()
-        if(presenter.isSetView())
+        if(!presenter.isSetView())
             presenter.attachViewContext(this, this)
     }
 
@@ -87,7 +88,7 @@ class AuthActivity : AppCompatActivity(), IAuthView {
         passwordErrorAuth.text = ""
     }
 
-    override fun showMessage(message: String) {
+    override fun showMessage(message: String?) {
         val devMode = Settings(this).getPropertyBoolean("dev_mode", false)
         if(devMode != null && devMode) {
             val toast = Toast.makeText(

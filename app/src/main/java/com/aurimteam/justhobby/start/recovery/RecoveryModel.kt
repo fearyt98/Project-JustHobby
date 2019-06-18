@@ -12,7 +12,7 @@ import retrofit2.Response
 class RecoveryModel: IRecoveryModel {
     interface OnFinishedListener{
         fun onResultSuccess()
-        fun onResultFail(strError: String)
+        fun onResultFail(strError: String?)
         fun wrongEmail(strError: String)
     }
 
@@ -22,7 +22,7 @@ class RecoveryModel: IRecoveryModel {
             .recallEmail(RecoveryBody(email))
             .enqueue(object : Callback<StatusResponse> {
                 override fun onFailure(call: Call<StatusResponse>, t: Throwable) {
-                    onFinishedListener.onResultFail("Error of parsing")
+                    onFinishedListener.onResultFail(t.message)
                 }
 
                 override fun onResponse(call: Call<StatusResponse>, response: Response<StatusResponse>) {

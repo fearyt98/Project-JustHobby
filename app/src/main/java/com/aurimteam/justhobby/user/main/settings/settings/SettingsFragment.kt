@@ -55,7 +55,7 @@ class SettingsFragment : Fragment(), ISettingsView {
         presenter?.onDestroy()
     }
 
-    override fun showMessage(message: String) {
+    override fun showMessage(message: String?) {
         val devMode = Settings(context!!).getPropertyBoolean("dev_mode", false)
         if (devMode != null && devMode) {
             val toast = Toast.makeText(

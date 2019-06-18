@@ -14,7 +14,7 @@ class RecoveryPresenter(
         view?.back()
     }
 
-    override fun onResultFail(strError: String) {
+    override fun onResultFail(strError: String?) {
         view?.togglePB(false)
         view?.showMessage(strError)
     }

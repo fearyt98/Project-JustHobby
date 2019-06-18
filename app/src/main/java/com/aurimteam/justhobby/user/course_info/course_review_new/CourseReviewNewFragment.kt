@@ -136,9 +136,9 @@ class CourseReviewNewFragment : Fragment(), ICourseReviewNewView {
         reviewNewEditText.setError(strError, null)
     }
 
-    override fun showMessage(message: String?) {
+    override fun showMessage(message: String?, isImportant: Boolean) {
         val devMode = Settings(context!!).getPropertyBoolean("dev_mode", false)
-        if (devMode != null && devMode) {
+        if ((devMode != null && devMode) || isImportant) {
             val toast = Toast.makeText(context, message, Toast.LENGTH_SHORT)
             toast.setGravity(Gravity.BOTTOM, 0, 30)
             toast.show()

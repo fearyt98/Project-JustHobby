@@ -105,7 +105,7 @@ class RegistryStartActivity : AppCompatActivity(), IRegistryStartView {
         lastNameErrorRegistryStart.text = message
     }
 
-    override fun showMessage(message: String) {
+    override fun showMessage(message: String?) {
         val devMode = Settings(this).getPropertyBoolean("dev_mode", false)
         if(devMode != null && devMode) {
             val toast = Toast.makeText(

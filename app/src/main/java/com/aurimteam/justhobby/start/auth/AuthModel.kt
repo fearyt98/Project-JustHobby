@@ -13,7 +13,7 @@ class AuthModel : IAuthModel {
 
     interface OnFinishedListener {
         fun onResultSuccess(token: TokenResponse)
-        fun onResultFail(strError: String)
+        fun onResultFail(strError: String?)
         fun wrongEmailOrPassword(strError: String)
     }
 
@@ -23,13 +23,15 @@ class AuthModel : IAuthModel {
             .login(LoginBody(login, password))
             .enqueue(object : Callback<TokenResponse> {
                 override fun onFailure(call: Call<TokenResponse>, t: Throwable) {
-                    onFinishedListener.onResultFail("Error of parsing")
+                    onFinishedListener.wrongEmailOrPassword("The given data was invalid")
+                    onFinishedListener.onResultFail(t.message)
                 }
 
                 override fun onResponse(call: Call<TokenResponse>, response: Response<TokenResponse>) {
                     val responseBody = response.body()
-                    if (responseBody != null) onFinishedListener.onResultSuccess(responseBody)
-                    else {
+                    if (responseBody != null) {
+                        onFinishedListener.onResultSuccess(responseBody)
+                    } else {
                         val jsonObj = JSONObject(response.errorBody()?.string())
                         val error = jsonObj.getJSONObject("error")?.getString("message").toString()
                         onFinishedListener.wrongEmailOrPassword(error)

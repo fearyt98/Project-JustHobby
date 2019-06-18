@@ -11,7 +11,7 @@ import retrofit2.Response
 class MainNavModel : IMainNavModel {
 
     interface OnFinishedListener {
-        fun onResultFail(strError: String)
+        fun onResultFail(strError: String?)
     }
 
     override fun getUser(token: String, onFinishedListener: OnFinishedListener) {
@@ -20,7 +20,7 @@ class MainNavModel : IMainNavModel {
             .getUser(token)
             .enqueue(object : Callback<UserResponse> {
                 override fun onFailure(call: Call<UserResponse>, t: Throwable) {
-                    onFinishedListener.onResultFail("Error of parsing")
+                    onFinishedListener.onResultFail(t.message)
                 }
 
                 override fun onResponse(call: Call<UserResponse>, response: Response<UserResponse>) {

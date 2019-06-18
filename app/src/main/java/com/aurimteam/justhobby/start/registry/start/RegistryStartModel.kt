@@ -22,7 +22,7 @@ import java.io.File
 class RegistryStartModel : IRegistryStartModel {
     interface OnFinishedListener {
         fun onResultSuccess()
-        fun onResultFail(error: String)
+        fun onResultFail(error: String?)
     }
 
     override fun sendUserImage(token: String, filePath: Uri, context: Context, onFinishedListener: OnFinishedListener) {
@@ -36,7 +36,7 @@ class RegistryStartModel : IRegistryStartModel {
                 .uploadUserImage(token, requestBodyDescription, multipartBodyPart)
                 .enqueue(object : Callback<UserResponse> {
                     override fun onFailure(call: Call<UserResponse>, t: Throwable) {
-                        onFinishedListener.onResultFail("Error of parsing")
+                        onFinishedListener.onResultFail(t.message)
                     }
 
                     override fun onResponse(call: Call<UserResponse>, response: Response<UserResponse>) {
@@ -72,7 +72,7 @@ class RegistryStartModel : IRegistryStartModel {
             .updateUser(UpdateUserBody(token, first_name, last_name))
             .enqueue(object : Callback<UserResponse> {
                 override fun onFailure(call: Call<UserResponse>, t: Throwable) {
-                    onFinishedListener.onResultFail("Error of parsing")
+                    onFinishedListener.onResultFail(t.message)
                 }
 
                 override fun onResponse(call: Call<UserResponse>, response: Response<UserResponse>) {
