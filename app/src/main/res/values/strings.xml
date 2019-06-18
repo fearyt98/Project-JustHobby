@@ -18,6 +18,7 @@
     <string name="begin">Начать</string>
     <string name="notifications">Уведомления</string>
     <string name="no_user_timetable">Нет расписания</string>
+    <string name="no_events">Нет занятий</string>
     <string name="no_user_bookmarks">Нет закладок</string>
     <string name="no_user_courses">Нет курсов</string>
     <string name="smart_search">Гибкий поиск</string>
@@ -122,6 +123,10 @@
         Таким образом он добавиться в\n Ваше расписание, а также Вам\n будут приходить уведомления\n и напоминания о
         нем.
     </string>
+    <string name="about_no_events">
+        К сожалению, в этот день\n
+        у Вас нет занятий.
+    </string>
     <string name="about_no_bookmarks_before_bookmark">
         Нажмите на
     </string>
@@ -201,7 +206,7 @@
     <string name="notify_for">Уведомлять за</string>
     <string name="notify_from_groups">Уведомления от групп</string>
     <string name="about_app">О приложении</string>
-    <string name="version_app">Версия 1.1</string>
+    <string name="version_app">Версия %1$s</string>
     <string name="confident_politic">Политика конфиденциальности</string>
     <string name="licenses">Лицензии</string>
     <string name="teacher">Педагог:</string>

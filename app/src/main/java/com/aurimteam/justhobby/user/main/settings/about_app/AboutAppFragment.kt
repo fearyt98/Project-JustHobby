@@ -12,6 +12,8 @@ import android.view.Gravity
 import android.widget.Toast
 import com.aurimteam.justhobby.Settings
 import kotlinx.android.synthetic.main.fragment_settings_about_app.*
+import android.content.pm.PackageManager
+import java.lang.Exception
 
 class AboutAppFragment : Fragment() {
 
@@ -28,6 +30,13 @@ class AboutAppFragment : Fragment() {
         confidentPoliticBtn.setOnClickListener { openConfidentPolitics() }
         userAgreementBtn.setOnClickListener { openUserAgreement() }
         licensesBtn.setOnClickListener { openLicenses() }
+        try {
+            val pInfo = context?.packageManager?.getPackageInfo(activity?.packageName, 0)
+            val version = pInfo?.versionName
+            aboutAppVersion.text = String.format(context!!.resources.getString(R.string.version_app), version)
+        } catch (e: Exception) {
+            aboutAppVersion.text = String.format(context!!.resources.getString(R.string.version_app), ":)")
+        }
     }
 
     private fun changeDev() {
@@ -39,7 +48,7 @@ class AboutAppFragment : Fragment() {
             else
                 Settings(context!!).setPropertyBoolean("dev_mode", true)
             devMode = Settings(context!!).getPropertyBoolean("dev_mode", false)
-            if(devMode != null && devMode)
+            if (devMode != null && devMode)
                 showMessage("Режим разработчика включен")
             else
                 showMessage("Режим разработчика выключен")

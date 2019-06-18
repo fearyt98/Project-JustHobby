@@ -27,13 +27,13 @@ class HomeTimelineFragment : Fragment(), IHomeView {
     private var presenter = HomeTimelinePresenter(this, HomeTimelineModel())
     private var adapter = HomeTimelineAdapter()
     private var isTimeline = true
-    private var oldDate = Calendar.getInstance()
+    //private var oldDate = Calendar.getInstance()
     private var selectDate = Calendar.getInstance()
     private var currentDate = Calendar.getInstance()
 
     private var listenerDatePicker: DatePickerDialog.OnDateSetListener =
         DatePickerDialog.OnDateSetListener { _, year, monthOfYear, dayOfMonth ->
-            oldDate.timeInMillis = selectDate.timeInMillis
+            //oldDate.timeInMillis = selectDate.timeInMillis
             selectDate.set(Calendar.YEAR, year)
             selectDate.set(Calendar.MONTH, monthOfYear)
             selectDate.set(Calendar.DAY_OF_MONTH, dayOfMonth)
@@ -55,8 +55,12 @@ class HomeTimelineFragment : Fragment(), IHomeView {
 
             for (i in first..last) adapter.notifyItemChanged(i, listOf(1))
             adapter.removeIfIs()
-            if (adapter.itemCount == 0 && context != null)
-                presenter.getNearDayTimeline(true, context!!)
+            if (adapter.itemCount == 0 && context != null) {
+                homeProgressBar.visibility = View.GONE
+                homeContent.visibility = View.GONE
+                homeContentDayClear.visibility = View.VISIBLE
+            }
+                //presenter.getNearDayTimeline(true, context!!)
         }
 
         override fun onFinish() {}
@@ -130,9 +134,12 @@ class HomeTimelineFragment : Fragment(), IHomeView {
 
     override fun showTimelineEvents(eventsTimeline: List<EventResponse>) {
         if (eventsTimeline.isEmpty()) {
-            selectDate.timeInMillis = oldDate.timeInMillis
-            setInitialDateTime()
-            showMessage(activity?.resources?.getString(R.string.in_change_day_no_events))
+            //selectDate.timeInMillis = oldDate.timeInMillis
+            //setInitialDateTime()
+            //showMessage(activity?.resources?.getString(R.string.in_change_day_no_events))
+            homeProgressBar.visibility = View.GONE
+            homeContent.visibility = View.GONE
+            homeContentDayClear.visibility = View.VISIBLE
         } else {
             toggleContentPB(false)
             timer.start()
@@ -142,8 +149,8 @@ class HomeTimelineFragment : Fragment(), IHomeView {
 
     override fun showContent(nearDay: TimelineNearDayResponse) {
         if (nearDay.status == "success") {
-            oldDate.timeInMillis = nearDay.date * 1000
-            selectDate.timeInMillis = oldDate.timeInMillis
+            /*oldDate.timeInMillis = nearDay.date * 1000
+            selectDate.timeInMillis = oldDate.timeInMillis*/
             setInitialDateTime()
         } else {
             isTimeline = false
@@ -158,9 +165,11 @@ class HomeTimelineFragment : Fragment(), IHomeView {
             if (isVisiblePB) {
                 homeProgressBar.visibility = View.VISIBLE
                 homeContent.visibility = View.GONE
+                homeContentDayClear.visibility = View.GONE
             } else {
                 homeProgressBar.visibility = View.GONE
                 homeContent.visibility = View.VISIBLE
+                homeContentDayClear.visibility = View.GONE
             }
     }
 
