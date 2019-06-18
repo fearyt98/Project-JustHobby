@@ -10,21 +10,27 @@ class RegistryStartPresenter(
     private val model: IRegistryStartModel?,
     private var context: Context?
 ) : RegistryStartModel.OnFinishedListener {
+    private var countQueryClose = 0
 
     override fun onResultSuccess() {
-        Settings(context!!).setPropertyBoolean("is_full_reg", true)
-        view?.userRegistered()
+        countQueryClose--
+        if(countQueryClose <= 0) {
+            Settings(context!!).setPropertyBoolean("is_full_reg", true)
+            view?.userRegistered()
+        }
     }
 
     override fun onResultFail(error: String) {
-        view?.togglePB(false)
         view?.showMessage(error)
     }
 
     fun sendUserImage(filePath: Uri) {
         val token = Settings(context!!).getProperty("token")
-        if (token != null)
+        if (token != null) {
+            view?.togglePB(true)
+            countQueryClose++
             model?.sendUserImage(token, filePath, context!!, this)
+        }
     }
 
     fun sendUserInfo(first_name: String, last_name: String) {
@@ -45,10 +51,12 @@ class RegistryStartPresenter(
             if (last_name.length > 255)
                 view?.changeLengthLastName(context!!.getString(R.string.min_255_symbols))
         } else {
-            view?.togglePB(true)
             val token = Settings(context!!).getProperty("token")
-            if (token != null)
+            if (token != null) {
+                view?.togglePB(true)
+                countQueryClose++
                 model?.sendUserInfoData(token, first_name, last_name, this)
+            }
         }
     }
 

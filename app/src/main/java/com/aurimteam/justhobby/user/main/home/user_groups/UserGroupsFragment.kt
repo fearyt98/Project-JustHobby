@@ -15,6 +15,7 @@ import android.support.v7.widget.helper.ItemTouchHelper
 import android.support.v7.widget.RecyclerView
 import android.support.design.widget.BottomNavigationView
 import android.widget.*
+import com.aurimteam.justhobby.Settings
 import com.aurimteam.justhobby.user.search.search.SearchFragment
 
 class UserGroupsFragment : Fragment(), IUserGroupsView {
@@ -72,9 +73,13 @@ class UserGroupsFragment : Fragment(), IUserGroupsView {
     }
 
     override fun showMessage(message: String?) {
-        val toast = Toast.makeText(activity, message, Toast.LENGTH_SHORT)
-        toast.setGravity(Gravity.BOTTOM, 0, 30)
-        toast.show()
+        val devMode = Settings(context!!).getPropertyBoolean("dev_mode", false)
+        if (devMode != null && devMode) {
+            val toast = Toast.makeText(activity, message, Toast.LENGTH_SHORT)
+            toast.setGravity(Gravity.BOTTOM, 0, 30)
+            toast.show()
+        }
+        toggleContentPB(false)
     }
 
     override fun deletedUserGroup(position: Int) {

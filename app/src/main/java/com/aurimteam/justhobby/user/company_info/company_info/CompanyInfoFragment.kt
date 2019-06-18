@@ -13,6 +13,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.aurimteam.justhobby.user.company_info.company_courses.CompanyCoursesFragment
 import com.aurimteam.justhobby.R
+import com.aurimteam.justhobby.Settings
 import com.aurimteam.justhobby.course.CourseAdapter
 import com.aurimteam.justhobby.response.*
 import com.aurimteam.justhobby.user.main.main_nav.MainNavActivity
@@ -73,9 +74,13 @@ class CompanyInfoFragment : Fragment(), ICompanyInfoView {
     }
 
     override fun showMessage(message: String?) {
-        val toast = Toast.makeText(activity, message, Toast.LENGTH_SHORT)
-        toast.setGravity(Gravity.BOTTOM, 0, 30)
-        toast.show()
+        val devMode = Settings(context!!).getPropertyBoolean("dev_mode", false)
+        if (devMode != null && devMode) {
+            val toast = Toast.makeText(activity, message, Toast.LENGTH_SHORT)
+            toast.setGravity(Gravity.BOTTOM, 0, 30)
+            toast.show()
+        }
+        toggleContentPB(false)
     }
 
     override fun showCompanyCourses(courses: List<CourseResponseR>, included: IncludedResponse?) {

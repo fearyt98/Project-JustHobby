@@ -13,6 +13,7 @@ import android.widget.Button
 import android.widget.ImageButton
 import android.widget.Toast
 import com.aurimteam.justhobby.R
+import com.aurimteam.justhobby.Settings
 import com.aurimteam.justhobby.response.IncludedResponse
 import com.aurimteam.justhobby.response.NotificationResponse
 import com.aurimteam.justhobby.response.NotificationsResponse
@@ -85,9 +86,13 @@ class NotificationsFragment : Fragment(), INotificationsView {
     }
 
     override fun showMessage(message: String?) {
-        val toast = Toast.makeText(context, message, Toast.LENGTH_SHORT)
-        toast.setGravity(Gravity.BOTTOM, 0, 30)
-        toast.show()
+        val devMode = Settings(context!!).getPropertyBoolean("dev_mode", false)
+        if (devMode != null && devMode) {
+            val toast = Toast.makeText(context, message, Toast.LENGTH_SHORT)
+            toast.setGravity(Gravity.BOTTOM, 0, 30)
+            toast.show()
+        }
+        toggleContentPB(false)
     }
 
     override fun toggleContentPB(isVisiblePB: Boolean) {

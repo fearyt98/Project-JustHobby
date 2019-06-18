@@ -12,6 +12,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.aurimteam.justhobby.R
+import com.aurimteam.justhobby.Settings
 import com.aurimteam.justhobby.response.ReviewResponse
 import com.aurimteam.justhobby.user.course_info.course_review.CourseReviewFragment
 import com.aurimteam.justhobby.user.course_info.course_review_new.CourseReviewNewFragment
@@ -132,9 +133,13 @@ class CourseReviewsFragment : Fragment(), ICourseReviewsView {
     }
 
     override fun showMessage(message: String?) {
-        val toast = Toast.makeText(activity, message, Toast.LENGTH_SHORT)
-        toast.setGravity(Gravity.BOTTOM, 0, 30)
-        toast.show()
+        val devMode = Settings(context!!).getPropertyBoolean("dev_mode", false)
+        if (devMode != null && devMode) {
+            val toast = Toast.makeText(activity, message, Toast.LENGTH_SHORT)
+            toast.setGravity(Gravity.BOTTOM, 0, 30)
+            toast.show()
+        }
+        toggleContentPB(false)
     }
 
     override fun showCourseReviews(courseReviews: List<ReviewResponse>) {

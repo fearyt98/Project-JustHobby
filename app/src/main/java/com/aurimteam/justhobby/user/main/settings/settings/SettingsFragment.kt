@@ -13,6 +13,7 @@ import com.aurimteam.justhobby.start.auth.AuthActivity
 import android.view.Gravity
 import android.widget.Toast
 import com.aurimteam.justhobby.NotificationsService
+import com.aurimteam.justhobby.Settings
 import com.aurimteam.justhobby.user.main.settings.about_app.AboutAppFragment
 import com.aurimteam.justhobby.user.main.settings.notifications.NotificationsFragment
 import com.aurimteam.justhobby.user.main.settings.user_profile.UserProfileFragment
@@ -55,13 +56,16 @@ class SettingsFragment : Fragment(), ISettingsView {
     }
 
     override fun showMessage(message: String) {
-        val toast = Toast.makeText(
-            activity,
-            message,
-            Toast.LENGTH_SHORT
-        )
-        toast.setGravity(Gravity.BOTTOM, 0, 30)
-        toast.show()
+        val devMode = Settings(context!!).getPropertyBoolean("dev_mode", false)
+        if (devMode != null && devMode) {
+            val toast = Toast.makeText(
+                activity,
+                message,
+                Toast.LENGTH_SHORT
+            )
+            toast.setGravity(Gravity.BOTTOM, 0, 30)
+            toast.show()
+        }
     }
 
     private fun notificationItemClick() {

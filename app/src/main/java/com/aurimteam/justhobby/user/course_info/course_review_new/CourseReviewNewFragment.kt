@@ -19,7 +19,7 @@ import android.support.annotation.ColorInt
 import android.graphics.drawable.Drawable
 import android.view.Gravity
 import android.widget.Toast
-import com.tooltip.Tooltip
+import com.aurimteam.justhobby.Settings
 
 
 
@@ -137,9 +137,12 @@ class CourseReviewNewFragment : Fragment(), ICourseReviewNewView {
     }
 
     override fun showMessage(message: String?) {
-        val toast = Toast.makeText(context, message, Toast.LENGTH_SHORT)
-        toast.setGravity(Gravity.BOTTOM, 0, 30)
-        toast.show()
+        val devMode = Settings(context!!).getPropertyBoolean("dev_mode", false)
+        if (devMode != null && devMode) {
+            val toast = Toast.makeText(context, message, Toast.LENGTH_SHORT)
+            toast.setGravity(Gravity.BOTTOM, 0, 30)
+            toast.show()
+        }
     }
 
     override fun back() {

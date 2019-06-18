@@ -14,6 +14,7 @@ import android.widget.Space
 import android.widget.Toast
 import com.aurimteam.justhobby.user.main.recommendation_page_viewer.fragments_interfaces.IPopularCoursesView
 import com.aurimteam.justhobby.R
+import com.aurimteam.justhobby.Settings
 import com.aurimteam.justhobby.course.CourseAdapter
 import com.aurimteam.justhobby.response.CourseResponse
 import com.aurimteam.justhobby.response.CourseResponseR
@@ -91,9 +92,12 @@ class PopularCoursesFragment : Fragment(), IPopularCoursesView {
     }
 
     override fun showMessage(message: String?) {
-        val toast = Toast.makeText(activity, message, Toast.LENGTH_SHORT)
-        toast.setGravity(Gravity.BOTTOM, 0, 30)
-        toast.show()
+        val devMode = Settings(context!!).getPropertyBoolean("dev_mode", false)
+        if (devMode != null && devMode) {
+            val toast = Toast.makeText(activity, message, Toast.LENGTH_SHORT)
+            toast.setGravity(Gravity.BOTTOM, 0, 30)
+            toast.show()
+        }
         toggleContentPB(false)
     }
 }

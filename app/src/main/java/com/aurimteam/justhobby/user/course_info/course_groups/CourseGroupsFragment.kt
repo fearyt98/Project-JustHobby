@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.aurimteam.justhobby.R
+import com.aurimteam.justhobby.Settings
 import com.aurimteam.justhobby.group.GroupAdapter
 import com.aurimteam.justhobby.response.GroupResponse
 import kotlinx.android.synthetic.main.fragment_course_groups.*
@@ -60,9 +61,13 @@ class CourseGroupsFragment : Fragment(), ICourseGroupsView {
     }
 
     override fun showMessage(message: String?) {
-        val toast = Toast.makeText(activity, message, Toast.LENGTH_SHORT)
-        toast.setGravity(Gravity.BOTTOM, 0, 30)
-        toast.show()
+        val devMode = Settings(context!!).getPropertyBoolean("dev_mode", false)
+        if (devMode != null && devMode) {
+            val toast = Toast.makeText(activity, message, Toast.LENGTH_SHORT)
+            toast.setGravity(Gravity.BOTTOM, 0, 30)
+            toast.show()
+        }
+        toggleContentPB(false)
     }
 
     override fun showCourseGroups(groups: List<GroupResponse>) {

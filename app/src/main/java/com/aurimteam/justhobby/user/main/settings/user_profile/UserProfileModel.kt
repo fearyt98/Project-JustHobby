@@ -28,12 +28,12 @@ class UserProfileModel : IUserProfileModel {
         fun onResultSuccess(user: UserResponse)
         fun userInfoSended()
         fun userPasswordSended()
-        fun onSuggestResultSuccess(data: List<SuggestResponse>)
+        fun onResultSuccessSuggest(data: List<SuggestResponse>)
         fun onResultFail(strError: String)
     }
 
     override fun sendUserImage(token: String, filePath: Uri, context: Context, onFinishedListener: OnFinishedListener) {
-
+        val str = getPath(filePath, context)
         val file = File(getPath(filePath, context))
         val requestBody = RequestBody.create(MediaType.parse("image/*"), file)
         val multipartBodyPart = MultipartBody.Part.createFormData("avatar", file.name, requestBody)
@@ -204,7 +204,7 @@ class UserProfileModel : IUserProfileModel {
                     ) {
                         val responseBody = response.body()
                         if (responseBody != null) {
-                            onFinishedListener.onSuggestResultSuccess(responseBody.data)
+                            onFinishedListener.onResultSuccessSuggest(responseBody.data)
                         } else {
                             val jsonObj = JSONObject(response.errorBody()?.string())
                             onFinishedListener.onResultFail(jsonObj.getJSONObject("error").getString("message").toString())

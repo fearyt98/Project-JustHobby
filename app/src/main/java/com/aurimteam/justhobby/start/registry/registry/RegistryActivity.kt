@@ -12,6 +12,7 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
 import com.aurimteam.justhobby.R
+import com.aurimteam.justhobby.Settings
 import com.aurimteam.justhobby.start.registry.start.RegistryStartActivity
 import kotlinx.android.synthetic.main.activity_auth.*
 import kotlinx.android.synthetic.main.activity_registry.*
@@ -88,13 +89,17 @@ class RegistryActivity : AppCompatActivity(), IRegistryView {
     }
 
     override fun showMessage(message: String) {
-        val toast = Toast.makeText(
-            this,
-            message,
-            Toast.LENGTH_SHORT
-        )
-        toast.setGravity(Gravity.BOTTOM, 0, 30)
-        toast.show()
+        val devMode = Settings(this).getPropertyBoolean("dev_mode", false)
+        if(devMode != null && devMode) {
+            val toast = Toast.makeText(
+                this,
+                message,
+                Toast.LENGTH_SHORT
+            )
+            toast.setGravity(Gravity.BOTTOM, 0, 30)
+            toast.show()
+        }
+        togglePB(false)
     }
 
     override fun togglePB(isVisiblePB: Boolean) {

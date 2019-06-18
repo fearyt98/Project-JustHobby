@@ -8,18 +8,49 @@ import android.view.ViewGroup
 import com.aurimteam.justhobby.R
 import android.content.Intent
 import android.net.Uri
-import android.widget.ImageButton
-import android.widget.TextView
+import android.view.Gravity
+import android.widget.Toast
+import com.aurimteam.justhobby.Settings
+import kotlinx.android.synthetic.main.fragment_settings_about_app.*
 
 class AboutAppFragment : Fragment() {
 
+    private var countDevTap = 0
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_settings_about_app, container, false)
-        view.findViewById<ImageButton>(R.id.onSettingsBtnBack).setOnClickListener { back() }
-        view.findViewById<TextView>(R.id.confidentPoliticBtn).setOnClickListener { openConfidentPolitics() }
-        view.findViewById<TextView>(R.id.userAgreementBtn).setOnClickListener { openUserAgreement() }
-        view.findViewById<TextView>(R.id.licensesBtn).setOnClickListener { openLicenses() }
-        return view
+        return inflater.inflate(R.layout.fragment_settings_about_app, container, false)
+    }
+
+    override fun onStart() {
+        super.onStart()
+        aboutAppDevBtn.setOnClickListener { changeDev() }
+        onSettingsBtnBack.setOnClickListener { back() }
+        confidentPoliticBtn.setOnClickListener { openConfidentPolitics() }
+        userAgreementBtn.setOnClickListener { openUserAgreement() }
+        licensesBtn.setOnClickListener { openLicenses() }
+    }
+
+    private fun changeDev() {
+        countDevTap++
+        if (countDevTap >= 7) {
+            var devMode = Settings(context!!).getPropertyBoolean("dev_mode", false)
+            if (devMode != null)
+                Settings(context!!).setPropertyBoolean("dev_mode", !devMode)
+            else
+                Settings(context!!).setPropertyBoolean("dev_mode", true)
+            devMode = Settings(context!!).getPropertyBoolean("dev_mode", false)
+            if(devMode != null && devMode)
+                showMessage("Режим разработчика включен")
+            else
+                showMessage("Режим разработчика выключен")
+            countDevTap = 0
+        }
+    }
+
+    private fun showMessage(message: String?) {
+        val toast = Toast.makeText(activity, message, Toast.LENGTH_SHORT)
+        toast.setGravity(Gravity.BOTTOM, 0, 30)
+        toast.show()
     }
 
     private fun openConfidentPolitics() {
@@ -28,12 +59,14 @@ class AboutAppFragment : Fragment() {
     }
 
     private fun openUserAgreement() {
-        val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("http://justhobby.herokuapp.com/public/files/User_Agreement.pdf"))
+        val browserIntent =
+            Intent(Intent.ACTION_VIEW, Uri.parse("http://justhobby.herokuapp.com/public/files/User_Agreement.pdf"))
         startActivity(browserIntent)
     }
 
     private fun openLicenses() {
-        val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("http://justhobby.herokuapp.com/public/files/Software_Licenses.pdf"))
+        val browserIntent =
+            Intent(Intent.ACTION_VIEW, Uri.parse("http://justhobby.herokuapp.com/public/files/Software_Licenses.pdf"))
         startActivity(browserIntent)
     }
 

@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.aurimteam.justhobby.user.main.recommendation_page_viewer.fragments_interfaces.INearCoursesView
 import com.aurimteam.justhobby.R
+import com.aurimteam.justhobby.Settings
 import com.aurimteam.justhobby.course.CourseAdapter
 import com.aurimteam.justhobby.response.CourseResponseR
 import com.aurimteam.justhobby.response.IncludedResponse
@@ -79,10 +80,14 @@ class NearUserCoursesFragment : Fragment(), INearCoursesView {
     }
 
     override fun showMessage(message: String?) {
-        val toast = Toast.makeText(activity, message, Toast.LENGTH_SHORT)
-        toast.setGravity(Gravity.BOTTOM, 0, 30)
-        toast.show()
+        val devMode = Settings(context!!).getPropertyBoolean("dev_mode", false)
+        if (devMode != null && devMode) {
+            val toast = Toast.makeText(activity, message, Toast.LENGTH_SHORT)
+            toast.setGravity(Gravity.BOTTOM, 0, 30)
+            toast.show()
+            toggleContentPB(false)
+            nearCoursesClear.visibility = View.VISIBLE
+        }
         toggleContentPB(false)
-        nearCoursesClear.visibility = View.VISIBLE
     }
 }

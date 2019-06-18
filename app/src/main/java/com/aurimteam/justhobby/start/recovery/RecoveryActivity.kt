@@ -12,6 +12,7 @@ import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
+import com.aurimteam.justhobby.Settings
 import com.aurimteam.justhobby.start.auth.AuthActivity
 import kotlinx.android.synthetic.main.activity_recovery.*
 
@@ -56,13 +57,17 @@ class RecoveryActivity : AppCompatActivity(), IRecoveryView {
     }
 
     override fun showMessage(message: String) {
-        val toast = Toast.makeText(
-            this,
-            message,
-            Toast.LENGTH_SHORT
-        )
-        toast.setGravity(Gravity.BOTTOM, 0, 30)
-        toast.show()
+        val devMode = Settings(this).getPropertyBoolean("dev_mode", false)
+        if(devMode != null && devMode) {
+            val toast = Toast.makeText(
+                this,
+                message,
+                Toast.LENGTH_SHORT
+            )
+            toast.setGravity(Gravity.BOTTOM, 0, 30)
+            toast.show()
+        }
+        togglePB(false)
     }
 
     override fun recoveryEmail() {

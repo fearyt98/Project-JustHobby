@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.Toast
 import com.aurimteam.justhobby.R
+import com.aurimteam.justhobby.Settings
 import com.aurimteam.justhobby.response.CourseResponseR
 import com.aurimteam.justhobby.response.IncludedResponse
 import com.aurimteam.justhobby.user.main.main_nav.MainNavActivity
@@ -60,9 +61,13 @@ class UserBookmarksFragment : Fragment(), IUserBookmarksView {
     }
 
     override fun showMessage(message: String?) {
-        val toast = Toast.makeText(activity, message, Toast.LENGTH_SHORT)
-        toast.setGravity(Gravity.BOTTOM, 0, 30)
-        toast.show()
+        val devMode = Settings(context!!).getPropertyBoolean("dev_mode", false)
+        if(devMode != null && devMode) {
+            val toast = Toast.makeText(activity, message, Toast.LENGTH_SHORT)
+            toast.setGravity(Gravity.BOTTOM, 0, 30)
+            toast.show()
+        }
+        toggleContentPB(false)
     }
 
     override fun showUserBookmarks(bookmarks: List<CourseResponseR>, included: IncludedResponse?) {

@@ -9,13 +9,13 @@ import com.aurimteam.justhobby.response.UserResponse
 
 class UserProfilePresenter(private var view: IUserProfileView?, private val model: IUserProfileModel?) :
     UserProfileModel.OnFinishedListener {
+    private var countQueryClose = 0
 
     override fun onResultSuccess(user: UserResponse) {
-        view?.passwordsSuccess()
         view?.setUserDefaultInfo(user)
     }
 
-    override fun onSuggestResultSuccess(data: List<SuggestResponse>) {
+    override fun onResultSuccessSuggest(data: List<SuggestResponse>) {
         view?.setSuggests(data)
     }
 
@@ -31,7 +31,10 @@ class UserProfilePresenter(private var view: IUserProfileView?, private val mode
     }
 
     override fun userInfoSended() {
-        view?.userInfoSended()
+        countQueryClose--
+        if(countQueryClose <= 0) {
+            view?.userInfoSended()
+        }
     }
 
     override fun userPasswordSended() {
@@ -46,14 +49,19 @@ class UserProfilePresenter(private var view: IUserProfileView?, private val mode
 
     fun getUserInfo(context: Context?) {
         val token = Settings(context!!).getProperty("token")
-        if (token != null)
+        if (token != null) {
+            view?.toggleContentPB(true)
             model?.getUserInfoData(token, this)
+        }
     }
 
     fun sendUserImage(filePath: Uri, context: Context?) {
         val token = Settings(context!!).getProperty("token")
-        if (token != null)
+        if (token != null) {
+            view?.toggleContentPB(true)
+            countQueryClose++
             model?.sendUserImage(token, filePath, context, this)
+        }
     }
 
     fun sendUserInfo(
@@ -70,9 +78,10 @@ class UserProfilePresenter(private var view: IUserProfileView?, private val mode
                 view?.userLastNameClear(context!!.getString(R.string.empty_field))
         } else {
             view?.hideOtherError()
-            view?.toggleContentPB(true)
             val token = Settings(context!!).getProperty("token")
-            if (token != null)
+            if (token != null) {
+                view?.toggleContentPB(true)
+                countQueryClose++
                 model?.sendUserInfoData(
                     token,
                     first_name,
@@ -81,6 +90,8 @@ class UserProfilePresenter(private var view: IUserProfileView?, private val mode
                     else address,
                     this
                 )
+            }
+
         }
     }
 
@@ -119,9 +130,9 @@ class UserProfilePresenter(private var view: IUserProfileView?, private val mode
             view?.errorPasswordNew(context!!.getString(R.string.passwords_not_similar))
         } else {
             view?.hidePasswordError()
-            view?.toggleContentPB(true)
             val token = Settings(context!!).getProperty("token")
-            if (token != null)
+            if (token != null) {
+                view?.toggleContentPB(true)
                 model?.sendUserPassword(
                     token,
                     password_old,
@@ -129,6 +140,7 @@ class UserProfilePresenter(private var view: IUserProfileView?, private val mode
                     password_confirmation,
                     this
                 )
+            }
         }
     }
 

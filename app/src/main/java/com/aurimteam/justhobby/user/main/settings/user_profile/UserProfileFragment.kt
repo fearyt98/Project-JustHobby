@@ -181,6 +181,7 @@ class UserProfileFragment : Fragment(), IUserProfileView {
     }
 
     override fun setUserDefaultInfo(user: UserResponse) {
+        toggleContentPB(false)
         changeEmailUserProfile.setText(
             user.attributes.email,
             TextView.BufferType.EDITABLE
@@ -223,19 +224,23 @@ class UserProfileFragment : Fragment(), IUserProfileView {
     }
 
     override fun showMessage(message: String?) {
-        val toast = Toast.makeText(
-            context,
-            message,
-            Toast.LENGTH_SHORT
-        )
-        toast.setGravity(Gravity.BOTTOM, 0, 30)
-        toast.show()
+        val devMode = Settings(context!!).getPropertyBoolean("dev_mode", false)
+        if (devMode != null && devMode) {
+            val toast = Toast.makeText(
+                context,
+                message,
+                Toast.LENGTH_SHORT
+            )
+            toast.setGravity(Gravity.BOTTOM, 0, 30)
+            toast.show()
+        }
+        toggleContentPB(false)
     }
 
     private fun setGps() {
         Settings(context!!).setPropertyBoolean("gps", true)
         val gpsData = (activity as MainNavActivity).gpsData
-        if(!gpsData.isCreated) {
+        if (!gpsData.isCreated) {
             gpsData.create(activity!!, context!!)
         } else
             gpsData.activate()
@@ -244,7 +249,7 @@ class UserProfileFragment : Fragment(), IUserProfileView {
     private fun unsetGps() {
         Settings(context!!).setPropertyBoolean("gps", false)
         val gpsData = (activity as MainNavActivity).gpsData
-        if(gpsData.isCreated)
+        if (gpsData.isCreated)
             gpsData.deactivate()
     }
 
@@ -264,6 +269,8 @@ class UserProfileFragment : Fragment(), IUserProfileView {
     private fun pickImageFromGallery() {
         val intent = Intent(Intent.ACTION_PICK)
         intent.type = "image/*"
+        val mimeTypes = arrayListOf("image/png")
+        intent.putExtra(Intent.EXTRA_MIME_TYPES, mimeTypes)
         startActivityForResult(intent, App.IMAGE_PICK_CODE)
     }
 

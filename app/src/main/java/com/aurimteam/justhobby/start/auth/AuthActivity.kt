@@ -13,6 +13,7 @@ import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
 import android.view.Gravity
 import android.widget.*
+import com.aurimteam.justhobby.Settings
 import com.aurimteam.justhobby.user.main.main_nav.MainNavActivity
 import com.aurimteam.justhobby.start.recovery.RecoveryActivity
 import com.aurimteam.justhobby.start.registry.start.RegistryStartActivity
@@ -87,13 +88,17 @@ class AuthActivity : AppCompatActivity(), IAuthView {
     }
 
     override fun showMessage(message: String) {
-        val toast = Toast.makeText(
-            this,
-            message,
-            Toast.LENGTH_SHORT
-        )
-        toast.setGravity(Gravity.BOTTOM, 0, 30)
-        toast.show()
+        val devMode = Settings(this).getPropertyBoolean("dev_mode", false)
+        if(devMode != null && devMode) {
+            val toast = Toast.makeText(
+                this,
+                message,
+                Toast.LENGTH_SHORT
+            )
+            toast.setGravity(Gravity.BOTTOM, 0, 30)
+            toast.show()
+        }
+        togglePB(false)
     }
 
     override fun changeLengthPassword(message: String) {
