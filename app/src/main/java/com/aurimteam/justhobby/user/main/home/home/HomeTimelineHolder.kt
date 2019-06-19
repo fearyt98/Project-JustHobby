@@ -6,7 +6,6 @@ import com.aurimteam.justhobby.R
 import kotlinx.android.synthetic.main.card_event.view.*
 import java.util.*
 
-
 class HomeTimelineHolder(view: View) : RecyclerView.ViewHolder(view) {
     fun bind(
         last: Boolean,
@@ -57,6 +56,8 @@ class HomeTimelineHolder(view: View) : RecyclerView.ViewHolder(view) {
     ) {
         itemView.cardTimelineLineLast.visibility = if (last) View.INVISIBLE else View.VISIBLE
         itemView.cardTimelineCountdown.visibility = if (isNow) View.VISIBLE else View.INVISIBLE
+        itemView.cardTimelineDuration.text =
+            String.format(itemView.context.resources.getString(R.string.duration), intToTime(duration))
         if (isNow)
             if (time <= dayTime()) {
                 val timeTill = intToTime(time + duration - dayTime())
@@ -72,7 +73,7 @@ class HomeTimelineHolder(view: View) : RecyclerView.ViewHolder(view) {
                     R.string.before_event_term2to4,
                     R.string.before_event_term5toMoreAnd11to14
                 )
-                if(hour == 0)
+                if (hour == 0)
                     stringId = R.string.before_event_min
                 itemView.cardTimelineCountdown.text =
                     String.format(itemView.context.resources.getString(stringId), hour)

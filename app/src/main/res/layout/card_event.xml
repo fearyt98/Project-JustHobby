@@ -129,14 +129,14 @@
                       tools:ignore="RtlSymmetry"/>
         </LinearLayout>
 
-        <TextView style="@style/Caption3"
+        <TextView android:id="@+id/cardTimelineDuration"
+                  style="@style/Caption3"
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
                   android:paddingBottom="-9dp"
-                  android:translationY="-9dp"
-                  android:text="@string/duration"
                   android:textAlignment="center"
                   android:textColor="@color/gray"
+                  android:translationY="-9dp"
                   app:layout_constraintBottom_toBottomOf="parent"
                   app:layout_constraintLeft_toLeftOf="parent"
                   app:layout_constraintRight_toRightOf="parent"
