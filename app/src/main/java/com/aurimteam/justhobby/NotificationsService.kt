@@ -1,5 +1,6 @@
 package com.aurimteam.justhobby
 
+import android.app.Notification
 import android.app.Service
 import android.content.Context
 import android.content.Intent
@@ -9,6 +10,7 @@ import android.app.PendingIntent
 import com.aurimteam.justhobby.user.main.home.home.HomeTimelineFragment
 import android.app.NotificationManager
 import android.graphics.Color
+import android.os.Build
 import android.support.v4.app.NotificationCompat
 import com.aurimteam.justhobby.App.Companion.CHANNEL_ID
 import com.aurimteam.justhobby.api.Api
@@ -26,7 +28,7 @@ import retrofit2.Response
 class NotificationsService : Service() {
 
     private var token: String? = null
-    private var timer = object : CountDownTimer(3600000, 900000) {
+    private var timer = object : CountDownTimer(10000, 5000) {
         override fun onTick(millisUntilFinished: Long) {
             checkNewUserNotifications()
         }
@@ -40,12 +42,23 @@ class NotificationsService : Service() {
         return null
     }
 
-    override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
-        if (intent!!.getStringExtra("token") != null) {
-            setToken(intent.getStringExtra("token"))
-            checkNewUserNotifications()
-            timer.start()
+    override fun onCreate() {
+        super.onCreate()
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val notify = Notification.Builder(this, CHANNEL_ID)
+                .setContentTitle(getString(R.string.checking_new_notifications))
+                .setContentText(getString(R.string.search_new_notifications))
+                .build()
+            startForeground(1000, notify)
         }
+    }
+
+    override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
+        intent!!.getStringExtra("token")
+        setToken(intent.getStringExtra("token"))
+        checkNewUserNotifications()
+        timer.start()
+
         return START_STICKY
     }
 

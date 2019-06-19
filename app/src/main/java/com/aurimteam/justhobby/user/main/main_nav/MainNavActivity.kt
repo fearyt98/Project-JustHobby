@@ -2,6 +2,7 @@ package com.aurimteam.justhobby.user.main.main_nav
 
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v7.app.AppCompatActivity
@@ -126,7 +127,7 @@ class MainNavActivity : AppCompatActivity(), IMainNavView {
 
     override fun showMessage(message: String?) {
         val devMode = Settings(this).getPropertyBoolean("dev_mode", false)
-        if(devMode != null && devMode) {
+        if (devMode != null && devMode) {
             val toast = Toast.makeText(
                 this,
                 message,
@@ -167,7 +168,10 @@ class MainNavActivity : AppCompatActivity(), IMainNavView {
         if (mute != true && token != null) {
             val serviceIntent = Intent(this, NotificationsService::class.java)
             serviceIntent.putExtra("token", token)
-            this.startService(serviceIntent)
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
+                startForegroundService(serviceIntent)
+            else
+                this.startService(serviceIntent)
         }
     }
 

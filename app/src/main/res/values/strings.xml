@@ -230,4 +230,6 @@
     <string name="new_password">Новый пароль</string>
     <string name="repeat_password">Повторите пароль</string>
     <string name="okay">Ок</string>
+    <string name="checking_new_notifications">Проверка новых уведомлений</string>
+    <string name="search_new_notifications">Поиск новых уведомлений</string>
 </resources>
