@@ -15,6 +15,7 @@ class RegistryStartPresenter(
     override fun onResultSuccess() {
         countQueryClose--
         if(countQueryClose <= 0) {
+            view?.hideErrors()
             Settings(context!!).setPropertyBoolean("is_full_reg", true)
             view?.userRegistered()
             view?.togglePB(false)
@@ -22,6 +23,7 @@ class RegistryStartPresenter(
     }
 
     override fun onResultFail(error: String?) {
+        view?.hideErrors()
         view?.togglePB(false)
         when (error) {
             "regexFirstName" -> view?.errorFirstName("Недопустимые символы")
