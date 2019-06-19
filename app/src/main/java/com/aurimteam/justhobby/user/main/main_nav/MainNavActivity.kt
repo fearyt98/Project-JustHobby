@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity
 import com.aurimteam.justhobby.R
 import kotlinx.android.synthetic.main.activity_main_nav.*
 import android.support.v4.app.Fragment
+import android.support.v4.content.ContextCompat
 import android.view.Gravity
 import android.view.View
 import android.widget.Toast
@@ -171,6 +172,7 @@ class MainNavActivity : AppCompatActivity(), IMainNavView {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
                 startForegroundService(serviceIntent)
             else
+                //startForeground(serviceIntent)
                 this.startService(serviceIntent)
         }
     }
