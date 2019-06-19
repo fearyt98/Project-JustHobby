@@ -64,6 +64,9 @@ class NotificationsService : Service() {
 
     override fun onDestroy() {
         timer.cancel()
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            stopForeground(true)
+        }
         super.onDestroy()
     }
 
