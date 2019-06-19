@@ -112,6 +112,9 @@
         Огромный каталог отражает все\n сферы дополнительного\n образования: наука, искусство,\n спорт, техническое
         творчество,\n иностранные языки и т.д.
     </string>
+    <string name="about_add_your_courses">
+        Если Вы представитель\n учреждения дополнительного\n образования и хотите добавить\n свои курсы, то вы можете сделать\n это на сайте\n http://justhobby.herokuapp.com
+    </string>
     <string name="about_no_timeline_before_plus">
         Нажмите
     </string>
@@ -232,4 +235,5 @@
     <string name="okay">Ок</string>
     <string name="checking_new_notifications">Проверка новых уведомлений</string>
     <string name="search_new_notifications">Поиск новых уведомлений</string>
+    <string name="add_your_courses">Добавьте свои курсы</string>
 </resources>

@@ -25,7 +25,7 @@ class GpsData {
         locationManager = context.getSystemService(LOCATION_SERVICE) as LocationManager
         locationListener = object : LocationListener {
             override fun onLocationChanged(location: Location?) {
-                if(!isDeactivated) {
+                if (!isDeactivated) {
                     lat = location?.latitude
                     lon = location?.longitude
                 } else {
@@ -67,10 +67,15 @@ class GpsData {
     }
 
     fun activate() {
-        if(isCreated) {
+        if (isCreated) {
             isDeactivated = false
-            lat = locationManager!!.getLastKnownLocation(LocationManager.NETWORK_PROVIDER).latitude
-            lon = locationManager!!.getLastKnownLocation(LocationManager.NETWORK_PROVIDER).longitude
+            var lastLocation = locationManager!!.getLastKnownLocation(LocationManager.NETWORK_PROVIDER)
+            if (lastLocation == null) lastLocation =
+                locationManager!!.getLastKnownLocation(LocationManager.GPS_PROVIDER)
+            if (lastLocation != null) {
+                lat = lastLocation.latitude
+                lon = lastLocation.longitude
+            }
         }
     }
 

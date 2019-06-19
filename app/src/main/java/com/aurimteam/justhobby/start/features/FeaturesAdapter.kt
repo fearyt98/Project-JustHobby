@@ -15,7 +15,8 @@ class FeaturesAdapter(context: Context) : PagerAdapter() {
     private val layouts: IntArray = intArrayOf(
         R.layout.activity_feature_noty,
         R.layout.activity_feature_search,
-        R.layout.activity_feature_courses
+        R.layout.activity_feature_courses,
+        R.layout.activity_feature_new_company
     )
 
     //получение числа активити

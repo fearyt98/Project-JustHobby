@@ -23,7 +23,6 @@ class RegistryStartPresenter(
     }
 
     override fun onResultFail(error: String?) {
-        view?.hideErrors()
         view?.togglePB(false)
         when (error) {
             "regexFirstName" -> view?.errorFirstName("Недопустимые символы")
@@ -42,6 +41,7 @@ class RegistryStartPresenter(
     }
 
     fun sendUserInfo(first_name: String, last_name: String) {
+        view?.hideErrors()
         if (first_name == "" || last_name == "") {
             view?.hideErrors()
             if (first_name == "")
