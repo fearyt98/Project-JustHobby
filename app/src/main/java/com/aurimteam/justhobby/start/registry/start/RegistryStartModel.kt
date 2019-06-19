@@ -7,9 +7,6 @@ import com.aurimteam.justhobby.App
 import com.aurimteam.justhobby.api.Api
 import com.aurimteam.justhobby.response.UserResponse
 import com.aurimteam.justhobby.response_body.UpdateUserBody
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -30,7 +27,6 @@ class RegistryStartModel : IRegistryStartModel {
         val requestBody = RequestBody.create(MediaType.parse("image/*"), file)
         val multipartBodyPart = MultipartBody.Part.createFormData("avatar", file.name, requestBody)
         val requestBodyDescription = RequestBody.create(MediaType.parse("text/plain"), "image-type")
-        GlobalScope.launch(Dispatchers.IO) {
             App.retrofit
                 .create(Api::class.java)
                 .uploadUserImage(token, requestBodyDescription, multipartBodyPart)
@@ -48,7 +44,7 @@ class RegistryStartModel : IRegistryStartModel {
                         }
                     }
                 })
-        }
+
     }
 
     private fun getPath(uri: Uri, context: Context): String? {

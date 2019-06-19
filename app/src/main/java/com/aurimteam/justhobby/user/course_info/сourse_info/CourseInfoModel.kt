@@ -6,9 +6,6 @@ import com.aurimteam.justhobby.response.*
 import com.aurimteam.justhobby.response_body.BookmarkAddBody
 import com.aurimteam.justhobby.response_body.GroupAddBody
 import com.aurimteam.justhobby.response_body.TokenBody
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
@@ -26,7 +23,7 @@ class CourseInfoModel : ICourseInfoModel {
     }
 
     override fun getCourseGroupsData(token: String, courseId: Long, onFinishedListener: OnFinishedListener) {
-        GlobalScope.launch(Dispatchers.IO) {
+
             App.retrofit
                 .create(Api::class.java)
                 .getGroupsOneCourse(courseId, token)
@@ -45,11 +42,11 @@ class CourseInfoModel : ICourseInfoModel {
                         }
                     }
                 })
-        }
+
     }
 
     override fun getCourseData(token: String, courseId: Long, onFinishedListener: OnFinishedListener) {
-        GlobalScope.launch(Dispatchers.IO) {
+
             App.retrofit
                 .create(Api::class.java)
                 .getOneCourse(courseId, token)
@@ -68,7 +65,7 @@ class CourseInfoModel : ICourseInfoModel {
                         }
                     }
                 })
-        }
+
     }
 
     override fun deleteUserGroup(

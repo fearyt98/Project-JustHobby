@@ -5,9 +5,6 @@ import com.aurimteam.justhobby.api.Api
 import com.aurimteam.justhobby.response.*
 import com.aurimteam.justhobby.response_body.BookmarkAddBody
 import com.aurimteam.justhobby.response_body.TokenBody
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
@@ -23,7 +20,6 @@ class CompanyInfoModel : ICompanyInfoModel {
     }
 
     override fun getCompanyCoursesData(token: String, companyId: Long, lat: Float?, lon: Float?,  onFinishedListener: OnFinishedListener) {
-        GlobalScope.launch(Dispatchers.IO) {
             App.retrofit
                 .create(Api::class.java)
                 .getCoursesOneCompany(companyId, token, lat, lon)
@@ -42,11 +38,10 @@ class CompanyInfoModel : ICompanyInfoModel {
                         }
                     }
                 })
-        }
+
     }
 
     override fun getCompanyData(token: String, companyId: Long, onFinishedListener: OnFinishedListener) {
-        GlobalScope.launch(Dispatchers.IO) {
             App.retrofit
                 .create(Api::class.java)
                 .getOneCompany(companyId, token)
@@ -65,7 +60,7 @@ class CompanyInfoModel : ICompanyInfoModel {
                         }
                     }
                 })
-        }
+
     }
 
     override fun deleteUserBookmark(

@@ -6,9 +6,6 @@ import com.aurimteam.justhobby.response.*
 import com.aurimteam.justhobby.response_body.BookmarkAddBody
 import com.aurimteam.justhobby.response_body.TokenBody
 import com.aurimteam.justhobby.user.main.recommendation_page_viewer.fragments_interfaces.IPopularCoursesModel
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback

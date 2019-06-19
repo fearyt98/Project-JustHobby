@@ -7,7 +7,6 @@ import android.content.Intent
 import android.os.CountDownTimer
 import android.os.IBinder
 import android.app.PendingIntent
-import com.aurimteam.justhobby.user.main.home.home.HomeTimelineFragment
 import android.app.NotificationManager
 import android.graphics.Color
 import android.os.Build
@@ -16,11 +15,6 @@ import com.aurimteam.justhobby.App.Companion.CHANNEL_ID
 import com.aurimteam.justhobby.api.Api
 import com.aurimteam.justhobby.response.*
 import com.aurimteam.justhobby.user.main.main_nav.MainNavActivity
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
-import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

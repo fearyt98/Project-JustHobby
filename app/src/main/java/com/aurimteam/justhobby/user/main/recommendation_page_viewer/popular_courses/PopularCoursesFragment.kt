@@ -21,9 +21,6 @@ import com.aurimteam.justhobby.response.CourseResponseR
 import com.aurimteam.justhobby.response.IncludedResponse
 import com.aurimteam.justhobby.user.main.main_nav.MainNavActivity
 import kotlinx.android.synthetic.main.fragment_popular_courses.*
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent
 
 class PopularCoursesFragment : Fragment(), IPopularCoursesView {
@@ -67,9 +64,7 @@ class PopularCoursesFragment : Fragment(), IPopularCoursesView {
             popularCoursesRecyclerView.visibility = View.GONE
         } else {
             toggleContentPB(false)
-            GlobalScope.launch(Dispatchers.IO) {
                 adapter.onDataChange(courses, included)
-            }
         }
     }
 

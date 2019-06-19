@@ -4,9 +4,6 @@ import com.aurimteam.justhobby.App
 import com.aurimteam.justhobby.api.Api
 import com.aurimteam.justhobby.response.SubcategoriesResponse
 import com.aurimteam.justhobby.response.SubcategoryResponse
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback

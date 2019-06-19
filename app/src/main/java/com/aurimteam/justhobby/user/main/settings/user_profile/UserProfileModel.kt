@@ -17,10 +17,6 @@ import retrofit2.Callback
 import retrofit2.Response
 import java.io.File
 import android.provider.MediaStore
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.launch
 import okhttp3.Dispatcher
 
 class UserProfileModel : IUserProfileModel {
@@ -38,7 +34,6 @@ class UserProfileModel : IUserProfileModel {
         val multipartBodyPart = MultipartBody.Part.createFormData("avatar", file.name, requestBody)
         val requestBodyDescription = RequestBody.create(MediaType.parse("text/plain"), "image-type")
 
-        GlobalScope.launch(Dispatchers.IO) {
             App.retrofit
                 .create(Api::class.java)
                 .uploadUserImage(token, requestBodyDescription, multipartBodyPart)
@@ -57,7 +52,7 @@ class UserProfileModel : IUserProfileModel {
                         }
                     }
                 })
-        }
+
     }
 
     private fun getPath(uri: Uri, context: Context): String? {
@@ -188,7 +183,6 @@ class UserProfileModel : IUserProfileModel {
     }
 
     override fun getSuggests(token: String, query: String, onFinishedListener: OnFinishedListener) {
-        GlobalScope.launch(Dispatchers.IO) {
             App.retrofit
                 .create(Api::class.java)
                 .getSuggests(token, query)
@@ -210,7 +204,7 @@ class UserProfileModel : IUserProfileModel {
                         }
                     }
                 })
-        }
+
     }
 }
 
