@@ -9,4 +9,6 @@ interface IRegistryStartView {
     fun changeLengthLastName(message: String)
     fun showMessage(message: String?)
     fun hideErrors()
+    fun errorFirstName(message: String)
+    fun errorLastName(message: String)
 }

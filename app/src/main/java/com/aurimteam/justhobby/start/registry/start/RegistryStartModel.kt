@@ -38,6 +38,7 @@ class RegistryStartModel : IRegistryStartModel {
                     override fun onResponse(call: Call<UserResponse>, response: Response<UserResponse>) {
                         val responseBody = response.body()
                         if (responseBody != null) {
+                            onFinishedListener.onResultSuccess()
                         } else {
                             val jsonObj = JSONObject(response.errorBody()?.string())
                             onFinishedListener.onResultFail(jsonObj.getJSONObject("error")?.getString("message").toString())
@@ -77,7 +78,18 @@ class RegistryStartModel : IRegistryStartModel {
                         onFinishedListener.onResultSuccess()
                     } else {
                         val jsonObj = JSONObject(response.errorBody()?.string())
-                        onFinishedListener.onResultFail(jsonObj.getJSONObject("error")?.getString("message").toString())
+
+                        if (jsonObj.getJSONObject("error")?.has("description") != null) {
+                            val description = jsonObj.getJSONObject("error")?.getJSONObject("description")!!
+                            if (description.has("first_name")) {
+                                if (description.getJSONObject("first_name").has("Regex"))
+                                    onFinishedListener.onResultFail("regexFirstName")
+                            }
+                            if (description.has("last_name")) {
+                                if (description.getJSONObject("last_name").has("Regex"))
+                                    onFinishedListener.onResultFail("regexLastName")
+                            }
+                        }
                     }
                 }
             })

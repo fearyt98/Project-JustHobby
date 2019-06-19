@@ -17,11 +17,17 @@ class RegistryStartPresenter(
         if(countQueryClose <= 0) {
             Settings(context!!).setPropertyBoolean("is_full_reg", true)
             view?.userRegistered()
+            view?.togglePB(false)
         }
     }
 
     override fun onResultFail(error: String?) {
-        view?.showMessage(error)
+        view?.togglePB(false)
+        when (error) {
+            "regexFirstName" -> view?.errorFirstName("Недопустимые символы")
+            "regexLastName" -> view?.errorLastName("Недопустимые символы")
+            else -> view?.showMessage(error)
+        }
     }
 
     fun sendUserImage(filePath: Uri) {

@@ -70,7 +70,7 @@ class RegistryStartActivity : AppCompatActivity(), IRegistryStartView {
 
     override fun onStart() {
         super.onStart()
-        if(!presenter.isSetView())
+        if (!presenter.isSetView())
             presenter.attachViewContext(this, this)
     }
 
@@ -82,6 +82,14 @@ class RegistryStartActivity : AppCompatActivity(), IRegistryStartView {
     override fun onDestroy() {
         super.onDestroy()
         presenter.onDestroy()
+    }
+
+    override fun errorFirstName(message: String) {
+        firstNameErrorRegistryStart.text = message
+    }
+
+    override fun errorLastName(message: String) {
+        lastNameErrorRegistryStart.text = message
     }
 
     override fun clearFirstName(message: String) {
@@ -107,7 +115,7 @@ class RegistryStartActivity : AppCompatActivity(), IRegistryStartView {
 
     override fun showMessage(message: String?) {
         val devMode = Settings(this).getPropertyBoolean("dev_mode", false)
-        if(devMode != null && devMode) {
+        if (devMode != null && devMode) {
             val toast = Toast.makeText(
                 this,
                 message,
@@ -130,12 +138,14 @@ class RegistryStartActivity : AppCompatActivity(), IRegistryStartView {
     }
 
     private fun readyBtnClick() {
-        if(filePath != null) presenter.sendUserImage(filePath!!)
+        if (filePath != null && registryStartFirstName.text.toString() != "" && registryStartLastName.text.toString() != "")
+            presenter.sendUserImage(filePath!!)
         presenter.sendUserInfo(registryStartFirstName.text.toString(), registryStartLastName.text.toString())
     }
 
     private fun openUserAgreement() {
-        val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("http://justhobby.herokuapp.com/public/files/User_Agreement.pdf"))
+        val browserIntent =
+            Intent(Intent.ACTION_VIEW, Uri.parse("http://justhobby.herokuapp.com/public/files/User_Agreement.pdf"))
         startActivity(browserIntent)
     }
 }
