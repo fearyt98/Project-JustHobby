@@ -123,6 +123,7 @@ class CourseReviewsFragment : Fragment(), ICourseReviewsView {
     }
 
     override fun toggleContentPB(isVisiblePB: Boolean) {
+        courseReviewsClear.visibility = View.GONE
         if (isVisiblePB) {
             courseReviewsProgressBar.visibility = View.VISIBLE
             courseReviewsContent.visibility = View.GONE

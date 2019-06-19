@@ -63,6 +63,7 @@ class UserGroupsFragment : Fragment(), IUserGroupsView {
     }
 
     override fun toggleContentPB(isVisiblePB: Boolean) {
+        userGroupsClear.visibility = View.GONE
         if (isVisiblePB) {
             userGroupsProgressBar.visibility = View.VISIBLE
             userGroupsRecyclerView.visibility = View.GONE

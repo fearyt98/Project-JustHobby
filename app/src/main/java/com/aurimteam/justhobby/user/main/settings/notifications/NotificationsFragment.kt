@@ -1,5 +1,7 @@
 package com.aurimteam.justhobby.user.main.settings.notifications
 
+import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.SwitchCompat
@@ -9,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import com.aurimteam.justhobby.R
 import android.widget.CompoundButton
+import com.aurimteam.justhobby.NotificationsService
 import com.aurimteam.justhobby.Settings
 
 class NotificationsFragment : Fragment() {
@@ -31,7 +34,7 @@ class NotificationsFragment : Fragment() {
                 if (isTouched) {
                     isTouched = false
                     if (isChecked) {
-                        setMute()
+                        setMute(view)
                     } else {
                         unsetMute()
                     }
@@ -40,12 +43,23 @@ class NotificationsFragment : Fragment() {
         return view
     }
 
-    private fun setMute() {
+    private fun setMute(view: View) {
         Settings(context!!).setPropertyBoolean("mute", true)
+        val serviceIntent = Intent(view.context, NotificationsService::class.java)
+        activity?.stopService(serviceIntent)
     }
 
     private fun unsetMute() {
         Settings(context!!).setPropertyBoolean("mute", false)
+        val serviceIntent = Intent(context!!, NotificationsService::class.java)
+        val token = Settings(context!!).getProperty("token")
+        if (token != null) {
+            serviceIntent.putExtra("token", token)
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
+                context!!.startForegroundService(serviceIntent)
+            else
+                context!!.startService(serviceIntent)
+        }
     }
 
     private fun back() {

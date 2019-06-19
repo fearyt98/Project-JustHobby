@@ -96,6 +96,7 @@ class NotificationsFragment : Fragment(), INotificationsView {
     }
 
     override fun toggleContentPB(isVisiblePB: Boolean) {
+        notificationsClear.visibility = View.GONE
         if (isVisiblePB) {
             notificationsProgressBar.visibility = View.VISIBLE
             notificationsContent.visibility = View.GONE

@@ -161,6 +161,7 @@ class HomeTimelineFragment : Fragment(), IHomeView {
     }
 
     override fun toggleContentPB(isVisiblePB: Boolean) {
+        homeContentClear.visibility = View.GONE
         if (isTimeline)
             if (isVisiblePB) {
                 homeProgressBar.visibility = View.VISIBLE

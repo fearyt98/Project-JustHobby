@@ -70,6 +70,7 @@ class NearUserCoursesFragment : Fragment(), INearCoursesView {
     }
 
     override fun toggleContentPB(isVisiblePB: Boolean) {
+        nearCoursesClear.visibility = View.GONE
         if (isVisiblePB) {
             nearCoursesProgressBar.visibility = View.VISIBLE
             nearCoursesRecyclerView.visibility = View.GONE

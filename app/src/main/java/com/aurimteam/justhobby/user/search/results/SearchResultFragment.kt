@@ -80,6 +80,7 @@ class SearchResultFragment : Fragment(), ISearchResultView {
     }
 
     override fun toggleContentPB(isVisiblePB: Boolean) {
+        searchResultsClear.visibility = View.GONE
         if (isVisiblePB) {
             searchResultsProgressBar.visibility = View.VISIBLE
             searchResultsParentRecyclerView.visibility = View.GONE

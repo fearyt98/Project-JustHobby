@@ -51,6 +51,7 @@ class UserBookmarksFragment : Fragment(), IUserBookmarksView {
     }
 
     override fun toggleContentPB(isVisiblePB: Boolean) {
+        bookmarksClear.visibility = View.GONE
         if (isVisiblePB) {
             bookmarksProgressBar.visibility = View.VISIBLE
             bookmarksRecyclerView.visibility = View.GONE
